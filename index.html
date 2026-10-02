@@ -865,6 +865,74 @@ ul{list-style:none}
 .header.header--barre .header__logo img{transition:height .45s}
 /* Catégories : même taille que les autres titres de section */
 .explore .explore__title{font-size:clamp(38px,6.4vw,116px);line-height:.88;letter-spacing:-.035em}
+
+/* =====================================================================
+   MENU VERTICAL À DROITE (essai, grand écran) — remplace la barre du
+   haut dès qu'on descend.
+   ===================================================================== */
+.rail,.rp{display:none}
+@media (min-width:1024px){
+  .header{transition:transform .5s cubic-bezier(.2,.7,.2,1),background .45s,height .45s,box-shadow .45s,color .6s}
+  .rail-on .header{transform:translateY(-110%)}
+  .rail{display:flex;position:fixed;top:0;right:0;bottom:0;z-index:140;width:64px;flex-direction:column;align-items:center;justify-content:space-between;padding:22px 0 24px;color:var(--white);background:rgba(5,5,5,.8);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-left:1px solid rgba(255,255,255,.08);transform:translateX(102%);transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+  .rail-on .rail{transform:none}
+  .rail__logo{position:relative;display:block;width:64px;height:150px}
+  .rail__logo img{position:absolute;left:50%;top:50%;width:138px;max-width:none;height:auto;transform:translate(-50%,-50%) rotate(-90deg);transition:opacity .3s}
+  .rail__logo:hover img{opacity:.75}
+  .rail__burger{display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--white)}
+  .rail__lines{position:relative;display:grid;gap:6px;width:26px;padding:14px 0}
+  .rail__lines i{display:block;height:1.5px;background:currentColor;transition:transform .45s cubic-bezier(.2,.7,.2,1),width .45s,opacity .3s;transform-origin:center}
+  .rail__lines i:nth-child(2){width:70%;margin-left:auto}
+  .rail__burger:hover .rail__lines i:nth-child(2){width:100%}
+  .rail__burger:hover{color:var(--gold)}
+  .rail__burger[aria-expanded="true"] .rail__lines i:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .rail__burger[aria-expanded="true"] .rail__lines i:nth-child(2){opacity:0}
+  .rail__burger[aria-expanded="true"] .rail__lines i:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  .rail__burger em{font-style:normal;font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;writing-mode:vertical-rl}
+  .rail__bas{display:flex;flex-direction:column;align-items:center;gap:22px}
+  .rail__cta{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--gold);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+  .rail__cta span{writing-mode:vertical-rl;transform:rotate(180deg)}
+  .rail__cta svg{width:16px;height:16px;transform:rotate(45deg);transition:transform .35s}
+  .rail__cta:hover{color:var(--white)}
+  .rail__cta:hover svg{transform:rotate(45deg) translateY(-3px)}
+  .rail__lang{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+  .rail__lang button{font-size:10.5px;letter-spacing:.14em;font-weight:700;color:rgba(255,255,255,.5)}
+  .rail__lang button.is-active,.rail__lang button:hover{color:var(--gold)}
+
+  /* panneau */
+  .rp{display:block;position:fixed;inset:0;z-index:130}
+  .rp[hidden]{display:none}
+  .rp__fond{position:absolute;inset:0;background:rgba(5,5,5,.55);opacity:0;transition:opacity .5s}
+  .rp.est-ouvert .rp__fond{opacity:1}
+  .rp__in{position:absolute;top:0;bottom:0;right:64px;width:min(560px,calc(100vw - 64px));overflow-y:auto;padding:clamp(34px,6vh,64px) clamp(30px,3.6vw,56px);background:linear-gradient(160deg,#0b0b0c 0%,#0E2A4F 140%);color:var(--white);transform:translateX(calc(100% + 64px));transition:transform .6s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
+  .rp.est-ouvert .rp__in{transform:none}
+  .rp__x{position:absolute;right:22px;top:22px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;color:var(--white);transition:background .3s,color .3s}
+  .rp__x:hover{background:var(--white);color:var(--black)}
+  .rp__x svg{width:18px;height:18px}
+  .rp__logo{width:150px;height:auto;margin-bottom:clamp(26px,5vh,54px)}
+  .rp__liens{display:flex;flex-direction:column}
+  .rp__grp{padding:14px 0;border-top:1px solid rgba(255,255,255,.12);opacity:0;transform:translateX(30px);transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * 55ms + 120ms)}
+  .rp.est-ouvert .rp__grp{opacity:1;transform:none}
+  .rp__main{display:flex;align-items:baseline;gap:16px;font-size:clamp(28px,2.6vw,40px);font-weight:800;letter-spacing:-.03em;text-transform:uppercase;line-height:1;transition:color .3s}
+  .rp__main small{font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:700}
+  .rp__main:hover{color:var(--gold)}
+  .rp__subs{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0 34px}
+  .rp__subs a{font-size:13px;color:rgba(255,255,255,.65);transition:color .3s}
+  .rp__subs a:hover{color:var(--white)}
+  .rp__pied{margin-top:auto;padding-top:34px;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  .rp__pied p{display:flex;flex-direction:column;gap:4px;font-size:13px;color:rgba(255,255,255,.7)}
+  .rp__plus{position:absolute;width:30px;height:30px;opacity:.35}
+  .rp__plus::before,.rp__plus::after{content:"";position:absolute;background:var(--white)}
+  .rp__plus::before{left:0;right:0;top:50%;height:1px}.rp__plus::after{top:0;bottom:0;left:50%;width:1px}
+  .rp__plus--a{right:90px;top:34%}.rp__plus--b{left:24px;bottom:22%}
+}
+@media (prefers-reduced-motion:reduce){.rail,.rp__in,.rp__grp,.header{transition:none!important}}
+@media (min-width:1024px){
+  /* la colonne de droite ne couvre jamais les éléments alignés à droite */
+  .talents__head,.projets__head,.news__head{padding-right:max(var(--gutter),80px)}
+  .news,.demande,.explore__pin,.intro{padding-right:max(var(--gutter),80px)}
+  .news__head{padding-right:0}
+}
 </style>
 </head>
 <body>
@@ -916,6 +984,33 @@ ul{list-style:none}
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
+
+<!-- ================= MENU VERTICAL (essai) =================
+     Au défilement, la barre du haut s'efface et une colonne fine apparaît à
+     droite : logo vertical, menu hamburger, appel à l'action et langue. -->
+<aside class="rail" id="rail" aria-label="Navigation">
+  <a class="rail__logo" href="#top" aria-label="MVP Group — haut de page"><img src="assets/mvp-logo-blanc-v2.png" alt=""></a>
+  <button class="rail__burger" id="railBurger" aria-expanded="false" aria-controls="railPanel" aria-label="Ouvrir le menu">
+    <span class="rail__lines"><i></i><i></i><i></i></span><em data-i18n="rail.menu">Menu</em>
+  </button>
+  <div class="rail__bas">
+    <a class="rail__cta" href="#demande"><span data-i18n="cta.work">Travailler avec nous</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    <div class="rail__lang"><button data-lang="fr">FR</button><button data-lang="en">EN</button></div>
+  </div>
+</aside>
+<div class="rp" id="railPanel" hidden>
+  <div class="rp__fond" data-fermer></div>
+  <nav class="rp__in" aria-label="Menu">
+    <button class="rp__x" data-fermer aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <img class="rp__logo" src="assets/mvp-logo-blanc-v2.png" alt="MVP Group">
+    <div class="rp__liens" id="rpLiens"></div>
+    <div class="rp__pied">
+      <a class="btn btn--gold" href="#demande" data-fermer-lien data-i18n="cta.work">Travailler avec nous</a>
+      <p><a href="tel:+15145823306">514-582-3306</a><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></p>
+    </div>
+    <span class="rp__plus rp__plus--a" aria-hidden="true"></span><span class="rp__plus rp__plus--b" aria-hidden="true"></span>
+  </nav>
+</div>
 <div class="mobile-menu" id="mobileMenu" hidden>
   <img src="assets/mvp-logo-blanc-v2.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
   <a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a><a href="#services" data-i18n="nav.services">Services</a><a href="projets.html" data-i18n="nav.projects">Projets</a><a href="#contact" data-i18n="nav.agency">Agence</a><a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -1144,7 +1239,7 @@ const I18N = {
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
   'orbit.h':'Personnalités','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
-  'sl.hint':'Défilez ou utilisez les flèches',"dm.k":"Démarrer un projet","dm.h":"Parlez-nous de <span class=\"gold\">votre projet.</span>","dm.p":"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin. Nous trouvons la bonne personnalité et nous vous revenons rapidement.","dm.nom":"Nom *","dm.ent":"Entreprise","dm.mail":"Courriel *","dm.tel":"Téléphone","dm.type":"Type de projet","dm.date":"Date approximative","dm.dateph":"Ex. : juin 2027","dm.pers":"Personnalité souhaitée (facultatif)","dm.msg":"Message","dm.send":"Envoyer la demande","dm.okh":"Merci, votre demande est envoyée.","dm.okp":"L'équipe MVP communiquera avec vous sous peu.","dm.choose":"Choisir…","dm.req":"Veuillez indiquer votre nom et un courriel valide.","dm.fail":"L'envoi n'a pas fonctionné. Réessayez dans un instant ou appelez-nous au 514-582-3306.","tl.work":"Travailler avec",'pj.h':'Nos projets','pj.hint':'Glisser →','sl.partners':'Partenaires','sl.kicker':'Nos projets','news.title':'Actualités','news.all':'Tout voir','news.read':'Lire','news.extrait':"Extrait de l'article. La suite est à lire chez l'éditeur.",'news.full':"Lire l'article au complet",
+  'sl.hint':'Défilez ou utilisez les flèches','rail.menu':'Menu',"dm.k":"Démarrer un projet","dm.h":"Parlez-nous de <span class=\"gold\">votre projet.</span>","dm.p":"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin. Nous trouvons la bonne personnalité et nous vous revenons rapidement.","dm.nom":"Nom *","dm.ent":"Entreprise","dm.mail":"Courriel *","dm.tel":"Téléphone","dm.type":"Type de projet","dm.date":"Date approximative","dm.dateph":"Ex. : juin 2027","dm.pers":"Personnalité souhaitée (facultatif)","dm.msg":"Message","dm.send":"Envoyer la demande","dm.okh":"Merci, votre demande est envoyée.","dm.okp":"L'équipe MVP communiquera avec vous sous peu.","dm.choose":"Choisir…","dm.req":"Veuillez indiquer votre nom et un courriel valide.","dm.fail":"L'envoi n'a pas fonctionné. Réessayez dans un instant ou appelez-nous au 514-582-3306.","tl.work":"Travailler avec",'pj.h':'Nos projets','pj.hint':'Glisser →','sl.partners':'Partenaires','sl.kicker':'Nos projets','news.title':'Actualités','news.all':'Tout voir','news.read':'Lire','news.extrait':"Extrait de l'article. La suite est à lire chez l'éditeur.",'news.full':"Lire l'article au complet",
   'brands.h':'<span class="mutedword">Des marques qui veulent</span>avoir <span class="gold">un réel impact.</span>',
   'foot.h':'Bâtissons le <span class="gold">bon partenariat.</span>','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Suivez-nous','foot.agency':'MVP Group Agency','foot.hq':'Siège social : Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. Tous droits réservés.','foot.privacy':'Politique de confidentialité'
  },
@@ -1159,7 +1254,7 @@ const I18N = {
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
   'orbit.h':'Personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
-  'sl.hint':'Scroll or use the arrows',"dm.k":"Start a project","dm.h":"Tell us about <span class=\"gold\">your project.</span>","dm.p":"Keynote, campaign, gala or corporate event: describe what you need. We find the right personality and get back to you quickly.","dm.nom":"Name *","dm.ent":"Company","dm.mail":"Email *","dm.tel":"Phone","dm.type":"Project type","dm.date":"Approximate date","dm.dateph":"e.g. June 2027","dm.pers":"Preferred personality (optional)","dm.msg":"Message","dm.send":"Send request","dm.okh":"Thank you, your request has been sent.","dm.okp":"The MVP team will contact you shortly.","dm.choose":"Choose…","dm.req":"Please enter your name and a valid email.","dm.fail":"Sending failed. Please try again in a moment or call us at 514-582-3306.","tl.work":"Work with",'pj.h':'Our projects','pj.hint':'Drag →','sl.partners':'Partners','sl.kicker':'Our projects','news.title':'News','news.all':'See all','news.read':'Read','news.extrait':'Article excerpt. Read the rest at the publisher.','news.full':'Read the full article',
+  'sl.hint':'Scroll or use the arrows','rail.menu':'Menu',"dm.k":"Start a project","dm.h":"Tell us about <span class=\"gold\">your project.</span>","dm.p":"Keynote, campaign, gala or corporate event: describe what you need. We find the right personality and get back to you quickly.","dm.nom":"Name *","dm.ent":"Company","dm.mail":"Email *","dm.tel":"Phone","dm.type":"Project type","dm.date":"Approximate date","dm.dateph":"e.g. June 2027","dm.pers":"Preferred personality (optional)","dm.msg":"Message","dm.send":"Send request","dm.okh":"Thank you, your request has been sent.","dm.okp":"The MVP team will contact you shortly.","dm.choose":"Choose…","dm.req":"Please enter your name and a valid email.","dm.fail":"Sending failed. Please try again in a moment or call us at 514-582-3306.","tl.work":"Work with",'pj.h':'Our projects','pj.hint':'Drag →','sl.partners':'Partners','sl.kicker':'Our projects','news.title':'News','news.all':'See all','news.read':'Read','news.extrait':'Article excerpt. Read the rest at the publisher.','news.full':'Read the full article',
   'brands.h':'<span class="mutedword">Trusted by brands</span>that want to <span class="gold">make an impact.</span>',
   'foot.h':'Let\'s build the <span class="gold">right partnership.</span>','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Follow','foot.agency':'MVP Group Agency','foot.hq':'Head office: Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. All rights reserved.','foot.privacy':'Privacy policy'
  }
@@ -1730,6 +1825,35 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
 (function(){ var h=document.getElementById('header'); if(!h) return;
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
+</script>
+<script>
+/* Menu vertical (essai) : visible au défilement sur grand écran. */
+(function(){
+  var html=document.documentElement, rail=document.getElementById('rail'), panel=document.getElementById('railPanel'), burger=document.getElementById('railBurger');
+  if(!rail) return;
+  /* liens du panneau = ceux du menu du haut (mêmes textes, même traduction) */
+  var src=document.querySelector('.header__nav'), out=document.getElementById('rpLiens'), n=0;
+  [].forEach.call(src.children,function(item){
+    var main=item.matches('a')?item:item.querySelector(':scope > a'); if(!main) return; n++;
+    var g=document.createElement('div'); g.className='rp__grp'; g.style.setProperty('--i',n);
+    var a=main.cloneNode(true); a.className='rp__main'; a.insertAdjacentHTML('afterbegin','<small>0'+n+'</small>'); g.appendChild(a);
+    var drop=item.querySelector('.navdrop');
+    if(drop){ var sub=document.createElement('div'); sub.className='rp__subs'; [].forEach.call(drop.querySelectorAll('a'),function(x){ sub.appendChild(x.cloneNode(true)); }); g.appendChild(sub); }
+    out.appendChild(g);
+  });
+  var grand=matchMedia('(min-width:1024px)');
+  var maj=function(){ html.classList.toggle('rail-on', grand.matches && scrollY>140); };
+  addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
+  var ouvrir=function(){ panel.hidden=false; requestAnimationFrame(function(){ panel.classList.add('est-ouvert'); }); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
+  var fermer=function(){ panel.classList.remove('est-ouvert'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; setTimeout(function(){ panel.hidden=true; },500); };
+  burger.addEventListener('click',function(){ panel.hidden?ouvrir():fermer(); });
+  panel.addEventListener('click',function(e){ if(e.target.closest('[data-fermer]')||e.target.closest('a')) fermer(); });
+  addEventListener('keydown',function(e){ if(e.key==='Escape'&&!panel.hidden) fermer(); });
+  /* langue : relaie au sélecteur du haut */
+  var lang=rail.querySelector('.rail__lang'), syncLang=function(){ var cur=document.querySelector('#lang .is-active'); [].forEach.call(lang.children,function(b){ b.classList.toggle('is-active',cur&&b.dataset.lang===cur.dataset.lang); }); };
+  lang.addEventListener('click',function(e){ var b=e.target.closest('[data-lang]'); if(!b) return; var t=document.querySelector('#lang [data-lang="'+b.dataset.lang+'"]'); if(t) t.click(); syncLang(); });
+  syncLang();
+})();
 </script>
 </body>
 </html>

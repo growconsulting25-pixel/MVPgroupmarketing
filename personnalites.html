@@ -805,6 +805,8 @@ body{background:var(--soft);color:var(--black)}
 .header.header--barre[data-theme="dark"] .logo--black{display:none}
 .header.header--barre .lang button.is-active{color:var(--gold)}
 .header.header--barre .header__logo img{transition:height .45s}
+/* « En vedette » : toujours une rangée complète, jamais une carte seule */
+@media (min-width:1001px) and (max-width:1280px){#grid2>:nth-child(n+4){display:none}}
 </style>
 </head>
 <body>
@@ -866,7 +868,7 @@ body{background:var(--soft);color:var(--black)}
   <div class="bp__wrap" data-plus="l:22:lg l:84 r:40 r:70">
     <div>
       <!-- Recherche et filtres : présents, mais discrets. Les personnalités passent en premier. -->
-      <div class="chips">
+      <div class="chips" id="resultats">
         <h2>Qu'est-ce que votre personnalité doit apporter au projet ?</h2>
         <div class="chips__row" id="chips"></div>
       </div>
@@ -1125,7 +1127,7 @@ const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":
   const g2=$('#grid2'); if(!g2) return;
   const vus=new Set(); const choix=[];
   ['hockey','boxing','olympics','media','soccer','mma','other'].forEach(cat=>{
-    if(choix.length>=5) return;
+    if(choix.length>=4) return;   /* une rangée complète de 4 */
     const c=TALENTS.filter(t=>t.cat===cat&&t.bio).sort((a,b)=>b.bio.length-a.bio.length)[0];
     if(c&&!vus.has(c.id)){ vus.add(c.id); choix.push(c); }
   });
@@ -1175,5 +1177,17 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
 (function(){ var h=document.getElementById('header'); if(!h) return;
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
+</script>
+<script>
+/* Arrivée avec un filtre (ex. ?sport=hockey depuis le menu ou les catégories) :
+   on descend directement aux filtres et aux résultats, sous la barre du menu. */
+(function(){
+  var u=new URLSearchParams(location.search);
+  if(!(['sport','role','topic','project','q'].some(function(k){return u.get(k);})||location.hash==='#resultats')) return;
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  var cible=document.getElementById('resultats'); if(!cible) return;
+  var aller=function(){ scrollTo(0, cible.getBoundingClientRect().top+scrollY-92); };
+  aller(); addEventListener('load',function(){ setTimeout(aller,60); });
+})();
 </script>
 </body></html>
