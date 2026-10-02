@@ -628,36 +628,14 @@ body{background:var(--soft);color:var(--black)}
 .bp__hero .label{color:var(--gold);margin-bottom:14px}
 .bp__hero h1{font-size:clamp(32px,5vw,78px);font-weight:800;line-height:.98;letter-spacing:-.03em;max-width:17ch}
 .bp__lede{margin-top:16px;max-width:60ch;font-size:clamp(14px,1.02vw,17px);line-height:1.6;color:rgba(255,255,255,.82)}
-.bp__stats{display:flex;gap:clamp(20px,3vw,54px);margin-top:24px;flex-wrap:wrap}
-.bp__stats div{display:flex;flex-direction:column}
-.bp__stats b{font-size:clamp(24px,2.6vw,40px);font-weight:200;letter-spacing:-.03em;line-height:1}
-.bp__stats span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}
 @media (max-width:760px){.bp__hero{height:auto;min-height:0;padding-top:calc(var(--nav-h) + 40px);padding-bottom:36px}}
 
 /* ---------- STRUCTURE ---------- */
 .bp__wrap{display:grid;grid-template-columns:268px 1fr;gap:clamp(22px,2.6vw,44px);padding:clamp(34px,5vh,64px) var(--gutter) 8vh;align-items:start}
 /* sans cette contrainte, le carrousel etire la colonne et deborde la page */
 .bp__wrap>*{min-width:0}
-.bp__side{position:sticky;top:calc(var(--nav-h) + 20px);max-height:calc(100svh - var(--nav-h) - 32px);overflow-y:auto;padding-right:8px}
-.bp__side::-webkit-scrollbar{width:4px}.bp__side::-webkit-scrollbar-thumb{background:var(--grey);border-radius:4px}
 /* Panneau de filtres : posé sur une carte blanche, avec un filet doré sous
    chaque intitulé et une barre bleue qui marque la ligne survolée. */
-.bp__side{background:var(--white);border:1px solid var(--grey);border-radius:16px;padding:20px 18px}
-.fgrp{border-top:1px solid var(--grey);padding:18px 0 4px}
-.fgrp:first-child{border-top:0;padding-top:0}
-.fgrp h3{position:relative;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);margin-bottom:14px;padding-bottom:9px;font-weight:700}
-.fgrp h3::after{content:"";position:absolute;left:0;bottom:0;width:26px;height:2px;background:var(--gold)}
-.fopt{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:7px 8px 7px 10px;margin-left:-10px;border-radius:8px;font-size:13.5px;color:#333;transition:color .25s,background .25s}
-.fopt::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:2px;height:60%;background:var(--blue);transition:transform .28s var(--ease)}
-.fopt:hover{color:var(--black);background:rgba(30,82,153,.045)}
-.fopt:hover::before{transform:translateY(-50%) scaleY(1)}
-.fopt:has(input:checked){color:var(--black);font-weight:600}
-.fopt:has(input:checked)::before{transform:translateY(-50%) scaleY(1)}
-.fopt:has(input:checked) em{color:var(--blue);font-weight:700}
-.fopt input{appearance:none;width:15px;height:15px;border:1.5px solid var(--grey);border-radius:4px;flex:none;position:relative;transition:.2s;cursor:pointer}
-.fopt input:checked{background:var(--blue);border-color:var(--blue)}
-.fopt input:checked::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
-.fopt em{margin-left:auto;font-style:normal;font-size:11px;color:var(--muted);transition:color .25s}
 
 /* ---------- BARRE DE DECOUVERTE ---------- */
 .bp__tools{margin-bottom:22px}
@@ -665,21 +643,9 @@ body{background:var(--soft);color:var(--black)}
 .srch input{width:100%;padding:16px 18px 16px 48px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font-size:15px;font-family:inherit;transition:border-color .3s,box-shadow .3s}
 .srch input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(30,82,153,.08)}
 .srch svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
-.chips h2{font-size:clamp(15px,1.15vw,19px);font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
 .chips__row{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:8px 16px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font-size:12.5px;color:#333;transition:.28s var(--ease);cursor:pointer}
-.chip[aria-pressed="true"]{box-shadow:0 6px 18px rgba(30,82,153,.28)}
-.chip:hover{border-color:var(--black);color:var(--black)}
-.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:22px 0 16px;padding-top:16px;border-top:1px solid var(--grey)}
 .bar__n{font-size:13px;color:var(--muted)}
 .bar__n b{color:var(--black);font-weight:700}
-.bar select{padding:9px 14px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font-family:inherit;font-size:12.5px;cursor:pointer}
-.actifs{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.actif{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:var(--black);color:#fff;border-radius:999px;font-size:11.5px}
-.actif button{color:#fff;opacity:.6;font-size:14px;line-height:1}
-.actif button:hover{opacity:1}
-.vider{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);font-weight:700;border-bottom:1px solid currentColor}
 
 /* ---------- GRILLE ---------- */
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.2vw,20px)}
@@ -687,53 +653,6 @@ body{background:var(--soft);color:var(--black)}
 @media (max-width:1180px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:430px){.grid{grid-template-columns:1fr}}
-
-}
-
-/* ---------- CARTE ---------- */
-.tc{position:relative;perspective:1400px}
-.tc__in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .72s cubic-bezier(.22,1,.36,1)}
-.tc.est-ouverte .tc__in{transform:rotateY(180deg)}
-.tc__in{min-height:clamp(438px,30vw,512px)}
-.tc__f,.tc__b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden;background:var(--white);border:1px solid var(--grey);display:flex;flex-direction:column}
-.tc__b{transform:rotateY(180deg);padding:18px 16px;background:var(--black);color:#fff;border-color:#1c1c1c}
-.tc__ph{position:relative;aspect-ratio:1/1;flex:none;overflow:hidden;background:#EDEFF2}
-.tc__ph img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 1.1s var(--ease),opacity .5s}
-.tc:hover .tc__ph img{transform:scale(1.045)}
-.tc__ini{position:absolute;right:-6px;bottom:-14px;font-size:64px;font-weight:800;letter-spacing:-.05em;color:#fff;opacity:.16;pointer-events:none}
-.tc__cat{position:absolute;left:10px;top:10px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--black);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.tc__soc{position:absolute;right:10px;top:10px;display:flex;gap:6px}
-.tc__soc a{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;transition:.25s}
-.tc__soc a:hover{background:var(--blue)}
-.tc__soc svg{width:12px;height:12px;color:var(--black)}
-.tc__soc a:hover svg{color:#fff}
-.tc__body{padding:12px 14px 10px;border-top:1px solid var(--grey);flex:1;min-height:0;display:flex;flex-direction:column}
-.tc__nom{font-size:15px;font-weight:800;line-height:1.14;letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-.tc__sub{margin-top:4px;font-size:11px;color:var(--muted);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.tc__tags{display:flex;flex-wrap:nowrap;gap:4px;margin-top:8px;overflow:hidden}
-.tc__tag{font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--grey);border-radius:999px;color:#555}
-.tc__cta{display:flex;flex-direction:column;gap:6px;padding:0 14px 14px;margin-top:auto}
-.tc__b1{padding:9px;border-radius:999px;background:var(--blue);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;transition:.3s}
-.tc__b1:hover{background:var(--gold);color:var(--black)}
-.tc__b2{padding:8px;border-radius:999px;border:1px solid var(--grey);font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:#333;transition:.3s}
-.tc__b2:hover{border-color:var(--black);color:var(--black)}
-.tc__flip{position:absolute;right:10px;bottom:10px;z-index:3;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.94);border:1px solid var(--grey);display:flex;align-items:center;justify-content:center;transition:.25s}
-.tc__flip:hover{background:var(--black);border-color:var(--black)}
-.tc__flip svg{width:14px;height:14px;color:var(--black)}
-.tc__flip:hover svg{color:#fff}
-.tc__b .tc__flip{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
-.tc__b .tc__flip svg{color:#fff}
-.tc__bh{font-size:15px;font-weight:800;letter-spacing:-.02em;padding-right:34px}
-.tc__bt{font-size:10.5px;color:rgba(255,255,255,.62);margin-top:3px;line-height:1.35}
-.tc__sec{margin-top:12px}
-.tc__sec h4{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
-.tc__sec p{font-size:11px;line-height:1.45;color:rgba(255,255,255,.8);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.tc__sec ul{display:flex;flex-wrap:wrap;gap:4px}
-.tc__sec li{font-size:9px;padding:3px 8px;border:1px solid rgba(255,255,255,.26);border-radius:999px;color:rgba(255,255,255,.85)}
-.tc__bcta{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding-top:12px}
-.tc__bcta .tc__b2{border-color:rgba(255,255,255,.3);color:#fff}
-.tc__bcta .tc__b2:hover{border-color:#fff;background:#fff;color:var(--black)}
-@media (prefers-reduced-motion:reduce){.tc__in{transition:none}}
 
 /* ---------- PROJETS ---------- */
 /* Carrousel de réalisations : défilement horizontal au doigt, à la molette
@@ -761,7 +680,7 @@ body{background:var(--soft);color:var(--black)}
 .pf__bar{height:2px;background:rgba(255,255,255,.14);margin:clamp(14px,2vh,22px) clamp(22px,3vw,44px) 0;border-radius:2px;overflow:hidden}
 .pf__bar span{display:block;height:100%;width:22%;background:var(--gold);border-radius:2px;transition:transform .25s linear;transform-origin:left}
 @media (max-width:760px){.pfc{flex:0 0 76vw;aspect-ratio:3/4}.pf__head{flex-direction:column;align-items:flex-start}}
-.sc__i--big{min-height:220px}}
+.sc__i--big{min-height:220px}
 
 /* ---------- BAS DE PAGE ---------- */
 /* Intertitre qui sépare la vitrine de projets de la suite de la grille. */
@@ -775,27 +694,67 @@ body{background:var(--soft);color:var(--black)}
 .aide p{margin:14px auto 22px;max-width:56ch;color:#3a3a3a;font-size:15px;line-height:1.6}
 .vide{padding:60px 20px;text-align:center;color:var(--muted);grid-column:1/-1}
 .vide b{display:block;font-size:17px;color:var(--black);margin-bottom:8px}
-.fbtn{display:none}
-.fclose{display:none}
-/* Sur petit ecran la carte occupe toute la largeur : la photo devient moins
-   haute et la carte plus longue, sinon le texte et les boutons se croisent. */
-@media (max-width:760px){
-  .tc__ph{aspect-ratio:4/3}
-  .tc__in{min-height:0}
-  .tc__f,.tc__b{position:relative;inset:auto}
-  .tc__body{flex:none}
-  .tc__cta{margin-top:0}
-  .tc__b{display:none}
-  .tc.est-ouverte .tc__f{display:none}
-  .tc.est-ouverte .tc__b{display:flex;min-height:420px}
-  .tc__in{transform:none!important;transition:none}
 @media (max-width:1023px){
   .bp__wrap{grid-template-columns:1fr}
-  .bp__side{position:fixed;inset:0;z-index:150;background:var(--white);max-height:none;padding:calc(var(--nav-h) + 14px) var(--gutter) 90px;overflow-y:auto;transform:translateX(-100%);transition:transform .45s var(--ease)}
-  .bp__side.est-ouvert{transform:none}
-  .fbtn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:999px;background:var(--black);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
-  .fclose{position:fixed;left:var(--gutter);right:var(--gutter);bottom:18px;z-index:160;padding:15px;border-radius:999px;background:var(--blue);color:#fff;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;display:none}
-  .bp__side.est-ouvert ~ .fclose{display:block}
+}
+
+/* =====================================================================
+   RÉVISION — page Personnalités : moins d'interface, plus de talent.
+   ===================================================================== */
+.bp__hero{height:min(66svh,620px);align-items:flex-end}
+.bp__hero h1{font-size:clamp(40px,6.4vw,112px);line-height:.9;letter-spacing:-.035em;text-transform:uppercase;max-width:14ch}
+.bp__hero h1 .gold{display:block}
+.bp__lede{max-width:52ch}
+.bp__wrap{display:block;max-width:1640px;margin:0 auto;padding-top:clamp(28px,4vh,48px)}
+.tk-tools{display:grid;grid-template-columns:minmax(240px,1.5fr) minmax(0,3fr);gap:12px;align-items:center}
+.tk-tools .srch{margin:0}
+.tk-filt{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tk-sel{position:relative;display:block}
+.tk-sel::after{content:"";position:absolute;right:18px;top:50%;width:7px;height:7px;border:solid var(--black);border-width:0 1.5px 1.5px 0;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.tk-sel select{width:100%;appearance:none;-webkit-appearance:none;padding:16px 40px 16px 20px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font-family:inherit;font-size:14px;color:var(--black);cursor:pointer;text-overflow:ellipsis;transition:border-color .3s}
+.tk-sel select:hover,.tk-sel select:focus{outline:none;border-color:var(--black)}
+.tk-n{display:flex;align-items:center;gap:18px;margin:18px 0 clamp(18px,2.6vh,30px);font-size:13px;color:var(--muted)}
+.tk-n b{color:var(--black)}
+.tk-reset{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:700;border-bottom:1px solid currentColor}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,32px)}
+@media (max-width:1560px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+.tk{display:flex;flex-direction:column;color:var(--black)}
+.tk__ph{position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:var(--carbon);isolation:isolate}
+.tk__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.5) contrast(1.05);transform:scale(1.05);transition:transform 1.4s var(--ease),filter .8s var(--ease)}
+.tk__p{position:absolute;left:50%;bottom:0;height:90%;width:auto;max-width:112%;object-fit:contain;object-position:bottom center;transform:translateX(-50%);transform-origin:50% 100%;filter:drop-shadow(0 20px 34px rgba(0,0,0,.5));transition:transform 1s var(--ease)}
+.tk__p--pleine{left:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:top center;transform:none;filter:none}
+.tk__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,0) 52%,rgba(5,5,5,.88) 100%);pointer-events:none}
+.tk__cat{position:absolute;left:16px;top:16px;z-index:2;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.94);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tk__id{position:absolute;left:clamp(16px,1.6vw,26px);right:clamp(16px,1.6vw,26px);bottom:clamp(16px,2vh,24px);z-index:2;color:var(--white)}
+.tk__nom{font-size:clamp(26px,2.3vw,40px);font-weight:800;letter-spacing:-.03em;line-height:.95;text-transform:uppercase}
+.tk__sub{margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.tk__body{display:flex;flex-direction:column;gap:8px;padding:16px 4px 6px}
+.tk__reach{font-size:13px;color:var(--muted)}
+.tk__reach b{color:var(--black);font-size:15px}
+.tk__th{font-size:14px;color:#3a3a3a;line-height:1.45}
+.tk__th i{font-style:normal;color:var(--gold);margin:0 8px}
+.tk__v{display:inline-flex;align-items:center;gap:10px;margin-top:4px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--black)}
+.tk__v svg{width:15px;height:15px;color:var(--gold);transition:transform .35s var(--ease)}
+.tk:hover .tk__bg{transform:none;filter:grayscale(.2) brightness(.62)}
+.tk:hover .tk__p{transform:translateX(-50%) scale(1.04)}
+.tk:hover .tk__p--pleine{transform:scale(1.04)}
+.tk:hover .tk__v svg{transform:translateX(5px)}
+.tk:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:12px}
+
+.header.est-sur-grille{background:rgba(246,246,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+
+@media (max-width:1023px){
+  .tk-tools{grid-template-columns:1fr}
+  .tk-filt{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .bp__hero{height:auto}
+  .tk-sel select{padding:13px 34px 13px 16px;font-size:13px}
 }
 </style>
 </head>
@@ -850,45 +809,22 @@ body{background:var(--soft);color:var(--black)}
     <img class="bp__bg" src="assets/banniere-talents-v2.jpg" alt="" width="1800" height="600">
     <div class="bp__hin">
       <p class="label">MVP Talent Network</p>
-      <h1>Trouvez la bonne personnalité pour votre projet.</h1>
-      <p class="bp__lede">Athlètes professionnels, olympiens, légendes du sport, conférenciers, ambassadeurs de marque et personnalités médiatiques représentés ou accessibles par MVP Group.</p>
-      <div class="bp__stats">
-        <div><b id="statTotal">67</b><span>Personnalités</span></div>
-        <div><b>7</b><span>Disciplines</span></div>
-        <div><b>2005</b><span>Dans l'industrie depuis</span></div>
-      </div>
+      <h1>Des personnalités <span class="gold">qui font la différence.</span></h1>
+      <p class="bp__lede">Athlètes, olympiens, légendes du sport et personnalités médiatiques pour vos conférences, campagnes et événements.</p>
     </div>
   </section>
 
   <div class="bp__wrap">
-    <aside class="bp__side" id="side" aria-label="Filtres"></aside>
-    <button class="fclose" id="fclose">Voir les résultats</button>
-
     <div>
-      <div class="bp__tools">
+      <!-- Recherche et filtres : présents, mais discrets. Les personnalités passent en premier. -->
+      <div class="tk-tools">
         <div class="srch">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Rechercher par nom, sport, expertise ou thème…" aria-label="Rechercher une personnalité">
+          <input id="q" type="search" placeholder="Rechercher une personnalité, un sport, un thème…" aria-label="Rechercher une personnalité">
         </div>
-        <div class="chips">
-          <h2>Qu'est-ce que votre personnalité doit apporter au projet ?</h2>
-          <div class="chips__row" id="chips"></div>
-        </div>
-        <div class="bar">
-          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-            <button class="fbtn" id="fopen">Filtres<span id="fcount"></span></button>
-            <span class="bar__n"><b id="nb">0</b> personnalités trouvées</span>
-          </div>
-          <label style="display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted)">Trier par
-            <select id="tri">
-              <option value="featured">En vedette</option>
-              <option value="az">A–Z</option>
-              <option value="sport">Sport</option>
-            </select>
-          </label>
-        </div>
-        <div class="actifs" id="actifs"></div>
+        <div class="tk-filt" id="filtres"></div>
       </div>
+      <p class="tk-n"><span><b id="nb">0</b> personnalités</span><button class="tk-reset" id="vider" hidden>Effacer les filtres</button></p>
 
       <div class="grid" id="grid"></div>
       <div class="plus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
@@ -972,13 +908,13 @@ const STAT_FR={'Former Athlete':'Ancien athlète','Olympian':'Olympien','Media /
 const QUALITES=[...new Set(TALENTS.flatMap(t=>t.qualites))].sort();
 
 const E={sport:new Set(),role:new Set(),projet:new Set(),statut:new Set(),qualite:new Set(),q:'',tri:'featured',page:1};
-const PAR_PAGE=10;   /* 2 rangées de 5 à l'arrivée */
+const PAR_PAGE=9;    /* 3 rangées de 3 à l'arrivée */
 const nb=x=>TALENTS.filter(x).length;
 
 /* ---- lecture de l'URL : permet d'ouvrir la page deja filtree ---- */
 (function lireURL(){
   const u=new URLSearchParams(location.search);
-  const map={sport:'sport',role:'role',topic:'qualite',project:'projet',status:'statut'};
+  const map={sport:'sport',role:'role',topic:'qualite',project:'projet'};
   Object.entries(map).forEach(([p,c])=>{ const v=u.get(p); if(v) v.split(',').forEach(x=>E[c].add(x)); });
   if(u.get('q')) E.q=u.get('q');
 })();
@@ -995,21 +931,15 @@ function ecrireURL(){
   try{ history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:'')); }catch(e){}
 }
 
-/* ---- panneau de filtres ---- */
-function groupe(titre,cle,options,libelle){
-  const compte=v=>nb(t=>(cle==='sport'?t.cat===v:cle==='statut'?t.statut===v:t[cle==='role'?'roles':'projets'].includes(v)));
-  return `<div class="fgrp"><h3>${titre}</h3>${options.map(o=>{
-    const val=Array.isArray(o)?o[0]:o, lib=Array.isArray(o)?o[1]:(libelle?libelle[o]||o:o);
-    return `<label class="fopt"><input type="checkbox" data-c="${cle}" value="${val}" ${E[cle].has(val)?'checked':''}><span>${lib}</span><em>${compte(val)}</em></label>`;
-  }).join('')}</div>`;
-}
-$('#side').innerHTML =
-  groupe('Sport','sport',SPORTS) +
-  groupe('Rôle','role',ROLES,ROLE_FR) +
-  groupe('Type de projet','projet',PROJETS,PROJ_FR) +
-  groupe('Profil','statut',STATUTS,STAT_FR);
-
-$('#chips').innerHTML = QUALITES.map(q=>`<button class="chip" data-q="${q}" aria-pressed="${E.qualite.has(q)}">${q}</button>`).join('');
+/* ---- filtres : quatre menus simples (une valeur chacun) ---- */
+const FILTRES=[
+  ['sport','Discipline',SPORTS],
+  ['role','Rôle',ROLES.map(r=>[r,ROLE_FR[r]||r])],
+  ['qualite','Expertise',QUALITES.map(q=>[q,q])],
+  ['projet','Type de projet',PROJETS.map(p=>[p,PROJ_FR[p]||p])]
+];
+$('#filtres').innerHTML=FILTRES.map(([cle,lib,opts])=>`<label class="tk-sel"><span class="sr">${lib}</span>
+  <select data-c="${cle}"><option value="">${lib}</option>${opts.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label>`).join('');
 
 /* ---- filtrage ---- */
 function filtrer(){
@@ -1031,51 +961,33 @@ function filtrer(){
   return r;
 }
 
-/* ---- carte ---- */
-const ICO={fb:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>',
-  ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
-  li:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8H4v12h2.9V8zM5.4 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20 13.4c0-3.2-1.7-4.7-4-4.7-1.8 0-2.7 1-3.1 1.7V8H10v12h2.9v-6.7c0-1.4.9-2.1 1.9-2.1s1.8.7 1.8 2.1V20H20v-6.6z"/></svg>'};
-const FLIP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 0114.5-7M21 12a9 9 0 01-14.5 7"/><path d="M17 3v4h-4M7 21v-4h4"/></svg>';
-const MAIL=n=>`mailto:info@mvpsportsmarketing.com?subject=${encodeURIComponent('Projet avec '+n)}&body=${encodeURIComponent("Bonjour,\n\nJ'aimerais discuter d'un projet avec "+n+".\n\nType de projet :\nDate :\nPublic visé :\n\nMerci.")}`;
-
+/* ---- carte : grande photo, nom, discipline / rôle, rayonnement, thèmes ---- */
+/* Chaque personnalité est détourée et posée sur un lieu de sa discipline. */
+const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
+/* détourages trop petits ou trop larges : on garde la photo d'origine */
+const PHOTO_PLEINE=new Set(['katerine-savard','chantal-machabee']);
+const SPORT_FR=Object.fromEntries(SPORTS);
+const FLECHE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 function carte(t){
-  const el=document.createElement('article'); el.className='tc';
-  const soc=Object.entries(t.social||{}).map(([k,u])=>`<a href="${u}" target="_blank" rel="noopener" aria-label="${k} de ${t.nom}">${ICO[k]||''}</a>`).join('');
-  const roles=t.roles.slice(0,2).map(r=>ROLE_FR[r]||r);
+  const el=document.createElement('a'); el.className='tk'; el.href='profil.html?id='+t.id;
+  const pleine=PHOTO_PLEINE.has(t.id);
+  const role=t.roles[0]?(ROLE_FR[t.roles[0]]||t.roles[0]):'';
+  const themes=(t.qualites.length?t.qualites:t.projets.map(p=>PROJ_FR[p]||p)).slice(0,3);
   el.innerHTML=`
-   <div class="tc__in">
-    <div class="tc__f">
-      <div class="tc__ph">
-        <img src="${t.photo}" alt="${t.nom}" loading="lazy" width="300" height="300">
-        <span class="tc__cat">${t.catNom}</span>
-        ${soc?`<span class="tc__soc">${soc}</span>`:''}
-        <span class="tc__ini">${(t.prenom[0]||'')+(t.famille[0]||'')}</span>
-        <button class="tc__flip" aria-label="Voir les détails de ${t.nom}">${FLIP}</button>
-      </div>
-      <div class="tc__body">
-        <h3 class="tc__nom">${t.nom}</h3>
-        <p class="tc__sub">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.catNom:t.titre}</p>
-        <div class="tc__tags">${roles.map(r=>`<span class="tc__tag">${r}</span>`).join('')}</div>
-      </div>
-      <div class="tc__cta">
-        <a class="tc__b1" href="${MAIL(t.nom)}">Travailler avec ${t.nom}</a>
-        <a class="tc__b2" href="profil.html?id=${t.id}">Voir le profil</a>
+    <div class="tk__ph">
+      <img class="tk__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
+      <img class="tk__p${pleine?' tk__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tk__p--pleine')">
+      <span class="tk__cat">${SPORT_FR[t.cat]||t.catNom}</span>
+      <div class="tk__id">
+        <h3 class="tk__nom">${t.nom}</h3>
+        <p class="tk__sub">${[SPORT_FR[t.cat]||t.catNom,role].filter(Boolean).join(' · ')}</p>
       </div>
     </div>
-    <div class="tc__b">
-      <button class="tc__flip" aria-label="Retour">${FLIP}</button>
-      <h3 class="tc__bh">${t.nom}</h3>
-      <p class="tc__bt">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.catNom:t.titre}</p>
-      ${t.bio?`<div class="tc__sec"><h4>Parcours</h4><p>${t.bio}</p></div>`:''}
-      <div class="tc__sec"><h4>Disponible pour</h4><ul>${t.projets.map(p=>`<li>${PROJ_FR[p]||p}</li>`).join('')}</ul></div>
-      <div class="tc__sec"><h4>Thèmes</h4><ul>${t.qualites.map(q=>`<li>${q}</li>`).join('')}</ul></div>
-      <div class="tc__bcta">
-        <a class="tc__b1" href="${MAIL(t.nom)}">Travailler avec ${t.nom}</a>
-        <a class="tc__b2" href="profil.html?id=${t.id}">Voir le profil</a>
-      </div>
-    </div>
-   </div>`;
-  $$('.tc__flip',el).forEach(b=>b.addEventListener('click',e=>{e.preventDefault();el.classList.toggle('est-ouverte');}));
+    <div class="tk__body">
+      ${t.reach?`<p class="tk__reach"><b>${t.reach}</b> abonnés</p>`:''}
+      ${themes.length?`<p class="tk__th">${themes.join('<i>·</i>')}</p>`:''}
+      <span class="tk__v">Voir le profil ${FLECHE}</span>
+    </div>`;
   return el;
 }
 
@@ -1100,45 +1012,29 @@ function rendre(){
   ecrireURL();
 }
 function rendreActifs(){
-  const items=[];
-  const push=(cle,val,lib)=>items.push(`<span class="actif">${lib}<button data-x="${cle}" data-v="${val}" aria-label="Retirer ${lib}">×</button></span>`);
-  E.sport.forEach(v=>push('sport',v,(SPORTS.find(s=>s[0]===v)||[,v])[1]));
-  E.role.forEach(v=>push('role',v,ROLE_FR[v]||v));
-  E.projet.forEach(v=>push('projet',v,PROJ_FR[v]||v));
-  E.statut.forEach(v=>push('statut',v,STAT_FR[v]||v));
-  E.qualite.forEach(v=>push('qualite',v,v));
-  if(E.q) push('q','',`« ${E.q} »`);
-  const box=$('#actifs');
-  box.innerHTML = items.length ? items.join('')+'<button class="vider" id="vider">Tout effacer</button>' : '';
-  const n=E.sport.size+E.role.size+E.projet.size+E.statut.size+E.qualite.size;
-  $('#fcount').textContent = n?` (${n})`:'';
+  const n=E.sport.size+E.role.size+E.projet.size+E.qualite.size+(E.q?1:0);
+  $('#vider').hidden=!n;
 }
 
 /* ---- interactions ---- */
-$('#side').addEventListener('change',e=>{
-  const i=e.target.closest('input[data-c]'); if(!i)return;
-  const s=E[i.dataset.c]; i.checked?s.add(i.value):s.delete(i.value); E.page=1; rendre();
+$('#filtres').addEventListener('change',e=>{
+  const sel=e.target.closest('select[data-c]'); if(!sel)return;
+  const s=E[sel.dataset.c]; s.clear(); if(sel.value) s.add(sel.value); E.page=1; rendre();
 });
-$('#chips').addEventListener('click',e=>{
-  const b=e.target.closest('.chip'); if(!b)return;
-  const q=b.dataset.q; E.qualite.has(q)?E.qualite.delete(q):E.qualite.add(q);
-  b.setAttribute('aria-pressed',E.qualite.has(q)); E.page=1; rendre();
-});
-$('#actifs').addEventListener('click',e=>{
-  if(e.target.id==='vider'){ ['sport','role','projet','statut','qualite'].forEach(c=>E[c].clear()); E.q=''; $('#q').value=''; }
-  const b=e.target.closest('[data-x]');
-  if(b){ b.dataset.x==='q' ? (E.q='',$('#q').value='') : E[b.dataset.x].delete(b.dataset.v); }
-  if(e.target.id==='vider'||b){ E.page=1; synchroniser(); rendre(); }
+$('#vider').addEventListener('click',()=>{
+  ['sport','role','projet','statut','qualite'].forEach(c=>E[c].clear()); E.q=''; $('#q').value='';
+  E.page=1; synchroniser(); rendre();
 });
 let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout(()=>{E.q=e.target.value;E.page=1;rendre();},160); });
-$('#tri').addEventListener('change',e=>{E.tri=e.target.value;rendre();});
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
-$('#fopen').addEventListener('click',()=>$('#side').classList.add('est-ouvert'));
-$('#fclose').addEventListener('click',()=>$('#side').classList.remove('est-ouvert'));
 function synchroniser(){
-  $$('#side input[data-c]').forEach(i=>i.checked=E[i.dataset.c].has(i.value));
-  $$('.chip').forEach(c=>c.setAttribute('aria-pressed',E.qualite.has(c.dataset.q)));
+  $$('#filtres select[data-c]').forEach(sel=>{ const v=[...E[sel.dataset.c]][0]||'';
+    sel.value=[...sel.options].some(o=>o.value===v)?v:''; if(sel.value!==v){E[sel.dataset.c].clear(); if(sel.value)E[sel.dataset.c].add(sel.value);} });
 }
+/* En-tête : fond crème dès qu'on quitte la bannière, pour rester lisible au-dessus des photos. */
+(function(){ const h=$('#header'), hero=$('.bp__hero'); if(!h||!hero) return;
+  const maj=()=>h.classList.toggle('est-sur-grille',hero.getBoundingClientRect().bottom<=h.offsetHeight);
+  addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj(); })();
 /* ---- carrousel de réalisations (projets réels de MVP) ---- */
 const ARROW='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":"Ambassadeur","n":"Chantal Machabée × Tim Hortons","u":"projet.html?id=chantalmachabee-timhortons"},{"img":"assets/projets/cibc-1.jpg","k":"Ambassadeur","n":"Paul Byron × CIBC","u":"projet.html?id=cibc"},{"img":"assets/projets/brunysuringuestofhonoratthekinballquebecgala-1.jpg","k":"Ambassadeur","n":"Bruny Surin × Kin-Ball","u":"projet.html?id=brunysuringuestofhonoratthekinballquebecgala"},{"img":"assets/projets/patrickroymariotremblayubereats-1.jpg","k":"Ambassadeur","n":"Patrick Roy × Uber Eats","u":"projet.html?id=patrickroymariotremblayubereats"},{"img":"assets/projets/leadershipaufeminin-1.jpg","k":"Conférence","n":"LEADERSHIP au FÉMININ with Mrs MACHABÉE, DICAIRE","u":"projet.html?id=leadershipaufeminin"},{"img":"assets/projets/lasik-md-partner-with-pierre-lavoie-1.jpg","k":"Ambassadeur","n":"Pierre Lavoie × LASIK MD","u":"projet.html?id=lasik-md-partner-with-pierre-lavoie"}];
@@ -1178,7 +1074,7 @@ const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":
   });
   choix.forEach(t=>g2.appendChild(carte(t)));
 })();
-$('#q').value=E.q; $('#statTotal').textContent=TALENTS.length;
+$('#q').value=E.q;
 synchroniser(); rendre();
 </script>
 
