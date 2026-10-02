@@ -848,6 +848,14 @@ ul{list-style:none}
 .intro__top{max-width:none;margin:0}
 .intro__title{margin-left:0}
 .intro__title em{color:#1E5299}
+
+/* Cartes Personnalités : « Voir le profil » en toutes lettres sous le bouton */
+.tcard__cta{padding-top:12px}
+.tcard__b1{width:100%}
+.tcard__lien{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:6px;padding:9px 0 2px;color:var(--white);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;pointer-events:auto}
+.tcard__lien .arrow{width:14px;height:14px;color:var(--gold);transition:transform .35s var(--ease)}
+.tcard__lien:hover{color:var(--gold)}
+.tcard__lien:hover .arrow{transform:translateX(5px)}
 </style>
 </head>
 <body>
@@ -1453,8 +1461,8 @@ function TalentCard(p){
       <p class="tcard__sub">${L(p.sub)}</p>
       <div class="tcard__cta">
         <a class="tcard__b1" href="${href}&travailler=1">${t('tl.work')} ${p.nom.split(' ')[0]}</a>
-        <a class="tcard__b2" href="${href}" aria-label="${t('cta.profile')} — ${p.nom}">${ARROW}</a>
       </div>
+      <a class="tcard__lien" href="${href}">${t('cta.profile')} ${ARROW}</a>
     </div></div>`;
   return el;
 }
