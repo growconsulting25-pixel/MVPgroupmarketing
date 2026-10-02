@@ -687,7 +687,7 @@ body{background:var(--soft);color:var(--black)}
 .suite{margin:clamp(30px,5vh,58px) 0 clamp(16px,2.4vh,26px);padding-top:clamp(20px,3vh,34px);border-top:1px solid var(--grey)}
 .suite__t{font-size:clamp(19px,2vw,32px);font-weight:800;letter-spacing:-.025em;line-height:1.08}
 .suite__p{margin-top:7px;font-size:13.5px;color:var(--muted)}
-.plus{display:flex;justify-content:center;margin:34px 0}
+.voirplus{display:flex;justify-content:center;margin:clamp(30px,5vh,56px) 0}
 .aide{margin:clamp(40px,7vh,90px) 0 0;padding:clamp(28px,4vw,56px);border-radius:16px;background:#0E2A4F;color:#fff;text-align:center}
 .aide p{color:rgba(255,255,255,.78)!important}
 .aide h2{font-size:clamp(22px,2.6vw,42px);font-weight:800;letter-spacing:-.025em}
@@ -807,6 +807,8 @@ body{background:var(--soft);color:var(--black)}
 .header.header--barre .header__logo img{transition:height .45s}
 /* « En vedette » : toujours une rangée complète, jamais une carte seule */
 @media (min-width:1001px) and (max-width:1280px){#grid2>:nth-child(n+4){display:none}}
+.voirplus .btn{min-width:min(340px,100%);justify-content:center}
+.btn--blue:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
 </style>
 </head>
 <body>
@@ -882,7 +884,7 @@ body{background:var(--soft);color:var(--black)}
       <p class="tk-n"><span><b id="nb">0</b> personnalités</span><button class="tk-reset" id="vider" hidden>Effacer les filtres</button></p>
 
       <div class="grid" id="grid"></div>
-      <div class="plus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
+      <div class="voirplus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
 
       <section class="pf" id="showcase" data-nav="light" aria-label="Projets MVP" data-plus="t:88:lg b:36">
         <div class="pf__head">
