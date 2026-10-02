@@ -854,6 +854,19 @@ body{background:#FFFFFF;color:var(--black)}
 .btn--outline-dark{border:1px solid var(--black);color:var(--black)}
 .btn--outline-dark:hover{background:var(--black);color:var(--white)}
 @media (max-width:560px){.tv__g{grid-template-columns:1fr}}
+
+/* =====================================================================
+   Barre de menu : noire translucide (80 %) dès qu'on descend, pour que
+   le menu reste visible partout. Pour l'essai en bleu, remplacer la
+   couleur de fond par rgba(14,42,79,.8).
+   ===================================================================== */
+.header{transition:background .45s cubic-bezier(.2,.7,.2,1),height .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,color .6s}
+.header.header--barre{height:76px;background:rgba(5,5,5,.8);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 rgba(255,255,255,.07)}
+.header.header--barre[data-theme="dark"]{color:var(--white)}
+.header.header--barre[data-theme="dark"] .logo--white{display:block}
+.header.header--barre[data-theme="dark"] .logo--black{display:none}
+.header.header--barre .lang button.is-active{color:var(--gold)}
+.header.header--barre .header__logo img{transition:height .45s}
 </style>
 </head><body>
 <header class="header" id="header" data-theme="light">
@@ -1375,5 +1388,11 @@ const FORM_ENDPOINT='/api/demande';
     addEventListener(ev,function once(){ if(v.paused) lance(); removeEventListener(ev,once); },{once:true});
   });
 })();
+</script>
+<script>
+/* Barre de menu : apparaît dès qu'on quitte le haut de la page. */
+(function(){ var h=document.getElementById('header'); if(!h) return;
+  var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
+  addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
 </body></html>

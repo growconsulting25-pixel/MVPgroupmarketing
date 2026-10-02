@@ -746,7 +746,6 @@ body{background:var(--soft);color:var(--black)}
 .tk:hover .tk__v svg{transform:translateX(5px)}
 .tk:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:12px}
 
-.header.est-sur-grille{background:rgba(246,246,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 
 @media (max-width:1023px){
   .tk-tools{grid-template-columns:1fr}
@@ -756,6 +755,56 @@ body{background:var(--soft);color:var(--black)}
   .bp__hero{height:auto}
   .tk-sel select{padding:13px 34px 13px 16px;font-size:13px}
 }
+
+/* =====================================================================
+   RÉVISION — pastilles d'expertise, 4 cartes par rangée, repères « + »
+   ===================================================================== */
+.chips{margin-bottom:18px}
+.chips h2{font-size:clamp(15px,1.15vw,19px);font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
+.chips__row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 18px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font:inherit;font-size:13px;color:#333;cursor:pointer;transition:background .28s var(--ease),border-color .28s,color .28s,box-shadow .28s}
+.chip:hover{background:#1E5299;border-color:#1E5299;color:#fff}
+.chip[aria-pressed="true"]{background:#123B6D;border-color:#123B6D;color:#fff;box-shadow:0 6px 18px rgba(30,82,153,.28)}
+.tk-filt{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,26px)}
+@media (max-width:1280px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+.tk__nom{font-size:clamp(22px,1.8vw,32px)}
+.tk__th{font-size:13px}
+.bp__wrap{position:relative}
+.bp__hero .plus{color:var(--white)}
+.bp__wrap .plus{color:var(--black)}
+.pf{position:relative}
+.pf .plus{color:var(--white)}
+
+/* ---------- Repères « + » (disposition propre à chaque section) ---------- */
+.plus{position:absolute;width:18px;height:18px;pointer-events:none;z-index:3;opacity:.5;transform:translate(-50%,-50%)}
+.plus::before,.plus::after{content:"";position:absolute;background:currentColor}
+.plus::before{left:0;right:0;top:50%;height:1px;transform:translateY(-50%)}
+.plus::after{top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%)}
+.plus--lg{width:34px;height:34px;opacity:.72}
+.plus--lg::before{height:1.5px}.plus--lg::after{width:1.5px}
+.plus--t{top:38px}
+.plus--b{top:auto;bottom:30px;transform:translate(-50%,50%)}
+.plus--l{left:calc(var(--gutter) / 2)}
+.plus--r{left:auto;right:calc(var(--gutter) / 2);transform:translate(50%,-50%)}
+@media (max-width:760px){.plus{opacity:.38}.plus--l,.plus--r{display:none}.plus--lg{width:26px;height:26px}}
+@media (max-width:760px){.pf .plus{display:none}}
+@media (max-width:760px){.bp__hero .plus--b{display:none}}
+
+/* =====================================================================
+   Barre de menu : noire translucide (80 %) dès qu'on descend, pour que
+   le menu reste visible partout. Pour l'essai en bleu, remplacer la
+   couleur de fond par rgba(14,42,79,.8).
+   ===================================================================== */
+.header{transition:background .45s cubic-bezier(.2,.7,.2,1),height .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,color .6s}
+.header.header--barre{height:76px;background:rgba(5,5,5,.8);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 rgba(255,255,255,.07)}
+.header.header--barre[data-theme="dark"]{color:var(--white)}
+.header.header--barre[data-theme="dark"] .logo--white{display:block}
+.header.header--barre[data-theme="dark"] .logo--black{display:none}
+.header.header--barre .lang button.is-active{color:var(--gold)}
+.header.header--barre .header__logo img{transition:height .45s}
 </style>
 </head>
 <body>
@@ -805,7 +854,7 @@ body{background:var(--soft);color:var(--black)}
   </div>
 </header>
 <main class="bp" data-nav="dark">
-  <section class="bp__hero" data-nav="light">
+  <section class="bp__hero" data-nav="light" data-plus="t:62:lg r:40 b:84">
     <img class="bp__bg" src="assets/banniere-talents-v2.jpg" alt="" width="1800" height="600">
     <div class="bp__hin">
       <p class="label">MVP Talent Network</p>
@@ -814,9 +863,13 @@ body{background:var(--soft);color:var(--black)}
     </div>
   </section>
 
-  <div class="bp__wrap">
+  <div class="bp__wrap" data-plus="l:22:lg l:84 r:40 r:70">
     <div>
       <!-- Recherche et filtres : présents, mais discrets. Les personnalités passent en premier. -->
+      <div class="chips">
+        <h2>Qu'est-ce que votre personnalité doit apporter au projet ?</h2>
+        <div class="chips__row" id="chips"></div>
+      </div>
       <div class="tk-tools">
         <div class="srch">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -829,7 +882,7 @@ body{background:var(--soft);color:var(--black)}
       <div class="grid" id="grid"></div>
       <div class="plus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
 
-      <section class="pf" id="showcase" data-nav="light" aria-label="Projets MVP">
+      <section class="pf" id="showcase" data-nav="light" aria-label="Projets MVP" data-plus="t:88:lg b:36">
         <div class="pf__head">
           <div>
             <p class="label" style="color:var(--gold)">Réalisations</p>
@@ -908,7 +961,7 @@ const STAT_FR={'Former Athlete':'Ancien athlète','Olympian':'Olympien','Media /
 const QUALITES=[...new Set(TALENTS.flatMap(t=>t.qualites))].sort();
 
 const E={sport:new Set(),role:new Set(),projet:new Set(),statut:new Set(),qualite:new Set(),q:'',tri:'featured',page:1};
-const PAR_PAGE=9;    /* 3 rangées de 3 à l'arrivée */
+const PAR_PAGE=12;   /* 3 rangées de 4 à l'arrivée */
 const nb=x=>TALENTS.filter(x).length;
 
 /* ---- lecture de l'URL : permet d'ouvrir la page deja filtree ---- */
@@ -935,11 +988,18 @@ function ecrireURL(){
 const FILTRES=[
   ['sport','Discipline',SPORTS],
   ['role','Rôle',ROLES.map(r=>[r,ROLE_FR[r]||r])],
-  ['qualite','Expertise',QUALITES.map(q=>[q,q])],
   ['projet','Type de projet',PROJETS.map(p=>[p,PROJ_FR[p]||p])]
 ];
 $('#filtres').innerHTML=FILTRES.map(([cle,lib,opts])=>`<label class="tk-sel"><span class="sr">${lib}</span>
   <select data-c="${cle}"><option value="">${lib}</option>${opts.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label>`).join('');
+
+/* ---- pastilles d'expertise (plusieurs à la fois) ---- */
+$('#chips').innerHTML=QUALITES.map(q=>`<button type="button" class="chip" data-q="${q}" aria-pressed="false">${q}</button>`).join('');
+$('#chips').addEventListener('click',e=>{
+  const b=e.target.closest('.chip'); if(!b)return;
+  const q=b.dataset.q; E.qualite.has(q)?E.qualite.delete(q):E.qualite.add(q);
+  b.setAttribute('aria-pressed',E.qualite.has(q)); E.page=1; rendre();
+});
 
 /* ---- filtrage ---- */
 function filtrer(){
@@ -1028,13 +1088,10 @@ $('#vider').addEventListener('click',()=>{
 let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout(()=>{E.q=e.target.value;E.page=1;rendre();},160); });
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
 function synchroniser(){
+  $$('.chip').forEach(c=>c.setAttribute('aria-pressed',E.qualite.has(c.dataset.q)));
   $$('#filtres select[data-c]').forEach(sel=>{ const v=[...E[sel.dataset.c]][0]||'';
     sel.value=[...sel.options].some(o=>o.value===v)?v:''; if(sel.value!==v){E[sel.dataset.c].clear(); if(sel.value)E[sel.dataset.c].add(sel.value);} });
 }
-/* En-tête : fond crème dès qu'on quitte la bannière, pour rester lisible au-dessus des photos. */
-(function(){ const h=$('#header'), hero=$('.bp__hero'); if(!h||!hero) return;
-  const maj=()=>h.classList.toggle('est-sur-grille',hero.getBoundingClientRect().bottom<=h.offsetHeight);
-  addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj(); })();
 /* ---- carrousel de réalisations (projets réels de MVP) ---- */
 const ARROW='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":"Ambassadeur","n":"Chantal Machabée × Tim Hortons","u":"projet.html?id=chantalmachabee-timhortons"},{"img":"assets/projets/cibc-1.jpg","k":"Ambassadeur","n":"Paul Byron × CIBC","u":"projet.html?id=cibc"},{"img":"assets/projets/brunysuringuestofhonoratthekinballquebecgala-1.jpg","k":"Ambassadeur","n":"Bruny Surin × Kin-Ball","u":"projet.html?id=brunysuringuestofhonoratthekinballquebecgala"},{"img":"assets/projets/patrickroymariotremblayubereats-1.jpg","k":"Ambassadeur","n":"Patrick Roy × Uber Eats","u":"projet.html?id=patrickroymariotremblayubereats"},{"img":"assets/projets/leadershipaufeminin-1.jpg","k":"Conférence","n":"LEADERSHIP au FÉMININ with Mrs MACHABÉE, DICAIRE","u":"projet.html?id=leadershipaufeminin"},{"img":"assets/projets/lasik-md-partner-with-pierre-lavoie-1.jpg","k":"Ambassadeur","n":"Pierre Lavoie × LASIK MD","u":"projet.html?id=lasik-md-partner-with-pierre-lavoie"}];
@@ -1099,5 +1156,24 @@ synchroniser(); rendre();
     addEventListener(ev,function once(){ if(v.paused) lance(); removeEventListener(ev,once); },{once:true});
   });
 })();
+</script>
+<script>
+/* Repères « + » : t:x = bord du haut à x % ; b:x = bas ; l:y / r:y = dans la marge
+   gauche / droite à y % de la hauteur ; « :lg » = grande croix. Chaque section a
+   sa propre disposition, toujours dans les marges pour ne jamais couvrir le texte. */
+document.querySelectorAll('[data-plus]').forEach(function(sec){
+  sec.dataset.plus.split(' ').forEach(function(tok){
+    var p=tok.split(':'), cote=p[0], v=p[1], lg=p[2]==='lg';
+    var el=document.createElement('span'); el.className='plus plus--'+cote+(lg?' plus--lg':''); el.setAttribute('aria-hidden','true');
+    if(cote==='t'||cote==='b') el.style.left=v+'%'; else el.style.top=v+'%';
+    sec.appendChild(el);
+  });
+});
+</script>
+<script>
+/* Barre de menu : apparaît dès qu'on quitte le haut de la page. */
+(function(){ var h=document.getElementById('header'); if(!h) return;
+  var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
+  addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
 </body></html>

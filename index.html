@@ -755,18 +755,7 @@ ul{list-style:none}
 }
 
 /* ---------- Repères « + » ---------- */
-.plus{position:absolute;width:18px;height:18px;pointer-events:none;z-index:3;color:inherit;opacity:.38}
-.plus::before,.plus::after{content:"";position:absolute;background:currentColor}
-.plus::before{left:0;right:0;top:50%;height:1px;transform:translateY(-50%)}
-.plus::after{top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%)}
-.plus--tl{left:calc(var(--gutter) - 9px);top:calc(var(--nav-h) - 9px)}
-.plus--tr{right:calc(var(--gutter) - 9px);top:calc(var(--nav-h) - 9px)}
-.plus--bl{left:calc(var(--gutter) - 9px);bottom:28px}
-.plus--br{right:calc(var(--gutter) - 9px);bottom:28px}
-.services .plus,.brands .plus,.projets .plus,.news .plus{color:var(--white)}
-.intro .plus,.talents .plus,.explore .plus,.demande .plus{color:var(--black)}
 .demande,.explore,.talents{position:relative}
-@media (max-width:760px){.plus{display:none}}
 
 /* ---------- Services : rangée qui défile lentement ---------- */
 .services{overflow:hidden}
@@ -833,16 +822,6 @@ ul{list-style:none}
 @media (max-width:600px){.tcard{flex-basis:80vw}}
 
 /* ---------- Repères « + » : plus nombreux, deux tailles ---------- */
-.plus{opacity:.5}
-.plus--lg{width:34px;height:34px;opacity:.7}
-.plus--lg::before{height:1.5px}.plus--lg::after{width:1.5px}
-.plus--ml{left:calc(var(--gutter) - 9px);top:50%}
-.plus--mr{right:calc(var(--gutter) - 9px);top:50%}
-.plus--tc{left:50%;top:calc(var(--nav-h) - 9px)}
-.plus--lg.plus--tl,.plus--lg.plus--bl,.plus--lg.plus--ml{left:calc(var(--gutter) - 17px)}
-.plus--lg.plus--tr,.plus--lg.plus--br,.plus--lg.plus--mr{right:calc(var(--gutter) - 17px)}
-.intro .plus,.talents .plus,.explore .plus,.demande .plus{color:var(--black)}
-@media (max-width:760px){.plus{display:block;opacity:.4}.plus--ml,.plus--mr,.plus--tc{display:none}}
 
 /* Intro : même marge de gauche que les autres titres, à toutes les largeurs ; fin de phrase en bleu */
 .intro__top{max-width:none;margin:0}
@@ -856,6 +835,34 @@ ul{list-style:none}
 .tcard__lien .arrow{width:14px;height:14px;color:var(--gold);transition:transform .35s var(--ease)}
 .tcard__lien:hover{color:var(--gold)}
 .tcard__lien:hover .arrow{transform:translateX(5px)}
+
+/* ---------- Repères « + » (disposition propre à chaque section) ---------- */
+.plus{position:absolute;width:18px;height:18px;pointer-events:none;z-index:3;opacity:.5;transform:translate(-50%,-50%)}
+.plus::before,.plus::after{content:"";position:absolute;background:currentColor}
+.plus::before{left:0;right:0;top:50%;height:1px;transform:translateY(-50%)}
+.plus::after{top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%)}
+.plus--lg{width:34px;height:34px;opacity:.72}
+.plus--lg::before{height:1.5px}.plus--lg::after{width:1.5px}
+.plus--t{top:38px}
+.plus--b{top:auto;bottom:30px;transform:translate(-50%,50%)}
+.plus--l{left:calc(var(--gutter) / 2)}
+.plus--r{left:auto;right:calc(var(--gutter) / 2);transform:translate(50%,-50%)}
+@media (max-width:760px){.plus{opacity:.38}.plus--l,.plus--r{display:none}.plus--lg{width:26px;height:26px}}
+.services .plus,.brands .plus,.projets .plus,.news .plus{color:var(--white)}
+.intro .plus,.talents .plus,.explore .plus,.demande .plus{color:var(--black)}
+
+/* =====================================================================
+   Barre de menu : noire translucide (80 %) dès qu'on descend, pour que
+   le menu reste visible partout. Pour l'essai en bleu, remplacer la
+   couleur de fond par rgba(14,42,79,.8).
+   ===================================================================== */
+.header{transition:background .45s cubic-bezier(.2,.7,.2,1),height .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,color .6s}
+.header.header--barre{height:76px;background:rgba(5,5,5,.8);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 rgba(255,255,255,.07)}
+.header.header--barre[data-theme="dark"]{color:var(--white)}
+.header.header--barre[data-theme="dark"] .logo--white{display:block}
+.header.header--barre[data-theme="dark"] .logo--black{display:none}
+.header.header--barre .lang button.is-active{color:var(--gold)}
+.header.header--barre .header__logo img{transition:height .45s}
 </style>
 </head>
 <body>
@@ -939,7 +946,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 2 — INTRO ================= -->
-<section class="intro" id="intro" data-nav="dark" data-plus="tl br:lg mr">
+<section class="intro" id="intro" data-nav="dark" data-plus="t:8:lg l:62 b:44 r:30">
     <div class="intro__bg" aria-hidden="true"></div>
     <div class="intro__top" data-reveal>
       <h2 class="intro__title" data-i18n-html="intro.h2">Légendes et personnalités du sport, <em>au service de votre compagnie.</em></h2>
@@ -953,7 +960,7 @@ ul{list-style:none}
   </section>
 
 <!-- ================= SECTION 3 — SERVICES (juste après l'intro et son appel à l'action) ================= -->
-<section class="services" id="services" data-nav="light" aria-label="Our services" data-plus="tr:lg bl br">
+<section class="services" id="services" data-nav="light" aria-label="Our services" data-plus="t:72 b:12 b:58:lg">
   <div class="services__stage" id="servicesStage">
     <h2 class="services__bg display" id="servicesBg" data-i18n="svc.h" data-reveal>Nos services</h2>
     <div class="services__track" id="servicesTrack" data-reveal></div>
@@ -963,7 +970,7 @@ ul{list-style:none}
 <!-- ================= SECTION 4 — MARQUES / PARTENAIRES =================
      Composant existant, réutilisé tel quel (bandes de logos, survol, bouton).
      Seule sa position change : il devient la 4e section de l'accueil. -->
-<section class="brands" id="brands" data-nav="light" aria-label="Partenaires" data-plus="tl br:lg tc">
+<section class="brands" id="brands" data-nav="light" aria-label="Partenaires" data-plus="t:30 b:70:lg t:84 b:14">
   <div class="brands__pin" id="brandsPin" data-reveal></div>
 </section>
 
@@ -973,7 +980,7 @@ ul{list-style:none}
 <!-- ================= SECTION 5 — PERSONNALITÉS : cartes qui défilent =================
      Même esprit que les cartes de la page Personnalités, en un peu plus travaillé,
      avec une légère inclinaison 3D au survol. -->
-<section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="tr:lg bl br">
+<section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="t:56:lg l:22 b:22 b:76">
   <div class="talents__head" data-reveal>
     <h2 class="talents__t display" data-i18n="orbit.h">Personnalités</h2>
     <div class="talents__side">
@@ -988,7 +995,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 6 — CATÉGORIES ================= -->
-<section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="tr bl:lg mr">
+<section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="t:88 l:78:lg r:12 t:46">
   <div class="explore__pin">
   <h2 class="explore__title display" data-i18n="exp.title" data-reveal>Catégories</h2>
   <div class="explore__left" data-reveal>
@@ -1005,7 +1012,7 @@ ul{list-style:none}
      Carrousel horizontal de grandes cartes photo, bâti sur le même système que
      « Le service en action » : plusieurs projets visibles, la carte survolée
      s'agrandit, le détail complet vit sur la page projet. -->
-<section class="projets" id="projects" data-nav="light" aria-label="Projets" data-plus="tl:lg br bl">
+<section class="projets" id="projects" data-nav="light" aria-label="Projets" data-plus="t:16 b:84 l:12 t:58:lg">
   <div class="projets__head" data-reveal>
     <h2 class="projets__t display" data-i18n="pj.h">Nos projets</h2>
     <div class="projets__side">
@@ -1019,7 +1026,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 8 — FORMULAIRE DE DEMANDE ================= -->
-<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet" data-plus="tr bl:lg ml">
+<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet" data-plus="t:64:lg l:86 b:30 r:40">
   <div class="demande__in">
     <div class="demande__txt" data-reveal>
       <p class="label label--blue" data-i18n="dm.k">Démarrer un projet</p>
@@ -1051,7 +1058,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 9 — ACTUALITÉS ================= -->
-<section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="tl br:lg mr">
+<section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="t:40 b:92:lg l:46 r:8">
   <div class="news__head" data-reveal>
     <h2 class="news__title display" data-i18n="news.title">Actualités</h2>
     <a class="btn btn--outline news__all" href="projets.html" data-i18n="news.all">Tout voir</a>
@@ -1652,11 +1659,17 @@ renderTypes();
   });
 })();
 
-/* Repères « + » : petites croix fines posées dans les coins des sections. */
-$$('[data-plus]').forEach(sec=>sec.dataset.plus.split(' ').forEach(p=>{
-  const [pos,taille]=p.split(':');
-  const el=document.createElement('span'); el.className='plus plus--'+pos+(taille?' plus--'+taille:''); el.setAttribute('aria-hidden','true'); sec.appendChild(el);
-}));
+/* Repères « + » : t:x = bord du haut à x % ; b:x = bas ; l:y / r:y = dans la marge
+   gauche / droite à y % de la hauteur ; « :lg » = grande croix. Chaque section a
+   sa propre disposition, toujours dans les marges pour ne jamais couvrir le texte. */
+document.querySelectorAll('[data-plus]').forEach(function(sec){
+  sec.dataset.plus.split(' ').forEach(function(tok){
+    var p=tok.split(':'), cote=p[0], v=p[1], lg=p[2]==='lg';
+    var el=document.createElement('span'); el.className='plus plus--'+cote+(lg?' plus--lg':''); el.setAttribute('aria-hidden','true');
+    if(cote==='t'||cote==='b') el.style.left=v+'%'; else el.style.top=v+'%';
+    sec.appendChild(el);
+  });
+});
 
 /* rebuild everything that comes from the data arrays, then restore state */
 window.__rebuild=function(){
@@ -1709,6 +1722,12 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:.08});
   els.forEach(function(el){ io.observe(el); });
 })();
+</script>
+<script>
+/* Barre de menu : apparaît dès qu'on quitte le haut de la page. */
+(function(){ var h=document.getElementById('header'); if(!h) return;
+  var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
+  addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
 </body>
 </html>
