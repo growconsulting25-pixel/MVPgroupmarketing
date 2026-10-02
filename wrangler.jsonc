@@ -1,7 +1,7 @@
 {
-  // Site statique servi par le Worker « mvpworker » (fichiers statiques seulement).
+  // Site statique servi par le Worker « mvp-revision » (nouveau projet, distinct de mvpworker) (fichiers statiques seulement).
   // Déploiement : npx wrangler deploy  (CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID requis)
-  "name": "mvpworker",
+  "name": "mvp-revision",
   "compatibility_date": "2026-09-21",
   "assets": { "directory": "./" }
 }
