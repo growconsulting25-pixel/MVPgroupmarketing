@@ -1185,7 +1185,8 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   var u=new URLSearchParams(location.search);
   if(!(['sport','role','topic','project','q'].some(function(k){return u.get(k);})||location.hash==='#resultats')) return;
   if('scrollRestoration' in history) history.scrollRestoration='manual';
-  var cible=document.getElementById('resultats'); if(!cible) return;
+  /* sur téléphone, les pastilles prennent tout l'écran : on arrive directement sur les cartes */
+  var cible=matchMedia('(max-width:760px)').matches?document.querySelector('.tk-n'):document.getElementById('resultats'); if(!cible) return;
   var aller=function(){ scrollTo(0, cible.getBoundingClientRect().top+scrollY-92); };
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
