@@ -562,13 +562,7 @@ ul{list-style:none}
    services agrandis, nouveau carrousel de projets.
    ===================================================================== */
 /* ---------- Intro : vraie photo d'aréna, texte blanc, sans statistiques ---------- */
-.intro{background:var(--black);color:var(--white);overflow:hidden;isolation:isolate}
-.intro__bg{position:absolute;inset:0;z-index:-1;background:url('assets/lieux/olympics.jpg') center 38%/cover no-repeat}
-.intro__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.82) 0%,rgba(5,5,5,.5) 42%,rgba(5,5,5,.62) 70%,rgba(5,5,5,.92) 100%)}
-.intro__title em{color:var(--grey)}
-.intro__p{color:rgba(255,255,255,.84)}
-.intro__cta:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
-.intro__cta:hover::before{color:var(--black)}
+
 
 /* ---------- Marques / partenaires : même composant, dans sa propre section ---------- */
 .brands{position:relative;z-index:3;background:var(--black);color:var(--white)}
@@ -638,7 +632,7 @@ ul{list-style:none}
 .services{padding:calc(var(--nav-h) + 2vh) 0 clamp(70px,12vh,140px)}
 .services::before{display:none}
 .services__bg{position:relative;left:auto;top:auto;transform:none!important;padding:0 var(--gutter);font-size:clamp(46px,8.4vw,150px);line-height:.9;white-space:normal;color:var(--soft);margin-bottom:clamp(24px,4vh,48px)}
-.services__track{position:relative;height:auto;padding:3vh var(--gutter);transform:none!important;display:flex;align-items:flex-start;justify-content:center;gap:2.6vw}
+.services__track{position:relative;height:auto;padding:3vh var(--gutter);display:flex;align-items:flex-start;justify-content:center;gap:2.6vw}
 .services__progress,.services__count{display:none}
 @media (min-width:1024px) and (hover:hover){
   .panel{transition:width .7s var(--ease)}
@@ -737,6 +731,50 @@ ul{list-style:none}
 @media (max-width:1023px){.demande__in{grid-template-columns:1fr}}
 @media (max-width:560px){.dm__g{grid-template-columns:1fr}}
 .footer__grid>div{min-width:0}.footer__grid a{overflow-wrap:anywhere}
+
+/* =====================================================================
+   RÉVISION 3 — intro claire, repères « + », services qui défilent
+   ===================================================================== */
+/* ---------- Intro : fond blanc, aréna de hockey très subtile, alignée à gauche ---------- */
+.intro{background:var(--white);color:var(--black);overflow:hidden;isolation:isolate;min-height:0;padding:calc(var(--nav-h) + 8vh) var(--gutter) clamp(80px,14vh,160px);justify-content:center}
+.intro__bg{position:absolute;inset:0;z-index:-1;background:url('assets/projets/desbiens-daoust-et-fecteau-pour-celebrer-le-hockey-feminin-a-1.jpg') center 18%/cover no-repeat;filter:grayscale(1) contrast(.9);opacity:.16}
+.intro__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,.2) 100%)}
+.intro__top{align-items:flex-start;text-align:left;max-width:1500px;width:100%;margin:0 auto}
+.intro__title{text-align:left;margin:0;max-width:17ch;color:var(--black)}
+.intro__title em{color:#555}
+.intro__cols{grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px);max-width:900px}
+.intro__p{margin:0;color:#333}
+.intro__cta{align-self:flex-start;margin-top:clamp(8px,1.4vh,18px)}
+@media (max-width:900px){.intro__cols{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .intro{padding:calc(var(--nav-h) + 5vh) var(--gutter) 9vh;text-align:left}
+  .intro__top{gap:18px}
+  .intro__title{font-size:clamp(30px,8.6vw,44px);line-height:1;margin:0;max-width:none}
+  .intro__p{font-size:15px;line-height:1.55;margin:0}
+  .intro__cta{margin:6px 0 0;padding:16px 26px;font-size:11px}
+}
+
+/* ---------- Repères « + » ---------- */
+.plus{position:absolute;width:18px;height:18px;pointer-events:none;z-index:3;color:inherit;opacity:.38}
+.plus::before,.plus::after{content:"";position:absolute;background:currentColor}
+.plus::before{left:0;right:0;top:50%;height:1px;transform:translateY(-50%)}
+.plus::after{top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%)}
+.plus--tl{left:calc(var(--gutter) - 9px);top:calc(var(--nav-h) - 9px)}
+.plus--tr{right:calc(var(--gutter) - 9px);top:calc(var(--nav-h) - 9px)}
+.plus--bl{left:calc(var(--gutter) - 9px);bottom:28px}
+.plus--br{right:calc(var(--gutter) - 9px);bottom:28px}
+.services .plus,.brands .plus,.projets .plus,.news .plus{color:var(--white)}
+.intro .plus,.talents .plus,.explore .plus,.demande .plus{color:var(--black)}
+.demande,.explore,.talents{position:relative}
+@media (max-width:760px){.plus{display:none}}
+
+/* ---------- Services : rangée qui défile lentement ---------- */
+.services{overflow:hidden}
+.services__bg{max-width:none}
+@media (min-width:1024px){
+  .services__track{justify-content:flex-start;width:max-content;padding:3vh 0 3vh var(--gutter);gap:2.6vw;transform:none;will-change:transform}
+  .services__track,.services__track *{transform-style:flat}
+}
 </style>
 </head>
 <body>
@@ -820,7 +858,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 2 — INTRO ================= -->
-<section class="intro" id="intro" data-nav="light">
+<section class="intro" id="intro" data-nav="dark" data-plus="tl br">
     <div class="intro__bg" aria-hidden="true"></div>
     <div class="intro__top" data-reveal>
       <h2 class="intro__title" data-i18n-html="intro.h2">Légendes et personnalités du sport, <em>au service de votre compagnie.</em></h2>
@@ -834,7 +872,7 @@ ul{list-style:none}
   </section>
 
 <!-- ================= SECTION 3 — SERVICES (juste après l'intro et son appel à l'action) ================= -->
-<section class="services" id="services" data-nav="light" aria-label="Our services">
+<section class="services" id="services" data-nav="light" aria-label="Our services" data-plus="tr bl">
   <div class="services__stage" id="servicesStage">
     <h2 class="services__bg display" id="servicesBg" data-i18n="svc.h" data-reveal>Nos services</h2>
     <div class="services__track" id="servicesTrack" data-reveal></div>
@@ -844,7 +882,7 @@ ul{list-style:none}
 <!-- ================= SECTION 4 — MARQUES / PARTENAIRES =================
      Composant existant, réutilisé tel quel (bandes de logos, survol, bouton).
      Seule sa position change : il devient la 4e section de l'accueil. -->
-<section class="brands" id="brands" data-nav="light" aria-label="Partenaires">
+<section class="brands" id="brands" data-nav="light" aria-label="Partenaires" data-plus="tl br">
   <div class="brands__pin" id="brandsPin" data-reveal></div>
 </section>
 
@@ -854,7 +892,7 @@ ul{list-style:none}
 <!-- ================= SECTION 5 — PERSONNALITÉS : cartes qui défilent =================
      Même esprit que les cartes de la page Personnalités, en un peu plus travaillé,
      avec une légère inclinaison 3D au survol. -->
-<section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités">
+<section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="tr">
   <div class="talents__head" data-reveal>
     <h2 class="talents__t display" data-i18n="orbit.h">Personnalités</h2>
     <div class="talents__side">
@@ -867,7 +905,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 6 — CATÉGORIES ================= -->
-<section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories">
+<section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="tr bl">
   <div class="explore__pin">
   <h2 class="explore__title display" data-i18n="exp.title" data-reveal>Catégories</h2>
   <div class="explore__left" data-reveal>
@@ -884,7 +922,7 @@ ul{list-style:none}
      Carrousel horizontal de grandes cartes photo, bâti sur le même système que
      « Le service en action » : plusieurs projets visibles, la carte survolée
      s'agrandit, le détail complet vit sur la page projet. -->
-<section class="projets" id="projects" data-nav="light" aria-label="Projets">
+<section class="projets" id="projects" data-nav="light" aria-label="Projets" data-plus="tl br">
   <div class="projets__head" data-reveal>
     <h2 class="projets__t display" data-i18n="pj.h">Nos projets</h2>
     <div class="projets__side">
@@ -898,7 +936,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 8 — FORMULAIRE DE DEMANDE ================= -->
-<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet">
+<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet" data-plus="tr bl">
   <div class="demande__in">
     <div class="demande__txt" data-reveal>
       <p class="label label--blue" data-i18n="dm.k">Démarrer un projet</p>
@@ -930,7 +968,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 9 — ACTUALITÉS ================= -->
-<section class="news" id="news" data-nav="light" aria-label="Actualités">
+<section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="tl br">
   <div class="news__head" data-reveal>
     <h2 class="news__title display" data-i18n="news.title">Actualités</h2>
     <a class="btn btn--outline news__all" href="projets.html" data-i18n="news.all">Tout voir</a>
@@ -1179,7 +1217,14 @@ function CategoryRow(c,i){
    <a class="btn btn--ghost cat__cta" href="${c.url}">${t('cta.explore')} ${ARROW}</a></div></div>`;
   return el;
 }
-const track=$('#servicesTrack'); SERVICES.forEach(s=>track.appendChild(ServicePanel(s)));
+const track=$('#servicesTrack');
+/* Services : la rangée défile lentement en boucle (grand écran). Une copie
+   décorative des cartes suit l'originale pour que la boucle soit continue. */
+function renderServices(){
+  track.innerHTML=''; SERVICES.forEach(x=>track.appendChild(ServicePanel(x)));
+  if(matchMedia('(min-width:1024px)').matches) SERVICES.forEach(x=>{const c=ServicePanel(x); c.setAttribute('aria-hidden','true'); c.tabIndex=-1; c.classList.add('panel--copie'); track.appendChild(c);});
+}
+renderServices();
 /* Carrousel photo mis de côté pour la future page « À propos » —
    les 6 images restent dans assets/ ; il suffit de décommenter.
 (* photo stack: cross-fade every 5 s, click a dot to jump *)
@@ -1366,6 +1411,25 @@ renderTalents();
   tlRail.addEventListener('pointerout',e=>{ const c=e.target.closest('.tcard'); if(c&&!c.contains(e.relatedTarget)) $('.tcard__in',c).style.transform=''; });
 })();
 
+(function(){
+  /* boucle en pixels (et non en %) : l'agrandissement au survol ne fait pas sauter la rangée */
+  if(reduce) return;
+  let x=0, v=0, cible=1, last=performance.now(); const VIT=38; /* px/s */
+  track.addEventListener('pointerenter',()=>{ if(matchMedia('(hover:hover)').matches) cible=0; });
+  track.addEventListener('pointerleave',()=>{ cible=1; });
+  const tour=now=>{
+    const dt=Math.min(.05,(now-last)/1000); last=now;
+    if(matchMedia('(min-width:1024px)').matches && track.querySelector('.panel--copie')){
+      v+=(cible-v)*Math.min(1,dt*4);                     /* ralentit / repart en douceur */
+      const copie=track.querySelector('.panel--copie'), boucle=copie.offsetLeft-track.firstElementChild.offsetLeft;
+      x-=VIT*v*dt; if(-x>=boucle) x+=boucle;
+      track.style.transform=`translate3d(${x}px,0,0)`;
+    } else if(track.style.transform){ track.style.transform=''; x=0; }
+    requestAnimationFrame(tour);
+  };
+  requestAnimationFrame(tour);
+})();
+
 /* =====================================================================
    SECTION 4 — MARQUES / PARTENAIRES : composant d'origine, inchangé.
    ===================================================================== */
@@ -1506,10 +1570,15 @@ renderTypes();
   });
 })();
 
+/* Repères « + » : petites croix fines posées dans les coins des sections. */
+$$('[data-plus]').forEach(sec=>sec.dataset.plus.split(' ').forEach(p=>{
+  const el=document.createElement('span'); el.className='plus plus--'+p; el.setAttribute('aria-hidden','true'); sec.appendChild(el);
+}));
+
 /* rebuild everything that comes from the data arrays, then restore state */
 window.__rebuild=function(){
   const svcTrack=$('#servicesTrack');
-  svcTrack.innerHTML=''; SERVICES.forEach(x=>svcTrack.appendChild(ServicePanel(x)));
+  renderServices();
   renderBrands(); if(window.__relancerMarques) window.__relancerMarques();
   renderProjects();
   if(window.__rafraichirFil) window.__rafraichirFil();
