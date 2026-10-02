@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personnalités sportives — MVP Group | MVP Group — Agence de marketing sportif | Ambassadeurs, conférenciers et porte-parole</title>
+<meta name="description" content="MVP Group — agence de marketing sportif à Montréal. Ambassadeurs de marque, conférenciers, porte-parole et influenceurs pour vos campagnes et événements corporatifs au Québec, au Canada et aux États-Unis.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   MVP GROUP — HOMEPAGE V1
+   Colour budget: ~85% black/white/grey · ~10% dark blue · ~5% gold
+   Blue = labels, active states, thin lines. Gold = primary CTA, one word.
+   ===================================================================== */
+:root{
+  --black:#050505; --carbon:#111111; --white:#FFFFFF; --soft:#F6F6F2;
+  --grey:#D9D9D4; --muted:#969696; --blue:#123B6D; --gold:#C5A253;
+  --font:'Inter Tight', system-ui, sans-serif;
+  --nav-h:98px; --gutter:clamp(20px,4vw,64px);
+  --ease:cubic-bezier(.76,0,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--black);color:var(--white);line-height:1.5;overflow-x:hidden;font-size:16px}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- type scale ---------- */
+.display{font-weight:800;line-height:.98;letter-spacing:-.03em;text-transform:uppercase}
+.label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.label--blue{color:var(--blue)}
+.gold{color:var(--gold)}
+/* sur fond sombre, le bleu de la charte manque de contraste : on l'eclaircit */
+.bleu{color:#1E5299}
+.mutedword{color:var(--muted)}
+.lede{font-size:clamp(17px,1.35vw,21px);line-height:1.55;max-width:640px;font-weight:400}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 28px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease),transform .35s var(--ease)}
+.btn--gold{background:var(--gold);color:var(--black)}
+.btn--blue{background:var(--blue);color:var(--white)}
+.btn--blue:hover{background:var(--black);color:var(--white)}
+.btn .arrow{width:17px;height:17px;flex:none;transition:transform .35s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--gold:hover{background:var(--blue);color:var(--white)}
+.btn--ghost{padding:0;gap:10px;border-radius:0;position:relative}
+.btn--ghost::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:currentColor;transform:scaleX(.3);transform-origin:left;transition:transform .5s var(--ease)}
+.btn--ghost:hover::after{transform:scaleX(1)}
+.arrow{width:14px;height:14px;flex:none}
+.on-white .btn--ghost{color:var(--black)}
+
+/* ---------- header ---------- */
+.header{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--gutter);color:var(--white);transition:color .6s var(--ease)}
+.header[data-theme="dark"]{color:var(--black)}
+.header__logo{display:flex;align-items:center;height:100%}
+.header__logo img{height:clamp(34px,3.6vw,52px);width:auto;display:block}
+.header__logo .logo--black{display:none}
+.header[data-theme="dark"] .logo--white{display:none}
+.header[data-theme="dark"] .logo--black{display:block}
+
+.header__nav{display:flex;align-items:center;gap:clamp(16px,1.9vw,30px);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.header__nav a{position:relative;padding:6px 0}
+.navitem{position:relative;display:flex;align-items:center}
+.navdrop{position:absolute;left:50%;top:100%;transform:translateX(-50%) translateY(6px);min-width:250px;background:var(--black);padding:10px 0;opacity:0;visibility:hidden;transition:opacity .3s var(--ease),transform .3s var(--ease);border-top:2px solid var(--blue)}
+.navitem:hover .navdrop,.navitem:focus-within .navdrop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.navdrop a{display:block;padding:9px 20px;font-size:11px;letter-spacing:.1em;color:var(--grey);text-transform:uppercase;white-space:nowrap}
+.navdrop a:hover{color:var(--white);background:rgba(255,255,255,.06)}
+.navdrop a::after{display:none}
+.header__tel{font-size:13px;font-weight:600;letter-spacing:.03em;color:inherit;white-space:nowrap;position:relative;transition:color .3s}
+.header__tel::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.header__tel:hover::after{transform:scaleX(1);transform-origin:left}
+.lang button{font:inherit;font-size:12px;letter-spacing:.14em;font-weight:600;color:inherit;opacity:.75;transition:opacity .3s,color .3s}
+.lang button.is-active{opacity:1;color:var(--blue)}
+.header[data-theme="light"] .lang button.is-active{color:var(--gold)}
+.header__nav > a::after,.navitem > a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.header__nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.header__right{display:flex;align-items:center;justify-content:flex-end;gap:clamp(14px,1.6vw,24px);padding-left:26px}
+.header__logo{justify-self:start}
+.lang{display:flex;gap:8px;font-size:12px;letter-spacing:.14em;font-weight:600}
+.lang b{color:var(--blue)}
+.header[data-theme="light"] .lang b{color:var(--gold)}
+/* En-tete : bleu au repos, or au survol — l'inverse des autres boutons. */
+.header .btn{background:#1E5299;color:var(--white);padding:12px 20px;font-size:10.5px;letter-spacing:.12em;white-space:nowrap}
+.header .btn:hover{background:var(--gold);color:var(--black)}
+.burger{display:none;width:44px;height:44px;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.burger span{width:22px;height:2px;background:currentColor;transition:transform .35s}
+.mobile-menu{position:fixed;inset:0;background:var(--black);color:var(--white);z-index:99;display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);gap:22px;transform:translateY(-100%);transition:transform .6s var(--ease)}
+.mobile-menu.open{transform:none}
+.mobile-menu a{font-size:32px;font-weight:800;text-transform:uppercase;line-height:1}
+
+
+.vfail{position:absolute;left:50%;top:calc(var(--nav-h) + 24px);transform:translateX(-50%);z-index:80;background:#C5A253;color:#050505;padding:14px 20px;border-radius:3px;max-width:min(560px,86vw);font-size:13px;line-height:1.5;display:none}
+.vfail.show{display:block}
+.vfail b{display:block;font-size:14px;margin-bottom:4px}
+.vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:80;width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.6);color:#fff;display:none;place-items:center;backdrop-filter:blur(4px)}
+.vplay.show{display:grid}
+/* =====================================================================
+   SECTION 1 — VIDEO HERO + WHITE INTRO PANEL
+   ===================================================================== */
+.hero{position:sticky;top:0;z-index:1;height:100svh;min-height:600px;overflow:hidden;background:var(--black)}
+.hero__media{position:absolute;inset:0;transform-origin:center}
+/* La campagne est diffusee en couleur : aucune desaturation. */
+.hero__video{width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:contrast(1.04) saturate(1.05)}
+
+.hero__overlay{position:absolute;inset:0;background:rgba(5,5,5,.5)}/* flat, not gradient */
+.hero__content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--gutter) clamp(56px,9vh,110px);max-width:1400px}
+.hero .label{margin-bottom:26px}
+.hero h1{font-size:clamp(42px,7vw,132px);max-width:13ch;line-height:.94;letter-spacing:-.03em}
+.hero .lede{margin:28px 0 36px;color:var(--grey)}
+/* Sans paragraphe, le bouton reprend la respiration qu'il avait sous le texte. */
+
+.hero__scroll{position:absolute;right:var(--gutter);bottom:40px;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
+.hero__scroll i{width:1px;height:44px;background:var(--white);display:block;transform-origin:top;animation:scrollhint 2.2s var(--ease) infinite}
+@keyframes scrollhint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* white panel that rises and becomes the intro */
+/* Flux continu : un fond unique derrière les trois sections. */
+.flux{position:relative;z-index:2;background:var(--white)}
+.flux > .stickwrap,.flux > section{position:relative;z-index:1}
+/* Décor : une seule image, très pâle, fixe derrière le flux. Aucune ligne,
+   aucun cercle — rien qui puisse concurrencer les ellipses du carrousel.
+   Les dégradés l'estompent sur les quatre bords pour éviter toute arête. */
+.flux__decor{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:0;pointer-events:none;overflow:hidden}
+.flux__img{position:absolute;inset:0;background:url('assets/fond-sport.jpg') center/cover no-repeat;opacity:.55;
+  -webkit-mask-image:radial-gradient(130% 100% at 50% 45%, #000 24%, transparent 82%);
+  mask-image:radial-gradient(130% 100% at 50% 45%, #000 24%, transparent 82%)}
+.flux__decor::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.45) 30%,rgba(255,255,255,.45) 70%,#fff 100%)}
+/* Les trois sections partagent le fond du flux : plus aucun fond propre. */
+.stickwrap{display:contents}
+/* Mise en page éditoriale : titre long à gauche, deux colonnes courtes en haut
+   à droite volontairement décalées, chiffres en bas séparés par des filets. */
+.intro{position:relative;z-index:2;min-height:100svh;background:transparent;color:var(--black);display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.8vh,34px);padding:calc(var(--nav-h) + 5vh) var(--gutter) 5vh;overflow:hidden}
+.intro__top{display:flex;flex-direction:column;align-items:center;gap:clamp(22px,3.4vh,44px);text-align:center}
+.intro__title{grid-column:1/-1;font-size:clamp(34px,6.2vw,112px);font-weight:800;line-height:.94;letter-spacing:-.035em;max-width:24ch;margin:0 auto;text-align:center;text-transform:uppercase}
+.intro__title em{font-style:italic;font-weight:600;color:#2a2a2a}
+.intro__title .w{display:inline-block;overflow:hidden;vertical-align:top}
+.intro__title .w__i{display:inline-block;transform-origin:50% 100%;will-change:transform,opacity}
+.intro__cta{align-self:center;margin-top:clamp(14px,2vh,24px);display:inline-flex;align-items:center;gap:12px;padding:20px 36px;border:1px solid #1E5299;border-radius:999px;background:#1E5299;color:var(--white);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .35s var(--ease),border-color .35s var(--ease),color .35s var(--ease)}
+.intro__cta::before{content:"\21B3";color:var(--white);opacity:.7;transition:color .35s,opacity .35s}
+.intro__cta:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.intro__cta:hover::before{color:#5C8FD6;opacity:1}
+.intro__cta:hover::before{color:var(--gold);opacity:1}
+.intro__cols{display:grid;grid-template-columns:1fr;gap:14px;max-width:760px}
+.intro__p{font-size:clamp(15px,1.15vw,19px);line-height:1.6;color:#333;max-width:none;margin:0 auto}
+.intro__p--2{padding-top:2px}
+/* Anneau fin qui tourne très lentement : rappel de l'orbite de la section
+   suivante, posé derrière le texte pour donner de la profondeur. */
+/* Une seule ellipse dorée, très large et très pâle, qui tourne lentement. */
+.intro__orbit{position:absolute;left:50%;top:52%;width:min(112vw,1600px);height:min(112vw,1600px);transform:translate(-50%,-50%);z-index:0;pointer-events:none;overflow:visible}
+.intro__orbit ellipse{fill:none;stroke:var(--gold);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.3;transform-origin:500px 500px;animation:orbitSpin 90s linear infinite}
+.intro__orbit .orbit--b{stroke:var(--black);opacity:.12;animation:orbitSpin 140s linear infinite reverse}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.intro__orbit ellipse{animation:none}}
+.intro__rule{position:absolute;background:var(--grey);z-index:0;pointer-events:none}
+.intro__rule--a{left:0;right:0;top:calc(var(--nav-h) + 4vh);height:1px;opacity:.7}
+.intro__rule--b{left:calc(var(--gutter) + 0px);top:calc(var(--nav-h) + 4vh);width:1px;height:14vh;opacity:.7}
+@media (prefers-reduced-motion:reduce){.intro__ring circle{animation:none}}
+.intro__top,.intro__stats{position:relative;z-index:2}
+.intro__stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(18px,3vh,34px)}
+.stat{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:clamp(14px,2vh,24px) clamp(10px,1.4vw,24px) 0;border-left:1px solid var(--grey);transition:border-color .4s var(--ease)}
+.stat:first-child{padding-left:0;border-left:0}
+.stat:hover{border-color:var(--black)}
+.stat b{font-size:clamp(40px,5.6vw,88px);font-weight:200;line-height:.85;letter-spacing:-.04em;display:flex;align-items:flex-start}
+.stat b i{font-style:normal;font-size:.3em;margin-left:3px;margin-top:.12em;color:var(--muted);transition:color .4s var(--ease)}
+.stat:hover b i{color:var(--gold)}
+.stat span{font-size:clamp(11px,.78vw,13px);line-height:1.35;color:var(--black);text-align:right;max-width:14ch;padding-top:6px}
+.stat span em{font-style:italic;display:block}
+@media (max-width:1180px){.intro__stats{grid-template-columns:repeat(2,1fr);gap:6px 0}.stat:nth-child(3){border-left:0;padding-left:0}.stat{padding-bottom:14px}}
+@media (max-width:900px){.intro__top{grid-template-columns:1fr}.intro__cols{grid-row:auto}.intro__cta{grid-row:auto}.intro__stats{grid-template-columns:1fr 1fr;gap:22px 0}.stat:nth-child(3){border-left:0;padding-left:0}}
+
+/* =====================================================================
+   SECTION 2 — 3D PERSONALITY ORBIT (white) — ref: SPA sports carousel
+   ===================================================================== */
+/* Section 2 pins like the others: the ring holds the screen and each scroll
+   step turns it one personality, releasing to Services only at the end. */
+/* Reserve de defilement : le carrousel reste fige un plein ecran avant que
+   les services ne commencent a monter par-dessus. */
+.orbit{position:relative;z-index:2;background:transparent}
+.orbit__pin{position:relative;height:100svh;min-height:600px;overflow:hidden;color:var(--black);padding:calc(var(--nav-h) + 10px) 0 30px;display:flex;flex-direction:column}
+/* one screen only: the ring is browsed with the arrows/drag, not the scrollbar */
+.orbit__top{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:18px;position:relative;z-index:5}
+.orbit .orbit__all{border:1px solid #1E5299;background:#1E5299;color:var(--white);padding:13px 24px;font-size:11px}
+.orbit .orbit__all:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.orbit__headwrap{position:relative;text-align:center;padding-top:26px}
+.orbit__headwrap::before{content:"";position:absolute;left:50%;top:18px;width:44px;height:2px;background:var(--blue);transform:translateX(-50%)}
+.orbit__ghost{position:absolute;left:50%;top:-14px;transform:translateX(-50%);font-size:clamp(70px,9vw,150px);color:var(--black);opacity:.05;pointer-events:none;line-height:1}
+.orbit__heading{position:relative;font-size:clamp(30px,4.6vw,78px);font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1.1}
+.pill{display:inline-flex;align-items:center;gap:8px}
+.pill__box{display:inline-flex;gap:4px;border-radius:999px;padding:6px;background:var(--white);box-shadow:0 8px 28px rgba(0,0,0,.14)}
+.pill__arrow{width:36px;height:36px;display:grid;place-items:center;transition:transform .3s}
+.pill__arrow:hover{transform:scale(1.15)}
+.pill__arrow svg{width:16px;height:16px}
+.pill__icon{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:background .4s var(--ease),color .4s var(--ease)}
+.pill__icon svg{width:19px;height:19px}
+.pill__icon.is-active{background:var(--blue);color:var(--white)}
+.orbit__stage{position:relative;flex:1;min-height:60vh;perspective:1500px;perspective-origin:50% 50%;user-select:none;touch-action:pan-y;cursor:grab}
+.orbit__stage.dragging{cursor:grabbing}
+.orbit__ring{position:absolute;inset:0;transform-style:preserve-3d}
+.orbit__ellipse{position:absolute;left:50%;top:50%;width:min(66vw,1240px);height:min(18vh,150px);transform:translate(-50%,-50%);pointer-events:none;z-index:45}
+.orbit__ellipse ellipse{fill:none;stroke:var(--black);stroke-width:1;vector-effect:non-scaling-stroke}
+.scene{position:absolute;left:50%;top:50%;width:min(40vw,760px);height:min(62vh,600px);margin:calc(min(62vh,600px)/-2) 0 0 calc(min(40vw,760px)/-2);transform-style:preserve-3d;will-change:transform,opacity,filter}
+.scene__frame{position:absolute;inset:0}
+.scene__env{position:absolute;left:-2%;right:-2%;top:22%;bottom:16%;filter:grayscale(1);opacity:.85;clip-path:polygon(0 6%,34% 0,66% 0,100% 6%,100% 94%,66% 100%,34% 100%,0 94%)}
+.scene__env svg{width:100%;height:100%}
+.scene__name{position:absolute;left:4%;top:44%;font-size:clamp(40px,5.8vw,92px);font-style:italic;font-weight:800;color:var(--blue);line-height:1;pointer-events:none;letter-spacing:-.02em;text-transform:uppercase;z-index:1}
+.scene__cutout{position:absolute;bottom:2%;left:62%;transform:translateX(-50%);height:96%;aspect-ratio:3/4;object-fit:cover;object-position:top;z-index:3;-webkit-mask-image:linear-gradient(#000 78%,transparent 100%),linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(#000 78%,transparent 100%),linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-composite:intersect}
+.scene__cutout--second{left:84%;height:70%;bottom:14%;opacity:.9;filter:grayscale(.5);z-index:2}
+.scene__plus{position:absolute;right:6%;bottom:8%;width:34%;height:14%;z-index:3;opacity:.7;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M11 6v10M6 11h10' stroke='%23050505' stroke-width='1'/%3E%3C/svg%3E")}
+.scene__index{position:absolute;right:2%;top:0;display:flex;align-items:flex-start;gap:2px;z-index:4;line-height:1}
+.scene__index b{font-size:clamp(60px,7vw,120px);font-style:italic;font-weight:200;color:var(--gold)}
+.scene__index span{font-size:clamp(26px,2.6vw,44px);font-weight:200;-webkit-text-stroke:1px var(--muted);color:transparent;margin-top:.55em;font-style:italic}
+.scene__cross{position:absolute;width:14px;height:14px;pointer-events:none;z-index:3}
+.scene__cross::before,.scene__cross::after{content:"";position:absolute;background:var(--black);opacity:.5}
+.scene__cross::before{left:50%;top:0;width:1px;height:100%}
+.scene__cross::after{top:50%;left:0;height:1px;width:100%}
+.orbit__ui{position:absolute;left:clamp(20px,14vw,300px);bottom:5%;z-index:60;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.orbit__person{font-size:clamp(20px,2vw,32px);line-height:1;transition:opacity .3s}
+.orbit__role{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:6px}
+.scene__btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:13px 22px;border-radius:999px;background:var(--gold);color:var(--black);transition:background .35s,color .35s}
+.scene__btn:hover{background:var(--blue);color:var(--white)}
+.orbit__index{position:absolute;left:clamp(20px,8vw,160px);top:34%;padding:10px 12px 10px 0;background:rgba(255,255,255,.82);display:flex;flex-direction:column;gap:12px;font-size:13px;letter-spacing:.08em;font-weight:500;color:var(--muted);z-index:60}
+.orbit__index button{display:flex;align-items:center;gap:8px;transition:color .3s,font-weight .3s}
+.orbit__index button::before{content:"";width:8px;height:1px;background:currentColor;transition:width .4s var(--ease)}
+.orbit__index button.is-active{color:var(--blue);font-weight:700}
+.orbit__index button.is-active::before{width:14px}
+.orbit__hint{text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.orbit__corner{position:absolute;right:var(--gutter);bottom:20px;width:18px;height:18px;z-index:5}
+.orbit__corner::before,.orbit__corner::after{content:"";position:absolute;background:var(--gold)}
+.orbit__corner::before{left:50%;top:0;width:1px;height:100%}.orbit__corner::after{top:50%;left:0;height:1px;width:100%}
+
+/* =====================================================================
+   SECTION 3 — PINNED HORIZONTAL SERVICES (black)
+   ===================================================================== */
+.services{position:relative;z-index:5;height:375vh;background:var(--black)}
+.services::before{content:"";position:absolute;left:0;right:0;top:0;height:26svh;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0))}
+.services__stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--black)}
+.services__bg{position:absolute;left:5vw;top:50%;transform:translateY(-50%);font-size:13vw;white-space:nowrap;color:var(--soft);will-change:transform;pointer-events:none;line-height:1}
+.services__track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;gap:4vw;padding-left:44vw;will-change:transform}
+.panel{position:relative;flex:none;width:clamp(290px,21vw,380px);display:block}
+.panel:nth-child(odd){transform:translateY(-2.5vh)}
+.panel:nth-child(even){transform:translateY(2.5vh)}
+.panel__frame{position:relative;height:44vh;background:var(--carbon);overflow:hidden}
+.panel__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.05);transition:filter 1s var(--ease),transform 1.2s var(--ease)}
+.panel:hover .panel__img{filter:none;transform:scale(1.04)}
+/* Voile leger au repos, pour que le texte blanc reste lisible. Il s'efface
+   completement au survol : l'image se revele alors en pleines couleurs. */
+.panel__shade{position:absolute;inset:0;background:rgba(5,5,5,.34);opacity:1;transition:opacity .55s var(--ease)}
+.panel:hover .panel__shade{opacity:0}
+.panel__tag{position:absolute;left:13px;top:13px;background:var(--soft);color:var(--black);font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:7px 14px;border-radius:999px}
+.panel__num{position:absolute;right:13px;top:13px;font-size:10px;letter-spacing:.2em;color:var(--grey)}
+.panel__body{position:absolute;left:0;right:0;bottom:0;padding:18px 16px}
+.panel__title{font-size:clamp(16px,1.35vw,23px);text-align:right;margin-top:14px;color:var(--white);line-height:.95;max-width:100%}
+.panel__line{width:0;height:1px;background:var(--blue);margin:16px 0 14px;transition:width .7s var(--ease)}
+.panel:hover .panel__line{width:64px}
+.panel__desc{color:var(--grey);font-size:12.5px;line-height:1.5;max-width:40ch;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+/* le CTA de service reste visible en permanence, en pastille dorée */
+.panel__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:11px 18px;border-radius:999px;background:var(--gold);color:var(--black);font-size:10px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;opacity:1;transform:none;transition:background .35s var(--ease),color .35s var(--ease)}
+.panel:hover .panel__cta{background:var(--blue);color:var(--white)}
+.panel__cta::after{display:none}
+.panel:hover .panel__desc,.panel:focus-within .panel__desc{opacity:1;transform:none}
+.services__progress{position:absolute;left:var(--gutter);right:var(--gutter);bottom:34px;height:1px;background:rgba(255,255,255,.18)}
+.services__progress i{display:block;height:100%;width:0;background:var(--blue)}
+.services__count{position:absolute;right:var(--gutter);bottom:46px;font-size:11px;letter-spacing:.2em;color:var(--muted)}
+
+/* =====================================================================
+   SECTION 4 — FULL-BLEED PROJECT SLIDER + BRANDS FINALE (Sportfive)
+   ===================================================================== */
+.slider{position:relative;z-index:6;height:520vh;background:var(--black);color:var(--white)}
+.slider__pin{position:sticky;top:0;height:100svh;min-height:640px;overflow:hidden}
+.slider__stage{position:absolute;inset:0}
+.slide{position:absolute;inset:0;visibility:hidden}
+.slide.is-active{visibility:visible}
+.slide__media{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+.slide__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;will-change:transform;transform-origin:center}
+.slide__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;will-change:transform;transform-origin:center}
+.slide__shade{position:absolute;inset:0;background:rgba(5,5,5,.52)}
+.slide--bright .slide__shade{background:rgba(5,5,5,.68)}
+.slide__copy,.slide__name{text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.slide__copy{position:absolute;left:52vw;bottom:24vh;width:min(38vw,560px)}
+.slide__num{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.slide__copy h2{font-size:clamp(26px,2.6vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.08}
+.slide__copy p{margin:16px 0 0;color:var(--grey);font-size:15px;line-height:1.5;max-width:46ch}
+.slide__stats{display:flex;gap:30px;margin:24px 0 28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16)}
+.slide__stats b{display:block;font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.slide__stats span{display:block;margin-top:4px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.slide__actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.slide__name{position:absolute;left:8vw;bottom:24vh;font-size:clamp(28px,3.4vw,60px);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.85);line-height:1;max-width:38vw}
+.slide__name b{display:block;color:var(--white);-webkit-text-stroke:0;font-size:.42em;font-weight:600;letter-spacing:.06em;margin-top:12px}
+.slide--brands{background:var(--black)}
+.slide--brands .marquee:first-child{margin-top:0}
+.partners__head{position:absolute;left:50vw;bottom:15vh;width:min(42vw,620px)}
+.partners__head h2{font-size:clamp(30px,3.6vw,62px);font-weight:700;letter-spacing:-.03em;line-height:1.08}
+.partners__head h2 .mutedword{display:block;font-weight:600;font-size:.7em;margin-bottom:4px}
+.btn--outline{border:1px solid var(--white);border-radius:999px;padding:16px 26px;color:var(--white)}
+.btn--outline:hover{background:var(--white);color:var(--black)}
+.partners__head .btn{margin-top:24px}
+.marquee{overflow:hidden;width:100%;padding:20px 0 40px}
+.marquee__row{display:flex;gap:6vw;width:max-content;align-items:center;padding:0 3vw}
+/* Au repos : logos blancs (inverses) sur le noir. Au survol : on retire
+   l'inversion pour retrouver les vraies couleurs de la marque, avec une
+   pastille claire derriere pour que les logos fonces restent lisibles. */
+.marquee__row img{height:clamp(46px,4.8vw,72px);width:auto;max-width:230px;object-fit:contain;filter:grayscale(1) invert(1) contrast(1.35);mix-blend-mode:screen;opacity:.5;transition:opacity .45s var(--ease),filter .45s var(--ease)}
+.marquee__item{padding:14px 20px;background:transparent}
+/* Au survol : les vraies couleurs, sans halo. Les logos majoritairement noirs
+   (plus d'un tiers de pixels tres sombres, mesure faite fichier par fichier)
+   ne peuvent pas se lire sur fond noir : ils gardent leur rendu blanc. */
+.marquee__item.est-survole img{filter:none;mix-blend-mode:normal;opacity:1}
+/* Logo bati sur une plaque de couleur : l'inverser donnerait un rectangle
+   beige. On le laisse dans ses teintes, simplement desature au repos. */
+.marquee__item.est-plaque img{filter:grayscale(1) brightness(1.5);mix-blend-mode:normal;opacity:.55}
+.marquee__item.est-plaque.est-survole img{filter:none;opacity:1}
+/* Logos entierement noirs : aucune couleur a reveler, ils restent blancs. */
+.marquee__item.est-mono.est-survole img{filter:grayscale(1) invert(1) contrast(1.35);mix-blend-mode:screen;opacity:1}
+.marquee__item{position:relative;display:flex;align-items:center}
+.marquee__item::after{content:"+";position:absolute;left:50%;bottom:-42px;transform:translateX(-50%);color:var(--blue);opacity:0;transition:opacity .3s;font-weight:300;font-size:40px;line-height:1}
+
+.marquee__item.est-survole::after{opacity:1}
+.slider__kicker{position:absolute;right:8vw;top:calc(var(--nav-h) + 3vh);z-index:6;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);writing-mode:vertical-rl;padding-left:14px}
+.slider__kicker::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--gold);opacity:.7}
+.slider__ui{position:absolute;left:0;right:0;bottom:9vh;display:flex;justify-content:space-between;align-items:center;padding:0 8vw;z-index:6}
+.slider__arrow{width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);border-radius:50%;color:var(--white);transition:border-color .35s,background .35s,opacity .35s}
+.slider__arrow:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+.slider__arrow[disabled]{opacity:.25;pointer-events:none}
+.slider__dots{display:flex;gap:14px;align-items:center;position:relative}
+.slider__dots button{position:relative;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px;letter-spacing:.16em;transition:color .35s}
+.slider__dots button em{position:absolute;left:50%;top:-22px;transform:translateX(-50%);font-style:normal;opacity:0;white-space:nowrap;transition:opacity .35s var(--ease)}
+.slider__dots button.is-active{color:var(--white)}
+.slider__dots button.is-active em{opacity:1}
+.slider__dots span{position:relative;display:block;width:28px;height:2px;background:rgba(255,255,255,.25);border-radius:1px;overflow:hidden;transition:width .5s var(--ease)}
+.slider__dots button.is-active span{width:56px}
+.slider__dots span i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);box-shadow:0 0 10px rgba(197,162,83,.55)}
+.slider__dots button.is-active span{height:3px;background:rgba(255,255,255,.18)}
+.slider__dots button.is-done span i{width:100%;background:rgba(255,255,255,.55)}
+.slider__hint{position:absolute;left:50%;bottom:4.2vh;transform:translateX(-50%);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);z-index:6;transition:opacity .4s}
+.chapter__chevron{position:absolute;left:50%;bottom:1vh;transform:translateX(-50%);color:var(--white);opacity:.7;z-index:5}
+.slider__reveal{position:absolute;inset:0;background:var(--white);z-index:20;display:flex;align-items:flex-start;padding:calc(var(--nav-h) + 4vh) var(--gutter) 0;pointer-events:none}
+.slider__reveal .display{font-size:clamp(34px,5.4vw,92px);color:var(--black);opacity:.07;line-height:.95}
+/* composition alternée : le bloc de texte change de côté d'une diapo à l'autre */
+.slide:nth-child(even) .slide__copy{left:8vw}
+.slide:nth-child(even) .slide__name{left:auto;right:8vw;text-align:right;max-width:34vw}
+.slide:nth-child(even) .slide__img,.slide:nth-child(even) .slide__video{object-position:center 24%}
+.slide--brands{display:flex;flex-direction:column;justify-content:center;gap:6vh;padding:calc(var(--nav-h) + 6vh) 0 20vh}
+.slide--brands .partners__head{position:absolute;left:0;right:0;bottom:22vh;width:auto;display:flex;justify-content:center}
+
+/* =====================================================================
+   SECTION 5 — CATEGORY EXPLORER (white, YMU-style)
+   ===================================================================== */
+/* Catégories : même mécanique que Personnalités — une réserve de défilement,
+   un bloc collant qui tient l'écran, puis Services monte par-dessus. */
+/* Catégories : le seul temps d'arrêt du parcours. Court, juste avant Services. */
+.explore{position:relative;z-index:2;height:200svh;background:transparent}
+/* Passage vers Services : le blanc se teinte progressivement en fin de flux,
+   puis le noir arrive. Sans ce fondu, la coupure est franche. */
+.flux::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60svh;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.04) 55%,rgba(5,5,5,.13) 100%)}
+.explore__pin{position:sticky;top:0;height:100svh;overflow:hidden;color:var(--black);padding:calc(var(--nav-h) + 2vh) var(--gutter) 3vh;display:grid;grid-template-columns:minmax(280px,38%) 1fr;grid-template-rows:auto minmax(0,1fr);gap:0 5vw;align-content:start}
+/* La colonne de droite ne peut jamais depasser la hauteur disponible :
+   les rangees se repartissent dans l'espace restant. */
+.explore__list{min-height:0;display:flex;flex-direction:column;justify-content:center}
+/* Ecrans courts (portables 13 pouces) : on resserre pour que la derniere
+   categorie reste toujours dans la fenetre. */
+@media (min-width:1024px) and (max-height:790px){
+  .explore__title{font-size:clamp(24px,3.4vw,52px);margin-bottom:2px}
+  .explore__imgwrap{max-height:30vh}
+  .cat__btn{padding:2px 0}
+  .cat .display{font-size:clamp(20px,2vw,34px)}
+  .cat__desc{font-size:12px;line-height:1.3}
+  .cat__cta{font-size:10px}
+  .explore__pin{padding:calc(var(--nav-h) + 3vh) var(--gutter) 2vh}
+}
+.explore__list .cat{flex:0 0 auto}
+.explore__title{grid-column:1/-1;font-size:clamp(32px,6.6vw,120px);line-height:.88;letter-spacing:-.035em;margin-bottom:clamp(4px,.8vh,12px)}
+.explore__left{position:sticky;top:calc(var(--nav-h) + 40px)}
+.explore__left .label{margin-bottom:22px;display:block}
+.explore__imgwrap{position:relative;height:100%;max-height:42vh;border-radius:14px;overflow:hidden;background:var(--soft)}
+.explore__imgwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .6s var(--ease),transform 1.2s var(--ease);transform:scale(1.06);filter:grayscale(1)}
+.explore__imgwrap img.is-active{opacity:1;transform:none;filter:grayscale(0)}
+.explore__caption{margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.06em}
+.cat{border-top:1px solid var(--grey)}
+.cat:last-child{border-bottom:1px solid var(--grey)}
+.cat__btn{width:100%;text-align:left;display:flex;align-items:baseline;gap:16px;padding:clamp(4px,.75vh,11px) 0;color:var(--grey);transition:color .45s var(--ease)}
+.cat__btn small{font-size:12px;letter-spacing:.18em;font-weight:600;width:30px;flex:none;color:var(--grey);transition:color .45s}
+.cat__btn span{font-size:clamp(30px,3.8vw,60px)}
+.cat.is-active .cat__btn{color:var(--black)}
+.cat.is-active .cat__btn small{color:var(--blue)}
+.cat__panel{overflow:hidden;height:0;transition:height .5s var(--ease)}
+.cat__inner{padding:0 0 26px 52px;max-width:60ch}
+.cat__line{width:40px;height:1px;background:var(--blue);margin-bottom:16px}
+.cat__desc{color:#333;font-size:13.5px;line-height:1.4;max-width:52ch}
+.cat__cta{margin-top:18px;color:var(--black)}
+.cat__cta svg{color:var(--gold)}
+
+/* =====================================================================
+   SECTION 6 — ACTUALITÉS : grille éditoriale, cartes sur fond clair
+   ===================================================================== */
+/* Section sur fond noir : cartes sombres, contrastes revus en consequence. */
+.news{position:relative;z-index:7;background:var(--black);color:var(--white);padding:calc(var(--nav-h) + 4vh) var(--gutter) 10vh}
+.news__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(22px,4vh,48px)}
+.news__title{font-size:clamp(36px,7vw,132px);line-height:.9;letter-spacing:-.03em}
+.news .btn--outline{border-color:rgba(255,255,255,.45);color:var(--white)}
+.news .btn--outline:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+.news__grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(110px,13vh,150px);gap:clamp(14px,1.6vw,26px)}
+/* Formats volontairement inegaux : une piece maitresse, deux verticales,
+   trois breves. C'est l'irregularite qui donne l'allure editoriale. */
+/* Cartes blanches posees sur le noir : le contraste fait ressortir la grille. */
+.card{position:relative;display:flex;flex-direction:column;background:var(--white);color:var(--black);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+/* Au survol, la carte file franchement de cote — les impaires vers la gauche,
+   les paires vers la droite — et l'image zoome derriere. Le decalage est
+   volontairement marque pour que le mouvement se remarque. */
+.card{transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s var(--ease)}
+.card:nth-child(odd):hover{transform:translate(-34px,-12px) scale(1.02);box-shadow:0 34px 70px rgba(0,0,0,.6)}
+.card:nth-child(even):hover{transform:translate(34px,-12px) scale(1.02);box-shadow:0 34px 70px rgba(0,0,0,.6)}
+.card:hover{z-index:3}
+.card__t,.card__date,.card__more{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.card:nth-child(odd):hover .card__t,.card:nth-child(odd):hover .card__more{transform:translateX(-6px)}
+.card:nth-child(even):hover .card__t,.card:nth-child(even):hover .card__more{transform:translateX(6px)}
+.card__img{position:relative;overflow:hidden;background:var(--grey);flex:1;min-height:0}
+.card__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s var(--ease),transform 1.1s var(--ease)}
+.card:hover .card__img img{filter:grayscale(0);transform:scale(1.1)}
+.card__meta{position:absolute;left:14px;top:14px;z-index:2;background:var(--black);color:var(--white);font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:999px}
+.card__body{padding:14px 18px 16px;display:flex;flex-direction:column;gap:6px;flex:none}
+.card__t{font-size:clamp(14px,1vw,17px);font-weight:700;line-height:1.22;letter-spacing:-.01em}
+.card__date{font-size:11px;color:var(--muted)}
+.card__more{margin-top:auto;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--black);display:inline-flex;align-items:center;gap:8px}
+.card__more svg{width:12px;height:12px;color:var(--gold)}
+/* 1 — piece maitresse : deux colonnes, deux rangees */
+.card--une{grid-column:span 2;grid-row:span 3}
+.card--une .card__t{font-size:clamp(20px,1.9vw,32px);line-height:1.1}
+.card--une .card__body{padding:22px 24px 26px}
+/* 2 et 3 — verticales */
+.card--haute{grid-column:span 1;grid-row:span 3}
+/* 4, 5, 6 — breves en bandeau */
+.card--breve{grid-column:span 2;grid-row:span 2;flex-direction:row;align-items:stretch}
+.card--breve .card__img{width:44%;flex:none}
+.card--breve .card__body{padding:16px 18px;flex:1;justify-content:center}
+@media (max-width:1023px){
+  .news__grid{grid-template-columns:repeat(2,1fr)}
+  .card--une{grid-column:span 2;grid-row:span 3}
+  .card--haute{grid-row:span 2}
+  .card--breve{grid-column:span 2;grid-row:span 2}
+}
+@media (max-width:700px){
+  .news__grid{grid-template-columns:1fr}
+  .news__grid{grid-auto-rows:auto}
+  .card--une,.card--haute,.card--breve{grid-column:span 1;grid-row:auto}
+  .card__img{aspect-ratio:3/2;flex:none}
+  .card--breve{flex-direction:column}
+  .card--breve .card__img{width:100%;aspect-ratio:3/2}
+  .news{padding:calc(var(--nav-h) + 3vh) var(--gutter) 8vh}
+}
+
+/* --- Fenêtre de lecture --- */
+.modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:5vh var(--gutter)}
+.modal[hidden]{display:none}
+.modal__fond{position:absolute;inset:0;background:rgba(5,5,5,.82);backdrop-filter:blur(6px)}
+.modal__boite{position:relative;z-index:2;width:min(760px,100%);max-height:90vh;overflow-y:auto;background:var(--white);color:var(--black)}
+.modal__x{position:absolute;right:14px;top:14px;z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--black);display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.modal__x:hover{background:var(--black);color:var(--white)}
+.modal__x svg{width:18px;height:18px}
+.modal__banniere{aspect-ratio:16/9;overflow:hidden;background:var(--grey)}
+.modal__banniere img{width:100%;height:100%;object-fit:cover}
+.modal__corps{padding:clamp(22px,3vw,38px)}
+.modal__meta{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.modal__boite h3{font-size:clamp(21px,2.2vw,34px);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.modal__texte{font-size:16px;line-height:1.65;color:#333}
+.modal__note{margin-top:14px;font-size:12px;color:var(--muted);font-style:italic}
+.modal__corps .btn{margin-top:22px}
+@media (max-width:700px){.modal{padding:0}.modal__boite{max-height:100vh;width:100%}}
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.footer{position:relative;z-index:8;background:#0E2A4F;color:var(--white);min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:12vh var(--gutter) 40px}
+.footer__top{display:grid;grid-template-columns:1fr;gap:clamp(26px,4vh,56px);padding-bottom:7vh;border-bottom:1px solid rgba(255,255,255,.14)}
+.footer__lead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(18px,2.4vw,40px)}
+.footer h2{font-size:clamp(28px,3.6vw,58px);max-width:14ch;line-height:1.02;margin:0}
+.footer__grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;padding:8vh 0}
+.footer h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-weight:600}
+.footer li{margin-bottom:10px;font-size:15px}
+.footer a:hover{color:var(--gold)}
+/* Le cache noir laisse passer la video uniquement dans les lettres. */
+/* Le vrai logo MVP sert de pochoir : la video n'apparait que dans les lettres. */
+.footer__cut{position:relative;width:100%;aspect-ratio:749/168;overflow:hidden;align-self:stretch;
+  -webkit-mask-image:url('assets/mvp-lettrage-v3.png');mask-image:url('assets/mvp-lettrage-v3.png');
+  -webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center}
+.footer__cut-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
+.footer__cut-mask{position:absolute;inset:0;width:100%;height:100%}
+@media (max-width:900px){.footer__lead{flex-direction:column;align-items:flex-start}}
+.footer__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);font-size:12px;color:var(--muted)}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media (max-width:1180px){
+  .intro{grid-template-columns:1fr;gap:0}
+  .header{grid-template-columns:auto 1fr}
+  .header__nav{display:none}
+  .header__right{grid-column:2;justify-content:flex-end;gap:14px}
+  .burger{display:flex}
+  .explore{height:170svh}
+  .explore__pin{position:relative;height:auto;min-height:100svh;grid-template-columns:1fr;padding:calc(var(--nav-h) + 3vh) var(--gutter) 6vh}
+  .explore__left{position:relative;top:auto}
+}
+@media (max-width:1023px){
+  /* Section 3 → swipeable horizontal track */
+  .services{height:auto;padding:14vh 0 12vh}
+  .services__stage{position:relative;height:auto;overflow:visible}
+  .services__bg{position:static;transform:none;font-size:14vw;padding:0 var(--gutter) 6vh;opacity:1;white-space:normal;line-height:.9}
+  .services__track{position:relative;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gutter) 30px;gap:18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .services__track::-webkit-scrollbar{display:none}
+  .panel{width:66vw;scroll-snap-align:start;transform:none!important}
+  .panel__frame{height:46vh}
+  .panel__desc{opacity:1;transform:none}
+  .services__progress,.services__count{display:none}
+  /* Section 4 → stacked banner */
+  /* Mobile : même empilement qu'en grand écran. Chaque section colle en haut
+     et la suivante monte par-dessus. Hauteur fixe d'un écran pour toutes,
+     donc un geste = un bloc. */
+  .hero{position:sticky;top:0;height:100svh;min-height:0}
+  .intro{position:relative;height:auto;min-height:100svh}
+  /* Reserve de defilement : la section suivante ne demarre qu'apres avoir
+     laisse le temps de lire celle qui tient l'ecran. */
+
+  .orbit{position:relative;height:auto}
+  /* Personnalites : de l'air sous le menu, et le carrousel occupe le reste. */
+  .orbit__pin{position:relative;height:100svh;padding:calc(var(--nav-h) + 6vh) 0 4vh;justify-content:flex-start;gap:2vh}
+  .orbit__ghost{display:none}
+  .orbit__headwrap{padding-top:0}
+  .orbit__stage{flex:1;min-height:0}
+  .scene{width:86vw;height:58vh;margin:calc(58vh/-2) 0 0 -43vw}
+  .orbit__ui{left:var(--gutter);bottom:2vh}
+  /* Mobile : tout tient sur un ecran, centre. */
+  .intro{padding:calc(var(--nav-h) + 4vh) var(--gutter) 3vh;text-align:center;gap:0;justify-content:flex-start;overflow:hidden}
+  .intro__top{gap:0}
+  .intro__title{max-width:none;margin:0 auto;font-size:clamp(17px,4.2vw,22px);line-height:1.13}
+  .intro__cols{gap:8px;margin-top:12px}
+  .intro__p{max-width:none;margin:0 auto;font-size:12.5px;line-height:1.42}
+  .intro__p--2{padding-left:0;border-left:0;padding-top:0}
+  .intro__cta{justify-self:center;margin:16px auto 0;padding:13px 22px;font-size:11px}
+  .intro__stats{grid-template-columns:repeat(2,1fr)!important;gap:8px 0;margin-top:14px}
+  .intro__stats{width:100%}
+  .stat{align-items:center;flex-direction:column;justify-content:flex-start;gap:2px;text-align:center;padding:8px 2px 0;min-width:0}
+  .stat:nth-child(3){border-left:0;padding-left:2px}
+  .stat:nth-child(n+3){border-top:1px solid var(--grey);padding-top:9px}
+  .stat b{font-size:clamp(21px,5.4vw,27px)}
+  .stat span{text-align:center;max-width:18ch;font-size:9.5px;letter-spacing:.08em;line-height:1.35}
+  .stat span em{display:inline}
+  .services{height:100svh;margin-top:0;padding:0}
+  /* Services : titre sous le menu, piste centree, plus de vide en bas. */
+  .services__stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;padding:calc(var(--nav-h) + 6vh) 0 4vh;gap:2.5vh}
+  .services__bg{padding:0 var(--gutter);font-size:10vw;flex:none}
+  .services__track{flex:1;align-items:stretch;padding-bottom:0}
+  .panel{width:72vw;display:flex;flex-direction:column}
+  .panel__frame{flex:1;height:auto;min-height:0}
+  .panel__title{margin-top:10px;font-size:clamp(15px,4vw,20px);text-align:left}
+  .slider{height:500svh!important}
+  .slider__pin{position:sticky;top:0;height:100svh;min-height:0;overflow:hidden}
+  .slider__stage{position:absolute;inset:0}
+  .slide{position:absolute;inset:0;min-height:0;padding:calc(var(--nav-h) + 4vh) var(--gutter) 16vh;overflow-y:auto}
+  .slider__ui{position:absolute;bottom:5vh;padding:0 var(--gutter)}
+  .slider__hint,.chapter__chevron{display:none}
+  .slider__kicker{writing-mode:horizontal-tb;right:auto;left:var(--gutter);top:calc(var(--nav-h) + 1.5vh);padding:0 0 0 12px;font-size:9px}
+  .slide{position:relative;inset:auto;display:none;min-height:100svh;padding:14vh var(--gutter) 18vh}
+  .slide.is-active{display:block}
+  .slide__copy{position:relative;left:auto;bottom:auto;width:100%}
+  .slide__name{position:relative;left:auto;bottom:auto;max-width:none;font-size:9vw;margin-bottom:26px}
+  .slide__stats{gap:22px}
+  .slider__ui{bottom:30px}
+  .slide--brands{padding-top:10vh}
+  .slide--brands .marquee:first-child{margin-top:0}
+  .partners__head{position:relative;left:auto;bottom:auto;width:auto;margin-top:6vh}
+}
+@media (max-width:760px){
+  :root{--nav-h:72px}
+  .orbit__pin{height:auto;min-height:100svh}
+  .orbit__index,.orbit__hint,.orbit__corner{display:none}
+  .orbit__ui{left:var(--gutter);bottom:0}
+  .orbit__stage{perspective:900px;min-height:60vh}
+  .scene{width:82vw;height:52vh;margin:calc(52vh/-2) 0 0 -41vw}
+  .scene__name{font-size:14vw}
+  .scene__cutout--second{display:none}
+  .scene__index b{font-size:16vw}
+  .header .btn{display:none}
+  .header__tel{font-size:12px}
+  .hero h1{font-size:12vw;line-height:.96}
+  .intro h2{font-size:10vw}
+  .intro__stats{grid-template-columns:repeat(2,1fr);gap:30px 16px}
+  .stat b{font-size:14vw}
+  .panel{width:84vw}
+  .panel__frame{height:54vh}
+  .partners h2{font-size:11vw}
+  .cat__btn span{font-size:9vw}
+  .cat__btn{padding:16px 0}
+  .cat__inner{padding-left:0}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .footer h2{font-size:10vw}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__scroll i{animation:none}
+  *{transition-duration:.01ms!important}
+}
+.footer__lead--seul{padding-bottom:clamp(30px,5vh,56px);border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:clamp(30px,5vh,56px)}
+/* Pied de page compact : les pages internes ont déjà leur CTA final. */
+.footer{min-height:0!important;padding:clamp(40px,6vh,72px) var(--gutter) 34px!important;justify-content:flex-start!important}
+.footer__grid{padding:0 0 clamp(30px,5vh,56px)!important}
+.footer__lead--seul{display:none}
+</style>
+
+<style>
+:root{--nav-h:98px}
+body{background:var(--soft);color:var(--black)}
+.bp{padding-top:0}
+
+/* ---------- HERO ---------- */
+/* Bannière : 600 px de haut, le titre posé dessus. Un voile sombre garantit
+   la lisibilité quelle que soit la zone de l'image. */
+.bp__hero{position:relative;height:600px;min-height:420px;display:flex;align-items:flex-end;padding:0 var(--gutter) clamp(36px,5vh,64px);overflow:hidden;color:#fff}
+.bp__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 36%;z-index:0}
+.bp__hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,5,5,.48) 0%,rgba(5,5,5,.30) 45%,rgba(5,5,5,.86) 100%)}
+.bp__hin{position:relative;z-index:2;max-width:1100px}
+.bp__hero .label{color:var(--gold);margin-bottom:14px}
+.bp__hero h1{font-size:clamp(32px,5vw,78px);font-weight:800;line-height:.98;letter-spacing:-.03em;max-width:17ch}
+.bp__lede{margin-top:16px;max-width:60ch;font-size:clamp(14px,1.02vw,17px);line-height:1.6;color:rgba(255,255,255,.82)}
+.bp__stats{display:flex;gap:clamp(20px,3vw,54px);margin-top:24px;flex-wrap:wrap}
+.bp__stats div{display:flex;flex-direction:column}
+.bp__stats b{font-size:clamp(24px,2.6vw,40px);font-weight:200;letter-spacing:-.03em;line-height:1}
+.bp__stats span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}
+@media (max-width:760px){.bp__hero{height:auto;min-height:0;padding-top:calc(var(--nav-h) + 40px);padding-bottom:36px}}
+
+/* ---------- STRUCTURE ---------- */
+.bp__wrap{display:grid;grid-template-columns:268px 1fr;gap:clamp(22px,2.6vw,44px);padding:clamp(34px,5vh,64px) var(--gutter) 8vh;align-items:start}
+/* sans cette contrainte, le carrousel etire la colonne et deborde la page */
+.bp__wrap>*{min-width:0}
+.bp__side{position:sticky;top:calc(var(--nav-h) + 20px);max-height:calc(100svh - var(--nav-h) - 32px);overflow-y:auto;padding-right:8px}
+.bp__side::-webkit-scrollbar{width:4px}.bp__side::-webkit-scrollbar-thumb{background:var(--grey);border-radius:4px}
+/* Panneau de filtres : posé sur une carte blanche, avec un filet doré sous
+   chaque intitulé et une barre bleue qui marque la ligne survolée. */
+.bp__side{background:var(--white);border:1px solid var(--grey);border-radius:16px;padding:20px 18px}
+.fgrp{border-top:1px solid var(--grey);padding:18px 0 4px}
+.fgrp:first-child{border-top:0;padding-top:0}
+.fgrp h3{position:relative;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);margin-bottom:14px;padding-bottom:9px;font-weight:700}
+.fgrp h3::after{content:"";position:absolute;left:0;bottom:0;width:26px;height:2px;background:var(--gold)}
+.fopt{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:7px 8px 7px 10px;margin-left:-10px;border-radius:8px;font-size:13.5px;color:#333;transition:color .25s,background .25s}
+.fopt::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:2px;height:60%;background:var(--blue);transition:transform .28s var(--ease)}
+.fopt:hover{color:var(--black);background:rgba(30,82,153,.045)}
+.fopt:hover::before{transform:translateY(-50%) scaleY(1)}
+.fopt:has(input:checked){color:var(--black);font-weight:600}
+.fopt:has(input:checked)::before{transform:translateY(-50%) scaleY(1)}
+.fopt:has(input:checked) em{color:var(--blue);font-weight:700}
+.fopt input{appearance:none;width:15px;height:15px;border:1.5px solid var(--grey);border-radius:4px;flex:none;position:relative;transition:.2s;cursor:pointer}
+.fopt input:checked{background:var(--blue);border-color:var(--blue)}
+.fopt input:checked::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.fopt em{margin-left:auto;font-style:normal;font-size:11px;color:var(--muted);transition:color .25s}
+
+/* ---------- BARRE DE DECOUVERTE ---------- */
+.bp__tools{margin-bottom:22px}
+.srch{position:relative;margin-bottom:20px}
+.srch input{width:100%;padding:16px 18px 16px 48px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font-size:15px;font-family:inherit;transition:border-color .3s,box-shadow .3s}
+.srch input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(30,82,153,.08)}
+.srch svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+.chips h2{font-size:clamp(15px,1.15vw,19px);font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
+.chips__row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 16px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font-size:12.5px;color:#333;transition:.28s var(--ease);cursor:pointer}
+.chip[aria-pressed="true"]{box-shadow:0 6px 18px rgba(30,82,153,.28)}
+.chip:hover{border-color:var(--black);color:var(--black)}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:22px 0 16px;padding-top:16px;border-top:1px solid var(--grey)}
+.bar__n{font-size:13px;color:var(--muted)}
+.bar__n b{color:var(--black);font-weight:700}
+.bar select{padding:9px 14px;border:1px solid var(--grey);border-radius:999px;background:var(--white);font-family:inherit;font-size:12.5px;cursor:pointer}
+.actifs{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.actif{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:var(--black);color:#fff;border-radius:999px;font-size:11.5px}
+.actif button{color:#fff;opacity:.6;font-size:14px;line-height:1}
+.actif button:hover{opacity:1}
+.vider{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);font-weight:700;border-bottom:1px solid currentColor}
+
+/* ---------- GRILLE ---------- */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.2vw,20px)}
+@media (max-width:1560px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:1180px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:430px){.grid{grid-template-columns:1fr}}
+
+}
+
+/* ---------- CARTE ---------- */
+.tc{position:relative;perspective:1400px}
+.tc__in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .72s cubic-bezier(.22,1,.36,1)}
+.tc.est-ouverte .tc__in{transform:rotateY(180deg)}
+.tc__in{min-height:clamp(438px,30vw,512px)}
+.tc__f,.tc__b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden;background:var(--white);border:1px solid var(--grey);display:flex;flex-direction:column}
+.tc__b{transform:rotateY(180deg);padding:18px 16px;background:var(--black);color:#fff;border-color:#1c1c1c}
+.tc__ph{position:relative;aspect-ratio:1/1;flex:none;overflow:hidden;background:#EDEFF2}
+.tc__ph img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 1.1s var(--ease),opacity .5s}
+.tc:hover .tc__ph img{transform:scale(1.045)}
+.tc__ini{position:absolute;right:-6px;bottom:-14px;font-size:64px;font-weight:800;letter-spacing:-.05em;color:#fff;opacity:.16;pointer-events:none}
+.tc__cat{position:absolute;left:10px;top:10px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--black);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tc__soc{position:absolute;right:10px;top:10px;display:flex;gap:6px}
+.tc__soc a{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;transition:.25s}
+.tc__soc a:hover{background:var(--blue)}
+.tc__soc svg{width:12px;height:12px;color:var(--black)}
+.tc__soc a:hover svg{color:#fff}
+.tc__body{padding:12px 14px 10px;border-top:1px solid var(--grey);flex:1;min-height:0;display:flex;flex-direction:column}
+.tc__nom{font-size:15px;font-weight:800;line-height:1.14;letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.tc__sub{margin-top:4px;font-size:11px;color:var(--muted);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tc__tags{display:flex;flex-wrap:nowrap;gap:4px;margin-top:8px;overflow:hidden}
+.tc__tag{font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--grey);border-radius:999px;color:#555}
+.tc__cta{display:flex;flex-direction:column;gap:6px;padding:0 14px 14px;margin-top:auto}
+.tc__b1{padding:9px;border-radius:999px;background:var(--blue);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;transition:.3s}
+.tc__b1:hover{background:var(--gold);color:var(--black)}
+.tc__b2{padding:8px;border-radius:999px;border:1px solid var(--grey);font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:#333;transition:.3s}
+.tc__b2:hover{border-color:var(--black);color:var(--black)}
+.tc__flip{position:absolute;right:10px;bottom:10px;z-index:3;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.94);border:1px solid var(--grey);display:flex;align-items:center;justify-content:center;transition:.25s}
+.tc__flip:hover{background:var(--black);border-color:var(--black)}
+.tc__flip svg{width:14px;height:14px;color:var(--black)}
+.tc__flip:hover svg{color:#fff}
+.tc__b .tc__flip{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.tc__b .tc__flip svg{color:#fff}
+.tc__bh{font-size:15px;font-weight:800;letter-spacing:-.02em;padding-right:34px}
+.tc__bt{font-size:10.5px;color:rgba(255,255,255,.62);margin-top:3px;line-height:1.35}
+.tc__sec{margin-top:12px}
+.tc__sec h4{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.tc__sec p{font-size:11px;line-height:1.45;color:rgba(255,255,255,.8);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.tc__sec ul{display:flex;flex-wrap:wrap;gap:4px}
+.tc__sec li{font-size:9px;padding:3px 8px;border:1px solid rgba(255,255,255,.26);border-radius:999px;color:rgba(255,255,255,.85)}
+.tc__bcta{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding-top:12px}
+.tc__bcta .tc__b2{border-color:rgba(255,255,255,.3);color:#fff}
+.tc__bcta .tc__b2:hover{border-color:#fff;background:#fff;color:var(--black)}
+@media (prefers-reduced-motion:reduce){.tc__in{transition:none}}
+
+/* ---------- PROJETS ---------- */
+/* Carrousel de réalisations : défilement horizontal au doigt, à la molette
+   ou aux flèches. Les visuels dominent, l'information reste minimale. */
+.pf{margin:clamp(34px,5vh,64px) 0;padding:clamp(26px,3.4vw,50px) 0;background:#0E2A4F;color:#fff;border-radius:18px;overflow:hidden}
+.pf__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:0 clamp(22px,3vw,44px);margin-bottom:clamp(18px,2.6vh,30px)}
+.pf__head h2{font-size:clamp(20px,2.3vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.06;max-width:22ch;margin-top:10px}
+.pf__nav{display:flex;gap:8px;flex:none}
+.pf__arr{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;transition:.3s var(--ease)}
+.pf__arr:hover{background:#fff;border-color:#fff}
+.pf__arr svg{width:17px;height:17px;color:#fff}
+.pf__arr:hover svg{color:var(--black)}
+.pf__arr[disabled]{opacity:.28;pointer-events:none}
+.pf__rail{display:flex;gap:clamp(12px,1.4vw,22px);overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-left:clamp(22px,3vw,44px);padding:0 clamp(22px,3vw,44px) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pf__rail::-webkit-scrollbar{display:none}
+.pfc{position:relative;flex:0 0 clamp(260px,30vw,440px);scroll-snap-align:start;border-radius:14px;overflow:hidden;aspect-ratio:4/5;display:block;background:#141414}
+.pfc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s var(--ease),transform 1.2s var(--ease)}
+.pfc:hover img{filter:grayscale(0);transform:scale(1.06)}
+.pfc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(5,5,5,.88))}
+.pfc__t{position:absolute;left:18px;right:18px;bottom:16px;z-index:2}
+.pfc__k{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.pfc__n{display:block;font-size:clamp(14px,1.15vw,19px);font-weight:800;letter-spacing:-.015em;margin-top:5px;line-height:1.15}
+.pfc__v{display:inline-flex;align-items:center;gap:7px;margin-top:9px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);transition:color .3s}
+.pfc:hover .pfc__v{color:#fff}
+.pf__bar{height:2px;background:rgba(255,255,255,.14);margin:clamp(14px,2vh,22px) clamp(22px,3vw,44px) 0;border-radius:2px;overflow:hidden}
+.pf__bar span{display:block;height:100%;width:22%;background:var(--gold);border-radius:2px;transition:transform .25s linear;transform-origin:left}
+@media (max-width:760px){.pfc{flex:0 0 76vw;aspect-ratio:3/4}.pf__head{flex-direction:column;align-items:flex-start}}
+.sc__i--big{min-height:220px}}
+
+/* ---------- BAS DE PAGE ---------- */
+/* Intertitre qui sépare la vitrine de projets de la suite de la grille. */
+.suite{margin:clamp(30px,5vh,58px) 0 clamp(16px,2.4vh,26px);padding-top:clamp(20px,3vh,34px);border-top:1px solid var(--grey)}
+.suite__t{font-size:clamp(19px,2vw,32px);font-weight:800;letter-spacing:-.025em;line-height:1.08}
+.suite__p{margin-top:7px;font-size:13.5px;color:var(--muted)}
+.plus{display:flex;justify-content:center;margin:34px 0}
+.aide{margin:clamp(40px,7vh,90px) 0 0;padding:clamp(28px,4vw,56px);border-radius:16px;background:#0E2A4F;color:#fff;text-align:center}
+.aide p{color:rgba(255,255,255,.78)!important}
+.aide h2{font-size:clamp(22px,2.6vw,42px);font-weight:800;letter-spacing:-.025em}
+.aide p{margin:14px auto 22px;max-width:56ch;color:#3a3a3a;font-size:15px;line-height:1.6}
+.vide{padding:60px 20px;text-align:center;color:var(--muted);grid-column:1/-1}
+.vide b{display:block;font-size:17px;color:var(--black);margin-bottom:8px}
+.fbtn{display:none}
+.fclose{display:none}
+/* Sur petit ecran la carte occupe toute la largeur : la photo devient moins
+   haute et la carte plus longue, sinon le texte et les boutons se croisent. */
+@media (max-width:760px){
+  .tc__ph{aspect-ratio:4/3}
+  .tc__in{min-height:0}
+  .tc__f,.tc__b{position:relative;inset:auto}
+  .tc__body{flex:none}
+  .tc__cta{margin-top:0}
+  .tc__b{display:none}
+  .tc.est-ouverte .tc__f{display:none}
+  .tc.est-ouverte .tc__b{display:flex;min-height:420px}
+  .tc__in{transform:none!important;transition:none}
+@media (max-width:1023px){
+  .bp__wrap{grid-template-columns:1fr}
+  .bp__side{position:fixed;inset:0;z-index:150;background:var(--white);max-height:none;padding:calc(var(--nav-h) + 14px) var(--gutter) 90px;overflow-y:auto;transform:translateX(-100%);transition:transform .45s var(--ease)}
+  .bp__side.est-ouvert{transform:none}
+  .fbtn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:999px;background:var(--black);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+  .fclose{position:fixed;left:var(--gutter);right:var(--gutter);bottom:18px;z-index:160;padding:15px;border-radius:999px;background:var(--blue);color:#fff;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;display:none}
+  .bp__side.est-ouvert ~ .fclose{display:block}
+}
+</style>
+</head>
+<body>
+<header data-theme="dark" class="header" id="header" data-theme="light">
+  <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
+    <img class="logo--white" src="assets/mvp-logo-blanc-v2.png" alt="MVP Group Agency">
+    <img class="logo--black" src="assets/mvp-logo-noir-v2.png" alt="" aria-hidden="true">
+  </a>
+  <nav class="header__nav" aria-label="Primary">
+    <div class="navitem">
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <div class="navdrop">
+        <a href="service.html?s=speakers" data-i18n="nav.s1">Keynote speakers</a>
+        <a href="service.html?s=ambassadors" data-i18n="nav.s2">Brand ambassadors &amp; spokespersons</a>
+        <a href="service.html?s=marketing" data-i18n="nav.s3">Social media strategies &amp; influencers</a>
+        <a href="service.html?s=hosts" data-i18n="nav.s4">Guests of honor</a>
+        <a href="personnalites.html?project=Corporate+Event" data-i18n="nav.s5">Corporate events &amp; teambuilding</a>
+      </div>
+    </div>
+    <div class="navitem">
+      <a href="personnalites.html" data-i18n="nav.celebs">Sports celebrities</a>
+      <div class="navdrop">
+        <a href="personnalites.html?sport=hockey" data-i18n="cat.hockey">Hockey</a>
+        <a href="personnalites.html?sport=boxing" data-i18n="cat.boxing">Boxing</a>
+        <a href="personnalites.html?sport=mma" data-i18n="cat.mma">MMA</a>
+        <a href="personnalites.html?sport=olympics" data-i18n="cat.olympics">Olympics</a>
+        <a href="personnalites.html?sport=media" data-i18n="cat.media">Media</a>
+        <a href="personnalites.html?sport=soccer" data-i18n="cat.soccer">Soccer</a>
+        <a href="personnalites.html?sport=other" data-i18n="cat.others">Others</a>
+      </div>
+    </div>
+    <a href="projets.html" data-i18n="nav.projects">Projects</a>
+    <div class="navitem">
+      <a href="index.html#contact" data-i18n="nav.agency">Agency</a>
+      <div class="navdrop">
+        <a href="index.html#intro" data-i18n="nav.a1">MVP Group mission</a>
+        <a href="index.html#contact" data-i18n="nav.a2">Management team</a>
+      </div>
+    </div>
+    <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="header__right">
+    
+    <div class="lang" id="lang" aria-label="Langue / Language"><button data-lang="fr" class="is-active">FR</button><button data-lang="en">EN</button></div>
+    <a class="btn btn--gold" href="#contact" data-i18n="cta.work">Travailler avec nous</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+<main class="bp" data-nav="dark">
+  <section class="bp__hero" data-nav="light">
+    <img class="bp__bg" src="assets/banniere-talents-v2.jpg" alt="" width="1800" height="600">
+    <div class="bp__hin">
+      <p class="label">MVP Talent Network</p>
+      <h1>Trouvez la bonne personnalité pour votre projet.</h1>
+      <p class="bp__lede">Athlètes professionnels, olympiens, légendes du sport, conférenciers, ambassadeurs de marque et personnalités médiatiques représentés ou accessibles par MVP Group.</p>
+      <div class="bp__stats">
+        <div><b id="statTotal">67</b><span>Personnalités</span></div>
+        <div><b>7</b><span>Disciplines</span></div>
+        <div><b>2005</b><span>Dans l'industrie depuis</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bp__wrap">
+    <aside class="bp__side" id="side" aria-label="Filtres"></aside>
+    <button class="fclose" id="fclose">Voir les résultats</button>
+
+    <div>
+      <div class="bp__tools">
+        <div class="srch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Rechercher par nom, sport, expertise ou thème…" aria-label="Rechercher une personnalité">
+        </div>
+        <div class="chips">
+          <h2>Qu'est-ce que votre personnalité doit apporter au projet ?</h2>
+          <div class="chips__row" id="chips"></div>
+        </div>
+        <div class="bar">
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <button class="fbtn" id="fopen">Filtres<span id="fcount"></span></button>
+            <span class="bar__n"><b id="nb">0</b> personnalités trouvées</span>
+          </div>
+          <label style="display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted)">Trier par
+            <select id="tri">
+              <option value="featured">En vedette</option>
+              <option value="az">A–Z</option>
+              <option value="sport">Sport</option>
+            </select>
+          </label>
+        </div>
+        <div class="actifs" id="actifs"></div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <div class="plus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
+
+      <section class="pf" id="showcase" data-nav="light" aria-label="Projets MVP">
+        <div class="pf__head">
+          <div>
+            <p class="label" style="color:var(--gold)">Réalisations</p>
+            <h2>Les personnes derrière des partenariats mémorables.</h2>
+          </div>
+          <div class="pf__nav">
+            <button class="pf__arr" id="pfPrev" aria-label="Projet précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="pf__arr" id="pfNext" aria-label="Projet suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <div class="pf__rail" id="pfRail"></div>
+        <div class="pf__bar"><span id="pfFill"></span></div>
+      </section>
+
+      <div class="suite" id="apres">
+        <h2 class="suite__t">Personnalités en vedette</h2>
+        <p class="suite__p">Quelques figures marquantes du réseau MVP.</p>
+      </div>
+      <div class="grid" id="grid2"></div>
+
+      <section class="aide">
+        <h2>Vous ne trouvez pas la bonne personnalité ?</h2>
+        <p>Le réseau de MVP dépasse les personnalités affichées en ligne. Parlez-nous de votre projet et nous identifierons les personnalités qui correspondent à votre public, à vos objectifs et à votre campagne.</p>
+        <a class="btn btn--gold" href="mailto:info@mvpsportsmarketing.com?subject=Recherche%20de%20personnalit%C3%A9">Parlez-nous de votre projet</a>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="footer footer--compact" id="contact" data-nav="light">
+  <div class="footer__top">
+    
+    <!-- Lettrage MVP decoupe : la video joue a travers les lettres. -->
+    
+  </div>
+  <div class="footer__grid" id="agency">
+    <div>
+      <h4 data-i18n="foot.agency">MVP Group Agency</h4>
+      <ul><li data-i18n="foot.hq">Siège social : Montréal, Qc. Canada</li><li>Toronto · New York · Las Vegas</li><li><a href="tel:+15145823306">514-582-3306</a></li><li><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
+    </div>
+    <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a></li><li><a href="index.html#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Projets</a></li><li><a href="https://mvpsportsmarketing.com/fr/agence" data-i18n="nav.agency">Agence</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=speakers" data-i18n="nav.s1">Conférenciers</a></li><li><a href="service.html?s=ambassadors" data-i18n="nav.s2">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=hosts" data-i18n="nav.s4">Invités d'honneur</a></li><li><a href="service.html?s=marketing" data-i18n="nav.s3">Influenceurs et médias sociaux</a></li></ul></div>
+    <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul><li><a href="https://www.instagram.com/mvpgroupagency/" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" rel="noopener">Facebook</a></li></ul></div>
+  </div>
+
+  <div class="footer__bottom">
+    <span data-i18n="foot.rights">© 2026 MVP Group Agency Inc. Tous droits réservés.</span>
+    <span><a href="https://mvpsportsmarketing.com/fr#privacy" data-i18n="foot.privacy">Politique de confidentialité</a> · <a href="https://mvpsportsmarketing.com/fr" hreflang="fr">Français</a></span>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script>
+/* La barre de navigation s'adapte au fond qu'elle survole : sombre sur clair,
+   claire sur sombre. Sans ca, le menu blanc disparait sur le fond creme. */
+(function(){
+  const h=document.querySelector('header'); if(!h) return;
+  const reperes=[...document.querySelectorAll('[data-nav]')];
+  const majuscule=()=>{
+    const y=h.getBoundingClientRect().bottom;
+    let courant='dark';
+    for(const r of reperes){ const b=r.getBoundingClientRect(); if(b.top<=y && b.bottom>=y) courant=r.dataset.nav; }
+    h.dataset.theme = courant==='light' ? 'light' : 'dark';
+  };
+  addEventListener('scroll',majuscule,{passive:true}); addEventListener('resize',majuscule); majuscule();
+})();
+const TALENTS=[{"id":"lucian-bute","nom":"Lucian Bute","prenom":"Lucian","famille":"Bute","photo":"assets/talents/lucian-bute.webp","photo2":"assets/talents/lucian-bute-b.webp","cat":"boxing","catNom":"Boxing","titre":"Boxing World Champion","bio":"Lucian Bute was a professional boxer in the super-middleweight division. Born in Romania and trained in Montreal, the 6 ft 1 in fighter captured the IBF World Champion title against Alejandro Berrio in October 2007 by TKO in the 11th round.","roles":["Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/lucian-bute"},{"id":"kim-clavel","nom":"Kim Clavel","prenom":"Kim","famille":"Clavel","photo":"assets/talents/kim-clavel.webp","photo2":"assets/talents/kim-clavel-b.webp","cat":"boxing","catNom":"Boxing","titre":"Boxer - World Champion / Speaker","bio":"Want to hire Kim Clavel? Consult us!514-582-3306 / info@mvpsportsmarketing.com Kim Clavel is a multi-talented athlete.","roles":["Speaker","Champion"],"qualites":["Haute performance","Leadership","Engagement social"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/kim-clavel"},{"id":"marie-eve-dicaire","nom":"Marie-Eve Dicaire","prenom":"Marie-Eve","famille":"Dicaire","photo":"assets/talents/marie-eve-dicaire.webp","photo2":"assets/talents/marie-eve-dicaire-b.webp","cat":"boxing","catNom":"Boxing","titre":"World Boxing Champion / Speaker / Host / Ambassador","bio":"You want to hire Marie-Eve Dicaire? Consult us!514-582 3306 / info@mvpsportsmarketing.com Marie-Eve Dicaire has always been a fan of combat sports.","roles":["Speaker","Brand Ambassador","Host","Champion"],"qualites":["Motivation","Leadership féminin"],"projets":["Conference / Keynote","Brand Campaign","Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/marie-eve-dicaire"},{"id":"jean-pascal","nom":"Jean Pascal","prenom":"Jean","famille":"Pascal","photo":"assets/talents/jean-pascal.webp","photo2":"assets/talents/jean-pascal-b.webp","cat":"boxing","catNom":"Boxing","titre":"Boxer – Former World Champion","bio":"Want to hire Jean Pascal? Consult us!514-582-3306 / info@mvpsportsmarketing.com Jean Pascal is a professional boxer born in Haiti.","roles":["Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/jean-pascal"},{"id":"steve-begin","nom":"Steve Bégin","prenom":"Steve","famille":"Bégin","photo":"assets/talents/steve-begin.webp","photo2":"assets/talents/steve-begin-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former Montreal Canadiens player / Keynote Speaker / Ambassador","bio":"You want to hire Steve Bégin? Consult us!(514) 582-3306 / info@mvpsportsmarketing.com Steve Bégin is a former forward in the National Hockey League who was drafted by the Calgary Flames in the second round of the 1996 NHL Draft.","roles":["Speaker","Brand Ambassador"],"qualites":["Persévérance","Discipline","Motivation"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/steve-begin"},{"id":"marc-bergevin","nom":"Marc Bergevin","prenom":"Marc","famille":"Bergevin","photo":"assets/talents/marc-bergevin.webp","photo2":"assets/talents/marc-bergevin-b.webp","cat":"hockey","catNom":"Hockey","titre":"Marc Bergevin","bio":"Following a 20-year career in the National Hockey League, Marc Bergevin learned the ropes as an executive in the prestigious Chicago Blackhawks organization. In 2012, following a hefty interview process, Bergevin was named General Manager of the Montreal Canadiens, the team he gr","roles":["Champion","Coach"],"qualites":["Performer sous pression","Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/marc-bergevin"},{"id":"joel-bouchard","nom":"Joël Bouchard","prenom":"Joël","famille":"Bouchard","photo":"assets/talents/joel-bouchard.webp","photo2":"assets/talents/joel-bouchard-b.webp","cat":"hockey","catNom":"Hockey","titre":"Key Note Speaker / Former NHL player and Coach / TV Analyst","bio":"You want to hire Joël Bouchard? Consult us !","roles":["Speaker","Media Personality","Coach"],"qualites":["Leadership","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/joel-bouchard"},{"id":"guy-boucher","nom":"Guy Boucher","prenom":"Guy","famille":"Boucher","photo":"assets/talents/guy-boucher.webp","photo2":"assets/talents/guy-boucher-b.webp","cat":"hockey","catNom":"Hockey","titre":"Keynote Speaker / Assistant Coach Toronto Maple Leafs","bio":"Want to hire Guy Boucher as a Keynote Speaker? Consult us!514 582 3306 / info@mvpsportsmarketing.com You want to create a positive impact on your employees and leaders!","roles":["Speaker","Coach"],"qualites":["Leadership","Motivation"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/guy-boucher"},{"id":"francis-bouillon","nom":"Francis Bouillon","prenom":"Francis","famille":"Bouillon","photo":"assets/talents/francis-bouillon.webp","photo2":"assets/talents/francis-bouillon-b.webp","cat":"hockey","catNom":"Hockey","titre":"Francis Bouillon","bio":"You want to hire Francis Bouillon? Consult us!514 582 3306 / info@mvpsportsmarketing.com Francis Bouillon is a former National Hockey League (NHL) defenseman known for his tenacity and physical play, despite his smaller size (5 feet 8 inches).","roles":["Coach"],"qualites":["Reconversion"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/francis-bouillon"},{"id":"patrice-brisebois","nom":"Patrice Brisebois","prenom":"Patrice","famille":"Brisebois","photo":"assets/talents/patrice-brisebois.webp","photo2":"assets/talents/patrice-brisebois-b.webp","cat":"hockey","catNom":"Hockey","titre":"Patrice Brisebois","bio":"You want to hire Patrice Brisebois? Consult us!514 582 3306 / info@mvpsportsmarketing.com Patrice Brisebois is a former National Hockey League (NHL) defenseman who played over 1000 games with the Montreal Canadiens and the Colorado Avalanche, winning a Stanley Cup with the Habs i","roles":["Media Personality","Champion","Coach"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/patrice-brisebois"},{"id":"paul-byron","nom":"Paul Byron","prenom":"Paul","famille":"Byron","photo":"assets/talents/paul-byron.webp","photo2":"assets/talents/paul-byron-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former Montreal Canadiens player","bio":"You want to hire Paul Byron? Consult us!514 582 3306 / info@mvpsportsmarketing.com Paul Byron is a former left winger in the National Hockey League (NHL) from Ottawa.","roles":["Speaker"],"qualites":["Leadership","Haute performance","Performer sous pression"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/paul-byron"},{"id":"guy-carbonneau","nom":"Guy Carbonneau","prenom":"Guy","famille":"Carbonneau","photo":"assets/talents/guy-carbonneau.webp","photo2":"assets/talents/guy-carbonneau-b.webp","cat":"hockey","catNom":"Hockey","titre":"Guy Carbonneau","bio":"You want to hire Guy Carbonneau? Consult us!514 582 3306 / info@mvpsportsmarketing.com Guy Carbonneau is a former player of the National Hockey League (NHL).","roles":["Media Personality","Champion","Sports Legend","Coach"],"qualites":["Leadership","Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/guy-carbonneau"},{"id":"yvan-cournoyer","nom":"Yvan Cournoyer","prenom":"Yvan","famille":"Cournoyer","photo":"assets/talents/yvan-cournoyer.webp","photo2":"assets/talents/yvan-cournoyer-b.webp","cat":"hockey","catNom":"Hockey","titre":"Yvan Cournoyer","bio":"You want to hire Yvan Cournoyer? Consult us!514 582 3306 / info@mvpsportsmarketing.com Yvan Cournoyer is a former right-winger of the National Hockey League (NHL) Montreal Canadiens who played from 1963 to 1979.","roles":["Brand Ambassador","Champion"],"qualites":["Performer sous pression"],"projets":["Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/yvan-cournoyer"},{"id":"mathieu-dandenault","nom":"Mathieu Dandenault","prenom":"Mathieu","famille":"Dandenault","photo":"assets/talents/mathieu-dandenault.webp","photo2":"assets/talents/mathieu-dandenault-b.webp","cat":"hockey","catNom":"Hockey","titre":"Mathieu Dandenault","bio":"You want to hire Mathieu Dandenault? Consult us!514 582 3306 / info@mvpsportsmarketing.com Mathieu Dandenault is a former National Hockey League (NHL) defenseman.","roles":["Champion","Sports Legend","Coach"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/mathieu-dandenault"},{"id":"gilbert-delorme","nom":"Gilbert Delorme","prenom":"Gilbert","famille":"Delorme","photo":"assets/talents/gilbert-delorme.webp","photo2":"assets/talents/gilbert-delorme-b.webp","cat":"hockey","catNom":"Hockey","titre":"• Former Montreal Canadiens Player / Radio Host / Hockey Analyst","bio":"You want to hire Gilbert Delorme? Consult us!514 582 3306 / info@mvpsportsmarketing.com First pick of the Montreal Canadiens in the 1981 entry draft, Gilbert Delorme has had a great NHL career.","roles":["Host","Media Personality","Sports Legend","Coach"],"qualites":["Reconversion","Leadership","Performer sous pression"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/gilbert-delorme"},{"id":"eve-gascon","nom":"Ève Gascon","prenom":"Ève","famille":"Gascon","photo":"assets/talents/eve-gascon.webp","photo2":"assets/talents/eve-gascon-b.webp","cat":"hockey","catNom":"Hockey","titre":"Hockey Goaltender","bio":"Want to hire Ève Gascon? Consult us!514 582 3306 / info@mvpsportsmarketing.com Ève Gascon is a very promising goaltender who has been breaking the glass ceiling in the field hockey world since she was very young.","roles":["Speaker"],"qualites":["Leadership féminin","Dépassement de soi"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/eve-gascon"},{"id":"bruno-gervais","nom":"Bruno Gervais","prenom":"Bruno","famille":"Gervais","photo":"assets/talents/bruno-gervais.webp","photo2":"assets/talents/bruno-gervais-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Player • RDS Hockey Analyst • Animator • Speaker","bio":"You want to hire Bruno Gervais? Consult us!514-582-3306 / info@mvpsportsmarketing.com Bruno Gervais is an RDS sports analyst who covers mainly hockey and most particularly the Montreal Canadiens.","roles":["Speaker","Media Personality"],"qualites":["Reconversion","Engagement social","Leadership"],"projets":["Conference / Keynote","Media Appearance","Charity Event"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/bruno-gervais"},{"id":"pierre-gervais","nom":"Pierre Gervais","prenom":"Pierre","famille":"Gervais","photo":"assets/talents/pierre-gervais.webp","photo2":"assets/talents/pierre-gervais-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former Head Trainer Montreal Canadiens / Story teller on 35 years of career","bio":"You want to hire Pierre Gervais? Contact us!514 582 3306 / info@mvpsportsmarketing.com Pierre Gervais was the equipment manager of the Montreal Canadiens for 35 years.","roles":["Media Personality","Champion","Sports Legend"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/pierre-gervais"},{"id":"rejean-houle","nom":"Réjean Houle","prenom":"Réjean","famille":"Houle","photo":"assets/talents/rejean-houle.webp","photo2":"assets/talents/rejean-houle-b.webp","cat":"hockey","catNom":"Hockey","titre":"Réjean Houle","bio":"Want to hire Réjean Houle? Consult us!514 582 3306 / info@mvpsportsmarketing.com Réjean Houle is a former right winger in the National Hockey League (NHL).","roles":["Champion","Coach"],"qualites":["Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/rejean-houle"},{"id":"alex-kovalev","nom":"Alex Kovalev","prenom":"Alex","famille":"Kovalev","photo":"assets/talents/alex-kovalev.webp","photo2":"assets/talents/alex-kovalev-b.webp","cat":"hockey","catNom":"Hockey","titre":"Alex Kovalev","bio":"You want to hire Alex Kovalev? Consult us!514 582 3306 / info@mvpsportsmarketing.com Alexei Kovalev is a former professional hockey player from Russia.","roles":["Olympian","Champion","Sports Legend"],"qualites":["Performer sous pression","Leadership"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/alex-kovalev"},{"id":"guy-lafleur","nom":"Guy Lafleur","prenom":"Guy","famille":"Lafleur","photo":"assets/talents/guy-lafleur.webp","photo2":"assets/talents/guy-lafleur-b.webp","cat":"hockey","catNom":"Hockey","titre":"Guy Lafleur","bio":"IN MEMORY OF GUY LAFLEUR 1951 - 2022 LOVE, PEACE and RESPECT FOREVER Guy Lafleur was a former star right winger of the National Hockey League (NHL). The so-called \"The Flower\" played 17 seasons in the NHL during which he won five Stanley Cups with the Montreal Canadiens in the 19","roles":["Champion"],"qualites":["Leadership","Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/guy-lafleur"},{"id":"yvon-lambert","nom":"Yvon Lambert","prenom":"Yvon","famille":"Lambert","photo":"assets/talents/yvon-lambert.webp","photo2":"assets/talents/yvon-lambert-b.webp","cat":"hockey","catNom":"Hockey","titre":"Yvon Lambert","bio":"You want to hire Yvon Lambert? Consult us!514 582 3306 / info@mvpsportsmarketing.com Yvon Lambert is a former National Hockey League (NHL) player known for his courage, determination, and team spirit.","roles":["Champion"],"qualites":["Performer sous pression"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/yvon-lambert"},{"id":"vincent-lecavalier","nom":"Vincent Lecavalier","prenom":"Vincent","famille":"Lecavalier","photo":"assets/talents/vincent-lecavalier.webp","photo2":"assets/talents/vincent-lecavalier-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL All-Star player / Speaker / Special Advisor Montreal Canadiens","bio":"You want to hire Vincent Lecavalier? Consult us!514 582 3306 / info@mvpsportsmarketing.com The fame of Vincent Lecavalier is well established.","roles":["Speaker","Champion","Coach"],"qualites":["Leadership","Esprit d’équipe","Reconversion"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/vincent-lecavalier"},{"id":"sergio-momesso","nom":"Sergio Momesso","prenom":"Sergio","famille":"Momesso","photo":"assets/talents/sergio-momesso.webp","photo2":"assets/talents/sergio-momesso-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Player","bio":"Sergio Momesso is a former professional hockey player who made his mark in the National Hockey League (NHL) through his hard work, tenacity, and leadership on every team he played for, including the Montreal Canadiens, St. Louis Blues, Vancouver Canucks, and Calgary Flames.","roles":["Media Personality"],"qualites":["Esprit d’équipe","Leadership","Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/sergio-momesso"},{"id":"kirk-muller","nom":"Kirk Muller","prenom":"Kirk","famille":"Muller","photo":"assets/talents/kirk-muller.webp","photo2":"assets/talents/kirk-muller-b.webp","cat":"hockey","catNom":"Hockey","titre":"Kirk Muller","bio":"You want to hire Kirk Muller? Consult us!514 582 3306 / info@mvpsportsmarketing.com Kirk Muller is a former hockey player the National Hockey League (NHL).","roles":["Champion","Coach"],"qualites":["Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/kirk-muller"},{"id":"chris-nilan","nom":"Chris Nilan","prenom":"Chris","famille":"Nilan","photo":"assets/talents/chris-nilan.webp","photo2":"assets/talents/chris-nilan-b.webp","cat":"hockey","catNom":"Hockey","titre":"Stanley Cup Winner - Ambassador of the Montreal Canadiens - Speaker - Guest of honor - Radio host","bio":"Want to book Chris Nilan? Contact us now!514-582-3306 / info@mvpsportsmarketing.com Chris Nilan was a legendary and feared strongman for 13 seasons in the NHL and was one of the Canadiens' most popular players during his 10 seasons in Montreal.","roles":["Speaker","Brand Ambassador","Host","Champion","Sports Legend","Coach"],"qualites":["Persévérance"],"projets":["Conference / Keynote","Brand Campaign","Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/chris-nilan"},{"id":"stephane-quintal","nom":"Stéphane Quintal","prenom":"Stéphane","famille":"Quintal","photo":"assets/talents/stephane-quintal.webp","photo2":"assets/talents/stephane-quintal-b.webp","cat":"hockey","catNom":"Hockey","titre":"Stéphane Quintal","bio":"You want to hire Stéphane Quintal? Consult us!514 582 3306 / info@mvpsportsmarketing.com Stéphane Quintal is a former National Hockey League (NHL) defenseman who has played more than 1,000 career games with six different teams, including the Montreal Canadians.","roles":["Speaker"],"qualites":["Reconversion"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/stephane-quintal"},{"id":"manon-rheaume","nom":"Manon Rhéaume","prenom":"Manon","famille":"Rhéaume","photo":"assets/talents/manon-rheaume.webp","photo2":"assets/talents/manon-rheaume-b.webp","cat":"hockey","catNom":"Hockey","titre":"Speaker / TV Analyst / Former Professional Hockey Player","bio":"","roles":["Speaker","Media Personality"],"qualites":["Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/manon-rheaume"},{"id":"andre-roy","nom":"André Roy","prenom":"André","famille":"Roy","photo":"assets/talents/andre-roy.webp","photo2":"assets/talents/andre-roy-b.webp","cat":"hockey","catNom":"Hockey","titre":"André Roy","bio":"You want to hire André Roy? Consult us!514 582 3306 / info@mvpsportsmarketing.com André Roy is a former left wing of the National Hockey League (NHL).","roles":["Host","Champion"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/andre-roy"},{"id":"patrick-roy","nom":"Patrick Roy","prenom":"Patrick","famille":"Roy","photo":"assets/talents/patrick-roy.webp","photo2":"assets/talents/patrick-roy-b.webp","cat":"hockey","catNom":"Hockey","titre":"NHL Legend / Hockey Hall of Famer / Head Coach NY Islanders","bio":"Patrick Roy is considered by many as the greatest NHL goaltender of all time. He played for the Montreal Canadiens for more than 10 seasons.","roles":["Champion","Sports Legend","Coach"],"qualites":["Performer sous pression","Leadership","Haute performance"],"projets":["Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/patrick-roy"},{"id":"maxime-talbot","nom":"Maxime Talbot","prenom":"Maxime","famille":"Talbot","photo":"assets/talents/maxime-talbot.webp","photo2":"assets/talents/maxime-talbot-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL player / Keynote speaker / TV Analyst","bio":"","roles":["Speaker","Media Personality"],"qualites":["Motivation","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/maxime-talbot"},{"id":"mario-tremblay","nom":"Mario Tremblay","prenom":"Mario","famille":"Tremblay","photo":"assets/talents/mario-tremblay.webp","photo2":"assets/talents/mario-tremblay-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Coach / Former Canadiens Player / Hockey Media Analyst","bio":"","roles":["Media Personality","Coach"],"qualites":["Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/mario-tremblay"},{"id":"olivier-aubin-mercier","nom":"Olivier Aubin-Mercier","prenom":"Olivier","famille":"Aubin-Mercier","photo":"assets/talents/olivier-aubin-mercier.webp","photo2":"assets/talents/olivier-aubin-mercier-b.webp","cat":"mma","catNom":"MMA","titre":"Olivier Aubin-Mercier","bio":"","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/olivier-aubin-mercier"},{"id":"patrick-cote","nom":"Patrick Côté","prenom":"Patrick","famille":"Côté","photo":"assets/talents/patrick-cote.webp","photo2":"assets/talents/patrick-cote-b.webp","cat":"mma","catNom":"MMA","titre":"Patrick Côté","bio":"","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/patrick-cote"},{"id":"valerie-letourneau","nom":"Valérie Létourneau","prenom":"Valérie","famille":"Létourneau","photo":"assets/talents/valerie-letourneau.webp","photo2":"assets/talents/valerie-letourneau-b.webp","cat":"mma","catNom":"MMA","titre":"Valérie Létourneau","bio":"You want to hire Valérie Létourneau? Consult us!514 582 3306 / info@mvpsportsmarketing.com Valérie Létourneau, nicknamed \"Trouble\", is a mixed martial arts fighter from Montreal.","roles":["Champion"],"qualites":["Leadership féminin"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/valerie-letourneau"},{"id":"david-loiseau","nom":"David Loiseau","prenom":"David","famille":"Loiseau","photo":"assets/talents/david-loiseau.webp","photo2":"assets/talents/david-loiseau-b.webp","cat":"mma","catNom":"MMA","titre":"David Loiseau","bio":"You want to hire David Loiseau? Consult us!514 582 3306 / info@mvpsportsmarketing.com David Loiseau, nicknamed \"The Crow\", is a mixed martial arts fighter from Montreal.","roles":["Champion"],"qualites":["Discipline"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/david-loiseau"},{"id":"aleksandra-wozniak","nom":"Aleksandra Wozniak","prenom":"Aleksandra","famille":"Wozniak","photo":"assets/talents/aleksandra-wozniak.webp","photo2":"assets/talents/aleksandra-wozniak-b.webp","cat":"olympics","catNom":"Olympics","titre":"Former WTA player","bio":"Aleksandra Wozniak is a former professional tennis player who has shone on the international scene for more than 10 years, both individually and through her numerous appearances with the Canadian women's team. In 2008, she became the first Quebecer in history to win a WTA title w","roles":["Speaker"],"qualites":["Dépassement de soi","Reconversion","Leadership féminin"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/aleksandra-wozniak"},{"id":"alexandre-bilodeau","nom":"Alexandre Bilodeau","prenom":"Alexandre","famille":"Bilodeau","photo":"assets/talents/alexandre-bilodeau.webp","photo2":"assets/talents/alexandre-bilodeau-b.webp","cat":"olympics","catNom":"Olympics","titre":"2 x Olympic Champion / Speaker / Ambassador","bio":"You want to hire Alexandre Bilodeau? Consult us!514 582 3306 / info@mvpsportsmarketing.com Alexandre Bilodeau is a former renowned Canadian freestyle skier.","roles":["Speaker","Brand Ambassador","Olympian","Champion"],"qualites":["Engagement social","Dépassement de soi","Motivation"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event","Charity Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/alexandre-bilodeau"},{"id":"nancy-kerrigan","nom":"Nancy Kerrigan","prenom":"Nancy","famille":"Kerrigan","photo":"assets/talents/nancy-kerrigan.webp","photo2":"assets/talents/nancy-kerrigan-b.webp","cat":"olympics","catNom":"Olympics","titre":"Former Figure Skater","bio":"Want to hire Nancy Kerrigan? Consult us!514 582 3306  / info@mvpsportsmarketing.com Nancy Kerrigan is a former figure skater who was born in Stoneham, Massachusetts.","roles":["Olympian","Champion","Sports Legend"],"qualites":["Persévérance","Esprit d’équipe","Engagement social"],"projets":["Charity Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/nancy-kerrigan"},{"id":"nathalie-lambert","nom":"Nathalie Lambert","prenom":"Nathalie","famille":"Lambert","photo":"assets/talents/nathalie-lambert.webp","photo2":"assets/talents/nathalie-lambert-b.webp","cat":"olympics","catNom":"Olympics","titre":"Nathalie Lambert","bio":"Want to hire Nathalie Lambert? Consult us !514 582 3306  / info@mvpsportsmarketing.com Nathalie Lambert is a former short track speed skater.","roles":["Olympian","Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/nathalie-lambert"},{"id":"kristel-ngarlem","nom":"Kristel Ngarlem","prenom":"Kristel","famille":"Ngarlem","photo":"assets/talents/kristel-ngarlem.webp","photo2":"assets/talents/kristel-ngarlem-b.webp","cat":"olympics","catNom":"Olympics","titre":"Weighlifting athlete / Canadian champion / Olympic Athlete","bio":"You want to hire Kristel Ngarlem? Consult us!514 582 3306  / info@mvpsportsmarketing.com Kristel Ngarlem is a three-time senior Canadian champion, junior world junior champion and triple medalist at the world weightlifting championships.","roles":["Olympian","Champion","Coach"],"qualites":["Motivation","Leadership féminin","Discipline"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/kristel-ngarlem"},{"id":"joannie-rochette","nom":"Joannie Rochette","prenom":"Joannie","famille":"Rochette","photo":"assets/talents/joannie-rochette.webp","photo2":"assets/talents/joannie-rochette-b.webp","cat":"olympics","catNom":"Olympics","titre":"Speaker / Olympic medalist / Dr in Medecine / Former Figure Skater","bio":"You want to hire Joannie Rochette? Consult us!514 582 3306  / info@mvpsportsmarketing.com Joannie Rochette is without a doubt one of the most outstanding athletes in figure skating and Olympic sports.","roles":["Speaker","Olympian","Champion"],"qualites":["Engagement social","Persévérance","Discipline"],"projets":["Conference / Keynote","Brand Campaign","Charity Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/joannie-rochette"},{"id":"katerine-savard","nom":"Katerine Savard","prenom":"Katerine","famille":"Savard","photo":"assets/talents/katerine-savard.webp","photo2":"assets/talents/katerine-savard-b.webp","cat":"olympics","catNom":"Olympics","titre":"Olympic Swimmer / Speaker / Actress","bio":"Want to hire Katerine Savard? Consult us!514 582 3306  / info@mvpsportsmarketing.com Katerine Savard is an Olympic medallist swimmer.","roles":["Speaker","Olympian","Champion"],"qualites":["Haute performance","Persévérance","Dépassement de soi"],"projets":["Conference / Keynote","Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/katerine-savard"},{"id":"marianne-st-gelais","nom":"Marianne St-Gelais","prenom":"Marianne","famille":"St-Gelais","photo":"assets/talents/marianne-st-gelais.webp","photo2":"assets/talents/marianne-st-gelais-b.webp","cat":"olympics","catNom":"Olympics","titre":"Multiple Olympic Medalist / Speaker / Ambassador","bio":"You want to hire Marianne St-Gelais as a speaker? Consult us!514 582 3306  / info@mvpsportsmarketing.com Marianne St-Gelais was a fan-favourite at the Vancouver Olympics in 2010.","roles":["Speaker","Brand Ambassador","Olympian","Champion"],"qualites":["Esprit d’équipe","Leadership féminin","Leadership"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/marianne-st-gelais"},{"id":"bruny-surin","nom":"Bruny Surin","prenom":"Bruny","famille":"Surin","photo":"assets/talents/bruny-surin.webp","photo2":"assets/talents/bruny-surin-b.webp","cat":"olympics","catNom":"Olympics","titre":"Bruny Surin","bio":"You want to hire Bruny Surin? Consult us!514 582 3306  / info@mvpsportsmarketing.com Bruny Surin is a former Canadian star sprinter born in Haiti.","roles":["Olympian","Champion","Sports Legend"],"qualites":["Discipline","Reconversion"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/bruny-surin"},{"id":"sebastien-toutant","nom":"Sébastien Toutant","prenom":"Sébastien","famille":"Toutant","photo":"assets/talents/sebastien-toutant.webp","photo2":"assets/talents/sebastien-toutant-b.webp","cat":"olympics","catNom":"Olympics","titre":"Sébastien Toutant","bio":"You want to hire Sébastien Toutant? Consult us!514 582 3306  / info@mvpsportsmarketing.com Sébastien Toutant \"Seb Toots\" is a Quebec snowboarder from Repentigny.","roles":["Olympian","Champion"],"qualites":["Motivation","Discipline"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/sebastien-toutant"},{"id":"luc-gelinas","nom":"Luc Gélinas","prenom":"Luc","famille":"Gélinas","photo":"assets/talents/luc-gelinas.webp","photo2":"assets/talents/luc-gelinas-b.webp","cat":"media","catNom":"Media","titre":"Sports Journalist / Host","bio":"You want to hire Luc Gélinas? Consult us!514 582 3306 / info@mvpsportsmarketing.com A well-known sports journalist, Luc Gélinas has been following the Canadiens' activities for RDS for over twenty-five years.","roles":["Host","Media Personality","Olympian","Champion"],"qualites":["Performer sous pression"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/luc-gelinas"},{"id":"marc-griffin","nom":"Marc Griffin","prenom":"Marc","famille":"Griffin","photo":"assets/talents/marc-griffin.webp","photo2":"assets/talents/marc-griffin-b.webp","cat":"media","catNom":"Media","titre":"Sports commentator - Former pro Baseball player","bio":"You want to hire Marc Griffin? Consult us!514 582 3306 / info@mvpsportsmarketing.com Marc Griffin is a former baseball player from Quebec.","roles":["Media Personality","Olympian"],"qualites":["Reconversion","Persévérance"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/marc-griffin"},{"id":"louis-jean","nom":"Louis Jean","prenom":"Louis","famille":"Jean","photo":"assets/talents/louis-jean.webp","photo2":"assets/talents/louis-jean-b.webp","cat":"media","catNom":"Media","titre":"Professional Host / Sport Journalist","bio":"Louis Jean is a professional presenter and sports journalist with nearly 25 years of experience on television and radio in both English and French. Throughout his career, he has distinguished himself in the design, planning and execution of world-renowned events, including in hig","roles":["Host","Media Personality"],"qualites":["Haute performance"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/louis-jean"},{"id":"michel-lacroix","nom":"Michel Lacroix","prenom":"Michel","famille":"Lacroix","photo":"assets/talents/michel-lacroix.webp","photo2":"assets/talents/michel-lacroix-b.webp","cat":"media","catNom":"Media","titre":"Host / NHL Announcer","bio":"You want to hire Michel Lacroix? Consult us!514 582 3306 / info@mvpsportsmarketing.com Michel Lacroix has been the in-house announcer of the Montreal Canadiens since 1993, the team’s last Stanley cup triumph.","roles":["Host","Media Personality","Olympian","Champion","Sports Legend"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/michel-lacroix"},{"id":"maxime-lalonde","nom":"Maxime Lalonde","prenom":"Maxime","famille":"Lalonde","photo":"assets/talents/maxime-lalonde.webp","photo2":"assets/talents/maxime-lalonde-b.webp","cat":"media","catNom":"Media","titre":"Host","bio":"You want to hire Maxime Lalonde? Consult us!514 582-3306 / info@mvpsportsmarketing.com has hosted many major events in Quebec, Canada and even as far afield as the USA.","roles":["Host"],"qualites":["Haute performance"],"projets":["Brand Campaign","Corporate Event","Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/maxime-lalonde"},{"id":"yanick-levesque","nom":"Yanick Lévesque","prenom":"Yanick","famille":"Lévesque","photo":"assets/talents/yanick-levesque.webp","photo2":"assets/talents/andre-roy-b.webp","cat":"media","catNom":"Media","titre":"Animator / Producer","bio":"Want to hire Yanick Lévesque? Consult us!514 582 3306 / info@mvpsportsmarketing.com Yanick Lévesque is the producer and co-host of the program Hors-jeu 2.0 and the producer and occasional host for the show L'Antichambre on RDS.","roles":["Host"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/yanick-levesque"},{"id":"chantal-machabee","nom":"Chantal Machabée","prenom":"Chantal","famille":"Machabée","photo":"assets/talents/chantal-machabee.webp","photo2":"assets/talents/chantal-machabee-b.webp","cat":"media","catNom":"Media","titre":"First woman to present a sports bulletin on television • Vice President of Communications for the Montreal Canadiens • Sports commentator • Speaker • Animator","bio":"Want to hire Chantal Machabée? Consult us!514 582 3306  / info@mvpsportsmarketing.com Chantal Machabée is one of the most respected female journalists in North America.","roles":["Speaker","Host","Media Personality"],"qualites":["Dépassement de soi","Leadership féminin","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/chantal-machabee"},{"id":"elizabeth-rancourt","nom":"Elizabeth Rancourt","prenom":"Elizabeth","famille":"Rancourt","photo":"assets/talents/elizabeth-rancourt.webp","photo2":"assets/talents/elizabeth-rancourt-b.webp","cat":"media","catNom":"Media","titre":"TV Sports Animator","bio":"Want to hire Elizabeth Rancourt? Consult us!514 582 3306 / info@mvpsportsmarketing.com Elizabeth Rancourt has been a TV host and sports journalist for 13 years 'Beat reporter' the Montreal Canadiens and an NHL game host at TVA Sports.","roles":["Host","Media Personality"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/elizabeth-rancourt"},{"id":"paul-rivard","nom":"Paul Rivard","prenom":"Paul","famille":"Rivard","photo":"assets/talents/paul-rivard.webp","photo2":"assets/talents/paul-rivard-b.webp","cat":"media","catNom":"Media","titre":"TV host and analyst","bio":"You want to hire Paul Rivard? Consult us!514 582 3306 / info@mvpsportsmarketing.com Paul Rivard is one of Quebec's most experienced television hosts and sports analysts.","roles":["Host","Media Personality","Olympian"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/paul-rivard"},{"id":"patrice-bernier","nom":"Patrice Bernier","prenom":"Patrice","famille":"Bernier","photo":"assets/talents/patrice-bernier.webp","photo2":"assets/talents/patrice-bernier-b.webp","cat":"soccer","catNom":"Soccer","titre":"Former Captain Montreal Impact / Speaker / Ambasssador / Guest of honour","bio":"You want to hire Patrice Bernier? Consult us!514 582 3306  / info@mvpsportsmarketing.com Patrice Bernier is undoubtedly one of the greatest Canadian soccer player in history.","roles":["Speaker"],"qualites":["Leadership","Esprit d’équipe","Persévérance"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/patrice-bernier"},{"id":"hassoun-camara","nom":"Hassoun Camara","prenom":"Hassoun","famille":"Camara","photo":"assets/talents/hassoun-camara.webp","photo2":"assets/talents/hassoun-camara-b.webp","cat":"soccer","catNom":"Soccer","titre":"Former MLS player / Speaker / TV Host","bio":"You want to hire Hassoun Camara? Consult us!514 582 3306  / info@mvpsportsmarketing.com Hassoun Camara is a former professional soccer player.","roles":["Speaker","Host","Olympian"],"qualites":["Performer sous pression"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/hassoun-camara"},{"id":"maxime-crepeau","nom":"Maxime Crépeau","prenom":"Maxime","famille":"Crépeau","photo":"assets/talents/maxime-crepeau.webp","photo2":"assets/talents/maxime-crepeau-b.webp","cat":"soccer","catNom":"Soccer","titre":"Goalkeeper in MLS","bio":"Want to hire Maxime Crépeau? Consult us!514-582-3306 / info@mvpsportsmarketing.com Maxime Crépeau made his debut in Major League Soccer (MLS) in 2012 with Vancouver Whitecaps FC, after being selected in the draft.","roles":["Speaker"],"qualites":["Persévérance","Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/maxime-crepeau"},{"id":"samuel-piette","nom":"Samuel Piette","prenom":"Samuel","famille":"Piette","photo":"assets/talents/samuel-piette.webp","photo2":"assets/talents/samuel-piette-b.webp","cat":"soccer","catNom":"Soccer","titre":"CF Montreal Capitain/Player • Ambassador • Influencer","bio":"You want to hire Samuel Piette? Consult us!514 582 3306  / info@mvpsportsmarketing.com Samuel Piette’s professional career started at the age of 15 years old..","roles":["Brand Ambassador"],"qualites":["Haute performance"],"projets":["Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/samuel-piette"},{"id":"matthew-bergeron","nom":"Matthew Bergeron","prenom":"Matthew","famille":"Bergeron","photo":"assets/talents/matthew-bergeron.webp","photo2":"assets/talents/matthew-bergeron-b.webp","cat":"other","catNom":"Others","titre":"NFL Player","bio":"Matthew Bergeron's journey in the NFL reflects a remarkable path marked by resilience and dedication. Hailing from Victoriaville, he honed his football skills from an early age in high school before shining at Cégep de Thetford Mines.","roles":["Speaker"],"qualites":["Leadership","Motivation","Esprit d’équipe"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/matthew-bergeron"},{"id":"eric-gagne","nom":"Eric Gagné","prenom":"Eric","famille":"Gagné","photo":"assets/talents/eric-gagne.webp","photo2":"assets/talents/eric-gagne-b.webp","cat":"other","catNom":"Others","titre":"Former MLB Pitcher / Keynote Speaker / Ambassador","bio":"Originally from Mascouche on the North Shore of Montreal, Éric Gagné was a 30th round pick of the Chicago White Sox in the 1994 draft. Rather than agreeing with the Sox, he decided to join the Seminole State College team.","roles":["Speaker","Brand Ambassador","Champion"],"qualites":["Persévérance","Haute performance","Dépassement de soi"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/eric-gagne"},{"id":"sylvain-guimond","nom":"Sylvain Guimond","prenom":"Sylvain","famille":"Guimond","photo":"assets/talents/sylvain-guimond.webp","photo2":"assets/talents/sylvain-guimond-b.webp","cat":"other","catNom":"Others","titre":"Sports psychology Doctor / Speaker","bio":"You want to hire Sylvain Guimond? Consult us!514 582 3306 / info@mvpsportsmarketing.com Sylvain Guimond is a world-class speaker whose reputation is well established.","roles":["Speaker","Olympian"],"qualites":["Leadership","Haute performance","Motivation"],"projets":["Conference / Keynote"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/sylvain-guimond"},{"id":"bruno-heppell","nom":"Bruno Heppell","prenom":"Bruno","famille":"Heppell","photo":"assets/talents/bruno-heppell.webp","photo2":"assets/talents/bruno-heppell-b.webp","cat":"other","catNom":"Others","titre":"Bruno Heppell","bio":"Want to hire Bruno Heppell? Consult us!514 582 3306 / info@mvpsportsmarketing.com Bruno Heppell is a former fullback in the Canadian Football League (CFL).","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/bruno-heppell"},{"id":"pierre-lavoie","nom":"Pierre Lavoie","prenom":"Pierre","famille":"Lavoie","photo":"assets/talents/pierre-lavoie.webp","photo2":"assets/talents/pierre-lavoie-b.webp","cat":"other","catNom":"Others","titre":"Motivational Speaker / Triathlon Athlete / Founder Le Grand Défi","bio":"You want to hire Pierre Lavoie? Consult us!514 582 3306 / info@mvpsportsmarketing.com Pierre Lavoie is a family father from Saguenay-Lac-Saint-Jean who, struck by the death of two of his children suffering from lactic acidosis, a rare hereditary disease very present in this regio","roles":["Speaker","Brand Ambassador","Champion"],"qualites":["Motivation","Persévérance"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/pierre-lavoie"},{"id":"maude-aimee-leblanc","nom":"Maude-Aimée Leblanc","prenom":"Maude-Aimée","famille":"Leblanc","photo":"assets/talents/maude-aimee-leblanc.webp","photo2":"assets/talents/maude-aimee-leblanc-b.webp","cat":"other","catNom":"Others","titre":"Professional Golfer","bio":"Want to hire Maude-Aimée Leblanc? Consult us!514 582 3306 / info@mvpsportsmarketing.com Maude-Aimée Leblanc is the best female golf player in Quebec and she is back on the LPGA in 2022 !","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/maude-aimee-leblanc"},{"id":"claude-raymond","nom":"Claude Raymond","prenom":"Claude","famille":"Raymond","photo":"assets/talents/claude-raymond.webp","photo2":"assets/talents/claude-raymond-b.webp","cat":"other","catNom":"Others","titre":"Major League Baseball Legend / Speaker / MLB Analyst","bio":"You want to hire Claude Raymond? Consult us!514 582 3306  / info@mvpsportsmarketing.com Claude Raymond is a true Quebec legend of major league baseball.","roles":["Speaker","Media Personality","Sports Legend","Coach"],"qualites":["Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/claude-raymond"},{"id":"lysanne-richard","nom":"Lysanne Richard","prenom":"Lysanne","famille":"Richard","photo":"assets/talents/lysanne-richard.webp","photo2":"assets/talents/lysanne-richard-b.webp","cat":"other","catNom":"Others","titre":"High Diver / Speaker","bio":"Want to hire Lysanne Richard as a keynote speaker? Consult us!","roles":["Speaker","Champion"],"qualites":["Motivation","Persévérance","Haute performance"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/lysanne-richard"}];
+const $=(s,c)=>(c||document).querySelector(s), $$=(s,c)=>[...(c||document).querySelectorAll(s)];
+const SPORTS=[['hockey','Hockey'],['boxing','Boxe'],['olympics','Olympisme'],['soccer','Soccer'],['mma','MMA'],['media','Médias'],['other','Autres']];
+const ROLES=['Speaker','Brand Ambassador','Host','Media Personality','Olympian','Champion','Sports Legend','Coach'];
+const ROLE_FR={'Speaker':'Conférencier','Brand Ambassador':'Ambassadeur de marque','Host':'Animateur','Media Personality':'Personnalité médiatique','Olympian':'Olympien','Champion':'Champion','Sports Legend':'Légende du sport','Coach':'Entraîneur'};
+const PROJETS=['Conference / Keynote','Brand Campaign','Corporate Event','Media Appearance','Charity Event'];
+const PROJ_FR={'Conference / Keynote':'Conférence','Brand Campaign':'Campagne de marque','Corporate Event':'Événement corporatif','Media Appearance':'Apparition médiatique','Charity Event':'Événement caritatif'};
+const STATUTS=['Former Athlete','Olympian','Media / Broadcasting'];
+const STAT_FR={'Former Athlete':'Ancien athlète','Olympian':'Olympien','Media / Broadcasting':'Médias / diffusion'};
+const QUALITES=[...new Set(TALENTS.flatMap(t=>t.qualites))].sort();
+
+const E={sport:new Set(),role:new Set(),projet:new Set(),statut:new Set(),qualite:new Set(),q:'',tri:'featured',page:1};
+const PAR_PAGE=10;   /* 2 rangées de 5 à l'arrivée */
+const nb=x=>TALENTS.filter(x).length;
+
+/* ---- lecture de l'URL : permet d'ouvrir la page deja filtree ---- */
+(function lireURL(){
+  const u=new URLSearchParams(location.search);
+  const map={sport:'sport',role:'role',topic:'qualite',project:'projet',status:'statut'};
+  Object.entries(map).forEach(([p,c])=>{ const v=u.get(p); if(v) v.split(',').forEach(x=>E[c].add(x)); });
+  if(u.get('q')) E.q=u.get('q');
+})();
+function ecrireURL(){
+  const u=new URLSearchParams();
+  if(E.sport.size)u.set('sport',[...E.sport].join(','));
+  if(E.role.size)u.set('role',[...E.role].join(','));
+  if(E.qualite.size)u.set('topic',[...E.qualite].join(','));
+  if(E.projet.size)u.set('project',[...E.projet].join(','));
+  if(E.statut.size)u.set('status',[...E.statut].join(','));
+  if(E.q)u.set('q',E.q);
+  /* Dans un aperçu en bac à sable, l'écriture de l'URL est interdite :
+     on l'ignore plutôt que de laisser une erreur dans la console. */
+  try{ history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:'')); }catch(e){}
+}
+
+/* ---- panneau de filtres ---- */
+function groupe(titre,cle,options,libelle){
+  const compte=v=>nb(t=>(cle==='sport'?t.cat===v:cle==='statut'?t.statut===v:t[cle==='role'?'roles':'projets'].includes(v)));
+  return `<div class="fgrp"><h3>${titre}</h3>${options.map(o=>{
+    const val=Array.isArray(o)?o[0]:o, lib=Array.isArray(o)?o[1]:(libelle?libelle[o]||o:o);
+    return `<label class="fopt"><input type="checkbox" data-c="${cle}" value="${val}" ${E[cle].has(val)?'checked':''}><span>${lib}</span><em>${compte(val)}</em></label>`;
+  }).join('')}</div>`;
+}
+$('#side').innerHTML =
+  groupe('Sport','sport',SPORTS) +
+  groupe('Rôle','role',ROLES,ROLE_FR) +
+  groupe('Type de projet','projet',PROJETS,PROJ_FR) +
+  groupe('Profil','statut',STATUTS,STAT_FR);
+
+$('#chips').innerHTML = QUALITES.map(q=>`<button class="chip" data-q="${q}" aria-pressed="${E.qualite.has(q)}">${q}</button>`).join('');
+
+/* ---- filtrage ---- */
+function filtrer(){
+  const q=E.q.trim().toLowerCase();
+  let r=TALENTS.filter(t=>{
+    if(E.sport.size && !E.sport.has(t.cat)) return false;
+    if(E.role.size && ![...E.role].every(x=>t.roles.includes(x))) return false;
+    if(E.projet.size && ![...E.projet].every(x=>t.projets.includes(x))) return false;
+    if(E.statut.size && !E.statut.has(t.statut)) return false;
+    if(E.qualite.size && ![...E.qualite].every(x=>t.qualites.includes(x))) return false;
+    if(q){
+      const foin=[t.nom,t.titre,t.catNom,t.bio,...t.roles,...t.qualites,...t.projets].join(' ').toLowerCase();
+      if(!foin.includes(q)) return false;
+    }
+    return true;
+  });
+  if(E.tri==='az') r.sort((a,b)=>a.famille.localeCompare(b.famille,'fr'));
+  if(E.tri==='sport') r.sort((a,b)=>a.catNom.localeCompare(b.catNom)||a.famille.localeCompare(b.famille,'fr'));
+  return r;
+}
+
+/* ---- carte ---- */
+const ICO={fb:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>',
+  ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  li:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8H4v12h2.9V8zM5.4 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20 13.4c0-3.2-1.7-4.7-4-4.7-1.8 0-2.7 1-3.1 1.7V8H10v12h2.9v-6.7c0-1.4.9-2.1 1.9-2.1s1.8.7 1.8 2.1V20H20v-6.6z"/></svg>'};
+const FLIP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 0114.5-7M21 12a9 9 0 01-14.5 7"/><path d="M17 3v4h-4M7 21v-4h4"/></svg>';
+const MAIL=n=>`mailto:info@mvpsportsmarketing.com?subject=${encodeURIComponent('Projet avec '+n)}&body=${encodeURIComponent("Bonjour,\n\nJ'aimerais discuter d'un projet avec "+n+".\n\nType de projet :\nDate :\nPublic visé :\n\nMerci.")}`;
+
+function carte(t){
+  const el=document.createElement('article'); el.className='tc';
+  const soc=Object.entries(t.social||{}).map(([k,u])=>`<a href="${u}" target="_blank" rel="noopener" aria-label="${k} de ${t.nom}">${ICO[k]||''}</a>`).join('');
+  const roles=t.roles.slice(0,2).map(r=>ROLE_FR[r]||r);
+  el.innerHTML=`
+   <div class="tc__in">
+    <div class="tc__f">
+      <div class="tc__ph">
+        <img src="${t.photo}" alt="${t.nom}" loading="lazy" width="300" height="300">
+        <span class="tc__cat">${t.catNom}</span>
+        ${soc?`<span class="tc__soc">${soc}</span>`:''}
+        <span class="tc__ini">${(t.prenom[0]||'')+(t.famille[0]||'')}</span>
+        <button class="tc__flip" aria-label="Voir les détails de ${t.nom}">${FLIP}</button>
+      </div>
+      <div class="tc__body">
+        <h3 class="tc__nom">${t.nom}</h3>
+        <p class="tc__sub">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.catNom:t.titre}</p>
+        <div class="tc__tags">${roles.map(r=>`<span class="tc__tag">${r}</span>`).join('')}</div>
+      </div>
+      <div class="tc__cta">
+        <a class="tc__b1" href="${MAIL(t.nom)}">Travailler avec ${t.nom}</a>
+        <a class="tc__b2" href="profil.html?id=${t.id}">Voir le profil</a>
+      </div>
+    </div>
+    <div class="tc__b">
+      <button class="tc__flip" aria-label="Retour">${FLIP}</button>
+      <h3 class="tc__bh">${t.nom}</h3>
+      <p class="tc__bt">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.catNom:t.titre}</p>
+      ${t.bio?`<div class="tc__sec"><h4>Parcours</h4><p>${t.bio}</p></div>`:''}
+      <div class="tc__sec"><h4>Disponible pour</h4><ul>${t.projets.map(p=>`<li>${PROJ_FR[p]||p}</li>`).join('')}</ul></div>
+      <div class="tc__sec"><h4>Thèmes</h4><ul>${t.qualites.map(q=>`<li>${q}</li>`).join('')}</ul></div>
+      <div class="tc__bcta">
+        <a class="tc__b1" href="${MAIL(t.nom)}">Travailler avec ${t.nom}</a>
+        <a class="tc__b2" href="profil.html?id=${t.id}">Voir le profil</a>
+      </div>
+    </div>
+   </div>`;
+  $$('.tc__flip',el).forEach(b=>b.addEventListener('click',e=>{e.preventDefault();el.classList.toggle('est-ouverte');}));
+  return el;
+}
+
+/* ---- rendu ---- */
+function rendre(){
+  const r=filtrer();
+  $('#nb').textContent=r.length;
+  const max=E.page*PAR_PAGE;
+  const visibles=r.slice(0,max);
+  const g1=$('#grid');
+  g1.innerHTML='';
+  if(!r.length){
+    g1.innerHTML=`<div class="vide"><b>Aucune personnalité ne correspond à ces critères.</b>Essayez de retirer un filtre ou d'élargir votre recherche.</div>`;
+  } else {
+    /* Tous les résultats visibles vont dans la grille principale. La vitrine
+       de projets et la rangée « en vedette » qui suivent sont permanentes. */
+    visibles.forEach(t=>g1.appendChild(carte(t)));
+  }
+  $('#plus').parentElement.style.display = r.length>max ? '' : 'none';
+  $('#plus').textContent='Voir plus de personnalités ('+(r.length-max)+')';
+  rendreActifs(r.length);
+  ecrireURL();
+}
+function rendreActifs(){
+  const items=[];
+  const push=(cle,val,lib)=>items.push(`<span class="actif">${lib}<button data-x="${cle}" data-v="${val}" aria-label="Retirer ${lib}">×</button></span>`);
+  E.sport.forEach(v=>push('sport',v,(SPORTS.find(s=>s[0]===v)||[,v])[1]));
+  E.role.forEach(v=>push('role',v,ROLE_FR[v]||v));
+  E.projet.forEach(v=>push('projet',v,PROJ_FR[v]||v));
+  E.statut.forEach(v=>push('statut',v,STAT_FR[v]||v));
+  E.qualite.forEach(v=>push('qualite',v,v));
+  if(E.q) push('q','',`« ${E.q} »`);
+  const box=$('#actifs');
+  box.innerHTML = items.length ? items.join('')+'<button class="vider" id="vider">Tout effacer</button>' : '';
+  const n=E.sport.size+E.role.size+E.projet.size+E.statut.size+E.qualite.size;
+  $('#fcount').textContent = n?` (${n})`:'';
+}
+
+/* ---- interactions ---- */
+$('#side').addEventListener('change',e=>{
+  const i=e.target.closest('input[data-c]'); if(!i)return;
+  const s=E[i.dataset.c]; i.checked?s.add(i.value):s.delete(i.value); E.page=1; rendre();
+});
+$('#chips').addEventListener('click',e=>{
+  const b=e.target.closest('.chip'); if(!b)return;
+  const q=b.dataset.q; E.qualite.has(q)?E.qualite.delete(q):E.qualite.add(q);
+  b.setAttribute('aria-pressed',E.qualite.has(q)); E.page=1; rendre();
+});
+$('#actifs').addEventListener('click',e=>{
+  if(e.target.id==='vider'){ ['sport','role','projet','statut','qualite'].forEach(c=>E[c].clear()); E.q=''; $('#q').value=''; }
+  const b=e.target.closest('[data-x]');
+  if(b){ b.dataset.x==='q' ? (E.q='',$('#q').value='') : E[b.dataset.x].delete(b.dataset.v); }
+  if(e.target.id==='vider'||b){ E.page=1; synchroniser(); rendre(); }
+});
+let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout(()=>{E.q=e.target.value;E.page=1;rendre();},160); });
+$('#tri').addEventListener('change',e=>{E.tri=e.target.value;rendre();});
+$('#plus').addEventListener('click',()=>{E.page++;rendre();});
+$('#fopen').addEventListener('click',()=>$('#side').classList.add('est-ouvert'));
+$('#fclose').addEventListener('click',()=>$('#side').classList.remove('est-ouvert'));
+function synchroniser(){
+  $$('#side input[data-c]').forEach(i=>i.checked=E[i.dataset.c].has(i.value));
+  $$('.chip').forEach(c=>c.setAttribute('aria-pressed',E.qualite.has(c.dataset.q)));
+}
+/* ---- carrousel de réalisations (projets réels de MVP) ---- */
+const ARROW='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":"Ambassadeur","n":"Chantal Machabée × Tim Hortons","u":"projet.html?id=chantalmachabee-timhortons"},{"img":"assets/projets/cibc-1.jpg","k":"Ambassadeur","n":"Paul Byron × CIBC","u":"projet.html?id=cibc"},{"img":"assets/projets/brunysuringuestofhonoratthekinballquebecgala-1.jpg","k":"Ambassadeur","n":"Bruny Surin × Kin-Ball","u":"projet.html?id=brunysuringuestofhonoratthekinballquebecgala"},{"img":"assets/projets/patrickroymariotremblayubereats-1.jpg","k":"Ambassadeur","n":"Patrick Roy × Uber Eats","u":"projet.html?id=patrickroymariotremblayubereats"},{"img":"assets/projets/leadershipaufeminin-1.jpg","k":"Conférence","n":"LEADERSHIP au FÉMININ with Mrs MACHABÉE, DICAIRE","u":"projet.html?id=leadershipaufeminin"},{"img":"assets/projets/lasik-md-partner-with-pierre-lavoie-1.jpg","k":"Ambassadeur","n":"Pierre Lavoie × LASIK MD","u":"projet.html?id=lasik-md-partner-with-pierre-lavoie"}];
+(function carrousel(){
+  const rail=$('#pfRail'); if(!rail) return;
+  rail.innerHTML=PROJETS_MVP.map(p=>`
+    <a class="pfc" href="${p.u}" target="_blank" rel="noopener">
+      <img src="${p.img}" alt="${p.n}" loading="lazy">
+      <span class="pfc__t"><span class="pfc__k">${p.k}</span>
+        <span class="pfc__n">${p.n}</span>
+        <span class="pfc__v">Voir le projet ${ARROW}</span></span>
+    </a>`).join('');
+  const pas=()=>{const c=rail.querySelector('.pfc');return c?c.offsetWidth+parseFloat(getComputedStyle(rail).gap||16):400;};
+  $('#pfPrev').addEventListener('click',()=>rail.scrollBy({left:-pas(),behavior:'smooth'}));
+  $('#pfNext').addEventListener('click',()=>rail.scrollBy({left: pas(),behavior:'smooth'}));
+  const maj=()=>{
+    const max=rail.scrollWidth-rail.clientWidth;
+    const p=max>0?rail.scrollLeft/max:0;
+    const f=$('#pfFill'); if(f) f.style.transform=`translateX(${p*(100/0.22-100)*0.22}%)`;
+    $('#pfPrev').disabled = rail.scrollLeft<4;
+    $('#pfNext').disabled = rail.scrollLeft>max-4;
+  };
+  rail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
+})();
+
+
+/* Rangée « en vedette » : cinq personnalités de disciplines différentes,
+   choisies parmi celles dont la biographie est la plus complète. Elles ne
+   dépendent pas des filtres — c'est une vitrine, pas un résultat de recherche. */
+(function vedettes(){
+  const g2=$('#grid2'); if(!g2) return;
+  const vus=new Set(); const choix=[];
+  ['hockey','boxing','olympics','media','soccer','mma','other'].forEach(cat=>{
+    if(choix.length>=5) return;
+    const c=TALENTS.filter(t=>t.cat===cat&&t.bio).sort((a,b)=>b.bio.length-a.bio.length)[0];
+    if(c&&!vus.has(c.id)){ vus.add(c.id); choix.push(c); }
+  });
+  choix.forEach(t=>g2.appendChild(carte(t)));
+})();
+$('#q').value=E.q; $('#statTotal').textContent=TALENTS.length;
+synchroniser(); rendre();
+</script>
+
+<script>
+/* Lettrage vidéo du pied de page : la vidéo est en chargement différé, il faut
+   donc la démarrer quand elle entre à l'écran. Sans cela elle reste figée. */
+(function(){
+  var v=document.querySelector('.footer__cut-video'); if(!v) return;
+  v.muted=true; v.setAttribute('muted',''); v.playsInline=true; v.loop=true;
+  var lance=function(){
+    try{ v.load(); }catch(e){}
+    var p=v.play(); if(p&&p.catch) p.catch(function(){});
+  };
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){
+      e.forEach(function(x){ if(x.isIntersecting){ lance(); io.disconnect(); } });
+    },{rootMargin:'300px'});
+    io.observe(v);
+  } else { lance(); }
+  /* certains navigateurs refusent tant qu'il n'y a pas eu d'interaction */
+  ['pointerdown','touchstart','keydown'].forEach(function(ev){
+    addEventListener(ev,function once(){ if(v.paused) lance(); removeEventListener(ev,once); },{once:true});
+  });
+})();
+</script>
+</body></html>

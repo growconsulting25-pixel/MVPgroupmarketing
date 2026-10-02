@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MVP Group — Agence de marketing sportif | Ambassadeurs, conférenciers et porte-parole</title>
+<meta name="description" content="MVP Group — agence de marketing sportif à Montréal. Ambassadeurs de marque, conférenciers, porte-parole et influenceurs pour vos campagnes et événements corporatifs au Québec, au Canada et aux États-Unis.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   MVP GROUP — HOMEPAGE V1
+   Colour budget: ~85% black/white/grey · ~10% dark blue · ~5% gold
+   Blue = labels, active states, thin lines. Gold = primary CTA, one word.
+   ===================================================================== */
+:root{
+  --black:#050505; --carbon:#111111; --white:#FFFFFF; --soft:#F6F6F2;
+  --grey:#D9D9D4; --muted:#969696; --blue:#123B6D; --gold:#C5A253;
+  --font:'Inter Tight', system-ui, sans-serif;
+  --nav-h:98px; --gutter:clamp(20px,4vw,64px);
+  --ease:cubic-bezier(.76,0,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--black);color:var(--white);line-height:1.5;overflow-x:hidden;font-size:16px}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- type scale ---------- */
+.display{font-weight:800;line-height:.98;letter-spacing:-.03em;text-transform:uppercase}
+.label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.label--blue{color:var(--blue)}
+.gold{color:var(--gold)}
+/* sur fond sombre, le bleu de la charte manque de contraste : on l'eclaircit */
+.bleu{color:#1E5299}
+.mutedword{color:var(--muted)}
+.lede{font-size:clamp(17px,1.35vw,21px);line-height:1.55;max-width:640px;font-weight:400}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 28px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease),transform .35s var(--ease)}
+.btn--gold{background:var(--gold);color:var(--black)}
+.btn--blue{background:var(--blue);color:var(--white)}
+.btn--blue:hover{background:var(--black);color:var(--white)}
+.btn .arrow{width:17px;height:17px;flex:none;transition:transform .35s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--gold:hover{background:var(--blue);color:var(--white)}
+.btn--ghost{padding:0;gap:10px;border-radius:0;position:relative}
+.btn--ghost::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:currentColor;transform:scaleX(.3);transform-origin:left;transition:transform .5s var(--ease)}
+.btn--ghost:hover::after{transform:scaleX(1)}
+.arrow{width:14px;height:14px;flex:none}
+.on-white .btn--ghost{color:var(--black)}
+
+/* ---------- header ---------- */
+.header{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--gutter);color:var(--white);transition:color .6s var(--ease)}
+.header[data-theme="dark"]{color:var(--black)}
+.header__logo{display:flex;align-items:center;height:100%}
+.header__logo img{height:clamp(34px,3.6vw,52px);width:auto;display:block}
+.header__logo .logo--black{display:none}
+.header[data-theme="dark"] .logo--white{display:none}
+.header[data-theme="dark"] .logo--black{display:block}
+
+.header__nav{display:flex;align-items:center;gap:clamp(16px,1.9vw,30px);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.header__nav a{position:relative;padding:6px 0}
+.navitem{position:relative;display:flex;align-items:center}
+.navdrop{position:absolute;left:50%;top:100%;transform:translateX(-50%) translateY(6px);min-width:250px;background:var(--black);padding:10px 0;opacity:0;visibility:hidden;transition:opacity .3s var(--ease),transform .3s var(--ease);border-top:2px solid var(--blue)}
+.navitem:hover .navdrop,.navitem:focus-within .navdrop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.navdrop a{display:block;padding:9px 20px;font-size:11px;letter-spacing:.1em;color:var(--grey);text-transform:uppercase;white-space:nowrap}
+.navdrop a:hover{color:var(--white);background:rgba(255,255,255,.06)}
+.navdrop a::after{display:none}
+.header__tel{font-size:13px;font-weight:600;letter-spacing:.03em;color:inherit;white-space:nowrap;position:relative;transition:color .3s}
+.header__tel::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.header__tel:hover::after{transform:scaleX(1);transform-origin:left}
+.lang button{font:inherit;font-size:12px;letter-spacing:.14em;font-weight:600;color:inherit;opacity:.75;transition:opacity .3s,color .3s}
+.lang button.is-active{opacity:1;color:var(--blue)}
+.header[data-theme="light"] .lang button.is-active{color:var(--gold)}
+.header__nav > a::after,.navitem > a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.header__nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.header__right{display:flex;align-items:center;justify-content:flex-end;gap:clamp(14px,1.6vw,24px);padding-left:26px}
+.header__logo{justify-self:start}
+.lang{display:flex;gap:8px;font-size:12px;letter-spacing:.14em;font-weight:600}
+.lang b{color:var(--blue)}
+.header[data-theme="light"] .lang b{color:var(--gold)}
+/* En-tete : bleu au repos, or au survol — l'inverse des autres boutons. */
+.header .btn{background:#1E5299;color:var(--white);padding:12px 20px;font-size:10.5px;letter-spacing:.12em;white-space:nowrap}
+.header .btn:hover{background:var(--gold);color:var(--black)}
+.burger{display:none;width:44px;height:44px;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.burger span{width:22px;height:2px;background:currentColor;transition:transform .35s}
+.mobile-menu{position:fixed;inset:0;background:var(--black);color:var(--white);z-index:99;display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);gap:22px;transform:translateY(-100%);transition:transform .6s var(--ease)}
+.mobile-menu.open{transform:none}
+.mobile-menu a{font-size:32px;font-weight:800;text-transform:uppercase;line-height:1}
+
+
+.vfail{position:absolute;left:50%;top:calc(var(--nav-h) + 24px);transform:translateX(-50%);z-index:80;background:#C5A253;color:#050505;padding:14px 20px;border-radius:3px;max-width:min(560px,86vw);font-size:13px;line-height:1.5;display:none}
+.vfail.show{display:block}
+.vfail b{display:block;font-size:14px;margin-bottom:4px}
+.vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:80;width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.6);color:#fff;display:none;place-items:center;backdrop-filter:blur(4px)}
+.vplay.show{display:grid}
+/* =====================================================================
+   SECTION 1 — VIDEO HERO + WHITE INTRO PANEL
+   ===================================================================== */
+.hero{position:sticky;top:0;z-index:1;height:100svh;min-height:600px;overflow:hidden;background:var(--black)}
+.hero__media{position:absolute;inset:0;transform-origin:center}
+/* La campagne est diffusee en couleur : aucune desaturation. */
+.hero__video{width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:contrast(1.04) saturate(1.05)}
+
+.hero__overlay{position:absolute;inset:0;background:rgba(5,5,5,.5)}/* flat, not gradient */
+.hero__content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--gutter) clamp(56px,9vh,110px);max-width:1400px}
+.hero .label{margin-bottom:26px}
+.hero h1{font-size:clamp(42px,7vw,132px);max-width:13ch;line-height:.94;letter-spacing:-.03em}
+.hero .lede{margin:28px 0 36px;color:var(--grey)}
+/* Sans paragraphe, le bouton reprend la respiration qu'il avait sous le texte. */
+
+.hero__scroll{position:absolute;right:var(--gutter);bottom:40px;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
+.hero__scroll i{width:1px;height:44px;background:var(--white);display:block;transform-origin:top;animation:scrollhint 2.2s var(--ease) infinite}
+@keyframes scrollhint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* white panel that rises and becomes the intro */
+/* Flux continu : un fond unique derrière les trois sections. */
+.flux{position:relative;z-index:2;background:var(--white)}
+.flux > .stickwrap,.flux > section{position:relative;z-index:1}
+/* Décor : une seule image, très pâle, fixe derrière le flux. Aucune ligne,
+   aucun cercle — rien qui puisse concurrencer les ellipses du carrousel.
+   Les dégradés l'estompent sur les quatre bords pour éviter toute arête. */
+.flux__decor{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:0;pointer-events:none;overflow:hidden}
+.flux__img{position:absolute;inset:0;background:url('assets/fond-sport.jpg') center/cover no-repeat;opacity:.55;
+  -webkit-mask-image:radial-gradient(130% 100% at 50% 45%, #000 24%, transparent 82%);
+  mask-image:radial-gradient(130% 100% at 50% 45%, #000 24%, transparent 82%)}
+.flux__decor::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.45) 30%,rgba(255,255,255,.45) 70%,#fff 100%)}
+/* Les trois sections partagent le fond du flux : plus aucun fond propre. */
+.stickwrap{display:contents}
+/* Mise en page éditoriale : titre long à gauche, deux colonnes courtes en haut
+   à droite volontairement décalées, chiffres en bas séparés par des filets. */
+.intro{position:relative;z-index:2;min-height:100svh;background:transparent;color:var(--black);display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.8vh,34px);padding:calc(var(--nav-h) + 5vh) var(--gutter) 5vh;overflow:hidden}
+.intro__top{display:flex;flex-direction:column;align-items:center;gap:clamp(22px,3.4vh,44px);text-align:center}
+.intro__title{grid-column:1/-1;font-size:clamp(34px,6.2vw,112px);font-weight:800;line-height:.94;letter-spacing:-.035em;max-width:24ch;margin:0 auto;text-align:center;text-transform:uppercase}
+.intro__title em{font-style:italic;font-weight:600;color:#2a2a2a}
+.intro__title .w{display:inline-block;overflow:hidden;vertical-align:top}
+.intro__title .w__i{display:inline-block;transform-origin:50% 100%;will-change:transform,opacity}
+.intro__cta{align-self:center;margin-top:clamp(14px,2vh,24px);display:inline-flex;align-items:center;gap:12px;padding:20px 36px;border:1px solid #1E5299;border-radius:999px;background:#1E5299;color:var(--white);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .35s var(--ease),border-color .35s var(--ease),color .35s var(--ease)}
+.intro__cta::before{content:"\21B3";color:var(--white);opacity:.7;transition:color .35s,opacity .35s}
+.intro__cta:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.intro__cta:hover::before{color:#5C8FD6;opacity:1}
+.intro__cta:hover::before{color:var(--gold);opacity:1}
+.intro__cols{display:grid;grid-template-columns:1fr;gap:14px;max-width:760px}
+.intro__p{font-size:clamp(15px,1.15vw,19px);line-height:1.6;color:#333;max-width:none;margin:0 auto}
+.intro__p--2{padding-top:2px}
+/* Anneau fin qui tourne très lentement : rappel de l'orbite de la section
+   suivante, posé derrière le texte pour donner de la profondeur. */
+/* Une seule ellipse dorée, très large et très pâle, qui tourne lentement. */
+.intro__orbit{position:absolute;left:50%;top:52%;width:min(112vw,1600px);height:min(112vw,1600px);transform:translate(-50%,-50%);z-index:0;pointer-events:none;overflow:visible}
+.intro__orbit ellipse{fill:none;stroke:var(--gold);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.3;transform-origin:500px 500px;animation:orbitSpin 90s linear infinite}
+.intro__orbit .orbit--b{stroke:var(--black);opacity:.12;animation:orbitSpin 140s linear infinite reverse}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.intro__orbit ellipse{animation:none}}
+.intro__rule{position:absolute;background:var(--grey);z-index:0;pointer-events:none}
+.intro__rule--a{left:0;right:0;top:calc(var(--nav-h) + 4vh);height:1px;opacity:.7}
+.intro__rule--b{left:calc(var(--gutter) + 0px);top:calc(var(--nav-h) + 4vh);width:1px;height:14vh;opacity:.7}
+@media (prefers-reduced-motion:reduce){.intro__ring circle{animation:none}}
+.intro__top,.intro__stats{position:relative;z-index:2}
+.intro__stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(18px,3vh,34px)}
+.stat{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:clamp(14px,2vh,24px) clamp(10px,1.4vw,24px) 0;border-left:1px solid var(--grey);transition:border-color .4s var(--ease)}
+.stat:first-child{padding-left:0;border-left:0}
+.stat:hover{border-color:var(--black)}
+.stat b{font-size:clamp(40px,5.6vw,88px);font-weight:200;line-height:.85;letter-spacing:-.04em;display:flex;align-items:flex-start}
+.stat b i{font-style:normal;font-size:.3em;margin-left:3px;margin-top:.12em;color:var(--muted);transition:color .4s var(--ease)}
+.stat:hover b i{color:var(--gold)}
+.stat span{font-size:clamp(11px,.78vw,13px);line-height:1.35;color:var(--black);text-align:right;max-width:14ch;padding-top:6px}
+.stat span em{font-style:italic;display:block}
+@media (max-width:1180px){.intro__stats{grid-template-columns:repeat(2,1fr);gap:6px 0}.stat:nth-child(3){border-left:0;padding-left:0}.stat{padding-bottom:14px}}
+@media (max-width:900px){.intro__top{grid-template-columns:1fr}.intro__cols{grid-row:auto}.intro__cta{grid-row:auto}.intro__stats{grid-template-columns:1fr 1fr;gap:22px 0}.stat:nth-child(3){border-left:0;padding-left:0}}
+
+/* =====================================================================
+   SECTION 2 — 3D PERSONALITY ORBIT (white) — ref: SPA sports carousel
+   ===================================================================== */
+/* Section 2 pins like the others: the ring holds the screen and each scroll
+   step turns it one personality, releasing to Services only at the end. */
+/* Reserve de defilement : le carrousel reste fige un plein ecran avant que
+   les services ne commencent a monter par-dessus. */
+.orbit{position:relative;z-index:2;background:transparent}
+.orbit__pin{position:relative;height:100svh;min-height:600px;overflow:hidden;color:var(--black);padding:calc(var(--nav-h) + 10px) 0 30px;display:flex;flex-direction:column}
+/* one screen only: the ring is browsed with the arrows/drag, not the scrollbar */
+.orbit__top{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:18px;position:relative;z-index:5}
+.orbit .orbit__all{border:1px solid #1E5299;background:#1E5299;color:var(--white);padding:13px 24px;font-size:11px}
+.orbit .orbit__all:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.orbit__headwrap{position:relative;text-align:center;padding-top:26px}
+.orbit__headwrap::before{content:"";position:absolute;left:50%;top:18px;width:44px;height:2px;background:var(--blue);transform:translateX(-50%)}
+.orbit__ghost{position:absolute;left:50%;top:-14px;transform:translateX(-50%);font-size:clamp(70px,9vw,150px);color:var(--black);opacity:.05;pointer-events:none;line-height:1}
+.orbit__heading{position:relative;font-size:clamp(30px,4.6vw,78px);font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1.1}
+.pill{display:inline-flex;align-items:center;gap:8px}
+.pill__box{display:inline-flex;gap:4px;border-radius:999px;padding:6px;background:var(--white);box-shadow:0 8px 28px rgba(0,0,0,.14)}
+.pill__arrow{width:36px;height:36px;display:grid;place-items:center;transition:transform .3s}
+.pill__arrow:hover{transform:scale(1.15)}
+.pill__arrow svg{width:16px;height:16px}
+.pill__icon{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:background .4s var(--ease),color .4s var(--ease)}
+.pill__icon svg{width:19px;height:19px}
+.pill__icon.is-active{background:var(--blue);color:var(--white)}
+.orbit__stage{position:relative;flex:1;min-height:60vh;perspective:1500px;perspective-origin:50% 50%;user-select:none;touch-action:pan-y;cursor:grab}
+.orbit__stage.dragging{cursor:grabbing}
+.orbit__ring{position:absolute;inset:0;transform-style:preserve-3d}
+.orbit__ellipse{position:absolute;left:50%;top:50%;width:min(66vw,1240px);height:min(18vh,150px);transform:translate(-50%,-50%);pointer-events:none;z-index:45}
+.orbit__ellipse ellipse{fill:none;stroke:var(--black);stroke-width:1;vector-effect:non-scaling-stroke}
+.scene{position:absolute;left:50%;top:50%;width:min(40vw,760px);height:min(62vh,600px);margin:calc(min(62vh,600px)/-2) 0 0 calc(min(40vw,760px)/-2);transform-style:preserve-3d;will-change:transform,opacity,filter}
+.scene__frame{position:absolute;inset:0}
+.scene__env{position:absolute;left:-2%;right:-2%;top:22%;bottom:16%;filter:grayscale(1);opacity:.85;clip-path:polygon(0 6%,34% 0,66% 0,100% 6%,100% 94%,66% 100%,34% 100%,0 94%)}
+.scene__env svg{width:100%;height:100%}
+.scene__name{position:absolute;left:4%;top:44%;font-size:clamp(40px,5.8vw,92px);font-style:italic;font-weight:800;color:var(--blue);line-height:1;pointer-events:none;letter-spacing:-.02em;text-transform:uppercase;z-index:1}
+.scene__cutout{position:absolute;bottom:2%;left:62%;transform:translateX(-50%);height:96%;aspect-ratio:3/4;object-fit:cover;object-position:top;z-index:3;-webkit-mask-image:linear-gradient(#000 78%,transparent 100%),linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(#000 78%,transparent 100%),linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-composite:intersect}
+.scene__cutout--second{left:84%;height:70%;bottom:14%;opacity:.9;filter:grayscale(.5);z-index:2}
+.scene__plus{position:absolute;right:6%;bottom:8%;width:34%;height:14%;z-index:3;opacity:.7;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M11 6v10M6 11h10' stroke='%23050505' stroke-width='1'/%3E%3C/svg%3E")}
+.scene__index{position:absolute;right:2%;top:0;display:flex;align-items:flex-start;gap:2px;z-index:4;line-height:1}
+.scene__index b{font-size:clamp(60px,7vw,120px);font-style:italic;font-weight:200;color:var(--gold)}
+.scene__index span{font-size:clamp(26px,2.6vw,44px);font-weight:200;-webkit-text-stroke:1px var(--muted);color:transparent;margin-top:.55em;font-style:italic}
+.scene__cross{position:absolute;width:14px;height:14px;pointer-events:none;z-index:3}
+.scene__cross::before,.scene__cross::after{content:"";position:absolute;background:var(--black);opacity:.5}
+.scene__cross::before{left:50%;top:0;width:1px;height:100%}
+.scene__cross::after{top:50%;left:0;height:1px;width:100%}
+.orbit__ui{position:absolute;left:clamp(20px,14vw,300px);bottom:5%;z-index:60;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.orbit__person{font-size:clamp(20px,2vw,32px);line-height:1;transition:opacity .3s}
+.orbit__role{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:6px}
+.scene__btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:13px 22px;border-radius:999px;background:var(--gold);color:var(--black);transition:background .35s,color .35s}
+.scene__btn:hover{background:var(--blue);color:var(--white)}
+.orbit__index{position:absolute;left:clamp(20px,8vw,160px);top:34%;padding:10px 12px 10px 0;background:rgba(255,255,255,.82);display:flex;flex-direction:column;gap:12px;font-size:13px;letter-spacing:.08em;font-weight:500;color:var(--muted);z-index:60}
+.orbit__index button{display:flex;align-items:center;gap:8px;transition:color .3s,font-weight .3s}
+.orbit__index button::before{content:"";width:8px;height:1px;background:currentColor;transition:width .4s var(--ease)}
+.orbit__index button.is-active{color:var(--blue);font-weight:700}
+.orbit__index button.is-active::before{width:14px}
+.orbit__hint{text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.orbit__corner{position:absolute;right:var(--gutter);bottom:20px;width:18px;height:18px;z-index:5}
+.orbit__corner::before,.orbit__corner::after{content:"";position:absolute;background:var(--gold)}
+.orbit__corner::before{left:50%;top:0;width:1px;height:100%}.orbit__corner::after{top:50%;left:0;height:1px;width:100%}
+
+/* =====================================================================
+   SECTION 3 — PINNED HORIZONTAL SERVICES (black)
+   ===================================================================== */
+.services{position:relative;z-index:5;height:375vh;background:var(--black)}
+.services::before{content:"";position:absolute;left:0;right:0;top:0;height:26svh;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0))}
+.services__stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--black)}
+.services__bg{position:absolute;left:5vw;top:50%;transform:translateY(-50%);font-size:13vw;white-space:nowrap;color:var(--soft);will-change:transform;pointer-events:none;line-height:1}
+.services__track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;gap:4vw;padding-left:44vw;will-change:transform}
+.panel{position:relative;flex:none;width:clamp(290px,21vw,380px);display:block}
+.panel:nth-child(odd){transform:translateY(-2.5vh)}
+.panel:nth-child(even){transform:translateY(2.5vh)}
+.panel__frame{position:relative;height:44vh;background:var(--carbon);overflow:hidden}
+.panel__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.05);transition:filter 1s var(--ease),transform 1.2s var(--ease)}
+.panel:hover .panel__img{filter:none;transform:scale(1.04)}
+/* Voile leger au repos, pour que le texte blanc reste lisible. Il s'efface
+   completement au survol : l'image se revele alors en pleines couleurs. */
+.panel__shade{position:absolute;inset:0;background:rgba(5,5,5,.34);opacity:1;transition:opacity .55s var(--ease)}
+.panel:hover .panel__shade{opacity:0}
+.panel__tag{position:absolute;left:13px;top:13px;background:var(--soft);color:var(--black);font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:7px 14px;border-radius:999px}
+.panel__num{position:absolute;right:13px;top:13px;font-size:10px;letter-spacing:.2em;color:var(--grey)}
+.panel__body{position:absolute;left:0;right:0;bottom:0;padding:18px 16px}
+.panel__title{font-size:clamp(16px,1.35vw,23px);text-align:right;margin-top:14px;color:var(--white);line-height:.95;max-width:100%}
+.panel__line{width:0;height:1px;background:var(--blue);margin:16px 0 14px;transition:width .7s var(--ease)}
+.panel:hover .panel__line{width:64px}
+.panel__desc{color:var(--grey);font-size:12.5px;line-height:1.5;max-width:40ch;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+/* le CTA de service reste visible en permanence, en pastille dorée */
+.panel__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:11px 18px;border-radius:999px;background:var(--gold);color:var(--black);font-size:10px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;opacity:1;transform:none;transition:background .35s var(--ease),color .35s var(--ease)}
+.panel:hover .panel__cta{background:var(--blue);color:var(--white)}
+.panel__cta::after{display:none}
+.panel:hover .panel__desc,.panel:focus-within .panel__desc{opacity:1;transform:none}
+.services__progress{position:absolute;left:var(--gutter);right:var(--gutter);bottom:34px;height:1px;background:rgba(255,255,255,.18)}
+.services__progress i{display:block;height:100%;width:0;background:var(--blue)}
+.services__count{position:absolute;right:var(--gutter);bottom:46px;font-size:11px;letter-spacing:.2em;color:var(--muted)}
+
+/* =====================================================================
+   SECTION 4 — FULL-BLEED PROJECT SLIDER + BRANDS FINALE (Sportfive)
+   ===================================================================== */
+.slider{position:relative;z-index:6;height:520vh;background:var(--black);color:var(--white)}
+.slider__pin{position:sticky;top:0;height:100svh;min-height:640px;overflow:hidden}
+.slider__stage{position:absolute;inset:0}
+.slide{position:absolute;inset:0;visibility:hidden}
+.slide.is-active{visibility:visible}
+.slide__media{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+.slide__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;will-change:transform;transform-origin:center}
+.slide__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;will-change:transform;transform-origin:center}
+.slide__shade{position:absolute;inset:0;background:rgba(5,5,5,.52)}
+.slide--bright .slide__shade{background:rgba(5,5,5,.68)}
+.slide__copy,.slide__name{text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.slide__copy{position:absolute;left:52vw;bottom:24vh;width:min(38vw,560px)}
+.slide__num{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.slide__copy h2{font-size:clamp(26px,2.6vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.08}
+.slide__copy p{margin:16px 0 0;color:var(--grey);font-size:15px;line-height:1.5;max-width:46ch}
+.slide__stats{display:flex;gap:30px;margin:24px 0 28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16)}
+.slide__stats b{display:block;font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.slide__stats span{display:block;margin-top:4px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.slide__actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.slide__name{position:absolute;left:8vw;bottom:24vh;font-size:clamp(28px,3.4vw,60px);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.85);line-height:1;max-width:38vw}
+.slide__name b{display:block;color:var(--white);-webkit-text-stroke:0;font-size:.42em;font-weight:600;letter-spacing:.06em;margin-top:12px}
+.slide--brands{background:var(--black)}
+.slide--brands .marquee:first-child{margin-top:0}
+.partners__head{position:absolute;left:50vw;bottom:15vh;width:min(42vw,620px)}
+.partners__head h2{font-size:clamp(30px,3.6vw,62px);font-weight:700;letter-spacing:-.03em;line-height:1.08}
+.partners__head h2 .mutedword{display:block;font-weight:600;font-size:.7em;margin-bottom:4px}
+.btn--outline{border:1px solid var(--white);border-radius:999px;padding:16px 26px;color:var(--white)}
+.btn--outline:hover{background:var(--white);color:var(--black)}
+.partners__head .btn{margin-top:24px}
+.marquee{overflow:hidden;width:100%;padding:20px 0 40px}
+.marquee__row{display:flex;gap:6vw;width:max-content;align-items:center;padding:0 3vw}
+/* Au repos : logos blancs (inverses) sur le noir. Au survol : on retire
+   l'inversion pour retrouver les vraies couleurs de la marque, avec une
+   pastille claire derriere pour que les logos fonces restent lisibles. */
+.marquee__row img{height:clamp(46px,4.8vw,72px);width:auto;max-width:230px;object-fit:contain;filter:grayscale(1) invert(1) contrast(1.35);mix-blend-mode:screen;opacity:.5;transition:opacity .45s var(--ease),filter .45s var(--ease)}
+.marquee__item{padding:14px 20px;background:transparent}
+/* Au survol : les vraies couleurs, sans halo. Les logos majoritairement noirs
+   (plus d'un tiers de pixels tres sombres, mesure faite fichier par fichier)
+   ne peuvent pas se lire sur fond noir : ils gardent leur rendu blanc. */
+.marquee__item.est-survole img{filter:none;mix-blend-mode:normal;opacity:1}
+/* Logo bati sur une plaque de couleur : l'inverser donnerait un rectangle
+   beige. On le laisse dans ses teintes, simplement desature au repos. */
+.marquee__item.est-plaque img{filter:grayscale(1) brightness(1.5);mix-blend-mode:normal;opacity:.55}
+.marquee__item.est-plaque.est-survole img{filter:none;opacity:1}
+/* Logos entierement noirs : aucune couleur a reveler, ils restent blancs. */
+.marquee__item.est-mono.est-survole img{filter:grayscale(1) invert(1) contrast(1.35);mix-blend-mode:screen;opacity:1}
+.marquee__item{position:relative;display:flex;align-items:center}
+.marquee__item::after{content:"+";position:absolute;left:50%;bottom:-42px;transform:translateX(-50%);color:var(--blue);opacity:0;transition:opacity .3s;font-weight:300;font-size:40px;line-height:1}
+
+.marquee__item.est-survole::after{opacity:1}
+.slider__kicker{position:absolute;right:8vw;top:calc(var(--nav-h) + 3vh);z-index:6;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);writing-mode:vertical-rl;padding-left:14px}
+.slider__kicker::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--gold);opacity:.7}
+.slider__ui{position:absolute;left:0;right:0;bottom:9vh;display:flex;justify-content:space-between;align-items:center;padding:0 8vw;z-index:6}
+.slider__arrow{width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);border-radius:50%;color:var(--white);transition:border-color .35s,background .35s,opacity .35s}
+.slider__arrow:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+.slider__arrow[disabled]{opacity:.25;pointer-events:none}
+.slider__dots{display:flex;gap:14px;align-items:center;position:relative}
+.slider__dots button{position:relative;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px;letter-spacing:.16em;transition:color .35s}
+.slider__dots button em{position:absolute;left:50%;top:-22px;transform:translateX(-50%);font-style:normal;opacity:0;white-space:nowrap;transition:opacity .35s var(--ease)}
+.slider__dots button.is-active{color:var(--white)}
+.slider__dots button.is-active em{opacity:1}
+.slider__dots span{position:relative;display:block;width:28px;height:2px;background:rgba(255,255,255,.25);border-radius:1px;overflow:hidden;transition:width .5s var(--ease)}
+.slider__dots button.is-active span{width:56px}
+.slider__dots span i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);box-shadow:0 0 10px rgba(197,162,83,.55)}
+.slider__dots button.is-active span{height:3px;background:rgba(255,255,255,.18)}
+.slider__dots button.is-done span i{width:100%;background:rgba(255,255,255,.55)}
+.slider__hint{position:absolute;left:50%;bottom:4.2vh;transform:translateX(-50%);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);z-index:6;transition:opacity .4s}
+.chapter__chevron{position:absolute;left:50%;bottom:1vh;transform:translateX(-50%);color:var(--white);opacity:.7;z-index:5}
+.slider__reveal{position:absolute;inset:0;background:var(--white);z-index:20;display:flex;align-items:flex-start;padding:calc(var(--nav-h) + 4vh) var(--gutter) 0;pointer-events:none}
+.slider__reveal .display{font-size:clamp(34px,5.4vw,92px);color:var(--black);opacity:.07;line-height:.95}
+/* composition alternée : le bloc de texte change de côté d'une diapo à l'autre */
+.slide:nth-child(even) .slide__copy{left:8vw}
+.slide:nth-child(even) .slide__name{left:auto;right:8vw;text-align:right;max-width:34vw}
+.slide:nth-child(even) .slide__img,.slide:nth-child(even) .slide__video{object-position:center 24%}
+.slide--brands{display:flex;flex-direction:column;justify-content:center;gap:6vh;padding:calc(var(--nav-h) + 6vh) 0 20vh}
+.slide--brands .partners__head{position:absolute;left:0;right:0;bottom:22vh;width:auto;display:flex;justify-content:center}
+
+/* =====================================================================
+   SECTION 5 — CATEGORY EXPLORER (white, YMU-style)
+   ===================================================================== */
+/* Catégories : même mécanique que Personnalités — une réserve de défilement,
+   un bloc collant qui tient l'écran, puis Services monte par-dessus. */
+/* Catégories : le seul temps d'arrêt du parcours. Court, juste avant Services. */
+.explore{position:relative;z-index:2;height:200svh;background:transparent}
+/* Passage vers Services : le blanc se teinte progressivement en fin de flux,
+   puis le noir arrive. Sans ce fondu, la coupure est franche. */
+.flux::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60svh;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.04) 55%,rgba(5,5,5,.13) 100%)}
+.explore__pin{position:sticky;top:0;height:100svh;overflow:hidden;color:var(--black);padding:calc(var(--nav-h) + 2vh) var(--gutter) 3vh;display:grid;grid-template-columns:minmax(280px,38%) 1fr;grid-template-rows:auto minmax(0,1fr);gap:0 5vw;align-content:start}
+/* La colonne de droite ne peut jamais depasser la hauteur disponible :
+   les rangees se repartissent dans l'espace restant. */
+.explore__list{min-height:0;display:flex;flex-direction:column;justify-content:center}
+/* Ecrans courts (portables 13 pouces) : on resserre pour que la derniere
+   categorie reste toujours dans la fenetre. */
+@media (min-width:1024px) and (max-height:790px){
+  .explore__title{font-size:clamp(24px,3.4vw,52px);margin-bottom:2px}
+  .explore__imgwrap{max-height:30vh}
+  .cat__btn{padding:2px 0}
+  .cat .display{font-size:clamp(20px,2vw,34px)}
+  .cat__desc{font-size:12px;line-height:1.3}
+  .cat__cta{font-size:10px}
+  .explore__pin{padding:calc(var(--nav-h) + 3vh) var(--gutter) 2vh}
+}
+.explore__list .cat{flex:0 0 auto}
+.explore__title{grid-column:1/-1;font-size:clamp(32px,6.6vw,120px);line-height:.88;letter-spacing:-.035em;margin-bottom:clamp(4px,.8vh,12px)}
+.explore__left{position:sticky;top:calc(var(--nav-h) + 40px)}
+.explore__left .label{margin-bottom:22px;display:block}
+.explore__imgwrap{position:relative;height:100%;max-height:42vh;border-radius:14px;overflow:hidden;background:var(--soft)}
+.explore__imgwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .6s var(--ease),transform 1.2s var(--ease);transform:scale(1.06);filter:grayscale(1)}
+.explore__imgwrap img.is-active{opacity:1;transform:none;filter:grayscale(0)}
+.explore__caption{margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.06em}
+.cat{border-top:1px solid var(--grey)}
+.cat:last-child{border-bottom:1px solid var(--grey)}
+.cat__btn{width:100%;text-align:left;display:flex;align-items:baseline;gap:16px;padding:clamp(4px,.75vh,11px) 0;color:var(--grey);transition:color .45s var(--ease)}
+.cat__btn small{font-size:12px;letter-spacing:.18em;font-weight:600;width:30px;flex:none;color:var(--grey);transition:color .45s}
+.cat__btn span{font-size:clamp(30px,3.8vw,60px)}
+.cat.is-active .cat__btn{color:var(--black)}
+.cat.is-active .cat__btn small{color:var(--blue)}
+.cat__panel{overflow:hidden;height:0;transition:height .5s var(--ease)}
+.cat__inner{padding:0 0 26px 52px;max-width:60ch}
+.cat__line{width:40px;height:1px;background:var(--blue);margin-bottom:16px}
+.cat__desc{color:#333;font-size:13.5px;line-height:1.4;max-width:52ch}
+.cat__cta{margin-top:18px;color:var(--black)}
+.cat__cta svg{color:var(--gold)}
+
+/* =====================================================================
+   SECTION 6 — ACTUALITÉS : grille éditoriale, cartes sur fond clair
+   ===================================================================== */
+/* Section sur fond noir : cartes sombres, contrastes revus en consequence. */
+.news{position:relative;z-index:7;background:var(--black);color:var(--white);padding:calc(var(--nav-h) + 4vh) var(--gutter) 10vh}
+.news__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(22px,4vh,48px)}
+.news__title{font-size:clamp(36px,7vw,132px);line-height:.9;letter-spacing:-.03em}
+.news .btn--outline{border-color:rgba(255,255,255,.45);color:var(--white)}
+.news .btn--outline:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+.news__grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(110px,13vh,150px);gap:clamp(14px,1.6vw,26px)}
+/* Formats volontairement inegaux : une piece maitresse, deux verticales,
+   trois breves. C'est l'irregularite qui donne l'allure editoriale. */
+/* Cartes blanches posees sur le noir : le contraste fait ressortir la grille. */
+.card{position:relative;display:flex;flex-direction:column;background:var(--white);color:var(--black);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+/* Au survol, la carte file franchement de cote — les impaires vers la gauche,
+   les paires vers la droite — et l'image zoome derriere. Le decalage est
+   volontairement marque pour que le mouvement se remarque. */
+.card{transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s var(--ease)}
+.card:nth-child(odd):hover{transform:translate(-34px,-12px) scale(1.02);box-shadow:0 34px 70px rgba(0,0,0,.6)}
+.card:nth-child(even):hover{transform:translate(34px,-12px) scale(1.02);box-shadow:0 34px 70px rgba(0,0,0,.6)}
+.card:hover{z-index:3}
+.card__t,.card__date,.card__more{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.card:nth-child(odd):hover .card__t,.card:nth-child(odd):hover .card__more{transform:translateX(-6px)}
+.card:nth-child(even):hover .card__t,.card:nth-child(even):hover .card__more{transform:translateX(6px)}
+.card__img{position:relative;overflow:hidden;background:var(--grey);flex:1;min-height:0}
+.card__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s var(--ease),transform 1.1s var(--ease)}
+.card:hover .card__img img{filter:grayscale(0);transform:scale(1.1)}
+.card__meta{position:absolute;left:14px;top:14px;z-index:2;background:var(--black);color:var(--white);font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:999px}
+.card__body{padding:14px 18px 16px;display:flex;flex-direction:column;gap:6px;flex:none}
+.card__t{font-size:clamp(14px,1vw,17px);font-weight:700;line-height:1.22;letter-spacing:-.01em}
+.card__date{font-size:11px;color:var(--muted)}
+.card__more{margin-top:auto;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--black);display:inline-flex;align-items:center;gap:8px}
+.card__more svg{width:12px;height:12px;color:var(--gold)}
+/* 1 — piece maitresse : deux colonnes, deux rangees */
+.card--une{grid-column:span 2;grid-row:span 3}
+.card--une .card__t{font-size:clamp(20px,1.9vw,32px);line-height:1.1}
+.card--une .card__body{padding:22px 24px 26px}
+/* 2 et 3 — verticales */
+.card--haute{grid-column:span 1;grid-row:span 3}
+/* 4, 5, 6 — breves en bandeau */
+.card--breve{grid-column:span 2;grid-row:span 2;flex-direction:row;align-items:stretch}
+.card--breve .card__img{width:44%;flex:none}
+.card--breve .card__body{padding:16px 18px;flex:1;justify-content:center}
+@media (max-width:1023px){
+  .news__grid{grid-template-columns:repeat(2,1fr)}
+  .card--une{grid-column:span 2;grid-row:span 3}
+  .card--haute{grid-row:span 2}
+  .card--breve{grid-column:span 2;grid-row:span 2}
+}
+@media (max-width:700px){
+  .news__grid{grid-template-columns:1fr}
+  .news__grid{grid-auto-rows:auto}
+  .card--une,.card--haute,.card--breve{grid-column:span 1;grid-row:auto}
+  .card__img{aspect-ratio:3/2;flex:none}
+  .card--breve{flex-direction:column}
+  .card--breve .card__img{width:100%;aspect-ratio:3/2}
+  .news{padding:calc(var(--nav-h) + 3vh) var(--gutter) 8vh}
+}
+
+/* --- Fenêtre de lecture --- */
+.modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:5vh var(--gutter)}
+.modal[hidden]{display:none}
+.modal__fond{position:absolute;inset:0;background:rgba(5,5,5,.82);backdrop-filter:blur(6px)}
+.modal__boite{position:relative;z-index:2;width:min(760px,100%);max-height:90vh;overflow-y:auto;background:var(--white);color:var(--black)}
+.modal__x{position:absolute;right:14px;top:14px;z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--black);display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.modal__x:hover{background:var(--black);color:var(--white)}
+.modal__x svg{width:18px;height:18px}
+.modal__banniere{aspect-ratio:16/9;overflow:hidden;background:var(--grey)}
+.modal__banniere img{width:100%;height:100%;object-fit:cover}
+.modal__corps{padding:clamp(22px,3vw,38px)}
+.modal__meta{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.modal__boite h3{font-size:clamp(21px,2.2vw,34px);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.modal__texte{font-size:16px;line-height:1.65;color:#333}
+.modal__note{margin-top:14px;font-size:12px;color:var(--muted);font-style:italic}
+.modal__corps .btn{margin-top:22px}
+@media (max-width:700px){.modal{padding:0}.modal__boite{max-height:100vh;width:100%}}
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.footer{position:relative;z-index:8;background:#0E2A4F;color:var(--white);min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:12vh var(--gutter) 40px}
+.footer__top{display:grid;grid-template-columns:1fr;gap:clamp(26px,4vh,56px);padding-bottom:7vh;border-bottom:1px solid rgba(255,255,255,.14)}
+.footer__lead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(18px,2.4vw,40px)}
+.footer h2{font-size:clamp(28px,3.6vw,58px);max-width:14ch;line-height:1.02;margin:0}
+.footer__grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;padding:8vh 0}
+.footer h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-weight:600}
+.footer li{margin-bottom:10px;font-size:15px}
+.footer a:hover{color:var(--gold)}
+/* Le cache noir laisse passer la video uniquement dans les lettres. */
+/* Le vrai logo MVP sert de pochoir : la video n'apparait que dans les lettres. */
+.footer__cut{position:relative;width:100%;aspect-ratio:749/168;overflow:hidden;align-self:stretch;
+  -webkit-mask-image:url('assets/mvp-lettrage-v3.png');mask-image:url('assets/mvp-lettrage-v3.png');
+  -webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center}
+.footer__cut-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
+.footer__cut-mask{position:absolute;inset:0;width:100%;height:100%}
+@media (max-width:900px){.footer__lead{flex-direction:column;align-items:flex-start}}
+.footer__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);font-size:12px;color:var(--muted)}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media (max-width:1180px){
+  .intro{grid-template-columns:1fr;gap:0}
+  .header{grid-template-columns:auto 1fr}
+  .header__nav{display:none}
+  .header__right{grid-column:2;justify-content:flex-end;gap:14px}
+  .burger{display:flex}
+  .explore{height:170svh}
+  .explore__pin{position:relative;height:auto;min-height:100svh;grid-template-columns:1fr;padding:calc(var(--nav-h) + 3vh) var(--gutter) 6vh}
+  .explore__left{position:relative;top:auto}
+}
+@media (max-width:1023px){
+  /* Section 3 → swipeable horizontal track */
+  .services{height:auto;padding:14vh 0 12vh}
+  .services__stage{position:relative;height:auto;overflow:visible}
+  .services__bg{position:static;transform:none;font-size:14vw;padding:0 var(--gutter) 6vh;opacity:1;white-space:normal;line-height:.9}
+  .services__track{position:relative;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gutter) 30px;gap:18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .services__track::-webkit-scrollbar{display:none}
+  .panel{width:66vw;scroll-snap-align:start;transform:none!important}
+  .panel__frame{height:46vh}
+  .panel__desc{opacity:1;transform:none}
+  .services__progress,.services__count{display:none}
+  /* Section 4 → stacked banner */
+  /* Mobile : même empilement qu'en grand écran. Chaque section colle en haut
+     et la suivante monte par-dessus. Hauteur fixe d'un écran pour toutes,
+     donc un geste = un bloc. */
+  .hero{position:sticky;top:0;height:100svh;min-height:0}
+  .intro{position:relative;height:auto;min-height:100svh}
+  /* Reserve de defilement : la section suivante ne demarre qu'apres avoir
+     laisse le temps de lire celle qui tient l'ecran. */
+
+  .orbit{position:relative;height:auto}
+  /* Personnalites : de l'air sous le menu, et le carrousel occupe le reste. */
+  .orbit__pin{position:relative;height:100svh;padding:calc(var(--nav-h) + 6vh) 0 4vh;justify-content:flex-start;gap:2vh}
+  .orbit__ghost{display:none}
+  .orbit__headwrap{padding-top:0}
+  .orbit__stage{flex:1;min-height:0}
+  .scene{width:86vw;height:58vh;margin:calc(58vh/-2) 0 0 -43vw}
+  .orbit__ui{left:var(--gutter);bottom:2vh}
+  /* Mobile : tout tient sur un ecran, centre. */
+  .intro{padding:calc(var(--nav-h) + 4vh) var(--gutter) 3vh;text-align:center;gap:0;justify-content:flex-start;overflow:hidden}
+  .intro__top{gap:0}
+  .intro__title{max-width:none;margin:0 auto;font-size:clamp(17px,4.2vw,22px);line-height:1.13}
+  .intro__cols{gap:8px;margin-top:12px}
+  .intro__p{max-width:none;margin:0 auto;font-size:12.5px;line-height:1.42}
+  .intro__p--2{padding-left:0;border-left:0;padding-top:0}
+  .intro__cta{justify-self:center;margin:16px auto 0;padding:13px 22px;font-size:11px}
+  .intro__stats{grid-template-columns:repeat(2,1fr)!important;gap:8px 0;margin-top:14px}
+  .intro__stats{width:100%}
+  .stat{align-items:center;flex-direction:column;justify-content:flex-start;gap:2px;text-align:center;padding:8px 2px 0;min-width:0}
+  .stat:nth-child(3){border-left:0;padding-left:2px}
+  .stat:nth-child(n+3){border-top:1px solid var(--grey);padding-top:9px}
+  .stat b{font-size:clamp(21px,5.4vw,27px)}
+  .stat span{text-align:center;max-width:18ch;font-size:9.5px;letter-spacing:.08em;line-height:1.35}
+  .stat span em{display:inline}
+  .services{height:100svh;margin-top:0;padding:0}
+  /* Services : titre sous le menu, piste centree, plus de vide en bas. */
+  .services__stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;padding:calc(var(--nav-h) + 6vh) 0 4vh;gap:2.5vh}
+  .services__bg{padding:0 var(--gutter);font-size:10vw;flex:none}
+  .services__track{flex:1;align-items:stretch;padding-bottom:0}
+  .panel{width:72vw;display:flex;flex-direction:column}
+  .panel__frame{flex:1;height:auto;min-height:0}
+  .panel__title{margin-top:10px;font-size:clamp(15px,4vw,20px);text-align:left}
+  .slider{height:500svh!important}
+  .slider__pin{position:sticky;top:0;height:100svh;min-height:0;overflow:hidden}
+  .slider__stage{position:absolute;inset:0}
+  .slide{position:absolute;inset:0;min-height:0;padding:calc(var(--nav-h) + 4vh) var(--gutter) 16vh;overflow-y:auto}
+  .slider__ui{position:absolute;bottom:5vh;padding:0 var(--gutter)}
+  .slider__hint,.chapter__chevron{display:none}
+  .slider__kicker{writing-mode:horizontal-tb;right:auto;left:var(--gutter);top:calc(var(--nav-h) + 1.5vh);padding:0 0 0 12px;font-size:9px}
+  .slide{position:relative;inset:auto;display:none;min-height:100svh;padding:14vh var(--gutter) 18vh}
+  .slide.is-active{display:block}
+  .slide__copy{position:relative;left:auto;bottom:auto;width:100%}
+  .slide__name{position:relative;left:auto;bottom:auto;max-width:none;font-size:9vw;margin-bottom:26px}
+  .slide__stats{gap:22px}
+  .slider__ui{bottom:30px}
+  .slide--brands{padding-top:10vh}
+  .slide--brands .marquee:first-child{margin-top:0}
+  .partners__head{position:relative;left:auto;bottom:auto;width:auto;margin-top:6vh}
+}
+@media (max-width:760px){
+  :root{--nav-h:72px}
+  .orbit__pin{height:auto;min-height:100svh}
+  .orbit__index,.orbit__hint,.orbit__corner{display:none}
+  .orbit__ui{left:var(--gutter);bottom:0}
+  .orbit__stage{perspective:900px;min-height:60vh}
+  .scene{width:82vw;height:52vh;margin:calc(52vh/-2) 0 0 -41vw}
+  .scene__name{font-size:14vw}
+  .scene__cutout--second{display:none}
+  .scene__index b{font-size:16vw}
+  .header .btn{display:none}
+  .header__tel{font-size:12px}
+  .hero h1{font-size:12vw;line-height:.96}
+  .intro h2{font-size:10vw}
+  .intro__stats{grid-template-columns:repeat(2,1fr);gap:30px 16px}
+  .stat b{font-size:14vw}
+  .panel{width:84vw}
+  .panel__frame{height:54vh}
+  .partners h2{font-size:11vw}
+  .cat__btn span{font-size:9vw}
+  .cat__btn{padding:16px 0}
+  .cat__inner{padding-left:0}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .footer h2{font-size:10vw}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__scroll i{animation:none}
+  *{transition-duration:.01ms!important}
+}
+.footer{min-height:0!important;padding:clamp(40px,6vh,72px) var(--gutter) 34px!important;justify-content:flex-start!important}
+.footer__grid{padding:0 0 clamp(30px,5vh,56px)!important}
+</style>
+
+<style>
+:root{--nav-h:98px;--navy:#0E2A4F}
+body{background:#FFFFFF;color:var(--black)}
+main{overflow-x:clip}
+/* ===== HERO ===== */
+.sh{position:relative;min-height:min(92svh,900px);display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);color:#fff}
+.sh__bg{position:absolute;inset:0;z-index:0}
+.sh__bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1.08);filter:brightness(.84);will-change:transform}
+.sh__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,79,.35),rgba(14,42,79,.1) 40%,rgba(14,42,79,.95) 95%),linear-gradient(90deg,rgba(14,42,79,.8),rgba(14,42,79,.35) 45%,transparent 68%)}
+.sh__num{position:absolute;right:var(--gutter);top:calc(var(--nav-h) + 3vh);z-index:2;font-size:clamp(90px,16vw,260px);font-weight:800;letter-spacing:-.06em;line-height:.8;color:#fff;opacity:.08;pointer-events:none}
+.sh__in{position:relative;z-index:3;width:100%;max-width:1700px;margin:0 auto;padding:calc(var(--nav-h) + 10vh) var(--gutter) clamp(44px,8vh,90px)}
+.sh__eye{display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.sh__eye i{width:30px;height:1px;background:var(--gold);font-style:normal}
+.sh__t{font-size:clamp(40px,7.2vw,124px);font-weight:800;line-height:.9;letter-spacing:-.045em;text-transform:uppercase;max-width:12ch}
+.sh__p{margin-top:22px;max-width:46ch;font-size:clamp(15px,1.15vw,20px);line-height:1.55;color:rgba(255,255,255,.86)}
+.sh__cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+/* ===== POURQUOI ===== */
+.wy{padding:clamp(56px,9vh,120px) var(--gutter)}
+.wy__in{max-width:1700px;margin:0 auto}
+.wy__stmt{font-size:clamp(28px,4.4vw,74px);font-weight:800;line-height:.96;letter-spacing:-.04em;max-width:18ch;text-transform:uppercase}
+.wy__stmt em{font-style:normal;color:var(--blue)}
+.wy__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,90px);align-items:start;margin-top:clamp(28px,4vh,56px)}
+.wy__p{font-size:clamp(15.5px,1.15vw,19px);line-height:1.65;color:#333;max-width:52ch}
+.wy__img{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.14)}
+.wy__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);will-change:transform}
+.bn{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,26px);margin-top:clamp(40px,6vh,80px)}
+.bn__i{padding:clamp(22px,2.6vw,40px) clamp(18px,2vw,30px);border-top:2px solid var(--navy);background:#FAFAF8;border-radius:0 0 12px 12px}
+.bn__k{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.bn__h{font-size:clamp(22px,2.2vw,36px);font-weight:800;letter-spacing:-.03em;text-transform:uppercase;margin:10px 0 10px;line-height:1}
+.bn__p{font-size:14px;line-height:1.55;color:#444}
+@media (max-width:1100px){.bn{grid-template-columns:repeat(2,1fr)}.wy__grid{grid-template-columns:1fr}}
+/* ===== PERSONNALITÉS ===== */
+.pe{background:#FAFAF8;padding:clamp(56px,9vh,120px) 0;border-top:1px solid var(--grey)}
+.pe__head{max-width:1700px;margin:0 auto;padding:0 var(--gutter);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.pe__t{font-size:clamp(28px,3.8vw,64px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.92}
+.pe__nav{display:flex;gap:8px}
+.pe__nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--grey);display:flex;align-items:center;justify-content:center;transition:.3s;background:#fff}
+.pe__nav button:hover{background:var(--black);border-color:var(--black)}.pe__nav svg{width:16px;height:16px;color:var(--black)}.pe__nav button:hover svg{color:#fff}
+.pe__rail{display:flex;gap:clamp(12px,1.4vw,22px);overflow-x:auto;scroll-snap-type:x proximity;padding:8px var(--gutter) 16px;scrollbar-width:none;cursor:grab;user-select:none}
+.pe__rail::-webkit-scrollbar{display:none}.pe__rail.saisi{cursor:grabbing;scroll-snap-type:none}
+.tc{position:relative;flex:0 0 clamp(230px,19vw,300px);scroll-snap-align:start;background:#fff;border:1px solid var(--grey);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.tc:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 60px rgba(0,0,0,.14)}
+.tc__ph{aspect-ratio:1/1;overflow:hidden;background:#EDEFF2;position:relative}
+.tc__ph img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 1s var(--ease)}
+.tc:hover .tc__ph img{transform:scale(1.05)}
+.tc__cat{position:absolute;left:10px;top:10px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.94);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tc__b{padding:13px 14px 8px;flex:1}
+.tc__n{font-size:15px;font-weight:800;letter-spacing:-.02em;line-height:1.14}
+.tc__s{font-size:11px;color:var(--muted);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tc__r{margin-top:8px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.tc__cta{display:flex;flex-direction:column;gap:6px;padding:0 14px 14px}
+.tc__b1{padding:9px;border-radius:999px;background:var(--blue);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;transition:.3s}
+.tc__b1:hover{background:var(--gold);color:var(--black)}
+.tc__b2{padding:8px;border-radius:999px;border:1px solid var(--grey);font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:#333;transition:.3s}
+.tc__b2:hover{border-color:var(--black);color:var(--black)}
+.pe__all{max-width:1700px;margin:22px auto 0;padding:0 var(--gutter)}
+/* ===== GRAND ÉNONCÉ ===== */
+.gs{background:var(--navy);color:#fff;padding:clamp(70px,12vh,160px) var(--gutter);text-align:center}
+.gs__t{font-size:clamp(34px,6.4vw,110px);font-weight:800;line-height:.9;letter-spacing:-.05em;text-transform:uppercase}
+.gs__t span{display:block}
+.gs__t span:nth-child(2){color:var(--gold)}
+/* ===== PROCESSUS ===== */
+.pr{padding:clamp(56px,9vh,120px) var(--gutter)}
+.pr__in{max-width:1700px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,90px);align-items:center}
+.pr__img{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.14)}
+.pr__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);will-change:transform}
+.pr__k{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.pr__t{font-size:clamp(28px,3.8vw,64px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.92;margin-bottom:8px}
+.pr__q{font-size:15px;color:var(--muted);margin-bottom:26px}
+.st{display:grid;gap:0}
+.st__i{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:20px 0;border-top:1px solid var(--grey)}
+.st__n{font-size:clamp(22px,2.4vw,36px);font-weight:200;letter-spacing:-.03em;color:var(--blue);line-height:1}
+.st__h{font-size:clamp(17px,1.5vw,24px);font-weight:800;letter-spacing:-.02em}
+.st__p{font-size:14px;line-height:1.55;color:#444;margin-top:5px}
+@media (max-width:1000px){.pr__in{grid-template-columns:1fr}}
+/* ===== EN ACTION ===== */
+.ac{background:#0D0E10;color:#fff;padding:clamp(56px,9vh,120px) 0}
+.ac__head{max-width:1700px;margin:0 auto;padding:0 var(--gutter);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.ac__t{font-size:clamp(28px,3.8vw,64px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.92}
+.ac__hint{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.ac__rail{display:flex;gap:clamp(12px,1.4vw,22px);overflow-x:auto;scroll-snap-type:x proximity;padding:0 var(--gutter) 10px;scrollbar-width:none;cursor:grab;user-select:none}
+.ac__rail::-webkit-scrollbar{display:none}.ac__rail.saisi{cursor:grabbing;scroll-snap-type:none}
+.acc{position:relative;flex:0 0 clamp(280px,32vw,500px);aspect-ratio:3/4;border-radius:8px;overflow:hidden;scroll-snap-align:start;display:block;background:#151618}
+.acc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.8);transition:transform 1.1s var(--ease),filter .6s}
+.acc:hover img{transform:scale(1.05);filter:brightness(.95)}
+.acc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(10,10,11,.9));transition:.5s}
+.acc__t{position:absolute;left:18px;right:18px;bottom:16px;z-index:2}
+.acc__k{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.acc__h{display:block;font-size:clamp(15px,1.35vw,22px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-top:6px}
+.acc__p{display:block;font-size:11.5px;color:rgba(255,255,255,.7);margin-top:4px}
+.acc__v{display:inline-flex;gap:8px;align-items:center;margin-top:10px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:0;transform:translateY(6px);transition:.45s var(--ease)}
+.acc:hover .acc__v{opacity:1;transform:none}
+/* ===== APPROFONDIR ===== */
+.dp{padding:clamp(56px,9vh,120px) var(--gutter)}
+.dp__in{max-width:1700px;margin:0 auto}
+.dp__row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,90px);align-items:center;padding:clamp(30px,5vh,60px) 0;border-top:1px solid var(--grey)}
+.dp__row:first-child{border-top:0;padding-top:0}
+.dp__h{font-size:clamp(24px,3.2vw,52px);font-weight:800;letter-spacing:-.035em;line-height:.98;text-transform:uppercase}
+.dp__p{font-size:clamp(15px,1.1vw,18px);line-height:1.68;color:#333}
+.dp__img{aspect-ratio:16/10;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.12)}
+.dp__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);will-change:transform}
+@media (max-width:1000px){.dp__row{grid-template-columns:1fr}}
+/* ===== CTA ===== */
+.fc{background:#0E2A4F;color:#fff;padding:clamp(60px,10vh,130px) var(--gutter)}
+.fc__in{max-width:1700px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.fc h2{font-size:clamp(28px,4.4vw,72px);font-weight:800;letter-spacing:-.04em;line-height:.94;max-width:16ch;text-transform:uppercase}
+.fc p{margin-top:14px;color:rgba(255,255,255,.72);max-width:46ch;font-size:15px;line-height:1.6}
+.fc__b{display:flex;gap:10px;flex-wrap:wrap}
+/* ===== révélations ===== */
+.rev{opacity:0;transform:translateY(50px);transition:opacity 1.1s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1)}
+.rev.vu{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+</style>
+</head><body>
+<header class="header" id="header" data-theme="light">
+  <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
+    <img class="logo--white" src="assets/mvp-logo-blanc-v2.png" alt="MVP Group Agency">
+    <img class="logo--black" src="assets/mvp-logo-noir-v2.png" alt="" aria-hidden="true">
+  </a>
+  <nav class="header__nav" aria-label="Primary">
+    <div class="navitem">
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <div class="navdrop">
+        <a href="service.html?s=speakers" data-i18n="nav.s1">Keynote speakers</a>
+        <a href="service.html?s=ambassadors" data-i18n="nav.s2">Brand ambassadors &amp; spokespersons</a>
+        <a href="service.html?s=marketing" data-i18n="nav.s3">Social media strategies &amp; influencers</a>
+        <a href="service.html?s=hosts" data-i18n="nav.s4">Guests of honor</a>
+        <a href="personnalites.html?project=Corporate+Event" data-i18n="nav.s5">Corporate events &amp; teambuilding</a>
+      </div>
+    </div>
+    <div class="navitem">
+      <a href="personnalites.html" data-i18n="nav.celebs">Sports celebrities</a>
+      <div class="navdrop">
+        <a href="personnalites.html?sport=hockey" data-i18n="cat.hockey">Hockey</a>
+        <a href="personnalites.html?sport=boxing" data-i18n="cat.boxing">Boxing</a>
+        <a href="personnalites.html?sport=mma" data-i18n="cat.mma">MMA</a>
+        <a href="personnalites.html?sport=olympics" data-i18n="cat.olympics">Olympics</a>
+        <a href="personnalites.html?sport=media" data-i18n="cat.media">Media</a>
+        <a href="personnalites.html?sport=soccer" data-i18n="cat.soccer">Soccer</a>
+        <a href="personnalites.html?sport=other" data-i18n="cat.others">Others</a>
+      </div>
+    </div>
+    <a href="projets.html" data-i18n="nav.projects">Projects</a>
+    <div class="navitem">
+      <a href="index.html#contact" data-i18n="nav.agency">Agency</a>
+      <div class="navdrop">
+        <a href="index.html#intro" data-i18n="nav.a1">MVP Group mission</a>
+        <a href="index.html#contact" data-i18n="nav.a2">Management team</a>
+      </div>
+    </div>
+    <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="header__right">
+    
+    <div class="lang" id="lang" aria-label="Langue / Language"><button data-lang="fr" class="is-active">FR</button><button data-lang="en">EN</button></div>
+    <a class="btn btn--gold" href="#contact" data-i18n="cta.work">Travailler avec nous</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+<main id="svc"></main>
+<footer class="footer" id="contact" data-nav="light">
+  <div class="footer__top">
+    
+    <!-- Lettrage MVP decoupe : la video joue a travers les lettres. -->
+    
+  </div>
+  <div class="footer__grid" id="agency">
+    <div>
+      <h4 data-i18n="foot.agency">MVP Group Agency</h4>
+      <ul><li data-i18n="foot.hq">Siège social : Montréal, Qc. Canada</li><li>Toronto · New York · Las Vegas</li><li><a href="tel:+15145823306">514-582-3306</a></li><li><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
+    </div>
+    <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="index.html#personalities" data-i18n="nav.celebs">Personnalités</a></li><li><a href="index.html#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Projets</a></li><li><a href="https://mvpsportsmarketing.com/fr/agence" data-i18n="nav.agency">Agence</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=speakers" data-i18n="nav.s1">Conférenciers</a></li><li><a href="service.html?s=ambassadors" data-i18n="nav.s2">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=hosts" data-i18n="nav.s4">Invités d'honneur</a></li><li><a href="service.html?s=marketing" data-i18n="nav.s3">Influenceurs et médias sociaux</a></li></ul></div>
+    <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul><li><a href="https://www.instagram.com/mvpgroupagency/" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" rel="noopener">Facebook</a></li></ul></div>
+  </div>
+
+  <div class="footer__bottom">
+    <span data-i18n="foot.rights">© 2026 MVP Group Agency Inc. Tous droits réservés.</span>
+    <span><a href="https://mvpsportsmarketing.com/fr#privacy" data-i18n="foot.privacy">Politique de confidentialité</a> · <a href="https://mvpsportsmarketing.com/fr" hreflang="fr">Français</a></span>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script>
+const SERVICES={"speakers":{"num":"01","nom":"Conférenciers","nomEN":"Keynote Speakers","filtre":"role=Speaker","hero":"assets/svc-speakers.jpg","h1":"Conférenciers","accroche":"Apportez l'état d'esprit, la résilience et les histoires des athlètes d'élite dans votre organisation.","cta1":"Trouver un conférencier","cta2":"Planifier ma conférence","enonce":"Les vedettes du sport ont des parcours extraordinaires, capables d'inspirer et de motiver n'importe qui.","pourquoi":"Un conférencier MVP ne raconte pas seulement son histoire. Il livre un discours personnalisé qui répond à vos enjeux et à vos objectifs, dans votre contexte d'affaires.","benefices":[["Inspirer","Créer une expérience émotive dont vos employés se souviendront."],["Mobiliser","Relier une histoire forte aux objectifs de votre organisation."],["Performer","Traduire les leçons du sport d'élite en réalités d'affaires."],["Rassembler","Créer un moment partagé entre équipes et dirigeants."]],"grand":["Un message.","Une salle comble.","Un impact durable."],"etapes":[["Comprendre","Votre public, vos objectifs, vos défis et le message souhaité."],["Jumeler","Identifier le conférencier dont le parcours parle vraiment à votre équipe."],["Préparer","Un appel vidéo entre le conférencier et vous, avant l'événement, pour bâtir le discours sur mesure."],["Livrer","MVP coordonne la logistique, en présentiel ou en virtuel, avec un seul interlocuteur."]],"approfondir":[["Plus qu'une histoire. Un message bâti pour votre équipe.","Avant la conférence, nous organisons normalement un appel vidéo entre le conférencier et vous. Nous y discutons de votre public, de vos objectifs, de vos défis, du message désiré, de la langue et du format. Le discours que vous recevez est construit sur ces bases."],["Des valeurs qui traversent le sport et l'entreprise.","Travail d'équipe, discipline, persévérance : votre conférencier a franchi de nombreuses épreuves pour atteindre le sommet. Ses mots peuvent stimuler un changement dans votre équipe, mobiliser vos collaborateurs autour d'une nouvelle stratégie ou d'un objectif à atteindre."],["Poursuivre avec un atelier.","Selon vos besoins et le temps disponible, la conférence peut se prolonger par un atelier de perfectionnement, où vos invités mettent en pratique ce qu'ils viennent d'entendre."]],"final":"Trouvez la voix dont votre équipe se souviendra.","finalTxt":"Parlez-nous de votre public, de vos objectifs et de votre événement. MVP vous aidera à identifier la bonne personnalité.","fcta1":"Trouver mon conférencier","fcta2":"Parcourir les conférenciers","cadre":"center 30%"},"ambassadors":{"num":"02","nom":"Ambassadeurs et porte-parole","nomEN":"Brand Ambassadors & Spokespersons","filtre":"role=Brand+Ambassador","hero":"assets/svc-ambassadors.jpg","h1":"Ambassadeurs et porte-parole","accroche":"Associez la notoriété et la crédibilité d'une personnalité sportive à votre marque, au-delà d'un simple logo.","cta1":"Trouver mon ambassadeur","cta2":"Bâtir un partenariat","enonce":"La bonne personne. Les bonnes valeurs. La bonne association.","pourquoi":"Un ambassadeur représente votre marque sur le marché. Sa notoriété et sa popularité solidifient la reconnaissance et la crédibilité de votre entreprise, en publicité traditionnelle comme en numérique.","benefices":[["Crédibilité","Une figure reconnue du public, associée à votre marque."],["Notoriété","Optimiser votre publicité et vos relations publiques."],["Contenu","Campagnes, médias sociaux, apparitions médiatiques."],["Association durable","Un partenariat à long terme plutôt qu'une apparition isolée."]],"grand":["De l'attention","à l'association","à l'action."],"etapes":[["Rechercher","Nous analysons votre marché, vos produits et votre vision pour vous conseiller."],["Choisir","Privilégier la qualité à la quantité : l'ambassadeur qui génère le plus d'engagement et de reconnaissance."],["Intégrer","Ensemble, nous pensons son intégration à vos promotions et à votre stratégie marketing."],["Exclusivités","Concours, rencontres, accès privilégiés : nous organisons ce qui vous démarque."]],"approfondir":[["Ambassadeur ou porte-parole ?","Les deux sont reconnus du grand public grâce à leur parcours. L'ambassadeur promeut votre marque auprès de son public déjà fidèle et de votre clientèle cible. Le porte-parole prend la parole en votre nom, en campagne, en entrevue ou en événement."],["Un partenariat qui s'appuie sur des valeurs communes.","MVP vous aide à développer une stratégie de partenariat avec un athlète professionnel, un olympien ou une légende du sport au Canada, en s'assurant que ses valeurs et son public correspondent aux vôtres."]],"final":"Mettez la bonne personnalité derrière votre marque.","finalTxt":"Parlez-nous de votre marque, de votre public et de vos objectifs. MVP identifie l'ambassadeur qui vous correspond.","fcta1":"Démarrer un partenariat","fcta2":"Parcourir les ambassadeurs","cadre":"right 62%"},"hosts":{"num":"03","nom":"Animateurs et invités d'honneur","nomEN":"Hosts & Guests of Honour","filtre":"role=Host","hero":"assets/svc-hosts.jpg","h1":"Animateurs et invités d'honneur","accroche":"Donnez à votre événement l'énergie, la crédibilité et le souvenir qu'une personnalité sportive peut créer.","cta1":"Trouver mon animateur","cta2":"Planifier mon événement","enonce":"Rendez ce moment mémorable.","pourquoi":"Congrès, gala, célébration corporative : un invité d'honneur ou un animateur reconnu capte votre public, sportif ou non, et partage avec lui ses valeurs et son parcours.","benefices":[["Énergie","Une présence qui transforme l'ambiance de la salle."],["Crédibilité","Une figure de grande renommée qui prend un rôle majeur dans votre événement."],["Engagement","Le public échange avec la personnalité et repart avec une expérience."],["Professionnalisme","Une animation expérimentée qui maximise l'impact de votre rencontre."]],"grand":["Une salle.","Une personnalité.","Un souvenir."],"etapes":[["Comprendre","Le type d'événement, le public, le ton recherché."],["Recommander","Un membre de notre équipe discute avec vous et propose l'animateur ou l'invité approprié."],["Préparer","Le déroulement, les interventions, les moments forts."],["Animer","La personnalité prend en charge la scène ; MVP coordonne le reste."]],"approfondir":[["Invité d'honneur ou animateur ?","L'invité d'honneur s'associe à votre événement en y prenant un rôle majeur : présence, allocution, échanges avec les participants. L'animateur, lui, conduit la rencontre du début à la fin avec l'aisance d'un professionnel de la scène."],["Un accès direct aux icônes du Québec et du Canada.","MVP vous donne accès aux personnalités et aux icônes du sport les plus illustres, ainsi qu'aux membres des médias sportifs, pour tenir ces rôles."]],"final":"Faites de ce moment un événement.","finalTxt":"Parlez-nous de votre événement et de votre public. MVP vous propose l'animateur ou l'invité d'honneur qui lui donnera vie.","fcta1":"Planifier mon événement","fcta2":"Parcourir les animateurs","cadre":"right 22%"},"marketing":{"num":"04","nom":"Campagnes marketing et influenceurs","nomEN":"Marketing Campaigns & Influencers","filtre":"project=Brand+Campaign","hero":"assets/svc-influencers.jpg","h1":"Campagnes et influenceurs","accroche":"Rejoignez un public qui fait déjà confiance à la personnalité qui parle de votre marque.","cta1":"Bâtir ma campagne","cta2":"Trouver la bonne personnalité","enonce":"Une audience réelle. Une voix authentique. Un message qui porte.","pourquoi":"Les influenceurs sportifs sont des athlètes professionnels, actifs ou retraités, établis dans la culture numérique. Collaborer avec eux, c'est transmettre un message par une voix qui a déjà gagné la confiance de son public.","benefices":[["Audience","Un public engagé, déjà acquis à la personnalité."],["Authenticité","Une prise de parole crédible, pas une publicité de plus."],["Contenu","Contenu commandité, produits en essai, apparitions, activations."],["Alignement","Des valeurs compatibles entre la personnalité et votre marque, pour un partenariat durable."]],"grand":["Au-delà des","médias sociaux."],"etapes":[["Cibler","Identifier les personnalités actives sur les réseaux les plus visibles auprès de votre public."],["Aligner","Vérifier la compatibilité des valeurs, condition d'un partenariat rentable et durable."],["Créer","Contenu commandité, essais produits, vidéos, activations : définir la collaboration."],["Diffuser","Coordonner la campagne, du calendrier à la publication."]],"approfondir":[["Qu'est-ce qu'un influenceur sportif ?","Un athlète professionnel ou un olympien, actif ou retraité, fortement établi dans la culture numérique. Créateur de contenu sur les réseaux sociaux, il utilise sa réputation pour gagner en visibilité et solidifier son image en ligne."],["Plusieurs façons de collaborer.","Envoi de produits pour essai ou déballage, contenu commandité écrit ou visuel mettant de l'avant un produit ou un service, apparitions, concours : la collaboration prend la forme qui sert votre objectif."]],"final":"Transformez le bon partenariat en une campagne qu'on remarque.","finalTxt":"Parlez-nous de votre marque, de votre public et de votre objectif. MVP bâtit la campagne avec la personnalité qui vous correspond.","fcta1":"Démarrer une campagne","fcta2":"Parcourir les personnalités","cadre":"right 30%"}};
+const TALENTS=[{"id":"lucian-bute","nom":"Lucian Bute","prenom":"Lucian","famille":"Bute","photo":"assets/talents/lucian-bute.webp","cat":"boxing","catNom":"Boxing","titre":"Boxing World Champion","roles":["Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/lucian-bute.webp","services":["speakers"]},{"id":"kim-clavel","nom":"Kim Clavel","prenom":"Kim","famille":"Clavel","photo":"assets/talents/kim-clavel.webp","cat":"boxing","catNom":"Boxing","titre":"Boxer - World Champion / Speaker","roles":["Speaker","Champion"],"qualites":["Haute performance","Leadership","Engagement social"],"projets":["Conference / Keynote"],"statut":"Former Athlete","decoupe":"assets/cut/kim-clavel.webp","services":["speakers"]},{"id":"marie-eve-dicaire","nom":"Marie-Eve Dicaire","prenom":"Marie-Eve","famille":"Dicaire","photo":"assets/talents/marie-eve-dicaire.webp","cat":"boxing","catNom":"Boxing","titre":"World Boxing Champion / Speaker / Host / Ambassador","roles":["Speaker","Brand Ambassador","Host","Champion"],"qualites":["Motivation","Leadership féminin"],"projets":["Conference / Keynote","Brand Campaign","Media Appearance"],"statut":"Former Athlete","decoupe":"assets/cut/marie-eve-dicaire.webp","services":["ambassadors","hosts","marketing","speakers"]},{"id":"jean-pascal","nom":"Jean Pascal","prenom":"Jean","famille":"Pascal","photo":"assets/talents/jean-pascal.webp","cat":"boxing","catNom":"Boxing","titre":"Boxer – Former World Champion","roles":["Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/jean-pascal.webp","services":["speakers"]},{"id":"steve-begin","nom":"Steve Bégin","prenom":"Steve","famille":"Bégin","photo":"assets/talents/steve-begin.webp","cat":"hockey","catNom":"Hockey","titre":"Former Montreal Canadiens player / Keynote Speaker / Ambassador","roles":["Speaker","Brand Ambassador"],"qualites":["Persévérance","Discipline","Motivation"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","decoupe":"assets/cut/steve-begin.webp","services":["ambassadors","marketing","speakers"]},{"id":"marc-bergevin","nom":"Marc Bergevin","prenom":"Marc","famille":"Bergevin","photo":"assets/talents/marc-bergevin.webp","cat":"hockey","catNom":"Hockey","titre":"Marc Bergevin","roles":["Champion","Coach"],"qualites":["Performer sous pression","Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/marc-bergevin.webp","services":["speakers"]},{"id":"joel-bouchard","nom":"Joël Bouchard","prenom":"Joël","famille":"Bouchard","photo":"assets/talents/joel-bouchard.webp","cat":"hockey","catNom":"Hockey","titre":"Key Note Speaker / Former NHL player and Coach / TV Analyst","roles":["Speaker","Media Personality","Coach"],"qualites":["Leadership","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/joel-bouchard.webp","services":["hosts","speakers"]},{"id":"guy-boucher","nom":"Guy Boucher","prenom":"Guy","famille":"Boucher","photo":"assets/talents/guy-boucher.webp","cat":"hockey","catNom":"Hockey","titre":"Keynote Speaker / Assistant Coach Toronto Maple Leafs","roles":["Speaker","Coach"],"qualites":["Leadership","Motivation"],"projets":["Conference / Keynote"],"statut":"Former Athlete","decoupe":"assets/cut/guy-boucher.webp","services":["speakers"]},{"id":"francis-bouillon","nom":"Francis Bouillon","prenom":"Francis","famille":"Bouillon","photo":"assets/talents/francis-bouillon.webp","cat":"hockey","catNom":"Hockey","titre":"Francis Bouillon","roles":["Coach"],"qualites":["Reconversion"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/francis-bouillon.webp","services":["speakers"]},{"id":"patrice-brisebois","nom":"Patrice Brisebois","prenom":"Patrice","famille":"Brisebois","photo":"assets/talents/patrice-brisebois.webp","cat":"hockey","catNom":"Hockey","titre":"Patrice Brisebois","roles":["Media Personality","Champion","Coach"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/patrice-brisebois.webp","services":["hosts"]},{"id":"paul-byron","nom":"Paul Byron","prenom":"Paul","famille":"Byron","photo":"assets/talents/paul-byron.webp","cat":"hockey","catNom":"Hockey","titre":"Former Montreal Canadiens player","roles":["Speaker"],"qualites":["Leadership","Haute performance","Performer sous pression"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/paul-byron.webp","services":["speakers"]},{"id":"guy-carbonneau","nom":"Guy Carbonneau","prenom":"Guy","famille":"Carbonneau","photo":"assets/talents/guy-carbonneau.webp","cat":"hockey","catNom":"Hockey","titre":"Guy Carbonneau","roles":["Media Personality","Champion","Sports Legend","Coach"],"qualites":["Leadership","Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/guy-carbonneau.webp","services":["hosts"]},{"id":"yvan-cournoyer","nom":"Yvan Cournoyer","prenom":"Yvan","famille":"Cournoyer","photo":"assets/talents/yvan-cournoyer.webp","cat":"hockey","catNom":"Hockey","titre":"Yvan Cournoyer","roles":["Brand Ambassador","Champion"],"qualites":["Performer sous pression"],"projets":["Brand Campaign"],"statut":"Former Athlete","decoupe":"assets/cut/yvan-cournoyer.webp","services":["ambassadors","marketing"]},{"id":"mathieu-dandenault","nom":"Mathieu Dandenault","prenom":"Mathieu","famille":"Dandenault","photo":"assets/talents/mathieu-dandenault.webp","cat":"hockey","catNom":"Hockey","titre":"Mathieu Dandenault","roles":["Champion","Sports Legend","Coach"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/mathieu-dandenault.webp","services":["speakers"]},{"id":"gilbert-delorme","nom":"Gilbert Delorme","prenom":"Gilbert","famille":"Delorme","photo":"assets/talents/gilbert-delorme.webp","cat":"hockey","catNom":"Hockey","titre":"• Former Montreal Canadiens Player / Radio Host / Hockey Analyst","roles":["Host","Media Personality","Sports Legend","Coach"],"qualites":["Reconversion","Leadership","Performer sous pression"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/gilbert-delorme.webp","services":["hosts"]},{"id":"eve-gascon","nom":"Ève Gascon","prenom":"Ève","famille":"Gascon","photo":"assets/talents/eve-gascon.webp","cat":"hockey","catNom":"Hockey","titre":"Hockey Goaltender","roles":["Speaker"],"qualites":["Leadership féminin","Dépassement de soi"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/eve-gascon.webp","services":["speakers"]},{"id":"bruno-gervais","nom":"Bruno Gervais","prenom":"Bruno","famille":"Gervais","photo":"assets/talents/bruno-gervais.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Player • RDS Hockey Analyst • Animator • Speaker","roles":["Speaker","Media Personality"],"qualites":["Reconversion","Engagement social","Leadership"],"projets":["Conference / Keynote","Media Appearance","Charity Event"],"statut":"Media / Broadcasting","decoupe":"assets/cut/bruno-gervais.webp","services":["hosts","speakers"]},{"id":"pierre-gervais","nom":"Pierre Gervais","prenom":"Pierre","famille":"Gervais","photo":"assets/talents/pierre-gervais.webp","cat":"hockey","catNom":"Hockey","titre":"Former Head Trainer Montreal Canadiens / Story teller on 35 years of career","roles":["Media Personality","Champion","Sports Legend"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Media / Broadcasting","decoupe":"assets/cut/pierre-gervais.webp","services":["hosts"]},{"id":"rejean-houle","nom":"Réjean Houle","prenom":"Réjean","famille":"Houle","photo":"assets/talents/rejean-houle.webp","cat":"hockey","catNom":"Hockey","titre":"Réjean Houle","roles":["Champion","Coach"],"qualites":["Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/rejean-houle.webp","services":["speakers"]},{"id":"alex-kovalev","nom":"Alex Kovalev","prenom":"Alex","famille":"Kovalev","photo":"assets/talents/alex-kovalev.webp","cat":"hockey","catNom":"Hockey","titre":"Alex Kovalev","roles":["Olympian","Champion","Sports Legend"],"qualites":["Performer sous pression","Leadership"],"projets":["Corporate Event"],"statut":"Olympian","decoupe":"assets/cut/alex-kovalev.webp","services":["speakers"]},{"id":"guy-lafleur","nom":"Guy Lafleur","prenom":"Guy","famille":"Lafleur","photo":"assets/talents/guy-lafleur.webp","cat":"hockey","catNom":"Hockey","titre":"Guy Lafleur","roles":["Champion"],"qualites":["Leadership","Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/guy-lafleur.webp","services":["speakers"]},{"id":"yvon-lambert","nom":"Yvon Lambert","prenom":"Yvon","famille":"Lambert","photo":"assets/talents/yvon-lambert.webp","cat":"hockey","catNom":"Hockey","titre":"Yvon Lambert","roles":["Champion"],"qualites":["Performer sous pression"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/yvon-lambert.webp","services":["speakers"]},{"id":"vincent-lecavalier","nom":"Vincent Lecavalier","prenom":"Vincent","famille":"Lecavalier","photo":"assets/talents/vincent-lecavalier.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL All-Star player / Speaker / Special Advisor Montreal Canadiens","roles":["Speaker","Champion","Coach"],"qualites":["Leadership","Esprit d’équipe","Reconversion"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/vincent-lecavalier.webp","services":["ambassadors","marketing","speakers"]},{"id":"sergio-momesso","nom":"Sergio Momesso","prenom":"Sergio","famille":"Momesso","photo":"assets/talents/sergio-momesso.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Player","roles":["Media Personality"],"qualites":["Esprit d’équipe","Leadership","Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/sergio-momesso.webp","services":["hosts"]},{"id":"kirk-muller","nom":"Kirk Muller","prenom":"Kirk","famille":"Muller","photo":"assets/talents/kirk-muller.webp","cat":"hockey","catNom":"Hockey","titre":"Kirk Muller","roles":["Champion","Coach"],"qualites":["Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/kirk-muller.webp","services":["speakers"]},{"id":"chris-nilan","nom":"Chris Nilan","prenom":"Chris","famille":"Nilan","photo":"assets/talents/chris-nilan.webp","cat":"hockey","catNom":"Hockey","titre":"Stanley Cup Winner - Ambassador of the Montreal Canadiens - Speaker - Guest of honor - Radio host","roles":["Speaker","Brand Ambassador","Host","Champion","Sports Legend","Coach"],"qualites":["Persévérance"],"projets":["Conference / Keynote","Brand Campaign","Media Appearance"],"statut":"Former Athlete","decoupe":"assets/cut/chris-nilan.webp","services":["ambassadors","hosts","marketing","speakers"]},{"id":"stephane-quintal","nom":"Stéphane Quintal","prenom":"Stéphane","famille":"Quintal","photo":"assets/talents/stephane-quintal.webp","cat":"hockey","catNom":"Hockey","titre":"Stéphane Quintal","roles":["Speaker"],"qualites":["Reconversion"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/stephane-quintal.webp","services":["speakers"]},{"id":"manon-rheaume","nom":"Manon Rhéaume","prenom":"Manon","famille":"Rhéaume","photo":"assets/talents/manon-rheaume.webp","cat":"hockey","catNom":"Hockey","titre":"Speaker / TV Analyst / Former Professional Hockey Player","roles":["Speaker","Media Personality"],"qualites":["Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/manon-rheaume.webp","services":["hosts","speakers"]},{"id":"andre-roy","nom":"André Roy","prenom":"André","famille":"Roy","photo":"assets/talents/andre-roy.webp","cat":"hockey","catNom":"Hockey","titre":"André Roy","roles":["Host","Champion"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Former Athlete","decoupe":"assets/cut/andre-roy.webp","services":["hosts"]},{"id":"patrick-roy","nom":"Patrick Roy","prenom":"Patrick","famille":"Roy","photo":"assets/talents/patrick-roy.webp","cat":"hockey","catNom":"Hockey","titre":"NHL Legend / Hockey Hall of Famer / Head Coach NY Islanders","roles":["Champion","Sports Legend","Coach"],"qualites":["Performer sous pression","Leadership","Haute performance"],"projets":["Brand Campaign"],"statut":"Former Athlete","decoupe":"assets/cut/patrick-roy.webp","services":["ambassadors","marketing"]},{"id":"maxime-talbot","nom":"Maxime Talbot","prenom":"Maxime","famille":"Talbot","photo":"assets/talents/maxime-talbot.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL player / Keynote speaker / TV Analyst","roles":["Speaker","Media Personality"],"qualites":["Motivation","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/maxime-talbot.webp","services":["hosts","speakers"]},{"id":"mario-tremblay","nom":"Mario Tremblay","prenom":"Mario","famille":"Tremblay","photo":"assets/talents/mario-tremblay.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Coach / Former Canadiens Player / Hockey Media Analyst","roles":["Media Personality","Coach"],"qualites":["Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/mario-tremblay.webp","services":["hosts"]},{"id":"olivier-aubin-mercier","nom":"Olivier Aubin-Mercier","prenom":"Olivier","famille":"Aubin-Mercier","photo":"assets/talents/olivier-aubin-mercier.webp","cat":"mma","catNom":"MMA","titre":"Olivier Aubin-Mercier","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/olivier-aubin-mercier.webp","services":["speakers"]},{"id":"patrick-cote","nom":"Patrick Côté","prenom":"Patrick","famille":"Côté","photo":"assets/talents/patrick-cote.webp","cat":"mma","catNom":"MMA","titre":"Patrick Côté","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/patrick-cote.webp","services":["speakers"]},{"id":"valerie-letourneau","nom":"Valérie Létourneau","prenom":"Valérie","famille":"Létourneau","photo":"assets/talents/valerie-letourneau.webp","cat":"mma","catNom":"MMA","titre":"Valérie Létourneau","roles":["Champion"],"qualites":["Leadership féminin"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/valerie-letourneau.webp","services":["speakers"]},{"id":"david-loiseau","nom":"David Loiseau","prenom":"David","famille":"Loiseau","photo":"assets/talents/david-loiseau.webp","cat":"mma","catNom":"MMA","titre":"David Loiseau","roles":["Champion"],"qualites":["Discipline"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/david-loiseau.webp","services":["speakers"]},{"id":"aleksandra-wozniak","nom":"Aleksandra Wozniak","prenom":"Aleksandra","famille":"Wozniak","photo":"assets/talents/aleksandra-wozniak.webp","cat":"olympics","catNom":"Olympics","titre":"Former WTA player","roles":["Speaker"],"qualites":["Dépassement de soi","Reconversion","Leadership féminin"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/aleksandra-wozniak.webp","services":["speakers"]},{"id":"alexandre-bilodeau","nom":"Alexandre Bilodeau","prenom":"Alexandre","famille":"Bilodeau","photo":"assets/talents/alexandre-bilodeau.webp","cat":"olympics","catNom":"Olympics","titre":"2 x Olympic Champion / Speaker / Ambassador","roles":["Speaker","Brand Ambassador","Olympian","Champion"],"qualites":["Engagement social","Dépassement de soi","Motivation"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event","Charity Event"],"statut":"Olympian","decoupe":"assets/cut/alexandre-bilodeau.webp","services":["ambassadors","marketing","speakers"]},{"id":"nancy-kerrigan","nom":"Nancy Kerrigan","prenom":"Nancy","famille":"Kerrigan","photo":"assets/talents/nancy-kerrigan.webp","cat":"olympics","catNom":"Olympics","titre":"Former Figure Skater","roles":["Olympian","Champion","Sports Legend"],"qualites":["Persévérance","Esprit d’équipe","Engagement social"],"projets":["Charity Event"],"statut":"Olympian","decoupe":"assets/cut/nancy-kerrigan.webp","services":["speakers"]},{"id":"nathalie-lambert","nom":"Nathalie Lambert","prenom":"Nathalie","famille":"Lambert","photo":"assets/talents/nathalie-lambert.webp","cat":"olympics","catNom":"Olympics","titre":"Nathalie Lambert","roles":["Olympian","Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Olympian","decoupe":"assets/cut/nathalie-lambert.webp","services":["speakers"]},{"id":"kristel-ngarlem","nom":"Kristel Ngarlem","prenom":"Kristel","famille":"Ngarlem","photo":"assets/talents/kristel-ngarlem.webp","cat":"olympics","catNom":"Olympics","titre":"Weighlifting athlete / Canadian champion / Olympic Athlete","roles":["Olympian","Champion","Coach"],"qualites":["Motivation","Leadership féminin","Discipline"],"projets":["Corporate Event"],"statut":"Olympian","decoupe":"assets/cut/kristel-ngarlem.webp","services":["speakers"]},{"id":"joannie-rochette","nom":"Joannie Rochette","prenom":"Joannie","famille":"Rochette","photo":"assets/talents/joannie-rochette.webp","cat":"olympics","catNom":"Olympics","titre":"Speaker / Olympic medalist / Dr in Medecine / Former Figure Skater","roles":["Speaker","Olympian","Champion"],"qualites":["Engagement social","Persévérance","Discipline"],"projets":["Conference / Keynote","Brand Campaign","Charity Event"],"statut":"Olympian","decoupe":"assets/cut/joannie-rochette.webp","services":["ambassadors","marketing","speakers"]},{"id":"katerine-savard","nom":"Katerine Savard","prenom":"Katerine","famille":"Savard","photo":"assets/talents/katerine-savard.webp","cat":"olympics","catNom":"Olympics","titre":"Olympic Swimmer / Speaker / Actress","roles":["Speaker","Olympian","Champion"],"qualites":["Haute performance","Persévérance","Dépassement de soi"],"projets":["Conference / Keynote","Corporate Event"],"statut":"Olympian","decoupe":"assets/cut/katerine-savard.webp","services":["speakers"]},{"id":"marianne-st-gelais","nom":"Marianne St-Gelais","prenom":"Marianne","famille":"St-Gelais","photo":"assets/talents/marianne-st-gelais.webp","cat":"olympics","catNom":"Olympics","titre":"Multiple Olympic Medalist / Speaker / Ambassador","roles":["Speaker","Brand Ambassador","Olympian","Champion"],"qualites":["Esprit d’équipe","Leadership féminin","Leadership"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event"],"statut":"Olympian","decoupe":"assets/cut/marianne-st-gelais.webp","services":["ambassadors","marketing","speakers"]},{"id":"bruny-surin","nom":"Bruny Surin","prenom":"Bruny","famille":"Surin","photo":"assets/talents/bruny-surin.webp","cat":"olympics","catNom":"Olympics","titre":"Bruny Surin","roles":["Olympian","Champion","Sports Legend"],"qualites":["Discipline","Reconversion"],"projets":["Corporate Event"],"statut":"Olympian","decoupe":"assets/cut/bruny-surin.webp","services":["speakers"]},{"id":"sebastien-toutant","nom":"Sébastien Toutant","prenom":"Sébastien","famille":"Toutant","photo":"assets/talents/sebastien-toutant.webp","cat":"olympics","catNom":"Olympics","titre":"Sébastien Toutant","roles":["Olympian","Champion"],"qualites":["Motivation","Discipline"],"projets":["Corporate Event"],"statut":"Olympian","decoupe":"assets/cut/sebastien-toutant.webp","services":["speakers"]},{"id":"luc-gelinas","nom":"Luc Gélinas","prenom":"Luc","famille":"Gélinas","photo":"assets/talents/luc-gelinas.webp","cat":"media","catNom":"Media","titre":"Sports Journalist / Host","roles":["Host","Media Personality","Olympian","Champion"],"qualites":["Performer sous pression"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/luc-gelinas.webp","services":["hosts"]},{"id":"marc-griffin","nom":"Marc Griffin","prenom":"Marc","famille":"Griffin","photo":"assets/talents/marc-griffin.webp","cat":"media","catNom":"Media","titre":"Sports commentator - Former pro Baseball player","roles":["Media Personality","Olympian"],"qualites":["Reconversion","Persévérance"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/marc-griffin.webp","services":["hosts"]},{"id":"louis-jean","nom":"Louis Jean","prenom":"Louis","famille":"Jean","photo":"assets/talents/louis-jean.webp","cat":"media","catNom":"Media","titre":"Professional Host / Sport Journalist","roles":["Host","Media Personality"],"qualites":["Haute performance"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/louis-jean.webp","services":["hosts"]},{"id":"michel-lacroix","nom":"Michel Lacroix","prenom":"Michel","famille":"Lacroix","photo":"assets/talents/michel-lacroix.webp","cat":"media","catNom":"Media","titre":"Host / NHL Announcer","roles":["Host","Media Personality","Olympian","Champion","Sports Legend"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/michel-lacroix.webp","services":["hosts"]},{"id":"maxime-lalonde","nom":"Maxime Lalonde","prenom":"Maxime","famille":"Lalonde","photo":"assets/talents/maxime-lalonde.webp","cat":"media","catNom":"Media","titre":"Host","roles":["Host"],"qualites":["Haute performance"],"projets":["Brand Campaign","Corporate Event","Media Appearance"],"statut":"Former Athlete","decoupe":"assets/cut/maxime-lalonde.webp","services":["ambassadors","hosts","marketing"]},{"id":"yanick-levesque","nom":"Yanick Lévesque","prenom":"Yanick","famille":"Lévesque","photo":"assets/talents/yanick-levesque.webp","cat":"media","catNom":"Media","titre":"Animator / Producer","roles":["Host"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Former Athlete","decoupe":"assets/cut/yanick-levesque.webp","services":["hosts"]},{"id":"chantal-machabee","nom":"Chantal Machabée","prenom":"Chantal","famille":"Machabée","photo":"assets/talents/chantal-machabee.webp","cat":"media","catNom":"Media","titre":"First woman to present a sports bulletin on television • Vice President of Communications for the Montreal Canadiens • Sports commentator • Speaker • Animator","roles":["Speaker","Host","Media Personality"],"qualites":["Dépassement de soi","Leadership féminin","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/chantal-machabee.webp","services":["hosts","speakers"]},{"id":"elizabeth-rancourt","nom":"Elizabeth Rancourt","prenom":"Elizabeth","famille":"Rancourt","photo":"assets/talents/elizabeth-rancourt.webp","cat":"media","catNom":"Media","titre":"TV Sports Animator","roles":["Host","Media Personality"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/elizabeth-rancourt.webp","services":["hosts"]},{"id":"paul-rivard","nom":"Paul Rivard","prenom":"Paul","famille":"Rivard","photo":"assets/talents/paul-rivard.webp","cat":"media","catNom":"Media","titre":"TV host and analyst","roles":["Host","Media Personality","Olympian"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/paul-rivard.webp","services":["hosts"]},{"id":"patrice-bernier","nom":"Patrice Bernier","prenom":"Patrice","famille":"Bernier","photo":"assets/talents/patrice-bernier.webp","cat":"soccer","catNom":"Soccer","titre":"Former Captain Montreal Impact / Speaker / Ambasssador / Guest of honour","roles":["Speaker"],"qualites":["Leadership","Esprit d’équipe","Persévérance"],"projets":["Conference / Keynote"],"statut":"Former Athlete","decoupe":"assets/cut/patrice-bernier.webp","services":["speakers"]},{"id":"hassoun-camara","nom":"Hassoun Camara","prenom":"Hassoun","famille":"Camara","photo":"assets/talents/hassoun-camara.webp","cat":"soccer","catNom":"Soccer","titre":"Former MLS player / Speaker / TV Host","roles":["Speaker","Host","Olympian"],"qualites":["Performer sous pression"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Olympian","decoupe":"assets/cut/hassoun-camara.webp","services":["hosts","speakers"]},{"id":"maxime-crepeau","nom":"Maxime Crépeau","prenom":"Maxime","famille":"Crépeau","photo":"assets/talents/maxime-crepeau.webp","cat":"soccer","catNom":"Soccer","titre":"Goalkeeper in MLS","roles":["Speaker"],"qualites":["Persévérance","Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/maxime-crepeau.webp","services":["speakers"]},{"id":"samuel-piette","nom":"Samuel Piette","prenom":"Samuel","famille":"Piette","photo":"assets/talents/samuel-piette.webp","cat":"soccer","catNom":"Soccer","titre":"CF Montreal Capitain/Player • Ambassador • Influencer","roles":["Brand Ambassador"],"qualites":["Haute performance"],"projets":["Brand Campaign"],"statut":"Former Athlete","decoupe":"assets/cut/samuel-piette.webp","services":["ambassadors","marketing"]},{"id":"matthew-bergeron","nom":"Matthew Bergeron","prenom":"Matthew","famille":"Bergeron","photo":"assets/talents/matthew-bergeron.webp","cat":"other","catNom":"Others","titre":"NFL Player","roles":["Speaker"],"qualites":["Leadership","Motivation","Esprit d’équipe"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/matthew-bergeron.webp","services":["speakers"]},{"id":"eric-gagne","nom":"Eric Gagné","prenom":"Eric","famille":"Gagné","photo":"assets/talents/eric-gagne.webp","cat":"other","catNom":"Others","titre":"Former MLB Pitcher / Keynote Speaker / Ambassador","roles":["Speaker","Brand Ambassador","Champion"],"qualites":["Persévérance","Haute performance","Dépassement de soi"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","decoupe":"assets/cut/eric-gagne.webp","services":["ambassadors","marketing","speakers"]},{"id":"sylvain-guimond","nom":"Sylvain Guimond","prenom":"Sylvain","famille":"Guimond","photo":"assets/talents/sylvain-guimond.webp","cat":"other","catNom":"Others","titre":"Sports psychology Doctor / Speaker","roles":["Speaker","Olympian"],"qualites":["Leadership","Haute performance","Motivation"],"projets":["Conference / Keynote"],"statut":"Olympian","decoupe":"assets/cut/sylvain-guimond.webp","services":["speakers"]},{"id":"bruno-heppell","nom":"Bruno Heppell","prenom":"Bruno","famille":"Heppell","photo":"assets/talents/bruno-heppell.webp","cat":"other","catNom":"Others","titre":"Bruno Heppell","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/bruno-heppell.webp","services":["speakers"]},{"id":"pierre-lavoie","nom":"Pierre Lavoie","prenom":"Pierre","famille":"Lavoie","photo":"assets/talents/pierre-lavoie.webp","cat":"other","catNom":"Others","titre":"Motivational Speaker / Triathlon Athlete / Founder Le Grand Défi","roles":["Speaker","Brand Ambassador","Champion"],"qualites":["Motivation","Persévérance"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","decoupe":"assets/cut/pierre-lavoie.webp","services":["ambassadors","marketing","speakers"]},{"id":"maude-aimee-leblanc","nom":"Maude-Aimée Leblanc","prenom":"Maude-Aimée","famille":"Leblanc","photo":"assets/talents/maude-aimee-leblanc.webp","cat":"other","catNom":"Others","titre":"Professional Golfer","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","decoupe":"assets/cut/maude-aimee-leblanc.webp","services":["speakers"]},{"id":"claude-raymond","nom":"Claude Raymond","prenom":"Claude","famille":"Raymond","photo":"assets/talents/claude-raymond.webp","cat":"other","catNom":"Others","titre":"Major League Baseball Legend / Speaker / MLB Analyst","roles":["Speaker","Media Personality","Sports Legend","Coach"],"qualites":["Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","decoupe":"assets/cut/claude-raymond.webp","services":["hosts","speakers"]},{"id":"lysanne-richard","nom":"Lysanne Richard","prenom":"Lysanne","famille":"Richard","photo":"assets/talents/lysanne-richard.webp","cat":"other","catNom":"Others","titre":"High Diver / Speaker","roles":["Speaker","Champion"],"qualites":["Motivation","Persévérance","Haute performance"],"projets":["Conference / Keynote"],"statut":"Former Athlete","decoupe":"assets/cut/lysanne-richard.webp","services":["speakers"]}];
+const PROJETS=[{"id":"lasik-md-partner-with-pierre-lavoie","titre":"Lasik MD partner with PIERRE LAVOIE","marque":"LASIK MD","type":"Ambassadeur","annee":2026,"cover":"assets/projets/lasik-md-partner-with-pierre-lavoie-1.jpg","pers":["Pierre Lavoie"],"services":["ambassadors"]},{"id":"gsp","titre":"Come meet GSP - Quebec MMA legends reunite at Vogue Hotel","marque":"MVP Group","type":"Événement corporatif","annee":2025,"cover":"assets/projets/gsp-1.jpg","pers":[],"services":["hosts"]},{"id":"hutson","titre":"HUSH Hockey Challenge Starring Lane Hutson","marque":"HUSH","type":"Événement corporatif","annee":2025,"cover":"assets/projets/hutson-1.jpg","pers":[],"services":["hosts"]},{"id":"zacharybolduc","titre":"ZACHARY BOLDUC becomes the ambassador for AU NOIR clothing","marque":"AU NOIR","type":"Ambassadeur","annee":2025,"cover":"assets/projets/zacharybolduc-1.jpg","pers":[],"services":["ambassadors","marketing"]},{"id":"maximelalonde-marieevedicaire","titre":"MAXIME LALONDE and MARIE-ÈVE DICAIRE in the spotlight at a corporate gala.","marque":"Financial institution","type":"Événement corporatif","annee":2025,"cover":"assets/projets/maximelalonde-marieevedicaire-1.jpg","pers":["Marie-Eve Dicaire","Maxime Lalonde"],"services":["hosts"]},{"id":"leadershipaufeminin","titre":"LEADERSHIP au FÉMININ with Mrs MACHABÉE, DICAIRE, and PAQUETTE","marque":"MVP Group","type":"Conférence","annee":2024,"cover":"assets/projets/leadershipaufeminin-1.jpg","pers":["Marie-Eve Dicaire","Chantal Machabée"],"services":["speakers"]},{"id":"cibc","titre":"ETIENNE BOULAY and PAUL BYRON, ambassadors of CIBC Contest.","marque":"CIBC","type":"Ambassadeur","annee":2024,"cover":"assets/projets/cibc-1.jpg","pers":["Paul Byron"],"services":["ambassadors"]},{"id":"francisbouillonconferencier","titre":"FRANCIS BOUILLON, an inspiring corporate speaker","marque":"MVP Group","type":"Conférence","annee":2024,"cover":"assets/projets/francisbouillonconferencier-1.jpg","pers":["Francis Bouillon"],"services":["speakers"]},{"id":"matthewbergeron","titre":"MATTHEW BERGERON, a Quebec NFL player, joins Group MVP","marque":"MVP Group","type":"Événement corporatif","annee":2024,"cover":"assets/projets/matthewbergeron-1.jpg","pers":["Matthew Bergeron"],"services":["hosts"]},{"id":"mattforte","titre":"MATT FORTE - Former NFL Star Player in Chicago","marque":"MVP Group","type":"Événement corporatif","annee":2024,"cover":"assets/projets/mattforte-1.jpg","pers":[],"services":["hosts"]},{"id":"kirkmclean","titre":"KIRK MCLEAN - Former Star Goaltender of the Vancouver Canucks Shares His Story","marque":"MVP Group","type":"Événement corporatif","annee":2024,"cover":"assets/projets/kirkmclean-1.jpg","pers":[],"services":["hosts"]},{"id":"sadc","titre":"MANON RHÉAUME starring in SADC's campaign «Protéger vos dépôts c'est notre but»","marque":"SADC","type":"Ambassadeur","annee":2024,"cover":"assets/projets/sadc-1.jpg","pers":["Manon Rhéaume"],"services":["ambassadors","marketing"]},{"id":"luc-robitaille-president-and-former-player-of-the-los-angele","titre":"LUC ROBITAILLE - President and Former Player of the LA Kings as Guest of Honor","marque":"MVP Group","type":"Événement corporatif","annee":2024,"cover":"assets/projets/luc-robitaille-president-and-former-player-of-the-los-angele-1.jpg","pers":[],"services":["hosts"]},{"id":"patrick-laine-albilegeant-genesislaval","titre":"PATRICK LAINE partners with ALBI Le GÉANT","marque":"ALBI Le Géant","type":"Ambassadeur","annee":2024,"cover":"assets/projets/patrick-laine-albilegeant-genesislaval-1.jpg","pers":[],"services":["ambassadors"]},{"id":"katerine-savard-en-conference-aupres-des-jeunes","titre":"KATERINE SAVARD speaking to young swimmers","marque":"MVP Group","type":"Conférence","annee":2024,"cover":"assets/projets/katerine-savard-en-conference-aupres-des-jeunes-1.jpg","pers":["Katerine Savard"],"services":["speakers"]},{"id":"steve-begin","titre":"STEVE BÉGIN, Spokesperson for the \"I Love My DYS\" Campaign","marque":"MVP Group","type":"Ambassadeur","annee":2024,"cover":"assets/projets/steve-begin-1.jpg","pers":["Steve Bégin"],"services":["ambassadors","marketing"]},{"id":"manon-rheaume-patrice-bernier-pantheondessports","titre":"Manon Rhéaume and Patrice Bernier at the Panthéon des Sports","marque":"Panthéon des sports","type":"Événement corporatif","annee":2024,"cover":"assets/projets/manon-rheaume-patrice-bernier-pantheondessports-1.jpg","pers":["Manon Rhéaume","Patrice Bernier"],"services":["hosts"]},{"id":"desbiens-daoust-et-fecteau-pour-celebrer-le-hockey-feminin-a","titre":"DESBIENS, DAOUST, and FECTEAU Celebrate Women's Hockey at the Sherbrooke Phoenix","marque":"Phoenix","type":"Événement corporatif","annee":2024,"cover":"assets/projets/desbiens-daoust-et-fecteau-pour-celebrer-le-hockey-feminin-a-1.jpg","pers":[],"services":["hosts"]},{"id":"chantalmachabee-timhortons","titre":"CHANTAL MACHABÉE is collaborating with Tim Hortons","marque":"Tim Hortons","type":"Ambassadeur","annee":2024,"cover":"assets/projets/chantalmachabee-timhortons-1.jpg","pers":["Chantal Machabée"],"services":["ambassadors","marketing"]},{"id":"mbilli-rochette-lambert-and-lacroix","titre":"MBILLI, ROCHETTE, LAMBERT, and LACROIX: Guest of Honour at the Mercedes-Benz Gatineau Classic","marque":"MVP Group","type":"Événement corporatif","annee":2024,"cover":"assets/projets/mbilli-rochette-lambert-and-lacroix-1.jpg","pers":["Yvon Lambert","Nathalie Lambert","Joannie Rochette","Michel Lacroix"],"services":["hosts"]},{"id":"golf-phoenix","titre":"Several Sports Personalities at the Sherbrooke Phoenix Golf Tournament","marque":"Phoenix","type":"Événement corporatif","annee":2024,"cover":"assets/projets/golf-phoenix-1.jpg","pers":["André Roy","Sébastien Toutant","Maxime Lalonde","Elizabeth Rancourt","Patrice Bernier","Claude Raymond"],"services":["hosts"]},{"id":"marie-eve-dicaire","titre":"MARIE-ÈVE DICAIRE offers a conference at the W Hotel","marque":"MVP Group","type":"Conférence","annee":2024,"cover":"assets/projets/marie-eve-dicaire-1.jpg","pers":["Marie-Eve Dicaire"],"services":["speakers"]},{"id":"dave-morissette-offers-an-impactful-corporate-conference","titre":"DAVE MORISSETTE offers an impactful corporate conference","marque":"MVP Group","type":"Conférence","annee":2024,"cover":"assets/projets/dave-morissette-offers-an-impactful-corporate-conference-1.jpg","pers":[],"services":["hosts","speakers"]},{"id":"bennmathurinvapotercestpastagame","titre":"BENN MATHURIN, NBA rookie Star: spokesperson for a anti-vape campaign","marque":"MVP Group","type":"Conférence","annee":2023,"cover":"assets/projets/bennmathurinvapotercestpastagame-1.jpg","pers":[],"services":["marketing","speakers"]},{"id":"brunysuringuestofhonoratthekinballquebecgala","titre":"BRUNY SURIN guest of honor at the Kin-Ball Québec gala","marque":"Kin-Ball","type":"Ambassadeur","annee":2023,"cover":"assets/projets/brunysuringuestofhonoratthekinballquebecgala-1.jpg","pers":["Bruny Surin"],"services":["ambassadors","hosts"]},{"id":"patricebernierisoneofsubwaysnewabassadors","titre":"PATRICE BERNIER is one of SUBWAY's new ambassadors","marque":"Subway","type":"Conférence","annee":2023,"cover":"assets/projets/patricebernierisoneofsubwaysnewabassadors-1.jpg","pers":["Sébastien Toutant","Patrice Bernier"],"services":["speakers"]},{"id":"chantalmachabeeinhighdemandthisspringseason","titre":"CHANTAL MACHABÉE, in high demand this spring season","marque":"MVP Group","type":"Conférence","annee":2023,"cover":"assets/projets/chantalmachabeeinhighdemandthisspringseason-1.jpg","pers":["Chantal Machabée"],"services":["speakers"]},{"id":"bruno-gervais","titre":"BRUNO GERVAIS Hosts Special Event for Préma-Québec's 20th Anniversary","marque":"MVP Group","type":"Événement corporatif","annee":2023,"cover":"assets/projets/bruno-gervais-1.jpg","pers":["Bruno Gervais","Pierre Gervais"],"services":["hosts"]},{"id":"samuel-piette-personnalite-sportive-pour-le-lancement-dun-co","titre":"SAMUEL PIETTE Promotes Quebec Public Libraries Through Regional Contest","marque":"MVP Group","type":"Événement corporatif","annee":2023,"cover":"assets/projets/samuel-piette-personnalite-sportive-pour-le-lancement-dun-co-1.jpg","pers":["Samuel Piette"],"services":["hosts"]},{"id":"nick-suzuki","titre":"NICK SUZUKI Becomes New Goodfood's Ambassador in Canada","marque":"MVP Group","type":"Ambassadeur","annee":2023,"cover":"assets/projets/nick-suzuki-1.jpg","pers":[],"services":["ambassadors"]},{"id":"bruny-surin-steve-begin-unite-to-offer-expert-advice-at-the-","titre":"BRUNY SURIN & STEVE BEGIN Unite to Offer Expert Advice at The TOPP Conference","marque":"TOPP","type":"Conférence","annee":2023,"cover":"assets/projets/bruny-surin-steve-begin-unite-to-offer-expert-advice-at-the--1.jpg","pers":["Steve Bégin","Bruny Surin"],"services":["speakers"]},{"id":"chantal-machabee-guest-speaker-for-a-financial-institution","titre":"CHANTAL MACHABÉE Guest Speaker For a Big Financial Institution","marque":"Financial institution","type":"Conférence","annee":2023,"cover":"assets/projets/chantal-machabee-guest-speaker-for-a-financial-institution-1.jpg","pers":["Chantal Machabée"],"services":["speakers"]},{"id":"sebastientoutantproudambassadorofesurf","titre":"SÉBASTIEN TOUTANT proud ambassador of E-SURF","marque":"MVP Group","type":"Ambassadeur","annee":2023,"cover":"assets/projets/sebastientoutantproudambassadorofesurf-1.jpg","pers":["Sébastien Toutant"],"services":["ambassadors"]},{"id":"bennedictmathurinameetingwithhighschoolstudents","titre":"BENN MATHURIN, a meeting with high school students as a spokesperson","marque":"MVP Group","type":"Conférence","annee":2023,"cover":"assets/projets/bennedictmathurinameetingwithhighschoolstudents-1.jpg","pers":[],"services":["marketing","speakers"]},{"id":"mariannestgelaisambassadorfortheeatlocalmorethanevercampaign","titre":"MARIANNE ST-GELAIS ambassador for the Eat Local More Than Ever! campaign","marque":"MVP Group","type":"Ambassadeur","annee":2023,"cover":"assets/projets/mariannestgelaisambassadorfortheeatlocalmorethanevercampaign-1.jpg","pers":["Marianne St-Gelais"],"services":["ambassadors","marketing"]},{"id":"clauderaymondpitchesthenewbaseballsteakfromlepiciermetro","titre":"CLAUDE RAYMOND pitches the new Baseball Steak from L'Épicier MÉTRO","marque":"Metro","type":"Événement corporatif","annee":2023,"cover":"assets/projets/clauderaymondpitchesthenewbaseballsteakfromlepiciermetro-1.jpg","pers":["Claude Raymond"],"services":["hosts","marketing"]},{"id":"pk-silk","titre":"PK SUBBAN New Plantbassador for Silk Canada","marque":"MVP Group","type":"Ambassadeur","annee":2023,"cover":"assets/projets/pk-silk-1.jpg","pers":[],"services":["ambassadors","marketing"]},{"id":"sergesavardgestofhonorcorporatebox","titre":"SERGE SAVARD, guest of honor in a corporate box","marque":"MVP Group","type":"Événement corporatif","annee":2023,"cover":"assets/projets/sergesavardgestofhonorcorporatebox-1.jpg","pers":["Katerine Savard"],"services":["hosts"]},{"id":"joannierochetteperseveranceselfcare","titre":"JOANNIE ROCHETTE en conférence à Québec","marque":"MVP Group","type":"Conférence","annee":2023,"cover":"assets/projets/joannierochetteperseveranceselfcare-1.jpg","pers":["Joannie Rochette"],"services":["hosts","speakers"]},{"id":"patricebernierinspireshighschoolstudents","titre":"PATRICE BERNIER inspires high school students","marque":"MVP Group","type":"Conférence","annee":2023,"cover":"assets/projets/patricebernierinspireshighschoolstudents-1.jpg","pers":["Patrice Bernier"],"services":["speakers"]},{"id":"arberxhekaj","titre":"ARBER XHEKAJ launches his new burger \"The Sheriff\" with La Chambre Restaurants","marque":"MVP Group","type":"Événement corporatif","annee":2023,"cover":"assets/projets/arberxhekaj-1.jpg","pers":[],"services":["hosts"]},{"id":"stevebegindys","titre":"STEVE BÉGIN becomes spokesperson for the J'Aime Mon Dys campaign","marque":"MVP Group","type":"Ambassadeur","annee":2023,"cover":"assets/projets/stevebegindys-1.jpg","pers":["Steve Bégin"],"services":["ambassadors","marketing"]},{"id":"guycarbonneaucorpo","titre":"GUY CARBONNEAU, guest of honour for a corporate dinner","marque":"MVP Group","type":"Conférence","annee":2023,"cover":"assets/projets/guycarbonneaucorpo-1.jpg","pers":["Guy Carbonneau"],"services":["hosts","speakers"]},{"id":"mathieu-dandenault-a-stanley-cup-winners-wisdom-on-teamwork-","titre":"MATHIEU DANDENAULT: A Stanley Cup Winner's Wisdom on Teamwork in Business","marque":"MVP Group","type":"Conférence","annee":2022,"cover":"assets/projets/mathieu-dandenault-a-stanley-cup-winners-wisdom-on-teamwork--1.jpg","pers":["Mathieu Dandenault"],"services":["speakers"]},{"id":"guyboucherconferenceleadership","titre":"GUY BOUCHER speaking about Leadership and Team management","marque":"MVP Group","type":"Conférence","annee":2022,"cover":"assets/projets/guyboucherconferenceleadership-1.jpg","pers":["Guy Boucher"],"services":["speakers"]},{"id":"patriceberniersubway","titre":"PATRICE BERNIER, spokesperson for the new menu at Subway Quebec","marque":"Subway","type":"Conférence","annee":2022,"cover":"assets/projets/patriceberniersubway-1.jpg","pers":["Patrice Bernier"],"services":["speakers"]},{"id":"maudeaimeeleblancambassadricestpacome","titre":"MAUDE-AIMÉE LEBLANC, ambassador of the 50th anniversary of the Golf de Saint-Pacôme","marque":"Desjardins","type":"Ambassadeur","annee":2022,"cover":"assets/projets/maudeaimeeleblancambassadricestpacome-1.jpg","pers":["Maude-Aimée Leblanc"],"services":["ambassadors"]},{"id":"steve-begin-inspires-high-school-students","titre":"STEVE BÉGIN Inspires High School Students","marque":"MVP Group","type":"Conférence","annee":2022,"cover":"assets/projets/steve-begin-inspires-high-school-students-1.jpg","pers":["Steve Bégin"],"services":["speakers"]},{"id":"guy-boucher-delivers-a-mobilizing-and-inspiring-conference-t","titre":"GUY BOUCHER Delivers a Conference to the Employees of a German Multinational","marque":"MVP Group","type":"Conférence","annee":2022,"cover":"assets/projets/guy-boucher-delivers-a-mobilizing-and-inspiring-conference-t-1.jpg","pers":["Guy Boucher"],"services":["speakers"]},{"id":"chantalmachabee","titre":"CHANTAL MACHABÉE and DOMINIQUE DUCHARME","marque":"MVP Group","type":"Événement corporatif","annee":2022,"cover":"assets/projets/chantalmachabee-1.jpg","pers":["Chantal Machabée"],"services":["hosts"]},{"id":"galamichelacroix","titre":"Gala Nous Vendons Votre Maison with MICHEL LACROIX","marque":"MVP Group","type":"Événement corporatif","annee":2022,"cover":"assets/projets/galamichelacroix-1.jpg","pers":["Michel Lacroix"],"services":["hosts"]},{"id":"gsp-kim-clavel-et-patrice-bernier-reunis-a-levenement-topp","titre":"GSP, KIM CLAVEL & PATRICE BERNIER Reunited at the Event TOPP","marque":"TOPP","type":"Événement corporatif","annee":2022,"cover":"assets/projets/gsp-kim-clavel-et-patrice-bernier-reunis-a-levenement-topp-1.jpg","pers":["Kim Clavel","Patrice Bernier"],"services":["hosts"]},{"id":"kristelngarlemconference","titre":"KRISTEL NGARLEM, weightlifting olympic athlete delivers a conference as part of Women's Day.","marque":"MVP Group","type":"Conférence","annee":2022,"cover":"assets/projets/kristelngarlemconference-1.jpg","pers":["Kristel Ngarlem"],"services":["speakers"]},{"id":"breaktheillusion","titre":"Break the Illusion Campaign - Raise awareness among young people against the harmful effects of vaping","marque":"MVP Group","type":"Conférence","annee":2022,"cover":"assets/projets/breaktheillusion-1.jpg","pers":["Kim Clavel","Kristel Ngarlem","Katerine Savard","Samuel Piette"],"services":["marketing","speakers"]},{"id":"patricebriseboiscibc","titre":"PATRICE BRISEBOIS, spokesperson for the CIBC x HABS contest","marque":"CIBC","type":"Ambassadeur","annee":2022,"cover":"assets/projets/patricebriseboiscibc-1.jpg","pers":["Patrice Brisebois"],"services":["ambassadors"]},{"id":"the-power-of-leadership-chantal-machabee-guest-speaks-at-cro","titre":"The Power of Leadership: Chantal Machabee Guest Speaks at C.R.O.I.R.E. Event","marque":"MVP Group","type":"Conférence","annee":2022,"cover":"assets/projets/the-power-of-leadership-chantal-machabee-guest-speaks-at-cro-1.jpg","pers":["Chantal Machabée"],"services":["speakers"]},{"id":"vincent-lecavalier-extends-a-warm-welcome-to-our-corporate-c","titre":"VINCENT LECAVALIER wishes a warm welcome to the clients of a corporate suite!!","marque":"MVP Group","type":"Ambassadeur","annee":2022,"cover":"assets/projets/vincent-lecavalier-extends-a-warm-welcome-to-our-corporate-c-1.jpg","pers":["Vincent Lecavalier"],"services":["ambassadors","marketing"]},{"id":"kimclaveljeanbleu","titre":"Kim Clavel Ctarring Jean Bleu's Campaign","marque":"Jean Bleu","type":"Ambassadeur","annee":2022,"cover":"assets/projets/kimclaveljeanbleu-1.jpg","pers":["Kim Clavel"],"services":["ambassadors","marketing"]},{"id":"hemaquebec","titre":"Sébastien Toutant starring in Héma-Québec","marque":"Héma-Québec","type":"Ambassadeur","annee":2022,"cover":"assets/projets/hemaquebec-1.jpg","pers":["Sébastien Toutant"],"services":["ambassadors","marketing"]},{"id":"bruny-surin-et-chantal-machabee-ensemble-sur-linclusion-et-l","titre":"BRUNY SURIN & CHANTAL MACHABÉE Together for Inclusion and Diversity","marque":"MVP Group","type":"Ambassadeur","annee":2022,"cover":"assets/projets/bruny-surin-et-chantal-machabee-ensemble-sur-linclusion-et-l-1.jpg","pers":["Bruny Surin","Chantal Machabée"],"services":["ambassadors","hosts"]},{"id":"patrickroymariotremblayuber","titre":"PATRICK ROY and MARIO TREMBLAY reunited again thanks to UBER","marque":"Uber","type":"Événement corporatif","annee":2022,"cover":"assets/projets/patrickroymariotremblayuber-1.jpg","pers":["Patrick Roy","Mario Tremblay"],"services":["hosts"]},{"id":"marie-evedicaireconference","titre":"MARIE-EVE DICAIRE speaking at a congress in the USA","marque":"Financial institution","type":"Conférence","annee":2022,"cover":"assets/projets/marie-evedicaireconference-1.jpg","pers":["Marie-Eve Dicaire"],"services":["speakers"]},{"id":"pierre-lavoie-encourages-canadians-to-enjoy-winter-with-dest","titre":"PIERRE LAVOIE encourages Canadians to enjoy winter with Destination Canada","marque":"Destination Canada","type":"Ambassadeur","annee":2021,"cover":"assets/projets/pierre-lavoie-encourages-canadians-to-enjoy-winter-with-dest-1.jpg","pers":["Pierre Lavoie"],"services":["ambassadors"]},{"id":"patrickroymariotremblayubereats","titre":"Patrick Roy and Mario Tremblay finally reconciled thanks to Uber Eats","marque":"Uber Eats","type":"Ambassadeur","annee":2021,"cover":"assets/projets/patrickroymariotremblayubereats-1.jpg","pers":["Patrick Roy","Mario Tremblay"],"services":["ambassadors"]},{"id":"rdvmvp","titre":"MVP Group Launches Free Webinar Series","marque":"MVP Group","type":"Événement corporatif","annee":2020,"cover":"assets/projets/rdvmvp-1.jpg","pers":["Marie-Eve Dicaire","Jean Pascal","Steve Bégin","Joël Bouchard","Joannie Rochette","Patrice Bernier","Samuel Piette","Sylvain Guimond","Pierre Lavoie"],"services":["hosts"]},{"id":"tomas-tuna-tatar-joins-forces-with-kuto","titre":"TOMAS ''TUNA'' TATAR joins forces with KÜTO","marque":"Kuto","type":"Ambassadeur","annee":2020,"cover":"assets/projets/tomas-tuna-tatar-joins-forces-with-kuto-1.jpg","pers":[],"services":["ambassadors"]},{"id":"mvp-group-agency-makes-a-strong-showing-at-its-first-rendez-","titre":"MVP Group Agency makes a strong showing at its first Rendez-vous Sports","marque":"MVP Group","type":"Conférence","annee":2020,"cover":"assets/projets/mvp-group-agency-makes-a-strong-showing-at-its-first-rendez--1.jpg","pers":["Marie-Eve Dicaire","Luc Gélinas","Samuel Piette"],"services":["marketing","speakers"]},{"id":"chantal-machabee-renews-her-agreement-with-lexus-laval","titre":"CHANTAL MACHABÉE renews her agreement with Lexus Laval","marque":"Lexus","type":"Ambassadeur","annee":2020,"cover":"assets/projets/chantal-machabee-renews-her-agreement-with-lexus-laval-1.jpg","pers":["Chantal Machabée"],"services":["ambassadors","hosts"]},{"id":"steve-begin-back-home-for-a-conference-on-school-perseveranc","titre":"STEVE BÉGIN is back home for a conference on school perseverance","marque":"MVP Group","type":"Conférence","annee":2020,"cover":"assets/projets/steve-begin-back-home-for-a-conference-on-school-perseveranc-1.jpg","pers":["Steve Bégin"],"services":["speakers"]},{"id":"samuel-piette-is-the-animator-of-sports-video-clips-for-chil","titre":"SAMUEL PIETTE is the animator of sports video clips for children on RADIO-CANADA","marque":"Radio-Canada","type":"Ambassadeur","annee":2020,"cover":"assets/projets/samuel-piette-is-the-animator-of-sports-video-clips-for-chil-1.jpg","pers":["Samuel Piette"],"services":["ambassadors","hosts","marketing"]},{"id":"sylvain-guimond-delivers-an-inspiring-conference-as-part-of-","titre":"SYLVAIN GUIMOND delivers an inspiring conference for Les d'Aliments du Québec","marque":"Aliments du Québec","type":"Conférence","annee":2020,"cover":"assets/projets/sylvain-guimond-delivers-an-inspiring-conference-as-part-of--1.jpg","pers":["Sylvain Guimond"],"services":["speakers"]},{"id":"joannie-rochette-and-alexandre-bilodeau-meet-the-carabins","titre":"JOANNIE ROCHETTE and ALEXANDRE BILODEAU meet the Carabins","marque":"Carabins","type":"Conférence","annee":2020,"cover":"assets/projets/joannie-rochette-and-alexandre-bilodeau-meet-the-carabins-1.jpg","pers":["Alexandre Bilodeau","Joannie Rochette"],"services":["speakers"]},{"id":"mvp-group-agency-goes-virtual","titre":"MVP Group Agency goes virtual!","marque":"MVP Group","type":"Conférence","annee":2020,"cover":"assets/projets/mvp-group-agency-goes-virtual-1.jpg","pers":[],"services":["speakers"]},{"id":"bruny-surin-delivers-a-nice-speech-for-nestor-real-estate-ag","titre":"BRUNY SURIN delivers a nice speech for Nestor real estate agency","marque":"Nestor","type":"Conférence","annee":2019,"cover":"assets/projets/bruny-surin-delivers-a-nice-speech-for-nestor-real-estate-ag-1.jpg","pers":["Bruny Surin"],"services":["speakers"]},{"id":"tomas-tatar-joins-mvp-group","titre":"TOMAS TATAR JOINS MVP GROUP","marque":"MVP Group","type":"Événement corporatif","annee":2019,"cover":"assets/projets/tomas-tatar-joins-mvp-group-1.jpg","pers":[],"services":["hosts"]},{"id":"guy-carbonneau-endorse-lequipe-dussault-of-remax-platine","titre":"GUY CARBONNEAU endorse L'Équipe DUSSAULT of ReMax Platine","marque":"Remax","type":"Ambassadeur","annee":2019,"cover":"assets/projets/guy-carbonneau-endorse-lequipe-dussault-of-remax-platine-1.jpg","pers":["Guy Carbonneau"],"services":["ambassadors"]},{"id":"guy-cabonneau-starring-in-mcdonalds-new-commercial-with-marc","titre":"GUY CABONNEAU starring in McDonald's new commercial with MARC BERGEVIN","marque":"McDonald","type":"Ambassadeur","annee":2019,"cover":"assets/projets/guy-cabonneau-starring-in-mcdonalds-new-commercial-with-marc-1.jpg","pers":["Marc Bergevin","Guy Carbonneau"],"services":["ambassadors","marketing"]}];
+const $=(s,c)=>(c||document).querySelector(s), $$=(s,c)=>[...(c||document).querySelectorAll(s)];
+const ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const ROLE_FR={'Speaker':'Conférencier','Brand Ambassador':'Ambassadeur de marque','Host':'Animateur','Media Personality':'Personnalité médiatique','Olympian':'Olympien','Champion':'Champion','Sports Legend':'Légende du sport','Coach':'Entraîneur'};
+const ROLE_SVC={speakers:'Conférencier',ambassadors:'Ambassadeur de marque',hosts:'Animateur · Invité d\u2019honneur',marketing:'Influenceur · Campagnes'};
+const MAIL=(sujet,corps)=>`mailto:info@mvpsportsmarketing.com?subject=${encodeURIComponent(sujet)}${corps?'&body='+encodeURIComponent(corps):''}`;
+const key=new URLSearchParams(location.search).get('s')||'speakers';
+const S=SERVICES[key]||SERVICES.speakers;
+document.title=`${S.nom} — Services | MVP Group`;
+const pers=TALENTS.filter(t=>t.services.includes(key));
+const persVedette=[...pers].sort((a,b)=>(b.roles.length)-(a.roles.length)).slice(0,10);
+const proj=PROJETS.filter(p=>p.services.includes(key)).slice(0,8);
+const imgs=proj.map(p=>p.cover).filter(Boolean);
+const img=i=>imgs[i%Math.max(1,imgs.length)]||S.hero;
+
+$('#svc').innerHTML=`
+<section class="sh" data-nav="light">
+  <div class="sh__bg" id="shBg"><img src="${S.hero}" alt="" style="object-position:${S.cadre||'center 30%'}"></div>
+  <span class="sh__num">${S.num}</span>
+  <div class="sh__in">
+    <p class="sh__eye"><i></i>MVP Services / ${S.num}</p>
+    <h1 class="sh__t">${S.h1}</h1>
+    <p class="sh__p">${S.accroche}</p>
+    <div class="sh__cta"><a class="btn btn--gold" href="personnalites.html?${S.filtre}">${S.cta1}</a><a class="btn btn--outline" href="${MAIL(S.nom+' — nouveau projet')}">${S.cta2}</a></div>
+  </div>
+</section>
+
+<section class="wy" data-nav="dark"><div class="wy__in">
+  <h2 class="wy__stmt rev">${S.enonce}</h2>
+  <div class="wy__grid">
+    <p class="wy__p rev">${S.pourquoi}</p>
+    <div class="wy__img rev" data-prof="0.12"><img src="${img(1)}" alt=""></div>
+  </div>
+  <div class="bn">${S.benefices.map((b,i)=>`<div class="bn__i rev" style="transition-delay:${i*.1}s"><span class="bn__k">0${i+1}</span><h3 class="bn__h">${b[0]}</h3><p class="bn__p">${b[1]}</p></div>`).join('')}</div>
+</div></section>
+
+<section class="pe" data-nav="dark">
+  <div class="pe__head"><h2 class="pe__t">Des personnalités pour ce service</h2>
+    <div class="pe__nav"><button id="peP" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><button id="peN" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+  <div class="pe__rail" id="peRail">${persVedette.map(t=>`<article class="tc">
+    <div class="tc__ph"><img src="${t.photo}" alt="${t.nom}" loading="lazy"><span class="tc__cat">${t.catNom}</span></div>
+    <div class="tc__b"><h3 class="tc__n">${t.nom}</h3><p class="tc__s">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.catNom:t.titre}</p><p class="tc__r">${ROLE_SVC[key]}</p></div>
+    <div class="tc__cta"><a class="tc__b1" href="${MAIL('Projet avec '+t.nom,"Bonjour,\n\nJ'aimerais discuter d'un projet ("+S.nom+") avec "+t.nom+".\n\nMerci.")}">Travailler avec ${t.nom}</a><a class="tc__b2" href="profil.html?id=${t.id}">Voir le profil</a></div>
+  </article>`).join('')}</div>
+  <div class="pe__all"><a class="btn btn--blue" href="personnalites.html?${S.filtre}">Voir tous les ${S.nom.toLowerCase()} ${ARROW}</a></div>
+</section>
+
+<section class="gs" data-nav="light"><h2 class="gs__t rev">${S.grand.map(l=>`<span>${l}</span>`).join('')}</h2></section>
+
+<section class="pr" data-nav="dark"><div class="pr__in">
+  <div class="pr__img rev" data-prof="-0.12"><img src="${img(2)}" alt=""></div>
+  <div>
+    <p class="pr__k rev">Comment MVP le rend possible</p>
+    <h2 class="pr__t rev">Pourquoi ne pas contacter l'athlète moi-même ?</h2>
+    <p class="pr__q rev">Parce que le bon jumelage, la préparation et la coordination font toute la différence.</p>
+    <div class="st">${S.etapes.map((e,i)=>`<div class="st__i rev" style="transition-delay:${i*.1}s"><span class="st__n">0${i+1}</span><div><h3 class="st__h">${e[0]}</h3><p class="st__p">${e[1]}</p></div></div>`).join('')}</div>
+  </div>
+</div></section>
+
+${proj.length?`<section class="ac" data-nav="light">
+  <div class="ac__head"><h2 class="ac__t">Le service en action</h2><span class="ac__hint">Glisser →</span></div>
+  <div class="ac__rail" id="acRail">${proj.map((p,k)=>`<a class="acc" href="projet.html?id=${p.id}">
+    <img src="${p.cover}" alt="${p.titre}" loading="lazy">
+    <span class="acc__t"><span class="acc__k">MVP Group · ${String(k+1).padStart(2,'0')} · ${p.annee||''}</span><span class="acc__h">${p.titre}</span><span class="acc__p">${p.marque!=='MVP Group'?p.marque+' · ':''}${p.pers.join(' · ')}</span><span class="acc__v">Voir le projet ${ARROW}</span></span></a>`).join('')}</div>
+</section>`:''}
+
+<section class="dp" data-nav="dark"><div class="dp__in">
+  ${S.approfondir.map((a,i)=>`<div class="dp__row">
+    ${i%2?`<div class="dp__img rev" data-prof="${i%2?'0.1':'-0.1'}"><img src="${img(3+i)}" alt=""></div><div><h2 class="dp__h rev">${a[0]}</h2><p class="dp__p rev" style="margin-top:14px">${a[1]}</p></div>`
+          :`<h2 class="dp__h rev">${a[0]}</h2><p class="dp__p rev">${a[1]}</p>`}
+  </div>`).join('')}
+</div></section>
+
+<section class="fc" data-nav="light"><div class="fc__in">
+  <div><h2>${S.final}</h2><p>${S.finalTxt}</p></div>
+  <div class="fc__b"><a class="btn btn--gold" href="${MAIL(S.nom+' — '+S.fcta1)}">${S.fcta1}</a><a class="btn btn--outline" href="personnalites.html?${S.filtre}">${S.fcta2}</a></div>
+</div></section>`;
+
+(function(){const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vu');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  $$('.rev').forEach(el=>io.observe(el));})();
+(function(){ if(matchMedia('(prefers-reduced-motion: reduce)').matches||innerWidth<1024) return;
+  const bg=$('#shBg img'); let raf=null;
+  addEventListener('scroll',()=>{ if(raf) return; raf=requestAnimationFrame(()=>{
+    const y=scrollY; if(bg) bg.style.transform=`scale(1.08) translate3d(0,${y*0.22}px,0)`;
+    $$('[data-prof]').forEach(el=>{const r=el.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return;
+      const t=(r.top+r.height/2-innerHeight/2)/innerHeight; const im=el.querySelector('img'); if(im) im.style.transform=`translate3d(0,${t*parseFloat(el.dataset.prof)*-260}px,0) scale(1.1)`;});
+    raf=null;});},{passive:true});})();
+function glisser(r){ if(!r)return; let x0=0,s0=0,on=false;
+  r.addEventListener('pointerdown',e=>{on=true;x0=e.clientX;s0=r.scrollLeft;r.classList.add('saisi');r.setPointerCapture(e.pointerId);});
+  r.addEventListener('pointermove',e=>{if(!on)return;r.scrollLeft=s0-(e.clientX-x0);});
+  const fin=()=>{on=false;r.classList.remove('saisi');};['pointerup','pointercancel','pointerleave'].forEach(ev=>r.addEventListener(ev,fin));
+  r.addEventListener('click',e=>{if(Math.abs(r.scrollLeft-s0)>6)e.preventDefault();},true);}
+glisser($('#peRail')); glisser($('#acRail'));
+(function(){const r=$('#peRail'); if(!r)return; const pas=()=>{const c=r.querySelector('.tc');return c?c.offsetWidth+18:320;};
+  $('#peP').addEventListener('click',()=>r.scrollBy({left:-pas(),behavior:'smooth'})); $('#peN').addEventListener('click',()=>r.scrollBy({left:pas(),behavior:'smooth'}));})();
+(function(){const h=document.querySelector('header'); if(!h)return;
+  const maj=()=>{const y=h.getBoundingClientRect().bottom; let c='dark';
+    for(const r of $$('[data-nav]')){const b=r.getBoundingClientRect(); if(b.top<=y&&b.bottom>=y) c=r.dataset.nav;}
+    h.dataset.theme=c==='light'?'light':'dark';};
+  addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();})();
+</script>
+</body></html>
