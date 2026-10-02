@@ -776,28 +776,73 @@ ul{list-style:none}
   .services__track,.services__track *{transform-style:flat}
 }
 
-/* =====================================================================
-   RÉVISION 4 — Personnalités : coverflow, juste milieu entre l'orbite 3D
-   et la rangée de cartes plates.
-   ===================================================================== */
-.talents{--tw:clamp(280px,23vw,360px);overflow:hidden}
-.talents__stage{position:relative}
-.talents__ghost{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:clamp(90px,15vw,280px);line-height:.8;letter-spacing:-.04em;color:var(--black);opacity:.045;white-space:nowrap;pointer-events:none;z-index:0}
-.talents__rail{position:relative;z-index:1;perspective:1500px;perspective-origin:50% 45%;scroll-snap-type:x mandatory;scroll-padding:0;padding:26px calc(50% - var(--tw)/2) 50px;gap:clamp(10px,1vw,18px);transform-style:preserve-3d}
-.tcard{flex:0 0 var(--tw);scroll-snap-align:center;transform-origin:50% 50%;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s;will-change:transform}
-.talents__rail.saisi .tcard{transition:none}
-.tcard:not(.is-centre){cursor:pointer}
-.tcard:not(.is-centre) .tcard__in{box-shadow:0 10px 24px rgba(5,5,5,.08)}
-.tcard.is-centre .tcard__in{box-shadow:0 40px 80px rgba(5,5,5,.22),0 6px 14px rgba(5,5,5,.08)}
-.tcard:not(.is-centre) .tcard__bg{filter:grayscale(1) brightness(.42)}
-.tcard.is-centre .tcard__cat{background:var(--gold);color:var(--black)}
-@media (max-width:1023px){.talents{--tw:72vw}}
-@media (max-width:600px){.talents{--tw:78vw}.talents__ghost{font-size:26vw}}
-@media (prefers-reduced-motion:reduce){.tcard{transition:none}}
+
 
 /* Titres des cartes Services plus grands */
 .panel__title{font-size:clamp(22px,2vw,34px);line-height:.98;margin-top:16px}
 @media (max-width:1023px){.panel__title{font-size:clamp(22px,6.2vw,30px)}}
+
+/* =====================================================================
+   RÉVISION 5 — cartes Services façon Projets, cartes Personnalités
+   plein cadre, plus de repères « + »
+   ===================================================================== */
+/* ---------- Services : photo en couleur, dégradé foncé en bas, texte blanc ---------- */
+.panel__img{filter:brightness(.82) saturate(.95)}
+.panel:hover .panel__img{filter:brightness(1);transform:scale(1.04)}
+.panel__shade{background:linear-gradient(180deg,rgba(5,5,5,0) 30%,rgba(5,5,5,.55) 62%,rgba(5,5,5,.94) 100%);opacity:1}
+.panel:hover .panel__shade{opacity:1}
+.panel__body{padding:clamp(16px,1.4vw,22px)}
+.panel .panel__title{text-align:left;color:var(--white);margin:0;font-size:clamp(22px,1.9vw,32px);line-height:.98;transform:none}
+.panel__line{margin:14px 0 10px}
+.panel__desc{opacity:0;max-height:0;overflow:hidden;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease),max-height .6s var(--ease)}
+.panel:hover .panel__desc,.panel:focus-visible .panel__desc{opacity:1;max-height:140px;transform:none}
+.panel__cta{display:inline-flex;align-items:center;gap:9px;margin-top:12px;padding:0;background:none;color:var(--gold);font-size:11px;letter-spacing:.16em;font-weight:700;text-transform:uppercase}
+.panel__cta .arrow{width:15px;height:15px;transition:transform .35s var(--ease)}
+.panel:hover .panel__cta{background:none;color:var(--gold)}
+.panel:hover .panel__cta .arrow{transform:translateX(5px)}
+.panel__frame{border-radius:8px}
+.services__track:hover .panel:not(:hover) .panel__img{filter:brightness(.4) grayscale(.4)}
+@media (min-width:1024px){.panel__frame{height:min(52vh,560px)}}
+@media (max-width:1023px){.panel__desc{opacity:1;max-height:none;transform:none}}
+
+/* ---------- Personnalités : rangée simple, cartes plein cadre ---------- */
+.talents__rail{padding:14px var(--gutter) 40px;scroll-snap-type:x proximity;scroll-padding:0 var(--gutter)}
+.tcard{flex:0 0 clamp(270px,21vw,340px);scroll-snap-align:start}
+.tcard__in{position:relative;display:block;aspect-ratio:3/4.3;height:auto;background:#0E2A4F;border-radius:18px;box-shadow:0 22px 50px rgba(5,5,5,.16)}
+.tcard__ph{position:absolute;inset:0;aspect-ratio:auto}
+.tcard__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,79,0) 34%,rgba(14,42,79,.55) 56%,rgba(8,24,46,.94) 78%,#06152b 100%)}
+.tcard__bg{filter:grayscale(1) brightness(.55)}
+.tcard__p{height:86%;bottom:14%}
+.tcard__p--pleine{bottom:0;height:100%}
+.tcard__cat{position:absolute;left:14px;top:14px;z-index:2;background:rgba(255,255,255,.18);color:var(--white);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tcard__body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 16px 16px;color:var(--white);pointer-events:none}
+.tcard__body a,.tcard__body button{pointer-events:auto}
+.tcard__tags{margin:0 0 10px;gap:5px}
+.tcard__tags span{font-size:9px;padding:4px 9px;border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.12);color:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.tcard__nom{font-size:clamp(22px,1.7vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1;text-transform:uppercase;color:var(--white)}
+.tcard__sub{margin-top:5px;min-height:0;font-size:12px;color:rgba(255,255,255,.72)}
+.tcard__cta{flex-direction:row;align-items:center;gap:8px;padding-top:14px}
+.tcard__b1{flex:1;padding:12px 10px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.42);color:var(--white);font-size:10.5px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tcard__b1:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.tcard__b2{flex:none;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.42);background:#1E5299;color:var(--white)}
+.tcard__b2 .arrow{width:16px;height:16px;color:var(--white)}
+.tcard__b2:hover{background:var(--white);border-color:var(--white)}
+.tcard__b2:hover .arrow{color:var(--black)}
+.tcard:hover .tcard__bg{filter:grayscale(.3) brightness(.66)}
+@media (max-width:1023px){.tcard{flex-basis:72vw}}
+@media (max-width:600px){.tcard{flex-basis:80vw}}
+
+/* ---------- Repères « + » : plus nombreux, deux tailles ---------- */
+.plus{opacity:.5}
+.plus--lg{width:34px;height:34px;opacity:.7}
+.plus--lg::before{height:1.5px}.plus--lg::after{width:1.5px}
+.plus--ml{left:calc(var(--gutter) - 9px);top:50%}
+.plus--mr{right:calc(var(--gutter) - 9px);top:50%}
+.plus--tc{left:50%;top:calc(var(--nav-h) - 9px)}
+.plus--lg.plus--tl,.plus--lg.plus--bl,.plus--lg.plus--ml{left:calc(var(--gutter) - 17px)}
+.plus--lg.plus--tr,.plus--lg.plus--br,.plus--lg.plus--mr{right:calc(var(--gutter) - 17px)}
+.intro .plus,.talents .plus,.explore .plus,.demande .plus{color:var(--black)}
+@media (max-width:760px){.plus{display:block;opacity:.4}.plus--ml,.plus--mr,.plus--tc{display:none}}
 </style>
 </head>
 <body>
@@ -881,7 +926,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 2 — INTRO ================= -->
-<section class="intro" id="intro" data-nav="dark" data-plus="tl br">
+<section class="intro" id="intro" data-nav="dark" data-plus="tl br:lg mr">
     <div class="intro__bg" aria-hidden="true"></div>
     <div class="intro__top" data-reveal>
       <h2 class="intro__title" data-i18n-html="intro.h2">Légendes et personnalités du sport, <em>au service de votre compagnie.</em></h2>
@@ -895,7 +940,7 @@ ul{list-style:none}
   </section>
 
 <!-- ================= SECTION 3 — SERVICES (juste après l'intro et son appel à l'action) ================= -->
-<section class="services" id="services" data-nav="light" aria-label="Our services" data-plus="tr bl">
+<section class="services" id="services" data-nav="light" aria-label="Our services" data-plus="tr:lg bl br">
   <div class="services__stage" id="servicesStage">
     <h2 class="services__bg display" id="servicesBg" data-i18n="svc.h" data-reveal>Nos services</h2>
     <div class="services__track" id="servicesTrack" data-reveal></div>
@@ -905,7 +950,7 @@ ul{list-style:none}
 <!-- ================= SECTION 4 — MARQUES / PARTENAIRES =================
      Composant existant, réutilisé tel quel (bandes de logos, survol, bouton).
      Seule sa position change : il devient la 4e section de l'accueil. -->
-<section class="brands" id="brands" data-nav="light" aria-label="Partenaires" data-plus="tl br">
+<section class="brands" id="brands" data-nav="light" aria-label="Partenaires" data-plus="tl br:lg tc">
   <div class="brands__pin" id="brandsPin" data-reveal></div>
 </section>
 
@@ -915,7 +960,7 @@ ul{list-style:none}
 <!-- ================= SECTION 5 — PERSONNALITÉS : cartes qui défilent =================
      Même esprit que les cartes de la page Personnalités, en un peu plus travaillé,
      avec une légère inclinaison 3D au survol. -->
-<section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="tr">
+<section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="tr:lg bl br">
   <div class="talents__head" data-reveal>
     <h2 class="talents__t display" data-i18n="orbit.h">Personnalités</h2>
     <div class="talents__side">
@@ -925,13 +970,12 @@ ul{list-style:none}
     </div>
   </div>
   <div class="talents__stage" data-reveal>
-    <div class="talents__ghost display" aria-hidden="true" data-i18n="orbit.h">Personnalités</div>
     <div class="talents__rail" id="tlRail"></div>
   </div>
 </section>
 
 <!-- ================= SECTION 6 — CATÉGORIES ================= -->
-<section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="tr bl">
+<section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="tr bl:lg mr">
   <div class="explore__pin">
   <h2 class="explore__title display" data-i18n="exp.title" data-reveal>Catégories</h2>
   <div class="explore__left" data-reveal>
@@ -948,7 +992,7 @@ ul{list-style:none}
      Carrousel horizontal de grandes cartes photo, bâti sur le même système que
      « Le service en action » : plusieurs projets visibles, la carte survolée
      s'agrandit, le détail complet vit sur la page projet. -->
-<section class="projets" id="projects" data-nav="light" aria-label="Projets" data-plus="tl br">
+<section class="projets" id="projects" data-nav="light" aria-label="Projets" data-plus="tl:lg br bl">
   <div class="projets__head" data-reveal>
     <h2 class="projets__t display" data-i18n="pj.h">Nos projets</h2>
     <div class="projets__side">
@@ -962,7 +1006,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 8 — FORMULAIRE DE DEMANDE ================= -->
-<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet" data-plus="tr bl">
+<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet" data-plus="tr bl:lg ml">
   <div class="demande__in">
     <div class="demande__txt" data-reveal>
       <p class="label label--blue" data-i18n="dm.k">Démarrer un projet</p>
@@ -994,7 +1038,7 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 9 — ACTUALITÉS ================= -->
-<section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="tl br">
+<section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="tl br:lg mr">
   <div class="news__head" data-reveal>
     <h2 class="news__title display" data-i18n="news.title">Actualités</h2>
     <a class="btn btn--outline news__all" href="projets.html" data-i18n="news.all">Tout voir</a>
@@ -1132,10 +1176,10 @@ const SHOTS = [
 ];
 /* Section 3 */
 const SERVICES = [
- {num:'01',title:{fr:'Conférenciers',en:'Speakers & Conferences'},desc:{fr:"Offrez à votre auditoire des athlètes, champions, leaders et personnalités qui ont de véritables histoires à raconter.",en:'Connect audiences with respected athletes, champions, leaders and personalities who have powerful stories to share.'},img:'assets/svc-speakers.jpg',alt:'Microphone devant une salle de conférence',url:MVP+'/fr/services/conferenciers-et-motivateurs'},
- {num:'02',title:{fr:'Ambassadeurs et porte-parole',en:'Ambassadors & Spokespeople'},desc:{fr:'Créez des partenariats crédibles et durables entre votre marque et des personnalités reconnues.',en:'Create credible long-term partnerships between brands and recognizable personalities.'},img:'assets/svc-ambassadors.jpg',alt:'Campagne de marque',url:MVP+'/fr/services/ambassadeur-de-marque-et-porte-parole'},
- {num:'03',title:{fr:"Animateurs et invités d'honneur",en:'Hosts & Guests of Honor'},desc:{fr:"Apportez attention, crédibilité et énergie à vos événements corporatifs, galas, lancements et expériences spéciales.",en:'Bring attention, credibility and energy to corporate events, galas, launches and special experiences.'},img:'assets/svc-hosts.jpg',alt:"Animateur en entrevue lors d'un événement",url:MVP+'/fr/services/invite-dhonneur-et-animateur-devenement'},
- {num:'04',title:{fr:'Campagnes et influenceurs',en:'Campaigns & Influencers'},desc:{fr:'Bâtissez des campagnes authentiques, du contenu de marque et des activations sociales avec des personnalités influentes.',en:'Build authentic campaigns, branded content and social-media activations around influential personalities.'},img:'assets/svc-influencers.jpg',alt:'Athlète créant du contenu de marque',url:MVP+'/fr/services/reseaux-sociaux'}
+ {num:'01',title:{fr:'Conférenciers',en:'Speakers & Conferences'},desc:{fr:"Offrez à votre auditoire des athlètes, champions, leaders et personnalités qui ont de véritables histoires à raconter.",en:'Connect audiences with respected athletes, champions, leaders and personalities who have powerful stories to share.'},img:'assets/svc-speakers.jpg',alt:'Microphone devant une salle de conférence',url:'service.html?s=speakers'},
+ {num:'02',title:{fr:'Ambassadeurs et porte-parole',en:'Ambassadors & Spokespeople'},desc:{fr:'Créez des partenariats crédibles et durables entre votre marque et des personnalités reconnues.',en:'Create credible long-term partnerships between brands and recognizable personalities.'},img:'assets/svc-ambassadors.jpg',alt:'Campagne de marque',url:'service.html?s=ambassadors'},
+ {num:'03',title:{fr:"Animateurs et invités d'honneur",en:'Hosts & Guests of Honor'},desc:{fr:"Apportez attention, crédibilité et énergie à vos événements corporatifs, galas, lancements et expériences spéciales.",en:'Bring attention, credibility and energy to corporate events, galas, launches and special experiences.'},img:'assets/svc-hosts.jpg',alt:"Animateur en entrevue lors d'un événement",url:'service.html?s=hosts'},
+ {num:'04',title:{fr:'Campagnes et influenceurs',en:'Campaigns & Influencers'},desc:{fr:'Bâtissez des campagnes authentiques, du contenu de marque et des activations sociales avec des personnalités influentes.',en:'Build authentic campaigns, branded content and social-media activations around influential personalities.'},img:'assets/svc-influencers.jpg',alt:'Athlète créant du contenu de marque',url:'service.html?s=marketing'}
 ];
 /* Section 7 — projets de l'accueil : l'essentiel seulement (type, année,
    personnalité × marque). Le récit complet vit sur projet.html?id=… */
@@ -1228,8 +1272,7 @@ function ServicePanel(s){
   const el=document.createElement('a'); el.className='panel'; el.href=s.url;
   el.innerHTML=`<div class="panel__frame"><img class="panel__img" src="${s.img}" alt="${L(s.alt)}" loading="lazy"><div class="panel__shade"></div>
    <span class="panel__tag">${t('svc.tag')}</span><span class="panel__num">${s.num} / 04</span>
-   <div class="panel__body"><div class="panel__line"></div><p class="panel__desc">${L(s.desc)}</p><span class="btn btn--ghost panel__cta">${t('cta.how')} ${ARROW}</span></div></div>
-   <h3 class="display panel__title">${L(s.title)}</h3>`;
+   <div class="panel__body"><h3 class="display panel__title">${L(s.title)}</h3><div class="panel__line"></div><p class="panel__desc">${L(s.desc)}</p><span class="panel__cta">${t('cta.how')} ${ARROW}</span></div></div>`;
   return el;
 }
 function Marquee(row,items){
@@ -1394,24 +1437,24 @@ function TalentCard(p){
   const el=document.createElement('article'); el.className='tcard';
   const href='profil.html?id='+p.id;
   el.innerHTML=`<div class="tcard__in">
-    <a class="tcard__ph" href="${href}" tabindex="-1" aria-hidden="true">
+    <a class="tcard__ph" href="${href}" aria-label="${p.nom} — ${t('cta.profile')}">
       <img class="tcard__bg" src="assets/lieux/${p.cat==='other'?'olympics':p.cat}.jpg" alt="" loading="lazy">
       <img class="tcard__p${p.photo?' tcard__p--pleine':''}" src="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" alt="" loading="lazy">
-      <span class="tcard__cat">${L(CAT_FR[p.cat])}</span>
     </a>
+    <span class="tcard__cat">${L(CAT_FR[p.cat])}</span>
     <div class="tcard__body">
+      <div class="tcard__tags">${p.tags.map(x=>`<span>${L(x)}</span>`).join('')}</div>
       <h3 class="tcard__nom"><a href="${href}">${p.nom}</a></h3>
       <p class="tcard__sub">${L(p.sub)}</p>
-      <div class="tcard__tags">${p.tags.map(x=>`<span>${L(x)}</span>`).join('')}</div>
       <div class="tcard__cta">
         <a class="tcard__b1" href="${href}&travailler=1">${t('tl.work')} ${p.nom.split(' ')[0]}</a>
-        <a class="tcard__b2" href="${href}">${t('cta.profile')} ${ARROW}</a>
+        <a class="tcard__b2" href="${href}" aria-label="${t('cta.profile')} — ${p.nom}">${ARROW}</a>
       </div>
     </div></div>`;
   return el;
 }
 const tlRail=$('#tlRail');
-function renderTalents(){ tlRail.innerHTML=''; TALENTS_HOME.forEach(p=>tlRail.appendChild(TalentCard(p))); if(window.__tlCentrer){ window.__tlCentrer(2); window.__tlFlow(); } }
+function renderTalents(){ tlRail.innerHTML=''; TALENTS_HOME.forEach(p=>tlRail.appendChild(TalentCard(p))); }
 renderTalents();
 (function(){
   /* glisser à la souris + flèches */
@@ -1423,36 +1466,14 @@ renderTalents();
   tlRail.addEventListener('click',e=>{if(Math.abs(tlRail.scrollLeft-s0)>6)e.preventDefault();},true);
   tlRail.addEventListener('dragstart',e=>e.preventDefault());
   const pas=()=>{const c=$('.tcard',tlRail);return c?c.offsetWidth+parseFloat(getComputedStyle(tlRail).columnGap||0):360;};
-  /* Coverflow : la carte au centre est droite et en avant ; les voisines
-     pivotent, reculent et s'estompent selon leur distance au centre. */
-  let raf=null;
-  const flow=()=>{ raf=null;
-    const mid=tlRail.scrollLeft+tlRail.clientWidth/2;
-    $$('.tcard',tlRail).forEach(c=>{
-      const d=(c.offsetLeft+c.offsetWidth/2-mid)/(c.offsetWidth||1), a=Math.min(Math.abs(d),3), sg=Math.sign(d);
-      c.style.transform=reduce?'':`translate3d(${-sg*Math.min(a,1.6)*14}%,0,${-a*110}px) rotateY(${-sg*Math.min(a,1)*30}deg) scale(${1-Math.min(a,2)*.06})`;
-      c.style.opacity=String(Math.max(.25,1-a*.26));
-      c.style.zIndex=String(100-Math.round(a*10));
-      c.classList.toggle('is-centre',a<.5);
-    });
-  };
-  const planifier=()=>{ if(!raf) raf=requestAnimationFrame(flow); };
-  window.__tlFlow=flow;
-  const maj=()=>{$('#tlPrev').disabled=tlRail.scrollLeft<=4;$('#tlNext').disabled=tlRail.scrollLeft>=tlRail.scrollWidth-tlRail.clientWidth-4; planifier();};
-  /* on démarre sur la 3e carte pour que la scène soit pleine des deux côtés */
-  const centrer=i=>{const c=$$('.tcard',tlRail)[i]; if(c) tlRail.scrollLeft=c.offsetLeft+c.offsetWidth/2-tlRail.clientWidth/2;};
-  requestAnimationFrame(()=>{centrer(2); flow();});
-  window.__tlCentrer=centrer;
-  /* clic sur une carte de côté : elle vient au centre au lieu d'ouvrir le profil */
-  tlRail.addEventListener('click',e=>{const c=e.target.closest('.tcard'); if(!c||c.classList.contains('is-centre'))return;
-    e.preventDefault(); tlRail.scrollBy({left:c.offsetLeft+c.offsetWidth/2-(tlRail.scrollLeft+tlRail.clientWidth/2),behavior:'smooth'});});
+  const maj=()=>{$('#tlPrev').disabled=tlRail.scrollLeft<=4;$('#tlNext').disabled=tlRail.scrollLeft>=tlRail.scrollWidth-tlRail.clientWidth-4;};
   $('#tlPrev').onclick=()=>tlRail.scrollBy({left:-pas(),behavior:'smooth'});
   $('#tlNext').onclick=()=>tlRail.scrollBy({left:pas(),behavior:'smooth'});
   tlRail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
   /* inclinaison 3D au survol (souris seulement) : la carte suit le curseur */
   if(reduce||!matchMedia('(hover:hover)').matches) return;
   tlRail.addEventListener('pointermove',e=>{
-    const c=e.target.closest('.tcard'); if(!c||!c.classList.contains('is-centre')||tlRail.classList.contains('saisi')) return;
+    const c=e.target.closest('.tcard'); if(!c||tlRail.classList.contains('saisi')) return;
     const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
     $('.tcard__in',c).style.transform=`rotateY(${x*10}deg) rotateX(${-y*8}deg) translateZ(14px)`;
   });
@@ -1620,7 +1641,8 @@ renderTypes();
 
 /* Repères « + » : petites croix fines posées dans les coins des sections. */
 $$('[data-plus]').forEach(sec=>sec.dataset.plus.split(' ').forEach(p=>{
-  const el=document.createElement('span'); el.className='plus plus--'+p; el.setAttribute('aria-hidden','true'); sec.appendChild(el);
+  const [pos,taille]=p.split(':');
+  const el=document.createElement('span'); el.className='plus plus--'+pos+(taille?' plus--'+taille:''); el.setAttribute('aria-hidden','true'); sec.appendChild(el);
 }));
 
 /* rebuild everything that comes from the data arrays, then restore state */
