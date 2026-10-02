@@ -775,6 +775,25 @@ ul{list-style:none}
   .services__track{justify-content:flex-start;width:max-content;padding:3vh 0 3vh var(--gutter);gap:2.6vw;transform:none;will-change:transform}
   .services__track,.services__track *{transform-style:flat}
 }
+
+/* =====================================================================
+   RÉVISION 4 — Personnalités : coverflow, juste milieu entre l'orbite 3D
+   et la rangée de cartes plates.
+   ===================================================================== */
+.talents{--tw:clamp(280px,23vw,360px);overflow:hidden}
+.talents__stage{position:relative}
+.talents__ghost{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:clamp(90px,15vw,280px);line-height:.8;letter-spacing:-.04em;color:var(--black);opacity:.045;white-space:nowrap;pointer-events:none;z-index:0}
+.talents__rail{position:relative;z-index:1;perspective:1500px;perspective-origin:50% 45%;scroll-snap-type:x mandatory;scroll-padding:0;padding:26px calc(50% - var(--tw)/2) 50px;gap:clamp(10px,1vw,18px);transform-style:preserve-3d}
+.tcard{flex:0 0 var(--tw);scroll-snap-align:center;transform-origin:50% 50%;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s;will-change:transform}
+.talents__rail.saisi .tcard{transition:none}
+.tcard:not(.is-centre){cursor:pointer}
+.tcard:not(.is-centre) .tcard__in{box-shadow:0 10px 24px rgba(5,5,5,.08)}
+.tcard.is-centre .tcard__in{box-shadow:0 40px 80px rgba(5,5,5,.22),0 6px 14px rgba(5,5,5,.08)}
+.tcard:not(.is-centre) .tcard__bg{filter:grayscale(1) brightness(.42)}
+.tcard.is-centre .tcard__cat{background:var(--gold);color:var(--black)}
+@media (max-width:1023px){.talents{--tw:72vw}}
+@media (max-width:600px){.talents{--tw:78vw}.talents__ghost{font-size:26vw}}
+@media (prefers-reduced-motion:reduce){.tcard{transition:none}}
 </style>
 </head>
 <body>
@@ -901,7 +920,10 @@ ul{list-style:none}
       <button class="tl-arrow" id="tlNext" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>
     </div>
   </div>
-  <div class="talents__rail" id="tlRail" data-reveal></div>
+  <div class="talents__stage" data-reveal>
+    <div class="talents__ghost display" aria-hidden="true" data-i18n="orbit.h">Personnalités</div>
+    <div class="talents__rail" id="tlRail"></div>
+  </div>
 </section>
 
 <!-- ================= SECTION 6 — CATÉGORIES ================= -->
@@ -1385,7 +1407,7 @@ function TalentCard(p){
   return el;
 }
 const tlRail=$('#tlRail');
-function renderTalents(){ tlRail.innerHTML=''; TALENTS_HOME.forEach(p=>tlRail.appendChild(TalentCard(p))); }
+function renderTalents(){ tlRail.innerHTML=''; TALENTS_HOME.forEach(p=>tlRail.appendChild(TalentCard(p))); if(window.__tlCentrer){ window.__tlCentrer(2); window.__tlFlow(); } }
 renderTalents();
 (function(){
   /* glisser à la souris + flèches */
@@ -1397,14 +1419,36 @@ renderTalents();
   tlRail.addEventListener('click',e=>{if(Math.abs(tlRail.scrollLeft-s0)>6)e.preventDefault();},true);
   tlRail.addEventListener('dragstart',e=>e.preventDefault());
   const pas=()=>{const c=$('.tcard',tlRail);return c?c.offsetWidth+parseFloat(getComputedStyle(tlRail).columnGap||0):360;};
-  const maj=()=>{$('#tlPrev').disabled=tlRail.scrollLeft<=4;$('#tlNext').disabled=tlRail.scrollLeft>=tlRail.scrollWidth-tlRail.clientWidth-4;};
+  /* Coverflow : la carte au centre est droite et en avant ; les voisines
+     pivotent, reculent et s'estompent selon leur distance au centre. */
+  let raf=null;
+  const flow=()=>{ raf=null;
+    const mid=tlRail.scrollLeft+tlRail.clientWidth/2;
+    $$('.tcard',tlRail).forEach(c=>{
+      const d=(c.offsetLeft+c.offsetWidth/2-mid)/(c.offsetWidth||1), a=Math.min(Math.abs(d),3), sg=Math.sign(d);
+      c.style.transform=reduce?'':`translate3d(${-sg*Math.min(a,1.6)*14}%,0,${-a*110}px) rotateY(${-sg*Math.min(a,1)*30}deg) scale(${1-Math.min(a,2)*.06})`;
+      c.style.opacity=String(Math.max(.25,1-a*.26));
+      c.style.zIndex=String(100-Math.round(a*10));
+      c.classList.toggle('is-centre',a<.5);
+    });
+  };
+  const planifier=()=>{ if(!raf) raf=requestAnimationFrame(flow); };
+  window.__tlFlow=flow;
+  const maj=()=>{$('#tlPrev').disabled=tlRail.scrollLeft<=4;$('#tlNext').disabled=tlRail.scrollLeft>=tlRail.scrollWidth-tlRail.clientWidth-4; planifier();};
+  /* on démarre sur la 3e carte pour que la scène soit pleine des deux côtés */
+  const centrer=i=>{const c=$$('.tcard',tlRail)[i]; if(c) tlRail.scrollLeft=c.offsetLeft+c.offsetWidth/2-tlRail.clientWidth/2;};
+  requestAnimationFrame(()=>{centrer(2); flow();});
+  window.__tlCentrer=centrer;
+  /* clic sur une carte de côté : elle vient au centre au lieu d'ouvrir le profil */
+  tlRail.addEventListener('click',e=>{const c=e.target.closest('.tcard'); if(!c||c.classList.contains('is-centre'))return;
+    e.preventDefault(); tlRail.scrollBy({left:c.offsetLeft+c.offsetWidth/2-(tlRail.scrollLeft+tlRail.clientWidth/2),behavior:'smooth'});});
   $('#tlPrev').onclick=()=>tlRail.scrollBy({left:-pas(),behavior:'smooth'});
   $('#tlNext').onclick=()=>tlRail.scrollBy({left:pas(),behavior:'smooth'});
   tlRail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
   /* inclinaison 3D au survol (souris seulement) : la carte suit le curseur */
   if(reduce||!matchMedia('(hover:hover)').matches) return;
   tlRail.addEventListener('pointermove',e=>{
-    const c=e.target.closest('.tcard'); if(!c||tlRail.classList.contains('saisi')) return;
+    const c=e.target.closest('.tcard'); if(!c||!c.classList.contains('is-centre')||tlRail.classList.contains('saisi')) return;
     const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
     $('.tcard__in',c).style.transform=`rotateY(${x*10}deg) rotateX(${-y*8}deg) translateZ(14px)`;
   });
