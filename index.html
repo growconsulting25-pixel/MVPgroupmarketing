@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js-reveal')</script>
 <title>MVP Group — Agence de marketing sportif | Ambassadeurs, conférenciers et porte-parole</title>
 <meta name="description" content="MVP Group — agence de marketing sportif à Montréal. Ambassadeurs de marque, conférenciers, porte-parole et influenceurs pour vos campagnes et événements corporatifs au Québec, au Canada et aux États-Unis.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -582,44 +583,6 @@ ul{list-style:none}
 .explore__imgwrap .xcat.is-active .xcat__bg{transform:none}
 .explore__imgwrap .xcat.is-active .xcat__p{transform:translate(-50%,0) scale(1)}
 .explore__imgwrap{background:var(--carbon)}
-@media (min-width:1024px){
-  .explore__pin{grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:0 clamp(28px,3.6vw,64px);padding-top:calc(var(--nav-h) + 1vh)}
-  .explore__title{font-size:clamp(30px,4.4vw,78px);margin-bottom:clamp(8px,1.4vh,18px)}
-  .explore__left{display:flex;flex-direction:column;min-height:0;height:100%}
-  .explore__left .label{margin-bottom:12px}
-  .explore__imgwrap{flex:1;height:auto;min-height:0;max-height:none;border-radius:10px}
-  .explore__caption{margin-top:10px}
-}
-@media (min-width:1024px) and (max-height:790px){
-  .explore__imgwrap{max-height:none}
-}
-@media (max-width:1023px){
-  .explore__imgwrap{height:62svh;max-height:none}
-}
-
-/* ---------- Services : même carrousel, cartes bien plus grandes ---------- */
-@media (min-width:1024px){
-  .services__track{gap:2.4vw;padding-left:40vw}
-  .panel{width:clamp(340px,29vw,540px);transition:width .8s var(--ease)}
-  .panel:nth-child(odd){transform:translateY(-1.6vh)}
-  .panel:nth-child(even){transform:translateY(1.6vh)}
-  .panel__frame{height:min(60vh,640px)}
-  .panel__img{object-position:center 25%}
-  .panel__title{font-size:clamp(26px,2.4vw,44px);line-height:.96;text-align:left;margin-top:18px;transform-origin:left top;transition:transform .7s var(--ease),color .5s}
-  .panel__num{font-size:12px}
-  .panel__tag{font-size:11px;padding:8px 15px}
-  .panel__desc{font-size:14px}
-}
-/* Survol : la carte active s'élargit et découvre la photo, les autres se resserrent. */
-@media (min-width:1024px) and (hover:hover){
-  .services__track:hover .panel{width:clamp(300px,25.5vw,480px)}
-  .services__track .panel:hover{width:clamp(420px,39vw,720px)}
-  .services__track:hover .panel:not(:hover) .panel__img{filter:grayscale(1) brightness(.4)}
-  .services__track:hover .panel:not(:hover) .panel__title{color:var(--muted)}
-  .panel:hover .panel__title{transform:scale(1.06)}
-  .panel:hover .panel__img{transform:scale(1.02)}
-}
-
 /* ---------- Projets : carrousel de grandes cartes (système « Le service en action ») ---------- */
 .projets{position:relative;z-index:6;background:#0D0E10;color:var(--white);padding:calc(var(--nav-h) + 3vh) 0 clamp(48px,8vh,100px)}
 .projets__head{padding:0 var(--gutter);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(18px,3vh,34px)}
@@ -657,6 +620,123 @@ ul{list-style:none}
   .pc{flex-basis:82vw}
   .projets__hint{display:none}
 }
+
+/* =====================================================================
+   RÉVISION 2 — défilement continu partout : aucune section épinglée,
+   rien ne recouvre la section précédente. Le contenu apparaît une fois,
+   en douceur, à mesure qu'on descend.
+   ===================================================================== */
+.js-reveal [data-reveal]{opacity:0;transform:translate3d(0,34px,0);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.js-reveal [data-reveal].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js-reveal [data-reveal]{opacity:1;transform:none;transition:none}}
+
+/* Hero → intro : plus d'effet de remplacement, l'intro suit simplement. */
+.hero{position:relative}
+
+/* ---------- Services : taille d'origine, simple rangée (plus d'épinglage) ---------- */
+.services,.services__stage{height:auto!important;position:relative!important;overflow:visible}
+.services{padding:calc(var(--nav-h) + 2vh) 0 clamp(70px,12vh,140px)}
+.services::before{display:none}
+.services__bg{position:relative;left:auto;top:auto;transform:none!important;padding:0 var(--gutter);font-size:clamp(46px,8.4vw,150px);line-height:.9;white-space:normal;color:var(--soft);margin-bottom:clamp(24px,4vh,48px)}
+.services__track{position:relative;height:auto;padding:3vh var(--gutter);transform:none!important;display:flex;align-items:flex-start;justify-content:center;gap:2.6vw}
+.services__progress,.services__count{display:none}
+@media (min-width:1024px) and (hover:hover){
+  .panel{transition:width .7s var(--ease)}
+  .services__track:hover .panel{width:clamp(250px,18.5vw,340px)}
+  .services__track .panel:hover{width:clamp(340px,27vw,500px)}
+  .services__track:hover .panel:not(:hover) .panel__img{filter:grayscale(1) brightness(.45)}
+}
+@media (max-width:1023px){
+  .services{padding:calc(var(--nav-h) + 2vh) 0 8vh}
+  .services__stage{display:block;padding:0}
+  .services__track{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 var(--gutter);padding:0 var(--gutter) 20px;gap:16px;scrollbar-width:none}
+  .services__track::-webkit-scrollbar{display:none}
+  .panel{flex:none}
+  .panel__frame{flex:none;height:52svh}
+}
+
+/* ---------- Fond blanc continu : Personnalités + Catégories ---------- */
+.flux{position:relative;z-index:2}
+.flux::after{display:none}
+
+/* ---------- Personnalités : cartes qui défilent ---------- */
+.talents{position:relative;z-index:1;padding:calc(var(--nav-h) + 3vh) 0 clamp(40px,8vh,90px);color:var(--black)}
+.talents__head{padding:0 var(--gutter);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(22px,3.4vh,40px)}
+.talents__t{font-size:clamp(38px,6.4vw,116px);line-height:.88;letter-spacing:-.035em}
+.talents__side{display:flex;align-items:center;gap:12px}
+.talents__all{border:1px solid #1E5299;background:#1E5299;color:var(--white);padding:14px 24px;font-size:11px;margin-right:8px}
+.talents__all:hover{background:var(--black);border-color:var(--black)}
+.tl-arrow{width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(0,0,0,.2);border-radius:50%;color:var(--black);background:var(--white);transition:border-color .35s,background .35s,color .35s,opacity .35s}
+.tl-arrow:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.tl-arrow[disabled]{opacity:.3;pointer-events:none}
+.talents__rail{display:flex;gap:clamp(16px,1.6vw,26px);overflow-x:auto;scroll-snap-type:x proximity;scroll-padding:0 var(--gutter);padding:12px var(--gutter) 34px;scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none;perspective:1400px}
+.talents__rail::-webkit-scrollbar{display:none}
+.talents__rail.saisi{cursor:grabbing;scroll-snap-type:none}
+.talents__rail.saisi .tcard{pointer-events:none}
+.tcard{flex:0 0 clamp(270px,22vw,350px);scroll-snap-align:start}
+.tcard__in{height:100%;display:flex;flex-direction:column;background:var(--white);border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(5,5,5,.10),0 2px 6px rgba(5,5,5,.06);transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.tcard:hover .tcard__in{box-shadow:0 34px 70px rgba(5,5,5,.20),0 4px 10px rgba(5,5,5,.08)}
+.tcard__ph{position:relative;display:block;aspect-ratio:1/1.02;overflow:hidden;background:var(--carbon)}
+.tcard__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.5);transform:scale(1.05);transition:transform 1.2s var(--ease),filter .8s}
+.tcard__p{position:absolute;left:50%;bottom:0;height:92%;width:auto;max-width:115%;object-fit:contain;object-position:bottom;transform:translateX(-50%);filter:drop-shadow(0 16px 26px rgba(0,0,0,.45));transition:transform .9s var(--ease)}
+.tcard__p--pleine{left:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:top;transform:none;filter:none}
+.tcard:hover .tcard__bg{transform:none;filter:grayscale(.3) brightness(.62)}
+.tcard:hover .tcard__p{transform:translateX(-50%) scale(1.04)}
+.tcard:hover .tcard__p--pleine{transform:scale(1.04)}
+.tcard__cat{position:absolute;left:14px;top:14px;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--black);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tcard__body{display:flex;flex-direction:column;flex:1;padding:18px 18px 18px}
+.tcard__nom{font-size:clamp(19px,1.4vw,23px);font-weight:800;letter-spacing:-.025em;line-height:1.1}
+.tcard__sub{margin-top:5px;font-size:13px;color:var(--muted);line-height:1.4;min-height:2.8em}
+.tcard__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tcard__tags span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border:1px solid var(--grey);border-radius:999px;color:#444}
+.tcard__cta{display:flex;flex-direction:column;gap:8px;margin-top:auto;padding-top:18px}
+.tcard__b1{padding:13px 12px;border-radius:999px;background:#123B6D;color:var(--white);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;transition:background .3s,color .3s}
+.tcard__b1:hover{background:var(--gold);color:var(--black)}
+.tcard__b2{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 12px;border-radius:999px;border:1px solid var(--grey);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#333;transition:border-color .3s,color .3s}
+.tcard__b2 .arrow{width:13px;height:13px;color:var(--gold)}
+.tcard__b2:hover{border-color:var(--black);color:var(--black)}
+@media (max-width:1023px){.talents__side .tl-arrow{display:none}.tcard{flex-basis:74vw}}
+@media (max-width:600px){.tcard{flex-basis:80vw}.talents__all{margin-right:0}}
+
+/* ---------- Catégories : tout est visible tout de suite, image plus raisonnable ---------- */
+.explore{height:auto!important}
+.explore__pin{position:relative!important;top:auto;height:auto!important;overflow:visible;padding:calc(var(--nav-h) + 2vh) var(--gutter) clamp(60px,10vh,120px)}
+.explore .cat{opacity:1!important;transform:none!important;visibility:visible!important}
+@media (min-width:1024px){
+  .explore__pin{grid-template-columns:minmax(280px,40%) 1fr;gap:0 5vw;align-items:start}
+  .explore__title{font-size:clamp(30px,4.6vw,80px);margin-bottom:clamp(14px,2.4vh,28px)}
+  .explore__left{position:relative;top:auto}
+  .explore__left .label{margin-bottom:14px}
+  .explore__imgwrap{height:min(52vh,520px);max-height:none;border-radius:12px}
+  .explore__list{justify-content:flex-start}
+}
+@media (max-width:1023px){.explore__imgwrap{height:46svh}}
+
+/* ---------- Formulaire de demande ---------- */
+.demande{position:relative;z-index:6;background:var(--soft);color:var(--black);padding:clamp(70px,12vh,140px) var(--gutter)}
+.demande__in{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,6vw,110px);align-items:start}
+.demande__t{font-size:clamp(36px,5vw,88px);line-height:.92;letter-spacing:-.035em;margin-top:16px}
+.demande__p{margin-top:20px;font-size:clamp(15px,1.1vw,18px);line-height:1.6;color:#333;max-width:44ch}
+.demande__info{margin-top:28px;display:flex;flex-direction:column;gap:8px;font-weight:700;font-size:15px}
+.demande__info a{border-bottom:1px solid var(--grey);transition:border-color .3s}
+.demande__info a:hover{border-color:var(--gold)}
+.demande__box{background:var(--white);border-radius:20px;padding:clamp(22px,3vw,44px);box-shadow:0 30px 70px rgba(5,5,5,.08)}
+.dm__g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dm__c{display:flex;flex-direction:column;gap:7px}
+.dm__c--l{grid-column:1/-1}
+.dm__c span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#555}
+.dm__c input,.dm__c select,.dm__c textarea{width:100%;padding:15px 16px;border:1px solid var(--grey);border-radius:10px;background:var(--soft);font:inherit;font-size:15px;color:var(--black);transition:border-color .3s,box-shadow .3s,background .3s}
+.dm__c textarea{resize:vertical;min-height:130px}
+.dm__c input:focus,.dm__c select:focus,.dm__c textarea:focus{outline:none;border-color:#1E5299;background:var(--white);box-shadow:0 0 0 4px rgba(30,82,153,.1)}
+.dm__c.est-invalide input{border-color:#B3261E}
+.demande__err{margin-top:14px;font-size:14px;color:#B3261E}
+.demande__go{margin-top:22px;width:100%;justify-content:center}
+.demande__go[disabled]{opacity:.6;pointer-events:none}
+.demande__ok h3{font-size:clamp(24px,2.2vw,34px);font-weight:800;letter-spacing:-.02em}
+.demande__ok p{margin-top:10px;color:#444}
+@media (max-width:1023px){.demande__in{grid-template-columns:1fr}}
+@media (max-width:560px){.dm__g{grid-template-columns:1fr}}
+.footer__grid>div{min-width:0}.footer__grid a{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -704,14 +784,14 @@ ul{list-style:none}
   <div class="header__right">
     
     <div class="lang" id="lang" aria-label="Langue / Language"><button data-lang="fr" class="is-active">FR</button><button data-lang="en">EN</button></div>
-    <a class="btn btn--gold" href="#contact" data-i18n="cta.work">Travailler avec nous</a>
+    <a class="btn btn--gold" href="#demande" data-i18n="cta.work">Travailler avec nous</a>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu" hidden>
   <img src="assets/mvp-logo-blanc-v2.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
   <a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a><a href="#services" data-i18n="nav.services">Services</a><a href="projets.html" data-i18n="nav.projects">Projets</a><a href="#contact" data-i18n="nav.agency">Agence</a><a href="#contact" data-i18n="nav.contact">Contact</a>
-  <a class="btn btn--gold" href="#contact" style="font-size:12px;align-self:flex-start;margin-top:16px" data-i18n="cta.work">Travailler avec nous</a>
+  <a class="btn btn--gold" href="#demande" style="font-size:12px;align-self:flex-start;margin-top:16px" data-i18n="cta.work">Travailler avec nous</a>
 </div>
 
 <main id="top">
@@ -739,91 +819,73 @@ ul{list-style:none}
 
 </section>
 
-  <!-- SECTION 1B — white intro: rises over the hero, then holds while Section 2 rises over it -->
-  <!-- ===== FLUX CONTINU : proposition de valeur -> personnalités -> catégories =====
-       Un seul fond blanc, une seule trame graphique très pâle. Les trois sections
-       s'enchaînent par la typographie et le vide, sans blocs qui se recouvrent. -->
-  <div class="flux" id="flux">
-    <div class="flux__decor" aria-hidden="true"><span class="flux__img"></span></div>
-  <div class="stickwrap" id="introWrap">
-  <section class="intro" id="intro" data-nav="light">
+<!-- ================= SECTION 2 — INTRO ================= -->
+<section class="intro" id="intro" data-nav="light">
     <div class="intro__bg" aria-hidden="true"></div>
-    <div class="intro__top">
-      <h2 class="intro__title" data-intro data-i18n-html="intro.h2">Légendes et personnalités du sport, <em>au service de votre compagnie.</em></h2>
+    <div class="intro__top" data-reveal>
+      <h2 class="intro__title" data-i18n-html="intro.h2">Légendes et personnalités du sport, <em>au service de votre compagnie.</em></h2>
       <div class="intro__cols">
-        <p class="intro__p" data-intro data-i18n="intro.p1">Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.</p>
-        <p class="intro__p intro__p--2" data-intro data-i18n="intro.p2">Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.</p>
+        <p class="intro__p" data-i18n="intro.p1">Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.</p>
+        <p class="intro__p intro__p--2" data-i18n="intro.p2">Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.</p>
       </div>
-      <a class="intro__cta" href="#contact" data-intro><span data-i18n="cta.work">Travailler avec nous</span></a>
+      <a class="intro__cta" href="#demande"><span data-i18n="cta.work">Travailler avec nous</span></a>
     </div>
     
   </section>
-  </div>
 
-<!-- ================= SECTION 2 — 3D ORBIT ================= -->
-<section class="orbit on-white" id="personalities" data-nav="dark" aria-label="Our personalities">
-  <div class="orbit__pin" id="orbitPin">
-  <div class="orbit__top">
-    <div class="orbit__headwrap"><div class="orbit__ghost display" aria-hidden="true" data-i18n="orbit.h">Personnalités</div><h2 class="orbit__heading" data-i18n="orbit.h">Personnalités</h2></div>
-    <a class="btn btn--outline orbit__all" href="personnalites.html" data-i18n="cta.allTalent">Voir toutes les personnalités</a>
-    <div class="pill" role="group" aria-label="Browse categories">
-      <button class="pill__arrow" id="orbitPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <div class="pill__box" id="pillIcons"></div>
-      <button class="pill__arrow" id="orbitNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-  </div>
-  <div class="orbit__index" id="orbitIndex" aria-hidden="true"></div>
-  <div class="orbit__stage" id="orbitStage" tabindex="0" aria-roledescription="carousel">
-    <div class="orbit__ring" id="orbitRing"></div>
-    <svg class="orbit__ellipse" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="49.5" ry="49"/></svg>
-    <div class="orbit__ui"><div><h3 class="display orbit__person" id="orbitPerson"></h3><p class="orbit__role" id="orbitRole"></p></div>
-      <a class="scene__btn" id="orbitBtn" href="#"><span data-i18n="cta.profile">Voir le profil</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-  </div>
-  <span class="orbit__corner" aria-hidden="true"></span>
-  <p class="orbit__hint" data-i18n="orbit.hint">Glisser · Balayer · Flèches</p>
+<!-- ================= SECTION 3 — SERVICES (juste après l'intro et son appel à l'action) ================= -->
+<section class="services" id="services" data-nav="light" aria-label="Our services">
+  <div class="services__stage" id="servicesStage">
+    <h2 class="services__bg display" id="servicesBg" data-i18n="svc.h" data-reveal>Nos services</h2>
+    <div class="services__track" id="servicesTrack" data-reveal></div>
   </div>
 </section>
-  </div><!-- /flux -->
 
 <!-- ================= SECTION 4 — MARQUES / PARTENAIRES =================
      Composant existant, réutilisé tel quel (bandes de logos, survol, bouton).
      Seule sa position change : il devient la 4e section de l'accueil. -->
 <section class="brands" id="brands" data-nav="light" aria-label="Partenaires">
-  <div class="brands__pin" id="brandsPin"></div>
+  <div class="brands__pin" id="brandsPin" data-reveal></div>
 </section>
 
-  <div class="flux flux--2">
-    <div class="flux__decor" aria-hidden="true"><span class="flux__img"></span></div>
-<!-- ================= SECTION 5 — CATÉGORIES ================= -->
+<!-- Fond blanc continu : Personnalités puis Catégories -->
+<div class="flux" id="flux">
+  <div class="flux__decor" aria-hidden="true"><span class="flux__img"></span></div>
+<!-- ================= SECTION 5 — PERSONNALITÉS : cartes qui défilent =================
+     Même esprit que les cartes de la page Personnalités, en un peu plus travaillé,
+     avec une légère inclinaison 3D au survol. -->
+<section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités">
+  <div class="talents__head" data-reveal>
+    <h2 class="talents__t display" data-i18n="orbit.h">Personnalités</h2>
+    <div class="talents__side">
+      <a class="btn talents__all" href="personnalites.html" data-i18n="cta.allTalent">Voir toutes les personnalités</a>
+      <button class="tl-arrow" id="tlPrev" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button>
+      <button class="tl-arrow" id="tlNext" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="talents__rail" id="tlRail" data-reveal></div>
+</section>
+
+<!-- ================= SECTION 6 — CATÉGORIES ================= -->
 <section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories">
   <div class="explore__pin">
-  <h2 class="explore__title display" data-i18n="exp.title">Catégories</h2>
-  <div class="explore__left">
+  <h2 class="explore__title display" data-i18n="exp.title" data-reveal>Catégories</h2>
+  <div class="explore__left" data-reveal>
     <span class="label label--blue" data-i18n="exp.label">Catégories</span>
     <div class="explore__imgwrap" id="exploreImages"></div>
     <p class="explore__caption" id="exploreCaption"></p>
   </div>
-  <div class="explore__list" id="exploreList"></div>
+  <div class="explore__list" id="exploreList" data-reveal></div>
   </div>
 </section>
-  </div><!-- /flux -->
-
-<!-- ================= SECTION 3 — SERVICES ================= -->
-<section class="services" id="services" data-nav="light" aria-label="Our services">
-  <div class="services__stage" id="servicesStage">
-    <div class="services__bg display" id="servicesBg" data-i18n="svc.h">Nos services</div>
-    <div class="services__track" id="servicesTrack"></div>
-    <div class="services__progress"><i id="servicesProgress"></i></div>
-    <div class="services__count" id="servicesCount">01 / 04</div>
-  </div>
-</section>
+</div><!-- /flux -->
 
 <!-- ================= SECTION 7 — PROJETS =================
      Carrousel horizontal de grandes cartes photo, bâti sur le même système que
      « Le service en action » : plusieurs projets visibles, la carte survolée
      s'agrandit, le détail complet vit sur la page projet. -->
 <section class="projets" id="projects" data-nav="light" aria-label="Projets">
-  <div class="projets__head">
+  <div class="projets__head" data-reveal>
     <h2 class="projets__t display" data-i18n="pj.h">Nos projets</h2>
     <div class="projets__side">
       <span class="projets__hint" data-i18n="pj.hint">Glisser →</span>
@@ -831,18 +893,49 @@ ul{list-style:none}
       <button class="slider__arrow" id="pjNext" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>
     </div>
   </div>
-  <div class="projets__rail" id="pjRail"></div>
+  <div class="projets__rail" id="pjRail" data-reveal></div>
   <div class="projets__foot"><a class="btn btn--outline" href="projets.html" data-i18n="cta.all">Voir tous les projets</a></div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<!-- ================= SECTION 6 — ACTUALITÉS ================= -->
+<!-- ================= SECTION 8 — FORMULAIRE DE DEMANDE ================= -->
+<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet">
+  <div class="demande__in">
+    <div class="demande__txt" data-reveal>
+      <p class="label label--blue" data-i18n="dm.k">Démarrer un projet</p>
+      <h2 class="demande__t display" data-i18n-html="dm.h">Parlez-nous de <span class="gold">votre projet.</span></h2>
+      <p class="demande__p" data-i18n="dm.p">Conférence, campagne, gala ou événement corporatif : décrivez votre besoin. Nous trouvons la bonne personnalité et nous vous revenons rapidement.</p>
+      <ul class="demande__info"><li><a href="tel:+15145823306">514-582-3306</a></li><li><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
+    </div>
+    <div class="demande__box" data-reveal>
+      <form class="demande__f" id="demForm" novalidate>
+        <div class="dm__g">
+          <label class="dm__c"><span data-i18n="dm.nom">Nom *</span><input name="nom" autocomplete="name" required></label>
+          <label class="dm__c"><span data-i18n="dm.ent">Entreprise</span><input name="entreprise" autocomplete="organization"></label>
+          <label class="dm__c"><span data-i18n="dm.mail">Courriel *</span><input name="courriel" type="email" autocomplete="email" required></label>
+          <label class="dm__c"><span data-i18n="dm.tel">Téléphone</span><input name="telephone" type="tel" autocomplete="tel"></label>
+          <label class="dm__c"><span data-i18n="dm.type">Type de projet</span><select name="type" id="demType"></select></label>
+          <label class="dm__c"><span data-i18n="dm.date">Date approximative</span><input name="date" data-i18n-ph="dm.dateph" placeholder="Ex. : juin 2027"></label>
+          <label class="dm__c dm__c--l"><span data-i18n="dm.pers">Personnalité souhaitée (facultatif)</span><input name="personnalite"></label>
+          <label class="dm__c dm__c--l"><span data-i18n="dm.msg">Message</span><textarea name="message" rows="5"></textarea></label>
+        </div>
+        <p class="demande__err" id="demErr" role="alert" hidden></p>
+        <button class="btn btn--gold demande__go" type="submit" data-i18n="dm.send">Envoyer la demande</button>
+      </form>
+      <div class="demande__ok" id="demOk" hidden>
+        <h3 data-i18n="dm.okh">Merci, votre demande est envoyée.</h3>
+        <p data-i18n="dm.okp">L'équipe MVP communiquera avec vous sous peu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 9 — ACTUALITÉS ================= -->
 <section class="news" id="news" data-nav="light" aria-label="Actualités">
-  <div class="news__head">
+  <div class="news__head" data-reveal>
     <h2 class="news__title display" data-i18n="news.title">Actualités</h2>
     <a class="btn btn--outline news__all" href="projets.html" data-i18n="news.all">Tout voir</a>
   </div>
-  <div class="news__grid" id="newsGrid"></div>
+  <div class="news__grid" id="newsGrid" data-reveal></div>
 </section>
 
 <!-- Fenêtre de lecture d'un article -->
@@ -867,7 +960,7 @@ ul{list-style:none}
   <div class="footer__top">
     <div class="footer__lead">
     <h2 class="display"><span data-i18n-html="foot.h">Bâtissons le <span class="gold">bon partenariat.</span></span></h2>
-    <a class="btn btn--gold" href="mailto:info@mvpsportsmarketing.com?subject=Demande%20de%20projet%20%E2%80%94%20MVP%20Group" data-i18n="cta.work">Travailler avec nous</a></div>
+    <a class="btn btn--gold" href="#demande" data-i18n="cta.work">Travailler avec nous</a></div>
     <!-- Lettrage MVP decoupe : la video joue a travers les lettres. -->
     <div class="footer__cut" aria-hidden="true">
       <video class="footer__cut-video" muted loop playsinline preload="none" poster="assets/poster-v4.jpg">
@@ -921,7 +1014,7 @@ const I18N = {
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
   'orbit.h':'Personnalités','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
-  'sl.hint':'Défilez ou utilisez les flèches','pj.h':'Nos projets','pj.hint':'Glisser →','sl.partners':'Partenaires','sl.kicker':'Nos projets','news.title':'Actualités','news.all':'Tout voir','news.read':'Lire','news.extrait':"Extrait de l'article. La suite est à lire chez l'éditeur.",'news.full':"Lire l'article au complet",
+  'sl.hint':'Défilez ou utilisez les flèches',"dm.k":"Démarrer un projet","dm.h":"Parlez-nous de <span class=\"gold\">votre projet.</span>","dm.p":"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin. Nous trouvons la bonne personnalité et nous vous revenons rapidement.","dm.nom":"Nom *","dm.ent":"Entreprise","dm.mail":"Courriel *","dm.tel":"Téléphone","dm.type":"Type de projet","dm.date":"Date approximative","dm.dateph":"Ex. : juin 2027","dm.pers":"Personnalité souhaitée (facultatif)","dm.msg":"Message","dm.send":"Envoyer la demande","dm.okh":"Merci, votre demande est envoyée.","dm.okp":"L'équipe MVP communiquera avec vous sous peu.","dm.choose":"Choisir…","dm.req":"Veuillez indiquer votre nom et un courriel valide.","dm.fail":"L'envoi n'a pas fonctionné. Réessayez dans un instant ou appelez-nous au 514-582-3306.","tl.work":"Travailler avec",'pj.h':'Nos projets','pj.hint':'Glisser →','sl.partners':'Partenaires','sl.kicker':'Nos projets','news.title':'Actualités','news.all':'Tout voir','news.read':'Lire','news.extrait':"Extrait de l'article. La suite est à lire chez l'éditeur.",'news.full':"Lire l'article au complet",
   'brands.h':'<span class="mutedword">Des marques qui veulent</span>avoir <span class="gold">un réel impact.</span>',
   'foot.h':'Bâtissons le <span class="gold">bon partenariat.</span>','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Suivez-nous','foot.agency':'MVP Group Agency','foot.hq':'Siège social : Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. Tous droits réservés.','foot.privacy':'Politique de confidentialité'
  },
@@ -936,7 +1029,7 @@ const I18N = {
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
   'orbit.h':'Personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
-  'sl.hint':'Scroll or use the arrows','pj.h':'Our projects','pj.hint':'Drag →','sl.partners':'Partners','sl.kicker':'Our projects','news.title':'News','news.all':'See all','news.read':'Read','news.extrait':'Article excerpt. Read the rest at the publisher.','news.full':'Read the full article',
+  'sl.hint':'Scroll or use the arrows',"dm.k":"Start a project","dm.h":"Tell us about <span class=\"gold\">your project.</span>","dm.p":"Keynote, campaign, gala or corporate event: describe what you need. We find the right personality and get back to you quickly.","dm.nom":"Name *","dm.ent":"Company","dm.mail":"Email *","dm.tel":"Phone","dm.type":"Project type","dm.date":"Approximate date","dm.dateph":"e.g. June 2027","dm.pers":"Preferred personality (optional)","dm.msg":"Message","dm.send":"Send request","dm.okh":"Thank you, your request has been sent.","dm.okp":"The MVP team will contact you shortly.","dm.choose":"Choose…","dm.req":"Please enter your name and a valid email.","dm.fail":"Sending failed. Please try again in a moment or call us at 514-582-3306.","tl.work":"Work with",'pj.h':'Our projects','pj.hint':'Drag →','sl.partners':'Partners','sl.kicker':'Our projects','news.title':'News','news.all':'See all','news.read':'Read','news.extrait':'Article excerpt. Read the rest at the publisher.','news.full':'Read the full article',
   'brands.h':'<span class="mutedword">Trusted by brands</span>that want to <span class="gold">make an impact.</span>',
   'foot.h':'Let\'s build the <span class="gold">right partnership.</span>','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Follow','foot.agency':'MVP Group Agency','foot.hq':'Head office: Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. All rights reserved.','foot.privacy':'Privacy policy'
  }
@@ -1020,7 +1113,23 @@ const NEWS = [
  {img:'assets/art-laine.jpg',  cat:{fr:'Ambassadeur',en:'Ambassador'}, date:{fr:'Novembre 2024',en:'November 2024'},
   t:{fr:"Patrik Laine s'associe à ALBI Le Géant",en:'Patrik Laine partners with ALBI Le Géant'}, url:'projet.html?id=albi-patrick-laine'}
 ];
-/* Section 5 */
+/* Section 5 — personnalités de l'accueil (détourage + lieu de leur discipline) */
+const TALENTS_HOME = [
+ {id:'patrick-roy',nom:'Patrick Roy',cat:'hockey',sub:{fr:'Légende de la LNH · Temple de la renommée',en:'NHL legend · Hall of Famer'},tags:[{fr:'Légende du sport',en:'Sports legend'},{fr:'Champion',en:'Champion'}]},
+ {id:'bruny-surin',nom:'Bruny Surin',cat:'olympics',sub:{fr:'Champion olympique',en:'Olympic champion'},tags:[{fr:'Olympien',en:'Olympian'},{fr:'Légende du sport',en:'Sports legend'}]},
+ {id:'kim-clavel',nom:'Kim Clavel',cat:'boxing',sub:{fr:'Championne du monde de boxe',en:'World boxing champion'},tags:[{fr:'Conférencière',en:'Speaker'},{fr:'Championne',en:'Champion'}]},
+ {id:'vincent-lecavalier',nom:'Vincent Lecavalier',cat:'hockey',sub:{fr:'Ancien joueur étoile de la LNH',en:'Former NHL All-Star'},tags:[{fr:'Conférencier',en:'Speaker'},{fr:'Champion',en:'Champion'}]},
+ {id:'chantal-machabee',nom:'Chantal Machabée',cat:'media',photo:true,sub:{fr:'Animatrice et conférencière',en:'Host and speaker'},tags:[{fr:'Conférencière',en:'Speaker'},{fr:'Médias',en:'Media'}]},
+ {id:'alexandre-bilodeau',nom:'Alexandre Bilodeau',cat:'olympics',sub:{fr:'Double champion olympique',en:'2× Olympic champion'},tags:[{fr:'Conférencier',en:'Speaker'},{fr:'Ambassadeur',en:'Ambassador'}]},
+ {id:'marie-eve-dicaire',nom:'Marie-Eve Dicaire',cat:'boxing',sub:{fr:'Championne du monde de boxe',en:'World boxing champion'},tags:[{fr:'Conférencière',en:'Speaker'},{fr:'Animatrice',en:'Host'}]},
+ {id:'joannie-rochette',nom:'Joannie Rochette',cat:'olympics',sub:{fr:'Médaillée olympique',en:'Olympic medallist'},tags:[{fr:'Conférencière',en:'Speaker'},{fr:'Olympienne',en:'Olympian'}]},
+ {id:'pierre-lavoie',nom:'Pierre Lavoie',cat:'other',sub:{fr:'Fondateur du Grand Défi',en:'Founder of Le Grand Défi'},tags:[{fr:'Conférencier',en:'Speaker'},{fr:'Ambassadeur',en:'Ambassador'}]},
+ {id:'jean-pascal',nom:'Jean Pascal',cat:'boxing',sub:{fr:'Ancien champion du monde de boxe',en:'Former world boxing champion'},tags:[{fr:'Champion',en:'Champion'}]},
+ {id:'patrice-bernier',nom:'Patrice Bernier',cat:'soccer',sub:{fr:"Ancien capitaine de l'Impact",en:'Former Impact captain'},tags:[{fr:'Conférencier',en:'Speaker'},{fr:'Ambassadeur',en:'Ambassador'}]},
+ {id:'maxime-talbot',nom:'Maxime Talbot',cat:'hockey',sub:{fr:'Ancien joueur de la LNH · Analyste',en:'Former NHL player · Analyst'},tags:[{fr:'Conférencier',en:'Speaker'},{fr:'Médias',en:'Media'}]}
+];
+const CAT_FR={hockey:{fr:'Hockey',en:'Hockey'},boxing:{fr:'Boxe',en:'Boxing'},olympics:{fr:'Olympisme',en:'Olympics'},media:{fr:'Médias',en:'Media'},soccer:{fr:'Soccer',en:'Soccer'},mma:{fr:'MMA',en:'MMA'},other:{fr:'Autres',en:'Others'}};
+/* Section 6 */
 const CATEGORIES = [
  {name:{fr:'Hockey',en:'Hockey'},desc:{fr:'Légendes des Canadiens, champions de la Coupe Stanley, membres du Temple de la renommée, entraîneurs et joueurs actuels — pour conférences, galas et programmes d\'ambassadeurs.',en:'Canadiens legends, Stanley Cup champions, Hall of Famers, coaches and today\'s players — for keynotes, galas and ambassador programs.'},bg:'assets/lieux/hockey.jpg',img:'assets/cut/guy-carbonneau.webp',cap:'Guy Carbonneau · Three-time Stanley Cup champion',url:'personnalites.html?sport=hockey'},
  {name:{fr:'Boxe',en:'Boxing'},desc:{fr:'Championnes et champions du monde et aspirants au titre, avec des récits de discipline et de résilience.',en:'World champions and title contenders with compelling stories of discipline and resilience.'},bg:'assets/lieux/boxing.jpg',img:'assets/cut/kim-clavel.webp',cap:'Kim Clavel · Professional boxer',url:'personnalites.html?sport=boxing'},
@@ -1051,19 +1160,6 @@ const $ = (s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySele
 const pad = n=>String(n).padStart(2,'0');
 const ARROW='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
-function PersonalityScene(s,i){
-  const el=document.createElement('article'); el.className='scene'; el.dataset.i=i;
-  el.innerHTML=`<div class="scene__frame">
-    <div class="scene__env">${ENV(s.env)}</div>
-    <img class="scene__cutout scene__cutout--second" src="${s.img2}" alt="" loading="lazy" onerror="this.style.display='none'">
-    <img class="scene__cutout" src="${s.img}" alt="${s.name}, ${s.role}" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1515523110800-9415d13b84a8?w=900'">
-    <div class="scene__name" aria-hidden="true">${s.cat}</div>
-    <span class="scene__plus" aria-hidden="true"></span>
-    <span class="scene__cross" style="left:2%;top:8%"></span>
-    <span class="scene__index" aria-hidden="true"><b>${i+1}</b><span>/${pad(SCENES.length)}</span></span>
-  </div>`;
-  return el;
-}
 function ServicePanel(s){
   const el=document.createElement('a'); el.className='panel'; el.href=s.url;
   el.innerHTML=`<div class="panel__frame"><img class="panel__img" src="${s.img}" alt="${L(s.alt)}" loading="lazy"><div class="panel__shade"></div>
@@ -1083,7 +1179,6 @@ function CategoryRow(c,i){
    <a class="btn btn--ghost cat__cta" href="${c.url}">${t('cta.explore')} ${ARROW}</a></div></div>`;
   return el;
 }
-const ring=$('#orbitRing'); SCENES.forEach((s,i)=>ring.appendChild(PersonalityScene(s,i)));
 const track=$('#servicesTrack'); SERVICES.forEach(s=>track.appendChild(ServicePanel(s)));
 /* Carrousel photo mis de côté pour la future page « À propos » —
    les 6 images restent dans assets/ ; il suffit de décommenter.
@@ -1174,7 +1269,6 @@ addEventListener('keydown',e=>{ if(e.key==='Escape'&&!modal.hidden) fermerArticl
 
 chargerFil();
 const list=$('#exploreList'); CATEGORIES.forEach((c,i)=>list.appendChild(CategoryRow(c,i)));
-$('#orbitIndex').innerHTML=SCENES.map((_,i)=>`<button${i?'':' class="is-active"'} data-i="${i}">${pad(i+1)}</button>`).join('');
 $('#exploreImages').innerHTML=CATEGORIES.map((c,i)=>`<figure class="xcat${i?'':' is-active'}"><img class="xcat__bg" src="${c.bg}" alt="" loading="lazy"><img class="xcat__p" src="${c.img}" alt="${c.cap}" loading="lazy"></figure>`).join('');
 
 /* =====================================================================
@@ -1204,6 +1298,7 @@ function applyLang(lang){
   document.documentElement.lang = (LANG==='fr') ? 'fr-CA' : 'en-CA';
   document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML = t(el.dataset.i18nHtml); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder = t(el.dataset.i18nPh); });
   document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('is-active', b.dataset.lang===LANG));
   if (window.__rebuild) window.__rebuild();
 }
@@ -1222,75 +1317,54 @@ $$('a',mm).forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open'
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href'));if(!t)return;e.preventDefault();t.scrollIntoView({behavior:reduce?'auto':'smooth'});}));
 
 /* =====================================================================
-   SECTION 1 — hero pinned, intro scrolls over it
+   SECTION 5 — PERSONNALITÉS : cartes qui défilent, inclinaison 3D légère
    ===================================================================== */
-if(!reduce){
-  gsap.timeline({scrollTrigger:{trigger:'#intro',start:'top bottom',end:'top top',scrub:.6}})
-    .to('#heroMedia',{scale:1.08,ease:'none'},0)
-    .to('#heroTitle',{y:-60,ease:'none'},0)
-    .to('[data-hero-fade]',{y:-40,autoAlpha:0,ease:'none',stagger:.02},0);
-  gsap.from('[data-intro]',{y:40,autoAlpha:0,stagger:.08,ease:'power3.out',duration:1,scrollTrigger:{trigger:'#intro',start:'top 55%'}});
+function TalentCard(p){
+  const el=document.createElement('article'); el.className='tcard';
+  const href='profil.html?id='+p.id;
+  el.innerHTML=`<div class="tcard__in">
+    <a class="tcard__ph" href="${href}" tabindex="-1" aria-hidden="true">
+      <img class="tcard__bg" src="assets/lieux/${p.cat==='other'?'olympics':p.cat}.jpg" alt="" loading="lazy">
+      <img class="tcard__p${p.photo?' tcard__p--pleine':''}" src="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" alt="" loading="lazy">
+      <span class="tcard__cat">${L(CAT_FR[p.cat])}</span>
+    </a>
+    <div class="tcard__body">
+      <h3 class="tcard__nom"><a href="${href}">${p.nom}</a></h3>
+      <p class="tcard__sub">${L(p.sub)}</p>
+      <div class="tcard__tags">${p.tags.map(x=>`<span>${L(x)}</span>`).join('')}</div>
+      <div class="tcard__cta">
+        <a class="tcard__b1" href="${href}&travailler=1">${t('tl.work')} ${p.nom.split(' ')[0]}</a>
+        <a class="tcard__b2" href="${href}">${t('cta.profile')} ${ARROW}</a>
+      </div>
+    </div></div>`;
+  return el;
 }
-
-/* =====================================================================
-   SECTION 2 — 3D ORBIT
-   ===================================================================== */
-const stage=$('#orbitStage'), scenes=$$('.scene',ring), N=SCENES.length;
-const orbit={pos:0,target:0}; let stageW=stage.clientWidth;
-const pill=$('#pillIcons');
-function renderPill(){
-  const i=((Math.round(orbit.target)%N)+N)%N;
-  pill.innerHTML=[-1,0,1].map(o=>{const s=SCENES[((i+o)%N+N)%N];return `<button class="pill__icon${o?'':' is-active'}" data-i="${(i+o+N)%N}" aria-label="${s.cat}">${ICONS[s.icon]}</button>`;}).join('');
-  $$('.orbit__index button').forEach((b,k)=>b.classList.toggle('is-active',k===i));
-  scenes.forEach((el,k)=>{el.classList.toggle('is-active',k===i);el.setAttribute('aria-hidden',k!==i);});
-  const sc=SCENES[i]; gsap.fromTo('.orbit__ui > div',{autoAlpha:0,y:8},{autoAlpha:1,y:0,duration:.5,overwrite:true}); $('#orbitPerson').textContent=sc.name; $('#orbitRole').textContent=L(sc.role); $('#orbitBtn').href=sc.url;
-}
-function renderOrbit(){
-  const W=stageW;
-  scenes.forEach((el,i)=>{
-    let d=i-orbit.pos; d=((d%N)+N)%N; if(d>N/2)d-=N;
-    const a=Math.abs(d), X=[0,.30,.43,.50,.52]; const fl=Math.min(3,Math.floor(a)), fr=a-fl; const xr=(X[fl]+(X[fl+1]-X[fl])*fr)*W;
-    const x=Math.sign(d)*xr, z=-Math.min(a,2.5)*0.12*W, ry=d*Math.min(58,55+a*4), sc=Math.max(.45,1-a*.2), op=Math.max(0,1-a*.22), bl=Math.min(4,a*1.1);
-    el.style.transform=`translate3d(${x}px,0,${z}px) rotateY(${ry}deg) scale(${sc})`;
-    el.style.opacity=op; el.style.filter=`blur(${bl}px)`; el.style.zIndex=Math.round(50-a*10);
-    el.style.pointerEvents=a>2.5?'none':'auto';
+const tlRail=$('#tlRail');
+function renderTalents(){ tlRail.innerHTML=''; TALENTS_HOME.forEach(p=>tlRail.appendChild(TalentCard(p))); }
+renderTalents();
+(function(){
+  /* glisser à la souris + flèches */
+  let x0=0,s0=0,on=false;
+  tlRail.addEventListener('pointerdown',e=>{x0=e.clientX;s0=tlRail.scrollLeft;on=e.pointerType==='mouse';});
+  tlRail.addEventListener('pointermove',e=>{if(!on)return;const dx=e.clientX-x0;if(Math.abs(dx)>4)tlRail.classList.add('saisi');tlRail.scrollLeft=s0-dx;});
+  const fin=()=>{on=false;tlRail.classList.remove('saisi');};
+  ['pointerup','pointercancel','pointerleave'].forEach(ev=>tlRail.addEventListener(ev,fin));
+  tlRail.addEventListener('click',e=>{if(Math.abs(tlRail.scrollLeft-s0)>6)e.preventDefault();},true);
+  tlRail.addEventListener('dragstart',e=>e.preventDefault());
+  const pas=()=>{const c=$('.tcard',tlRail);return c?c.offsetWidth+parseFloat(getComputedStyle(tlRail).columnGap||0):360;};
+  const maj=()=>{$('#tlPrev').disabled=tlRail.scrollLeft<=4;$('#tlNext').disabled=tlRail.scrollLeft>=tlRail.scrollWidth-tlRail.clientWidth-4;};
+  $('#tlPrev').onclick=()=>tlRail.scrollBy({left:-pas(),behavior:'smooth'});
+  $('#tlNext').onclick=()=>tlRail.scrollBy({left:pas(),behavior:'smooth'});
+  tlRail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
+  /* inclinaison 3D au survol (souris seulement) : la carte suit le curseur */
+  if(reduce||!matchMedia('(hover:hover)').matches) return;
+  tlRail.addEventListener('pointermove',e=>{
+    const c=e.target.closest('.tcard'); if(!c||tlRail.classList.contains('saisi')) return;
+    const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    $('.tcard__in',c).style.transform=`rotateY(${x*10}deg) rotateX(${-y*8}deg) translateZ(14px)`;
   });
-}
-function goTo(t,dur=1.1){ orbit.target=t; renderPill(); gsap.to(orbit,{pos:t,duration:reduce?0:dur,ease:'power3.out',overwrite:true,onUpdate:renderOrbit}); }
-function step(n){goTo(orbit.target+n);}
-$('#orbitPrev').onclick=()=>step(-1); $('#orbitNext').onclick=()=>step(1);
-const jumpTo=i=>{const cur=((Math.round(orbit.target)%N)+N)%N;let d=i-cur;if(d>N/2)d-=N;if(d<-N/2)d+=N;goTo(orbit.target+d);};
-pill.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)jumpTo(+b.dataset.i);});
-$('#orbitIndex').addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)jumpTo(+b.dataset.i);});
-scenes.forEach((el,i)=>el.addEventListener('click',e=>{const cur=((Math.round(orbit.target)%N)+N)%N;if(i===cur)return;e.preventDefault();jumpTo(i);}));
-let drag=null;
-stage.addEventListener('pointerdown',e=>{drag={x:e.clientX,start:orbit.pos,v:0,t:performance.now(),moved:false};stage.classList.add('dragging');gsap.killTweensOf(orbit);});
-window.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x;if(Math.abs(dx)>4)drag.moved=true;const now=performance.now();const np=drag.start-dx/(0.3*stageW);drag.v=(np-orbit.pos)/Math.max(1,now-drag.t);drag.t=now;orbit.pos=np;renderOrbit();});
-window.addEventListener('pointerup',e=>{if(!drag)return;stage.classList.remove('dragging');const fling=Math.max(-1,Math.min(1,drag.v*180));const t=Math.round(orbit.pos+fling);if(drag.moved){goTo(t,.9);scenes.forEach(s=>s.style.pointerEvents='none');setTimeout(renderOrbit,50);}drag=null;});
-stage.addEventListener('click',e=>{if(drag&&drag.moved)e.preventDefault();},true);
-let wheelLock=false; stage.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<Math.abs(e.deltaY)||Math.abs(e.deltaX)<12)return;e.preventDefault();if(wheelLock)return;wheelLock=true;step(e.deltaX>0?1:-1);setTimeout(()=>wheelLock=false,700);},{passive:false});
-stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){step(1);e.preventDefault();}if(e.key==='ArrowLeft'){step(-1);e.preventDefault();}});
-window.addEventListener('resize',()=>{stageW=stage.clientWidth;renderOrbit();});
-renderPill(); renderOrbit();
-
-
-
-/* =====================================================================
-   SECTION 3 — pinned horizontal services (desktop) / swipe track (mobile)
-   ===================================================================== */
-ScrollTrigger.matchMedia({
-  '(min-width:1024px) and (prefers-reduced-motion: no-preference)':()=>{
-    const panels=$$('.panel',track), last=panels[panels.length-1];
-    /* travel = full track width minus one screen; never negative, or the
-       track would slide the wrong way when the panels are narrow */
-    const dist=()=>Math.max(0, track.scrollWidth - innerWidth + innerWidth*0.06);
-    gsap.timeline({scrollTrigger:{trigger:'#services',start:'top top',end:()=>'+='+(innerHeight*3.4),pin:'#servicesStage',scrub:1.1,invalidateOnRefresh:true,anticipatePin:1,
-      onUpdate:s=>{$('#servicesProgress').style.width=(s.progress*100)+'%';$('#servicesCount').textContent=pad(Math.min(4,1+Math.floor(s.progress*3.99)))+' / 04';}}})
-      .to(track,{x:()=>-dist(),ease:'none',duration:.8},0)
-      .to('#servicesBg',{x:()=>-innerWidth*0.3,ease:'none',duration:.8},0)
-      .to({},{duration:.2});   /* pause finale : on voit la derniere carte avant de continuer */
-  }
-});
+  tlRail.addEventListener('pointerout',e=>{ const c=e.target.closest('.tcard'); if(c&&!c.contains(e.relatedTarget)) $('.tcard__in',c).style.transform=''; });
+})();
 
 /* =====================================================================
    SECTION 4 — MARQUES / PARTENAIRES : composant d'origine, inchangé.
@@ -1336,7 +1410,6 @@ renderProjects();
   $('#pjPrev').onclick=()=>pjRail.scrollBy({left:-pas(),behavior:'smooth'});
   $('#pjNext').onclick=()=>pjRail.scrollBy({left:pas(),behavior:'smooth'});
   pjRail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
-  if(!reduce) gsap.from('.pc',{y:60,autoAlpha:0,duration:1,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:'#projects',start:'top 70%'}});
 })();
 /* Defilement des bandes de marques, en sens opposes. La bande s'arrete
    doucement quand le curseur se pose sur un logo, et repart quand il le
@@ -1403,6 +1476,36 @@ function bindCats(){ rows.forEach((r,i)=>{const b=$('.cat__btn',r);
 }); }
 bindCats();
 setCat(0);
+/* =====================================================================
+   SECTION 8 — FORMULAIRE DE DEMANDE
+   Envoi en JSON (POST) vers FORM_ENDPOINT, le même point de terminaison que
+   le formulaire des profils. En cas d'échec, le formulaire le dit et donne
+   le téléphone : aucune demande n'est perdue en silence.
+   ===================================================================== */
+const FORM_ENDPOINT='/api/demande';
+const TYPES=[{fr:'Conférence',en:'Keynote'},{fr:'Campagne de marque',en:'Brand campaign'},{fr:'Événement corporatif',en:'Corporate event'},{fr:'Apparition médiatique',en:'Media appearance'},{fr:'Événement caritatif',en:'Charity event'},{fr:'Autre',en:'Other'}];
+function renderTypes(){ const sel=$('#demType'), v=sel.value;
+  sel.innerHTML=`<option value="">${t('dm.choose')}</option>`+TYPES.map(x=>`<option value="${x.fr}">${L(x)}</option>`).join(''); sel.value=v; }
+renderTypes();
+(function(){
+  const form=$('#demForm'), err=$('#demErr'), ok=$('#demOk');
+  form.addEventListener('submit',async e=>{
+    e.preventDefault(); err.hidden=true;
+    const champs=[...form.querySelectorAll('[required]')];
+    champs.forEach(c=>c.closest('.dm__c').classList.toggle('est-invalide',!c.checkValidity()));
+    const bad=champs.find(c=>!c.checkValidity());
+    if(bad){ err.textContent=t('dm.req'); err.hidden=false; bad.focus(); return; }
+    const go=form.querySelector('.demande__go'); go.disabled=true;
+    const data=Object.fromEntries(new FormData(form)); data.page=location.href;
+    try{
+      const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      if(!r.ok) throw new Error(r.status);
+      form.hidden=true; ok.hidden=false;
+    }catch(_){ err.textContent=t('dm.fail'); err.hidden=false; }
+    finally{ go.disabled=false; }
+  });
+})();
+
 /* rebuild everything that comes from the data arrays, then restore state */
 window.__rebuild=function(){
   const svcTrack=$('#servicesTrack');
@@ -1413,62 +1516,11 @@ window.__rebuild=function(){
   list.innerHTML=''; CATEGORIES.forEach((c,i)=>list.appendChild(CategoryRow(c,i)));
   rows.length=0; $$('.cat',list).forEach(r=>rows.push(r));
   bindCats(); setCat(0);
-  renderPill();
+  renderTalents(); renderTypes();
   ScrollTrigger.refresh();
 };
 $('#lang').addEventListener('click',e=>{const b=e.target.closest('[data-lang]'); if(b) applyLang(b.dataset.lang);});
 applyLang('fr');
-/* ---------------------------------------------------------------------
-   Catégories : le seul temps d'arrêt du parcours. La section se fige, les
-   sept catégories se révèlent l'une après l'autre, puis le défilement
-   reprend vers Services. Court et lisible, sans autre effet alentour.
-   --------------------------------------------------------------------- */
-ScrollTrigger.matchMedia({
-  '(min-width:1024px) and (prefers-reduced-motion: no-preference)':()=>{
-    const sec=$('#explore'), pin=$('.explore__pin');
-    if(!sec||!pin) return;
-    const lignes=$$('.cat',pin);
-    gsap.set(lignes,{autoAlpha:0,y:26});
-    ScrollTrigger.create({
-      trigger:sec,start:'top top',end:()=>'+='+(innerHeight*1.1),
-      pin:pin,pinSpacing:true,invalidateOnRefresh:true,anticipatePin:1,
-      onUpdate:st=>{
-        const total=lignes.length;
-        lignes.forEach((el,i)=>{
-          const seuil=(i/total)*0.85;                 /* tout est revele a 85% */
-          const p=gsap.utils.clamp(0,1,(st.progress-seuil)/0.12);
-          gsap.set(el,{autoAlpha:p,y:26*(1-p)});
-        });
-        const n=Math.min(total-1,Math.floor(st.progress*total/0.85));
-        if(n>=0) setCat(n);
-      }
-    });
-  },
-  '(max-width:1023px)':()=>{ gsap.set($$('.cat'),{clearProps:'all'}); }
-});
-/* ---------------------------------------------------------------------
-   Effet de chute, dans l'esprit de la référence : chaque élément du flux
-   « tombe » en place au défilement — il arrive de plus haut, légèrement
-   incliné, et se redresse. Lié au défilement, donc réversible.
-   --------------------------------------------------------------------- */
-ScrollTrigger.matchMedia({
-  '(min-width:1024px) and (prefers-reduced-motion: no-preference)':()=>{
-    const chute=(sel,dep)=>{
-      $$(sel).forEach((el,i)=>{
-        gsap.fromTo(el,
-          {y:-((dep||70)+i*14),rotate:i%2?-1.2:1.2,autoAlpha:0},
-          {y:0,rotate:0,autoAlpha:1,ease:'power2.out',
-           scrollTrigger:{trigger:el,start:'top 96%',end:'top 62%',scrub:.6}});
-      });
-    };
-    chute('#intro .intro__title',90);
-    chute('#intro .intro__p',60);
-    chute('#intro .intro__cta',50);
-    chute('#personalities .orbit__headwrap,#personalities .orbit__all,#personalities .pill',70);
-    chute('#explore .explore__title',100);
-    chute('#explore .explore__imgwrap',80);
-  }
-});
 addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
 </script>
 
@@ -1492,6 +1544,18 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
   ['pointerdown','touchstart','keydown'].forEach(function(ev){
     addEventListener(ev,function once(){ if(v.paused) lance(); removeEventListener(ev,once); },{once:true});
   });
+})();
+</script>
+<script>
+/* Apparition au défilement — un seul effet, partout : chaque bloc marqué
+   data-reveal apparaît une fois, en douceur, quand il entre à l'écran.
+   Script indépendant : même si un autre script échoue, le contenu s'affiche. */
+(function(){
+  var els=[].slice.call(document.querySelectorAll('[data-reveal]'));
+  var show=function(el){ el.classList.add('is-in'); };
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)){ els.forEach(show); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>

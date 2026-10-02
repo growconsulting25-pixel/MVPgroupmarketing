@@ -1319,6 +1319,8 @@ const FORM_ENDPOINT='/api/demande';
   const fermer=()=>{ tv.classList.remove('est-ouvert'); document.body.style.overflow='';
     setTimeout(()=>{tv.hidden=true; if(retour&&retour.focus) retour.focus();},450); };
   $$('[data-travailler]').forEach(b=>b.addEventListener('click',ouvrir));
+  /* lien « Travailler avec » venant d'une carte de l'accueil : le formulaire s'ouvre directement */
+  if(new URLSearchParams(location.search).has('travailler')) setTimeout(ouvrir,400);
   tv.addEventListener('click',e=>{ if(e.target.closest('[data-fermer]')) fermer(); });
   addEventListener('keydown',e=>{ if(e.key==='Escape'&&!tv.hidden) fermer(); });
   form.addEventListener('submit',async e=>{
