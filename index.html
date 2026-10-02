@@ -943,6 +943,14 @@ ul{list-style:none}
 .btn--blue:hover,.intro__cta:hover,.talents__all:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
 .intro__cta:hover::before{color:var(--black)}
 .btn--outline:hover{background:var(--white);border-color:var(--white);color:var(--black)}
+
+/* Marques : la section prend la hauteur de son contenu (ce n'est plus une
+   diapo plein écran), et Services s'y enchaîne sans grand vide. */
+.services{padding-bottom:clamp(28px,4vh,48px)}
+.brands__pin{height:auto;min-height:0}
+.brands .slide--brands{position:relative;inset:auto;min-height:0;gap:clamp(8px,2vh,24px);padding:clamp(24px,4vh,48px) 0 clamp(56px,9vh,100px)}
+.brands .slide--brands .partners__head{position:relative;left:auto;right:auto;bottom:auto;margin-top:clamp(12px,2.4vh,28px)}
+@media (max-width:1023px){.brands .slide--brands{padding:3vh 0 8vh}}
 </style>
 </head>
 <body>
