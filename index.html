@@ -965,6 +965,34 @@ ul{list-style:none}
 .demande .sec__bg::after{background:linear-gradient(90deg,var(--soft) 0%,rgba(246,246,242,.5) 55%,rgba(246,246,242,.15) 100%)}
 .flux{background:var(--white)}
 .services__bg,.news__title{font-size:clamp(38px,6.4vw,116px);line-height:.88;letter-spacing:-.035em}
+
+/* ---------- Grilles de « + » en fondu (décor) ---------- */
+.grille{position:absolute;pointer-events:none;z-index:1;opacity:.5;background-repeat:repeat;background-size:26px 26px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 8.5v9M8.5 13h9' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+  -webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent 100%);mask-image:radial-gradient(closest-side,#000 25%,transparent 100%)}
+.grille--clair{opacity:.4;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 8.5v9M8.5 13h9' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E")}
+@media (max-width:900px){.grille{display:none}}
+
+/* ---------- Index des sections (gauche, grand écran) ---------- */
+.sindex{display:none}
+@media (min-width:1280px){
+  .sindex{display:flex;flex-direction:column;gap:14px;position:fixed;left:14px;top:50%;z-index:90;transform:translate(-8px,-50%);opacity:0;pointer-events:none;transition:opacity .5s,transform .5s cubic-bezier(.2,.7,.2,1);color:#7d7d7d}
+  .sindex.est-visible{opacity:1;transform:translate(0,-50%);pointer-events:auto}
+  .sindex a{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;color:inherit;transition:color .3s}
+  .sindex a i{display:block;width:0;height:1.5px;background:currentColor;transition:width .4s cubic-bezier(.2,.7,.2,1)}
+  .sindex a:hover{color:var(--black)}
+  .sindex a.est-actif{color:#123B6D;font-weight:800}
+  .sindex a.est-actif i{width:14px}
+  .sindex.sur-fonce{color:rgba(255,255,255,.55)}
+  .sindex.sur-fonce a:hover{color:var(--white)}
+  .sindex.sur-fonce a.est-actif{color:var(--gold)}
+  /* les petites croix de la marge gauche laissent la place à l'index */
+  .plus--l{display:none}
+}
+@media (min-width:1280px){
+  .sindex{left:8px;padding:14px 12px 14px 10px;border-radius:12px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(5,5,5,.08)}
+  .sindex.sur-fonce{background:rgba(14,42,79,.62);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+}
 </style>
 </head>
 <body>
@@ -1042,6 +1070,9 @@ ul{list-style:none}
     <span class="rp__plus rp__plus--a" aria-hidden="true"></span><span class="rp__plus rp__plus--b" aria-hidden="true"></span>
   </nav>
 </div>
+
+<!-- Index des sections : numéro de la section en cours, cliquable -->
+<nav class="sindex" id="sindex" aria-label="Sections de la page"></nav>
 <div class="mobile-menu" id="mobileMenu" hidden>
   <img src="assets/mvp-logo-blanc-v2.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
   <a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a><a href="#services" data-i18n="nav.services">Services</a><a href="projets.html" data-i18n="nav.projects">Projets</a><a href="#contact" data-i18n="nav.agency">Agence</a><a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -1075,6 +1106,7 @@ ul{list-style:none}
 
 <!-- ================= SECTION 2 — INTRO ================= -->
 <section class="intro" id="intro" data-nav="dark" data-plus="t:8:lg l:62 b:44 r:30">
+  <span class="grille" aria-hidden="true" style="right:7%;top:16%;width:300px;height:220px"></span>
     <div class="intro__bg" aria-hidden="true"></div>
     <div class="intro__top" data-reveal>
       <h2 class="intro__title" data-i18n-html="intro.h2">Légendes et personnalités du sport, <em>au service de votre compagnie.</em></h2>
@@ -1089,6 +1121,7 @@ ul{list-style:none}
 
 <!-- ================= SECTION 3 — SERVICES (juste après l'intro et son appel à l'action) ================= -->
 <section class="services" id="services" data-nav="light" aria-label="Our services" data-plus="t:72 b:12 b:58:lg">
+  <span class="grille grille--clair" aria-hidden="true" style="right:9%;top:70px;width:320px;height:150px"></span>
   <div class="services__stage" id="servicesStage">
     <h2 class="services__bg display" id="servicesBg" data-i18n="svc.h" data-reveal>Nos services</h2>
     <div class="services__track" id="servicesTrack" data-reveal></div>
@@ -1125,6 +1158,7 @@ ul{list-style:none}
 
 <!-- ================= SECTION 6 — CATÉGORIES ================= -->
 <section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="t:88 l:78:lg r:12 t:46">
+  <span class="grille" aria-hidden="true" style="right:6%;top:60px;width:340px;height:130px"></span>
   <div class="sec__bg" aria-hidden="true" style="background-image:url('assets/lieux/boxing.jpg')"></div>
   <div class="explore__pin">
   <h2 class="explore__title display" data-i18n="exp.title" data-reveal>Catégories</h2>
@@ -1157,6 +1191,7 @@ ul{list-style:none}
 
 <!-- ================= SECTION 8 — FORMULAIRE DE DEMANDE ================= -->
 <section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet" data-plus="t:64:lg l:86 b:30 r:40">
+  <span class="grille" aria-hidden="true" style="left:2%;bottom:40px;width:380px;height:230px"></span>
   <div class="sec__bg" aria-hidden="true" style="background-image:url('assets/lieux/olympics.jpg')"></div>
   <div class="demande__in">
     <div class="demande__txt" data-reveal>
@@ -1190,6 +1225,7 @@ ul{list-style:none}
 
 <!-- ================= SECTION 9 — ACTUALITÉS ================= -->
 <section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="t:40 b:92:lg l:46 r:8">
+  <span class="grille grille--clair" aria-hidden="true" style="left:57%;top:70px;width:320px;height:140px"></span>
   <div class="news__head" data-reveal>
     <h2 class="news__title display" data-i18n="news.title">Actualités</h2>
     <a class="btn btn--outline news__all" href="projets.html" data-i18n="news.all">Tout voir</a>
@@ -1887,6 +1923,29 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
   var lang=rail.querySelector('.rail__lang'), syncLang=function(){ var cur=document.querySelector('#lang .is-active'); [].forEach.call(lang.children,function(b){ b.classList.toggle('is-active',cur&&b.dataset.lang===cur.dataset.lang); }); };
   lang.addEventListener('click',function(e){ var b=e.target.closest('[data-lang]'); if(!b) return; var t=document.querySelector('#lang [data-lang="'+b.dataset.lang+'"]'); if(t) t.click(); syncLang(); });
   syncLang();
+})();
+</script>
+<script>
+/* Index des sections : « — 01 … 08 », suit le défilement ; clair ou foncé
+   selon le fond de la section courante. */
+(function(){
+  var nav=document.getElementById('sindex'); if(!nav) return;
+  var ids=['intro','services','brands','personalities','explore','projects','demande','news'];
+  var secs=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+  nav.innerHTML=secs.map(function(sec,i){ var n=(i<9?'0':'')+(i+1);
+    var nom=(sec.getAttribute('aria-label')||sec.id);
+    return '<a href="#'+sec.id+'" data-i="'+i+'" aria-label="'+n+' — '+nom+'"><i></i>'+n+'</a>'; }).join('');
+  var liens=[].slice.call(nav.children), cur=-1;
+  var maj=function(){
+    var y=innerHeight*0.45, i=-1;
+    secs.forEach(function(sec,k){ var r=sec.getBoundingClientRect(); if(r.top<=y && r.bottom>y) i=k; });
+    nav.classList.toggle('est-visible', i>=0 && document.getElementById('hero').getBoundingClientRect().bottom<innerHeight*0.4);
+    if(i>=0){ nav.classList.toggle('sur-fonce', secs[i].dataset.nav==='light'); }
+    if(i!==cur){ cur=i; liens.forEach(function(a,k){ a.classList.toggle('est-actif',k===i); if(k===i) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }); }
+  };
+  addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
+  nav.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; e.preventDefault();
+    var t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); });
 })();
 </script>
 </body>

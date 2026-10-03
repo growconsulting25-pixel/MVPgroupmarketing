@@ -809,6 +809,13 @@ body{background:var(--soft);color:var(--black)}
 @media (min-width:1001px) and (max-width:1280px){#grid2>:nth-child(n+4){display:none}}
 .voirplus .btn{min-width:min(340px,100%);justify-content:center}
 .btn--blue:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+
+/* ---------- Grilles de « + » en fondu (décor) ---------- */
+.grille{position:absolute;pointer-events:none;z-index:1;opacity:.5;background-repeat:repeat;background-size:26px 26px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 8.5v9M8.5 13h9' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+  -webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent 100%);mask-image:radial-gradient(closest-side,#000 25%,transparent 100%)}
+.grille--clair{opacity:.4;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 8.5v9M8.5 13h9' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E")}
+@media (max-width:900px){.grille{display:none}}
 </style>
 </head>
 <body>
@@ -859,6 +866,7 @@ body{background:var(--soft);color:var(--black)}
 </header>
 <main class="bp" data-nav="dark">
   <section class="bp__hero" data-nav="light" data-plus="t:62:lg r:40 b:84">
+    <span class="grille grille--clair" aria-hidden="true" style="right:6%;top:22%;width:320px;height:240px;z-index:2"></span>
     <img class="bp__bg" src="assets/banniere-talents-v2.jpg" alt="" width="1800" height="600">
     <div class="bp__hin">
       <p class="label">MVP Talent Network</p>
@@ -887,6 +895,7 @@ body{background:var(--soft);color:var(--black)}
       <div class="voirplus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
 
       <section class="pf" id="showcase" data-nav="light" aria-label="Projets MVP" data-plus="t:88:lg b:36">
+        <span class="grille grille--clair" aria-hidden="true" style="left:46%;top:18px;width:300px;height:120px"></span>
         <div class="pf__head">
           <div>
             <p class="label" style="color:var(--gold)">Réalisations</p>
