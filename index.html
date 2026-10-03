@@ -997,6 +997,14 @@ ul{list-style:none}
 /* Drapeau du Québec, pied de page */
 .footer__qc{display:inline-flex;align-items:center;gap:10px}
 .drapeau-qc{width:24px;height:16px;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+
+/* Personnalités + Catégories : une seule photo d'aréna derrière les deux,
+   même traitement (un peu plus visible) que l'intro → une seule grande section. */
+.flux{isolation:isolate;background:var(--white)}
+.flux > .talents,.flux > .explore{background:transparent}
+.flux__bg{position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('assets/lieux/mma.jpg') center 30%/cover no-repeat;filter:grayscale(1) contrast(.9);opacity:.2}
+.flux__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.5) 55%,rgba(255,255,255,.15) 100%)}
+.intro__bg{opacity:.2}
 </style>
 </head>
 <body>
@@ -1141,12 +1149,12 @@ ul{list-style:none}
 
 <!-- Fond blanc continu : Personnalités puis Catégories -->
 <div class="flux" id="flux">
+  <div class="flux__bg" aria-hidden="true"></div>
   <div class="flux__decor" aria-hidden="true"><span class="flux__img"></span></div>
 <!-- ================= SECTION 5 — PERSONNALITÉS : cartes qui défilent =================
      Même esprit que les cartes de la page Personnalités, en un peu plus travaillé,
      avec une légère inclinaison 3D au survol. -->
 <section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="t:56:lg l:22 b:22 b:76">
-  <div class="sec__bg" aria-hidden="true" style="background-image:url('assets/lieux/mma.jpg')"></div>
   <div class="talents__head" data-reveal>
     <h2 class="talents__t display" data-i18n="orbit.h">Personnalités</h2>
     <div class="talents__side">
@@ -1163,7 +1171,6 @@ ul{list-style:none}
 <!-- ================= SECTION 6 — CATÉGORIES ================= -->
 <section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="t:88 l:78:lg r:12 t:46">
   <span class="grille" aria-hidden="true" style="right:6%;top:60px;width:340px;height:130px"></span>
-  <div class="sec__bg" aria-hidden="true" style="background-image:url('assets/lieux/boxing.jpg')"></div>
   <div class="explore__pin">
   <h2 class="explore__title display" data-i18n="exp.title" data-reveal>Catégories</h2>
   <div class="explore__left" data-reveal>
