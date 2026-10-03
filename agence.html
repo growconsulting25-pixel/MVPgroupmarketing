@@ -5,8 +5,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Personnalités sportives — MVP Group | MVP Group — Agence de marketing sportif | Ambassadeurs, conférenciers et porte-parole</title>
-<meta name="description" content="MVP Group — agence de marketing sportif à Montréal. Ambassadeurs de marque, conférenciers, porte-parole et influenceurs pour vos campagnes et événements corporatifs au Québec, au Canada et aux États-Unis.">
+<title>Agence — Notre mission et Simon Arsenault | MVP Group</title>
+<meta name="description" content="Le Groupe MVP crée des partenariats gagnants entre les entreprises et les personnalités sportives. Notre mission et le parcours de Simon Arsenault, président-fondateur.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 <style>
@@ -611,6 +611,8 @@ ul{list-style:none}
 .footer{min-height:0!important;padding:clamp(40px,6vh,72px) var(--gutter) 34px!important;justify-content:flex-start!important}
 .footer__grid{padding:0 0 clamp(30px,5vh,56px)!important}
 .footer__lead--seul{display:none}
+.ag{overflow-x:clip}
+.ag-hero{overflow-x:clip;overflow-y:visible}
 </style>
 
 <style>
@@ -820,6 +822,95 @@ body{background:var(--soft);color:var(--black)}
 /* Drapeau du Québec, pied de page */
 .footer__qc{display:inline-flex;align-items:center;gap:10px}
 .drapeau-qc{width:24px;height:16px;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+</style>
+
+<style>
+/* =====================================================================
+   PAGE AGENCE — mission + Simon Arsenault
+   ===================================================================== */
+body{background:var(--soft);color:var(--black)}
+.ag-k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#123B6D}
+.ag-k--or{color:var(--gold)}
+.ag-h1{font-size:clamp(46px,6.2vw,108px);font-weight:800;letter-spacing:-.04em;line-height:.9;text-transform:uppercase;margin-top:18px;max-width:11ch}
+.ag-h1 .gold{display:block}
+.ag-h2{font-size:clamp(38px,5vw,88px);font-weight:800;letter-spacing:-.035em;line-height:.92;text-transform:uppercase;margin-top:14px}
+.btn svg{width:16px;height:16px}
+/* --- 01 héros --- */
+.ag-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5vw,90px);align-items:center;min-height:100svh;padding:calc(var(--nav-h) + 6vh) var(--gutter) 9vh;max-width:1640px;margin:0 auto}
+.ag-lede{margin-top:clamp(18px,3vh,30px);font-size:clamp(16px,1.25vw,20px);line-height:1.6;color:#2b2b2b;max-width:46ch}
+.ag-cta{margin-top:clamp(22px,3.4vh,36px);background:#123B6D;color:#fff;border-radius:6px;padding:18px 26px}
+.ag-cta:hover{background:var(--gold);color:var(--black)}
+.ag-faits{display:flex;flex-wrap:wrap;gap:20px clamp(24px,3vw,46px);margin-top:clamp(34px,6vh,64px)}
+.ag-faits dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.ag-faits dd{margin-top:5px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:30ch;line-height:1.55}
+/* carrousel */
+.ag-sl{position:relative;justify-self:center;width:min(100%,560px)}
+.ag-sl__orbe{position:absolute;left:-18%;right:-18%;top:22%;width:136%;height:56%;z-index:0;overflow:visible}
+.ag-sl__orbe ellipse{fill:none;stroke:#bdbdb6;stroke-width:1;vector-effect:non-scaling-stroke}
+.ag-sl__cadre{position:relative;z-index:1;aspect-ratio:4/5;overflow:hidden;background:#111;box-shadow:0 40px 90px rgba(5,5,5,.22)}
+.ag-sl__cadre figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.1s cubic-bezier(.2,.7,.2,1)}
+.ag-sl__cadre figure.est-actif{opacity:1}
+.ag-sl__cadre img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transform:scale(1.06);transition:transform 6s linear,filter .8s}
+.ag-sl__cadre figure.est-actif img{transform:scale(1)}
+.ag-sl:hover .ag-sl__cadre img{filter:grayscale(0)}
+.ag-sl__cadre figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,0) 55%,rgba(5,5,5,.85))}
+.ag-sl__cadre figcaption{position:absolute;left:22px;right:22px;bottom:22px;z-index:2;color:#fff}
+.ag-sl__cadre figcaption b{display:block;font-size:clamp(16px,1.3vw,21px);font-weight:800;letter-spacing:-.02em}
+.ag-sl__cadre figcaption span{display:block;margin-top:6px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.ag-sl__num{position:absolute;right:-6px;top:-34px;z-index:3;display:flex;align-items:baseline;color:var(--gold);line-height:1;pointer-events:none}
+.ag-sl__num b{font-size:clamp(56px,5vw,84px);font-weight:200;letter-spacing:-.04em}
+.ag-sl__num i{font-style:normal;font-size:18px;font-weight:300;color:#9a9a92;margin-left:4px}
+.ag-sl__coin{position:absolute;z-index:2;width:28px;height:28px;border-color:#123B6D;border-style:solid;opacity:.7}
+.ag-sl__coin--a{left:-14px;top:-14px;border-width:1.5px 0 0 1.5px}
+.ag-sl__coin--b{right:-14px;bottom:56px;border-width:0 1.5px 1.5px 0}
+.ag-sl__nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
+.ag-sl__traits{display:flex;gap:6px;flex-wrap:wrap}
+.ag-sl__traits button{width:22px;height:14px;position:relative}
+.ag-sl__traits button::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:#cfcfc8;transition:background .3s}
+.ag-sl__traits button.est-actif{width:44px}
+.ag-sl__traits button.est-actif::before{background:#123B6D}
+.ag-sl__fl{display:flex;gap:8px}
+.ag-sl__fl button{width:44px;height:44px;border-radius:50%;border:1px solid #cfcfc8;display:grid;place-items:center;background:#fff;transition:background .3s,border-color .3s}
+.ag-sl__fl button:hover{background:var(--black);border-color:var(--black);color:#fff}
+.ag-sl__fl svg{width:16px;height:16px}
+/* --- 02 mission --- */
+.ag-mi{position:relative;background:#0E2A4F;color:#fff;padding:clamp(80px,13vh,150px) var(--gutter)}
+.ag-mi__head{max-width:1640px;margin:0 auto}
+.ag-mi__liste{max-width:1640px;margin:clamp(40px,7vh,80px) auto 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(16px,2vw,34px);list-style:none}
+.ag-mi__liste li{border-top:1px solid rgba(255,255,255,.22);padding-top:22px}
+.ag-mi__n{display:block;font-size:clamp(44px,4vw,68px);font-weight:200;letter-spacing:-.04em;color:var(--gold);line-height:1}
+.ag-mi__liste p{margin-top:16px;font-size:clamp(16px,1.25vw,20px);font-weight:600;line-height:1.35;letter-spacing:-.01em}
+/* --- 03 bio --- */
+.ag-bio{position:relative;padding:clamp(80px,13vh,150px) var(--gutter)}
+.ag-bio__in{max-width:1640px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,110px);align-items:start}
+.ag-bio__ph{position:sticky;top:calc(var(--nav-h) + 24px);margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#ddd}
+.ag-bio__ph img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;filter:grayscale(1)}
+.ag-bio__ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:60px 24px 22px;background:linear-gradient(180deg,rgba(5,5,5,0),rgba(5,5,5,.8));color:#fff}
+.ag-bio__ph b{display:block;font-size:20px;font-weight:800}
+.ag-bio__ph span{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.ag-bio__role{margin-top:10px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.ag-chiffres{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:clamp(28px,4vh,44px) 0;padding:24px 0;border-top:1px solid var(--grey);border-bottom:1px solid var(--grey)}
+.ag-chiffres dt{font-size:clamp(32px,3vw,50px);font-weight:200;letter-spacing:-.04em;color:#123B6D;line-height:1}
+.ag-chiffres dd{margin-top:8px;font-size:12px;line-height:1.4;color:#555}
+.ag-bio__corps p{font-size:clamp(15.5px,1.1vw,18px);line-height:1.75;color:#2b2b2b;margin-bottom:1.1em;max-width:68ch}
+.ag-lire{margin-top:6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#123B6D;border-bottom:1.5px solid currentColor;padding-bottom:3px}
+.ag-lire:hover{color:var(--gold)}
+/* --- 04 fin --- */
+.ag-fin{position:relative;background:#0E2A4F;color:#fff;padding:clamp(70px,12vh,140px) var(--gutter)}
+.ag-fin__in{max-width:1640px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.ag-fin__b{display:flex;gap:12px;flex-wrap:wrap}
+.ag-fin__o{border:1px solid rgba(255,255,255,.5);color:#fff}
+.ag-fin__o:hover{background:#fff;color:var(--black)}
+.ag-mi .plus,.ag-fin .plus{color:#fff}.ag-hero .plus,.ag-bio .plus{color:var(--black)}
+.ag-hero,.ag-bio{isolation:isolate}
+/* apparition douce */
+.js-reveal [data-reveal]{opacity:0;transform:translate3d(0,30px,0);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js-reveal [data-reveal].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js-reveal [data-reveal]{opacity:1;transform:none}.ag-sl__cadre img{transition:none}}
+/* responsive */
+@media (max-width:1100px){.ag-mi__liste{grid-template-columns:repeat(2,minmax(0,1fr))}.ag-chiffres{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:1023px){.ag-hero{grid-template-columns:1fr;min-height:0;padding-top:calc(var(--nav-h) + 4vh)}.ag-sl{width:min(100%,520px);margin-top:40px}.ag-bio__in{grid-template-columns:1fr}.ag-bio__ph{position:relative;top:0;max-width:440px}}
+@media (max-width:600px){.ag-mi__liste{grid-template-columns:1fr}.ag-sl__num{right:4px;top:-30px}.ag-sl__orbe{display:none}.ag-sl__coin--b{right:-6px}.ag-sl__coin--a{left:-6px}}
 .footer__grid>div{min-width:0}.footer__grid a{overflow-wrap:anywhere}
 </style>
 </head>
@@ -869,65 +960,65 @@ body{background:var(--soft);color:var(--black)}
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
-<main class="bp" data-nav="dark">
-  <section class="bp__hero" data-nav="light" data-plus="t:62:lg r:40 b:84">
-    <span class="grille grille--clair" aria-hidden="true" style="right:6%;top:22%;width:320px;height:240px;z-index:2"></span>
-    <img class="bp__bg" src="assets/banniere-talents-v2.jpg" alt="" width="1800" height="600">
-    <div class="bp__hin">
-      <p class="label">MVP Talent Network</p>
-      <h1>Des personnalités <span class="gold">qui font la différence.</span></h1>
-      <p class="bp__lede">Athlètes, olympiens, légendes du sport et personnalités médiatiques pour vos conférences, campagnes et événements.</p>
-    </div>
-  </section>
+<main class="ag" data-nav="dark">
+<!-- ============ 01 — QUI SOMMES-NOUS : texte + carrousel de Simon ============ -->
+<section class="ag-hero" id="mission-top" data-nav="dark" data-plus="b:52:lg b:8">
+  <div class="ag-hero__txt">
+    <p class="ag-k">Qui sommes-nous</p>
+    <h1 class="ag-h1">Nous créons des partenariats <span class="gold">gagnants.</span></h1>
+    <p class="ag-lede">Le Groupe MVP aide les marques, les entreprises et les organisations à créer des partenariats significatifs avec des athlètes professionnels, des champions olympiques, des légendes du sport, des conférenciers, des animateurs et des personnalités influentes, partout au Québec, au Canada et aux États-Unis.</p>
+    <a class="btn ag-cta" href="index.html#demande">Travailler avec nous <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <dl class="ag-faits">
+      <div><dt>Montréal</dt><dd>Siège social</dd></div>
+      <div><dt>Toronto · New York · Las Vegas</dt><dd>Réseau</dd></div>
+      <div><dt>7 catégories · 60+ personnalités</dt><dd>Hockey, boxe, MMA, olympisme, médias, soccer et plus</dd></div>
+    </dl>
+  </div>
+  <div class="ag-sl" id="agSl" aria-roledescription="carrousel" aria-label="Simon Arsenault et les vedettes du sport">
+    <svg class="ag-sl__orbe" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="30" rx="49.5" ry="29.5"/></svg>
+    <span class="grille" aria-hidden="true" style="left:-34px;bottom:-30px;width:190px;height:170px;opacity:.55;-webkit-mask-image:none;mask-image:none"></span>
+    <span class="ag-sl__coin ag-sl__coin--a" aria-hidden="true"></span><span class="ag-sl__coin ag-sl__coin--b" aria-hidden="true"></span>
+    <div class="ag-sl__cadre" id="agFrame"></div>
+    <p class="ag-sl__num" aria-hidden="true"><b id="agNum">1</b><i>/<span id="agTot"></span></i></p>
+    <div class="ag-sl__nav"><div class="ag-sl__traits" id="agDots"></div>
+      <div class="ag-sl__fl"><button id="agPrev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><button id="agNext" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+  </div>
+</section>
 
-  <div class="bp__wrap" data-plus="l:22:lg l:84 r:40 r:70">
-    <div>
-      <!-- Recherche et filtres : présents, mais discrets. Les personnalités passent en premier. -->
-      <div class="chips" id="resultats">
-        <h2>Qu'est-ce que votre personnalité doit apporter au projet ?</h2>
-        <div class="chips__row" id="chips"></div>
-      </div>
-      <div class="tk-tools">
-        <div class="srch">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Rechercher une personnalité, un sport, un thème…" aria-label="Rechercher une personnalité">
-        </div>
-        <div class="tk-filt" id="filtres"></div>
-      </div>
-      <p class="tk-n"><span><b id="nb">0</b> personnalités</span><button class="tk-reset" id="vider" hidden>Effacer les filtres</button></p>
+<!-- ============ 02 — NOTRE MISSION ============ -->
+<section class="ag-mi" id="mission" data-nav="light" data-plus="t:84:lg b:30 l:40">
+  <span class="grille grille--clair" aria-hidden="true" style="right:6%;top:70px;width:320px;height:150px"></span>
+  <div class="ag-mi__head" data-reveal><p class="ag-k ag-k--or">Notre mission</p><h2 class="ag-h2">Cinq engagements, <span class="gold">un seul interlocuteur.</span></h2></div>
+  <ol class="ag-mi__liste"><li data-reveal style="transition-delay:0.00s"><span class="ag-mi__n">01</span><p>Assurer l’accessibilité des athlètes et célébrités sportives</p></li><li data-reveal style="transition-delay:0.07s"><span class="ag-mi__n">02</span><p>Développer des partenariats bénéfiques entre les athlètes et les entreprises</p></li><li data-reveal style="transition-delay:0.14s"><span class="ag-mi__n">03</span><p>Créer des événements et expériences uniques</p></li><li data-reveal style="transition-delay:0.21s"><span class="ag-mi__n">04</span><p>Promouvoir les valeurs positives du sport</p></li><li data-reveal style="transition-delay:0.28s"><span class="ag-mi__n">05</span><p>Encourager l’éducation et la pratique des sports</p></li></ol>
+</section>
 
-      <div class="grid" id="grid"></div>
-      <div class="voirplus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
-
-      <section class="pf" id="showcase" data-nav="light" aria-label="Projets MVP" data-plus="t:88:lg b:36">
-        <span class="grille grille--clair" aria-hidden="true" style="left:46%;top:18px;width:300px;height:120px"></span>
-        <div class="pf__head">
-          <div>
-            <p class="label" style="color:var(--gold)">Réalisations</p>
-            <h2>Les personnes derrière des partenariats mémorables.</h2>
-          </div>
-          <div class="pf__nav">
-            <button class="pf__arr" id="pfPrev" aria-label="Projet précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <button class="pf__arr" id="pfNext" aria-label="Projet suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-        <div class="pf__rail" id="pfRail"></div>
-        <div class="pf__bar"><span id="pfFill"></span></div>
-      </section>
-
-      <div class="suite" id="apres">
-        <h2 class="suite__t">Personnalités en vedette</h2>
-        <p class="suite__p">Quelques figures marquantes du réseau MVP.</p>
-      </div>
-      <div class="grid" id="grid2"></div>
-
-      <section class="aide">
-        <h2>Vous ne trouvez pas la bonne personnalité ?</h2>
-        <p>Le réseau de MVP dépasse les personnalités affichées en ligne. Parlez-nous de votre projet et nous identifierons les personnalités qui correspondent à votre public, à vos objectifs et à votre campagne.</p>
-        <a class="btn btn--gold" href="mailto:info@mvpsportsmarketing.com?subject=Recherche%20de%20personnalit%C3%A9">Parlez-nous de votre projet</a>
-      </section>
+<!-- ============ 03 — SIMON ARSENAULT ============ -->
+<section class="ag-bio" id="equipe" data-nav="dark" data-plus="t:40 b:70:lg r:30">
+  <div class="ag-bio__in">
+    <figure class="ag-bio__ph" data-reveal><img src="assets/simon/simon.webp" alt="Simon Arsenault, président-fondateur du Groupe MVP"><figcaption><b>Simon Arsenault</b><span>Président-fondateur</span></figcaption></figure>
+    <div class="ag-bio__txt">
+      <p class="ag-k" data-reveal>Équipe de direction</p>
+      <h2 class="ag-h2" data-reveal>Simon Arsenault</h2>
+      <p class="ag-bio__role" data-reveal>Président-fondateur</p>
+      <dl class="ag-chiffres" data-reveal>
+        <div><dt>2005</dt><dd>Canadiens de Montréal</dd></div>
+        <div><dt>150+</dt><dd>Événements produits chez evenko</dd></div>
+        <div><dt>2016</dt><dd>Fondation du Groupe MVP</dd></div>
+        <div><dt>60+</dt><dd>Célébrités sportives</dd></div>
+      </dl>
+      <div class="ag-bio__corps" id="agBio" data-reveal><p>Titulaire d’un baccalauréat en Administration des Affaires, de l’équivalent d’un certificat en Droit et d’une spécialisation en Marketing et affaires internationales de l’École de Gestion de l’UQAM, son parcours universitaire l’a mené jusqu’à la prestigieuse École Supérieure de Commerce de Marseille, en France. Véritable entrepreneur dans l’âme, Simon Arsenault n’a pas tardé pour se lancer dans le monde des affaires alors qu’il a commencé à organiser une variété d’événements pendant qu’il était aux études collégiales et universitaires.</p><p>De retour au Québec en 2005 à la suite de l’obtention de son diplôme, Arsenault s’est fait embaucher au sein du département des ventes et du marketing des Canadiens de Montréal. Après deux ans en poste chez le Tricolore, il s’est fait confier un nouveau défi d’importance : celui de développer le volet sportif du Groupe Spectacles Gillett (GEG), qui deviendra le département des Événements Sportifs quelques années plus tard sous le nom d’evenko.</p><div class="ag-bio__suite" id="agSuite" hidden><p>À titre de producteur exécutif et plus tard directeur des sports, il avait la charge de l’élaboration des plans d’affaires, de travailler conjointement avec les équipes marketing des organisations sportives qu’il attirait, tout en étant impliqué sur les aspects légaux, des relations publiques/médias, d’opérations et de la gestion des partenaires des événements organisés.</p><p>Son porte-folio chez evenko compte plus 150 événements échelonnés sur une période de neuf ans incluant des galas du UFC avec Georges St-Pierre comme tête d’affiche, de nombreuses soirées de boxe du Groupe Yvon Michel et d’Interbox, des matchs préparatoires de la NBA des Raptors de Toronto, des matchs des Canadiens de Montréal à Québec et dans les maritimes. Son plus haut fait d’armes demeure le fait d’avoir contribué au retour du baseball majeur à Montréal en convainquant les dirigeants des Blue Jays de Toronto de venir disputer des rencontres préparatoires au stade Olympique sur une base annuelle à partir de 2014.</p><p>Ses fonctions chez evenko lui ont également permis de dépasser les limites du monde du sport puisqu’il devait ériger les différentes subventions gouvernementales et développer des relations gouvernementales pour les festivals Osheaga et Heavy MTL. Cette expertise et ses relations au niveau politique auront permis à Arsenault d’organiser des conférences avec la Chambre de Commerce du Montréal Métropolitain pour la venue de grands leaders politiques internationaux en conférence tels que Hillary Clinton, Nicolas Sarkozy, Mikael Gorbatchev et Steve Wozniak.</p><p>Arsenault décide de quitter evenko en 2016 pour relever un nouveau défi. Ayant toujours pris bien soin personnellement d’entretenir son impressionnant réseau de contacts parmi les vedettes sportives québécoises, il décide de créer une agence qui démocratiserait l’accès à ces monuments afin de faciliter leurs accès aux entreprises afin de promouvoir les valeurs positives du sport. C’est de là qu’est née l’inspiration derrière le Groupe MVP.</p><p>Comptant sur une quarantaine de personnalités lors de son lancement, avec en tête de liste Guy Lafleur comme tout premier client, le Groupe MVP a collaboré avec plus d’une soixantaine de célébrités sportives d’hier à aujourd’hui. Parmi elles : Georges St-Pierre, Nick Suzuki, Patrick Roy, Joannie Rochette, Bruny Surin, Kim Clavel, Bianca Andreescu, P.K. Subban, Patrice Bernier et Vladimir Guerrero et plusieurs ont été impliqué dans divers projets de marketing ou d’événements au bénéfice d’entreprises.</p></div></div>
+      <button class="ag-lire" id="agLire" aria-expanded="false" aria-controls="agSuite">Lire la biographie complète</button>
     </div>
   </div>
+</section>
+
+<!-- ============ 04 — APPEL À L'ACTION ============ -->
+<section class="ag-fin" data-nav="light" data-plus="t:20 b:80:lg">
+  <div class="ag-fin__in" data-reveal>
+    <h2 class="ag-h2">Bâtissons le <span class="gold">bon partenariat.</span></h2>
+    <div class="ag-fin__b"><a class="btn btn--gold" href="index.html#demande">Travailler avec nous <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ag-fin__o" href="personnalites.html">Voir les personnalités</a></div>
+  </div>
+</section>
 </main>
 <footer class="footer footer--compact" id="contact" data-nav="light">
   <div class="footer__top">
@@ -953,206 +1044,6 @@ body{background:var(--soft);color:var(--black)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-<script>
-/* La barre de navigation s'adapte au fond qu'elle survole : sombre sur clair,
-   claire sur sombre. Sans ca, le menu blanc disparait sur le fond creme. */
-(function(){
-  const h=document.querySelector('header'); if(!h) return;
-  const reperes=[...document.querySelectorAll('[data-nav]')];
-  const majuscule=()=>{
-    const y=h.getBoundingClientRect().bottom;
-    let courant='dark';
-    for(const r of reperes){ const b=r.getBoundingClientRect(); if(b.top<=y && b.bottom>=y) courant=r.dataset.nav; }
-    h.dataset.theme = courant==='light' ? 'light' : 'dark';
-  };
-  addEventListener('scroll',majuscule,{passive:true}); addEventListener('resize',majuscule); majuscule();
-})();
-const TALENTS=[{"id":"lucian-bute","nom":"Lucian Bute","prenom":"Lucian","famille":"Bute","photo":"assets/talents/lucian-bute.webp","photo2":"assets/talents/lucian-bute-b.webp","cat":"boxing","catNom":"Boxing","titre":"Boxing World Champion","bio":"Lucian Bute was a professional boxer in the super-middleweight division. Born in Romania and trained in Montreal, the 6 ft 1 in fighter captured the IBF World Champion title against Alejandro Berrio in October 2007 by TKO in the 11th round.","roles":["Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/lucian-bute"},{"id":"kim-clavel","nom":"Kim Clavel","prenom":"Kim","famille":"Clavel","photo":"assets/talents/kim-clavel.webp","photo2":"assets/talents/kim-clavel-b.webp","cat":"boxing","catNom":"Boxing","titre":"Boxer - World Champion / Speaker","bio":"Want to hire Kim Clavel? Consult us!514-582-3306 / info@mvpsportsmarketing.com Kim Clavel is a multi-talented athlete.","roles":["Speaker","Champion"],"qualites":["Haute performance","Leadership","Engagement social"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/kim-clavel"},{"id":"marie-eve-dicaire","nom":"Marie-Eve Dicaire","prenom":"Marie-Eve","famille":"Dicaire","photo":"assets/talents/marie-eve-dicaire.webp","photo2":"assets/talents/marie-eve-dicaire-b.webp","cat":"boxing","catNom":"Boxing","titre":"World Boxing Champion / Speaker / Host / Ambassador","bio":"You want to hire Marie-Eve Dicaire? Consult us!514-582 3306 / info@mvpsportsmarketing.com Marie-Eve Dicaire has always been a fan of combat sports.","roles":["Speaker","Brand Ambassador","Host","Champion"],"qualites":["Motivation","Leadership féminin"],"projets":["Conference / Keynote","Brand Campaign","Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/marie-eve-dicaire"},{"id":"jean-pascal","nom":"Jean Pascal","prenom":"Jean","famille":"Pascal","photo":"assets/talents/jean-pascal.webp","photo2":"assets/talents/jean-pascal-b.webp","cat":"boxing","catNom":"Boxing","titre":"Boxer – Former World Champion","bio":"Want to hire Jean Pascal? Consult us!514-582-3306 / info@mvpsportsmarketing.com Jean Pascal is a professional boxer born in Haiti.","roles":["Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/boxing/jean-pascal"},{"id":"steve-begin","nom":"Steve Bégin","prenom":"Steve","famille":"Bégin","photo":"assets/talents/steve-begin.webp","photo2":"assets/talents/steve-begin-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former Montreal Canadiens player / Keynote Speaker / Ambassador","bio":"You want to hire Steve Bégin? Consult us!(514) 582-3306 / info@mvpsportsmarketing.com Steve Bégin is a former forward in the National Hockey League who was drafted by the Calgary Flames in the second round of the 1996 NHL Draft.","roles":["Speaker","Brand Ambassador"],"qualites":["Persévérance","Discipline","Motivation"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/steve-begin"},{"id":"marc-bergevin","nom":"Marc Bergevin","prenom":"Marc","famille":"Bergevin","photo":"assets/talents/marc-bergevin.webp","photo2":"assets/talents/marc-bergevin-b.webp","cat":"hockey","catNom":"Hockey","titre":"Marc Bergevin","bio":"Following a 20-year career in the National Hockey League, Marc Bergevin learned the ropes as an executive in the prestigious Chicago Blackhawks organization. In 2012, following a hefty interview process, Bergevin was named General Manager of the Montreal Canadiens, the team he gr","roles":["Champion","Coach"],"qualites":["Performer sous pression","Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/marc-bergevin"},{"id":"joel-bouchard","nom":"Joël Bouchard","prenom":"Joël","famille":"Bouchard","photo":"assets/talents/joel-bouchard.webp","photo2":"assets/talents/joel-bouchard-b.webp","cat":"hockey","catNom":"Hockey","titre":"Key Note Speaker / Former NHL player and Coach / TV Analyst","bio":"You want to hire Joël Bouchard? Consult us !","roles":["Speaker","Media Personality","Coach"],"qualites":["Leadership","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/joel-bouchard"},{"id":"guy-boucher","nom":"Guy Boucher","prenom":"Guy","famille":"Boucher","photo":"assets/talents/guy-boucher.webp","photo2":"assets/talents/guy-boucher-b.webp","cat":"hockey","catNom":"Hockey","titre":"Keynote Speaker / Assistant Coach Toronto Maple Leafs","bio":"Want to hire Guy Boucher as a Keynote Speaker? Consult us!514 582 3306 / info@mvpsportsmarketing.com You want to create a positive impact on your employees and leaders!","roles":["Speaker","Coach"],"qualites":["Leadership","Motivation"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/guy-boucher"},{"id":"francis-bouillon","nom":"Francis Bouillon","prenom":"Francis","famille":"Bouillon","photo":"assets/talents/francis-bouillon.webp","photo2":"assets/talents/francis-bouillon-b.webp","cat":"hockey","catNom":"Hockey","titre":"Francis Bouillon","bio":"You want to hire Francis Bouillon? Consult us!514 582 3306 / info@mvpsportsmarketing.com Francis Bouillon is a former National Hockey League (NHL) defenseman known for his tenacity and physical play, despite his smaller size (5 feet 8 inches).","roles":["Coach"],"qualites":["Reconversion"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/francis-bouillon"},{"id":"patrice-brisebois","nom":"Patrice Brisebois","prenom":"Patrice","famille":"Brisebois","photo":"assets/talents/patrice-brisebois.webp","photo2":"assets/talents/patrice-brisebois-b.webp","cat":"hockey","catNom":"Hockey","titre":"Patrice Brisebois","bio":"You want to hire Patrice Brisebois? Consult us!514 582 3306 / info@mvpsportsmarketing.com Patrice Brisebois is a former National Hockey League (NHL) defenseman who played over 1000 games with the Montreal Canadiens and the Colorado Avalanche, winning a Stanley Cup with the Habs i","roles":["Media Personality","Champion","Coach"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/patrice-brisebois"},{"id":"paul-byron","nom":"Paul Byron","prenom":"Paul","famille":"Byron","photo":"assets/talents/paul-byron.webp","photo2":"assets/talents/paul-byron-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former Montreal Canadiens player","bio":"You want to hire Paul Byron? Consult us!514 582 3306 / info@mvpsportsmarketing.com Paul Byron is a former left winger in the National Hockey League (NHL) from Ottawa.","roles":["Speaker"],"qualites":["Leadership","Haute performance","Performer sous pression"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/paul-byron"},{"id":"guy-carbonneau","nom":"Guy Carbonneau","prenom":"Guy","famille":"Carbonneau","photo":"assets/talents/guy-carbonneau.webp","photo2":"assets/talents/guy-carbonneau-b.webp","cat":"hockey","catNom":"Hockey","titre":"Guy Carbonneau","bio":"You want to hire Guy Carbonneau? Consult us!514 582 3306 / info@mvpsportsmarketing.com Guy Carbonneau is a former player of the National Hockey League (NHL).","roles":["Media Personality","Champion","Sports Legend","Coach"],"qualites":["Leadership","Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/guy-carbonneau"},{"id":"yvan-cournoyer","nom":"Yvan Cournoyer","prenom":"Yvan","famille":"Cournoyer","photo":"assets/talents/yvan-cournoyer.webp","photo2":"assets/talents/yvan-cournoyer-b.webp","cat":"hockey","catNom":"Hockey","titre":"Yvan Cournoyer","bio":"You want to hire Yvan Cournoyer? Consult us!514 582 3306 / info@mvpsportsmarketing.com Yvan Cournoyer is a former right-winger of the National Hockey League (NHL) Montreal Canadiens who played from 1963 to 1979.","roles":["Brand Ambassador","Champion"],"qualites":["Performer sous pression"],"projets":["Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/yvan-cournoyer"},{"id":"mathieu-dandenault","nom":"Mathieu Dandenault","prenom":"Mathieu","famille":"Dandenault","photo":"assets/talents/mathieu-dandenault.webp","photo2":"assets/talents/mathieu-dandenault-b.webp","cat":"hockey","catNom":"Hockey","titre":"Mathieu Dandenault","bio":"You want to hire Mathieu Dandenault? Consult us!514 582 3306 / info@mvpsportsmarketing.com Mathieu Dandenault is a former National Hockey League (NHL) defenseman.","roles":["Champion","Sports Legend","Coach"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/mathieu-dandenault"},{"id":"gilbert-delorme","nom":"Gilbert Delorme","prenom":"Gilbert","famille":"Delorme","photo":"assets/talents/gilbert-delorme.webp","photo2":"assets/talents/gilbert-delorme-b.webp","cat":"hockey","catNom":"Hockey","titre":"• Former Montreal Canadiens Player / Radio Host / Hockey Analyst","bio":"You want to hire Gilbert Delorme? Consult us!514 582 3306 / info@mvpsportsmarketing.com First pick of the Montreal Canadiens in the 1981 entry draft, Gilbert Delorme has had a great NHL career.","roles":["Host","Media Personality","Sports Legend","Coach"],"qualites":["Reconversion","Leadership","Performer sous pression"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/gilbert-delorme"},{"id":"eve-gascon","nom":"Ève Gascon","prenom":"Ève","famille":"Gascon","photo":"assets/talents/eve-gascon.webp","photo2":"assets/talents/eve-gascon-b.webp","cat":"hockey","catNom":"Hockey","titre":"Hockey Goaltender","bio":"Want to hire Ève Gascon? Consult us!514 582 3306 / info@mvpsportsmarketing.com Ève Gascon is a very promising goaltender who has been breaking the glass ceiling in the field hockey world since she was very young.","roles":["Speaker"],"qualites":["Leadership féminin","Dépassement de soi"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/eve-gascon"},{"id":"bruno-gervais","nom":"Bruno Gervais","prenom":"Bruno","famille":"Gervais","photo":"assets/talents/bruno-gervais.webp","photo2":"assets/talents/bruno-gervais-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Player • RDS Hockey Analyst • Animator • Speaker","bio":"You want to hire Bruno Gervais? Consult us!514-582-3306 / info@mvpsportsmarketing.com Bruno Gervais is an RDS sports analyst who covers mainly hockey and most particularly the Montreal Canadiens.","roles":["Speaker","Media Personality"],"qualites":["Reconversion","Engagement social","Leadership"],"projets":["Conference / Keynote","Media Appearance","Charity Event"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/bruno-gervais"},{"id":"pierre-gervais","nom":"Pierre Gervais","prenom":"Pierre","famille":"Gervais","photo":"assets/talents/pierre-gervais.webp","photo2":"assets/talents/pierre-gervais-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former Head Trainer Montreal Canadiens / Story teller on 35 years of career","bio":"You want to hire Pierre Gervais? Contact us!514 582 3306 / info@mvpsportsmarketing.com Pierre Gervais was the equipment manager of the Montreal Canadiens for 35 years.","roles":["Media Personality","Champion","Sports Legend"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/pierre-gervais"},{"id":"rejean-houle","nom":"Réjean Houle","prenom":"Réjean","famille":"Houle","photo":"assets/talents/rejean-houle.webp","photo2":"assets/talents/rejean-houle-b.webp","cat":"hockey","catNom":"Hockey","titre":"Réjean Houle","bio":"Want to hire Réjean Houle? Consult us!514 582 3306 / info@mvpsportsmarketing.com Réjean Houle is a former right winger in the National Hockey League (NHL).","roles":["Champion","Coach"],"qualites":["Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/rejean-houle"},{"id":"alex-kovalev","nom":"Alex Kovalev","prenom":"Alex","famille":"Kovalev","photo":"assets/talents/alex-kovalev.webp","photo2":"assets/talents/alex-kovalev-b.webp","cat":"hockey","catNom":"Hockey","titre":"Alex Kovalev","bio":"You want to hire Alex Kovalev? Consult us!514 582 3306 / info@mvpsportsmarketing.com Alexei Kovalev is a former professional hockey player from Russia.","roles":["Olympian","Champion","Sports Legend"],"qualites":["Performer sous pression","Leadership"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/alex-kovalev"},{"id":"guy-lafleur","nom":"Guy Lafleur","prenom":"Guy","famille":"Lafleur","photo":"assets/talents/guy-lafleur.webp","photo2":"assets/talents/guy-lafleur-b.webp","cat":"hockey","catNom":"Hockey","titre":"Guy Lafleur","bio":"IN MEMORY OF GUY LAFLEUR 1951 - 2022 LOVE, PEACE and RESPECT FOREVER Guy Lafleur was a former star right winger of the National Hockey League (NHL). The so-called \"The Flower\" played 17 seasons in the NHL during which he won five Stanley Cups with the Montreal Canadiens in the 19","roles":["Champion"],"qualites":["Leadership","Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/guy-lafleur"},{"id":"yvon-lambert","nom":"Yvon Lambert","prenom":"Yvon","famille":"Lambert","photo":"assets/talents/yvon-lambert.webp","photo2":"assets/talents/yvon-lambert-b.webp","cat":"hockey","catNom":"Hockey","titre":"Yvon Lambert","bio":"You want to hire Yvon Lambert? Consult us!514 582 3306 / info@mvpsportsmarketing.com Yvon Lambert is a former National Hockey League (NHL) player known for his courage, determination, and team spirit.","roles":["Champion"],"qualites":["Performer sous pression"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/yvon-lambert"},{"id":"vincent-lecavalier","nom":"Vincent Lecavalier","prenom":"Vincent","famille":"Lecavalier","photo":"assets/talents/vincent-lecavalier.webp","photo2":"assets/talents/vincent-lecavalier-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL All-Star player / Speaker / Special Advisor Montreal Canadiens","bio":"You want to hire Vincent Lecavalier? Consult us!514 582 3306 / info@mvpsportsmarketing.com The fame of Vincent Lecavalier is well established.","roles":["Speaker","Champion","Coach"],"qualites":["Leadership","Esprit d’équipe","Reconversion"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/vincent-lecavalier"},{"id":"sergio-momesso","nom":"Sergio Momesso","prenom":"Sergio","famille":"Momesso","photo":"assets/talents/sergio-momesso.webp","photo2":"assets/talents/sergio-momesso-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Player","bio":"Sergio Momesso is a former professional hockey player who made his mark in the National Hockey League (NHL) through his hard work, tenacity, and leadership on every team he played for, including the Montreal Canadiens, St. Louis Blues, Vancouver Canucks, and Calgary Flames.","roles":["Media Personality"],"qualites":["Esprit d’équipe","Leadership","Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/sergio-momesso"},{"id":"kirk-muller","nom":"Kirk Muller","prenom":"Kirk","famille":"Muller","photo":"assets/talents/kirk-muller.webp","photo2":"assets/talents/kirk-muller-b.webp","cat":"hockey","catNom":"Hockey","titre":"Kirk Muller","bio":"You want to hire Kirk Muller? Consult us!514 582 3306 / info@mvpsportsmarketing.com Kirk Muller is a former hockey player the National Hockey League (NHL).","roles":["Champion","Coach"],"qualites":["Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/kirk-muller"},{"id":"chris-nilan","nom":"Chris Nilan","prenom":"Chris","famille":"Nilan","photo":"assets/talents/chris-nilan.webp","photo2":"assets/talents/chris-nilan-b.webp","cat":"hockey","catNom":"Hockey","titre":"Stanley Cup Winner - Ambassador of the Montreal Canadiens - Speaker - Guest of honor - Radio host","bio":"Want to book Chris Nilan? Contact us now!514-582-3306 / info@mvpsportsmarketing.com Chris Nilan was a legendary and feared strongman for 13 seasons in the NHL and was one of the Canadiens' most popular players during his 10 seasons in Montreal.","roles":["Speaker","Brand Ambassador","Host","Champion","Sports Legend","Coach"],"qualites":["Persévérance"],"projets":["Conference / Keynote","Brand Campaign","Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/chris-nilan"},{"id":"stephane-quintal","nom":"Stéphane Quintal","prenom":"Stéphane","famille":"Quintal","photo":"assets/talents/stephane-quintal.webp","photo2":"assets/talents/stephane-quintal-b.webp","cat":"hockey","catNom":"Hockey","titre":"Stéphane Quintal","bio":"You want to hire Stéphane Quintal? Consult us!514 582 3306 / info@mvpsportsmarketing.com Stéphane Quintal is a former National Hockey League (NHL) defenseman who has played more than 1,000 career games with six different teams, including the Montreal Canadians.","roles":["Speaker"],"qualites":["Reconversion"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/stephane-quintal"},{"id":"manon-rheaume","nom":"Manon Rhéaume","prenom":"Manon","famille":"Rhéaume","photo":"assets/talents/manon-rheaume.webp","photo2":"assets/talents/manon-rheaume-b.webp","cat":"hockey","catNom":"Hockey","titre":"Speaker / TV Analyst / Former Professional Hockey Player","bio":"","roles":["Speaker","Media Personality"],"qualites":["Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/manon-rheaume"},{"id":"andre-roy","nom":"André Roy","prenom":"André","famille":"Roy","photo":"assets/talents/andre-roy.webp","photo2":"assets/talents/andre-roy-b.webp","cat":"hockey","catNom":"Hockey","titre":"André Roy","bio":"You want to hire André Roy? Consult us!514 582 3306 / info@mvpsportsmarketing.com André Roy is a former left wing of the National Hockey League (NHL).","roles":["Host","Champion"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/andre-roy"},{"id":"patrick-roy","nom":"Patrick Roy","prenom":"Patrick","famille":"Roy","photo":"assets/talents/patrick-roy.webp","photo2":"assets/talents/patrick-roy-b.webp","cat":"hockey","catNom":"Hockey","titre":"NHL Legend / Hockey Hall of Famer / Head Coach NY Islanders","bio":"Patrick Roy is considered by many as the greatest NHL goaltender of all time. He played for the Montreal Canadiens for more than 10 seasons.","roles":["Champion","Sports Legend","Coach"],"qualites":["Performer sous pression","Leadership","Haute performance"],"projets":["Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/patrick-roy"},{"id":"maxime-talbot","nom":"Maxime Talbot","prenom":"Maxime","famille":"Talbot","photo":"assets/talents/maxime-talbot.webp","photo2":"assets/talents/maxime-talbot-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL player / Keynote speaker / TV Analyst","bio":"","roles":["Speaker","Media Personality"],"qualites":["Motivation","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/maxime-talbot"},{"id":"mario-tremblay","nom":"Mario Tremblay","prenom":"Mario","famille":"Tremblay","photo":"assets/talents/mario-tremblay.webp","photo2":"assets/talents/mario-tremblay-b.webp","cat":"hockey","catNom":"Hockey","titre":"Former NHL Coach / Former Canadiens Player / Hockey Media Analyst","bio":"","roles":["Media Personality","Coach"],"qualites":["Reconversion"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/hockey/mario-tremblay"},{"id":"olivier-aubin-mercier","nom":"Olivier Aubin-Mercier","prenom":"Olivier","famille":"Aubin-Mercier","photo":"assets/talents/olivier-aubin-mercier.webp","photo2":"assets/talents/olivier-aubin-mercier-b.webp","cat":"mma","catNom":"MMA","titre":"Olivier Aubin-Mercier","bio":"","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/olivier-aubin-mercier"},{"id":"patrick-cote","nom":"Patrick Côté","prenom":"Patrick","famille":"Côté","photo":"assets/talents/patrick-cote.webp","photo2":"assets/talents/patrick-cote-b.webp","cat":"mma","catNom":"MMA","titre":"Patrick Côté","bio":"","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/patrick-cote"},{"id":"valerie-letourneau","nom":"Valérie Létourneau","prenom":"Valérie","famille":"Létourneau","photo":"assets/talents/valerie-letourneau.webp","photo2":"assets/talents/valerie-letourneau-b.webp","cat":"mma","catNom":"MMA","titre":"Valérie Létourneau","bio":"You want to hire Valérie Létourneau? Consult us!514 582 3306 / info@mvpsportsmarketing.com Valérie Létourneau, nicknamed \"Trouble\", is a mixed martial arts fighter from Montreal.","roles":["Champion"],"qualites":["Leadership féminin"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/valerie-letourneau"},{"id":"david-loiseau","nom":"David Loiseau","prenom":"David","famille":"Loiseau","photo":"assets/talents/david-loiseau.webp","photo2":"assets/talents/david-loiseau-b.webp","cat":"mma","catNom":"MMA","titre":"David Loiseau","bio":"You want to hire David Loiseau? Consult us!514 582 3306 / info@mvpsportsmarketing.com David Loiseau, nicknamed \"The Crow\", is a mixed martial arts fighter from Montreal.","roles":["Champion"],"qualites":["Discipline"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/mma/david-loiseau"},{"id":"aleksandra-wozniak","nom":"Aleksandra Wozniak","prenom":"Aleksandra","famille":"Wozniak","photo":"assets/talents/aleksandra-wozniak.webp","photo2":"assets/talents/aleksandra-wozniak-b.webp","cat":"olympics","catNom":"Olympics","titre":"Former WTA player","bio":"Aleksandra Wozniak is a former professional tennis player who has shone on the international scene for more than 10 years, both individually and through her numerous appearances with the Canadian women's team. In 2008, she became the first Quebecer in history to win a WTA title w","roles":["Speaker"],"qualites":["Dépassement de soi","Reconversion","Leadership féminin"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/aleksandra-wozniak"},{"id":"alexandre-bilodeau","nom":"Alexandre Bilodeau","prenom":"Alexandre","famille":"Bilodeau","photo":"assets/talents/alexandre-bilodeau.webp","photo2":"assets/talents/alexandre-bilodeau-b.webp","cat":"olympics","catNom":"Olympics","titre":"2 x Olympic Champion / Speaker / Ambassador","bio":"You want to hire Alexandre Bilodeau? Consult us!514 582 3306 / info@mvpsportsmarketing.com Alexandre Bilodeau is a former renowned Canadian freestyle skier.","roles":["Speaker","Brand Ambassador","Olympian","Champion"],"qualites":["Engagement social","Dépassement de soi","Motivation"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event","Charity Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/alexandre-bilodeau"},{"id":"nancy-kerrigan","nom":"Nancy Kerrigan","prenom":"Nancy","famille":"Kerrigan","photo":"assets/talents/nancy-kerrigan.webp","photo2":"assets/talents/nancy-kerrigan-b.webp","cat":"olympics","catNom":"Olympics","titre":"Former Figure Skater","bio":"Want to hire Nancy Kerrigan? Consult us!514 582 3306  / info@mvpsportsmarketing.com Nancy Kerrigan is a former figure skater who was born in Stoneham, Massachusetts.","roles":["Olympian","Champion","Sports Legend"],"qualites":["Persévérance","Esprit d’équipe","Engagement social"],"projets":["Charity Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/nancy-kerrigan"},{"id":"nathalie-lambert","nom":"Nathalie Lambert","prenom":"Nathalie","famille":"Lambert","photo":"assets/talents/nathalie-lambert.webp","photo2":"assets/talents/nathalie-lambert-b.webp","cat":"olympics","catNom":"Olympics","titre":"Nathalie Lambert","bio":"Want to hire Nathalie Lambert? Consult us !514 582 3306  / info@mvpsportsmarketing.com Nathalie Lambert is a former short track speed skater.","roles":["Olympian","Champion"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/nathalie-lambert"},{"id":"kristel-ngarlem","nom":"Kristel Ngarlem","prenom":"Kristel","famille":"Ngarlem","photo":"assets/talents/kristel-ngarlem.webp","photo2":"assets/talents/kristel-ngarlem-b.webp","cat":"olympics","catNom":"Olympics","titre":"Weighlifting athlete / Canadian champion / Olympic Athlete","bio":"You want to hire Kristel Ngarlem? Consult us!514 582 3306  / info@mvpsportsmarketing.com Kristel Ngarlem is a three-time senior Canadian champion, junior world junior champion and triple medalist at the world weightlifting championships.","roles":["Olympian","Champion","Coach"],"qualites":["Motivation","Leadership féminin","Discipline"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/kristel-ngarlem"},{"id":"joannie-rochette","nom":"Joannie Rochette","prenom":"Joannie","famille":"Rochette","photo":"assets/talents/joannie-rochette.webp","photo2":"assets/talents/joannie-rochette-b.webp","cat":"olympics","catNom":"Olympics","titre":"Speaker / Olympic medalist / Dr in Medecine / Former Figure Skater","bio":"You want to hire Joannie Rochette? Consult us!514 582 3306  / info@mvpsportsmarketing.com Joannie Rochette is without a doubt one of the most outstanding athletes in figure skating and Olympic sports.","roles":["Speaker","Olympian","Champion"],"qualites":["Engagement social","Persévérance","Discipline"],"projets":["Conference / Keynote","Brand Campaign","Charity Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/joannie-rochette"},{"id":"katerine-savard","nom":"Katerine Savard","prenom":"Katerine","famille":"Savard","photo":"assets/talents/katerine-savard.webp","photo2":"assets/talents/katerine-savard-b.webp","cat":"olympics","catNom":"Olympics","titre":"Olympic Swimmer / Speaker / Actress","bio":"Want to hire Katerine Savard? Consult us!514 582 3306  / info@mvpsportsmarketing.com Katerine Savard is an Olympic medallist swimmer.","roles":["Speaker","Olympian","Champion"],"qualites":["Haute performance","Persévérance","Dépassement de soi"],"projets":["Conference / Keynote","Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/katerine-savard"},{"id":"marianne-st-gelais","nom":"Marianne St-Gelais","prenom":"Marianne","famille":"St-Gelais","photo":"assets/talents/marianne-st-gelais.webp","photo2":"assets/talents/marianne-st-gelais-b.webp","cat":"olympics","catNom":"Olympics","titre":"Multiple Olympic Medalist / Speaker / Ambassador","bio":"You want to hire Marianne St-Gelais as a speaker? Consult us!514 582 3306  / info@mvpsportsmarketing.com Marianne St-Gelais was a fan-favourite at the Vancouver Olympics in 2010.","roles":["Speaker","Brand Ambassador","Olympian","Champion"],"qualites":["Esprit d’équipe","Leadership féminin","Leadership"],"projets":["Conference / Keynote","Brand Campaign","Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/marianne-st-gelais"},{"id":"bruny-surin","nom":"Bruny Surin","prenom":"Bruny","famille":"Surin","photo":"assets/talents/bruny-surin.webp","photo2":"assets/talents/bruny-surin-b.webp","cat":"olympics","catNom":"Olympics","titre":"Bruny Surin","bio":"You want to hire Bruny Surin? Consult us!514 582 3306  / info@mvpsportsmarketing.com Bruny Surin is a former Canadian star sprinter born in Haiti.","roles":["Olympian","Champion","Sports Legend"],"qualites":["Discipline","Reconversion"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/bruny-surin"},{"id":"sebastien-toutant","nom":"Sébastien Toutant","prenom":"Sébastien","famille":"Toutant","photo":"assets/talents/sebastien-toutant.webp","photo2":"assets/talents/sebastien-toutant-b.webp","cat":"olympics","catNom":"Olympics","titre":"Sébastien Toutant","bio":"You want to hire Sébastien Toutant? Consult us!514 582 3306  / info@mvpsportsmarketing.com Sébastien Toutant \"Seb Toots\" is a Quebec snowboarder from Repentigny.","roles":["Olympian","Champion"],"qualites":["Motivation","Discipline"],"projets":["Corporate Event"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/olympics/sebastien-toutant"},{"id":"luc-gelinas","nom":"Luc Gélinas","prenom":"Luc","famille":"Gélinas","photo":"assets/talents/luc-gelinas.webp","photo2":"assets/talents/luc-gelinas-b.webp","cat":"media","catNom":"Media","titre":"Sports Journalist / Host","bio":"You want to hire Luc Gélinas? Consult us!514 582 3306 / info@mvpsportsmarketing.com A well-known sports journalist, Luc Gélinas has been following the Canadiens' activities for RDS for over twenty-five years.","roles":["Host","Media Personality","Olympian","Champion"],"qualites":["Performer sous pression"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/luc-gelinas"},{"id":"marc-griffin","nom":"Marc Griffin","prenom":"Marc","famille":"Griffin","photo":"assets/talents/marc-griffin.webp","photo2":"assets/talents/marc-griffin-b.webp","cat":"media","catNom":"Media","titre":"Sports commentator - Former pro Baseball player","bio":"You want to hire Marc Griffin? Consult us!514 582 3306 / info@mvpsportsmarketing.com Marc Griffin is a former baseball player from Quebec.","roles":["Media Personality","Olympian"],"qualites":["Reconversion","Persévérance"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/marc-griffin"},{"id":"louis-jean","nom":"Louis Jean","prenom":"Louis","famille":"Jean","photo":"assets/talents/louis-jean.webp","photo2":"assets/talents/louis-jean-b.webp","cat":"media","catNom":"Media","titre":"Professional Host / Sport Journalist","bio":"Louis Jean is a professional presenter and sports journalist with nearly 25 years of experience on television and radio in both English and French. Throughout his career, he has distinguished himself in the design, planning and execution of world-renowned events, including in hig","roles":["Host","Media Personality"],"qualites":["Haute performance"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/louis-jean"},{"id":"michel-lacroix","nom":"Michel Lacroix","prenom":"Michel","famille":"Lacroix","photo":"assets/talents/michel-lacroix.webp","photo2":"assets/talents/michel-lacroix-b.webp","cat":"media","catNom":"Media","titre":"Host / NHL Announcer","bio":"You want to hire Michel Lacroix? Consult us!514 582 3306 / info@mvpsportsmarketing.com Michel Lacroix has been the in-house announcer of the Montreal Canadiens since 1993, the team’s last Stanley cup triumph.","roles":["Host","Media Personality","Olympian","Champion","Sports Legend"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/michel-lacroix"},{"id":"maxime-lalonde","nom":"Maxime Lalonde","prenom":"Maxime","famille":"Lalonde","photo":"assets/talents/maxime-lalonde.webp","photo2":"assets/talents/maxime-lalonde-b.webp","cat":"media","catNom":"Media","titre":"Host","bio":"You want to hire Maxime Lalonde? Consult us!514 582-3306 / info@mvpsportsmarketing.com has hosted many major events in Quebec, Canada and even as far afield as the USA.","roles":["Host"],"qualites":["Haute performance"],"projets":["Brand Campaign","Corporate Event","Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/maxime-lalonde"},{"id":"yanick-levesque","nom":"Yanick Lévesque","prenom":"Yanick","famille":"Lévesque","photo":"assets/talents/yanick-levesque.webp","photo2":"assets/talents/andre-roy-b.webp","cat":"media","catNom":"Media","titre":"Animator / Producer","bio":"Want to hire Yanick Lévesque? Consult us!514 582 3306 / info@mvpsportsmarketing.com Yanick Lévesque is the producer and co-host of the program Hors-jeu 2.0 and the producer and occasional host for the show L'Antichambre on RDS.","roles":["Host"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/yanick-levesque"},{"id":"chantal-machabee","nom":"Chantal Machabée","prenom":"Chantal","famille":"Machabée","photo":"assets/talents/chantal-machabee.webp","photo2":"assets/talents/chantal-machabee-b.webp","cat":"media","catNom":"Media","titre":"First woman to present a sports bulletin on television • Vice President of Communications for the Montreal Canadiens • Sports commentator • Speaker • Animator","bio":"Want to hire Chantal Machabée? Consult us!514 582 3306  / info@mvpsportsmarketing.com Chantal Machabée is one of the most respected female journalists in North America.","roles":["Speaker","Host","Media Personality"],"qualites":["Dépassement de soi","Leadership féminin","Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/chantal-machabee"},{"id":"elizabeth-rancourt","nom":"Elizabeth Rancourt","prenom":"Elizabeth","famille":"Rancourt","photo":"assets/talents/elizabeth-rancourt.webp","photo2":"assets/talents/elizabeth-rancourt-b.webp","cat":"media","catNom":"Media","titre":"TV Sports Animator","bio":"Want to hire Elizabeth Rancourt? Consult us!514 582 3306 / info@mvpsportsmarketing.com Elizabeth Rancourt has been a TV host and sports journalist for 13 years 'Beat reporter' the Montreal Canadiens and an NHL game host at TVA Sports.","roles":["Host","Media Personality"],"qualites":["Haute performance"],"projets":["Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/elizabeth-rancourt"},{"id":"paul-rivard","nom":"Paul Rivard","prenom":"Paul","famille":"Rivard","photo":"assets/talents/paul-rivard.webp","photo2":"assets/talents/paul-rivard-b.webp","cat":"media","catNom":"Media","titre":"TV host and analyst","bio":"You want to hire Paul Rivard? Consult us!514 582 3306 / info@mvpsportsmarketing.com Paul Rivard is one of Quebec's most experienced television hosts and sports analysts.","roles":["Host","Media Personality","Olympian"],"qualites":["Reconversion"],"projets":["Corporate Event","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/media/paul-rivard"},{"id":"patrice-bernier","nom":"Patrice Bernier","prenom":"Patrice","famille":"Bernier","photo":"assets/talents/patrice-bernier.webp","photo2":"assets/talents/patrice-bernier-b.webp","cat":"soccer","catNom":"Soccer","titre":"Former Captain Montreal Impact / Speaker / Ambasssador / Guest of honour","bio":"You want to hire Patrice Bernier? Consult us!514 582 3306  / info@mvpsportsmarketing.com Patrice Bernier is undoubtedly one of the greatest Canadian soccer player in history.","roles":["Speaker"],"qualites":["Leadership","Esprit d’équipe","Persévérance"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/patrice-bernier"},{"id":"hassoun-camara","nom":"Hassoun Camara","prenom":"Hassoun","famille":"Camara","photo":"assets/talents/hassoun-camara.webp","photo2":"assets/talents/hassoun-camara-b.webp","cat":"soccer","catNom":"Soccer","titre":"Former MLS player / Speaker / TV Host","bio":"You want to hire Hassoun Camara? Consult us!514 582 3306  / info@mvpsportsmarketing.com Hassoun Camara is a former professional soccer player.","roles":["Speaker","Host","Olympian"],"qualites":["Performer sous pression"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/hassoun-camara"},{"id":"maxime-crepeau","nom":"Maxime Crépeau","prenom":"Maxime","famille":"Crépeau","photo":"assets/talents/maxime-crepeau.webp","photo2":"assets/talents/maxime-crepeau-b.webp","cat":"soccer","catNom":"Soccer","titre":"Goalkeeper in MLS","bio":"Want to hire Maxime Crépeau? Consult us!514-582-3306 / info@mvpsportsmarketing.com Maxime Crépeau made his debut in Major League Soccer (MLS) in 2012 with Vancouver Whitecaps FC, after being selected in the draft.","roles":["Speaker"],"qualites":["Persévérance","Leadership"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/maxime-crepeau"},{"id":"samuel-piette","nom":"Samuel Piette","prenom":"Samuel","famille":"Piette","photo":"assets/talents/samuel-piette.webp","photo2":"assets/talents/samuel-piette-b.webp","cat":"soccer","catNom":"Soccer","titre":"CF Montreal Capitain/Player • Ambassador • Influencer","bio":"You want to hire Samuel Piette? Consult us!514 582 3306  / info@mvpsportsmarketing.com Samuel Piette’s professional career started at the age of 15 years old..","roles":["Brand Ambassador"],"qualites":["Haute performance"],"projets":["Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/soccer/samuel-piette"},{"id":"matthew-bergeron","nom":"Matthew Bergeron","prenom":"Matthew","famille":"Bergeron","photo":"assets/talents/matthew-bergeron.webp","photo2":"assets/talents/matthew-bergeron-b.webp","cat":"other","catNom":"Others","titre":"NFL Player","bio":"Matthew Bergeron's journey in the NFL reflects a remarkable path marked by resilience and dedication. Hailing from Victoriaville, he honed his football skills from an early age in high school before shining at Cégep de Thetford Mines.","roles":["Speaker"],"qualites":["Leadership","Motivation","Esprit d’équipe"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/matthew-bergeron"},{"id":"eric-gagne","nom":"Eric Gagné","prenom":"Eric","famille":"Gagné","photo":"assets/talents/eric-gagne.webp","photo2":"assets/talents/eric-gagne-b.webp","cat":"other","catNom":"Others","titre":"Former MLB Pitcher / Keynote Speaker / Ambassador","bio":"Originally from Mascouche on the North Shore of Montreal, Éric Gagné was a 30th round pick of the Chicago White Sox in the 1994 draft. Rather than agreeing with the Sox, he decided to join the Seminole State College team.","roles":["Speaker","Brand Ambassador","Champion"],"qualites":["Persévérance","Haute performance","Dépassement de soi"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/eric-gagne"},{"id":"sylvain-guimond","nom":"Sylvain Guimond","prenom":"Sylvain","famille":"Guimond","photo":"assets/talents/sylvain-guimond.webp","photo2":"assets/talents/sylvain-guimond-b.webp","cat":"other","catNom":"Others","titre":"Sports psychology Doctor / Speaker","bio":"You want to hire Sylvain Guimond? Consult us!514 582 3306 / info@mvpsportsmarketing.com Sylvain Guimond is a world-class speaker whose reputation is well established.","roles":["Speaker","Olympian"],"qualites":["Leadership","Haute performance","Motivation"],"projets":["Conference / Keynote"],"statut":"Olympian","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/sylvain-guimond"},{"id":"bruno-heppell","nom":"Bruno Heppell","prenom":"Bruno","famille":"Heppell","photo":"assets/talents/bruno-heppell.webp","photo2":"assets/talents/bruno-heppell-b.webp","cat":"other","catNom":"Others","titre":"Bruno Heppell","bio":"Want to hire Bruno Heppell? Consult us!514 582 3306 / info@mvpsportsmarketing.com Bruno Heppell is a former fullback in the Canadian Football League (CFL).","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/bruno-heppell"},{"id":"pierre-lavoie","nom":"Pierre Lavoie","prenom":"Pierre","famille":"Lavoie","photo":"assets/talents/pierre-lavoie.webp","photo2":"assets/talents/pierre-lavoie-b.webp","cat":"other","catNom":"Others","titre":"Motivational Speaker / Triathlon Athlete / Founder Le Grand Défi","bio":"You want to hire Pierre Lavoie? Consult us!514 582 3306 / info@mvpsportsmarketing.com Pierre Lavoie is a family father from Saguenay-Lac-Saint-Jean who, struck by the death of two of his children suffering from lactic acidosis, a rare hereditary disease very present in this regio","roles":["Speaker","Brand Ambassador","Champion"],"qualites":["Motivation","Persévérance"],"projets":["Conference / Keynote","Brand Campaign"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/pierre-lavoie"},{"id":"maude-aimee-leblanc","nom":"Maude-Aimée Leblanc","prenom":"Maude-Aimée","famille":"Leblanc","photo":"assets/talents/maude-aimee-leblanc.webp","photo2":"assets/talents/maude-aimee-leblanc-b.webp","cat":"other","catNom":"Others","titre":"Professional Golfer","bio":"Want to hire Maude-Aimée Leblanc? Consult us!514 582 3306 / info@mvpsportsmarketing.com Maude-Aimée Leblanc is the best female golf player in Quebec and she is back on the LPGA in 2022 !","roles":["Speaker"],"qualites":["Haute performance"],"projets":["Corporate Event"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/maude-aimee-leblanc"},{"id":"claude-raymond","nom":"Claude Raymond","prenom":"Claude","famille":"Raymond","photo":"assets/talents/claude-raymond.webp","photo2":"assets/talents/claude-raymond-b.webp","cat":"other","catNom":"Others","titre":"Major League Baseball Legend / Speaker / MLB Analyst","bio":"You want to hire Claude Raymond? Consult us!514 582 3306  / info@mvpsportsmarketing.com Claude Raymond is a true Quebec legend of major league baseball.","roles":["Speaker","Media Personality","Sports Legend","Coach"],"qualites":["Reconversion"],"projets":["Conference / Keynote","Media Appearance"],"statut":"Media / Broadcasting","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/claude-raymond"},{"id":"lysanne-richard","nom":"Lysanne Richard","prenom":"Lysanne","famille":"Richard","photo":"assets/talents/lysanne-richard.webp","photo2":"assets/talents/lysanne-richard-b.webp","cat":"other","catNom":"Others","titre":"High Diver / Speaker","bio":"Want to hire Lysanne Richard as a keynote speaker? Consult us!","roles":["Speaker","Champion"],"qualites":["Motivation","Persévérance","Haute performance"],"projets":["Conference / Keynote"],"statut":"Former Athlete","url":"https://mvpsportsmarketing.com/en/sports-personalities/others/lysanne-richard"}];
-const $=(s,c)=>(c||document).querySelector(s), $$=(s,c)=>[...(c||document).querySelectorAll(s)];
-const SPORTS=[['hockey','Hockey'],['boxing','Boxe'],['olympics','Olympisme'],['soccer','Soccer'],['mma','MMA'],['media','Médias'],['other','Autres']];
-const ROLES=['Speaker','Brand Ambassador','Host','Media Personality','Olympian','Champion','Sports Legend','Coach'];
-const ROLE_FR={'Speaker':'Conférencier','Brand Ambassador':'Ambassadeur de marque','Host':'Animateur','Media Personality':'Personnalité médiatique','Olympian':'Olympien','Champion':'Champion','Sports Legend':'Légende du sport','Coach':'Entraîneur'};
-const PROJETS=['Conference / Keynote','Brand Campaign','Corporate Event','Media Appearance','Charity Event'];
-const PROJ_FR={'Conference / Keynote':'Conférence','Brand Campaign':'Campagne de marque','Corporate Event':'Événement corporatif','Media Appearance':'Apparition médiatique','Charity Event':'Événement caritatif'};
-const STATUTS=['Former Athlete','Olympian','Media / Broadcasting'];
-const STAT_FR={'Former Athlete':'Ancien athlète','Olympian':'Olympien','Media / Broadcasting':'Médias / diffusion'};
-const QUALITES=[...new Set(TALENTS.flatMap(t=>t.qualites))].sort();
-
-const E={sport:new Set(),role:new Set(),projet:new Set(),statut:new Set(),qualite:new Set(),q:'',tri:'featured',page:1};
-const PAR_PAGE=12;   /* 3 rangées de 4 à l'arrivée */
-const nb=x=>TALENTS.filter(x).length;
-
-/* ---- lecture de l'URL : permet d'ouvrir la page deja filtree ---- */
-(function lireURL(){
-  const u=new URLSearchParams(location.search);
-  const map={sport:'sport',role:'role',topic:'qualite',project:'projet'};
-  Object.entries(map).forEach(([p,c])=>{ const v=u.get(p); if(v) v.split(',').forEach(x=>E[c].add(x)); });
-  if(u.get('q')) E.q=u.get('q');
-})();
-function ecrireURL(){
-  const u=new URLSearchParams();
-  if(E.sport.size)u.set('sport',[...E.sport].join(','));
-  if(E.role.size)u.set('role',[...E.role].join(','));
-  if(E.qualite.size)u.set('topic',[...E.qualite].join(','));
-  if(E.projet.size)u.set('project',[...E.projet].join(','));
-  if(E.statut.size)u.set('status',[...E.statut].join(','));
-  if(E.q)u.set('q',E.q);
-  /* Dans un aperçu en bac à sable, l'écriture de l'URL est interdite :
-     on l'ignore plutôt que de laisser une erreur dans la console. */
-  try{ history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:'')); }catch(e){}
-}
-
-/* ---- filtres : quatre menus simples (une valeur chacun) ---- */
-const FILTRES=[
-  ['sport','Discipline',SPORTS],
-  ['role','Rôle',ROLES.map(r=>[r,ROLE_FR[r]||r])],
-  ['projet','Type de projet',PROJETS.map(p=>[p,PROJ_FR[p]||p])]
-];
-$('#filtres').innerHTML=FILTRES.map(([cle,lib,opts])=>`<label class="tk-sel"><span class="sr">${lib}</span>
-  <select data-c="${cle}"><option value="">${lib}</option>${opts.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label>`).join('');
-
-/* ---- pastilles d'expertise (plusieurs à la fois) ---- */
-$('#chips').innerHTML=QUALITES.map(q=>`<button type="button" class="chip" data-q="${q}" aria-pressed="false">${q}</button>`).join('');
-$('#chips').addEventListener('click',e=>{
-  const b=e.target.closest('.chip'); if(!b)return;
-  const q=b.dataset.q; E.qualite.has(q)?E.qualite.delete(q):E.qualite.add(q);
-  b.setAttribute('aria-pressed',E.qualite.has(q)); E.page=1; rendre();
-});
-
-/* ---- filtrage ---- */
-function filtrer(){
-  const q=E.q.trim().toLowerCase();
-  let r=TALENTS.filter(t=>{
-    if(E.sport.size && !E.sport.has(t.cat)) return false;
-    if(E.role.size && ![...E.role].every(x=>t.roles.includes(x))) return false;
-    if(E.projet.size && ![...E.projet].every(x=>t.projets.includes(x))) return false;
-    if(E.statut.size && !E.statut.has(t.statut)) return false;
-    if(E.qualite.size && ![...E.qualite].every(x=>t.qualites.includes(x))) return false;
-    if(q){
-      const foin=[t.nom,t.titre,t.catNom,t.bio,...t.roles,...t.qualites,...t.projets].join(' ').toLowerCase();
-      if(!foin.includes(q)) return false;
-    }
-    return true;
-  });
-  if(E.tri==='az') r.sort((a,b)=>a.famille.localeCompare(b.famille,'fr'));
-  if(E.tri==='sport') r.sort((a,b)=>a.catNom.localeCompare(b.catNom)||a.famille.localeCompare(b.famille,'fr'));
-  return r;
-}
-
-/* ---- carte : grande photo, nom, discipline / rôle, rayonnement, thèmes ---- */
-/* Chaque personnalité est détourée et posée sur un lieu de sa discipline. */
-const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
-/* détourages trop petits ou trop larges : on garde la photo d'origine */
-const PHOTO_PLEINE=new Set(['katerine-savard','chantal-machabee']);
-const SPORT_FR=Object.fromEntries(SPORTS);
-const FLECHE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-function carte(t){
-  const el=document.createElement('a'); el.className='tk'; el.href='profil.html?id='+t.id;
-  const pleine=PHOTO_PLEINE.has(t.id);
-  const role=t.roles[0]?(ROLE_FR[t.roles[0]]||t.roles[0]):'';
-  const themes=(t.qualites.length?t.qualites:t.projets.map(p=>PROJ_FR[p]||p)).slice(0,3);
-  el.innerHTML=`
-    <div class="tk__ph">
-      <img class="tk__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
-      <img class="tk__p${pleine?' tk__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tk__p--pleine')">
-      <span class="tk__cat">${SPORT_FR[t.cat]||t.catNom}</span>
-      <div class="tk__id">
-        <h3 class="tk__nom">${t.nom}</h3>
-        <p class="tk__sub">${[SPORT_FR[t.cat]||t.catNom,role].filter(Boolean).join(' · ')}</p>
-      </div>
-    </div>
-    <div class="tk__body">
-      ${t.reach?`<p class="tk__reach"><b>${t.reach}</b> abonnés</p>`:''}
-      ${themes.length?`<p class="tk__th">${themes.join('<i>·</i>')}</p>`:''}
-      <span class="tk__v">Voir le profil ${FLECHE}</span>
-    </div>`;
-  return el;
-}
-
-/* ---- rendu ---- */
-function rendre(){
-  const r=filtrer();
-  $('#nb').textContent=r.length;
-  const max=E.page*PAR_PAGE;
-  const visibles=r.slice(0,max);
-  const g1=$('#grid');
-  g1.innerHTML='';
-  if(!r.length){
-    g1.innerHTML=`<div class="vide"><b>Aucune personnalité ne correspond à ces critères.</b>Essayez de retirer un filtre ou d'élargir votre recherche.</div>`;
-  } else {
-    /* Tous les résultats visibles vont dans la grille principale. La vitrine
-       de projets et la rangée « en vedette » qui suivent sont permanentes. */
-    visibles.forEach(t=>g1.appendChild(carte(t)));
-  }
-  $('#plus').parentElement.style.display = r.length>max ? '' : 'none';
-  $('#plus').textContent='Voir plus de personnalités ('+(r.length-max)+')';
-  rendreActifs(r.length);
-  ecrireURL();
-}
-function rendreActifs(){
-  const n=E.sport.size+E.role.size+E.projet.size+E.qualite.size+(E.q?1:0);
-  $('#vider').hidden=!n;
-}
-
-/* ---- interactions ---- */
-$('#filtres').addEventListener('change',e=>{
-  const sel=e.target.closest('select[data-c]'); if(!sel)return;
-  const s=E[sel.dataset.c]; s.clear(); if(sel.value) s.add(sel.value); E.page=1; rendre();
-});
-$('#vider').addEventListener('click',()=>{
-  ['sport','role','projet','statut','qualite'].forEach(c=>E[c].clear()); E.q=''; $('#q').value='';
-  E.page=1; synchroniser(); rendre();
-});
-let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout(()=>{E.q=e.target.value;E.page=1;rendre();},160); });
-$('#plus').addEventListener('click',()=>{E.page++;rendre();});
-function synchroniser(){
-  $$('.chip').forEach(c=>c.setAttribute('aria-pressed',E.qualite.has(c.dataset.q)));
-  $$('#filtres select[data-c]').forEach(sel=>{ const v=[...E[sel.dataset.c]][0]||'';
-    sel.value=[...sel.options].some(o=>o.value===v)?v:''; if(sel.value!==v){E[sel.dataset.c].clear(); if(sel.value)E[sel.dataset.c].add(sel.value);} });
-}
-/* ---- carrousel de réalisations (projets réels de MVP) ---- */
-const ARROW='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":"Ambassadeur","n":"Chantal Machabée × Tim Hortons","u":"projet.html?id=chantalmachabee-timhortons"},{"img":"assets/projets/cibc-1.jpg","k":"Ambassadeur","n":"Paul Byron × CIBC","u":"projet.html?id=cibc"},{"img":"assets/projets/brunysuringuestofhonoratthekinballquebecgala-1.jpg","k":"Ambassadeur","n":"Bruny Surin × Kin-Ball","u":"projet.html?id=brunysuringuestofhonoratthekinballquebecgala"},{"img":"assets/projets/patrickroymariotremblayubereats-1.jpg","k":"Ambassadeur","n":"Patrick Roy × Uber Eats","u":"projet.html?id=patrickroymariotremblayubereats"},{"img":"assets/projets/leadershipaufeminin-1.jpg","k":"Conférence","n":"LEADERSHIP au FÉMININ with Mrs MACHABÉE, DICAIRE","u":"projet.html?id=leadershipaufeminin"},{"img":"assets/projets/lasik-md-partner-with-pierre-lavoie-1.jpg","k":"Ambassadeur","n":"Pierre Lavoie × LASIK MD","u":"projet.html?id=lasik-md-partner-with-pierre-lavoie"}];
-(function carrousel(){
-  const rail=$('#pfRail'); if(!rail) return;
-  rail.innerHTML=PROJETS_MVP.map(p=>`
-    <a class="pfc" href="${p.u}" target="_blank" rel="noopener">
-      <img src="${p.img}" alt="${p.n}" loading="lazy">
-      <span class="pfc__t"><span class="pfc__k">${p.k}</span>
-        <span class="pfc__n">${p.n}</span>
-        <span class="pfc__v">Voir le projet ${ARROW}</span></span>
-    </a>`).join('');
-  const pas=()=>{const c=rail.querySelector('.pfc');return c?c.offsetWidth+parseFloat(getComputedStyle(rail).gap||16):400;};
-  $('#pfPrev').addEventListener('click',()=>rail.scrollBy({left:-pas(),behavior:'smooth'}));
-  $('#pfNext').addEventListener('click',()=>rail.scrollBy({left: pas(),behavior:'smooth'}));
-  const maj=()=>{
-    const max=rail.scrollWidth-rail.clientWidth;
-    const p=max>0?rail.scrollLeft/max:0;
-    const f=$('#pfFill'); if(f) f.style.transform=`translateX(${p*(100/0.22-100)*0.22}%)`;
-    $('#pfPrev').disabled = rail.scrollLeft<4;
-    $('#pfNext').disabled = rail.scrollLeft>max-4;
-  };
-  rail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
-})();
-
-
-/* Rangée « en vedette » : cinq personnalités de disciplines différentes,
-   choisies parmi celles dont la biographie est la plus complète. Elles ne
-   dépendent pas des filtres — c'est une vitrine, pas un résultat de recherche. */
-(function vedettes(){
-  const g2=$('#grid2'); if(!g2) return;
-  const vus=new Set(); const choix=[];
-  ['hockey','boxing','olympics','media','soccer','mma','other'].forEach(cat=>{
-    if(choix.length>=4) return;   /* une rangée complète de 4 */
-    const c=TALENTS.filter(t=>t.cat===cat&&t.bio).sort((a,b)=>b.bio.length-a.bio.length)[0];
-    if(c&&!vus.has(c.id)){ vus.add(c.id); choix.push(c); }
-  });
-  choix.forEach(t=>g2.appendChild(carte(t)));
-})();
-$('#q').value=E.q;
-synchroniser(); rendre();
-</script>
-
 <script>
 /* Lettrage vidéo du pied de page : la vidéo est en chargement différé, il faut
    donc la démarrer quand elle entre à l'écran. Sans cela elle reste figée. */
@@ -1195,16 +1086,39 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
 <script>
-/* Arrivée avec un filtre (ex. ?sport=hockey depuis le menu ou les catégories) :
-   on descend directement aux filtres et aux résultats, sous la barre du menu. */
+document.documentElement.classList.add('js-reveal');
+/* Carrousel : Simon Arsenault et les vedettes du sport */
 (function(){
-  var u=new URLSearchParams(location.search);
-  if(!(['sport','role','topic','project','q'].some(function(k){return u.get(k);})||location.hash==='#resultats')) return;
-  if('scrollRestoration' in history) history.scrollRestoration='manual';
-  /* sur téléphone, les pastilles prennent tout l'écran : on arrive directement sur les cartes */
-  var cible=matchMedia('(max-width:760px)').matches?document.querySelector('.tk-n'):document.getElementById('resultats'); if(!cible) return;
-  var aller=function(){ scrollTo(0, cible.getBoundingClientRect().top+scrollY-92); };
-  aller(); addEventListener('load',function(){ setTimeout(aller,60); });
+  var S=[{"img": "assets/simon/bfi-7121-mr-7-x-10-guy-et-simon-arsenault-copy.webp", "n": "Simon Arsenault & Guy Lafleur", "r": "Premier client du Groupe MVP · 5 Coupes Stanley", "pos": "50% 30%"}, {"img": "assets/simon/simon-gretzky-copie.webp", "n": "Simon Arsenault & Wayne Gretzky", "r": "Meilleur pointeur de l’histoire de la LNH", "pos": "50% 30%"}, {"img": "assets/simon/bfi-4481-mr-7-x-10-simon-et-george-st-pierre-copie-1.webp", "n": "Simon Arsenault & Georges St-Pierre", "r": "Champion du UFC", "pos": "50% 25%"}, {"img": "assets/simon/photokovalev-copie.webp", "n": "Simon Arsenault & Alex Kovalev", "r": "Canadiens de Montréal", "pos": "50% 30%"}, {"img": "assets/simon/guerrero-copie-1.webp", "n": "Simon Arsenault & Vladimir Guerrero", "r": "Temple de la renommée du baseball", "pos": "55% 35%"}, {"img": "assets/simon/photodelahoya2-copie.webp", "n": "Simon Arsenault & Oscar De La Hoya", "r": "Champion du monde de boxe", "pos": "50% 25%"}, {"img": "assets/simon/bfi-5539-web-use-jacques-demers-et-simon-arsenault-copy.webp", "n": "Simon Arsenault & Jacques Demers", "r": "Anciens des Nordiques de Québec", "pos": "45% 40%"}, {"img": "assets/simon/wozniaki-sharapova-copie.webp", "n": "Caroline Wozniacki & Maria Sharapova", "r": "Soirée tennis · Montréal", "pos": "50% 30%"}, {"img": "assets/simon/expos2016-copie.webp", "n": "Les anciens des Expos", "r": "Le baseball majeur de retour au Stade olympique", "pos": "50% 40%"}, {"img": "assets/simon/ve160402-0352-copie.webp", "n": "Les Blue Jays au Stade olympique", "r": "Matchs préparatoires produits avec evenko", "pos": "55% 30%"}, {"img": "assets/simon/f1renault-copie.webp", "n": "Paddock Renault Sport", "r": "Formule 1", "pos": "50% 30%"}, {"img": "assets/simon/habsalumni-bypatbeaudry-1951-copie.webp", "n": "Match des anciens Canadiens", "r": "Centre Bell · Montréal", "pos": "45% 25%"}], cadre=document.getElementById('agFrame'), dots=document.getElementById('agDots'), num=document.getElementById('agNum');
+  document.getElementById('agTot').textContent=S.length;
+  cadre.innerHTML=S.map(function(s,i){return '<figure'+(i?'':' class="est-actif"')+' aria-hidden="'+(i?'true':'false')+'"><img src="'+s.img+'" alt="'+s.n+'" style="object-position:'+s.pos+'"'+(i>1?' loading="lazy"':'')+'><figcaption><b>'+s.n+'</b><span>'+s.r+'</span></figcaption></figure>';}).join('');
+  dots.innerHTML=S.map(function(s,i){return '<button'+(i?'':' class="est-actif"')+' aria-label="Photo '+(i+1)+' : '+s.n+'"></button>';}).join('');
+  var figs=[].slice.call(cadre.children), btns=[].slice.call(dots.children), i=0, t=null, reduit=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var aller=function(n){ i=(n+S.length)%S.length;
+    figs.forEach(function(f,k){ f.classList.toggle('est-actif',k===i); f.setAttribute('aria-hidden',k===i?'false':'true'); });
+    btns.forEach(function(b,k){ b.classList.toggle('est-actif',k===i); }); num.textContent=i+1; };
+  var demarrer=function(){ arreter(); if(!reduit) t=setInterval(function(){aller(i+1);},4200); };
+  var arreter=function(){ if(t){clearInterval(t);t=null;} };
+  dots.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; aller(btns.indexOf(b)); demarrer(); });
+  document.getElementById('agPrev').onclick=function(){aller(i-1);demarrer();};
+  document.getElementById('agNext').onclick=function(){aller(i+1);demarrer();};
+  var sl=document.getElementById('agSl'); sl.addEventListener('mouseenter',arreter); sl.addEventListener('mouseleave',demarrer);
+  var x0=null; cadre.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  cadre.addEventListener('touchend',function(e){ if(x0==null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){aller(i+(dx<0?1:-1));demarrer();} x0=null; });
+  document.addEventListener('visibilitychange',function(){ document.hidden?arreter():demarrer(); });
+  demarrer();
 })();
+/* Biographie complète */
+(function(){ var b=document.getElementById('agLire'), s=document.getElementById('agSuite');
+  b.addEventListener('click',function(){ var o=s.hidden; s.hidden=!o; b.setAttribute('aria-expanded',o); b.textContent=o?'Réduire la biographie':'Lire la biographie complète'; }); })();
+/* Apparition au défilement */
+(function(){ var els=[].slice.call(document.querySelectorAll('[data-reveal]'));
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('is-in');}); return; }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target);} });},{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e);}); })();
+/* Menu : clair ou foncé selon la section sous la barre */
+(function(){ var h=document.getElementById('header'); if(!h) return; var R=[].slice.call(document.querySelectorAll('[data-nav]'));
+  var maj=function(){ var y=h.getBoundingClientRect().bottom, c='dark'; R.forEach(function(r){var b=r.getBoundingClientRect(); if(b.top<=y&&b.bottom>=y) c=r.dataset.nav;}); h.dataset.theme=c==='light'?'light':'dark'; };
+  addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj(); })();
 </script>
 </body></html>
