@@ -729,6 +729,87 @@ body{background:#FFFFFF;color:var(--black)}
 .burger[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
 @media (min-width:1024px){.mm{display:none}}
+
+/* =====================================================================
+   PAGE PROJETS — bannière slider + grille épurée, alignées sur le site
+   ===================================================================== */
+body{background:var(--soft)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* --- bannière --- */
+.psl{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#050505;color:#fff}
+.psl__stage{position:absolute;inset:0}
+.psl__s{position:absolute;inset:0;visibility:hidden}
+.psl__s.est-actif{visibility:visible}
+.psl__media{position:absolute;inset:0;overflow:hidden}
+.psl__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;transform-origin:center}
+.psl__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.35) 0%,rgba(5,5,5,.25) 40%,rgba(5,5,5,.8) 100%)}
+.psl__s--sombre .psl__shade{background:linear-gradient(180deg,rgba(5,5,5,.5),rgba(5,5,5,.88))}
+/* entrée : le panneau s'ouvre en volet pendant que la photo glisse en sens inverse */
+.psl__s.est-entree{z-index:2}
+.psl__s.est-entree .psl__media{clip-path:inset(100% 0 0 0)}
+.psl__s.est-entree[data-dir="haut"] .psl__media{clip-path:inset(0 0 100% 0)}
+.psl__s.est-entree .psl__img{transform:translateY(12%) scale(1.16)}
+.psl__s.est-entree[data-dir="haut"] .psl__img{transform:translateY(-12%) scale(1.16)}
+.psl__s.est-entree .psl__t > *{opacity:0;transform:translateY(46px)}
+.psl__s.est-go .psl__media{clip-path:inset(0 0 0 0);transition:clip-path 1.2s cubic-bezier(.19,1,.22,1) .1s}
+.psl__s.est-go .psl__img{transform:none;transition:transform 1.6s cubic-bezier(.22,1,.36,1) .1s}
+.psl__s.est-go .psl__t > *{opacity:1;transform:none;transition:opacity .8s ease .65s,transform .9s cubic-bezier(.22,1,.36,1) .65s}
+.psl__s.est-go .psl__t > *:nth-child(2){transition-delay:.72s}.psl__s.est-go .psl__t > *:nth-child(3){transition-delay:.8s}
+.psl__s.est-sortie{z-index:1}
+.psl__s.est-sortie .psl__img{transform:translateY(-8%) scale(1.06);transition:transform 1.4s cubic-bezier(.65,0,.35,1)}
+.psl__s.est-sortie .psl__t > *{opacity:0;transform:translateY(-40px);transition:opacity .45s ease,transform .5s ease}
+/* titre seulement */
+.psl__t{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(120px,19vh,190px);z-index:3;display:block;max-width:1100px;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.psl__k{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.psl__n{display:block;font-size:clamp(46px,8vw,150px);font-weight:800;letter-spacing:-.035em;line-height:.88;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.92)}
+.psl__t b{display:block;margin-top:16px;font-size:clamp(18px,2vw,32px);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff}
+.psl__t:hover .psl__n{color:#fff;-webkit-text-stroke:0}
+.psl__kicker{position:absolute;right:var(--gutter);top:calc(var(--nav-h) + 3vh);z-index:4;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);writing-mode:vertical-rl;padding-left:14px;border-left:1px solid var(--gold)}
+.psl__ui{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(36px,6vh,64px);z-index:4;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.psl__arrow{width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);border-radius:50%;color:#fff;transition:border-color .35s,background .35s}
+.psl__arrow:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.psl__dots{display:flex;gap:16px;align-items:center}
+.psl__dots button{position:relative;display:flex;align-items:center;color:rgba(255,255,255,.55);font-size:11px;letter-spacing:.14em}
+.psl__dots span{position:relative;display:block;width:30px;height:2px;background:rgba(255,255,255,.25);overflow:hidden;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.psl__dots button.est-actif span{width:64px;height:3px}
+.psl__dots i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold)}
+.psl__dots button.est-fait i{background:rgba(255,255,255,.55)}
+.psl__dots em{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-style:normal;white-space:nowrap;opacity:0;transition:opacity .35s;text-transform:uppercase}
+.psl__dots button.est-actif em,.psl__dots button:hover em{opacity:1;color:#fff}
+@media (max-width:760px){.psl__dots em{display:none}.psl__arrow{width:44px;height:44px}.psl__kicker{display:none}.psl__n{-webkit-text-stroke:1px #fff}}
+@media (prefers-reduced-motion:reduce){.psl__s *{transition:none!important}}
+
+/* --- filtres --- */
+.ex{max-width:1640px;padding-top:clamp(70px,11vh,120px)}
+.ex__k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#123B6D;margin-bottom:12px}
+.ex__h{font-size:clamp(38px,6.4vw,116px);line-height:.88;letter-spacing:-.035em;margin-bottom:clamp(22px,3vh,34px)}
+.ex .ch{padding:9px 18px;border:1px solid var(--grey);border-radius:999px;background:#fff;font:inherit;font-size:13px;color:#333;cursor:pointer;transition:background .28s,border-color .28s,color .28s}
+.ex .ch:hover{background:#1E5299;border-color:#1E5299;color:#fff}
+.ex .ch[aria-pressed="true"]{background:#123B6D;border-color:#123B6D;color:#fff}
+.ex__grp h3{font-size:10.5px;color:#123B6D}
+
+/* --- grille : cartes égales, même famille que les cartes de l'accueil --- */
+.pg{max-width:1640px}
+.pg__grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto;grid-auto-flow:row;gap:clamp(18px,2vw,32px)}
+.pc,.pc.pc--l,.pc.pc--w,.pc.pc--v{grid-column:auto;grid-row:auto;display:flex;flex-direction:column;background:transparent;border-radius:0;overflow:visible}
+.pc::after{display:none}
+.pc__img{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border-radius:8px;background:#111}
+.pc__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+.pc:hover .pc__img img{transform:scale(1.05)}
+.pc__t{position:static;transform:none;color:var(--black);padding:16px 2px 4px;display:flex;flex-direction:column}
+.pc__k{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#123B6D}
+.pc__h{margin-top:8px;font-size:clamp(17px,1.35vw,22px);font-weight:800;letter-spacing:-.015em;line-height:1.12;text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc__p{margin-top:6px;font-size:13px;color:#666;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.pc__v{margin-top:12px;opacity:1;transform:none;display:inline-flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--black)}
+.pc__v svg{color:var(--gold);transition:transform .35s}
+.pc:hover .pc__v svg{transform:translateX(5px)}
+.pc:hover .pc__h{color:#123B6D}
+.pc__play{right:14px;top:14px}
+@media (max-width:1100px){.pg__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.pg__grid{grid-template-columns:1fr}}
+#plus.btn--blue:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.ex__f,.ex__grp{min-width:0;max-width:100%}
+.ex__row{flex-wrap:wrap;overflow:visible}
 </style>
 </head><body>
 <header class="header" id="header" data-theme="light">
@@ -777,19 +858,21 @@ body{background:#FFFFFF;color:var(--black)}
   </div>
 </header>
 <main>
-  <section class="pw" data-nav="light">
-    <div class="pw__bands" id="pwBands"></div>
-    <span class="pw__veil"></span>
-    <div class="pw__in">
-      <p class="pw__eye">MVP Group · Réalisations</p>
-      <h1 class="pw__t">Projets</h1>
-      <p class="pw__p">MVP réunit personnalités, marques et publics à travers des campagnes, des partenariats, des événements et des expériences.</p>
-      <a class="pw__cta" href="#explorer">Explorer les projets ↓</a>
+  <!-- Bannière : le slider de projets d'origine de l'accueil, titres seulement -->
+  <section class="psl" id="psl" data-nav="light" aria-roledescription="carrousel" aria-label="Projets en vedette">
+    <h1 class="sr">Projets</h1>
+    <div class="psl__stage" id="pslStage"></div>
+    <span class="psl__kicker">Nos projets</span>
+    <div class="psl__ui">
+      <button class="psl__arrow" id="pslPrev" aria-label="Projet précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button>
+      <div class="psl__dots" id="pslDots"></div>
+      <button class="psl__arrow" id="pslNext" aria-label="Projet suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>
     </div>
   </section>
 
   <section class="ex" id="explorer" data-nav="dark">
-    <h2 class="ex__h">Explorez notre travail</h2>
+    <p class="ex__k">MVP Group · Réalisations</p>
+    <h2 class="ex__h">Tous nos projets</h2>
     <div class="ex__srch">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Rechercher par projet, personnalité ou marque…" aria-label="Rechercher un projet">
@@ -847,14 +930,7 @@ const PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"
 const ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 /* ---- mur en mouvement : toutes les images de tous les projets ---- */
-(function mur(){
-  const tout=PROJETS.slice(0,40).map(p=>({src:p.cover,id:p.id}));
-  const formats=['s','m','l','m','s','l'], hauteurs=['','haut','','bas','','haut'];
-  const carte=(x,k)=>`<a class="pwc pwc--${formats[k%formats.length]} ${hauteurs[k%hauteurs.length]?'pwc--'+hauteurs[k%hauteurs.length]:''}" href="projet.html?id=${x.id}"><img src="${x.src}" alt="" loading="lazy"></a>`;
-  const a=tout.filter((_,i)=>i%2===0), b=tout.filter((_,i)=>i%2===1);
-  const bande=(L,cls)=>`<div class="pw__band ${cls}">${[...L,...L].map(carte).join('')}</div>`;
-  $('#pwBands').innerHTML=bande(a,'pw__band--a')+bande(b,'pw__band--b');
-})();
+
 
 /* ---- filtres générés depuis les données réelles ---- */
 const ANNEES=[...new Set(PROJETS.map(p=>p.annee).filter(Boolean))].sort((a,b)=>b-a);
@@ -876,16 +952,15 @@ function filtrer(){
   });
 }
 /* rythme éditorial : grand, petit, petit, large, vertical, petit… */
-const RYTHME=['pc--l','','','pc--w','pc--v','','pc--w','','pc--v','','',''];
-function carte(p,i){
+function carte(p){
   const noms=p.personnalites.map(x=>x.nom).join(' · ');
-  return `<a class="pc ${RYTHME[i%RYTHME.length]}" href="projet.html?id=${p.id}">
-    <img src="${p.cover}" alt="${p.titre}" loading="lazy">
-    ${p.video?`<span class="pc__play">${PLAY}</span>`:''}
+  const sous=[p.marque!=='MVP Group'?p.marque:'',noms].filter(Boolean).join(' · ');
+  return `<a class="pc" href="projet.html?id=${p.id}">
+    <span class="pc__img"><img src="${p.cover}" alt="${p.titre}" loading="lazy">${p.video?`<span class="pc__play">${PLAY}</span>`:''}</span>
     <span class="pc__t">
-      <span class="pc__k">${p.marque} <span>· ${p.type} · ${p.annee||''}</span></span>
+      <span class="pc__k">${p.type}${p.annee?' · '+p.annee:''}</span>
       <span class="pc__h">${p.titre}</span>
-      ${noms?`<span class="pc__p">${noms}</span>`:''}
+      ${sous?`<span class="pc__p">${sous}</span>`:''}
       <span class="pc__v">Voir le projet ${ARROW}</span>
     </span></a>`;
 }
@@ -908,6 +983,45 @@ let tm; $('#q').addEventListener('input',e=>{clearTimeout(tm); tm=setTimeout(()=
 $('#clr').addEventListener('click',()=>{E.annee=null;E.type=null;E.q='';E.page=1;$('#q').value='';rendre();});
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
 $('#q').value=E.q; rendre();
+
+/* ---- bannière : slider des projets en vedette (repris de l'ancien accueil) ---- */
+(function(){
+  const SL=[
+    {id:'lasik-md-partner-with-pierre-lavoie',person:'Pierre Lavoie',brand:'LASIK MD',cat:'Partenariat ambassadeur',date:'Avril 2026',video:'assets/lasik.mp4',img:'assets/lasik_poster.jpg'},
+    {id:'zacharybolduc',person:'Zachary Bolduc',brand:'AU NOIR',cat:'Ambassadeur de marque',date:'Décembre 2025',img:'assets/slide-aunoir.jpg'},
+    {id:'hutson',person:'Lane Hutson',brand:'HUSH Hockey Challenge',cat:'Campagne et contenu',date:'Août 2025',img:'assets/slide-hush.jpg',sombre:true},
+    {id:'gsp',person:'Georges St-Pierre',brand:'Hôtel Vogue Montréal',cat:'Événement',date:'Mai 2025',img:'assets/slide-gsp.jpg'}
+  ];
+  const stage=$('#pslStage'), dots=$('#pslDots'), reduit=matchMedia('(prefers-reduced-motion: reduce)').matches, DUREE=7000;
+  stage.innerHTML=SL.map((p,i)=>`<article class="psl__s${i?'':' est-actif'}${p.sombre?' psl__s--sombre':''}">
+    <div class="psl__media">${p.video?`<video class="psl__img" muted loop playsinline preload="${i?'none':'auto'}" poster="${p.img}"><source src="${p.video}" type="video/mp4"></video>`:`<img class="psl__img" src="${p.img}" alt="">`}<span class="psl__shade"></span></div>
+    <a class="psl__t" href="projet.html?id=${p.id}"><span class="psl__k">${String(i+1).padStart(2,'0')} / ${String(SL.length).padStart(2,'0')} — ${p.cat} · ${p.date}</span><span class="psl__n">${p.person}</span><b>× ${p.brand}</b></a>
+  </article>`).join('');
+  dots.innerHTML=SL.map((p,i)=>`<button${i?'':' class="est-actif"'} aria-label="${p.brand}"><span><i></i></span><em>${p.brand}</em></button>`).join('');
+  const S=[...stage.children], D=[...dots.children]; let i=0, t=null, occupe=false;
+  const media=k=>S[k].querySelector('video');
+  const jouer=k=>{const v=media(k); if(v){v.play().catch(()=>{});} };
+  const pause=k=>{const v=media(k); if(v) v.pause();};
+  const peindre=()=>{ D.forEach((d,k)=>{d.classList.toggle('est-actif',k===i);d.classList.toggle('est-fait',k<i);
+      const b=d.querySelector('i'); b.style.transition='none'; b.style.width=k<i?'100%':'0%';
+      if(k===i&&!reduit){ void b.offsetWidth; b.style.transition='width '+DUREE+'ms linear'; b.style.width='100%'; } }); };
+  const aller=(n,dir)=>{ n=(n+S.length)%S.length; if(n===i||occupe) return; dir=dir||(n>i?1:-1);
+    const cur=S[i], nxt=S[n]; occupe=true; nxt.dataset.dir=dir>0?'bas':'haut';
+    nxt.classList.add('est-entree','est-actif'); void nxt.offsetWidth; nxt.classList.add('est-go'); cur.classList.add('est-sortie');
+    jouer(n); i=n; peindre();
+    setTimeout(()=>{ cur.classList.remove('est-actif','est-sortie'); pause([...S].indexOf(cur)); nxt.classList.remove('est-entree','est-go'); occupe=false; }, reduit?0:1300);
+    relancer(); };
+  const relancer=()=>{ clearTimeout(t); if(!reduit) t=setTimeout(()=>aller(i+1,1),DUREE); };
+  $('#pslNext').onclick=()=>aller(i+1,1); $('#pslPrev').onclick=()=>aller(i-1,-1);
+  dots.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) aller(D.indexOf(b));});
+  const sec=$('#psl'); sec.addEventListener('mouseenter',()=>{clearTimeout(t); D[i].querySelector('i').style.transition='none';});
+  sec.addEventListener('mouseleave',()=>{peindre(); relancer();});
+  let x0=null; sec.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  sec.addEventListener('touchend',e=>{ if(x0==null)return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) aller(i+(dx<0?1:-1),dx<0?1:-1); x0=null; });
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden){clearTimeout(t);pause(i);} else {jouer(i);peindre();relancer();} });
+  jouer(0); peindre(); relancer();
+})();
+
 
 /* ---- barre de navigation selon le fond ---- */
 (function(){const h=document.querySelector('header'); if(!h)return;
