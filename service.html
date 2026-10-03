@@ -735,6 +735,39 @@ main{overflow-x:clip}
 .header.header--barre[data-theme="dark"] .logo--black{display:none}
 .header.header--barre .lang button.is-active{color:var(--gold)}
 .header.header--barre .header__logo img{transition:height .45s}
+
+/* Cartes personnalités : même style que l'accueil */
+.pe__rail{padding:14px var(--gutter) 30px;scroll-snap-type:x proximity;scroll-padding:0 var(--gutter)}
+.tcard{flex:0 0 clamp(270px,21vw,340px);scroll-snap-align:start}
+.tcard__in{position:relative;display:block;aspect-ratio:3/4.3;border-radius:18px;overflow:hidden;background:#0E2A4F;box-shadow:0 22px 50px rgba(5,5,5,.16);transition:box-shadow .5s}
+.tcard:hover .tcard__in{box-shadow:0 34px 70px rgba(5,5,5,.24)}
+.tcard__ph{position:absolute;inset:0;display:block;overflow:hidden}
+.tcard__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,79,0) 34%,rgba(14,42,79,.55) 56%,rgba(8,24,46,.94) 78%,#06152b 100%)}
+.tcard__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.55);transform:scale(1.05);transition:transform 1.2s var(--ease),filter .8s}
+.tcard__p{position:absolute;left:50%;bottom:14%;height:86%;width:auto;max-width:115%;object-fit:contain;object-position:bottom;transform:translateX(-50%);filter:drop-shadow(0 16px 26px rgba(0,0,0,.45));transition:transform .9s var(--ease)}
+.tcard__p--pleine{left:0;bottom:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:top;transform:none;filter:none}
+.tcard:hover .tcard__bg{transform:none;filter:grayscale(.3) brightness(.66)}
+.tcard:hover .tcard__p{transform:translateX(-50%) scale(1.04)}
+.tcard:hover .tcard__p--pleine{transform:scale(1.04)}
+.tcard__cat{position:absolute;left:14px;top:14px;z-index:2;padding:6px 13px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tcard__body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px;color:#fff;pointer-events:none}
+.tcard__body a{pointer-events:auto}
+.tcard__tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.tcard__tags span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border:1px solid rgba(255,255,255,.32);border-radius:999px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.92)}
+.tcard__nom{font-size:clamp(22px,1.7vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1;text-transform:uppercase}
+.tcard__sub{margin-top:5px;font-size:12px;color:rgba(255,255,255,.72);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tcard__cta{padding-top:12px}
+.tcard__b1{display:block;width:100%;padding:12px 10px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.42);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background .3s,color .3s,border-color .3s}
+.tcard__b1:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.tcard__lien{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:6px;padding:9px 0 2px;color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.tcard__lien .arrow{width:14px;height:14px;color:var(--gold);transition:transform .35s var(--ease)}
+.tcard__lien:hover{color:var(--gold)}.tcard__lien:hover .arrow{transform:translateX(5px)}
+@media (max-width:1023px){.tcard{flex-basis:72vw}}
+@media (max-width:600px){.tcard{flex-basis:80vw}}
+
+/* Drapeau du Québec, pied de page */
+.footer__qc{display:inline-flex;align-items:center;gap:10px}
+.drapeau-qc{width:24px;height:16px;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
 </style>
 </head><body>
 <header class="header" id="header" data-theme="light">
@@ -800,7 +833,7 @@ main{overflow-x:clip}
   </div>
 
   <div class="footer__bottom">
-    <span data-i18n="foot.rights">© 2026 MVP Group Agency Inc. Tous droits réservés.</span>
+    <span class="footer__qc"><svg class="drapeau-qc" viewBox="0 0 30 20" role="img" aria-label="Drapeau du Québec"><rect width="30" height="20" fill="#003DA5"/><path d="M12.5 0h5v20h-5zM0 7.5h30v5H0z" fill="#fff"/><path d="M5 0C6.2 1.6 6.2 3.2 5.4 4.6H6.6C7.4 3.4 9 3.2 9.6 4.4 10.2 5.6 9 6.8 7.6 6.4H5.6V7.2H6.8V8H5.6V10H4.4V8H3.2V7.2H4.4V6.4H2.4C1 6.8-.2 5.6.4 4.4 1 3.2 2.6 3.4 3.4 4.6H4.6C3.8 3.2 3.8 1.6 5 0Z" fill="#fff" transform="translate(3.75 1.25) scale(.5)"/><path d="M5 0C6.2 1.6 6.2 3.2 5.4 4.6H6.6C7.4 3.4 9 3.2 9.6 4.4 10.2 5.6 9 6.8 7.6 6.4H5.6V7.2H6.8V8H5.6V10H4.4V8H3.2V7.2H4.4V6.4H2.4C1 6.8-.2 5.6.4 4.4 1 3.2 2.6 3.4 3.4 4.6H4.6C3.8 3.2 3.8 1.6 5 0Z" fill="#fff" transform="translate(21.25 1.25) scale(.5)"/><path d="M5 0C6.2 1.6 6.2 3.2 5.4 4.6H6.6C7.4 3.4 9 3.2 9.6 4.4 10.2 5.6 9 6.8 7.6 6.4H5.6V7.2H6.8V8H5.6V10H4.4V8H3.2V7.2H4.4V6.4H2.4C1 6.8-.2 5.6.4 4.4 1 3.2 2.6 3.4 3.4 4.6H4.6C3.8 3.2 3.8 1.6 5 0Z" fill="#fff" transform="translate(3.75 13.75) scale(.5)"/><path d="M5 0C6.2 1.6 6.2 3.2 5.4 4.6H6.6C7.4 3.4 9 3.2 9.6 4.4 10.2 5.6 9 6.8 7.6 6.4H5.6V7.2H6.8V8H5.6V10H4.4V8H3.2V7.2H4.4V6.4H2.4C1 6.8-.2 5.6.4 4.4 1 3.2 2.6 3.4 3.4 4.6H4.6C3.8 3.2 3.8 1.6 5 0Z" fill="#fff" transform="translate(21.25 13.75) scale(.5)"/></svg><span data-i18n="foot.rights">© 2026 MVP Group Agency Inc. Tous droits réservés.</span></span>
     <span><a href="https://mvpsportsmarketing.com/fr#privacy" data-i18n="foot.privacy">Politique de confidentialité</a> · <a href="https://mvpsportsmarketing.com/fr" hreflang="fr">Français</a></span>
   </div>
 </footer>
@@ -820,6 +853,8 @@ const key=new URLSearchParams(location.search).get('s')||'speakers';
 const S=SERVICES[key]||SERVICES.speakers;
 document.title=`${S.nom} — Services | MVP Group`;
 const pers=TALENTS.filter(t=>t.services.includes(key));
+const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
+const SPORT_FR={hockey:'Hockey',boxing:'Boxe',mma:'MMA',olympics:'Olympisme',media:'Médias',soccer:'Soccer',other:'Autres'};
 const persVedette=[...pers].sort((a,b)=>(b.roles.length)-(a.roles.length)).slice(0,10);
 const proj=PROJETS.filter(p=>p.services.includes(key)).slice(0,8);
 const imgs=proj.map(p=>p.cover).filter(Boolean);
@@ -849,11 +884,22 @@ $('#svc').innerHTML=`
 <section class="pe" data-nav="dark">
   <div class="pe__head"><h2 class="pe__t">Des personnalités pour ce service</h2>
     <div class="pe__nav"><button id="peP" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><button id="peN" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
-  <div class="pe__rail" id="peRail">${persVedette.map(t=>`<article class="tc">
-    <div class="tc__ph"><img src="${t.photo}" alt="${t.nom}" loading="lazy"><span class="tc__cat">${t.catNom}</span></div>
-    <div class="tc__b"><h3 class="tc__n">${t.nom}</h3><p class="tc__s">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.catNom:t.titre}</p><p class="tc__r">${ROLE_SVC[key]}</p></div>
-    <div class="tc__cta"><a class="tc__b1" href="${MAIL('Projet avec '+t.nom,"Bonjour,\n\nJ'aimerais discuter d'un projet ("+S.nom+") avec "+t.nom+".\n\nMerci.")}">Travailler avec ${t.nom}</a><a class="tc__b2" href="profil.html?id=${t.id}">Voir le profil</a></div>
-  </article>`).join('')}</div>
+  <div class="pe__rail" id="peRail">${persVedette.map(t=>{
+    const pleine=['katerine-savard','chantal-machabee'].includes(t.id), href='profil.html?id='+t.id;
+    const sous=t.titre.toLowerCase()===t.nom.toLowerCase()?(SPORT_FR[t.cat]||t.catNom):t.titre;
+    return `<article class="tcard"><div class="tcard__in">
+    <a class="tcard__ph" href="${href}" aria-label="${t.nom} — Voir le profil">
+      <img class="tcard__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
+      <img class="tcard__p${pleine?' tcard__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tcard__p--pleine')">
+    </a>
+    <span class="tcard__cat">${SPORT_FR[t.cat]||t.catNom}</span>
+    <div class="tcard__body">
+      <div class="tcard__tags"><span>${ROLE_SVC[key]}</span></div>
+      <h3 class="tcard__nom"><a href="${href}">${t.nom}</a></h3>
+      <p class="tcard__sub">${sous}</p>
+      <div class="tcard__cta"><a class="tcard__b1" href="${href}&travailler=1">Travailler avec ${t.prenom||t.nom.split(' ')[0]}</a></div>
+      <a class="tcard__lien" href="${href}">Voir le profil ${ARROW}</a>
+    </div></div></article>`;}).join('')}</div>
   <div class="pe__all"><a class="btn btn--blue" href="personnalites.html?${S.filtre}">Voir tous les ${S.nom.toLowerCase()} ${ARROW}</a></div>
 </section>
 
@@ -898,12 +944,13 @@ ${proj.length?`<section class="ac" data-nav="light">
       const t=(r.top+r.height/2-innerHeight/2)/innerHeight; const im=el.querySelector('img'); if(im) im.style.transform=`translate3d(0,${t*parseFloat(el.dataset.prof)*-260}px,0) scale(1.1)`;});
     raf=null;});},{passive:true});})();
 function glisser(r){ if(!r)return; let x0=0,s0=0,on=false;
-  r.addEventListener('pointerdown',e=>{on=true;x0=e.clientX;s0=r.scrollLeft;r.classList.add('saisi');r.setPointerCapture(e.pointerId);});
-  r.addEventListener('pointermove',e=>{if(!on)return;r.scrollLeft=s0-(e.clientX-x0);});
+  /* la capture ne commence qu'au vrai glissement : un simple clic atteint toujours le lien */
+  r.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;on=true;x0=e.clientX;s0=r.scrollLeft;});
+  r.addEventListener('pointermove',e=>{if(!on)return;const dx=e.clientX-x0;if(Math.abs(dx)>5&&!r.classList.contains('saisi')){r.classList.add('saisi');r.setPointerCapture(e.pointerId);}if(r.classList.contains('saisi'))r.scrollLeft=s0-dx;});
   const fin=()=>{on=false;r.classList.remove('saisi');};['pointerup','pointercancel','pointerleave'].forEach(ev=>r.addEventListener(ev,fin));
   r.addEventListener('click',e=>{if(Math.abs(r.scrollLeft-s0)>6)e.preventDefault();},true);}
 glisser($('#peRail')); glisser($('#acRail'));
-(function(){const r=$('#peRail'); if(!r)return; const pas=()=>{const c=r.querySelector('.tc');return c?c.offsetWidth+18:320;};
+(function(){const r=$('#peRail'); if(!r)return; const pas=()=>{const c=r.querySelector('.tcard');return c?c.offsetWidth+18:320;};
   $('#peP').addEventListener('click',()=>r.scrollBy({left:-pas(),behavior:'smooth'})); $('#peN').addEventListener('click',()=>r.scrollBy({left:pas(),behavior:'smooth'}));})();
 (function(){const h=document.querySelector('header'); if(!h)return;
   const maj=()=>{const y=h.getBoundingClientRect().bottom; let c='dark';
