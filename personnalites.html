@@ -842,6 +842,11 @@ body{background:var(--soft);color:var(--black)}
 .chips .chip:hover{color:#fff}.chips .chip:hover::before{background:#1E5299}
 .chips .chip[aria-pressed="true"]{color:#fff}.chips .chip[aria-pressed="true"]::before{background:#123B6D;border-color:#123B6D}
 .chips__row{gap:10px 12px;padding-left:6px}
+
+/* Pastilles rondes (format du site), contour bleu comme l'ancien site */
+.chips .chip::before{border-radius:999px;transform:none}
+.chips .chip{padding:10px 20px}
+.chips__row,.ex__row{padding-left:0}
 </style>
 </head>
 <body>
