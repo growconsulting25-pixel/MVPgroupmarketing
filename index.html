@@ -1005,6 +1005,20 @@ ul{list-style:none}
 .flux__bg{position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('assets/lieux/mma.jpg') center 30%/cover no-repeat;filter:grayscale(1) contrast(.9);opacity:.2}
 .flux__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.5) 55%,rgba(255,255,255,.15) 100%)}
 .intro__bg{opacity:.2}
+
+/* Personnalités + Catégories : photo d'événement MVP, plus pâle, même rendu éditorial que l'intro */
+.flux__bg{background:url('assets/projets/sergesavardgestofhonorcorporatebox-1.jpg') center 25%/cover no-repeat;opacity:.13}
+.flux__bg::after{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,.2) 100%)}
+.intro__bg{opacity:.16}
+.flux__bg{position:sticky;inset:auto;top:0;display:block;width:100%;height:100svh;margin-bottom:-100svh}
+
+/* L'ombre des cartes a la place de s'estomper (plus de bande coupée net) ;
+   Catégories se rapproche de Personnalités (même fond blanc, pas de coupure). */
+.talents__rail{padding-bottom:80px;margin-bottom:-40px;perspective:none}
+.talents{padding-bottom:0}
+@media (min-width:1024px){.explore__pin{padding-top:clamp(36px,6vh,64px)}}
+@media (max-width:1023px){.explore__pin{padding-top:24px}}
+@media (min-width:1280px){.sindex{left:4px;padding:10px 7px;gap:11px}.sindex a{font-size:10.5px;gap:5px}.sindex a.est-actif i{width:9px}}
 </style>
 </head>
 <body>
