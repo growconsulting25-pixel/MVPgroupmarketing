@@ -5,8 +5,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agence — Notre mission et Simon Arsenault | MVP Group</title>
-<meta name="description" content="Le Groupe MVP crée des partenariats gagnants entre les entreprises et les personnalités sportives. Notre mission et le parcours de Simon Arsenault, président-fondateur.">
+<title>Équipe de direction — Simon Arsenault et Mylaa Desloges | MVP Group</title>
+<meta name="description" content="L’équipe du Groupe MVP : Simon Arsenault, président-fondateur, et Mylaa Desloges, gestionnaire des affaires. Pour joindre l’équipe et démarrer un partenariat.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 <style>
@@ -614,6 +614,7 @@ ul{list-style:none}
 .ag{overflow-x:clip}
 .ag-hero{overflow-x:clip;overflow-y:visible}
 .ag-lire--eq{display:inline-block;margin-right:28px}
+@media (min-width:1024px){.eq-m.eq-m--inv{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
 </style>
 
 <style>
@@ -825,93 +826,71 @@ body{background:var(--soft);color:var(--black)}
 .drapeau-qc{width:24px;height:16px;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
 </style>
 
+
 <style>
 /* =====================================================================
-   PAGE AGENCE — mission + Simon Arsenault
+   PAGE ÉQUIPE — rangées éditoriales alternées
    ===================================================================== */
 body{background:var(--soft);color:var(--black)}
-.ag-k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#123B6D}
-.ag-k--or{color:var(--gold)}
-.ag-h1{font-size:clamp(46px,6.2vw,108px);font-weight:800;letter-spacing:-.04em;line-height:.9;text-transform:uppercase;margin-top:18px;max-width:11ch}
-.ag-h1 .gold{display:block}
-.ag-h2{font-size:clamp(38px,5vw,88px);font-weight:800;letter-spacing:-.035em;line-height:.92;text-transform:uppercase;margin-top:14px}
+.eq-k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#123B6D}
+.eq-k--or{color:var(--gold)}
 .btn svg{width:16px;height:16px}
-/* --- 01 héros --- */
-.ag-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5vw,90px);align-items:center;min-height:100svh;padding:calc(var(--nav-h) + 6vh) var(--gutter) 9vh;max-width:1640px;margin:0 auto}
-.ag-lede{margin-top:clamp(18px,3vh,30px);font-size:clamp(16px,1.25vw,20px);line-height:1.6;color:#2b2b2b;max-width:46ch}
-.ag-cta{margin-top:clamp(22px,3.4vh,36px);background:#123B6D;color:#fff;border-radius:6px;padding:18px 26px}
-.ag-cta:hover{background:var(--gold);color:var(--black)}
-.ag-faits{display:flex;flex-wrap:wrap;gap:20px clamp(24px,3vw,46px);margin-top:clamp(34px,6vh,64px)}
-.ag-faits dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
-.ag-faits dd{margin-top:5px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:30ch;line-height:1.55}
-/* carrousel */
-.ag-sl{position:relative;justify-self:center;width:min(100%,560px)}
-.ag-sl__orbe{position:absolute;left:-18%;right:-18%;top:22%;width:136%;height:56%;z-index:0;overflow:visible}
-.ag-sl__orbe ellipse{fill:none;stroke:#bdbdb6;stroke-width:1;vector-effect:non-scaling-stroke}
-.ag-sl__cadre{position:relative;z-index:1;aspect-ratio:4/5;overflow:hidden;background:#111;box-shadow:0 40px 90px rgba(5,5,5,.22)}
-.ag-sl__cadre figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.1s cubic-bezier(.2,.7,.2,1)}
-.ag-sl__cadre figure.est-actif{opacity:1}
-.ag-sl__cadre img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transform:scale(1.06);transition:transform 6s linear,filter .8s}
-.ag-sl__cadre figure.est-actif img{transform:scale(1)}
-.ag-sl:hover .ag-sl__cadre img{filter:grayscale(0)}
-.ag-sl__cadre figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,0) 55%,rgba(5,5,5,.85))}
-.ag-sl__cadre figcaption{position:absolute;left:22px;right:22px;bottom:22px;z-index:2;color:#fff}
-.ag-sl__cadre figcaption b{display:block;font-size:clamp(16px,1.3vw,21px);font-weight:800;letter-spacing:-.02em}
-.ag-sl__cadre figcaption span{display:block;margin-top:6px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.ag-sl__num{position:absolute;right:-6px;top:-34px;z-index:3;display:flex;align-items:baseline;color:var(--gold);line-height:1;pointer-events:none}
-.ag-sl__num b{font-size:clamp(56px,5vw,84px);font-weight:200;letter-spacing:-.04em}
-.ag-sl__num i{font-style:normal;font-size:18px;font-weight:300;color:#9a9a92;margin-left:4px}
-.ag-sl__coin{position:absolute;z-index:2;width:28px;height:28px;border-color:#123B6D;border-style:solid;opacity:.7}
-.ag-sl__coin--a{left:-14px;top:-14px;border-width:1.5px 0 0 1.5px}
-.ag-sl__coin--b{right:-14px;bottom:56px;border-width:0 1.5px 1.5px 0}
-.ag-sl__nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
-.ag-sl__traits{display:flex;gap:6px;flex-wrap:wrap}
-.ag-sl__traits button{width:22px;height:14px;position:relative}
-.ag-sl__traits button::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:#cfcfc8;transition:background .3s}
-.ag-sl__traits button.est-actif{width:44px}
-.ag-sl__traits button.est-actif::before{background:#123B6D}
-.ag-sl__fl{display:flex;gap:8px}
-.ag-sl__fl button{width:44px;height:44px;border-radius:50%;border:1px solid #cfcfc8;display:grid;place-items:center;background:#fff;transition:background .3s,border-color .3s}
-.ag-sl__fl button:hover{background:var(--black);border-color:var(--black);color:#fff}
-.ag-sl__fl svg{width:16px;height:16px}
-/* --- 02 mission --- */
-.ag-mi{position:relative;background:#0E2A4F;color:#fff;padding:clamp(80px,13vh,150px) var(--gutter)}
-.ag-mi__head{max-width:1640px;margin:0 auto}
-.ag-mi__liste{max-width:1640px;margin:clamp(40px,7vh,80px) auto 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(16px,2vw,34px);list-style:none}
-.ag-mi__liste li{border-top:1px solid rgba(255,255,255,.22);padding-top:22px}
-.ag-mi__n{display:block;font-size:clamp(44px,4vw,68px);font-weight:200;letter-spacing:-.04em;color:var(--gold);line-height:1}
-.ag-mi__liste p{margin-top:16px;font-size:clamp(16px,1.25vw,20px);font-weight:600;line-height:1.35;letter-spacing:-.01em}
-/* --- 03 bio --- */
-.ag-bio{position:relative;padding:clamp(80px,13vh,150px) var(--gutter)}
-.ag-bio__in{max-width:1640px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,110px);align-items:start}
-.ag-bio__ph{position:sticky;top:calc(var(--nav-h) + 24px);margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#ddd}
-.ag-bio__ph img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
-.ag-bio__ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:60px 24px 22px;background:linear-gradient(180deg,rgba(5,5,5,0),rgba(5,5,5,.8));color:#fff}
-.ag-bio__ph b{display:block;font-size:20px;font-weight:800}
-.ag-bio__ph span{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.ag-bio__role{margin-top:10px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold)}
-.ag-chiffres{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:clamp(28px,4vh,44px) 0;padding:24px 0;border-top:1px solid var(--grey);border-bottom:1px solid var(--grey)}
-.ag-chiffres dt{font-size:clamp(32px,3vw,50px);font-weight:200;letter-spacing:-.04em;color:#123B6D;line-height:1}
-.ag-chiffres dd{margin-top:8px;font-size:12px;line-height:1.4;color:#555}
-.ag-bio__corps p{font-size:clamp(15.5px,1.1vw,18px);line-height:1.75;color:#2b2b2b;margin-bottom:1.1em;max-width:68ch}
-.ag-lire{margin-top:6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#123B6D;border-bottom:1.5px solid currentColor;padding-bottom:3px}
-.ag-lire:hover{color:var(--gold)}
-/* --- 04 fin --- */
-.ag-fin{position:relative;background:#0E2A4F;color:#fff;padding:clamp(70px,12vh,140px) var(--gutter)}
-.ag-fin__in{max-width:1640px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
-.ag-fin__b{display:flex;gap:12px;flex-wrap:wrap}
-.ag-fin__o{border:1px solid rgba(255,255,255,.5);color:#fff}
-.ag-fin__o:hover{background:#fff;color:var(--black)}
-.ag-mi .plus,.ag-fin .plus{color:#fff}.ag-hero .plus,.ag-bio .plus{color:var(--black)}
-.ag-hero,.ag-bio{isolation:isolate}
-/* apparition douce */
+/* héros */
+.eq-hero{position:relative;background:#0E2A4F;color:#fff;padding:calc(var(--nav-h) + 9vh) var(--gutter) clamp(60px,10vh,110px);overflow:hidden;isolation:isolate}
+.eq-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:url('assets/simon/bfi-7121-mr-7-x-10-guy-et-simon-arsenault-copy.webp') center 30%/cover no-repeat;filter:grayscale(1);opacity:.12}
+.eq-hero__in{max-width:1640px;margin:0 auto}
+.eq-h1{font-size:clamp(46px,7vw,124px);font-weight:800;letter-spacing:-.04em;line-height:.88;text-transform:uppercase;margin-top:18px;max-width:13ch}
+.eq-h1 .gold{display:block}
+.eq-lede{margin-top:clamp(20px,3vh,32px);font-size:clamp(16px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.82);max-width:52ch}
+.eq-index{display:flex;flex-wrap:wrap;gap:0;margin-top:clamp(40px,7vh,72px);border-top:1px solid rgba(255,255,255,.2)}
+.eq-index a{flex:1 1 280px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:18px;padding:22px 24px 22px 0;border-bottom:1px solid rgba(255,255,255,.2);transition:background .35s,padding .35s}
+.eq-index a+a{border-left:1px solid rgba(255,255,255,.2);padding-left:24px}
+.eq-index b{grid-row:1/3;font-size:clamp(34px,3vw,52px);font-weight:200;color:var(--gold);line-height:1;letter-spacing:-.03em}
+.eq-index span{font-size:clamp(17px,1.4vw,22px);font-weight:800;letter-spacing:-.01em}
+.eq-index em{font-style:normal;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:4px}
+.eq-index a:hover{background:rgba(255,255,255,.05)}
+.eq-index a:hover span{color:var(--gold)}
+/* membres */
+.eq-membres{position:relative;padding:clamp(70px,12vh,140px) var(--gutter);display:flex;flex-direction:column;gap:clamp(80px,14vh,160px)}
+.eq-m{max-width:1500px;width:100%;margin:0 auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,6vw,110px);align-items:center;scroll-margin-top:calc(var(--nav-h) + 20px)}
+.eq-m--inv .eq-m__ph{order:2}
+.eq-m__ph{position:relative;margin:0;aspect-ratio:4/5}
+.eq-m__ph img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:4px;box-shadow:0 40px 90px rgba(5,5,5,.2)}
+.eq-m__num{position:absolute;z-index:0;top:-0.32em;left:-0.12em;font-size:clamp(150px,17vw,290px);font-weight:800;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(18,59,109,.28);pointer-events:none}
+.eq-m--inv .eq-m__num{left:auto;right:-0.12em}
+.eq-m__ph::after{content:"";position:absolute;z-index:2;width:30px;height:30px;right:-14px;bottom:-14px;border:solid #123B6D;border-width:0 1.5px 1.5px 0;opacity:.7}
+.eq-m--inv .eq-m__ph::after{right:auto;left:-14px;border-width:0 0 1.5px 1.5px}
+.eq-m__nom{margin-top:14px;font-size:clamp(44px,5.6vw,96px);font-weight:800;letter-spacing:-.04em;line-height:.9;text-transform:uppercase}
+.eq-m__role{margin-top:16px;font-size:14px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+.eq-m__sous{margin-top:6px;font-size:13px;letter-spacing:.06em;color:#666}
+.eq-m__corps{margin-top:clamp(20px,3vh,30px);padding-top:clamp(20px,3vh,30px);border-top:1px solid var(--grey)}
+.eq-m__corps p{font-size:clamp(15.5px,1.1vw,18px);line-height:1.7;color:#2b2b2b;max-width:58ch;margin-bottom:1em}
+.eq-m__contact{list-style:none;display:grid;gap:10px;margin:8px 0 0}
+.eq-m__contact li{display:grid;grid-template-columns:110px 1fr;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--grey)}
+.eq-m__contact span{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#123B6D}
+.eq-m__contact a{font-size:clamp(15px,1.15vw,18px);font-weight:600;overflow-wrap:anywhere;transition:color .3s}
+.eq-m__contact a:hover{color:var(--gold)}
+.eq-m__b{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(24px,4vh,36px)}
+.eq-btn{background:#123B6D;color:#fff;border-radius:6px}
+.eq-btn:hover{background:var(--gold);color:var(--black)}
+.eq-btn--o{background:transparent;color:var(--black);border:1px solid var(--black)}
+.eq-btn--o:hover{background:var(--black);color:#fff}
+/* nous joindre */
+.eq-joindre{position:relative;background:#0E2A4F;color:#fff;padding:clamp(70px,12vh,130px) var(--gutter)}
+.eq-joindre__in{max-width:1640px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;gap:clamp(24px,4vw,60px);align-items:end}
+.eq-h2{font-size:clamp(36px,4.6vw,80px);font-weight:800;letter-spacing:-.035em;line-height:.92;text-transform:uppercase;margin-top:12px}
+.eq-coord{display:grid;gap:14px}
+.eq-coord dt{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.eq-coord dd{margin-top:3px;font-size:17px;font-weight:600}
+.eq-coord a:hover{color:var(--gold)}
+.eq-hero .plus,.eq-joindre .plus{color:#fff}.eq-membres .plus{color:var(--black)}
+.eq{overflow-x:clip}
+/* apparition */
 .js-reveal [data-reveal]{opacity:0;transform:translate3d(0,30px,0);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .js-reveal [data-reveal].is-in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.js-reveal [data-reveal]{opacity:1;transform:none}.ag-sl__cadre img{transition:none}}
-/* responsive */
-@media (max-width:1100px){.ag-mi__liste{grid-template-columns:repeat(2,minmax(0,1fr))}.ag-chiffres{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:1023px){.ag-hero{grid-template-columns:1fr;min-height:0;padding-top:calc(var(--nav-h) + 4vh)}.ag-sl{width:min(100%,520px);margin-top:40px}.ag-bio__in{grid-template-columns:1fr}.ag-bio__ph{position:relative;top:0;max-width:440px}}
-@media (max-width:600px){.ag-mi__liste{grid-template-columns:1fr}.ag-sl__num{right:4px;top:-30px}.ag-sl__orbe{display:none}.ag-sl__coin--b{right:-6px}.ag-sl__coin--a{left:-6px}}
+@media (prefers-reduced-motion:reduce){.js-reveal [data-reveal]{opacity:1;transform:none}}
+@media (max-width:1023px){.eq-m{grid-template-columns:1fr}.eq-m--inv .eq-m__ph{order:0}.eq-m__ph{max-width:460px}.eq-joindre__in{grid-template-columns:1fr;align-items:start}}
+@media (max-width:600px){.eq-index a+a{border-left:0;padding-left:0}.eq-m__contact li{grid-template-columns:1fr;gap:2px}.eq-m__num{font-size:120px}}
 .footer__grid>div{min-width:0}.footer__grid a{overflow-wrap:anywhere}
 </style>
 </head>
@@ -961,64 +940,59 @@ body{background:var(--soft);color:var(--black)}
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
-<main class="ag" data-nav="dark">
-<!-- ============ 01 — QUI SOMMES-NOUS : texte + carrousel de Simon ============ -->
-<section class="ag-hero" id="mission-top" data-nav="dark" data-plus="b:52:lg b:8">
-  <div class="ag-hero__txt">
-    <p class="ag-k">Qui sommes-nous</p>
-    <h1 class="ag-h1">Nous créons des partenariats <span class="gold">gagnants.</span></h1>
-    <p class="ag-lede">Le Groupe MVP aide les marques, les entreprises et les organisations à créer des partenariats significatifs avec des athlètes professionnels, des champions olympiques, des légendes du sport, des conférenciers, des animateurs et des personnalités influentes, partout au Québec, au Canada et aux États-Unis.</p>
-    <a class="btn ag-cta" href="index.html#demande">Travailler avec nous <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <dl class="ag-faits">
-      <div><dt>Montréal</dt><dd>Siège social</dd></div>
-      <div><dt>Toronto · New York · Las Vegas</dt><dd>Réseau</dd></div>
-      <div><dt>7 catégories · 60+ personnalités</dt><dd>Hockey, boxe, MMA, olympisme, médias, soccer et plus</dd></div>
-    </dl>
-  </div>
-  <div class="ag-sl" id="agSl" aria-roledescription="carrousel" aria-label="Simon Arsenault et les vedettes du sport">
-    <svg class="ag-sl__orbe" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="30" rx="49.5" ry="29.5"/></svg>
-    <span class="grille" aria-hidden="true" style="left:-34px;bottom:-30px;width:190px;height:170px;opacity:.55;-webkit-mask-image:none;mask-image:none"></span>
-    <span class="ag-sl__coin ag-sl__coin--a" aria-hidden="true"></span><span class="ag-sl__coin ag-sl__coin--b" aria-hidden="true"></span>
-    <div class="ag-sl__cadre" id="agFrame"></div>
-    <p class="ag-sl__num" aria-hidden="true"><b id="agNum">1</b><i>/<span id="agTot"></span></i></p>
-    <div class="ag-sl__nav"><div class="ag-sl__traits" id="agDots"></div>
-      <div class="ag-sl__fl"><button id="agPrev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><button id="agNext" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+<main class="eq" data-nav="dark">
+<!-- ============ HÉROS ============ -->
+<section class="eq-hero" data-nav="light" data-plus="b:84:lg b:12">
+  <span class="grille grille--clair" aria-hidden="true" style="right:7%;top:28%;width:340px;height:230px"></span>
+  <div class="eq-hero__in">
+    <p class="eq-k eq-k--or">Équipe de direction</p>
+    <h1 class="eq-h1">Les gens derrière <span class="gold">les partenariats.</span></h1>
+    <p class="eq-lede">Une équipe à taille humaine, un seul interlocuteur : nous connaissons les personnalités que nous représentons et nous accompagnons chaque projet, de la première rencontre jusqu’au jour J.</p>
+    <nav class="eq-index" aria-label="Membres de l’équipe">
+      <a href="#simon"><b>01</b><span>Simon Arsenault</span><em>Président-fondateur</em></a>
+      <a href="#mylaa"><b>02</b><span>Mylaa Desloges</span><em>Gestionnaire des affaires</em></a>
+    </nav>
   </div>
 </section>
 
-<!-- ============ 02 — NOTRE MISSION ============ -->
-<section class="ag-mi" id="mission" data-nav="light" data-plus="t:84:lg b:30 l:40">
-  <span class="grille grille--clair" aria-hidden="true" style="right:6%;top:70px;width:320px;height:150px"></span>
-  <div class="ag-mi__head" data-reveal><p class="ag-k ag-k--or">Notre mission</p><h2 class="ag-h2">Cinq engagements, <span class="gold">un seul interlocuteur.</span></h2></div>
-  <ol class="ag-mi__liste"><li data-reveal style="transition-delay:0.00s"><span class="ag-mi__n">01</span><p>Assurer l’accessibilité des athlètes et célébrités sportives</p></li><li data-reveal style="transition-delay:0.07s"><span class="ag-mi__n">02</span><p>Développer des partenariats bénéfiques entre les athlètes et les entreprises</p></li><li data-reveal style="transition-delay:0.14s"><span class="ag-mi__n">03</span><p>Créer des événements et expériences uniques</p></li><li data-reveal style="transition-delay:0.21s"><span class="ag-mi__n">04</span><p>Promouvoir les valeurs positives du sport</p></li><li data-reveal style="transition-delay:0.28s"><span class="ag-mi__n">05</span><p>Encourager l’éducation et la pratique des sports</p></li></ol>
-</section>
-
-<!-- ============ 03 — SIMON ARSENAULT ============ -->
-<section class="ag-bio" id="equipe" data-nav="dark" data-plus="t:40 b:70:lg r:30">
-  <div class="ag-bio__in">
-    <figure class="ag-bio__ph" data-reveal><img src="assets/simon/simon.webp" alt="Simon Arsenault, président-fondateur du Groupe MVP"><figcaption><b>Simon Arsenault</b><span>Président-fondateur</span></figcaption></figure>
-    <div class="ag-bio__txt">
-      <p class="ag-k" data-reveal>Équipe de direction</p>
-      <h2 class="ag-h2" data-reveal>Simon Arsenault</h2>
-      <p class="ag-bio__role" data-reveal>Président-fondateur</p>
-      <dl class="ag-chiffres" data-reveal>
-        <div><dt>2005</dt><dd>Canadiens de Montréal</dd></div>
-        <div><dt>150+</dt><dd>Événements produits chez evenko</dd></div>
-        <div><dt>2016</dt><dd>Fondation du Groupe MVP</dd></div>
-        <div><dt>60+</dt><dd>Célébrités sportives</dd></div>
-      </dl>
-      <div class="ag-bio__corps" id="agBio" data-reveal><p>Titulaire d’un baccalauréat en Administration des Affaires, de l’équivalent d’un certificat en Droit et d’une spécialisation en Marketing et affaires internationales de l’École de Gestion de l’UQAM, son parcours universitaire l’a mené jusqu’à la prestigieuse École Supérieure de Commerce de Marseille, en France. Véritable entrepreneur dans l’âme, Simon Arsenault n’a pas tardé pour se lancer dans le monde des affaires alors qu’il a commencé à organiser une variété d’événements pendant qu’il était aux études collégiales et universitaires.</p><p>De retour au Québec en 2005 à la suite de l’obtention de son diplôme, Arsenault s’est fait embaucher au sein du département des ventes et du marketing des Canadiens de Montréal. Après deux ans en poste chez le Tricolore, il s’est fait confier un nouveau défi d’importance : celui de développer le volet sportif du Groupe Spectacles Gillett (GEG), qui deviendra le département des Événements Sportifs quelques années plus tard sous le nom d’evenko.</p><div class="ag-bio__suite" id="agSuite" hidden><p>À titre de producteur exécutif et plus tard directeur des sports, il avait la charge de l’élaboration des plans d’affaires, de travailler conjointement avec les équipes marketing des organisations sportives qu’il attirait, tout en étant impliqué sur les aspects légaux, des relations publiques/médias, d’opérations et de la gestion des partenaires des événements organisés.</p><p>Son porte-folio chez evenko compte plus 150 événements échelonnés sur une période de neuf ans incluant des galas du UFC avec Georges St-Pierre comme tête d’affiche, de nombreuses soirées de boxe du Groupe Yvon Michel et d’Interbox, des matchs préparatoires de la NBA des Raptors de Toronto, des matchs des Canadiens de Montréal à Québec et dans les maritimes. Son plus haut fait d’armes demeure le fait d’avoir contribué au retour du baseball majeur à Montréal en convainquant les dirigeants des Blue Jays de Toronto de venir disputer des rencontres préparatoires au stade Olympique sur une base annuelle à partir de 2014.</p><p>Ses fonctions chez evenko lui ont également permis de dépasser les limites du monde du sport puisqu’il devait ériger les différentes subventions gouvernementales et développer des relations gouvernementales pour les festivals Osheaga et Heavy MTL. Cette expertise et ses relations au niveau politique auront permis à Arsenault d’organiser des conférences avec la Chambre de Commerce du Montréal Métropolitain pour la venue de grands leaders politiques internationaux en conférence tels que Hillary Clinton, Nicolas Sarkozy, Mikael Gorbatchev et Steve Wozniak.</p><p>Arsenault décide de quitter evenko en 2016 pour relever un nouveau défi. Ayant toujours pris bien soin personnellement d’entretenir son impressionnant réseau de contacts parmi les vedettes sportives québécoises, il décide de créer une agence qui démocratiserait l’accès à ces monuments afin de faciliter leurs accès aux entreprises afin de promouvoir les valeurs positives du sport. C’est de là qu’est née l’inspiration derrière le Groupe MVP.</p><p>Comptant sur une quarantaine de personnalités lors de son lancement, avec en tête de liste Guy Lafleur comme tout premier client, le Groupe MVP a collaboré avec plus d’une soixantaine de célébrités sportives d’hier à aujourd’hui. Parmi elles : Georges St-Pierre, Nick Suzuki, Patrick Roy, Joannie Rochette, Bruny Surin, Kim Clavel, Bianca Andreescu, P.K. Subban, Patrice Bernier et Vladimir Guerrero et plusieurs ont été impliqué dans divers projets de marketing ou d’événements au bénéfice d’entreprises.</p></div></div>
-      <a class="ag-lire ag-lire--eq" href="equipe.html">Rencontrer toute l’équipe →</a>
-      <button class="ag-lire" id="agLire" aria-expanded="false" aria-controls="agSuite">Lire la biographie complète</button>
+<!-- ============ MEMBRES ============ -->
+<section class="eq-membres" data-nav="dark" data-plus="t:50:lg l:30 r:70 b:40">
+  <article class="eq-m" id="simon">
+    <figure class="eq-m__ph" data-reveal><span class="eq-m__num" aria-hidden="true">01</span><img src="assets/equipe/simon-arsenault.jpg" alt="Simon Arsenault, Président-fondateur" style="object-position:50% 18%" loading="eager"></figure>
+    <div class="eq-m__txt">
+      <p class="eq-k" data-reveal>01 — Équipe de direction</p>
+      <h2 class="eq-m__nom" data-reveal>Simon Arsenault</h2>
+      <p class="eq-m__role" data-reveal>Président-fondateur</p>
+      <p class="eq-m__sous" data-reveal>Groupe MVP</p>
+      <div class="eq-m__corps" data-reveal><p>Titulaire d’un baccalauréat en Administration des Affaires de l’École de Gestion de l’UQAM, Simon Arsenault a fait ses débuts au sein du département des ventes et du marketing des Canadiens de Montréal en 2005, avant de développer le volet sportif de ce qui deviendra evenko.</p><p>Plus de 150 événements plus tard — galas du UFC avec Georges St-Pierre, soirées de boxe, matchs préparatoires des Blue Jays au Stade olympique — il fonde le Groupe MVP en 2016, avec Guy Lafleur comme tout premier client.</p></div>
+      <ul class="eq-m__contact" data-reveal><li><span>Bureau</span><a href="tel:+15145823306">514-582-3306</a></li><li><span>Courriel</span><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
+      <div class="eq-m__b" data-reveal><a class="btn eq-btn" href="agence.html#equipe">Lire sa biographie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
-  </div>
+  </article>
+  <article class="eq-m eq-m--inv" id="mylaa">
+    <figure class="eq-m__ph" data-reveal><span class="eq-m__num" aria-hidden="true">02</span><img src="assets/equipe/mylaa-desloges.jpg" alt="Mylaa Desloges, Gestionnaire des affaires" style="object-position:50% 22%" loading="lazy"></figure>
+    <div class="eq-m__txt">
+      <p class="eq-k" data-reveal>02 — Équipe de direction</p>
+      <h2 class="eq-m__nom" data-reveal>Mylaa Desloges</h2>
+      <p class="eq-m__role" data-reveal>Gestionnaire des affaires</p>
+      <p class="eq-m__sous" data-reveal>MVP Sports Marketing · Salon Exécutif MVP</p>
+      <div class="eq-m__corps" data-reveal><p>Pour toute demande de partenariat, de conférencier, d’ambassadeur ou d’événement corporatif, Mylaa est votre point de contact à l’agence.</p></div>
+      <ul class="eq-m__contact" data-reveal><li><span>Cellulaire</span><a href="tel:+15149915309">514-991-5309</a></li><li><span>Courriel</span><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li><li><span>Web</span><a href="https://www.mvpsportsmarketing.com">www.mvpsportsmarketing.com</a></li></ul>
+      <div class="eq-m__b" data-reveal><a class="btn eq-btn" href="index.html#demande">Démarrer un projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn eq-btn eq-btn--o" href="tel:+15149915309">Appeler Mylaa</a></div>
+    </div>
+  </article>
 </section>
 
-<!-- ============ 04 — APPEL À L'ACTION ============ -->
-<section class="ag-fin" data-nav="light" data-plus="t:20 b:80:lg">
-  <div class="ag-fin__in" data-reveal>
-    <h2 class="ag-h2">Bâtissons le <span class="gold">bon partenariat.</span></h2>
-    <div class="ag-fin__b"><a class="btn btn--gold" href="index.html#demande">Travailler avec nous <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ag-fin__o" href="personnalites.html">Voir les personnalités</a></div>
+<!-- ============ NOUS JOINDRE ============ -->
+<section class="eq-joindre" data-nav="light" data-plus="t:20 b:76:lg">
+  <div class="eq-joindre__in" data-reveal>
+    <div><p class="eq-k eq-k--or">Nous joindre</p><h2 class="eq-h2">Parlons de <span class="gold">votre projet.</span></h2></div>
+    <dl class="eq-coord">
+      <div><dt>Siège social</dt><dd>Montréal, Qc, Canada</dd></div>
+      <div><dt>Bureau</dt><dd><a href="tel:+15145823306">514-582-3306</a></dd></div>
+      <div><dt>Courriel</dt><dd><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></dd></div>
+    </dl>
+    <a class="btn btn--gold" href="index.html#demande">Travailler avec nous <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
 </main>
@@ -1089,38 +1063,13 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
 </script>
 <script>
 document.documentElement.classList.add('js-reveal');
-/* Carrousel : Simon Arsenault et les vedettes du sport */
-(function(){
-  var S=[{"img": "assets/simon/bfi-7121-mr-7-x-10-guy-et-simon-arsenault-copy.webp", "n": "Simon Arsenault & Guy Lafleur", "r": "Premier client du Groupe MVP · 5 Coupes Stanley", "pos": "50% 30%"}, {"img": "assets/simon/simon-gretzky-copie.webp", "n": "Simon Arsenault & Wayne Gretzky", "r": "Meilleur pointeur de l’histoire de la LNH", "pos": "50% 30%"}, {"img": "assets/simon/bfi-4481-mr-7-x-10-simon-et-george-st-pierre-copie-1.webp", "n": "Simon Arsenault & Georges St-Pierre", "r": "Champion du UFC", "pos": "50% 25%"}, {"img": "assets/simon/photokovalev-copie.webp", "n": "Simon Arsenault & Alex Kovalev", "r": "Canadiens de Montréal", "pos": "50% 30%"}, {"img": "assets/simon/guerrero-copie-1.webp", "n": "Simon Arsenault & Vladimir Guerrero", "r": "Temple de la renommée du baseball", "pos": "55% 35%"}, {"img": "assets/simon/photodelahoya2-copie.webp", "n": "Simon Arsenault & Oscar De La Hoya", "r": "Champion du monde de boxe", "pos": "50% 25%"}, {"img": "assets/simon/bfi-5539-web-use-jacques-demers-et-simon-arsenault-copy.webp", "n": "Simon Arsenault & Jacques Demers", "r": "Anciens des Nordiques de Québec", "pos": "45% 40%"}, {"img": "assets/simon/wozniaki-sharapova-copie.webp", "n": "Caroline Wozniacki & Maria Sharapova", "r": "Soirée tennis · Montréal", "pos": "50% 30%"}, {"img": "assets/simon/expos2016-copie.webp", "n": "Les anciens des Expos", "r": "Le baseball majeur de retour au Stade olympique", "pos": "50% 40%"}, {"img": "assets/simon/ve160402-0352-copie.webp", "n": "Les Blue Jays au Stade olympique", "r": "Matchs préparatoires produits avec evenko", "pos": "55% 30%"}, {"img": "assets/simon/f1renault-copie.webp", "n": "Paddock Renault Sport", "r": "Formule 1", "pos": "50% 30%"}, {"img": "assets/simon/habsalumni-bypatbeaudry-1951-copie.webp", "n": "Match des anciens Canadiens", "r": "Centre Bell · Montréal", "pos": "45% 25%"}], cadre=document.getElementById('agFrame'), dots=document.getElementById('agDots'), num=document.getElementById('agNum');
-  document.getElementById('agTot').textContent=S.length;
-  cadre.innerHTML=S.map(function(s,i){return '<figure'+(i?'':' class="est-actif"')+' aria-hidden="'+(i?'true':'false')+'"><img src="'+s.img+'" alt="'+s.n+'" style="object-position:'+s.pos+'"'+(i>1?' loading="lazy"':'')+'><figcaption><b>'+s.n+'</b><span>'+s.r+'</span></figcaption></figure>';}).join('');
-  dots.innerHTML=S.map(function(s,i){return '<button'+(i?'':' class="est-actif"')+' aria-label="Photo '+(i+1)+' : '+s.n+'"></button>';}).join('');
-  var figs=[].slice.call(cadre.children), btns=[].slice.call(dots.children), i=0, t=null, reduit=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var aller=function(n){ i=(n+S.length)%S.length;
-    figs.forEach(function(f,k){ f.classList.toggle('est-actif',k===i); f.setAttribute('aria-hidden',k===i?'false':'true'); });
-    btns.forEach(function(b,k){ b.classList.toggle('est-actif',k===i); }); num.textContent=i+1; };
-  var demarrer=function(){ arreter(); if(!reduit) t=setInterval(function(){aller(i+1);},4200); };
-  var arreter=function(){ if(t){clearInterval(t);t=null;} };
-  dots.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; aller(btns.indexOf(b)); demarrer(); });
-  document.getElementById('agPrev').onclick=function(){aller(i-1);demarrer();};
-  document.getElementById('agNext').onclick=function(){aller(i+1);demarrer();};
-  var sl=document.getElementById('agSl'); sl.addEventListener('mouseenter',arreter); sl.addEventListener('mouseleave',demarrer);
-  var x0=null; cadre.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
-  cadre.addEventListener('touchend',function(e){ if(x0==null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){aller(i+(dx<0?1:-1));demarrer();} x0=null; });
-  document.addEventListener('visibilitychange',function(){ document.hidden?arreter():demarrer(); });
-  demarrer();
-})();
-/* Biographie complète */
-(function(){ var b=document.getElementById('agLire'), s=document.getElementById('agSuite');
-  b.addEventListener('click',function(){ var o=s.hidden; s.hidden=!o; b.setAttribute('aria-expanded',o); b.textContent=o?'Réduire la biographie':'Lire la biographie complète'; }); })();
-/* Apparition au défilement */
 (function(){ var els=[].slice.call(document.querySelectorAll('[data-reveal]'));
   if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('is-in');}); return; }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target);} });},{rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){io.observe(e);}); })();
-/* Menu : clair ou foncé selon la section sous la barre */
 (function(){ var h=document.getElementById('header'); if(!h) return; var R=[].slice.call(document.querySelectorAll('[data-nav]'));
   var maj=function(){ var y=h.getBoundingClientRect().bottom, c='dark'; R.forEach(function(r){var b=r.getBoundingClientRect(); if(b.top<=y&&b.bottom>=y) c=r.dataset.nav;}); h.dataset.theme=c==='light'?'light':'dark'; };
   addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj(); })();
+document.querySelectorAll('.eq-index a').forEach(function(a){ a.addEventListener('click',function(e){ var t=document.querySelector(a.getAttribute('href')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }); });
 </script>
 </body></html>
