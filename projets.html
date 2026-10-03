@@ -810,6 +810,20 @@ body{background:var(--soft)}
 #plus.btn--blue:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
 .ex__f,.ex__grp{min-width:0;max-width:100%}
 .ex__row{flex-wrap:wrap;overflow:visible}
+
+/* Pastilles en biais (comme l'ancien site), coins légèrement arrondis */
+.ex .ch{position:relative;isolation:isolate;padding:10px 24px;border:0!important;background:transparent!important;font:inherit;font-size:13.5px;font-weight:500;color:#1E5299;cursor:pointer;transition:color .25s}
+.ex .ch::before{content:"";position:absolute;inset:0;z-index:-1;border:1px solid #1E5299;border-radius:4px;transform:skewX(-20deg);background:#fff;transition:background .25s,border-color .25s}
+.ex .ch:hover{color:#fff}.ex .ch:hover::before{background:#1E5299}
+.ex .ch[aria-pressed="true"]{color:#fff}.ex .ch[aria-pressed="true"]::before{background:#123B6D;border-color:#123B6D}
+
+.ex__row{gap:10px 12px;padding-left:6px}
+.ex__f{flex-direction:column;gap:20px}
+.ex__droite{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.ex__tri{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#123B6D;font-weight:700}
+.ex__tri select{font:inherit;font-size:13px;letter-spacing:0;text-transform:none;font-weight:500;color:var(--black);padding:9px 34px 9px 14px;border:1px solid var(--grey);border-radius:6px;background:#fff;cursor:pointer}
+.ex__clr{border:0;color:#1E5299;font-size:13px;letter-spacing:0;text-transform:none;font-weight:600}
+@media (max-width:760px){.ex__row{flex-wrap:wrap}}
 </style>
 </head><body>
 <header class="header" id="header" data-theme="light">
@@ -880,10 +894,14 @@ body{background:var(--soft)}
     <div class="ex__f">
       <div class="ex__grp"><h3>Année</h3><div class="ex__row" id="fAnnee"></div></div>
       <div class="ex__grp"><h3>Type de projet</h3><div class="ex__row" id="fType"></div></div>
+      <div class="ex__grp"><h3>Service</h3><div class="ex__row" id="fSvc"></div></div>
     </div>
     <div class="ex__bar">
       <span class="ex__n"><b id="nb">0</b> projets</span>
-      <button class="ex__clr" id="clr" hidden>Effacer les filtres</button>
+      <div class="ex__droite">
+        <label class="ex__tri"><span>Trier par</span><select id="tri"><option value="recent">Plus récents</option><option value="ancien">Plus anciens</option><option value="az">A – Z</option></select></label>
+        <button class="ex__clr" id="clr" hidden>[ X ] Effacer la sélection</button>
+      </div>
     </div>
   </section>
 
@@ -935,10 +953,14 @@ const ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 /* ---- filtres générés depuis les données réelles ---- */
 const ANNEES=[...new Set(PROJETS.map(p=>p.annee).filter(Boolean))].sort((a,b)=>b-a);
 const TYPES=[...new Set(PROJETS.map(p=>p.type))];
-const E={annee:null,type:null,q:'',page:1}; const PAR_PAGE=12;
+const SVC_P={"lasik-md-partner-with-pierre-lavoie": ["ambassadors"], "gsp": ["hosts"], "hutson": ["hosts"], "zacharybolduc": ["ambassadors", "marketing"], "maximelalonde-marieevedicaire": ["hosts"], "leadershipaufeminin": ["speakers"], "cibc": ["ambassadors"], "francisbouillonconferencier": ["speakers"], "matthewbergeron": ["hosts"], "mattforte": ["hosts"], "kirkmclean": ["hosts"], "sadc": ["ambassadors", "marketing"], "luc-robitaille-president-and-former-player-of-the-los-angele": ["hosts"], "patrick-laine-albilegeant-genesislaval": ["ambassadors"], "katerine-savard-en-conference-aupres-des-jeunes": ["speakers"], "steve-begin": ["ambassadors", "marketing"], "manon-rheaume-patrice-bernier-pantheondessports": ["hosts"], "desbiens-daoust-et-fecteau-pour-celebrer-le-hockey-feminin-a": ["hosts"], "chantalmachabee-timhortons": ["ambassadors", "marketing"], "mbilli-rochette-lambert-and-lacroix": ["hosts"], "golf-phoenix": ["hosts"], "marie-eve-dicaire": ["speakers"], "dave-morissette-offers-an-impactful-corporate-conference": ["hosts", "speakers"], "bennmathurinvapotercestpastagame": ["marketing", "speakers"], "brunysuringuestofhonoratthekinballquebecgala": ["ambassadors", "hosts"], "patricebernierisoneofsubwaysnewabassadors": ["speakers"], "chantalmachabeeinhighdemandthisspringseason": ["speakers"], "bruno-gervais": ["hosts"], "samuel-piette-personnalite-sportive-pour-le-lancement-dun-co": ["hosts"], "nick-suzuki": ["ambassadors"], "bruny-surin-steve-begin-unite-to-offer-expert-advice-at-the-": ["speakers"], "chantal-machabee-guest-speaker-for-a-financial-institution": ["speakers"], "sebastientoutantproudambassadorofesurf": ["ambassadors"], "bennedictmathurinameetingwithhighschoolstudents": ["marketing", "speakers"], "mariannestgelaisambassadorfortheeatlocalmorethanevercampaign": ["ambassadors", "marketing"], "clauderaymondpitchesthenewbaseballsteakfromlepiciermetro": ["hosts", "marketing"], "pk-silk": ["ambassadors", "marketing"], "sergesavardgestofhonorcorporatebox": ["hosts"], "joannierochetteperseveranceselfcare": ["hosts", "speakers"], "patricebernierinspireshighschoolstudents": ["speakers"], "arberxhekaj": ["hosts"], "stevebegindys": ["ambassadors", "marketing"], "guycarbonneaucorpo": ["hosts", "speakers"], "mathieu-dandenault-a-stanley-cup-winners-wisdom-on-teamwork-": ["speakers"], "guyboucherconferenceleadership": ["speakers"], "patriceberniersubway": ["speakers"], "maudeaimeeleblancambassadricestpacome": ["ambassadors"], "steve-begin-inspires-high-school-students": ["speakers"], "guy-boucher-delivers-a-mobilizing-and-inspiring-conference-t": ["speakers"], "chantalmachabee": ["hosts"], "galamichelacroix": ["hosts"], "gsp-kim-clavel-et-patrice-bernier-reunis-a-levenement-topp": ["hosts"], "kristelngarlemconference": ["speakers"], "breaktheillusion": ["marketing", "speakers"], "patricebriseboiscibc": ["ambassadors"], "the-power-of-leadership-chantal-machabee-guest-speaks-at-cro": ["speakers"], "vincent-lecavalier-extends-a-warm-welcome-to-our-corporate-c": ["ambassadors", "marketing"], "kimclaveljeanbleu": ["ambassadors", "marketing"], "hemaquebec": ["ambassadors", "marketing"], "bruny-surin-et-chantal-machabee-ensemble-sur-linclusion-et-l": ["ambassadors", "hosts"], "patrickroymariotremblayuber": ["hosts"], "marie-evedicaireconference": ["speakers"], "pierre-lavoie-encourages-canadians-to-enjoy-winter-with-dest": ["ambassadors"], "patrickroymariotremblayubereats": ["ambassadors"], "rdvmvp": ["hosts"], "tomas-tuna-tatar-joins-forces-with-kuto": ["ambassadors"], "mvp-group-agency-makes-a-strong-showing-at-its-first-rendez-": ["marketing", "speakers"], "chantal-machabee-renews-her-agreement-with-lexus-laval": ["ambassadors", "hosts"], "steve-begin-back-home-for-a-conference-on-school-perseveranc": ["speakers"], "samuel-piette-is-the-animator-of-sports-video-clips-for-chil": ["ambassadors", "hosts", "marketing"], "sylvain-guimond-delivers-an-inspiring-conference-as-part-of-": ["speakers"], "joannie-rochette-and-alexandre-bilodeau-meet-the-carabins": ["speakers"], "mvp-group-agency-goes-virtual": ["speakers"], "bruny-surin-delivers-a-nice-speech-for-nestor-real-estate-ag": ["speakers"], "tomas-tatar-joins-mvp-group": ["hosts"], "guy-carbonneau-endorse-lequipe-dussault-of-remax-platine": ["ambassadors"], "guy-cabonneau-starring-in-mcdonalds-new-commercial-with-marc": ["ambassadors", "marketing"]};
+const SVC=[['speakers','Conférenciers'],['ambassadors','Ambassadeurs et porte-parole'],['hosts','Invités d’honneur'],['marketing','Campagnes et influenceurs']];
+const E={annee:null,type:null,svc:null,tri:'recent',q:'',page:1}; const PAR_PAGE=12;
 (function lireURL(){ const u=new URLSearchParams(location.search);
+  if(u.get('service')) E.svc=u.get('service');
   if(u.get('year')) E.annee=+u.get('year'); if(u.get('type')) E.type=u.get('type'); if(u.get('q')) E.q=u.get('q'); })();
 $('#fAnnee').innerHTML=['<button class="ch" data-a="" aria-pressed="true">Toutes</button>',...ANNEES.map(a=>`<button class="ch" data-a="${a}" aria-pressed="false">${a}</button>`)].join('');
+$('#fSvc').innerHTML=['<button class="ch" data-s="" aria-pressed="true">Tous</button>',...SVC.map(([k,l])=>`<button class="ch" data-s="${k}" aria-pressed="false">${l}</button>`)].join('');
 $('#fType').innerHTML=['<button class="ch" data-t="" aria-pressed="true">Tous</button>',...TYPES.map(t=>`<button class="ch" data-t="${t}" aria-pressed="false">${t}</button>`)].join('');
 
 function filtrer(){
@@ -946,6 +968,7 @@ function filtrer(){
   return PROJETS.filter(p=>{
     if(E.annee && p.annee!==E.annee) return false;
     if(E.type && p.type!==E.type) return false;
+    if(E.svc && !(SVC_P[p.id]||[]).includes(E.svc)) return false;
     if(q){ const foin=[p.titre,p.titreEN,p.marque,p.type,String(p.annee),p.resume,...p.personnalites.map(x=>x.nom)].join(' ').toLowerCase();
       if(!foin.includes(q)) return false; }
     return true;
@@ -966,6 +989,9 @@ function carte(p){
 }
 function rendre(){
   const r=filtrer();
+  if(E.tri==='ancien') r.sort((a,b)=>(a.annee||0)-(b.annee||0));
+  else if(E.tri==='az') r.sort((a,b)=>a.titre.localeCompare(b.titre,'fr',{sensitivity:'base'}));
+  else r.sort((a,b)=>(b.annee||0)-(a.annee||0));
   $('#nb').textContent=r.length;
   const vis=r.slice(0,E.page*PAR_PAGE);
   $('#grid').innerHTML = r.length ? vis.map(carte).join('') : `<div class="pg__vide"><b>Aucun projet ne correspond.</b>Essayez un autre mot ou retirez un filtre.</div>`;
@@ -973,14 +999,17 @@ function rendre(){
   plus.textContent=`Voir plus de projets (${r.length-vis.length})`;
   $$('#fAnnee .ch').forEach(b=>b.setAttribute('aria-pressed', String((b.dataset.a?+b.dataset.a:null)===E.annee)));
   $$('#fType .ch').forEach(b=>b.setAttribute('aria-pressed', String((b.dataset.t||null)===E.type)));
-  $('#clr').hidden = !(E.annee||E.type||E.q);
-  const u=new URLSearchParams(); if(E.annee)u.set('year',E.annee); if(E.type)u.set('type',E.type); if(E.q)u.set('q',E.q);
+  $$('#fSvc .ch').forEach(b=>b.setAttribute('aria-pressed', String((b.dataset.s||null)===E.svc)));
+  $('#clr').hidden = !(E.annee||E.type||E.svc||E.q);
+  const u=new URLSearchParams(); if(E.annee)u.set('year',E.annee); if(E.type)u.set('type',E.type); if(E.svc)u.set('service',E.svc); if(E.q)u.set('q',E.q);
   try{ history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:'')); }catch(e){}
 }
 $('#fAnnee').addEventListener('click',e=>{const b=e.target.closest('.ch'); if(!b)return; E.annee=b.dataset.a?+b.dataset.a:null; E.page=1; rendre();});
 $('#fType').addEventListener('click',e=>{const b=e.target.closest('.ch'); if(!b)return; E.type=b.dataset.t||null; E.page=1; rendre();});
 let tm; $('#q').addEventListener('input',e=>{clearTimeout(tm); tm=setTimeout(()=>{E.q=e.target.value; E.page=1; rendre();},140);});
-$('#clr').addEventListener('click',()=>{E.annee=null;E.type=null;E.q='';E.page=1;$('#q').value='';rendre();});
+$('#fSvc').addEventListener('click',e=>{const b=e.target.closest('.ch'); if(!b)return; E.svc=b.dataset.s||null; E.page=1; rendre();});
+$('#tri').addEventListener('change',e=>{E.tri=e.target.value; E.page=1; rendre();});
+$('#clr').addEventListener('click',()=>{E.annee=null;E.type=null;E.svc=null;E.q='';E.page=1;$('#q').value='';rendre();});
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
 $('#q').value=E.q; rendre();
 

@@ -835,6 +835,13 @@ body{background:var(--soft);color:var(--black)}
 .burger[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
 @media (min-width:1024px){.mm{display:none}}
+
+/* Pastilles en biais (comme l'ancien site), coins légèrement arrondis */
+.chips .chip{position:relative;isolation:isolate;padding:10px 24px;border:0!important;background:transparent!important;font:inherit;font-size:13.5px;font-weight:500;color:#1E5299;cursor:pointer;transition:color .25s}
+.chips .chip::before{content:"";position:absolute;inset:0;z-index:-1;border:1px solid #1E5299;border-radius:4px;transform:skewX(-20deg);background:#fff;transition:background .25s,border-color .25s}
+.chips .chip:hover{color:#fff}.chips .chip:hover::before{background:#1E5299}
+.chips .chip[aria-pressed="true"]{color:#fff}.chips .chip[aria-pressed="true"]::before{background:#123B6D;border-color:#123B6D}
+.chips__row{gap:10px 12px;padding-left:6px}
 </style>
 </head>
 <body>
