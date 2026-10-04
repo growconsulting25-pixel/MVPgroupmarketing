@@ -1022,7 +1022,44 @@ ul{list-style:none}
 /* photo Personnalités + Catégories : très subtile */
 .flux__bg{opacity:.07}
 .flux__bg::after{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.7) 55%,rgba(255,255,255,.4) 100%)}
+
+/* ---------- Hero centré : titre, recherche, téléphone ---------- */
+.hero__content--c{inset:0;max-width:none;margin:0 auto;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 2vh) var(--gutter) clamp(70px,10vh,120px)}
+.hero__content--c h1{max-width:16ch;margin:0 auto;font-size:clamp(42px,6.2vw,112px)}
+.hero__content--c ~ .hero__scroll{display:none}
+.hero__q button svg{display:none;width:20px;height:20px;color:#fff}
+.hero__k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:22px}
+.hero__content--c .lede{margin:24px auto 30px;max-width:560px;color:rgba(255,255,255,.82)}
+.hero__q{display:flex;align-items:center;width:min(640px,100%);height:62px;padding:0 6px 0 22px;border-radius:999px;background:rgba(255,255,255,.97);color:#0b0b0b;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.hero__q svg{width:20px;height:20px;flex:none;color:#1E5299}
+.hero__q input{flex:1;min-width:0;height:100%;border:0;background:transparent;padding:0 14px;font:inherit;font-size:16px;color:#0b0b0b;outline:none}
+.hero__q input::-webkit-search-cancel-button{display:none}
+.hero__q button{height:50px;padding:0 26px;border-radius:999px;background:linear-gradient(135deg,#1E5299,#123B6D);color:#fff;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,color .3s}
+.hero__q button:hover{background:var(--gold);color:#050505}
+.hero__q:focus-within{box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 0 4px rgba(197,162,83,.45)}
+.hero__tel{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-size:15px;color:rgba(255,255,255,.85);transition:color .3s}
+.hero__tel b{color:#fff;font-weight:700;letter-spacing:.02em}
+.hero__tel svg{width:17px;height:17px;color:var(--gold)}
+.hero__tel:hover b{color:var(--gold)}
+@media (max-width:760px){
+  .hero__content--c{padding:calc(var(--nav-h) + 2vh) var(--gutter) 70px}
+  .hero__content--c h1{font-size:13vw}
+  .hero__k{font-size:9.5px;letter-spacing:.14em;margin-bottom:16px;white-space:nowrap}
+  .hero__content--c .lede{font-size:15px;margin:16px auto 22px}
+  .hero__q{height:54px;padding:0 5px 0 16px}
+  .hero__q input{font-size:15px;padding:0 10px}
+  .hero__q button{height:44px;width:44px;padding:0;display:grid;place-items:center}
+  .hero__q button span{display:none}
+  .hero__q button svg{display:block}
+  .hero__tel{font-size:14px}
+  .hero__scroll{display:none}
+}
+/* ---------- Intro : plus besoin d'une section pleine hauteur ---------- */
+.intro__title{max-width:22ch}
+.intro{padding:clamp(80px,12vh,140px) var(--gutter) clamp(60px,10vh,120px)}
+@media (max-width:760px){.intro{padding:64px var(--gutter) 56px}}
 </style>
+<link rel="stylesheet" href="assets/ui.css">
 </head>
 <body>
 <a class="sr" href="#contact">Skip to contact</a>
@@ -1122,12 +1159,16 @@ ul{list-style:none}
   <div class="hero__overlay"></div>
   <div class="vfail" id="vfail"><b>The video files were not found.</b>You are most likely viewing index.html from inside the ZIP, or moved it away from the <code>assets</code> folder. Unzip the whole folder first, then open index.html from the unzipped folder.</div>
   <button class="vplay" id="vplay" aria-label="Play film"><svg width="26" height="30" viewBox="0 0 26 30" fill="currentColor"><path d="M0 0l26 15L0 30z"/></svg></button>
-  <div class="hero__content" id="heroContent">
-    
+  <div class="hero__content hero__content--c" id="heroContent">
+    <span class="hero__k" data-hero-fade data-i18n="hero.k">Conférenciers · Ambassadeurs · Porte-parole</span>
     <h1 class="display" id="heroTitle" data-i18n-html="hero.h1">Accédez aux <span class="gold">icônes</span> du sport.</h1>
-    
-    <p class="lede" data-hero-fade data-i18n="hero.lede">Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.</p>
-    <div class="hero__cta" data-hero-fade><a class="btn btn--blue" href="#contact"><span data-i18n="cta.work">Travailler avec nous</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <p class="lede" data-hero-fade data-i18n="hero.lede2">Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.</p>
+    <form class="hero__q" action="personnalites.html" method="get" role="search" data-hero-fade>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" autocomplete="off" aria-label="Rechercher une personnalité" placeholder="Rechercher par nom, sport, expertise…" data-i18n-ph="hero.ph">
+      <button type="submit" aria-label="Rechercher"><span data-i18n="hero.go">Rechercher</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <a class="hero__tel" href="tel:+15145823306" data-hero-fade><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span data-i18n="hero.call">Parlez à un agent :</span> <b>514-582-3306</b></a>
   </div>
   <div class="hero__scroll" data-hero-fade><span data-i18n="hero.scroll">Défiler</span><i></i></div>
 
@@ -1138,7 +1179,7 @@ ul{list-style:none}
   <span class="grille" aria-hidden="true" style="right:7%;top:16%;width:300px;height:220px"></span>
     <div class="intro__bg" aria-hidden="true"></div>
     <div class="intro__top" data-reveal>
-      <h2 class="intro__title" data-i18n-html="intro.h2">Légendes et personnalités du sport, <em>au service de votre compagnie.</em></h2>
+      <h2 class="intro__title" data-i18n-html="intro.h2">Associez une icône du sport <em>à votre entreprise.</em></h2>
       <div class="intro__cols">
         <p class="intro__p" data-i18n="intro.p1">Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.</p>
         <p class="intro__p intro__p--2" data-i18n="intro.p2">Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.</p>
@@ -1333,7 +1374,7 @@ const I18N = {
   'hero.label':'MVP Group — Marketing sportif','hero.h1':'Accédez aux <span class="gold">icônes</span> du sport.',
   "hero.lede":"Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.",
   'hero.scroll':'Défiler','cta.work':'Travailler avec nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités',
-  'intro.label':'Notre expertise','intro.h2':'Légendes et personnalités du sport, <em>au service de votre compagnie.</em>','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
+  'intro.label':'Notre expertise','intro.h2':'Associez une icône du sport <em>à votre entreprise.</em>','hero.k':'Conférenciers · Ambassadeurs · Porte-parole','hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Rechercher par nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un agent :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
   'orbit.h':'Personnalités','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
@@ -1348,7 +1389,7 @@ const I18N = {
   'hero.label':'MVP Group — Sports Marketing','hero.h1':'Access the <span class="gold">icons</span> of sport.',
   "hero.lede":"Brand ambassadors, keynote speakers and spokespersons: pair a sports personality with your business to raise awareness, establish credibility and increase sales.",
   'hero.scroll':'Scroll','cta.work':'Work with us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities',
-  'intro.label':'Our expertise','intro.h2':'Legends and sports personalities, <em>working for your company.</em>','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
+  'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business.</em>','hero.k':'Speakers · Ambassadors · Spokespersons','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Search by name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an agent:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
   'orbit.h':'Personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
@@ -1977,5 +2018,6 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
     var t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); });
 })();
 </script>
+<script src="assets/ui.js"></script>
 </body>
 </html>

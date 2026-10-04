@@ -26,7 +26,7 @@
       h+='</div>';
     });
     var cta=document.querySelector('.header__right .btn');
-    if(cta) h+='<a class="btn btn--gold mm__cta" href="'+cta.getAttribute('href')+'" data-i18n="cta.work">'+cta.textContent+'</a>';
+    if(cta) h+='<a class="btn btn--gold mm__cta" href="'+cta.getAttribute('href')+'"'+(cta.dataset.i18n?' data-i18n="'+cta.dataset.i18n+'">'+cta.textContent:'><span data-ui="find">'+cta.textContent+'</span>')+'</a>';
     mm.innerHTML=h; document.body.appendChild(mm);
     var ouvrir=function(o){ mm.classList.toggle('est-ouvert',o); html.classList.toggle('mm-ouvert',o); burger.setAttribute('aria-expanded',o); document.body.style.overflow=o?'hidden':''; };
     burger.addEventListener('click',function(){ ouvrir(!mm.classList.contains('est-ouvert')); });

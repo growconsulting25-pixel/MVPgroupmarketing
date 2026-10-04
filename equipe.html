@@ -912,6 +912,7 @@ body{background:var(--soft);color:var(--black)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
 @media (min-width:1024px){.mm{display:none}}
 </style>
+<link rel="stylesheet" href="assets/ui.css">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -1091,5 +1092,6 @@ document.documentElement.classList.add('js-reveal');
   addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj(); })();
 document.querySelectorAll('.eq-index a').forEach(function(a){ a.addEventListener('click',function(e){ var t=document.querySelector(a.getAttribute('href')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }); });
 </script>
+<script src="assets/ui.js"></script>
 <script src="assets/nav.js"></script>
 </body></html>
