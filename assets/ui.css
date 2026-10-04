@@ -90,3 +90,21 @@
 .dmd__c span b{font-weight:inherit}
 .mobile-menu > .btn.ui-find{background:#123B6D;color:#fff}
 .mm .mm__cta.btn{background:#123B6D;color:#fff}
+
+/* mobile : barre d'actions en bas (Travailler avec nous / Nous appeler) */
+.bb{display:none}
+@media (max-width:760px){
+  .bb{position:fixed;left:0;right:0;bottom:0;z-index:125;display:grid;grid-template-columns:1fr 1fr;height:calc(58px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#fff;box-shadow:0 -8px 24px rgba(5,5,5,.18);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .bb__b{display:flex;align-items:center;justify-content:center;gap:8px;padding:0 8px;font-weight:700;font-size:14px;white-space:nowrap}
+  .bb__b svg{width:19px;height:19px;flex:none}
+  .bb__b--o{color:#123B6D;background:#fff}
+  .bb__b--w{color:#fff!important;background:linear-gradient(135deg,#1E5299,#123B6D)}
+  .bb__b:active{filter:brightness(.92)}
+  .mm-ouvert .bb,body:has(.mobile-menu.open) .bb,.dmd-ouvert .bb{transform:translateY(110%)}
+  body{padding-bottom:58px}
+  .aide-b,.aide-c{display:none!important}
+  /* la bande bleue se retire en défilant, le menu remonte */
+  .tb-cache .tb{transform:translateY(-100%)}
+  .header{transition:top .4s cubic-bezier(.2,.7,.2,1),background .45s,height .45s,box-shadow .45s,color .6s,transform .5s!important}
+  .tb-cache .header{top:0!important}
+}

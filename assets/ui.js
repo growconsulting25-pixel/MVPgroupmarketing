@@ -6,7 +6,7 @@
     fr:{msg:"L'Agence de Marketing Sportif <i>#1</i> au Québec",work:'Travailler avec nous',call:'Appelez-nous',find:'Trouver un athlète',
       bulle:'Une question ?',aideT:"Besoin d'aide ?",aideS:'Nous sommes là pour vous',
       aideP:"Dites-nous ce que vous cherchez : conférencier, ambassadeur, invité d'honneur… Un agent vous répond rapidement avec des propositions.",
-      start:'Démarrer une demande',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
+      start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
       k:'Démarrer une demande',t:'Parlez-nous de votre projet',p:"Quelques informations suffisent. Un agent de MVP Group vous revient rapidement.",
       nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Message',
       types:['Choisir…','Conférence','Ambassadeur / porte-parole','Médias sociaux / influence','Invité d\'honneur','Événement corporatif','Autre'],
@@ -17,7 +17,7 @@
     en:{msg:'The <i>#1</i> Sports Marketing Agency in Québec',work:'Work with us',call:'Call us',find:'Find an athlete',
       bulle:'Questions?',aideT:'Need help?',aideS:"We're here for you",
       aideP:"Tell us what you're looking for: keynote speaker, ambassador, guest of honor… An agent will get back to you quickly with suggestions.",
-      start:'Start inquiry',appeler:'Call '+TEL,rapide:'Fast reply · Mon-Fri 9am-5pm',fermer:'Close',
+      start:'Start inquiry',appel2:'Call us',appeler:'Call '+TEL,rapide:'Fast reply · Mon-Fri 9am-5pm',fermer:'Close',
       k:'Start inquiry',t:'Tell us about your project',p:'A few details are enough. An MVP Group agent will get back to you quickly.',
       nom:'Name',ent:'Company',mail:'Email',tel:'Phone',type:'Project type',date:'Approximate date',perso:'Preferred personality',message:'Message',
       types:['Choose…','Keynote','Ambassador / spokesperson','Social media / influence','Guest of honor','Corporate event','Other'],
@@ -103,6 +103,14 @@
       .catch(function(){ err.hidden=false; err.innerHTML=D[L()].err; })
       .then(function(){ go.disabled=false; go.querySelector('span').textContent=D[L()].envoyer; });
   });
+
+  /* 5. mobile : barre d'actions fixe en bas, la bande bleue se retire en défilant */
+  var bb=mk('div','bb','<button type="button" class="bb__b bb__b--o" data-ui-ouvrir>'+I.bulle+'<span data-ui="work"></span></button>'+
+    '<a class="bb__b bb__b--w" href="'+TELH+'">'+I.tel+'<span data-ui="appel2"></span></a>');
+  body.appendChild(bb);
+  var html=document.documentElement;
+  var defile=function(){ html.classList.toggle('tb-cache', scrollY>60); };
+  addEventListener('scroll',defile,{passive:true}); defile();
 
   /* langue */
   function appliquer(){
