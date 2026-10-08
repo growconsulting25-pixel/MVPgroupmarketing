@@ -854,6 +854,9 @@ const PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"
 const ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const id=new URLSearchParams(location.search).get('id');
 const p=PROJETS.find(x=>x.id===id)||PROJETS[0];
+/* titre au féminin quand la personnalité principale est une femme */
+const FEMMES=new Set(['kim-clavel','marie-eve-dicaire','eve-gascon','manon-rheaume','valerie-letourneau','aleksandra-wozniak','nancy-kerrigan','nathalie-lambert','kristel-ngarlem','joannie-rochette','katerine-savard','marianne-st-gelais','chantal-machabee','elizabeth-rancourt','maude-aimee-leblanc','lysanne-richard']);
+const pType=(FEMMES.has(p.personnalites[0]&&p.personnalites[0].id)&&({'Ambassadeur':'Ambassadrice','Conférencier':'Conférencière','Animateur':'Animatrice'})[p.type])||p.type;
 document.title=`${p.titre} — ${p.marque} | MVP Group`;
 
 const noms=p.personnalites.map(x=>x.id?`<a href="profil.html?id=${x.id}">${x.nom}</a>`:x.nom).join(', ');
@@ -879,12 +882,12 @@ $('#projet').innerHTML=`
   <div class="ph__bg" id="phBg"><img src="${cover}" alt=""></div>
   <span class="ph__big" id="phBig">${p.marque}</span>
   <div class="ph__in">
-    <p class="ph__brand"><i></i>${p.marque} · ${p.type}</p>
+    <p class="ph__brand"><i></i>${p.marque} · ${pType}</p>
     <h1 class="ph__t">${titreHero}</h1>
     <div class="ph__meta">
       <div><b>Personnalité${p.personnalites.length>1?'s':''}</b><span>${noms}</span></div>
       <div><b>Marque</b><span>${p.marque}</span></div>
-      <div><b>Type de projet</b><span>${p.type}</span></div>
+      <div><b>Type de projet</b><span>${pType}</span></div>
       <div><b>Année</b><span>${p.annee||''}</span></div>
     </div>
   </div>

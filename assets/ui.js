@@ -13,7 +13,7 @@
       note:'Vos informations restent confidentielles et servent uniquement à répondre à votre demande.',
       okPa:"L'équipe MVP communiquera avec vous sous peu au sujet de votre projet avec %.",
       nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Message',
-      types:['Conférencier','Ambassadeur','Porte-parole','Animateur','Invité d\'honneur','Influenceur / médias sociaux','Événement corporatif','Autre'],
+      types:['Conférencier(ère)','Ambassadeur(drice)','Porte-parole','Animateur(trice)','Invité(e) d\'honneur','Influenceur(euse) / médias sociaux','Événement corporatif','Autre'],
       persoPh:'Facultatif — ex. : un olympien, un joueur du Canadien',msgPh:'Objectif, public, budget, lieu…',
       envoyer:'Envoyer la demande',envoi:'Envoi…',req:'Merci de remplir les champs obligatoires (*).',
       err:"L'envoi n'a pas fonctionné. Écrivez-nous à <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> ou appelez le <a href=\""+TELH+"\">"+TEL+"</a>.",
