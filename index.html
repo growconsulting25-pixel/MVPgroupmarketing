@@ -446,8 +446,8 @@ ul{list-style:none}
 .footer a:hover{color:var(--gold)}
 /* Le cache noir laisse passer la video uniquement dans les lettres. */
 /* Le vrai logo MVP sert de pochoir : la video n'apparait que dans les lettres. */
-.footer__cut{position:relative;width:100%;aspect-ratio:749/168;overflow:hidden;align-self:stretch;
-  -webkit-mask-image:url('assets/mvp-lettrage-v3.png');mask-image:url('assets/mvp-lettrage-v3.png');
+.footer__cut{position:relative;width:100%;aspect-ratio:531/181;overflow:hidden;align-self:stretch;
+  -webkit-mask-image:url('assets/mvp-lettrage-v4.svg');mask-image:url('assets/mvp-lettrage-v4.svg');
   -webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   -webkit-mask-position:center;mask-position:center}
 .footer__cut-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
@@ -1033,6 +1033,38 @@ ul{list-style:none}
 .footer .footer__phrase{max-width:none}
 .footer__cut{width:min(78%,1080px);justify-self:start;align-self:auto}
 @media (max-width:760px){.footer__cut{width:88%}.footer__top{gap:22px}}
+
+/* =====================================================================
+   Rythme vertical uniforme : le même espace (--g) entre le contenu et le bord
+   de chaque section. Deux sections de même couleur qui se suivent partagent
+   cet espace (moitié chacune), pour ne former qu'un seul bloc.
+   ===================================================================== */
+:root{--g:clamp(84px,12vh,128px)}
+@media (max-width:760px){:root{--g:64px}.services{padding-bottom:calc(var(--g)/2 - 20px)!important}}
+.intro{padding-top:var(--g)!important;padding-bottom:var(--g)!important}
+.services{padding-top:var(--g)!important;padding-bottom:calc(var(--g)/2)!important}
+.brands .slide{padding-top:0!important;padding-bottom:0!important;min-height:0!important}
+.brands .marquee{padding-top:0!important}
+.brands{padding-top:calc(var(--g)/2 - 14px)!important;padding-bottom:var(--g)!important}
+.brands__pin{height:auto!important;min-height:0!important}
+.talents{padding-top:var(--g)!important;padding-bottom:calc(var(--g)/2 - 24px)!important}
+.talents__rail{padding-bottom:24px!important;margin-bottom:0!important}
+.explore{padding-top:calc(var(--g)/2)!important;padding-bottom:var(--g)!important}
+.explore__pin{padding-top:0!important;padding-bottom:0!important;min-height:0!important}
+.projets{padding-top:var(--g)!important;padding-bottom:var(--g)!important}
+.news{padding-top:var(--g)!important;padding-bottom:var(--g)!important}
+.footer{padding-top:var(--g)!important}
+
+/* ---------- Fondus entre les sections : la couleur glisse d'une section à l'autre ---------- */
+/* la vidéo du haut se fond dans le blanc de l'intro */
+.intro{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(var(--g)*.9));mask-image:linear-gradient(180deg,transparent 0,#000 calc(var(--g)*.9))}
+.services,.flux,.projets,.news{isolation:isolate}
+.services::after,.flux::after,.projets::after,.news::after{content:"";position:absolute;left:0;right:0;top:0;height:calc(var(--g)*1.1);z-index:-1;pointer-events:none}
+.services::after{background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.55) 35%,rgba(255,255,255,0) 100%)}
+.flux::after{background:linear-gradient(180deg,#0E2A4F 0%,rgba(14,42,79,.5) 35%,rgba(14,42,79,0) 100%)}
+.projets::after{background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.55) 35%,rgba(255,255,255,0) 100%)}
+.news::after{background:linear-gradient(180deg,#0E2A4F 0%,rgba(14,42,79,.55) 35%,rgba(14,42,79,0) 100%)}
+
 /* ---------- Hero centré : titre, recherche, téléphone ---------- */
 .hero__content--c{inset:0;max-width:none;margin:0 auto;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 2vh) var(--gutter) clamp(70px,10vh,120px)}
 .hero__content--c h1{max-width:16ch;margin:0 auto;font-size:clamp(42px,6.2vw,112px)}
@@ -1077,8 +1109,8 @@ ul{list-style:none}
 <!-- ================= HEADER ================= -->
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="#top" aria-label="MVP Group Agency — home">
-    <img class="logo--white" src="assets/mvp-logo-blanc-v2.png" alt="MVP Group Agency">
-    <img class="logo--black" src="assets/mvp-logo-noir-v2.png" alt="" aria-hidden="true">
+    <img class="logo--white" src="assets/mvp-logo-blanc.svg" alt="MVP Sports Marketing">
+    <img class="logo--black" src="assets/mvp-logo-noir.svg" alt="" aria-hidden="true">
   </a>
   <nav class="header__nav" aria-label="Primary">
     <div class="navitem">
@@ -1137,7 +1169,7 @@ ul{list-style:none}
   <div class="rp__fond" data-fermer></div>
   <nav class="rp__in" aria-label="Menu">
     <button class="rp__x" data-fermer aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <img class="rp__logo" src="assets/mvp-logo-blanc-v2.png" alt="MVP Group">
+    <img class="rp__logo" src="assets/mvp-logo-blanc.svg" alt="MVP Group">
     <div class="rp__liens" id="rpLiens"></div>
     <div class="rp__pied">
       <a class="btn btn--gold" href="#demande" data-fermer-lien data-i18n="cta.work">Travailler avec nous</a>
@@ -1150,7 +1182,7 @@ ul{list-style:none}
 <!-- Index des sections : numéro de la section en cours, cliquable -->
 <nav class="sindex" id="sindex" aria-label="Sections de la page"></nav>
 <div class="mobile-menu" id="mobileMenu" hidden>
-  <img src="assets/mvp-logo-blanc-v2.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
+  <img src="assets/mvp-logo-blanc.svg" alt="" style="height:52px;width:auto;margin-bottom:18px">
   <a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a><a href="#services" data-i18n="nav.services">Services</a><a href="projets.html" data-i18n="nav.projects">Projets</a><a href="agence.html" data-i18n="nav.agency">Agence</a><a href="#contact" data-i18n="nav.contact">Contact</a>
   <a class="btn btn--gold" href="#demande" style="font-size:12px;align-self:flex-start;margin-top:16px" data-i18n="cta.work">Travailler avec nous</a>
 </div>
@@ -1269,38 +1301,6 @@ ul{list-style:none}
 </section>
 
 <!-- ================= SECTION 8 — FORMULAIRE DE DEMANDE ================= -->
-<section class="demande" id="demande" data-nav="dark" aria-label="Démarrer un projet" data-plus="t:64:lg l:86 b:30 r:40">
-  <span class="grille" aria-hidden="true" style="left:2%;bottom:40px;width:380px;height:230px"></span>
-  <div class="sec__bg" aria-hidden="true" style="background-image:url('assets/lieux/olympics.jpg')"></div>
-  <div class="demande__in">
-    <div class="demande__txt" data-reveal>
-      <p class="label label--blue" data-i18n="dm.k">Démarrer un projet</p>
-      <h2 class="demande__t display" data-i18n-html="dm.h">Parlez-nous de <span class="gold">votre projet.</span></h2>
-      <p class="demande__p" data-i18n="dm.p">Conférence, campagne, gala ou événement corporatif : décrivez votre besoin. Nous trouvons la bonne personnalité et nous vous revenons rapidement.</p>
-      <ul class="demande__info"><li><a href="tel:+15145823306">514-582-3306</a></li><li><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
-    </div>
-    <div class="demande__box" data-reveal>
-      <form class="demande__f" id="demForm" novalidate>
-        <div class="dm__g">
-          <label class="dm__c"><span data-i18n="dm.nom">Nom *</span><input name="nom" autocomplete="name" required></label>
-          <label class="dm__c"><span data-i18n="dm.ent">Entreprise</span><input name="entreprise" autocomplete="organization"></label>
-          <label class="dm__c"><span data-i18n="dm.mail">Courriel *</span><input name="courriel" type="email" autocomplete="email" required></label>
-          <label class="dm__c"><span data-i18n="dm.tel">Téléphone</span><input name="telephone" type="tel" autocomplete="tel"></label>
-          <label class="dm__c"><span data-i18n="dm.type">Type de projet</span><select name="type" id="demType"></select></label>
-          <label class="dm__c"><span data-i18n="dm.date">Date approximative</span><input name="date" data-i18n-ph="dm.dateph" placeholder="Ex. : juin 2027"></label>
-          <label class="dm__c dm__c--l"><span data-i18n="dm.pers">Personnalité souhaitée (facultatif)</span><input name="personnalite"></label>
-          <label class="dm__c dm__c--l"><span data-i18n="dm.msg">Message</span><textarea name="message" rows="5"></textarea></label>
-        </div>
-        <p class="demande__err" id="demErr" role="alert" hidden></p>
-        <button class="btn btn--gold demande__go" type="submit" data-i18n="dm.send">Envoyer la demande</button>
-      </form>
-      <div class="demande__ok" id="demOk" hidden>
-        <h3 data-i18n="dm.okh">Merci, votre demande est envoyée.</h3>
-        <p data-i18n="dm.okp">L'équipe MVP communiquera avec vous sous peu.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ================= SECTION 9 — ACTUALITÉS ================= -->
 <section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="t:40 b:92:lg l:46 r:8">
@@ -1874,36 +1874,6 @@ function bindCats(){ rows.forEach((r,i)=>{const b=$('.cat__btn',r);
 }); }
 bindCats();
 setCat(0);
-/* =====================================================================
-   SECTION 8 — FORMULAIRE DE DEMANDE
-   Envoi en JSON (POST) vers FORM_ENDPOINT, le même point de terminaison que
-   le formulaire des profils. En cas d'échec, le formulaire le dit et donne
-   le téléphone : aucune demande n'est perdue en silence.
-   ===================================================================== */
-const FORM_ENDPOINT='/api/demande';
-const TYPES=[{fr:'Conférence',en:'Keynote'},{fr:'Campagne de marque',en:'Brand campaign'},{fr:'Événement corporatif',en:'Corporate event'},{fr:'Apparition médiatique',en:'Media appearance'},{fr:'Événement caritatif',en:'Charity event'},{fr:'Autre',en:'Other'}];
-function renderTypes(){ const sel=$('#demType'), v=sel.value;
-  sel.innerHTML=`<option value="">${t('dm.choose')}</option>`+TYPES.map(x=>`<option value="${x.fr}">${L(x)}</option>`).join(''); sel.value=v; }
-renderTypes();
-(function(){
-  const form=$('#demForm'), err=$('#demErr'), ok=$('#demOk');
-  form.addEventListener('submit',async e=>{
-    e.preventDefault(); err.hidden=true;
-    const champs=[...form.querySelectorAll('[required]')];
-    champs.forEach(c=>c.closest('.dm__c').classList.toggle('est-invalide',!c.checkValidity()));
-    const bad=champs.find(c=>!c.checkValidity());
-    if(bad){ err.textContent=t('dm.req'); err.hidden=false; bad.focus(); return; }
-    const go=form.querySelector('.demande__go'); go.disabled=true;
-    const data=Object.fromEntries(new FormData(form)); data.page=location.href;
-    try{
-      const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-      if(!r.ok) throw new Error(r.status);
-      form.hidden=true; ok.hidden=false;
-    }catch(_){ err.textContent=t('dm.fail'); err.hidden=false; }
-    finally{ go.disabled=false; }
-  });
-})();
-
 /* Repères « + » : t:x = bord du haut à x % ; b:x = bas ; l:y / r:y = dans la marge
    gauche / droite à y % de la hauteur ; « :lg » = grande croix. Chaque section a
    sa propre disposition, toujours dans les marges pour ne jamais couvrir le texte. */
@@ -1926,7 +1896,7 @@ window.__rebuild=function(){
   list.innerHTML=''; CATEGORIES.forEach((c,i)=>list.appendChild(CategoryRow(c,i)));
   rows.length=0; $$('.cat',list).forEach(r=>rows.push(r));
   bindCats(); setCat(0);
-  renderTalents(); renderTypes();
+  renderTalents();
   ScrollTrigger.refresh();
 };
 $('#lang').addEventListener('click',e=>{const b=e.target.closest('[data-lang]'); if(b) applyLang(b.dataset.lang);});
@@ -2008,7 +1978,7 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
    selon le fond de la section courante. */
 (function(){
   var nav=document.getElementById('sindex'); if(!nav) return;
-  var ids=['intro','services','brands','personalities','explore','projects','demande','news'];
+  var ids=['intro','services','brands','personalities','explore','projects','news'];
   var secs=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
   nav.innerHTML=secs.map(function(sec,i){ var n=(i<9?'0':'')+(i+1);
     var nom=(sec.getAttribute('aria-label')||sec.id);
