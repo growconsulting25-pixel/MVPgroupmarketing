@@ -1055,6 +1055,53 @@ ul{list-style:none}
 .news{padding-top:var(--g)!important;padding-bottom:var(--g)!important}
 .footer{padding-top:var(--g)!important}
 
+
+/* =====================================================================
+   MVP International : n'importe quelle personnalité, partout dans le monde
+   ===================================================================== */
+.mo{position:relative;z-index:7;overflow:hidden;isolation:isolate;color:#fff;padding:var(--g) 0 0;
+  background:radial-gradient(60% 70% at 78% 40%,rgba(30,82,153,.55),transparent 70%),radial-gradient(40% 50% at 70% 60%,rgba(197,162,83,.12),transparent 70%),#050b16}
+.mo__in{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.38fr);gap:clamp(24px,4vw,64px);align-items:center;padding:0 var(--gutter)}
+.mo__k{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.mo__k i{width:34px;height:1px;background:var(--gold)}
+.mo__t{margin-top:18px;font-size:clamp(36px,4.1vw,74px);font-weight:800;line-height:.92;letter-spacing:-.04em;text-transform:uppercase}
+.mo__t span{color:transparent;-webkit-text-stroke:1.5px var(--gold);background:linear-gradient(90deg,var(--gold),#f0dca6 50%,var(--gold));-webkit-background-clip:text;background-clip:text;background-size:200% 100%;animation:moOr 6s linear infinite}
+@keyframes moOr{to{background-position:-200% 0}}
+.mo__p{margin-top:22px;max-width:520px;font-size:clamp(15px,1.15vw,18px);line-height:1.6;color:rgba(255,255,255,.78)}
+.mo__steps{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:560px}
+.mo__steps li{padding:14px 14px 16px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.04);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-size:13px;line-height:1.35;color:rgba(255,255,255,.88)}
+.mo__steps b{display:block;margin-bottom:8px;font-size:11px;letter-spacing:.16em;color:var(--gold)}
+.mo__cta{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:30px}
+.mo__go{display:inline-flex;align-items:center;gap:12px;height:60px;padding:0 30px;border-radius:999px;background:var(--gold);color:#050505;font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 18px 40px rgba(197,162,83,.28);transition:transform .3s,box-shadow .3s,background .3s}
+.mo__go:hover{transform:translateY(-2px);background:#fff;box-shadow:0 22px 50px rgba(197,162,83,.38)}
+.mo__go svg{width:18px;height:18px;transition:transform .3s}
+.mo__go:hover svg{transform:translateX(4px)}
+.mo__tel small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.mo__tel b{font-size:18px;letter-spacing:.02em;transition:color .3s}
+.mo__tel:hover b{color:var(--gold)}
+.mo__note{margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.45)}
+.mo__carte{position:relative;aspect-ratio:1000/383.3}
+@media (min-width:1024px){.rail-on .mo__in{padding-right:calc(var(--gutter) + 40px)}}
+.mo__pts{position:absolute;inset:0;width:100%;height:100%;opacity:.28}
+.mo__arcs{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.mo__arc{fill:none;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.85;animation:moTrace 7s cubic-bezier(.6,.1,.3,1) infinite;animation-delay:calc(var(--i) * .55s);animation-play-state:paused}
+@keyframes moTrace{0%{stroke-dashoffset:1;opacity:0}8%{opacity:.9}40%{stroke-dashoffset:0;opacity:.9}75%{stroke-dashoffset:0;opacity:.35}100%{stroke-dashoffset:0;opacity:0}}
+.mo__ville{fill:#fff}
+.mo__ville circle:last-child{opacity:0;animation:moPoint 7s ease infinite;animation-delay:calc(var(--i) * .55s + 2.4s);animation-play-state:paused}
+@keyframes moPoint{0%{opacity:0}10%,70%{opacity:1}100%{opacity:0}}
+.mo__onde{fill:none;stroke:var(--gold);stroke-width:1;opacity:0;transform-box:fill-box;transform-origin:center;animation:moOnde 7s ease-out infinite;animation-delay:calc(var(--i) * .55s + 2.4s);animation-play-state:paused}
+@keyframes moOnde{0%{opacity:.9;transform:scale(.3)}25%{opacity:0;transform:scale(1.8)}100%{opacity:0}}
+.mo__mtl{fill:var(--gold)}
+.mo__mtl .mo__onde{--i:0;animation:moOnde 2.4s ease-out infinite;animation-delay:0s}
+.mo__mtl text{font-size:13px;font-weight:700;letter-spacing:.06em;fill:#fff}
+.mo.est-visible .mo__arc,.mo.est-visible .mo__ville circle,.mo.est-visible .mo__onde{animation-play-state:running}
+.mo__ruban{margin-top:clamp(40px,7vh,80px);padding:18px 0;border-top:1px solid rgba(255,255,255,.08);overflow:hidden;white-space:nowrap}
+.mo__piste{display:inline-flex;animation:moRuban 40s linear infinite}
+.mo__piste span{padding-right:.4em;font-size:clamp(26px,3.4vw,56px);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22)}
+@keyframes moRuban{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mo__arc{animation:none;stroke-dashoffset:0;opacity:.5}.mo__ville circle:last-child{animation:none;opacity:1}.mo__onde,.mo__piste,.mo__t span{animation:none}}
+@media (max-width:1023px){.mo__in{grid-template-columns:1fr}.mo__carte{order:-1;margin:0 calc(var(--gutter) * -0.5);transform:none}}
+@media (max-width:560px){.mo__steps{grid-template-columns:1fr;gap:8px}.mo__steps li{display:flex;align-items:center;gap:12px;padding:12px 14px}.mo__steps b{margin:0}.mo__go{width:100%;justify-content:center;font-size:11.5px;letter-spacing:.1em;white-space:nowrap;padding:0 20px}.mo__mtl text{font-size:22px}}
 /* ---------- Hero centré : titre, recherche, téléphone ---------- */
 .hero__content--c{inset:0;max-width:none;margin:0 auto;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 2vh) var(--gutter) clamp(70px,10vh,120px)}
 .hero__content--c h1{max-width:16ch;margin:0 auto;font-size:clamp(42px,6.2vw,112px)}
@@ -1292,6 +1339,32 @@ ul{list-style:none}
 
 <!-- ================= SECTION 8 — FORMULAIRE DE DEMANDE ================= -->
 
+<!-- ================= SECTION — MVP INTERNATIONAL (bannière) ================= -->
+<section class="mo" id="international" data-nav="light" aria-label="MVP International">
+  <div class="mo__in">
+    <div class="mo__txt" data-reveal>
+      <p class="mo__k"><i></i><span data-i18n="mo.k">MVP International · Sur demande</span></p>
+      <h2 class="mo__t" data-i18n-html="mo.h">N'importe quelle icône.<br><span>Partout dans le monde.</span></h2>
+      <p class="mo__p" data-i18n="mo.p">Une vedette du basketball américain, une légende du soccer européen, un champion olympique d'ailleurs ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, ici comme ailleurs.</p>
+      <ol class="mo__steps">
+        <li><b>01</b><span data-i18n="mo.s1">Vous nommez la personnalité</span></li>
+        <li><b>02</b><span data-i18n="mo.s2">Nous contactons ses représentants</span></li>
+        <li><b>03</b><span data-i18n="mo.s3">Nous concluons et livrons</span></li>
+      </ol>
+      <div class="mo__cta">
+        <button type="button" class="mo__go" data-ui-intl><span data-i18n="mo.cta">Demander une personnalité</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <a class="mo__tel" href="tel:+15145823306"><small data-i18n="mo.tel">Ou parlez à un agent</small><b>514-582-3306</b></a>
+      </div>
+      <p class="mo__note" data-i18n="mo.note">Sous réserve de la disponibilité et des conditions de chaque personnalité.</p>
+    </div>
+    <div class="mo__carte" aria-hidden="true">
+      <img class="mo__pts" src="assets/monde-points.svg" alt="" loading="lazy">
+      <svg class="mo__arcs" viewBox="0 0 1000 383.3" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="mo__arc" style="--i:0" d="M295.6 95.8Q295.0 97.8 294.4 109.2" pathLength="1"/><path class="mo__arc" style="--i:1" d="M295.6 95.8Q233.6 67.0 171.7 127.6" pathLength="1"/><path class="mo__arc" style="--i:2" d="M295.6 95.8Q286.4 103.0 277.2 150.5" pathLength="1"/><path class="mo__arc" style="--i:3" d="M295.6 95.8Q237.9 67.4 180.3 121.7" pathLength="1"/><path class="mo__arc" style="--i:4" d="M295.6 95.8Q397.6 15.8 499.7 79.2" pathLength="1"/><path class="mo__arc" style="--i:5" d="M295.6 95.8Q401.0 17.2 506.5 86.4" pathLength="1"/><path class="mo__arc" style="--i:6" d="M295.6 95.8Q392.6 34.8 489.7 110.0" pathLength="1"/><path class="mo__arc" style="--i:7" d="M295.6 95.8Q474.6 -2.8 653.6 152.2" pathLength="1"/><path class="mo__arc" style="--i:8" d="M295.6 95.8Q591.8 -30.6 888.1 123.0" pathLength="1"/><path class="mo__arc" style="--i:9" d="M295.6 95.8Q333.1 119.6 370.6 287.5" pathLength="1"/><path class="mo__arc" style="--i:10" d="M295.6 95.8Q607.8 66.1 920.0 316.4" pathLength="1"/><path class="mo__arc" style="--i:11" d="M295.6 95.8Q287.5 92.5 279.4 101.0" pathLength="1"/><g class="mo__ville" style="--i:0" transform="translate(294.4 109.2)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:1" transform="translate(171.7 127.6)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:2" transform="translate(277.2 150.5)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:3" transform="translate(180.3 121.7)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:4" transform="translate(499.7 79.2)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:5" transform="translate(506.5 86.4)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:6" transform="translate(489.7 110.0)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:7" transform="translate(653.6 152.2)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:8" transform="translate(888.1 123.0)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:9" transform="translate(370.6 287.5)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:10" transform="translate(920.0 316.4)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__ville" style="--i:11" transform="translate(279.4 101.0)"><circle r="9" class="mo__onde"/><circle r="3.2"/></g><g class="mo__mtl" transform="translate(295.6 95.8)"><circle r="16" class="mo__onde"/><circle r="5.5"/><text x="10" y="-12">Montréal</text></g></svg>
+    </div>
+  </div>
+  <div class="mo__ruban" aria-hidden="true"><div class="mo__piste"><span data-i18n="mo.rub">Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · </span><span data-i18n="mo.rub">Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · </span></div></div>
+</section>
+
 <!-- ================= SECTION 9 — ACTUALITÉS ================= -->
 <section class="news" id="news" data-nav="light" aria-label="Actualités" data-plus="t:40 b:92:lg l:46 r:8">
   <span class="grille grille--clair" aria-hidden="true" style="left:57%;top:70px;width:320px;height:140px"></span>
@@ -1372,7 +1445,7 @@ const I18N = {
   'hero.label':'MVP Group — Marketing sportif','hero.h1':'Accédez aux <span class="gold">icônes</span> du sport.',
   "hero.lede":"Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.",
   'hero.scroll':'Défiler','cta.work':'Travailler avec nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités',
-  'intro.label':'Notre expertise','intro.h2':'Associez une icône du sport <em>à votre entreprise.</em>','hero.k':'Conférenciers · Ambassadeurs · Porte-parole','hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Rechercher par nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un agent :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
+  'intro.label':'Notre expertise','intro.h2':'Associez une icône du sport <em>à votre entreprise.</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône.<br><span>Partout dans le monde.</span>",'mo.p':"Une vedette du basketball américain, une légende du soccer européen, un champion olympique d'ailleurs ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, ici comme ailleurs.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un agent','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k':'Conférenciers · Ambassadeurs · Porte-parole','hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Rechercher par nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un agent :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
   'orbit.h':'Personnalités','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
@@ -1387,7 +1460,7 @@ const I18N = {
   'hero.label':'MVP Group — Sports Marketing','hero.h1':'Access the <span class="gold">icons</span> of sport.',
   "hero.lede":"Brand ambassadors, keynote speakers and spokespersons: pair a sports personality with your business to raise awareness, establish credibility and increase sales.",
   'hero.scroll':'Scroll','cta.work':'Work with us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities',
-  'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business.</em>','hero.k':'Speakers · Ambassadors · Spokespersons','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Search by name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an agent:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
+  'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business.</em>','mo.k':'MVP International · On request','mo.h':'Any icon.<br><span>Anywhere in the world.</span>','mo.p':"An American basketball star, a European soccer legend, an Olympic champion from abroad? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, here or anywhere.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an agent','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k':'Speakers · Ambassadors · Spokespersons','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Search by name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an agent:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
   'orbit.h':'Personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
@@ -1968,7 +2041,7 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
    selon le fond de la section courante. */
 (function(){
   var nav=document.getElementById('sindex'); if(!nav) return;
-  var ids=['intro','services','brands','personalities','explore','projects','news'];
+  var ids=['intro','services','brands','personalities','explore','projects','international','news'];
   var secs=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
   nav.innerHTML=secs.map(function(sec,i){ var n=(i<9?'0':'')+(i+1);
     var nom=(sec.getAttribute('aria-label')||sec.id);
@@ -1985,6 +2058,10 @@ addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
   nav.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; e.preventDefault();
     var t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); });
 })();
+
+/* MVP International : les trajets s'animent quand la section est à l'écran */
+(function(){ var m=document.getElementById('international'); if(!m||!('IntersectionObserver' in window)){ if(m) m.classList.add('est-visible'); return; }
+  new IntersectionObserver(function(es){ es.forEach(function(e){ m.classList.toggle('est-visible', e.isIntersecting); }); },{threshold:.15}).observe(m); })();
 </script>
 <script src="assets/ui.js"></script>
 </body>

@@ -187,3 +187,16 @@
 
 /* accueil, grand écran : le menu se retire complètement (il démarre sous la bande bleue) */
 @media (min-width:1024px){.rail-on .header{transform:translateY(calc(-100% - var(--tb) - 24px))!important}}
+
+/* fenêtre de demande : étapes numérotées automatiquement, variante internationale */
+.dmd form{counter-reset:etape}
+.dmd fieldset{counter-increment:etape}
+.dmd__n::before{content:counter(etape)}
+.dmd__ix,.dmd__c--budget{display:none}
+.dmd--intl .dmd__ix{display:block}
+.dmd--intl .dmd__c--budget{display:flex}
+.dmd--intl .dmd__perso{display:none}
+.dmd__sel{width:100%;padding:13px 15px;border:1.5px solid #e2e4e8;border-radius:12px;background:#f6f7f9;font:inherit;font-size:15px;color:#0b0b0b;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#123B6D 50%),linear-gradient(135deg,#123B6D 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.dmd__sel:focus{outline:none;border-color:#1E5299;background-color:#fff;box-shadow:0 0 0 4px rgba(30,82,153,.12)}
+.dmd--intl .dmd__a{background:radial-gradient(120% 70% at 100% 0%,rgba(197,162,83,.22),transparent 55%),radial-gradient(120% 80% at 0% 0%,#1E5299 0%,#123B6D 45%,#08172d 100%)}
+.dmd--intl .dmd__a::before{background-image:url('monde-points.svg');background-size:180% auto;background-position:28% 62%;background-repeat:no-repeat;opacity:.22;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent);mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent)}

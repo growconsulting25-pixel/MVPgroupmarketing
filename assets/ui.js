@@ -17,6 +17,11 @@
       persoPh:'Facultatif — ex. : un olympien, un joueur du Canadien',msgPh:'Objectif, public, budget, lieu…',
       envoyer:'Envoyer la demande',envoi:'Envoi…',req:'Merci de remplir les champs obligatoires (*).',
       err:"L'envoi n'a pas fonctionné. Écrivez-nous à <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> ou appelez le <a href=\""+TELH+"\">"+TEL+"</a>.",
+      iK:'MVP International · Sur demande',iT:'Une icône, <em>partout dans le monde.</em>',iP:"Nommez la personnalité, peu importe le pays ou la ligue : nous approchons ses représentants pour vous.",
+      i1:'Toutes les disciplines, tous les pays',i2:'Nous contactons ses représentants et négocions pour vous',i3:'Un conseiller du Groupe MVP vous répond très rapidement',
+      iCible:'La personnalité',iNom:'Personnalité souhaitée *',iNomPh:'Ex. : une vedette du basketball américain',iPays:'Pays ou ligue',iPaysPh:'Ex. : États-Unis, Europe…',iLieu:"Lieu de l'événement",iLieuPh:'Ex. : Montréal, Toronto…',
+      budget:'Budget approximatif',budgets:['À déterminer','Moins de 25 000 $','25 000 $ – 100 000 $','100 000 $ – 250 000 $','250 000 $ et plus'],
+      iOk:"Un conseiller du Groupe MVP communiquera avec vous sous peu au sujet de votre demande internationale.",
       okT:'Merci, votre demande est envoyée.',okP:"L'équipe MVP communiquera avec vous sous peu."},
     en:{msg:'The <i>#1</i> Sports Marketing Agency in Québec',work:'Work with us',call:'Call us',find:'Find an athlete',
       bulle:'Questions?',aideT:'Need help?',aideS:"We're here for you",
@@ -32,6 +37,11 @@
       persoPh:'Optional — e.g. an Olympian, a Canadiens player',msgPh:'Goal, audience, budget, location…',
       envoyer:'Send inquiry',envoi:'Sending…',req:'Please fill in the required fields (*).',
       err:"Sending failed. Email us at <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> or call <a href=\""+TELH+"\">"+TEL+"</a>.",
+      iK:'MVP International · On request',iT:'Any icon, <em>anywhere in the world.</em>',iP:'Name the personality, whatever the country or league: we approach their representatives for you.',
+      i1:'Every sport, every country',i2:'We contact their representatives and negotiate for you',i3:'An MVP Group advisor gets back to you very quickly',
+      iCible:'The personality',iNom:'Desired personality *',iNomPh:'E.g. an American basketball star',iPays:'Country or league',iPaysPh:'E.g. United States, Europe…',iLieu:'Event location',iLieuPh:'E.g. Montréal, Toronto…',
+      budget:'Approximate budget',budgets:['To be determined','Under $25,000','$25,000 – $100,000','$100,000 – $250,000','$250,000 and up'],
+      iOk:'An MVP Group advisor will contact you shortly about your international request.',
       okT:'Thank you, your request has been sent.',okP:'The MVP team will contact you shortly.'}
   };
   var L=function(){ try{ return localStorage.getItem('mvp-lang')==='en'?'en':'fr'; }catch(e){ return 'fr'; } };
@@ -88,12 +98,17 @@
     '</aside>'+
     '<div class="dmd__m"><div class="dmd__f">'+
       '<form novalidate>'+
-      '<fieldset class="dmd__bes"><legend><span class="dmd__n">1</span><b data-ui="besoins"></b></legend><div class="dmd__chips"></div></fieldset>'+
-      '<fieldset><legend><span class="dmd__n">2</span><b data-ui="coord"></b></legend><div class="dmd__g">'+
+      '<fieldset class="dmd__ix"><legend><span class="dmd__n"></span><b data-ui="iCible"></b></legend><div class="dmd__g">'+
+        '<label class="dmd__c dmd__c--l"><span><b data-ui="iNom"></b></span><input name="cible" type="text" data-ui-ph="iNomPh"></label>'+
+        '<label class="dmd__c"><span><b data-ui="iPays"></b></span><input name="pays" type="text" data-ui-ph="iPaysPh"></label>'+
+        '<label class="dmd__c"><span><b data-ui="iLieu"></b></span><input name="lieu" type="text" data-ui-ph="iLieuPh"></label>'+
+      '</div></fieldset>'+
+      '<fieldset class="dmd__bes"><legend><span class="dmd__n"></span><b data-ui="besoins"></b></legend><div class="dmd__chips"></div></fieldset>'+
+      '<fieldset><legend><span class="dmd__n"></span><b data-ui="coord"></b></legend><div class="dmd__g">'+
         champ('nom','nom','text',1,0,'name')+champ('entreprise','ent','text',0,0,'organization')+champ('courriel','mail','email',1,0,'email')+champ('telephone','tel','tel',0,0,'tel')+
       '</div></fieldset>'+
-      '<fieldset><legend><span class="dmd__n">3</span><b data-ui="projet"></b></legend><div class="dmd__g">'+
-        champ('date','date','text')+'<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+
+      '<fieldset><legend><span class="dmd__n"></span><b data-ui="projet"></b></legend><div class="dmd__g">'+
+        champ('date','date','text')+'<label class="dmd__c dmd__c--budget"><span><b data-ui="budget"></b></span><select name="budget" class="dmd__sel"></select></label>'+'<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+
       '</div></fieldset>'+
       '<div class="dmd__err" role="alert" hidden></div><button class="dmd__go" type="submit"><span data-ui="envoyer"></span>'+I.fl+'</button>'+
       '<p class="dmd__note" data-ui="note"></p></form></div>'+
@@ -103,16 +118,20 @@
   var chips=dmd.querySelector('.dmd__chips');
   var majTitres=function(){
     var d=D[L()], img=dmd.querySelector('.dmd__ph img');
-    dmd.classList.toggle('dmd--ath',!!ATH);
-    dmd.querySelector('.dmd__t').innerHTML=ATH? d.avec+' <em>'+ATH.nom+'</em>' : d.t;
-    dmd.querySelector('.dmd__s').textContent=ATH? (ATH.sous||'') : d.p;
-    dmd.querySelector('.dmd__okp').textContent=ATH? d.okPa.replace('%',ATH.nom) : d.okP;
-    if(ATH){ img.src=ATH.photo||''; img.className=ATH.cut?'est-detoure':''; img.onerror=function(){ if(ATH.photo2 && img.src.indexOf(ATH.photo2)<0){ img.className=''; img.src=ATH.photo2; } else dmd.querySelector('.dmd__ath').classList.add('sans-photo'); }; dmd.querySelector('.dmd__ath').classList.remove('sans-photo'); }
-    form.personnalite.value=ATH?ATH.nom:(form.personnalite.dataset.v||'');
+    var INTL=!!(ATH&&ATH.intl);
+    dmd.classList.toggle('dmd--ath',!!(ATH&&ATH.nom)); dmd.classList.toggle('dmd--intl',INTL);
+    form.cible.required=INTL;
+    dmd.querySelector('.dmd__k').textContent=INTL? d.iK : d.k;
+    var pts=dmd.querySelectorAll('.dmd__pts span'); pts[0].textContent=INTL?d.i1:d.pt1; pts[1].textContent=INTL?d.i2:d.pt2; pts[2].textContent=INTL?d.i3:d.pt3;
+    dmd.querySelector('.dmd__t').innerHTML=INTL? d.iT : (ATH? d.avec+' <em>'+ATH.nom+'</em>' : d.t);
+    dmd.querySelector('.dmd__s').textContent=INTL? d.iP : (ATH? (ATH.sous||'') : d.p);
+    dmd.querySelector('.dmd__okp').textContent=INTL? d.iOk : (ATH? d.okPa.replace('%',ATH.nom) : d.okP);
+    if(ATH&&ATH.nom){ img.src=ATH.photo||''; img.className=ATH.cut?'est-detoure':''; img.onerror=function(){ if(ATH.photo2 && img.src.indexOf(ATH.photo2)<0){ img.className=''; img.src=ATH.photo2; } else dmd.querySelector('.dmd__ath').classList.add('sans-photo'); }; dmd.querySelector('.dmd__ath').classList.remove('sans-photo'); }
+    form.personnalite.value=(ATH&&ATH.nom)?ATH.nom:(form.personnalite.dataset.v||'');
   };
   var dmdO=function(o,ath){
     if(o){
-      if(ath!==undefined){ if((ath&&ath.nom)!==(ATH&&ATH.nom)){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; err.hidden=true; } ATH=ath; majTitres(); }
+      if(ath!==undefined){ if((ath&&(ath.nom||ath.intl))!==(ATH&&(ATH.nom||ATH.intl))){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; err.hidden=true; } ATH=ath; majTitres(); }
       carteO(false); fermerMenus(); dernier=document.activeElement;
       if(dmd.querySelector('.dmd__ok:not([hidden])')){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; }
       dmd.querySelector('.dmd__m').scrollTop=0;
@@ -127,16 +146,17 @@
     document.documentElement.classList.remove('mm-ouvert'); var b=document.getElementById('burger'); if(b) b.setAttribute('aria-expanded','false');
   };
   /* window.mvpDemande()                       → demande générale
-     window.mvpDemande({nom, sous, photo, cut}) → demande pour un athlète précis */
+     window.mvpDemande({nom, sous, photo, cut}) → demande pour un athlète précis
+     window.mvpDemande({intl:true})            → demande d'une personnalité internationale */
   window.mvpDemande=function(ath){ dmdO(true, ath||null); };
   form.personnalite.addEventListener('input',function(){ if(!ATH) this.dataset.v=this.value; });
   chips.addEventListener('click',function(e){ var c=e.target.closest('.dmd__chip'); if(!c) return; c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')!=='true'); });
   /* tout lien « Travailler avec nous » ouvre la fenêtre au lieu de descendre au formulaire */
   document.addEventListener('click',function(e){
-    var a=e.target.closest('[data-ui-ouvrir], a[href="#demande"], a[href="index.html#demande"], [data-ath-nom]');
+    var a=e.target.closest('[data-ui-ouvrir], [data-ui-intl], a[href="#demande"], a[href="index.html#demande"], [data-ath-nom]');
     if(a && !e.defaultPrevented && !e.metaKey && !e.ctrlKey){
       e.preventDefault(); e.stopPropagation();
-      dmdO(true, a.dataset.athNom ? {nom:a.dataset.athNom, sous:a.dataset.athSous, photo:a.dataset.athPhoto, photo2:a.dataset.athPhoto2, cut:a.dataset.athCut==='1'} : null);
+      dmdO(true, a.hasAttribute('data-ui-intl') ? {intl:true} : a.dataset.athNom ? {nom:a.dataset.athNom, sous:a.dataset.athSous, photo:a.dataset.athPhoto, photo2:a.dataset.athPhoto2, cut:a.dataset.athCut==='1'} : null);
       return;
     }
     if(carte.classList.contains('est-ouvert') && !e.target.closest('.aide-c,.aide-b')) carteO(false);
@@ -150,7 +170,7 @@
     form.querySelectorAll('[required]').forEach(function(f){ var v=f.value.trim(), bon=v && (f.type!=='email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)); f.closest('.dmd__c').classList.toggle('est-invalide',!bon); if(!bon){ ok=false; prem=prem||f; } });
     if(!ok){ err.hidden=false; err.textContent=d.req; prem.focus(); return; }
     err.hidden=true; go.disabled=true; go.querySelector('span').textContent=d.envoi;
-    var o={source:ATH?'athlete':'travailler-avec-nous',page:location.href,langue:L()}; new FormData(form).forEach(function(v,k){ o[k]=v; });
+    var o={source:(ATH&&ATH.intl)?'international':ATH?'athlete':'travailler-avec-nous',page:location.href,langue:L()}; new FormData(form).forEach(function(v,k){ o[k]=v; });
     o.besoins=[].map.call(chips.querySelectorAll('[aria-pressed=true]'),function(c){ return c.textContent; }).join(', ');
     o.type=o.besoins;
     fetch('/api/demande',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})
@@ -176,6 +196,7 @@
     document.querySelectorAll('[data-ui-aria]').forEach(function(el){ el.setAttribute('aria-label',d[el.dataset.uiAria]); });
     var on=[].map.call(chips.children,function(c){ return c.getAttribute('aria-pressed')==='true'; });
     chips.innerHTML=d.types.map(function(t,i){ return '<button type="button" class="dmd__chip" aria-pressed="'+(on[i]?'true':'false')+'">'+t+'</button>'; }).join('');
+    var bs=form.budget, bv=bs.selectedIndex; bs.innerHTML=d.budgets.map(function(t,i){ return '<option value="'+(i?t:'')+'">'+t+'</option>'; }).join(''); bs.selectedIndex=Math.max(0,bv);
     majTitres();
   }
   var lang=document.getElementById('lang');
