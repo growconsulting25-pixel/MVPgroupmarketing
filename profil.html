@@ -950,34 +950,7 @@ html{overflow-x:clip}
 <main id="profil"></main>
 
 <!-- Demande de projet : formulaire intégré (aucun logiciel de courriel ne s'ouvre). -->
-<div class="tv" id="tv" hidden>
-  <div class="tv__fond" data-fermer></div>
-  <aside class="tv__panneau" role="dialog" aria-modal="true" aria-labelledby="tvTitre">
-    <button type="button" class="tv__x" data-fermer aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <p class="tv__k">Demande de projet</p>
-    <h2 class="tv__t" id="tvTitre">Travailler avec <span id="tvNom"></span></h2>
-    <p class="tv__p">Décrivez votre projet. Un membre de l'équipe MVP vous répond rapidement.</p>
-    <form class="tv__f" id="tvForm" novalidate>
-      <div class="tv__g">
-        <label class="tv__c"><span>Nom *</span><input name="nom" autocomplete="name" required></label>
-        <label class="tv__c"><span>Entreprise</span><input name="entreprise" autocomplete="organization"></label>
-        <label class="tv__c"><span>Courriel *</span><input name="courriel" type="email" autocomplete="email" required></label>
-        <label class="tv__c"><span>Téléphone</span><input name="telephone" type="tel" autocomplete="tel"></label>
-        <label class="tv__c tv__c--l"><span>Personnalité</span><input name="personnalite" id="tvPers"></label>
-        <label class="tv__c"><span>Type de projet</span><select name="type" id="tvType"><option value="">Choisir…</option></select></label>
-        <label class="tv__c"><span>Date approximative</span><input name="date" placeholder="Ex. : juin 2027"></label>
-        <label class="tv__c tv__c--l"><span>Message</span><textarea name="message" rows="5" placeholder="Public, objectif, lieu, format…"></textarea></label>
-      </div>
-      <p class="tv__err" id="tvErr" role="alert" hidden></p>
-      <button class="btn btn--gold tv__go" type="submit">Envoyer la demande</button>
-    </form>
-    <div class="tv__ok" id="tvOk" hidden>
-      <h3>Merci, votre demande est envoyée.</h3>
-      <p>L'équipe MVP communiquera avec vous sous peu au sujet de votre projet avec <span id="tvNom2"></span>.</p>
-      <button type="button" class="btn btn--outline-dark" data-fermer>Fermer</button>
-    </div>
-  </aside>
-</div>
+
 <footer class="footer footer--compact" id="contact" data-nav="light">
   <div class="footer__top">
     
@@ -1347,45 +1320,13 @@ if(bl) bl.addEventListener('click',()=>{ $('#bio').classList.toggle('ouvert');
   addEventListener('resize',place); place();
 })();
 
-/* --- « Travailler avec » : tiroir de demande intégré ---
-   Les demandes sont envoyées en JSON (POST) à FORM_ENDPOINT. Brancher ici le
-   service qui relaie vers info@mvpsportsmarketing.com (Worker Cloudflare,
-   Formspree, etc.). Sans point de terminaison, le formulaire l'indique et
-   propose le téléphone : aucune demande n'est perdue en silence. */
-const FORM_ENDPOINT='/api/demande';
+/* --- « Travailler avec » : fenêtre de demande commune (assets/ui.js), propre à cet athlète --- */
 (function(){
-  const tv=$('#tv'), form=$('#tvForm'), err=$('#tvErr'), ok=$('#tvOk');
-  $('#tvNom').textContent=t.nom; $('#tvNom2').textContent=t.nom; $('#tvPers').value=t.nom;
-  const types=['Conference / Keynote','Brand Campaign','Corporate Event','Media Appearance','Charity Event'];
-  $('#tvType').insertAdjacentHTML('beforeend',types.map(p=>`<option value="${PROJ_FR[p]||p}">${PROJ_FR[p]||p}</option>`).join('')+'<option value="Autre">Autre</option>');
-  if(t.projets&&t.projets.length===1) $('#tvType').value=PROJ_FR[t.projets[0]]||'';
-  let retour=null;
-  const ouvrir=e=>{ retour=e&&e.currentTarget||document.activeElement; tv.hidden=false; document.body.style.overflow='hidden';
-    requestAnimationFrame(()=>tv.classList.add('est-ouvert')); setTimeout(()=>form.querySelector('input[name=nom]').focus(),350); };
-  const fermer=()=>{ tv.classList.remove('est-ouvert'); document.body.style.overflow='';
-    setTimeout(()=>{tv.hidden=true; if(retour&&retour.focus) retour.focus();},450); };
+  const sous=[CAT_FR[t.cat]||t.catNom].concat((t.roles||[]).slice(0,2).map(r=>ROLE_FR[r]||r)).join(' · ');
+  const ouvrir=()=>{ if(window.mvpDemande) mvpDemande({nom:t.nom, sous, photo:t.decoupe||t.photo, photo2:t.photo, cut:!!t.decoupe}); };
   $$('[data-travailler]').forEach(b=>b.addEventListener('click',ouvrir));
-  /* lien « Travailler avec » venant d'une carte de l'accueil : le formulaire s'ouvre directement */
+  /* lien « Travailler avec » venant d'une autre page : la fenêtre s'ouvre directement */
   if(new URLSearchParams(location.search).has('travailler')) setTimeout(ouvrir,400);
-  tv.addEventListener('click',e=>{ if(e.target.closest('[data-fermer]')) fermer(); });
-  addEventListener('keydown',e=>{ if(e.key==='Escape'&&!tv.hidden) fermer(); });
-  form.addEventListener('submit',async e=>{
-    e.preventDefault(); err.hidden=true;
-    const champs=[...form.querySelectorAll('[required]')];
-    champs.forEach(c=>c.closest('.tv__c').classList.toggle('est-invalide',!c.checkValidity()));
-    const bad=champs.find(c=>!c.checkValidity());
-    if(bad){ err.textContent='Veuillez indiquer votre nom et un courriel valide.'; err.hidden=false; bad.focus(); return; }
-    const go=form.querySelector('.tv__go'); go.disabled=true; go.textContent='Envoi…';
-    const data=Object.fromEntries(new FormData(form)); data.profil=t.id; data.page=location.href;
-    try{
-      const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-      if(!r.ok) throw new Error(r.status);
-      form.hidden=true; ok.hidden=false;
-    }catch(_){
-      err.innerHTML="L'envoi n'a pas fonctionné. Réessayez dans un instant ou appelez-nous au <a href=\"tel:+15145823306\">514-582-3306</a>.";
-      err.hidden=false;
-    }finally{ go.disabled=false; go.textContent='Envoyer la demande'; }
-  });
 })();
 
 /* --- la barre de navigation suit le contraste du fond --- */

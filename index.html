@@ -1023,6 +1023,16 @@ ul{list-style:none}
 .flux__bg{opacity:.07}
 .flux__bg::after{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.7) 55%,rgba(255,255,255,.4) 100%)}
 
+
+/* ---------- Couleurs : Projets en bleu, Actualités et pied de page en noir ---------- */
+.projets{background:#0E2A4F}
+.news{background:#050505}
+.footer{background:#050505}
+/* ---------- Pied de page : phrase, lettrage MVP (vidéo) un peu plus petit, puis le bouton ---------- */
+.footer__top{justify-items:start;gap:clamp(22px,3.4vh,40px)}
+.footer .footer__phrase{max-width:none}
+.footer__cut{width:min(78%,1080px);justify-self:start;align-self:auto}
+@media (max-width:760px){.footer__cut{width:88%}.footer__top{gap:22px}}
 /* ---------- Hero centré : titre, recherche, téléphone ---------- */
 .hero__content--c{inset:0;max-width:none;margin:0 auto;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 2vh) var(--gutter) clamp(70px,10vh,120px)}
 .hero__content--c h1{max-width:16ch;margin:0 auto;font-size:clamp(42px,6.2vw,112px)}
@@ -1322,16 +1332,14 @@ ul{list-style:none}
 
 <footer class="footer" id="contact" data-nav="light">
   <div class="footer__top">
-    <div class="footer__lead">
-    <h2 class="display"><span data-i18n-html="foot.h">Bâtissons le <span class="gold">bon partenariat.</span></span></h2>
-    <a class="btn btn--gold" href="#demande" data-i18n="cta.work">Travailler avec nous</a></div>
+    <h2 class="display footer__phrase"><span data-i18n-html="foot.h">Bâtissons le <span class="gold">bon partenariat.</span></span></h2>
     <!-- Lettrage MVP decoupe : la video joue a travers les lettres. -->
     <div class="footer__cut" aria-hidden="true">
       <video class="footer__cut-video" muted loop playsinline preload="none" poster="assets/poster-v4.jpg">
         <source src="assets/lettrage-v4.mp4" type="video/mp4">
       </video>
-      <!-- le masque est applique en CSS a partir du vrai logo MVP -->
     </div>
+    <div class="footer__go"><a class="btn btn--gold" href="#demande" data-i18n="cta.work">Travailler avec nous</a></div>
   </div>
   <div class="footer__grid" id="agency">
     <div>
@@ -1704,7 +1712,7 @@ function TalentCard(p){
       <h3 class="tcard__nom"><a href="${href}">${p.nom}</a></h3>
       <p class="tcard__sub">${L(p.sub)}</p>
       <div class="tcard__cta">
-        <a class="tcard__b1" href="${href}&travailler=1">${t('tl.work')} ${p.nom.split(' ')[0]}</a>
+        <a class="tcard__b1" href="${href}&travailler=1" data-ath-nom="${p.nom}" data-ath-sous="${L(CAT_FR[p.cat])}" data-ath-photo="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" data-ath-cut="${p.photo?0:1}">${t('tl.work')} ${p.nom.split(' ')[0]}</a>
       </div>
       <a class="tcard__lien" href="${href}">${t('cta.profile')} ${ARROW}</a>
     </div></div>`;

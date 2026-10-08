@@ -7,24 +7,32 @@
       bulle:'Une question ?',aideT:"Besoin d'aide ?",aideS:'Nous sommes là pour vous',
       aideP:"Dites-nous ce que vous cherchez : conférencier, ambassadeur, invité d'honneur… Un agent vous répond rapidement avec des propositions.",
       start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
-      k:'Démarrer une demande',t:'Parlez-nous de votre projet',p:"Quelques informations suffisent. Un agent de MVP Group vous revient rapidement.",
+      k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin, nous trouvons la bonne personnalité.",
+      avec:'Travailler avec',pt1:'Un conseiller du Groupe MVP vous répond très rapidement',pt2:'Un seul interlocuteur, du premier appel au résultat',pt3:"Un réseau bâti depuis 2005 dans le sport québécois",
+      parler:'Vous préférez parler à quelqu’un ?',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
+      note:'Vos informations restent confidentielles et servent uniquement à répondre à votre demande.',
+      okPa:"L'équipe MVP communiquera avec vous sous peu au sujet de votre projet avec %.",
       nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Message',
-      types:['Choisir…','Conférence','Ambassadeur / porte-parole','Médias sociaux / influence','Invité d\'honneur','Événement corporatif','Autre'],
-      persoPh:'Ex. : un olympien, un joueur du Canadien…',msgPh:'Objectif, public, budget, lieu…',
+      types:['Conférencier','Ambassadeur','Porte-parole','Animateur','Invité d\'honneur','Influenceur / médias sociaux','Événement corporatif','Autre'],
+      persoPh:'Facultatif — ex. : un olympien, un joueur du Canadien',msgPh:'Objectif, public, budget, lieu…',
       envoyer:'Envoyer la demande',envoi:'Envoi…',req:'Merci de remplir les champs obligatoires (*).',
       err:"L'envoi n'a pas fonctionné. Écrivez-nous à <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> ou appelez le <a href=\""+TELH+"\">"+TEL+"</a>.",
-      okT:'Merci !',okP:'Votre demande est bien reçue. Un agent vous contactera sous peu.'},
+      okT:'Merci, votre demande est envoyée.',okP:"L'équipe MVP communiquera avec vous sous peu."},
     en:{msg:'The <i>#1</i> Sports Marketing Agency in Québec',work:'Work with us',call:'Call us',find:'Find an athlete',
       bulle:'Questions?',aideT:'Need help?',aideS:"We're here for you",
       aideP:"Tell us what you're looking for: keynote speaker, ambassador, guest of honor… An agent will get back to you quickly with suggestions.",
       start:'Start inquiry',appel2:'Call us',appeler:'Call '+TEL,rapide:'Fast reply · Mon-Fri 9am-5pm',fermer:'Close',
-      k:'Start inquiry',t:'Tell us about your project',p:'A few details are enough. An MVP Group agent will get back to you quickly.',
+      k:'Start a project',t:'Tell us about <em>your project.</em>',p:'Keynote, campaign, gala or corporate event: describe your need and we find the right personality.',
+      avec:'Work with',pt1:'An MVP Group advisor gets back to you very quickly',pt2:'One point of contact, from the first call to the result',pt3:'A network built inside Quebec sport since 2005',
+      parler:'Rather talk to someone?',besoins:'Your needs',coord:'Your details',projet:'Your project',datePh:'E.g. June 2027',
+      note:'Your information stays confidential and is only used to answer your request.',
+      okPa:'The MVP team will contact you shortly about your project with %.',
       nom:'Name',ent:'Company',mail:'Email',tel:'Phone',type:'Project type',date:'Approximate date',perso:'Preferred personality',message:'Message',
-      types:['Choose…','Keynote','Ambassador / spokesperson','Social media / influence','Guest of honor','Corporate event','Other'],
-      persoPh:'E.g. an Olympian, a Canadiens player…',msgPh:'Goal, audience, budget, location…',
+      types:['Keynote speaker','Ambassador','Spokesperson','Host','Guest of honor','Influencer / social media','Corporate event','Other'],
+      persoPh:'Optional — e.g. an Olympian, a Canadiens player',msgPh:'Goal, audience, budget, location…',
       envoyer:'Send inquiry',envoi:'Sending…',req:'Please fill in the required fields (*).',
       err:"Sending failed. Email us at <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> or call <a href=\""+TELH+"\">"+TEL+"</a>.",
-      okT:'Thank you!',okP:'Your inquiry has been received. An agent will contact you shortly.'}
+      okT:'Thank you, your request has been sent.',okP:'The MVP team will contact you shortly.'}
   };
   var L=function(){ try{ return localStorage.getItem('mvp-lang')==='en'?'en':'fr'; }catch(e){ return 'fr'; } };
   var I={
@@ -65,41 +73,88 @@
   bulle.addEventListener('click',function(){ carteO(!carte.classList.contains('est-ouvert')); });
   carte.querySelector('.aide-c__x').addEventListener('click',function(){ carteO(false); });
 
-  /* 4. formulaire de demande */
-  var champ=function(n,k,type,req,large){ return '<label class="dmd__c'+(large?' dmd__c--l':'')+'"><span><b data-ui="'+k+'"></b>'+(req?' *':'')+'</span>'+
-    (type==='textarea'?'<textarea name="'+n+'" data-ui-ph="msgPh"></textarea>':type==='select'?'<select name="'+n+'"></select>':'<input name="'+n+'" type="'+type+'"'+(req?' required':'')+(n==='personnalite'?' data-ui-ph="persoPh"':'')+'>')+'</label>'; };
+  /* 4. fenêtre de demande — générale (« Travailler avec nous ») ou propre à un athlète */
+  var ck='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var champ=function(n,k,type,req,large,auto){ return '<label class="dmd__c dmd__c--'+n+(large?' dmd__c--l':'')+'"><span><b data-ui="'+k+'"></b>'+(req?' *':'')+'</span>'+
+    (type==='textarea'?'<textarea name="'+n+'" rows="4" data-ui-ph="msgPh"></textarea>':'<input name="'+n+'" type="'+type+'"'+(auto?' autocomplete="'+auto+'"':'')+(req?' required':'')+(n==='date'?' data-ui-ph="datePh"':'')+(n==='personnalite'?' data-ui-ph="persoPh"':'')+'>')+'</label>'; };
   var dmd=mk('div','dmd',
     '<div class="dmd__fond"></div><div class="dmd__boite" role="dialog" aria-modal="true" aria-labelledby="dmdT">'+
     '<button type="button" class="dmd__x" data-ui-aria="fermer">'+I.x+'</button>'+
-    '<div class="dmd__f"><div class="dmd__k" data-ui="k"></div><h2 class="dmd__t" id="dmdT" data-ui="t"></h2><p class="dmd__p" data-ui="p"></p>'+
-    '<form novalidate><div class="dmd__g">'+champ('nom','nom','text',1)+champ('entreprise','ent','text')+champ('courriel','mail','email',1)+champ('telephone','tel','tel')+
-    champ('type','type','select')+champ('date','date','text')+champ('personnalite','perso','text',0,1)+champ('message','message','textarea',0,1)+
-    '</div><div class="dmd__err" hidden></div><button class="dmd__go" type="submit"><span data-ui="envoyer"></span>'+I.fl+'</button></form></div>'+
-    '<div class="dmd__ok" hidden><span class="aide-c__ic">'+I.bulle+'</span><h3 data-ui="okT"></h3><p data-ui="okP"></p></div></div>');
+    '<aside class="dmd__a">'+
+      '<div class="dmd__ath"><div class="dmd__ph"><img alt=""></div></div>'+
+      '<p class="dmd__k" data-ui="k"></p><h2 class="dmd__t" id="dmdT"></h2><p class="dmd__s"></p>'+
+      '<ul class="dmd__pts"><li>'+ck+'<span data-ui="pt1"></span></li><li>'+ck+'<span data-ui="pt2"></span></li><li>'+ck+'<span data-ui="pt3"></span></li></ul>'+
+      '<a class="dmd__tel" href="'+TELH+'">'+I.tel+'<span><small data-ui="parler"></small><b>'+TEL+'</b></span></a>'+
+    '</aside>'+
+    '<div class="dmd__m"><div class="dmd__f">'+
+      '<form novalidate>'+
+      '<fieldset class="dmd__bes"><legend><span class="dmd__n">1</span><b data-ui="besoins"></b></legend><div class="dmd__chips"></div></fieldset>'+
+      '<fieldset><legend><span class="dmd__n">2</span><b data-ui="coord"></b></legend><div class="dmd__g">'+
+        champ('nom','nom','text',1,0,'name')+champ('entreprise','ent','text',0,0,'organization')+champ('courriel','mail','email',1,0,'email')+champ('telephone','tel','tel',0,0,'tel')+
+      '</div></fieldset>'+
+      '<fieldset><legend><span class="dmd__n">3</span><b data-ui="projet"></b></legend><div class="dmd__g">'+
+        champ('date','date','text')+'<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+
+      '</div></fieldset>'+
+      '<div class="dmd__err" role="alert" hidden></div><button class="dmd__go" type="submit"><span data-ui="envoyer"></span>'+I.fl+'</button>'+
+      '<p class="dmd__note" data-ui="note"></p></form></div>'+
+    '<div class="dmd__ok" hidden><span class="dmd__okic">'+ck+'</span><h3 data-ui="okT"></h3><p class="dmd__okp"></p><button type="button" class="dmd__okb" data-ui="fermer"></button></div></div></div>');
   body.appendChild(dmd);
-  var form=dmd.querySelector('form'), err=dmd.querySelector('.dmd__err'), go=dmd.querySelector('.dmd__go'), dernier=null;
-  var dmdO=function(o){
+  var form=dmd.querySelector('form'), err=dmd.querySelector('.dmd__err'), go=dmd.querySelector('.dmd__go'), dernier=null, ATH=null;
+  var chips=dmd.querySelector('.dmd__chips');
+  var majTitres=function(){
+    var d=D[L()], img=dmd.querySelector('.dmd__ph img');
+    dmd.classList.toggle('dmd--ath',!!ATH);
+    dmd.querySelector('.dmd__t').innerHTML=ATH? d.avec+' <em>'+ATH.nom+'</em>' : d.t;
+    dmd.querySelector('.dmd__s').textContent=ATH? (ATH.sous||'') : d.p;
+    dmd.querySelector('.dmd__okp').textContent=ATH? d.okPa.replace('%',ATH.nom) : d.okP;
+    if(ATH){ img.src=ATH.photo||''; img.className=ATH.cut?'est-detoure':''; img.onerror=function(){ if(ATH.photo2 && img.src.indexOf(ATH.photo2)<0){ img.className=''; img.src=ATH.photo2; } else dmd.querySelector('.dmd__ath').classList.add('sans-photo'); }; dmd.querySelector('.dmd__ath').classList.remove('sans-photo'); }
+    form.personnalite.value=ATH?ATH.nom:(form.personnalite.dataset.v||'');
+  };
+  var dmdO=function(o,ath){
+    if(o){
+      if(ath!==undefined){ if((ath&&ath.nom)!==(ATH&&ATH.nom)){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; err.hidden=true; } ATH=ath; majTitres(); }
+      carteO(false); fermerMenus(); dernier=document.activeElement;
+      if(dmd.querySelector('.dmd__ok:not([hidden])')){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; }
+      dmd.querySelector('.dmd__m').scrollTop=0;
+      setTimeout(function(){ var f=form.querySelector('.dmd__chip'); if(f && matchMedia('(pointer:fine)').matches) f.focus({preventScroll:true}); },420);
+    }
     dmd.classList.toggle('est-ouvert',o); document.documentElement.classList.toggle('dmd-ouvert',o);
     body.style.overflow=o?'hidden':'';
-    if(o){ carteO(false); dernier=document.activeElement; setTimeout(function(){ var f=form.querySelector('input'); if(f && !dmd.querySelector('.dmd__ok:not([hidden])')) f.focus(); },350); }
-    else if(dernier && dernier.focus) dernier.focus();
+    if(!o && dernier && dernier.focus) dernier.focus({preventScroll:true});
   };
-  window.mvpDemande=function(){ dmdO(true); };
+  var fermerMenus=function(){
+    var m=document.getElementById('mobileMenu'); if(m){ m.classList.remove('open','est-ouvert'); }
+    document.documentElement.classList.remove('mm-ouvert'); var b=document.getElementById('burger'); if(b) b.setAttribute('aria-expanded','false');
+  };
+  /* window.mvpDemande()                       → demande générale
+     window.mvpDemande({nom, sous, photo, cut}) → demande pour un athlète précis */
+  window.mvpDemande=function(ath){ dmdO(true, ath||null); };
+  form.personnalite.addEventListener('input',function(){ if(!ATH) this.dataset.v=this.value; });
+  chips.addEventListener('click',function(e){ var c=e.target.closest('.dmd__chip'); if(!c) return; c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')!=='true'); });
+  /* tout lien « Travailler avec nous » ouvre la fenêtre au lieu de descendre au formulaire */
   document.addEventListener('click',function(e){
-    var a=e.target.closest('[data-ui-ouvrir]'); if(a){ e.preventDefault(); dmdO(true); return; }
+    var a=e.target.closest('[data-ui-ouvrir], a[href="#demande"], a[href="index.html#demande"], [data-ath-nom]');
+    if(a && !e.defaultPrevented && !e.metaKey && !e.ctrlKey){
+      e.preventDefault(); e.stopPropagation();
+      dmdO(true, a.dataset.athNom ? {nom:a.dataset.athNom, sous:a.dataset.athSous, photo:a.dataset.athPhoto, photo2:a.dataset.athPhoto2, cut:a.dataset.athCut==='1'} : null);
+      return;
+    }
     if(carte.classList.contains('est-ouvert') && !e.target.closest('.aide-c,.aide-b')) carteO(false);
-  });
+  },true);
   dmd.querySelector('.dmd__fond').addEventListener('click',function(){ dmdO(false); });
   dmd.querySelector('.dmd__x').addEventListener('click',function(){ dmdO(false); });
+  dmd.querySelector('.dmd__okb').addEventListener('click',function(){ dmdO(false); });
   addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(dmd.classList.contains('est-ouvert')) dmdO(false); else carteO(false); } });
   form.addEventListener('submit',function(e){
-    e.preventDefault(); var d=D[L()], ok=true;
-    form.querySelectorAll('[required]').forEach(function(f){ var v=f.value.trim(), bon=v && (f.type!=='email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)); f.closest('.dmd__c').classList.toggle('est-invalide',!bon); if(!bon) ok=false; });
-    if(!ok){ err.hidden=false; err.textContent=d.req; return; }
+    e.preventDefault(); var d=D[L()], ok=true, prem=null;
+    form.querySelectorAll('[required]').forEach(function(f){ var v=f.value.trim(), bon=v && (f.type!=='email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)); f.closest('.dmd__c').classList.toggle('est-invalide',!bon); if(!bon){ ok=false; prem=prem||f; } });
+    if(!ok){ err.hidden=false; err.textContent=d.req; prem.focus(); return; }
     err.hidden=true; go.disabled=true; go.querySelector('span').textContent=d.envoi;
-    var o={source:'bulle-aide',page:location.pathname,langue:L()}; new FormData(form).forEach(function(v,k){ o[k]=v; });
+    var o={source:ATH?'athlete':'travailler-avec-nous',page:location.href,langue:L()}; new FormData(form).forEach(function(v,k){ o[k]=v; });
+    o.besoins=[].map.call(chips.querySelectorAll('[aria-pressed=true]'),function(c){ return c.textContent; }).join(', ');
+    o.type=o.besoins;
     fetch('/api/demande',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})
-      .then(function(r){ if(!r.ok) throw 0; dmd.querySelector('.dmd__f').hidden=true; dmd.querySelector('.dmd__ok').hidden=false; form.reset(); })
+      .then(function(r){ if(!r.ok) throw 0; dmd.querySelector('.dmd__f').hidden=true; dmd.querySelector('.dmd__ok').hidden=false; form.reset(); chips.querySelectorAll('[aria-pressed]').forEach(function(c){ c.setAttribute('aria-pressed','false'); }); majTitres(); })
       .catch(function(){ err.hidden=false; err.innerHTML=D[L()].err; })
       .then(function(){ go.disabled=false; go.querySelector('span').textContent=D[L()].envoyer; });
   });
@@ -119,8 +174,9 @@
     document.querySelectorAll('[data-ui-html]').forEach(function(el){ el.innerHTML=d[el.dataset.uiHtml]; });
     document.querySelectorAll('[data-ui-ph]').forEach(function(el){ el.placeholder=d[el.dataset.uiPh]; });
     document.querySelectorAll('[data-ui-aria]').forEach(function(el){ el.setAttribute('aria-label',d[el.dataset.uiAria]); });
-    var s=form.querySelector('select'), v=s.selectedIndex;
-    s.innerHTML=d.types.map(function(t,i){ return '<option value="'+(i?t:'')+'">'+t+'</option>'; }).join(''); s.selectedIndex=Math.max(0,v);
+    var on=[].map.call(chips.children,function(c){ return c.getAttribute('aria-pressed')==='true'; });
+    chips.innerHTML=d.types.map(function(t,i){ return '<button type="button" class="dmd__chip" aria-pressed="'+(on[i]?'true':'false')+'">'+t+'</button>'; }).join('');
+    majTitres();
   }
   var lang=document.getElementById('lang');
   if(lang) lang.addEventListener('click',function(){ setTimeout(appliquer,0); });
