@@ -1055,16 +1055,6 @@ ul{list-style:none}
 .news{padding-top:var(--g)!important;padding-bottom:var(--g)!important}
 .footer{padding-top:var(--g)!important}
 
-/* ---------- Fondus entre les sections : la couleur glisse d'une section à l'autre ---------- */
-/* la vidéo du haut se fond dans le blanc de l'intro */
-.intro{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(var(--g)*.9));mask-image:linear-gradient(180deg,transparent 0,#000 calc(var(--g)*.9))}
-.services,.flux,.projets,.news{isolation:isolate}
-.services::after,.flux::after,.projets::after,.news::after{content:"";position:absolute;left:0;right:0;top:0;height:calc(var(--g)*1.1);z-index:-1;pointer-events:none}
-.services::after{background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.55) 35%,rgba(255,255,255,0) 100%)}
-.flux::after{background:linear-gradient(180deg,#0E2A4F 0%,rgba(14,42,79,.5) 35%,rgba(14,42,79,0) 100%)}
-.projets::after{background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.55) 35%,rgba(255,255,255,0) 100%)}
-.news::after{background:linear-gradient(180deg,#0E2A4F 0%,rgba(14,42,79,.55) 35%,rgba(14,42,79,0) 100%)}
-
 /* ---------- Hero centré : titre, recherche, téléphone ---------- */
 .hero__content--c{inset:0;max-width:none;margin:0 auto;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 2vh) var(--gutter) clamp(70px,10vh,120px)}
 .hero__content--c h1{max-width:16ch;margin:0 auto;font-size:clamp(42px,6.2vw,112px)}
