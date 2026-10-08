@@ -829,6 +829,22 @@ body{background:var(--soft)}
 .ex .ch::before{border-radius:999px;transform:none}
 .ex .ch{padding:10px 20px}
 .chips__row,.ex__row{padding-left:0}
+
+/* ---------- Filtres sur une seule ligne : recherche + menus déroulants en pastilles ---------- */
+.fl{display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+.fl .fl__q{flex:1 1 320px;max-width:none;min-width:0}
+.fl .fl__q input{padding-top:14px;padding-bottom:14px}
+.fl__d{position:relative;flex:0 0 auto}
+.fl__d select{appearance:none;-webkit-appearance:none;height:50px;padding:0 42px 0 20px;border:1px solid #c9cfd8;border-radius:999px;background:#fff;font:inherit;font-size:14px;font-weight:600;color:#123B6D;cursor:pointer;max-width:240px;text-overflow:ellipsis;transition:border-color .25s,background .25s,color .25s}
+.fl__d::after{content:"";position:absolute;right:18px;top:50%;width:7px;height:7px;margin-top:-6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);color:#123B6D;pointer-events:none}
+.fl__d select:hover{border-color:#123B6D}
+.fl__d select:focus{outline:none;border-color:#1E5299;box-shadow:0 0 0 4px rgba(30,82,153,.1)}
+.fl__d select.est-actif{background:#123B6D;border-color:#123B6D;color:#fff}
+.fl__d:has(select.est-actif)::after{color:#fff}
+.fl__d--tri select{color:#555;font-weight:500}
+.ex__bar{margin-top:18px}
+@media (max-width:1100px){.fl{flex-wrap:wrap}.fl .fl__q{flex-basis:100%}}
+@media (max-width:760px){.fl{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fl .fl__q{grid-column:1/-1}.fl__d select{width:100%;max-width:none;height:46px;font-size:13px;padding:0 34px 0 14px}.fl__d::after{right:14px}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head><body>
@@ -893,21 +909,19 @@ body{background:var(--soft)}
   <section class="ex" id="explorer" data-nav="dark">
     <p class="ex__k">MVP Group · Réalisations</p>
     <h2 class="ex__h">Tous nos projets</h2>
-    <div class="ex__srch">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Rechercher par projet, personnalité ou marque…" aria-label="Rechercher un projet">
-    </div>
-    <div class="ex__f">
-      <div class="ex__grp"><h3>Année</h3><div class="ex__row" id="fAnnee"></div></div>
-      <div class="ex__grp"><h3>Type de projet</h3><div class="ex__row" id="fType"></div></div>
-      <div class="ex__grp"><h3>Service</h3><div class="ex__row" id="fSvc"></div></div>
+    <div class="fl">
+      <div class="ex__srch fl__q">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Rechercher un projet, une personnalité, une marque…" aria-label="Rechercher un projet">
+      </div>
+      <label class="fl__d"><span class="sr">Année</span><select id="fAnnee"></select></label>
+      <label class="fl__d"><span class="sr">Type de projet</span><select id="fType"></select></label>
+      <label class="fl__d"><span class="sr">Service</span><select id="fSvc"></select></label>
+      <label class="fl__d fl__d--tri"><span class="sr">Trier par</span><select id="tri"><option value="recent">Trier : plus récents</option><option value="ancien">Plus anciens</option><option value="az">A – Z</option></select></label>
     </div>
     <div class="ex__bar">
       <span class="ex__n"><b id="nb">0</b> projets</span>
-      <div class="ex__droite">
-        <label class="ex__tri"><span>Trier par</span><select id="tri"><option value="recent">Plus récents</option><option value="ancien">Plus anciens</option><option value="az">A – Z</option></select></label>
-        <button class="ex__clr" id="clr" hidden>[ X ] Effacer la sélection</button>
-      </div>
+      <button class="ex__clr" id="clr" hidden>[ X ] Effacer la sélection</button>
     </div>
   </section>
 
@@ -965,9 +979,9 @@ const E={annee:null,type:null,svc:null,tri:'recent',q:'',page:1}; const PAR_PAGE
 (function lireURL(){ const u=new URLSearchParams(location.search);
   if(u.get('service')) E.svc=u.get('service');
   if(u.get('year')) E.annee=+u.get('year'); if(u.get('type')) E.type=u.get('type'); if(u.get('q')) E.q=u.get('q'); })();
-$('#fAnnee').innerHTML=['<button class="ch" data-a="" aria-pressed="true">Toutes</button>',...ANNEES.map(a=>`<button class="ch" data-a="${a}" aria-pressed="false">${a}</button>`)].join('');
-$('#fSvc').innerHTML=['<button class="ch" data-s="" aria-pressed="true">Tous</button>',...SVC.map(([k,l])=>`<button class="ch" data-s="${k}" aria-pressed="false">${l}</button>`)].join('');
-$('#fType').innerHTML=['<button class="ch" data-t="" aria-pressed="true">Tous</button>',...TYPES.map(t=>`<button class="ch" data-t="${t}" aria-pressed="false">${t}</button>`)].join('');
+$('#fAnnee').innerHTML=['<option value="">Année : toutes</option>',...ANNEES.map(a=>`<option value="${a}">${a}</option>`)].join('');
+$('#fType').innerHTML=['<option value="">Type de projet</option>',...TYPES.map(t=>`<option value="${t}">${t}</option>`)].join('');
+$('#fSvc').innerHTML=['<option value="">Service</option>',...SVC.map(([k,l])=>`<option value="${k}">${l}</option>`)].join('');
 
 function filtrer(){
   const q=E.q.trim().toLowerCase();
@@ -1003,17 +1017,16 @@ function rendre(){
   $('#grid').innerHTML = r.length ? vis.map(carte).join('') : `<div class="pg__vide"><b>Aucun projet ne correspond.</b>Essayez un autre mot ou retirez un filtre.</div>`;
   const plus=$('#plus'); plus.parentElement.style.display = r.length>vis.length ? '' : 'none';
   plus.textContent=`Voir plus de projets (${r.length-vis.length})`;
-  $$('#fAnnee .ch').forEach(b=>b.setAttribute('aria-pressed', String((b.dataset.a?+b.dataset.a:null)===E.annee)));
-  $$('#fType .ch').forEach(b=>b.setAttribute('aria-pressed', String((b.dataset.t||null)===E.type)));
-  $$('#fSvc .ch').forEach(b=>b.setAttribute('aria-pressed', String((b.dataset.s||null)===E.svc)));
+  [['#fAnnee',E.annee],['#fType',E.type],['#fSvc',E.svc]].forEach(([id,v])=>{const el=$(id); el.value=v==null?'':String(v); el.classList.toggle('est-actif',v!=null);});
+  $('#tri').value=E.tri||'recent';
   $('#clr').hidden = !(E.annee||E.type||E.svc||E.q);
   const u=new URLSearchParams(); if(E.annee)u.set('year',E.annee); if(E.type)u.set('type',E.type); if(E.svc)u.set('service',E.svc); if(E.q)u.set('q',E.q);
   try{ history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:'')); }catch(e){}
 }
-$('#fAnnee').addEventListener('click',e=>{const b=e.target.closest('.ch'); if(!b)return; E.annee=b.dataset.a?+b.dataset.a:null; E.page=1; rendre();});
-$('#fType').addEventListener('click',e=>{const b=e.target.closest('.ch'); if(!b)return; E.type=b.dataset.t||null; E.page=1; rendre();});
+$('#fAnnee').addEventListener('change',e=>{E.annee=e.target.value?+e.target.value:null; E.page=1; rendre();});
+$('#fType').addEventListener('change',e=>{E.type=e.target.value||null; E.page=1; rendre();});
 let tm; $('#q').addEventListener('input',e=>{clearTimeout(tm); tm=setTimeout(()=>{E.q=e.target.value; E.page=1; rendre();},140);});
-$('#fSvc').addEventListener('click',e=>{const b=e.target.closest('.ch'); if(!b)return; E.svc=b.dataset.s||null; E.page=1; rendre();});
+$('#fSvc').addEventListener('change',e=>{E.svc=e.target.value||null; E.page=1; rendre();});
 $('#tri').addEventListener('change',e=>{E.tri=e.target.value; E.page=1; rendre();});
 $('#clr').addEventListener('click',()=>{E.annee=null;E.type=null;E.svc=null;E.q='';E.page=1;$('#q').value='';rendre();});
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
