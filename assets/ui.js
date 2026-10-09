@@ -56,7 +56,7 @@
   var body=document.body;
 
   /* 1. bande bleue */
-  var tb=mk('div','tb','<a class="tb__tel" href="'+TELH+'">'+I.tel+'<span>'+TEL+'</span></a>'+
+  var tb=mk('div','tb','<span class="tb__vide" aria-hidden="true"></span>'+
     '<span class="tb__msg" data-ui-html="msg"></span>'+
     '<div class="tb__btns"><a class="tb__b tb__b--o" href="#" data-ui-ouvrir data-ui="work"></a><a class="tb__b tb__b--w" href="'+TELH+'">'+I.tel+'<span data-ui="call"></span></a></div>');
   tb.setAttribute('role','region'); tb.setAttribute('aria-label','MVP Group');
@@ -186,6 +186,27 @@
   var html=document.documentElement;
   var defile=function(){ html.classList.toggle('tb-cache', scrollY>60); };
   addEventListener('scroll',defile,{passive:true}); defile();
+
+  /* 6. Couleur des boutons selon leur fonction :
+        BLEU   = action qui ouvre un formulaire (demande, collaboration, contact)
+        BRONZE = navigation vers une page de contenu (projets, personnalités, profils…) */
+  var SEL='.btn, .tcard__b1, .tcard__lien, .intro__cta, .mo__go, .eq-btn, .ag-cta, .cat__cta, .tk__v, .nw__more, .talents__all';
+  var EXCLU='.tb, .bb, .dmd, .aide-c, .hero__q';
+  var FORM=/#demande$|travailler=1/;
+  function classer(racine){
+    (racine||document).querySelectorAll(SEL).forEach(function(b){
+      if(b.closest(EXCLU)) return;
+      var h=b.getAttribute('href')||'';
+      if(/^tel:/.test(h)) return;
+      if(/^mailto:/.test(h) && !b.hasAttribute('data-ui-ouvrir')) b.setAttribute('data-ui-ouvrir','');
+      var act=b.hasAttribute('data-ui-ouvrir')||b.hasAttribute('data-ui-intl')||b.hasAttribute('data-travailler')||b.hasAttribute('data-ath-nom')||FORM.test(h);
+      var nav=!act && (/\.html/.test(h) || b.classList.contains('tk__v') || (b.tagName==='BUTTON' && /plus|more/i.test(b.id+b.className)));
+      b.classList.toggle('ui-act',act); b.classList.toggle('ui-nav',!!nav);
+    });
+  }
+  classer();
+  /* les cartes et listes créées plus tard (filtres, « voir plus », langue) sont classées aussi */
+  new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if(n.nodeType===1){ if(n.matches&&n.matches(SEL)) classer(n.parentNode); else classer(n); } }); }); }).observe(body,{childList:true,subtree:true});
 
   /* langue */
   function appliquer(){

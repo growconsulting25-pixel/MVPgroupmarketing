@@ -200,3 +200,37 @@
 .dmd__sel:focus{outline:none;border-color:#1E5299;background-color:#fff;box-shadow:0 0 0 4px rgba(30,82,153,.12)}
 .dmd--intl .dmd__a{background:radial-gradient(120% 70% at 100% 0%,rgba(197,162,83,.22),transparent 55%),radial-gradient(120% 80% at 0% 0%,#1E5299 0%,#123B6D 45%,#08172d 100%)}
 .dmd--intl .dmd__a::before{background-image:url('monde-points.svg');background-size:180% auto;background-position:28% 62%;background-repeat:no-repeat;opacity:.22;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent);mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent)}
+
+/* =====================================================================
+   RÉVISIONS CLIENT — FINALISATION
+   ===================================================================== */
+/* bande du haut : plus de numéro à gauche ; sur mobile, la mention seule, centrée */
+.tb__vide{justify-self:start}
+@media (max-width:760px){
+  .tb{grid-template-columns:1fr!important}
+  .tb__vide,.tb__btns{display:none!important}
+  .tb__msg{justify-self:center!important;text-align:center}
+}
+/* logo MVP un peu plus petit */
+.header__logo img{height:clamp(38px,3.6vw,52px)!important}
+.header--barre .header__logo img{height:clamp(34px,3.2vw,46px)!important}
+@media (max-width:760px){.header__logo img,.header--barre .header__logo img{height:40px!important}}
+
+/* Boutons : BLEU = vers un formulaire ; BRONZE = vers une page de contenu */
+.ui-act.ui-act{background:linear-gradient(135deg,#1E5299,#123B6D)!important;color:#fff!important;border-color:#1E5299!important;box-shadow:0 10px 24px rgba(18,59,109,.22)}
+.ui-act.ui-act:hover{background:linear-gradient(135deg,#2a66b8,#1E5299)!important;color:#fff!important;transform:translateY(-1px)}
+.ui-nav.ui-nav{background:#B08D45!important;background:linear-gradient(135deg,#C9A65A,#A9853D)!important;color:#0b0b0b!important;border-color:#B08D45!important}
+.ui-nav.ui-nav:hover{background:linear-gradient(135deg,#B8954A,#8F6F2E)!important;color:#fff!important;transform:translateY(-1px)}
+.ui-act,.ui-nav{transition:background .3s,color .3s,transform .3s,box-shadow .3s}
+.ui-act svg,.ui-nav svg{color:currentColor;stroke:currentColor}
+/* « Voir le profil » : un vrai bouton bronze à l'intérieur de chaque carte */
+.tcard__lien.ui-nav{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;padding:12px 10px!important;border-radius:999px;border:1px solid transparent;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;pointer-events:auto}
+.tcard__lien.ui-nav .arrow,.tcard__lien.ui-nav svg{color:currentColor!important}
+.tcard__b1.ui-act{border:1px solid transparent!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.tk__v.ui-nav{align-self:flex-start;padding:10px 18px;border-radius:999px;margin-top:8px;font-size:10.5px}
+.tk__v.ui-nav svg{color:currentColor!important}
+.cat__cta.ui-nav{border-radius:999px}
+
+/* pied de page : bas de page centré */
+.footer__bottom{justify-content:center!important;text-align:center}
+.footer__grid{text-align:left}
