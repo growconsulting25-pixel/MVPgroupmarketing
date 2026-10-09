@@ -1181,6 +1181,11 @@ ul{list-style:none}
 /* Logos partenaires : rendu d'origine, un peu plus petits ; cliquables vers le projet */
 .marquee__row img{height:clamp(30px,3.1vw,48px)!important;max-width:160px!important}
 .marquee__row{gap:5vw}
+
+/* Tous les titres de section à la même taille que le titre de la bannière */
+:root{--titre:clamp(40px,5.6vw,100px)}
+@media (max-width:760px){:root{--titre:10vw}}
+.hero__content--c h1,.intro__title,.services__bg,.talents__t,.explore .explore__title,.explore__title,.projets__t,.mo__t{font-size:var(--titre)!important;line-height:.94!important}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head>
