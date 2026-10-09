@@ -223,7 +223,10 @@
 .ui-nav.ui-nav:hover{background:linear-gradient(135deg,#B8954A,#8F6F2E)!important;color:#fff!important;transform:translateY(-1px)}
 .ui-act,.ui-nav{transition:background .3s,color .3s,transform .3s,box-shadow .3s}
 .ui-act svg,.ui-nav svg{color:currentColor;stroke:currentColor}
-.cat__cta.ui-nav{border-radius:999px}
+.cat__cta.ui-nav{display:inline-flex;align-items:center;gap:12px;padding:15px 26px!important;border-radius:999px!important;font-size:11px!important;letter-spacing:.14em;margin-top:22px}
+.cat__cta.ui-nav::after{display:none}
+.cat__cta.ui-nav svg{color:#fff!important;width:16px;height:16px;transition:transform .3s}
+.cat__cta.ui-nav:hover svg{transform:translateX(4px)}
 
 /* pied de page : bas de page centré */
 .footer__bottom{justify-content:center!important;text-align:center}
