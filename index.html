@@ -1186,6 +1186,11 @@ ul{list-style:none}
 :root{--titre:clamp(40px,5.6vw,100px)}
 @media (max-width:760px){:root{--titre:10vw}}
 .hero__content--c h1,.intro__title,.services__bg,.talents__t,.explore .explore__title,.explore__title,.projets__t,.mo__t{font-size:var(--titre)!important;line-height:.94!important}
+
+/* Catégories : « Découvrir les personnalités » en or, bleu au survol */
+.explore .cat__cta,.on-white .cat__cta.btn--ghost{color:var(--gold)!important;transition:color .3s}
+.explore .cat__cta svg{color:currentColor!important}
+.explore .cat__cta:hover,.on-white .cat__cta.btn--ghost:hover{color:#1E5299!important}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head>
