@@ -190,7 +190,7 @@
   /* 6. Couleur des boutons selon leur fonction :
         BLEU   = action qui ouvre un formulaire (demande, collaboration, contact)
         BRONZE = navigation vers une page de contenu (projets, personnalités, profils…) */
-  var SEL='.btn, .tcard__b1, .tcard__lien, .intro__cta, .mo__go, .eq-btn, .ag-cta, .cat__cta, .tk__v, .nw__more, .talents__all';
+  var SEL='.btn, .intro__cta, .mo__go, .eq-btn, .ag-cta, .cat__cta, .nw__more, .talents__all';
   var EXCLU='.tb, .bb, .dmd, .aide-c, .hero__q';
   var FORM=/#demande$|travailler=1/;
   function classer(racine){

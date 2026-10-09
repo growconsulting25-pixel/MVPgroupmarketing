@@ -1168,42 +1168,16 @@ ul{list-style:none}
 .hero__q{width:min(520px,100%)}
 @media (max-width:760px){.hero__content--c h1{font-size:11.5vw}.hero__q{width:100%}}
 
-/* Intro centrée */
-.intro__top{align-items:center;text-align:center}
-.intro__title{text-align:center;margin:0 auto;max-width:20ch}
-.intro__cols{margin:0 auto;text-align:left}
-.intro__cta{align-self:center}
-@media (max-width:760px){.intro{text-align:center}.intro__cols{text-align:center}}
-
-/* Titres de section centrés */
-.services__bg{text-align:center;margin-left:auto;margin-right:auto}
-.talents__head{flex-direction:column;align-items:center;text-align:center;gap:18px}
-.projets__head{flex-direction:column;align-items:center;text-align:center;gap:16px}
-.explore__title{text-align:left}
-
-/* Logos partenaires : en couleur sur des tuiles blanches, un peu plus petits, cliquables */
-.marquee{padding:12px 0 22px}
-.marquee__row{gap:clamp(14px,1.6vw,24px);padding:0 12px}
-.marquee__item{display:flex;align-items:center;justify-content:center;width:clamp(150px,13vw,200px);height:clamp(78px,7vw,98px);padding:14px 22px;background:#fff;border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.18);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
-.marquee__row img,.marquee__item img,.marquee__item.est-mono img,.marquee__item.est-plaque img{height:auto;max-height:100%;max-width:100%;width:auto;filter:none!important;mix-blend-mode:normal!important;opacity:1!important}
-.marquee__item:hover,.marquee__item:focus-visible{transform:translateY(-4px) scale(1.04);box-shadow:0 18px 40px rgba(0,0,0,.28),0 0 0 3px var(--gold)}
-.marquee__item::after{display:none}
-.marquee:hover .marquee__row{animation-play-state:paused}
-
 /* Pied de page : phrase, logo MVP, bouton bleu, tout centré */
 .footer__top{justify-items:center;text-align:center}
 .footer .footer__phrase{text-align:center}
 .footer__cut{justify-self:center}
 .footer__go{display:flex;justify-content:center;width:100%}
 
-/* Intro : titre et textes centrés, même rendu sur tablette */
-.intro__cols{max-width:880px!important;width:100%}
-.intro__p{text-align:center}
-@media (min-width:761px) and (max-width:1023px){
-  .intro__title{font-size:clamp(40px,6.4vw,64px)!important;line-height:.98!important;max-width:18ch!important}
-  .intro__top{gap:22px!important}
-  .intro__cols{grid-template-columns:1fr!important;max-width:620px!important;gap:12px!important}
-}
+
+/* Logos partenaires : rendu d'origine, un peu plus petits ; cliquables vers le projet */
+.marquee__row img{height:clamp(30px,3.1vw,48px)!important;max-width:160px!important}
+.marquee__row{gap:5vw}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head>
@@ -1643,7 +1617,7 @@ function ServicePanel(s){
 }
 function Marquee(row,items){
   /* chaque logo mène au projet réalisé avec la marque (sinon à la page Projets) */
-  const frag=(copie)=>items.map(p=>`<a class="marquee__item" href="${p.p?'projet.html?id='+p.p:'projets.html'}"${copie?' tabindex="-1" aria-hidden="true"':''} title="${p.n}"><img src="${p.f}" alt="${p.n}" loading="lazy"></a>`).join('');
+  const frag=(copie)=>items.map(p=>`<a class="marquee__item${p.mono?' est-mono':''}${p.plaque?' est-plaque':''}" href="${p.p?'projet.html?id='+p.p:'projets.html'}"${copie?' tabindex="-1" aria-hidden="true"':''} title="${p.n}"><img src="${p.f}" alt="${p.n}" loading="lazy"></a>`).join('');
   row.innerHTML=frag(false)+frag(true); // duplicated for seamless loop
 }
 function CategoryRow(c,i){

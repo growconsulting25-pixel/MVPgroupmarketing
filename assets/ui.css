@@ -223,12 +223,6 @@
 .ui-nav.ui-nav:hover{background:linear-gradient(135deg,#B8954A,#8F6F2E)!important;color:#fff!important;transform:translateY(-1px)}
 .ui-act,.ui-nav{transition:background .3s,color .3s,transform .3s,box-shadow .3s}
 .ui-act svg,.ui-nav svg{color:currentColor;stroke:currentColor}
-/* « Voir le profil » : un vrai bouton bronze à l'intérieur de chaque carte */
-.tcard__lien.ui-nav{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;padding:12px 10px!important;border-radius:999px;border:1px solid transparent;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;pointer-events:auto}
-.tcard__lien.ui-nav .arrow,.tcard__lien.ui-nav svg{color:currentColor!important}
-.tcard__b1.ui-act{border:1px solid transparent!important;-webkit-backdrop-filter:none;backdrop-filter:none}
-.tk__v.ui-nav{align-self:flex-start;padding:10px 18px;border-radius:999px;margin-top:8px;font-size:10.5px}
-.tk__v.ui-nav svg{color:currentColor!important}
 .cat__cta.ui-nav{border-radius:999px}
 
 /* pied de page : bas de page centré */
