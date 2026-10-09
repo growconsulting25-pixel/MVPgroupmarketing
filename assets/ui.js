@@ -191,7 +191,7 @@
         BLEU   = action qui ouvre un formulaire (demande, collaboration, contact)
         BRONZE = navigation vers une page de contenu (projets, personnalités, profils…) */
   var SEL='.btn, .intro__cta, .mo__go, .eq-btn, .ag-cta, .cat__cta, .nw__more, .talents__all';
-  var EXCLU='.tb, .bb, .dmd, .aide-c, .hero__q';
+  var EXCLU='.tb, .bb, .dmd, .aide-c, .hero__q, .footer__go';
   var FORM=/#demande$|travailler=1/;
   function classer(racine){
     (racine||document).querySelectorAll(SEL).forEach(function(b){
