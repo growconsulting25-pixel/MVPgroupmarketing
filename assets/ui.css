@@ -219,7 +219,7 @@
 /* Boutons : BLEU = vers un formulaire ; BRONZE = vers une page de contenu */
 .ui-act.ui-act{background:linear-gradient(135deg,#1E5299,#123B6D)!important;color:#fff!important;border-color:#1E5299!important;box-shadow:0 10px 24px rgba(18,59,109,.22)}
 .ui-act.ui-act:hover{background:linear-gradient(135deg,#2a66b8,#1E5299)!important;color:#fff!important;transform:translateY(-1px)}
-.ui-nav.ui-nav{background:#B08D45!important;background:linear-gradient(135deg,#C9A65A,#A9853D)!important;color:#0b0b0b!important;border-color:#B08D45!important}
+.ui-nav.ui-nav{background:#B08D45!important;background:linear-gradient(135deg,#C9A65A,#A9853D)!important;color:#fff!important;border-color:#B08D45!important}
 .ui-nav.ui-nav:hover{background:linear-gradient(135deg,#B8954A,#8F6F2E)!important;color:#fff!important;transform:translateY(-1px)}
 .ui-act,.ui-nav{transition:background .3s,color .3s,transform .3s,box-shadow .3s}
 .ui-act svg,.ui-nav svg{color:currentColor;stroke:currentColor}
