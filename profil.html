@@ -1159,7 +1159,7 @@ $('#profil').innerHTML=`
       <p class="hz__role">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.roles.map(r=>roleFr(r,t)).join(' · '):t.titre}</p>
       <div class="hz__pills">${t.roles.map(r=>`<span>${roleFr(r,t)}</span>`).join('')}</div>
       ${soc.length?`<div class="hz__soc">${soc.map(([k,u])=>`<a href="${u}" target="_blank" rel="noopener" aria-label="${k} de ${t.nom}">${ICO[k]||''}</a>`).join('')}</div>`:''}
-      <div class="hz__cta"><button type="button" class="btn btn--gold" data-travailler>Travailler avec ${t.nom}</button></div>
+      <div class="hz__cta"><button type="button" class="btn btn--gold" data-travailler>Engagez ${t.nom}</button></div>
     </div>
   </div>
 </section>
@@ -1239,10 +1239,10 @@ ${simil.length?`<section class="sm" data-nav="dark">
 <section class="cv" data-nav="light">
   <span class="cv__cut"><img src="${t.decoupe}" alt="" onerror="this.parentElement.style.display='none'"></span>
   <div class="cv__in">
-    <h2>Intéressé à travailler avec ${t.nom} ?</h2>
+    <h2>Intéressé à engager ${t.nom} ?</h2>
     <p>Parlez-nous de votre public, de votre objectif et de votre événement. MVP s'occupe de l'entente, de l'encadrement et de l'exécution.</p>
     <div class="cv__b">
-      <button type="button" class="btn btn--gold" data-travailler>Travailler avec ${t.nom}</button>
+      <button type="button" class="btn btn--gold" data-travailler>Engagez ${t.nom}</button>
       <a class="btn btn--outline" href="mailto:info@mvpsportsmarketing.com?subject=Nouveau%20projet">Parlez-nous de votre projet</a>
     </div>
   </div>

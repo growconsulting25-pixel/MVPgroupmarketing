@@ -1237,9 +1237,14 @@ ul{list-style:none}
 .tlrow__rail .tcard__in{box-shadow:0 8px 18px rgba(5,5,5,.13)!important}
 .tlrow__rail{padding:10px 0 30px!important;margin:0 var(--gutter);scroll-padding:0;background:none!important;-webkit-mask-image:none!important;mask-image:none!important}
 .tlrow__rail{column-gap:22px!important;gap:22px!important}
-.tlrow__rail .tcard{flex:0 0 calc((100% - 66px)/4)!important}
+.tlrow__rail .tcard{flex:0 0 calc((100% - 110px)/5.5)!important}
+.tlrow__rail .tcard__nom{font-size:clamp(17px,1.35vw,22px)!important}
+.tlrow__rail .tcard__b1{font-size:9px!important;letter-spacing:.03em!important;padding:9px 6px!important;white-space:normal;line-height:1.25}
+.tlrow__rail .tcard__tags{flex-wrap:nowrap!important;overflow:hidden}
+.tlrow__rail .tcard__tags span{white-space:nowrap}
+@media (min-width:1024px){.tlrow__rail{margin-right:0!important}.tlrow__rail .tcard{flex-basis:calc((100% - var(--gutter) - 110px)/5.5)!important}}
 .tlrow__rail .tcard__sub:empty{display:none}
-@media (max-width:1023px){.tlrow__rail .tcard{flex-basis:calc((100% - 22px)/2)!important}}
+@media (max-width:1023px){.tlrow__rail .tcard{flex-basis:calc((100% - 44px)/2.5)!important}}
 @media (max-width:640px){.tlrow__rail .tcard{flex-basis:76vw!important}.tlrow__nav{display:none}.tlrow__head{gap:10px}}
 
 /* MVP International : ruban en Anton, lettres pleines (plus de contours qui se superposent) */
@@ -1250,6 +1255,34 @@ ul{list-style:none}
 .mo__mtl text{font-size:22px!important;font-weight:800}
 @media (prefers-reduced-motion:reduce){.mo__ville text{animation:none;opacity:1}}
 @media (max-width:640px){.mo__ville text{font-size:22px}.mo__mtl text{font-size:28px!important}}
+
+/* Personnalités sportives : titre un peu plus petit pour tenir sur une ligne */
+.talents__t{font-size:clamp(30px,3.7vw,64px)!important;white-space:nowrap}
+@media (max-width:760px){.talents__t{white-space:normal;font-size:9vw!important}}
+/* Pied de page : phrase, logo et bouton centrés, phrase sur une ligne */
+.footer__top{justify-items:center!important;text-align:center}
+.footer .footer__phrase{text-align:center;font-size:clamp(22px,2.7vw,46px)!important;white-space:nowrap;max-width:none}
+.footer__cut{justify-self:center!important}
+.footer__go{display:flex;justify-content:center;width:100%}
+@media (max-width:760px){.footer .footer__phrase{white-space:normal;font-size:7.4vw!important}}
+
+/* Services : la carte survolée s'agrandit, les deux autres se resserrent (grand écran) */
+@media (min-width:1024px) and (hover:hover){
+  .services .services__track .panel{transition:flex-basis .6s cubic-bezier(.2,.7,.2,1)!important}
+  .services .services__track:hover .panel:not(:hover){flex-basis:calc((100% - 48px)/3 - 50px)!important}
+  .services .services__track .panel:hover{flex-basis:calc((100% - 48px)/3 + 100px)!important}
+  .services .services__track .panel:hover .panel__img{transform:scale(1.04)}
+  .services .services__track:hover .panel:not(:hover) .panel__img{filter:brightness(.45) grayscale(.4)!important}
+}
+
+/* MVP International : carte de l'Amérique du Nord limitée en hauteur, section de taille normale */
+.mo__carte{width:min(100%,calc(58vh * 1000 / 792))!important;justify-self:center;margin:0 auto}
+.mo__t{font-size:clamp(30px,3.3vw,58px)!important}
+.mo__p{margin-top:16px}
+.mo__steps{margin-top:20px}
+.mo__cta{margin-top:22px}
+.mo__ruban{margin-top:clamp(28px,4vh,48px)!important;padding:12px 0!important}
+@media (max-width:1023px){.mo__carte{width:min(100%,520px)!important}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
@@ -1406,7 +1439,7 @@ ul{list-style:none}
      avec une légère inclinaison 3D au survol. -->
 <section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="t:56:lg l:22 b:22 b:76">
   <div class="talents__head" data-reveal>
-    <h2 class="talents__t display" data-i18n="orbit.h">Personnalités</h2>
+    <h2 class="talents__t display" data-i18n="orbit.h">Personnalités sportives</h2>
     <div class="talents__side">
       <a class="btn talents__all" href="personnalites.html" data-i18n="cta.allTalent">Voir toutes les personnalités</a>
     </div>
@@ -1464,7 +1497,7 @@ ul{list-style:none}
 
 <footer class="footer" id="contact" data-nav="light">
   <div class="footer__top">
-    <h2 class="display footer__phrase"><span data-i18n-html="foot.h">Bâtissons le <span class="gold">bon partenariat.</span></span></h2>
+    <h2 class="display footer__phrase"><span data-i18n-html="foot.h">Créons le <span class="gold">bon partenariat</span> pour votre entreprise</span></h2>
     <!-- Lettrage MVP decoupe : la video joue a travers les lettres. -->
     <div class="footer__cut" aria-hidden="true">
       <video class="footer__cut-video" muted loop playsinline preload="none" poster="assets/poster-v4.jpg">
@@ -1517,10 +1550,10 @@ const I18N = {
   'intro.label':'Notre expertise','intro.h2':'Associez une icône du sport <em>à votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône.<br><span>Partout en Amérique du Nord.</span>",'mo.p':"Une vedette du basketball américain, une légende du hockey, un champion olympique ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, partout en Amérique du Nord.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un agent','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Conférenciers','hero.k2':'Ambassadeurs','hero.k3':'Porte-parole','hero.k4':"Invités d'honneur",'hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un agent :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
-  'orbit.h':'Personnalités','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
-  'sl.hint':'Défilez ou utilisez les flèches','rail.menu':'Menu',"dm.k":"Démarrer un projet","dm.h":"Parlez-nous de <span class=\"gold\">votre projet.</span>","dm.p":"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin. Nous trouvons la bonne personnalité et nous vous revenons rapidement.","dm.nom":"Nom *","dm.ent":"Entreprise","dm.mail":"Courriel *","dm.tel":"Téléphone","dm.type":"Type de projet","dm.date":"Date approximative","dm.dateph":"Ex. : juin 2027","dm.pers":"Personnalité souhaitée (facultatif)","dm.msg":"Message","dm.send":"Envoyer la demande","dm.okh":"Merci, votre demande est envoyée.","dm.okp":"L'équipe MVP communiquera avec vous sous peu.","dm.choose":"Choisir…","dm.req":"Veuillez indiquer votre nom et un courriel valide.","dm.fail":"L'envoi n'a pas fonctionné. Réessayez dans un instant ou appelez-nous au 514-582-3306.","tl.work":"Travailler avec",'pj.h':'Nos projets','pj.hint':'Glisser →','sl.partners':'Partenaires','sl.kicker':'Nos projets','news.title':'Actualités','news.all':'Tout voir','news.read':'Lire','news.extrait':"Extrait de l'article. La suite est à lire chez l'éditeur.",'news.full':"Lire l'article au complet",
+  'orbit.h':'Personnalités sportives','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
+  'sl.hint':'Défilez ou utilisez les flèches','rail.menu':'Menu',"dm.k":"Démarrer un projet","dm.h":"Parlez-nous de <span class=\"gold\">votre projet.</span>","dm.p":"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin. Nous trouvons la bonne personnalité et nous vous revenons rapidement.","dm.nom":"Nom *","dm.ent":"Entreprise","dm.mail":"Courriel *","dm.tel":"Téléphone","dm.type":"Type de projet","dm.date":"Date approximative","dm.dateph":"Ex. : juin 2027","dm.pers":"Personnalité souhaitée (facultatif)","dm.msg":"Message","dm.send":"Envoyer la demande","dm.okh":"Merci, votre demande est envoyée.","dm.okp":"L'équipe MVP communiquera avec vous sous peu.","dm.choose":"Choisir…","dm.req":"Veuillez indiquer votre nom et un courriel valide.","dm.fail":"L'envoi n'a pas fonctionné. Réessayez dans un instant ou appelez-nous au 514-582-3306.","tl.work":"Engagez",'pj.h':'Nos projets','pj.hint':'Glisser →','sl.partners':'Partenaires','sl.kicker':'Nos projets','news.title':'Actualités','news.all':'Tout voir','news.read':'Lire','news.extrait':"Extrait de l'article. La suite est à lire chez l'éditeur.",'news.full':"Lire l'article au complet",
   'brands.h':'<span class="mutedword">Des marques qui veulent</span>avoir <span class="gold">un réel impact.</span>',
-  'foot.h':'Bâtissons le <span class="gold">bon partenariat.</span>','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Suivez-nous','foot.agency':'MVP Group Agency','foot.hq':'Siège social : Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. Tous droits réservés.','foot.privacy':'Politique de confidentialité'
+  'foot.h':'Créons le <span class="gold">bon partenariat</span> pour votre entreprise','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Suivez-nous','foot.agency':'MVP Group Agency','foot.hq':'Siège social : Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. Tous droits réservés.','foot.privacy':'Politique de confidentialité'
  },
  en:{
   'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
@@ -1532,10 +1565,10 @@ const I18N = {
   'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business</em>','mo.k':'MVP International · On request','mo.h':'Any icon.<br><span>Anywhere in North America.</span>','mo.p':"An American basketball star, a hockey legend, an Olympic champion? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, anywhere in North America.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an agent','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Speakers','hero.k2':'Ambassadors','hero.k3':'Spokespersons','hero.k4':'Guests of honor','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an agent:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
-  'orbit.h':'Personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
-  'sl.hint':'Scroll or use the arrows','rail.menu':'Menu',"dm.k":"Start a project","dm.h":"Tell us about <span class=\"gold\">your project.</span>","dm.p":"Keynote, campaign, gala or corporate event: describe what you need. We find the right personality and get back to you quickly.","dm.nom":"Name *","dm.ent":"Company","dm.mail":"Email *","dm.tel":"Phone","dm.type":"Project type","dm.date":"Approximate date","dm.dateph":"e.g. June 2027","dm.pers":"Preferred personality (optional)","dm.msg":"Message","dm.send":"Send request","dm.okh":"Thank you, your request has been sent.","dm.okp":"The MVP team will contact you shortly.","dm.choose":"Choose…","dm.req":"Please enter your name and a valid email.","dm.fail":"Sending failed. Please try again in a moment or call us at 514-582-3306.","tl.work":"Work with",'pj.h':'Our projects','pj.hint':'Drag →','sl.partners':'Partners','sl.kicker':'Our projects','news.title':'News','news.all':'See all','news.read':'Read','news.extrait':'Article excerpt. Read the rest at the publisher.','news.full':'Read the full article',
+  'orbit.h':'Sports personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
+  'sl.hint':'Scroll or use the arrows','rail.menu':'Menu',"dm.k":"Start a project","dm.h":"Tell us about <span class=\"gold\">your project.</span>","dm.p":"Keynote, campaign, gala or corporate event: describe what you need. We find the right personality and get back to you quickly.","dm.nom":"Name *","dm.ent":"Company","dm.mail":"Email *","dm.tel":"Phone","dm.type":"Project type","dm.date":"Approximate date","dm.dateph":"e.g. June 2027","dm.pers":"Preferred personality (optional)","dm.msg":"Message","dm.send":"Send request","dm.okh":"Thank you, your request has been sent.","dm.okp":"The MVP team will contact you shortly.","dm.choose":"Choose…","dm.req":"Please enter your name and a valid email.","dm.fail":"Sending failed. Please try again in a moment or call us at 514-582-3306.","tl.work":"Book",'pj.h':'Our projects','pj.hint':'Drag →','sl.partners':'Partners','sl.kicker':'Our projects','news.title':'News','news.all':'See all','news.read':'Read','news.extrait':'Article excerpt. Read the rest at the publisher.','news.full':'Read the full article',
   'brands.h':'<span class="mutedword">Trusted by brands</span>that want to <span class="gold">make an impact.</span>',
-  'foot.h':'Let\'s build the <span class="gold">right partnership.</span>','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Follow','foot.agency':'MVP Group Agency','foot.hq':'Head office: Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. All rights reserved.','foot.privacy':'Privacy policy'
+  'foot.h':'Let\'s build the <span class="gold">right partnership</span> for your business','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Follow','foot.agency':'MVP Group Agency','foot.hq':'Head office: Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. All rights reserved.','foot.privacy':'Privacy policy'
  }
 };
 let LANG = 'fr';
@@ -1804,7 +1837,7 @@ function TalentCard(p){
       <h3 class="tcard__nom"><a href="${href}">${p.nom}</a></h3>
       <p class="tcard__sub">${L(p.sub)}</p>
       <div class="tcard__cta">
-        <a class="tcard__b1" href="${href}&travailler=1" data-ath-nom="${p.nom}" data-ath-sous="${L(CAT_FR[p.cat])}" data-ath-photo="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" data-ath-cut="${p.photo?0:1}">${t('tl.work')} ${p.nom.split(' ')[0]}</a>
+        <a class="tcard__b1" href="${href}&travailler=1" data-ath-nom="${p.nom}" data-ath-sous="${L(CAT_FR[p.cat])}" data-ath-photo="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" data-ath-cut="${p.photo?0:1}">${t('tl.work')} ${p.nom}</a>
       </div>
       <a class="tcard__lien" href="${href}">${t('cta.profile')} ${ARROW}</a>
     </div></div>`;
