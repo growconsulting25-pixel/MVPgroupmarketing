@@ -1080,7 +1080,7 @@ ul{list-style:none}
 .mo__tel b{font-size:18px;letter-spacing:.02em;transition:color .3s}
 .mo__tel:hover b{color:var(--gold)}
 .mo__note{margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.45)}
-.mo__carte{position:relative;aspect-ratio:1000/468.9}
+.mo__carte{position:relative;aspect-ratio:1000/792.4}
 @media (min-width:1024px){.rail-on .mo__in{padding-right:calc(var(--gutter) + 40px)}}
 .mo__pts{position:absolute;inset:0;width:100%;height:100%;opacity:.28}
 .mo__arcs{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
@@ -1191,8 +1191,68 @@ ul{list-style:none}
 .explore .cat__cta,.on-white .cat__cta.btn--ghost{color:var(--gold)!important;transition:color .3s}
 .explore .cat__cta svg{color:currentColor!important}
 .explore .cat__cta:hover,.on-white .cat__cta.btn--ghost:hover{color:#1E5299!important}
+
+/* =====================================================================
+   SERVICES : 3 cartes alignées, plus grandes et allongées, flèches, sans fin
+   ===================================================================== */
+.sv__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 20px;padding:0 var(--gutter);margin-bottom:clamp(20px,3vh,34px)}
+.sv__head .services__bg{padding:0!important;margin:0}
+.sv__nav{display:flex;gap:12px;flex:none}
+.sv__vue{overflow:hidden;padding:0;margin:0 var(--gutter)}
+.services .services__track{display:flex!important;gap:24px!important;width:auto!important;padding:0!important;margin:0!important;justify-content:flex-start!important;overflow:visible!important;scroll-snap-type:none!important;will-change:transform}
+.services .services__track .panel,.services .services__track:hover .panel,.services .services__track .panel:hover{flex:0 0 calc((100% - 48px)/3)!important;width:auto!important;transform:none!important;scroll-snap-align:none}
+.services .panel:nth-child(odd),.services .panel:nth-child(even){transform:none!important}
+.services .panel__frame{height:clamp(440px,64vh,660px)!important}
+.services .services__track:hover .panel:not(:hover) .panel__img{filter:brightness(.82) saturate(.95)}
+.panel__tag,.panel__num{display:none!important}
+@media (max-width:1023px){
+  .services .services__track .panel,.services .services__track:hover .panel{flex-basis:calc((100% - 24px)/2)!important}
+  .services .panel__frame{height:clamp(380px,58vh,520px)!important}
+}
+@media (max-width:640px){
+  .services .services__track{gap:14px!important}
+  .services .services__track .panel,.services .services__track:hover .panel{flex-basis:84%!important}
+  .services .panel__frame{height:62svh!important}
+  .sv__head{align-items:center}
+  .sv__nav .slider__arrow{width:44px;height:44px}
+}
+
+/* grand écran : la colonne de menu à droite ne couvre plus les cartes */
+@media (min-width:1024px){.rail-on #services,.rail-on #personalities{padding-right:64px}}
+
+/* =====================================================================
+   PERSONNALITÉS : une rangée par catégorie, 4 cartes à la fois
+   ===================================================================== */
+.tlcats{display:flex;flex-direction:column;gap:clamp(30px,5vh,56px);margin-top:clamp(18px,3vh,30px)}
+.tlrow__head{display:flex;align-items:center;gap:18px;padding:0 var(--gutter);margin-bottom:6px}
+.tlrow__t{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:#123B6D}
+.tlrow__t::before{content:"";width:28px;height:2px;background:var(--gold)}
+.tlrow__t span{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#eef2f8;color:#123B6D;font-size:11px;letter-spacing:0}
+.tlrow__all{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);transition:color .25s}
+.tlrow__all:hover{color:#1E5299}
+.tlrow__all svg{width:14px;height:14px}
+.tlrow__nav{display:flex;gap:10px}
+.tlrow__nav .tl-arrow{width:44px;height:44px}
+.tlrow__nav .tl-arrow:disabled{opacity:.3;cursor:default}
+.tlrow__rail .tcard__in{box-shadow:0 8px 18px rgba(5,5,5,.13)!important}
+.tlrow__rail{padding:10px 0 30px!important;margin:0 var(--gutter);scroll-padding:0;background:none!important;-webkit-mask-image:none!important;mask-image:none!important}
+.tlrow__rail{column-gap:22px!important;gap:22px!important}
+.tlrow__rail .tcard{flex:0 0 calc((100% - 66px)/4)!important}
+.tlrow__rail .tcard__sub:empty{display:none}
+@media (max-width:1023px){.tlrow__rail .tcard{flex-basis:calc((100% - 22px)/2)!important}}
+@media (max-width:640px){.tlrow__rail .tcard{flex-basis:76vw!important}.tlrow__nav{display:none}.tlrow__head{gap:10px}}
+
+/* MVP International : ruban en Anton, lettres pleines (plus de contours qui se superposent) */
+.mo__piste span,.mo .mo__piste span{font-family:'Anton','Impact','Arial Narrow Bold',sans-serif!important;font-weight:400!important;letter-spacing:.01em!important;-webkit-text-stroke:0!important;color:rgba(18,59,109,.16)!important;font-size:clamp(34px,4.4vw,72px)!important;padding-right:.5em}
+/* carte de l'Amérique du Nord : villes nommées */
+.mo__ville text{font-size:17px;font-weight:700;fill:#123B6D;opacity:0;animation:moPoint 7s ease infinite;animation-delay:calc(var(--i) * .55s + 2.4s);animation-play-state:paused}
+.mo.est-visible .mo__ville text{animation-play-state:running}
+.mo__mtl text{font-size:22px!important;font-weight:800}
+@media (prefers-reduced-motion:reduce){.mo__ville text{animation:none;opacity:1}}
+@media (max-width:640px){.mo__ville text{font-size:22px}.mo__mtl text{font-size:28px!important}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
 <body>
 <a class="sr" href="#contact">Skip to contact</a>
@@ -1228,7 +1288,7 @@ ul{list-style:none}
     </div>
     <a href="projets.html" data-i18n="nav.projects">Projects</a>
     <div class="navitem">
-      <a href="agence.html" data-i18n="nav.agency">Agency</a>
+      <a href="agence.html" data-i18n="nav.agency">À propos</a>
       <div class="navdrop">
         <a href="agence.html" data-i18n="nav.a1">MVP Group mission</a>
         <a href="equipe.html" data-i18n="nav.a2">Management team</a>
@@ -1271,10 +1331,10 @@ ul{list-style:none}
 </div>
 
 <!-- Index des sections : numéro de la section en cours, cliquable -->
-<nav class="sindex" id="sindex" aria-label="Sections de la page"></nav>
+
 <div class="mobile-menu" id="mobileMenu" hidden>
   <img src="assets/mvp-logo-blanc.svg" alt="" style="height:52px;width:auto;margin-bottom:18px">
-  <a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a><a href="#services" data-i18n="nav.services">Services</a><a href="projets.html" data-i18n="nav.projects">Projets</a><a href="agence.html" data-i18n="nav.agency">Agence</a><a href="#contact" data-i18n="nav.contact">Contact</a>
+  <a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a><a href="#services" data-i18n="nav.services">Services</a><a href="projets.html" data-i18n="nav.projects">Projets</a><a href="agence.html" data-i18n="nav.agency">À propos</a><a href="#contact" data-i18n="nav.contact">Contact</a>
   <a class="btn btn--gold" href="#demande" style="font-size:12px;align-self:flex-start;margin-top:16px" data-i18n="cta.work">Travailler avec nous</a>
 </div>
 
@@ -1293,7 +1353,7 @@ ul{list-style:none}
   <div class="vfail" id="vfail"><b>The video files were not found.</b>You are most likely viewing index.html from inside the ZIP, or moved it away from the <code>assets</code> folder. Unzip the whole folder first, then open index.html from the unzipped folder.</div>
   <button class="vplay" id="vplay" aria-label="Play film"><svg width="26" height="30" viewBox="0 0 26 30" fill="currentColor"><path d="M0 0l26 15L0 30z"/></svg></button>
   <div class="hero__content hero__content--c" id="heroContent">
-    <span class="hero__k" data-hero-fade data-i18n="hero.k">Conférenciers · Ambassadeurs · Porte-parole</span>
+    <p class="hero__k" data-hero-fade><a href="service.html?s=speakers" data-i18n="hero.k1">Conférenciers</a> · <a href="service.html?s=ambassadors" data-i18n="hero.k2">Ambassadeurs</a> · <a href="service.html?s=ambassadors" data-i18n="hero.k3">Porte-parole</a> · <a href="service.html?s=hosts" data-i18n="hero.k4">Invités d'honneur</a></p>
     <h1 class="display" id="heroTitle" data-i18n-html="hero.h1">Accédez aux <span class="gold">icônes</span> du sport.</h1>
     <p class="lede" data-hero-fade data-i18n="hero.lede2">Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.</p>
     <form class="hero__q" action="personnalites.html" method="get" role="search" data-hero-fade>
@@ -1349,28 +1409,12 @@ ul{list-style:none}
     <h2 class="talents__t display" data-i18n="orbit.h">Personnalités</h2>
     <div class="talents__side">
       <a class="btn talents__all" href="personnalites.html" data-i18n="cta.allTalent">Voir toutes les personnalités</a>
-      <button class="tl-arrow" id="tlPrev" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button>
-      <button class="tl-arrow" id="tlNext" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>
     </div>
   </div>
-  <div class="talents__stage" data-reveal>
-    <div class="talents__rail" id="tlRail"></div>
-  </div>
+  <div class="tlcats" id="tlCats"></div>
 </section>
 
 <!-- ================= SECTION 6 — CATÉGORIES ================= -->
-<section class="explore on-white" id="explore" data-nav="dark" aria-label="Categories" data-plus="t:88 l:78:lg r:12 t:46">
-  <span class="grille" aria-hidden="true" style="right:6%;top:60px;width:340px;height:130px"></span>
-  <div class="explore__pin">
-  <h2 class="explore__title display" data-i18n="exp.title" data-reveal>Catégories</h2>
-  <div class="explore__left" data-reveal>
-    <span class="label label--blue" data-i18n="exp.label">Catégories</span>
-    <div class="explore__imgwrap" id="exploreImages"></div>
-    <p class="explore__caption" id="exploreCaption"></p>
-  </div>
-  <div class="explore__list" id="exploreList" data-reveal></div>
-  </div>
-</section>
 </div><!-- /flux -->
 
 <!-- ================= SECTION 7 — PROJETS =================
@@ -1397,8 +1441,8 @@ ul{list-style:none}
   <div class="mo__in">
     <div class="mo__txt" data-reveal>
       <p class="mo__k"><i></i><span data-i18n="mo.k">MVP International · Sur demande</span></p>
-      <h2 class="mo__t" data-i18n-html="mo.h">N'importe quelle icône.<br><span>Partout dans le monde.</span></h2>
-      <p class="mo__p" data-i18n="mo.p">Une vedette du basketball américain, une légende du soccer européen, un champion olympique d'ailleurs ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, ici comme ailleurs.</p>
+      <h2 class="mo__t" data-i18n-html="mo.h">N'importe quelle icône.<br><span>Partout en Amérique du Nord.</span></h2>
+      <p class="mo__p" data-i18n="mo.p">Une vedette du basketball américain, une légende du hockey, un champion olympique ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, partout en Amérique du Nord.</p>
       <ol class="mo__steps">
         <li><b>01</b><span data-i18n="mo.s1">Vous nommez la personnalité</span></li>
         <li><b>02</b><span data-i18n="mo.s2">Nous contactons ses représentants</span></li>
@@ -1411,8 +1455,8 @@ ul{list-style:none}
       <p class="mo__note" data-i18n="mo.note">Sous réserve de la disponibilité et des conditions de chaque personnalité.</p>
     </div>
     <div class="mo__carte" aria-hidden="true">
-      <img class="mo__pts" src="assets/monde-points-bleu.svg" alt="" loading="lazy">
-      <svg class="mo__arcs" viewBox="0 0 1000 468.9" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="mo__arc" style="--i:0" d="M295.6 176.9Q295.0 179.3 294.4 190.3" pathLength="1"/><path class="mo__arc" style="--i:1" d="M295.6 176.9Q233.6 151.9 171.7 208.8" pathLength="1"/><path class="mo__arc" style="--i:2" d="M295.6 176.9Q286.4 185.8 277.2 231.7" pathLength="1"/><path class="mo__arc" style="--i:3" d="M295.6 176.9Q237.9 152.1 180.3 202.8" pathLength="1"/><path class="mo__arc" style="--i:4" d="M295.6 176.9Q397.6 103.1 499.7 160.3" pathLength="1"/><path class="mo__arc" style="--i:5" d="M295.6 176.9Q401.0 104.6 506.5 167.5" pathLength="1"/><path class="mo__arc" style="--i:6" d="M295.6 176.9Q392.6 121.7 489.7 191.1" pathLength="1"/><path class="mo__arc" style="--i:7" d="M295.6 176.9Q474.6 89.2 653.6 233.3" pathLength="1"/><path class="mo__arc" style="--i:8" d="M295.6 176.9Q591.8 70.6 888.1 204.2" pathLength="1"/><path class="mo__arc" style="--i:9" d="M295.6 176.9Q333.1 206.9 370.6 368.6" pathLength="1"/><path class="mo__arc" style="--i:10" d="M295.6 176.9Q607.8 167.2 920.0 397.5" pathLength="1"/><path class="mo__arc" style="--i:11" d="M295.6 176.9Q287.5 174.1 279.4 182.1" pathLength="1"/><g class="mo__ville" style="--i:0" transform="translate(294.4 190.3)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:1" transform="translate(171.7 208.8)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:2" transform="translate(277.2 231.7)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:3" transform="translate(180.3 202.8)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:4" transform="translate(499.7 160.3)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:5" transform="translate(506.5 167.5)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:6" transform="translate(489.7 191.1)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:7" transform="translate(653.6 233.3)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:8" transform="translate(888.1 204.2)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:9" transform="translate(370.6 368.6)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:10" transform="translate(920.0 397.5)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__ville" style="--i:11" transform="translate(279.4 182.1)"><circle r="9" class="mo__onde"/><circle r="3.6"/></g><g class="mo__mtl" transform="translate(295.6 176.9)"><circle r="16" class="mo__onde"/><circle r="6"/><text x="11" y="-12">Montréal</text></g></svg>
+      <img class="mo__pts" src="assets/amerique-points-bleu.svg" alt="" loading="lazy">
+      <svg class="mo__arcs" viewBox="0 0 1000 792.4" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="mo__arc" style="--i:0" d="M813.8 347.4Q788.8 342.9 763.8 368.9" pathLength="1"/><path class="mo__arc" style="--i:1" d="M813.8 347.4Q812.1 359.6 810.3 403.0" pathLength="1"/><path class="mo__arc" style="--i:2" d="M813.8 347.4Q753.3 332.6 692.8 389.4" pathLength="1"/><path class="mo__arc" style="--i:3" d="M813.8 347.4Q767.3 369.4 720.8 483.7" pathLength="1"/><path class="mo__arc" style="--i:4" d="M813.8 347.4Q785.4 395.8 757.0 576.3" pathLength="1"/><path class="mo__arc" style="--i:5" d="M813.8 347.4Q720.0 365.4 626.1 530.0" pathLength="1"/><path class="mo__arc" style="--i:6" d="M813.8 347.4Q713.8 351.6 613.8 495.0" pathLength="1"/><path class="mo__arc" style="--i:7" d="M813.8 347.4Q703.8 393.9 593.7 649.8" pathLength="1"/><path class="mo__arc" style="--i:8" d="M813.8 347.4Q634.7 296.8 455.7 455.6" pathLength="1"/><path class="mo__arc" style="--i:9" d="M813.8 347.4Q621.4 299.8 429.0 480.2" pathLength="1"/><path class="mo__arc" style="--i:10" d="M813.8 347.4Q639.4 215.9 464.9 283.0" pathLength="1"/><path class="mo__arc" style="--i:11" d="M813.8 347.4Q600.3 205.3 386.9 303.6" pathLength="1"/><g class="mo__ville" style="--i:0" transform="translate(763.8 368.9)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="-12" y="-10" text-anchor="end">Toronto</text></g><g class="mo__ville" style="--i:1" transform="translate(810.3 403.0)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="12" y="12" text-anchor="start">New York</text></g><g class="mo__ville" style="--i:2" transform="translate(692.8 389.4)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="-12" y="-8" text-anchor="end">Chicago</text></g><g class="mo__ville" style="--i:3" transform="translate(720.8 483.7)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="12" y="5" text-anchor="start">Atlanta</text></g><g class="mo__ville" style="--i:4" transform="translate(757.0 576.3)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="12" y="5" text-anchor="start">Miami</text></g><g class="mo__ville" style="--i:5" transform="translate(626.1 530.0)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="12" y="12" text-anchor="start">Houston</text></g><g class="mo__ville" style="--i:6" transform="translate(613.8 495.0)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="-12" y="-8" text-anchor="end">Dallas</text></g><g class="mo__ville" style="--i:7" transform="translate(593.7 649.8)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="12" y="5" text-anchor="start">Mexico</text></g><g class="mo__ville" style="--i:8" transform="translate(455.7 455.6)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="-12" y="-8" text-anchor="end">Las Vegas</text></g><g class="mo__ville" style="--i:9" transform="translate(429.0 480.2)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="-12" y="14" text-anchor="end">Los Angeles</text></g><g class="mo__ville" style="--i:10" transform="translate(464.9 283.0)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="12" y="5" text-anchor="start">Calgary</text></g><g class="mo__ville" style="--i:11" transform="translate(386.9 303.6)"><circle r="16" class="mo__onde"/><circle r="6.5"/><text x="-12" y="5" text-anchor="end">Vancouver</text></g><g class="mo__mtl" transform="translate(813.8 347.4)"><circle r="26" class="mo__onde"/><circle r="10"/><text x="16" y="-16">Montréal</text></g></svg>
     </div>
   </div>
   <div class="mo__ruban" aria-hidden="true"><div class="mo__piste"><span data-i18n="mo.rub">Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · </span><span data-i18n="mo.rub">Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · </span></div></div>
@@ -1434,7 +1478,7 @@ ul{list-style:none}
       <h4 data-i18n="foot.agency">MVP Group Agency</h4>
       <ul><li data-i18n="foot.hq">Siège social : Montréal, Qc. Canada</li><li>Toronto · New York · Las Vegas</li><li><a href="tel:+15145823306">514-582-3306</a></li><li><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
     </div>
-    <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a></li><li><a href="#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Projets</a></li><li><a href="agence.html" data-i18n="nav.agency">Agence</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a></li><li><a href="#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Projets</a></li><li><a href="agence.html" data-i18n="nav.agency">À propos</a></li><li><a href="#contact">Contact</a></li></ul></div>
     <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=speakers" data-i18n="nav.s1">Conférenciers</a></li><li><a href="service.html?s=ambassadors" data-i18n="nav.s2">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=hosts" data-i18n="nav.s4">Invités d'honneur</a></li><li><a href="service.html?s=marketing" data-i18n="nav.s3">Influenceurs et médias sociaux</a></li></ul></div>
     <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul><li><a href="https://www.instagram.com/mvpgroupagency/" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" rel="noopener">Facebook</a></li></ul></div>
   </div>
@@ -1465,12 +1509,12 @@ const MVP = 'https://mvpsportsmarketing.com';
 const I18N = {
  fr:{
   'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
-  'nav.celebs':'Personnalités sportives','nav.projects':'Projets','nav.agency':'Agence','nav.contact':'Contact','nav.a1':'Mission de MVP Group','nav.a2':'Équipe de direction',
+  'nav.celebs':'Personnalités sportives','nav.projects':'Projets','nav.agency':'À propos','nav.contact':'Contact','nav.a1':'Mission de MVP Group','nav.a2':'Équipe de direction',
   'cat.hockey':'Hockey','cat.boxing':'Boxe','cat.mma':'MMA','cat.olympics':'Olympisme','cat.media':'Médias','cat.soccer':'Soccer','cat.others':'Autres',
   'hero.label':'MVP Group — Marketing sportif','hero.h1':'Accédez aux <span class="gold">icônes</span> du sport.',
   "hero.lede":"Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.",
-  'hero.scroll':'Défiler','cta.work':'Travailler avec nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités',
-  'intro.label':'Notre expertise','intro.h2':'Associez une icône du sport <em>à votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône.<br><span>Partout dans le monde.</span>",'mo.p':"Une vedette du basketball américain, une légende du soccer européen, un champion olympique d'ailleurs ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, ici comme ailleurs.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un agent','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k':'Conférenciers · Ambassadeurs · Porte-parole','hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un agent :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
+  'hero.scroll':'Défiler','cta.work':'Travailler avec nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout',
+  'intro.label':'Notre expertise','intro.h2':'Associez une icône du sport <em>à votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône.<br><span>Partout en Amérique du Nord.</span>",'mo.p':"Une vedette du basketball américain, une légende du hockey, un champion olympique ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, partout en Amérique du Nord.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un agent','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Conférenciers','hero.k2':'Ambassadeurs','hero.k3':'Porte-parole','hero.k4':"Invités d'honneur",'hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un agent :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
   'orbit.h':'Personnalités','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
@@ -1480,12 +1524,12 @@ const I18N = {
  },
  en:{
   'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
-  'nav.celebs':'Sports celebrities','nav.projects':'Projects','nav.agency':'Agency','nav.contact':'Contact','nav.a1':'MVP Group mission','nav.a2':'Management team',
+  'nav.celebs':'Sports celebrities','nav.projects':'Projects','nav.agency':'About','nav.contact':'Contact','nav.a1':'MVP Group mission','nav.a2':'Management team',
   'cat.hockey':'Hockey','cat.boxing':'Boxing','cat.mma':'MMA','cat.olympics':'Olympics','cat.media':'Media','cat.soccer':'Soccer','cat.others':'Others',
   'hero.label':'MVP Group — Sports Marketing','hero.h1':'Access the <span class="gold">icons</span> of sport.',
   "hero.lede":"Brand ambassadors, keynote speakers and spokespersons: pair a sports personality with your business to raise awareness, establish credibility and increase sales.",
-  'hero.scroll':'Scroll','cta.work':'Work with us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities',
-  'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business</em>','mo.k':'MVP International · On request','mo.h':'Any icon.<br><span>Anywhere in the world.</span>','mo.p':"An American basketball star, a European soccer legend, an Olympic champion from abroad? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, here or anywhere.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an agent','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k':'Speakers · Ambassadors · Spokespersons','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an agent:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
+  'hero.scroll':'Scroll','cta.work':'Work with us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all',
+  'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business</em>','mo.k':'MVP International · On request','mo.h':'Any icon.<br><span>Anywhere in North America.</span>','mo.p':"An American basketball star, a hockey legend, an Olympic champion? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, anywhere in North America.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an agent','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Speakers','hero.k2':'Ambassadors','hero.k3':'Spokespersons','hero.k4':'Guests of honor','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an agent:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
   'orbit.h':'Personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
@@ -1623,7 +1667,7 @@ const ARROW='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentC
 function ServicePanel(s){
   const el=document.createElement('a'); el.className='panel'; el.href=s.url;
   el.innerHTML=`<div class="panel__frame"><img class="panel__img" src="${s.img}" alt="${L(s.alt)}" loading="lazy"><div class="panel__shade"></div>
-   <span class="panel__tag">${t('svc.tag')}</span><span class="panel__num">${s.num} / 04</span>
+
    <div class="panel__body"><h3 class="display panel__title">${L(s.title)}</h3><div class="panel__line"></div><p class="panel__desc">${L(s.desc)}</p><span class="panel__cta">${t('cta.how')} ${ARROW}</span></div></div>`;
   return el;
 }
@@ -1644,9 +1688,33 @@ const track=$('#servicesTrack');
    décorative des cartes suit l'originale pour que la boucle soit continue. */
 function renderServices(){
   track.innerHTML=''; SERVICES.forEach(x=>track.appendChild(ServicePanel(x)));
-  if(matchMedia('(min-width:1024px)').matches) SERVICES.forEach(x=>{const c=ServicePanel(x); c.setAttribute('aria-hidden','true'); c.tabIndex=-1; c.classList.add('panel--copie'); track.appendChild(c);});
 }
 renderServices();
+/* Services : 3 cartes à la fois, flèches, défilement sans fin (la carte qui sort revient de l'autre côté) */
+(function(){
+  const stage=$('#servicesStage');
+  const vue=document.createElement('div'); vue.className='sv__vue'; track.parentNode.insertBefore(vue,track); vue.appendChild(track);
+  const nav=document.createElement('div'); nav.className='sv__nav';
+  nav.innerHTML='<button class="slider__arrow sv__prev" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button><button class="slider__arrow sv__next" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>';
+  const head=document.createElement('div'); head.className='sv__head'; const titre=$('#servicesBg'); titre.parentNode.insertBefore(head,titre); head.appendChild(titre); head.appendChild(nav);
+  let occupe=false;
+  const pas=()=>{const c=track.firstElementChild; return c? c.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap||0):0;};
+  const aller=dir=>{
+    if(occupe||track.children.length<2) return; occupe=true; const d=pas();
+    if(dir>0){
+      track.style.transition='transform .6s cubic-bezier(.2,.7,.2,1)'; track.style.transform=`translate3d(${-d}px,0,0)`;
+      setTimeout(()=>{ track.style.transition='none'; track.appendChild(track.firstElementChild); track.style.transform='translate3d(0,0,0)'; void track.offsetWidth; occupe=false; },620);
+    }else{
+      track.style.transition='none'; track.insertBefore(track.lastElementChild,track.firstElementChild); track.style.transform=`translate3d(${-d}px,0,0)`; void track.offsetWidth;
+      track.style.transition='transform .6s cubic-bezier(.2,.7,.2,1)'; track.style.transform='translate3d(0,0,0)';
+      setTimeout(()=>{ occupe=false; },620);
+    }
+  };
+  $('.sv__prev',nav).onclick=()=>aller(-1); $('.sv__next',nav).onclick=()=>aller(1);
+  /* glisser au doigt sur mobile */
+  let x0=null; vue.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+  vue.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) aller(dx<0?1:-1); x0=null; });
+})();
 /* Carrousel photo mis de côté pour la future page « À propos » —
    les 6 images restent dans assets/ ; il suffit de décommenter.
 (* photo stack: cross-fade every 5 s, click a dot to jump *)
@@ -1672,8 +1740,6 @@ renderServices();
 })();
 */
 
-const list=$('#exploreList'); CATEGORIES.forEach((c,i)=>list.appendChild(CategoryRow(c,i)));
-$('#exploreImages').innerHTML=CATEGORIES.map((c,i)=>`<figure class="xcat${i?'':' is-active'}"><img class="xcat__bg" src="${c.bg}" alt="" loading="lazy"><img class="xcat__p" src="${c.img}" alt="${c.cap}" loading="lazy"></figure>`).join('');
 
 /* =====================================================================
    GLOBAL
@@ -1744,51 +1810,31 @@ function TalentCard(p){
     </div></div>`;
   return el;
 }
-const tlRail=$('#tlRail');
-function renderTalents(){ tlRail.innerHTML=''; TALENTS_HOME.forEach(p=>tlRail.appendChild(TalentCard(p))); }
-renderTalents();
-(function(){
-  /* glisser à la souris + flèches */
-  let x0=0,s0=0,on=false;
-  tlRail.addEventListener('pointerdown',e=>{x0=e.clientX;s0=tlRail.scrollLeft;on=e.pointerType==='mouse';});
-  tlRail.addEventListener('pointermove',e=>{if(!on)return;const dx=e.clientX-x0;if(Math.abs(dx)>4)tlRail.classList.add('saisi');tlRail.scrollLeft=s0-dx;});
-  const fin=()=>{on=false;tlRail.classList.remove('saisi');};
-  ['pointerup','pointercancel','pointerleave'].forEach(ev=>tlRail.addEventListener(ev,fin));
-  tlRail.addEventListener('click',e=>{if(Math.abs(tlRail.scrollLeft-s0)>6)e.preventDefault();},true);
-  tlRail.addEventListener('dragstart',e=>e.preventDefault());
-  const pas=()=>{const c=$('.tcard',tlRail);return c?c.offsetWidth+parseFloat(getComputedStyle(tlRail).columnGap||0):360;};
-  const maj=()=>{$('#tlPrev').disabled=tlRail.scrollLeft<=4;$('#tlNext').disabled=tlRail.scrollLeft>=tlRail.scrollWidth-tlRail.clientWidth-4;};
-  $('#tlPrev').onclick=()=>tlRail.scrollBy({left:-pas(),behavior:'smooth'});
-  $('#tlNext').onclick=()=>tlRail.scrollBy({left:pas(),behavior:'smooth'});
-  tlRail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
-  /* inclinaison 3D au survol (souris seulement) : la carte suit le curseur */
-  if(reduce||!matchMedia('(hover:hover)').matches) return;
-  tlRail.addEventListener('pointermove',e=>{
-    const c=e.target.closest('.tcard'); if(!c||tlRail.classList.contains('saisi')) return;
-    const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    $('.tcard__in',c).style.transform=`rotateY(${x*10}deg) rotateX(${-y*8}deg) translateZ(14px)`;
+const TALENTS_CAT=[{"id":"patrick-roy","nom":"Patrick Roy","cat":"hockey","photo":false,"tags":[{"fr":"Champion","en":"Champion"},{"fr":"Légende du sport","en":"Sports legend"}]},{"id":"vincent-lecavalier","nom":"Vincent Lecavalier","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Champion","en":"Champion"}]},{"id":"maxime-talbot","nom":"Maxime Talbot","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Médias","en":"Media"}]},{"id":"alex-kovalev","nom":"Alex Kovalev","cat":"hockey","photo":false,"tags":[{"fr":"Olympien","en":"Olympian"},{"fr":"Champion","en":"Champion"}]},{"id":"andre-roy","nom":"André Roy","cat":"hockey","photo":false,"tags":[{"fr":"Animateur","en":"Host"},{"fr":"Champion","en":"Champion"}]},{"id":"bruno-gervais","nom":"Bruno Gervais","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Médias","en":"Media"}]},{"id":"chris-nilan","nom":"Chris Nilan","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Ambassadeur","en":"Ambassador"}]},{"id":"francis-bouillon","nom":"Francis Bouillon","cat":"hockey","photo":false,"tags":[{"fr":"Entraîneur","en":"Coach"}]},{"id":"gilbert-delorme","nom":"Gilbert Delorme","cat":"hockey","photo":false,"tags":[{"fr":"Animateur","en":"Host"},{"fr":"Médias","en":"Media"}]},{"id":"guy-boucher","nom":"Guy Boucher","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Entraîneur","en":"Coach"}]},{"id":"guy-carbonneau","nom":"Guy Carbonneau","cat":"hockey","photo":false,"tags":[{"fr":"Médias","en":"Media"},{"fr":"Champion","en":"Champion"}]},{"id":"guy-lafleur","nom":"Guy Lafleur","cat":"hockey","photo":false,"tags":[{"fr":"Champion","en":"Champion"}]},{"id":"joel-bouchard","nom":"Joël Bouchard","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Médias","en":"Media"}]},{"id":"kirk-muller","nom":"Kirk Muller","cat":"hockey","photo":false,"tags":[{"fr":"Champion","en":"Champion"},{"fr":"Entraîneur","en":"Coach"}]},{"id":"manon-rheaume","nom":"Manon Rhéaume","cat":"hockey","photo":false,"tags":[{"fr":"Conférencière","en":"Speaker"},{"fr":"Médias","en":"Media"}]},{"id":"marc-bergevin","nom":"Marc Bergevin","cat":"hockey","photo":false,"tags":[{"fr":"Champion","en":"Champion"},{"fr":"Entraîneur","en":"Coach"}]},{"id":"mario-tremblay","nom":"Mario Tremblay","cat":"hockey","photo":false,"tags":[{"fr":"Médias","en":"Media"},{"fr":"Entraîneur","en":"Coach"}]},{"id":"mathieu-dandenault","nom":"Mathieu Dandenault","cat":"hockey","photo":false,"tags":[{"fr":"Champion","en":"Champion"},{"fr":"Légende du sport","en":"Sports legend"}]},{"id":"patrice-brisebois","nom":"Patrice Brisebois","cat":"hockey","photo":false,"tags":[{"fr":"Médias","en":"Media"},{"fr":"Champion","en":"Champion"}]},{"id":"paul-byron","nom":"Paul Byron","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"}]},{"id":"pierre-gervais","nom":"Pierre Gervais","cat":"hockey","photo":false,"tags":[{"fr":"Médias","en":"Media"},{"fr":"Champion","en":"Champion"}]},{"id":"rejean-houle","nom":"Réjean Houle","cat":"hockey","photo":false,"tags":[{"fr":"Champion","en":"Champion"},{"fr":"Entraîneur","en":"Coach"}]},{"id":"sergio-momesso","nom":"Sergio Momesso","cat":"hockey","photo":false,"tags":[{"fr":"Médias","en":"Media"}]},{"id":"steve-begin","nom":"Steve Bégin","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Ambassadeur","en":"Ambassador"}]},{"id":"stephane-quintal","nom":"Stéphane Quintal","cat":"hockey","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"}]},{"id":"yvan-cournoyer","nom":"Yvan Cournoyer","cat":"hockey","photo":false,"tags":[{"fr":"Ambassadeur","en":"Ambassador"},{"fr":"Champion","en":"Champion"}]},{"id":"yvon-lambert","nom":"Yvon Lambert","cat":"hockey","photo":false,"tags":[{"fr":"Champion","en":"Champion"}]},{"id":"eve-gascon","nom":"Ève Gascon","cat":"hockey","photo":false,"tags":[{"fr":"Conférencière","en":"Speaker"}]},{"id":"kim-clavel","nom":"Kim Clavel","cat":"boxing","photo":false,"tags":[{"fr":"Conférencière","en":"Speaker"},{"fr":"Championne","en":"Champion"}]},{"id":"marie-eve-dicaire","nom":"Marie-Eve Dicaire","cat":"boxing","photo":false,"tags":[{"fr":"Conférencière","en":"Speaker"},{"fr":"Ambassadrice","en":"Ambassador"}]},{"id":"jean-pascal","nom":"Jean Pascal","cat":"boxing","photo":false,"tags":[{"fr":"Champion","en":"Champion"}]},{"id":"lucian-bute","nom":"Lucian Bute","cat":"boxing","photo":false,"tags":[{"fr":"Champion","en":"Champion"}]},{"id":"david-loiseau","nom":"David Loiseau","cat":"mma","photo":false,"tags":[{"fr":"Champion","en":"Champion"}]},{"id":"olivier-aubin-mercier","nom":"Olivier Aubin-Mercier","cat":"mma","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"}]},{"id":"patrick-cote","nom":"Patrick Côté","cat":"mma","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"}]},{"id":"valerie-letourneau","nom":"Valérie Létourneau","cat":"mma","photo":false,"tags":[{"fr":"Championne","en":"Champion"}]},{"id":"bruny-surin","nom":"Bruny Surin","cat":"olympics","photo":false,"tags":[{"fr":"Olympien","en":"Olympian"},{"fr":"Champion","en":"Champion"}]},{"id":"alexandre-bilodeau","nom":"Alexandre Bilodeau","cat":"olympics","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Ambassadeur","en":"Ambassador"}]},{"id":"joannie-rochette","nom":"Joannie Rochette","cat":"olympics","photo":false,"tags":[{"fr":"Conférencière","en":"Speaker"},{"fr":"Olympienne","en":"Olympian"}]},{"id":"aleksandra-wozniak","nom":"Aleksandra Wozniak","cat":"olympics","photo":false,"tags":[{"fr":"Conférencière","en":"Speaker"}]},{"id":"katerine-savard","nom":"Katerine Savard","cat":"olympics","photo":true,"tags":[{"fr":"Conférencière","en":"Speaker"},{"fr":"Olympienne","en":"Olympian"}]},{"id":"kristel-ngarlem","nom":"Kristel Ngarlem","cat":"olympics","photo":false,"tags":[{"fr":"Olympienne","en":"Olympian"},{"fr":"Championne","en":"Champion"}]},{"id":"marianne-st-gelais","nom":"Marianne St-Gelais","cat":"olympics","photo":false,"tags":[{"fr":"Conférencière","en":"Speaker"},{"fr":"Ambassadrice","en":"Ambassador"}]},{"id":"nancy-kerrigan","nom":"Nancy Kerrigan","cat":"olympics","photo":false,"tags":[{"fr":"Olympienne","en":"Olympian"},{"fr":"Championne","en":"Champion"}]},{"id":"nathalie-lambert","nom":"Nathalie Lambert","cat":"olympics","photo":false,"tags":[{"fr":"Olympienne","en":"Olympian"},{"fr":"Championne","en":"Champion"}]},{"id":"sebastien-toutant","nom":"Sébastien Toutant","cat":"olympics","photo":false,"tags":[{"fr":"Olympien","en":"Olympian"},{"fr":"Champion","en":"Champion"}]},{"id":"chantal-machabee","nom":"Chantal Machabée","cat":"media","photo":true,"tags":[{"fr":"Conférencière","en":"Speaker"},{"fr":"Animatrice","en":"Host"}]},{"id":"elizabeth-rancourt","nom":"Elizabeth Rancourt","cat":"media","photo":false,"tags":[{"fr":"Animatrice","en":"Host"},{"fr":"Médias","en":"Media"}]},{"id":"louis-jean","nom":"Louis Jean","cat":"media","photo":false,"tags":[{"fr":"Animateur","en":"Host"},{"fr":"Médias","en":"Media"}]},{"id":"luc-gelinas","nom":"Luc Gélinas","cat":"media","photo":false,"tags":[{"fr":"Animateur","en":"Host"},{"fr":"Médias","en":"Media"}]},{"id":"marc-griffin","nom":"Marc Griffin","cat":"media","photo":false,"tags":[{"fr":"Médias","en":"Media"},{"fr":"Olympien","en":"Olympian"}]},{"id":"maxime-lalonde","nom":"Maxime Lalonde","cat":"media","photo":false,"tags":[{"fr":"Animateur","en":"Host"}]},{"id":"michel-lacroix","nom":"Michel Lacroix","cat":"media","photo":false,"tags":[{"fr":"Animateur","en":"Host"},{"fr":"Médias","en":"Media"}]},{"id":"paul-rivard","nom":"Paul Rivard","cat":"media","photo":false,"tags":[{"fr":"Animateur","en":"Host"},{"fr":"Médias","en":"Media"}]},{"id":"yanick-levesque","nom":"Yanick Lévesque","cat":"media","photo":false,"tags":[{"fr":"Animateur","en":"Host"}]},{"id":"patrice-bernier","nom":"Patrice Bernier","cat":"soccer","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"}]},{"id":"hassoun-camara","nom":"Hassoun Camara","cat":"soccer","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"},{"fr":"Animateur","en":"Host"}]},{"id":"maxime-crepeau","nom":"Maxime Crépeau","cat":"soccer","photo":false,"tags":[{"fr":"Conférencier","en":"Speaker"}]},{"id":"samuel-piette","nom":"Samuel Piette","cat":"soccer","photo":false,"tags":[{"fr":"Ambassadeur","en":"Ambassador"}]}];
+/* Personnalités : une rangée par catégorie, 4 cartes visibles, flèches pour défiler */
+const tlCats=$('#tlCats');
+const CAT_ROWS=['hockey','boxing','mma','olympics','media','soccer'];
+function renderTalents(){
+  tlCats.innerHTML='';
+  CAT_ROWS.forEach(cat=>{
+    const liste=TALENTS_CAT.filter(p=>p.cat===cat); if(!liste.length) return;
+    const row=document.createElement('div'); row.className='tlrow';
+    row.innerHTML=`<div class="tlrow__head"><h3 class="tlrow__t">${L(CAT_FR[cat])}<span>${liste.length}</span></h3>
+      <a class="tlrow__all" href="personnalites.html?sport=${cat}">${t('cta.allCat')} ${ARROW}</a>
+      <div class="tlrow__nav"><button class="tl-arrow tlrow__p" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button><button class="tl-arrow tlrow__n" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button></div></div>
+      <div class="talents__rail tlrow__rail"></div>`;
+    const rail=$('.tlrow__rail',row);
+    liste.forEach(p=>rail.appendChild(TalentCard({id:p.id,nom:p.nom,cat:p.cat,photo:p.photo,tags:p.tags,sub:{fr:'',en:''}})));
+    tlCats.appendChild(row);
+    const pas=()=>{const c=$('.tcard',rail);return c?(c.offsetWidth+parseFloat(getComputedStyle(rail).columnGap||0)):300;};
+    const maj=()=>{ $('.tlrow__p',row).disabled=rail.scrollLeft<=4; $('.tlrow__n',row).disabled=rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-4; };
+    $('.tlrow__p',row).onclick=()=>rail.scrollBy({left:-pas(),behavior:'smooth'});
+    $('.tlrow__n',row).onclick=()=>rail.scrollBy({left:pas(),behavior:'smooth'});
+    rail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); setTimeout(maj,60);
   });
-  tlRail.addEventListener('pointerout',e=>{ const c=e.target.closest('.tcard'); if(c&&!c.contains(e.relatedTarget)) $('.tcard__in',c).style.transform=''; });
-})();
+}
+renderTalents();
 
-(function(){
-  /* boucle en pixels (et non en %) : l'agrandissement au survol ne fait pas sauter la rangée */
-  if(reduce) return;
-  let x=0, v=0, cible=1, last=performance.now(); const VIT=38; /* px/s */
-  track.addEventListener('pointerenter',()=>{ if(matchMedia('(hover:hover)').matches) cible=0; });
-  track.addEventListener('pointerleave',()=>{ cible=1; });
-  const tour=now=>{
-    const dt=Math.min(.05,(now-last)/1000); last=now;
-    if(matchMedia('(min-width:1024px)').matches && track.querySelector('.panel--copie')){
-      v+=(cible-v)*Math.min(1,dt*4);                     /* ralentit / repart en douceur */
-      const copie=track.querySelector('.panel--copie'), boucle=copie.offsetLeft-track.firstElementChild.offsetLeft;
-      x-=VIT*v*dt; if(-x>=boucle) x+=boucle;
-      track.style.transform=`translate3d(${x}px,0,0)`;
-    } else if(track.style.transform){ track.style.transform=''; x=0; }
-    requestAnimationFrame(tour);
-  };
-  requestAnimationFrame(tour);
-})();
 
 /* =====================================================================
    SECTION 4 — MARQUES / PARTENAIRES : composant d'origine, inchangé.
@@ -1888,18 +1934,6 @@ if(!reduce){
 /* =====================================================================
    SECTION 5 — CATEGORY EXPLORER (hover on desktop, tap accordion on mobile)
    ===================================================================== */
-const rows=[...$$('.cat',list)], imgs=$$('#exploreImages .xcat'), cap=$('#exploreCaption');
-function setCat(i){
-  rows.forEach((r,k)=>{const on=k===i;r.classList.toggle('is-active',on);$('.cat__btn',r).setAttribute('aria-expanded',on);const p=$('.cat__panel',r);p.style.height=on?p.scrollHeight+'px':'0px';});
-  imgs.forEach((im,k)=>im.classList.toggle('is-active',k===i)); cap.textContent=CATEGORIES[i].cap;
-}
-function bindCats(){ rows.forEach((r,i)=>{const b=$('.cat__btn',r);
-  b.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches)setCat(i);});
-  b.addEventListener('click',()=>setCat(r.classList.contains('is-active')&&!matchMedia('(hover:hover)').matches?-1:i));
-  b.addEventListener('focus',()=>setCat(i));
-}); }
-bindCats();
-setCat(0);
 /* Repères « + » : t:x = bord du haut à x % ; b:x = bas ; l:y / r:y = dans la marge
    gauche / droite à y % de la hauteur ; « :lg » = grande croix. Chaque section a
    sa propre disposition, toujours dans les marges pour ne jamais couvrir le texte. */
@@ -1919,15 +1953,12 @@ window.__rebuild=function(){
   renderBrands(); if(window.__relancerMarques) window.__relancerMarques();
   renderProjects();
   if(window.__rafraichirFil) window.__rafraichirFil();
-  list.innerHTML=''; CATEGORIES.forEach((c,i)=>list.appendChild(CategoryRow(c,i)));
-  rows.length=0; $$('.cat',list).forEach(r=>rows.push(r));
-  bindCats(); setCat(0);
   renderTalents();
   ScrollTrigger.refresh();
 };
 $('#lang').addEventListener('click',e=>{const b=e.target.closest('[data-lang]'); if(b) applyLang(b.dataset.lang);});
 applyLang((function(){try{return localStorage.getItem('mvp-lang')==='en'?'en':'fr'}catch(e){return 'fr'}})());
-addEventListener('load',()=>{setCat(0);ScrollTrigger.refresh();});
+addEventListener('load',()=>{ScrollTrigger.refresh();});
 </script>
 
 <script>

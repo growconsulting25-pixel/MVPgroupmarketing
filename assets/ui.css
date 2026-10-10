@@ -199,7 +199,7 @@
 .dmd__sel{width:100%;padding:13px 15px;border:1.5px solid #e2e4e8;border-radius:12px;background:#f6f7f9;font:inherit;font-size:15px;color:#0b0b0b;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#123B6D 50%),linear-gradient(135deg,#123B6D 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
 .dmd__sel:focus{outline:none;border-color:#1E5299;background-color:#fff;box-shadow:0 0 0 4px rgba(30,82,153,.12)}
 .dmd--intl .dmd__a{background:radial-gradient(120% 70% at 100% 0%,rgba(197,162,83,.22),transparent 55%),radial-gradient(120% 80% at 0% 0%,#1E5299 0%,#123B6D 45%,#08172d 100%)}
-.dmd--intl .dmd__a::before{background-image:url('monde-points.svg');background-size:180% auto;background-position:28% 62%;background-repeat:no-repeat;opacity:.22;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent);mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent)}
+.dmd--intl .dmd__a::before{background-image:url('amerique-points.svg');background-size:130% auto;background-position:40% 70%;background-repeat:no-repeat;opacity:.22;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent);mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 75%,transparent)}
 
 /* =====================================================================
    RÉVISIONS CLIENT — FINALISATION
@@ -228,3 +228,19 @@
 /* bande du haut : la mention en gras et plus grande */
 .tb__msg{font-weight:800!important;font-size:15px;letter-spacing:.01em;color:#fff!important}
 @media (max-width:760px){.tb__msg{font-size:13px}}
+
+/* Menu : éléments un peu plus grands, or au survol */
+.header__nav{font-size:13.5px!important}
+.header__nav a{transition:color .25s}
+.header__nav a:hover,.navitem:hover > a{color:var(--gold)!important}
+.header__nav > a::after,.navitem > a::after{background:var(--gold)!important}
+.navdrop a{font-size:12.5px!important;padding:11px 22px!important}
+.navdrop a:hover{color:var(--gold)!important}
+.mm a:hover,.mobile-menu a:hover,.rp a:hover{color:var(--gold)}
+/* sous-titre du hero : chaque service est un lien */
+.hero__k a{color:inherit;transition:color .25s}
+.hero__k a:hover{color:#fff}
+
+/* sous-titre du hero : 4 services, peut passer à la ligne sur mobile */
+@media (max-width:760px){.hero__k{white-space:normal!important;line-height:1.7;max-width:330px}}
+.hero__k a{white-space:nowrap}
