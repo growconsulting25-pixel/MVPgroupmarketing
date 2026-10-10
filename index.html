@@ -1289,6 +1289,8 @@ ul{list-style:none}
 .tlpromo{position:relative;flex:0 0 calc((100% - var(--gutter) - 110px)/5.5);display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:clamp(22px,2vw,32px);border-radius:18px;overflow:hidden;isolation:isolate;color:#fff;
   background:radial-gradient(120% 70% at 100% 0%,rgba(197,162,83,.22),transparent 55%),linear-gradient(160deg,#1E5299 0%,#123B6D 55%,#0E2A4F 100%);box-shadow:0 8px 18px rgba(5,5,5,.13)}
 .tlpromo::before{content:"";position:absolute;inset:0;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 8.5v9M8.5 13h9' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E");opacity:.12;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.tlpromo--gauche{margin-right:0!important}
+@media (min-width:1024px){.tlpromo--gauche ~ .tcard:last-child{margin-right:var(--gutter)}}
 .tlpromo--large{flex:1 1 auto;min-width:calc((100% - var(--gutter) - 110px)/5.5);margin-right:var(--gutter);justify-content:center;padding:clamp(28px,3vw,52px)}
 .tlpromo__k{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--gold)}
 .tlpromo__t{margin:0;font-size:clamp(17px,1.4vw,22px);font-weight:800;line-height:1.15;letter-spacing:-.01em;text-transform:uppercase}
@@ -1890,7 +1892,7 @@ const PROMO={
  def:{plein:{fr:'La bonne personnalité pour votre projet.',en:'The right personality for your project.'},court:{fr:'Une autre personnalité en tête ? Nous l’approchons pour vous.',en:'Another personality in mind? We will approach them for you.'}}
 };
 function renderTalents(){
-  tlCats.innerHTML='';
+  tlCats.innerHTML=''; let nCourt=0;
   CAT_ROWS.forEach(cat=>{
     const liste=TALENTS_CAT.filter(p=>p.cat===cat); if(!liste.length) return;
     const row=document.createElement('div'); row.className='tlrow';
@@ -1902,9 +1904,12 @@ function renderTalents(){
     liste.forEach(p=>rail.appendChild(TalentCard({id:p.id,nom:p.nom,cat:p.cat,photo:p.photo,tags:p.tags,sub:{fr:'',en:''}})));
     /* bannière promo bleue : au bout des rangées courtes, au début des rangées complètes */
     const court=liste.length<6, P=PROMO[cat]||PROMO.def;
+    /* seulement pour combler les rangées incomplètes, en alternant droite / gauche */
+    if(court){
     const pr=document.createElement('div'); pr.className='tlpromo'+(court?' tlpromo--large':'');
     pr.innerHTML=`<div class="tlpromo__in"><span class="tlpromo__k">${L(CAT_FR[cat])} · MVP</span><p class="tlpromo__t">${L(court?P.court:P.plein)}</p>${court?`<p class="tlpromo__sub">${t('promo.sub')}</p>`:''}<button type="button" class="tlpromo__cta" data-ui-ouvrir>${t(court?'promo.cta1':'promo.cta2')} ${ARROW}</button></div>`;
-    if(court) rail.appendChild(pr); else rail.insertBefore(pr,rail.firstChild);
+    const gauche=(nCourt++)%2===1; if(gauche){ pr.classList.add('tlpromo--gauche'); rail.insertBefore(pr,rail.firstChild); } else rail.appendChild(pr);
+    }
     tlCats.appendChild(row);
     const pas=()=>{const c=$('.tcard',rail);return c?(c.offsetWidth+parseFloat(getComputedStyle(rail).columnGap||0)):300;};
     const maj=()=>{ $('.tlrow__p',row).disabled=rail.scrollLeft<=4; $('.tlrow__n',row).disabled=rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-4; };
