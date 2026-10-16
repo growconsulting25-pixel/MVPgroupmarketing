@@ -913,7 +913,7 @@ $('#svc').innerHTML=`
     const pleine=['katerine-savard','chantal-machabee'].includes(t.id), href='profil.html?id='+t.id;
     const sous=t.titre.toLowerCase()===t.nom.toLowerCase()?(SPORT_FR[t.cat]||t.catNom):t.titre;
     return `<article class="tcard"><div class="tcard__in">
-    <a class="tcard__ph" href="${href}" aria-label="${t.nom} — Voir le profil">
+    <a class="tcard__ph" href="${href}" aria-label="${t.nom} — Voir le profil"><span class="tcard__ini" aria-hidden="true">${t.nom.split(/[\s-]+/).map(w=>w[0]).join('').slice(0,2)}</span>
       <img class="tcard__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
       <img class="tcard__p${pleine?' tcard__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tcard__p--pleine')">
     </a>
@@ -922,7 +922,7 @@ $('#svc').innerHTML=`
       <div class="tcard__tags"><span>${(FEMMES.has(t.id)?ROLE_SVC_F:ROLE_SVC)[key]}</span></div>
       <h3 class="tcard__nom"><a href="${href}">${t.nom}</a></h3>
       <p class="tcard__sub">${sous}</p>
-      <div class="tcard__cta"><a class="tcard__b1" href="${href}&travailler=1" data-ath-nom="${t.nom}" data-ath-sous="${SPORT_FR[t.cat]||t.catNom}" data-ath-photo="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" data-ath-photo2="${t.photo}" data-ath-cut="${pleine?0:1}">Engagez ${t.nom}</a></div>
+      <div class="tcard__cta"><a class="tcard__b1" href="${href}&travailler=1" data-ath-roles="${ROLE_SVC[key]}" data-ath-nom="${t.nom}" data-ath-sous="${SPORT_FR[t.cat]||t.catNom}" data-ath-photo="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" data-ath-photo2="${t.photo}" data-ath-cut="${pleine?0:1}">Engagez ${t.nom}</a></div>
       <a class="tcard__lien" href="${href}">Voir le profil ${ARROW}</a>
     </div></div></article>`;}).join('')}</div>
   <div class="pe__all"><a class="btn btn--blue" href="personnalites.html?${S.filtre}">Voir tous les ${S.nom.toLowerCase()} ${ARROW}</a></div>

@@ -1,7 +1,7 @@
 /* Éléments communs à toutes les pages : bande bleue en haut, bouton
    « Trouver un athlète » dans le menu, bulle d'aide et formulaire de demande. */
 (function(){
-  var TEL='514-582-3306', TELH='tel:+15145823306';
+  var TEL='514-582-3306', TELH='tel:+15145823306', MAIL='info@mvpsportsmarketing.com';
   var D={
     fr:{msg:"L'Agence de Marketing Sportif <i>#1</i> au Québec",work:'Travailler avec nous',call:'Appelez-nous',find:'Trouver un athlète',
       bulle:'Une question ?',aideT:"Besoin d'aide ?",aideS:'Nous sommes là pour vous',
@@ -9,7 +9,7 @@
       start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
       k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin, nous trouvons la bonne personnalité.",
       avec:'Engagez',pt1:'Un conseiller du Groupe MVP vous répond très rapidement',pt2:'Un seul interlocuteur, du premier appel au résultat',pt3:"Un réseau bâti depuis 2005 dans le sport québécois",
-      parler:'Vous préférez parler à quelqu’un ?',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
+      parler:'Vous préférez parler à quelqu’un ?',ecrire:'Vous préférez nous écrire ?',hbK:'Canadien de Montréal',hbUn:'un joueur du Canadien',hbJoueur:'Le joueur',hbChoix:'Joueur souhaité',hbAucun:'Pas encore décidé — conseillez-moi',hbActuels:'Joueurs',hbAnciens:'Anciens et légendes',hbAutre:'Un autre joueur du Canadien',hbP:'La majorité de l’alignement est accessible : choisissez un joueur ou laissez-nous vous conseiller.',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
       note:'Vos informations restent confidentielles et servent uniquement à répondre à votre demande.',
       okPa:"L'équipe MVP communiquera avec vous sous peu au sujet de votre projet avec %.",
       nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Message',
@@ -29,7 +29,7 @@
       start:'Start inquiry',appel2:'Call us',appeler:'Call '+TEL,rapide:'Fast reply · Mon-Fri 9am-5pm',fermer:'Close',
       k:'Start a project',t:'Tell us about <em>your project.</em>',p:'Keynote, campaign, gala or corporate event: describe your need and we find the right personality.',
       avec:'Book',pt1:'An MVP Group advisor gets back to you very quickly',pt2:'One point of contact, from the first call to the result',pt3:'A network built inside Quebec sport since 2005',
-      parler:'Rather talk to someone?',besoins:'Your needs',coord:'Your details',projet:'Your project',datePh:'E.g. June 2027',
+      parler:'Rather talk to someone?',ecrire:'Rather write to us?',hbK:'Montréal Canadiens',hbUn:'a Canadiens player',hbJoueur:'The player',hbChoix:'Preferred player',hbAucun:'Not decided yet — advise me',hbActuels:'Players',hbAnciens:'Alumni and legends',hbAutre:'Another Canadiens player',hbP:'Most of the roster is available: pick a player or let us advise you.',besoins:'Your needs',coord:'Your details',projet:'Your project',datePh:'E.g. June 2027',
       note:'Your information stays confidential and is only used to answer your request.',
       okPa:'The MVP team will contact you shortly about your project with %.',
       nom:'Name',ent:'Company',mail:'Email',tel:'Phone',type:'Project type',date:'Approximate date',perso:'Preferred personality',message:'Message',
@@ -48,6 +48,7 @@
   var I={
     tel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
     bulle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-width="2.6" stroke-linecap="round"/></svg>',
+    mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
     x:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
     fl:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
     cherche:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
@@ -94,6 +95,7 @@
       '<div class="dmd__ath"><div class="dmd__ph"><img alt=""></div></div>'+
       '<p class="dmd__k" data-ui="k"></p><h2 class="dmd__t" id="dmdT"></h2><p class="dmd__s"></p>'+
       '<ul class="dmd__pts"><li>'+ck+'<span data-ui="pt1"></span></li><li>'+ck+'<span data-ui="pt2"></span></li><li>'+ck+'<span data-ui="pt3"></span></li></ul>'+
+      '<a class="dmd__tel dmd__mail" href="mailto:'+MAIL+'">'+I.mail+'<span><small data-ui="ecrire"></small><b>'+MAIL+'</b></span></a>'+
       '<a class="dmd__tel" href="'+TELH+'">'+I.tel+'<span><small data-ui="parler"></small><b>'+TEL+'</b></span></a>'+
     '</aside>'+
     '<div class="dmd__m"><div class="dmd__f">'+
@@ -102,6 +104,9 @@
         '<label class="dmd__c dmd__c--l"><span><b data-ui="iNom"></b></span><input name="cible" type="text" data-ui-ph="iNomPh"></label>'+
         '<label class="dmd__c"><span><b data-ui="iPays"></b></span><input name="pays" type="text" data-ui-ph="iPaysPh"></label>'+
         '<label class="dmd__c"><span><b data-ui="iLieu"></b></span><input name="lieu" type="text" data-ui-ph="iLieuPh"></label>'+
+      '</div></fieldset>'+
+      '<fieldset class="dmd__hb"><legend><span class="dmd__n"></span><b data-ui="hbJoueur"></b></legend><div class="dmd__g">'+
+        '<label class="dmd__c dmd__c--l"><span><b data-ui="hbChoix"></b></span><select name="joueur" class="dmd__sel"></select></label>'+
       '</div></fieldset>'+
       '<fieldset class="dmd__bes"><legend><span class="dmd__n"></span><b data-ui="besoins"></b></legend><div class="dmd__chips"></div></fieldset>'+
       '<fieldset><legend><span class="dmd__n"></span><b data-ui="coord"></b></legend><div class="dmd__g">'+
@@ -116,9 +121,50 @@
   body.appendChild(dmd);
   var form=dmd.querySelector('form'), err=dmd.querySelector('.dmd__err'), go=dmd.querySelector('.dmd__go'), dernier=null, ATH=null;
   var chips=dmd.querySelector('.dmd__chips');
+  /* Joueurs du Canadien proposés dans la liste (photo affichée dans la fenêtre) */
+  var HABS_ACT=[['Nick Suzuki','assets/projets/nick-suzuki-5.jpg'],['Lane Hutson','assets/art-hush.jpg'],['Zachary Bolduc','assets/projets/zacharybolduc-2.jpg'],['Patrik Laine','assets/projets/patrick-laine-albilegeant-genesislaval-3.jpg']];
+  var HABS_ANC=[['Guy Lafleur','guy-lafleur'],['Patrick Roy','patrick-roy'],['Yvan Cournoyer','yvan-cournoyer'],['Guy Carbonneau','guy-carbonneau'],['Chris Nilan','chris-nilan'],['Mario Tremblay','mario-tremblay'],['Réjean Houle','rejean-houle'],['Yvon Lambert','yvon-lambert'],['Steve Bégin','steve-begin'],['Paul Byron','paul-byron'],['Francis Bouillon','francis-bouillon'],['Patrice Brisebois','patrice-brisebois'],['Gilbert Delorme','gilbert-delorme'],['Mathieu Dandenault','mathieu-dandenault'],['Kirk Muller','kirk-muller'],['Alex Kovalev','alex-kovalev'],['Pierre Gervais','pierre-gervais']];
+  var photoHabs=function(n){ var a=HABS_ACT.filter(function(x){return x[0]===n;})[0]; if(a) return {src:a[1],cut:false}; var b=HABS_ANC.filter(function(x){return x[0]===n;})[0]; if(b) return {src:'assets/cut/'+b[1]+'.webp',cut:true}; return null; };
+  var remplirJoueurs=function(){
+    var d=D[L()], sel=form.joueur, v=sel.value;
+    sel.innerHTML='<option value="">'+d.hbAucun+'</option><optgroup label="'+d.hbActuels+'">'+HABS_ACT.map(function(x){return '<option>'+x[0]+'</option>';}).join('')+'</optgroup><optgroup label="'+d.hbAnciens+'">'+HABS_ANC.map(function(x){return '<option>'+x[0]+'</option>';}).join('')+'</optgroup><option value="autre">'+d.hbAutre+'</option>';
+    sel.value=v;
+  };
+  form.joueur.addEventListener('change',function(){ if(ATH&&ATH.habs){ ATH.joueur=this.value; majTitres(); } });
+  /* Besoins devinés à partir du bouton cliqué, des rôles de l'athlète ou de la page */
+  var CLES=['speaker','ambassador','spokes','host','guest','influencer','corporate','other'];
+  var deviner=function(txt){ var k=[]; txt=String(txt||'');
+    if(/conf[ée]renc|keynote|speaker/i.test(txt)) k.push('speaker');
+    if(/ambassad/i.test(txt)) k.push('ambassador');
+    if(/porte-parole|spokes/i.test(txt)) k.push('spokes');
+    if(/animat|\bhost/i.test(txt)) k.push('host');
+    if(/invit[ée]|guest/i.test(txt)) k.push('guest');
+    if(/influenc|m[ée]dias sociaux|social media|campagne|campaign/i.test(txt)) k.push('influencer');
+    if(/[ée]v[ée]nement|corporat|gala|team ?building/i.test(txt)) k.push('corporate');
+    return k; };
+  var contextePage=function(){
+    var c=window.mvpContexte||{}, k=deviner(c.besoin);
+    var sv=(location.pathname.indexOf('service')>-1)&&new URLSearchParams(location.search).get('s');
+    var M={speakers:['speaker'],ambassadors:['ambassador','spokes'],hosts:['host','guest'],marketing:['influencer']};
+    if(!k.length && sv && M[sv]) k=M[sv];
+    return k; };
+  var choisirBesoins=function(cles){ [].forEach.call(chips.children,function(c,i){ c.setAttribute('aria-pressed',cles.indexOf(CLES[i])>-1?'true':'false'); }); };
   var majTitres=function(){
     var d=D[L()], img=dmd.querySelector('.dmd__ph img');
-    var INTL=!!(ATH&&ATH.intl);
+    var INTL=!!(ATH&&ATH.intl), HABS=!!(ATH&&ATH.habs);
+    dmd.classList.toggle('dmd--habs',HABS);
+    if(HABS){
+      form.joueur.value=ATH.joueur||'';
+      var choisi=form.joueur.value&&form.joueur.value!=='autre'?form.joueur.value:'';
+      dmd.classList.add('dmd--ath'); dmd.classList.remove('dmd--intl');
+      dmd.querySelector('.dmd__k').textContent=d.hbK;
+      dmd.querySelector('.dmd__t').innerHTML=d.avec+' <em>'+(choisi||d.hbUn)+'</em>';
+      dmd.querySelector('.dmd__s').textContent=choisi?d.hbK:d.hbP;
+      dmd.querySelector('.dmd__okp').textContent=d.okPa.replace('%',choisi||d.hbUn);
+      var ph=choisi&&photoHabs(choisi), box=dmd.querySelector('.dmd__ath'); box.classList.remove('sans-photo');
+      img.onerror=null; if(ph){ img.src=ph.src; img.className=ph.cut?'est-detoure':''; } else { img.src='assets/canadiens-logo.png'; img.className='est-logo'; }
+      form.personnalite.value=choisi; form.cible.required=false; return;
+    }
     dmd.classList.toggle('dmd--ath',!!(ATH&&ATH.nom)); dmd.classList.toggle('dmd--intl',INTL);
     form.cible.required=INTL;
     dmd.querySelector('.dmd__k').textContent=INTL? d.iK : d.k;
@@ -131,7 +177,17 @@
   };
   var dmdO=function(o,ath){
     if(o){
-      if(ath!==undefined){ if((ath&&(ath.nom||ath.intl))!==(ATH&&(ATH.nom||ATH.intl))){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; err.hidden=true; } ATH=ath; majTitres(); }
+      if(ath!==undefined){
+        var cle=function(a){ return a?(a.nom||(a.intl?'intl':'')||(a.habs?'habs:'+(a.joueur||''):'')):''; };
+        var change=cle(ath)!==cle(ATH);
+        if(change){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; err.hidden=true; }
+        ATH=ath; majTitres();
+        /* la prochaine étape est déjà choisie : besoins devinés, personnalité pré-remplie */
+        var b=[].concat((ath&&ath.besoins)||[]);
+        if(!b.length) b=contextePage();
+        if(b.length||change) choisirBesoins(b);
+        if(!ath && window.mvpContexte && window.mvpContexte.perso && !form.personnalite.value){ form.personnalite.value=window.mvpContexte.perso; form.personnalite.dataset.v=window.mvpContexte.perso; }
+      }
       carteO(false); fermerMenus(); dernier=document.activeElement;
       if(dmd.querySelector('.dmd__ok:not([hidden])')){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; }
       dmd.querySelector('.dmd__m').scrollTop=0;
@@ -148,15 +204,20 @@
   /* window.mvpDemande()                       → demande générale
      window.mvpDemande({nom, sous, photo, cut}) → demande pour un athlète précis
      window.mvpDemande({intl:true})            → demande d'une personnalité internationale */
-  window.mvpDemande=function(ath){ dmdO(true, ath||null); };
+  window.mvpDemande=function(ath){ if(ath&&ath.roles&&!ath.besoins) ath.besoins=deviner(ath.roles); dmdO(true, ath||null); };
   form.personnalite.addEventListener('input',function(){ if(!ATH) this.dataset.v=this.value; });
   chips.addEventListener('click',function(e){ var c=e.target.closest('.dmd__chip'); if(!c) return; c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')!=='true'); });
   /* tout lien « Travailler avec nous » ouvre la fenêtre au lieu de descendre au formulaire */
   document.addEventListener('click',function(e){
-    var a=e.target.closest('[data-ui-ouvrir], [data-ui-intl], a[href="#demande"], a[href="index.html#demande"], [data-ath-nom]');
+    var a=e.target.closest('[data-ui-ouvrir], [data-ui-intl], [data-ui-habs], a[href="#demande"], a[href="index.html#demande"], [data-ath-nom]');
     if(a && !e.defaultPrevented && !e.metaKey && !e.ctrlKey){
       e.preventDefault(); e.stopPropagation();
-      dmdO(true, a.hasAttribute('data-ui-intl') ? {intl:true} : a.dataset.athNom ? {nom:a.dataset.athNom, sous:a.dataset.athSous, photo:a.dataset.athPhoto, photo2:a.dataset.athPhoto2, cut:a.dataset.athCut==='1'} : null);
+      var bes=deviner((a.dataset.uiBesoin||'')+' '+(a.dataset.athRoles||'')+' '+(a.hasAttribute('data-ath-nom')?'':a.textContent));
+      var ctx= a.hasAttribute('data-ui-habs') ? {habs:true, joueur:a.dataset.uiJoueur||''}
+             : a.hasAttribute('data-ui-intl') ? {intl:true}
+             : a.dataset.athNom ? {nom:a.dataset.athNom, sous:a.dataset.athSous, photo:a.dataset.athPhoto, photo2:a.dataset.athPhoto2, cut:a.dataset.athCut==='1'} : null;
+      if(bes.length){ ctx=ctx||{}; ctx.besoins=bes; if(!ctx.nom&&!ctx.intl&&!ctx.habs) ctx.generique=true; }
+      dmdO(true, ctx && ctx.generique ? (function(c){ dmdO(true,null); choisirBesoins(c.besoins); return undefined; })(ctx) : ctx);
       return;
     }
     if(carte.classList.contains('est-ouvert') && !e.target.closest('.aide-c,.aide-b')) carteO(false);
@@ -170,7 +231,7 @@
     form.querySelectorAll('[required]').forEach(function(f){ var v=f.value.trim(), bon=v && (f.type!=='email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)); f.closest('.dmd__c').classList.toggle('est-invalide',!bon); if(!bon){ ok=false; prem=prem||f; } });
     if(!ok){ err.hidden=false; err.textContent=d.req; prem.focus(); return; }
     err.hidden=true; go.disabled=true; go.querySelector('span').textContent=d.envoi;
-    var o={source:(ATH&&ATH.intl)?'international':ATH?'athlete':'travailler-avec-nous',page:location.href,langue:L()}; new FormData(form).forEach(function(v,k){ o[k]=v; });
+    var o={source:(ATH&&ATH.intl)?'international':(ATH&&ATH.habs)?'canadiens':ATH?'athlete':'travailler-avec-nous',page:location.href,langue:L()}; new FormData(form).forEach(function(v,k){ o[k]=v; });
     o.besoins=[].map.call(chips.querySelectorAll('[aria-pressed=true]'),function(c){ return c.textContent; }).join(', ');
     o.type=o.besoins;
     fetch('/api/demande',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})
@@ -217,6 +278,7 @@
     document.querySelectorAll('[data-ui-aria]').forEach(function(el){ el.setAttribute('aria-label',d[el.dataset.uiAria]); });
     var on=[].map.call(chips.children,function(c){ return c.getAttribute('aria-pressed')==='true'; });
     chips.innerHTML=d.types.map(function(t,i){ return '<button type="button" class="dmd__chip" aria-pressed="'+(on[i]?'true':'false')+'">'+t+'</button>'; }).join('');
+    remplirJoueurs();
     var bs=form.budget, bv=bs.selectedIndex; bs.innerHTML=d.budgets.map(function(t,i){ return '<option value="'+(i?t:'')+'">'+t+'</option>'; }).join(''); bs.selectedIndex=Math.max(0,bv);
     majTitres();
   }

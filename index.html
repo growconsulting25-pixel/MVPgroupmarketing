@@ -1435,6 +1435,13 @@ ul{list-style:none}
 .hb__filigrane{position:absolute;left:50%;top:44%;width:min(118%,640px);transform:translate(-58%,-50%) rotate(-8deg);opacity:.07;pointer-events:none;z-index:0}
 .hb__pile,.hb__ctrl{position:relative;z-index:1}
 @media (max-width:640px){.hb__logo{height:36px}.hb__filigrane{width:110%}}
+
+/* rangées : cartes plus grandes (même gabarit que les cartes du Canadien), 3 et demie visibles */
+.tlrow__rail{padding-bottom:60px!important;margin-bottom:-30px!important}
+.tlrow__rail .tcard__in{box-shadow:0 22px 40px rgba(13,20,51,.26)!important}
+@media (min-width:1024px){.tlrow__rail .tcard,.tlpromo{flex-basis:calc((100% - var(--gutter) - 66px)/3.5)!important}.tlpromo--large{min-width:calc((100% - var(--gutter) - 66px)/3.5)!important}}
+.tlrow__rail .tcard__nom{font-size:clamp(22px,2vw,32px)!important}
+.tlrow__rail .tcard__b1{font-size:10.5px!important;padding:12px 14px!important}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1621,7 +1628,7 @@ ul{list-style:none}
         <li><b>03</b><span data-i18n="hb.l3">Contenu pour vos réseaux sociaux</span></li>
       </ul>
       <div class="hb__cta">
-        <button type="button" class="hb__go" data-ath-nom="un joueur du Canadien" data-ath-sous="Canadien de Montréal" data-ath-photo="assets/projets/nick-suzuki-5.jpg"><span data-i18n="hb.cta">Engager un joueur du Canadien</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" class="hb__go" data-ui-habs><span data-i18n="hb.cta">Engager un joueur du Canadien</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <a class="hb__lien" href="personnalites.html?sport=hockey"><span data-i18n="hb.cta2">Voir les anciens du Canadien</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -2016,7 +2023,7 @@ function TalentCard(p){
   const el=document.createElement('article'); el.className='tcard';
   const href='profil.html?id='+p.id;
   el.innerHTML=`<div class="tcard__in">
-    <a class="tcard__ph" href="${href}" aria-label="${p.nom} — ${t('cta.profile')}">
+    <a class="tcard__ph" href="${href}" aria-label="${p.nom} — ${t('cta.profile')}"><span class="tcard__ini" aria-hidden="true">${p.nom.split(/[\s-]+/).map(w=>w[0]).join('').slice(0,2)}</span>
       <img class="tcard__bg" src="assets/lieux/${p.cat==='other'?'olympics':p.cat}.jpg" alt="" loading="lazy">
       <img class="tcard__p${p.photo?' tcard__p--pleine':''}" src="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" alt="" loading="lazy">
     </a>
@@ -2026,7 +2033,7 @@ function TalentCard(p){
       <h3 class="tcard__nom"><a href="${href}">${p.nom}</a></h3>
       <p class="tcard__sub">${L(p.sub)}</p>
       <div class="tcard__cta">
-        <a class="tcard__b1" href="${href}&travailler=1" data-ath-nom="${p.nom}" data-ath-sous="${L(CAT_FR[p.cat])}" data-ath-photo="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" data-ath-cut="${p.photo?0:1}">${t('tl.work')} ${p.nom}</a>
+        <a class="tcard__b1" href="${href}&travailler=1" data-ath-roles="${p.tags.map(x=>x.fr).join(' ')}" data-ath-nom="${p.nom}" data-ath-sous="${L(CAT_FR[p.cat])}" data-ath-photo="${p.photo?'assets/talents/'+p.id+'.webp':'assets/cut/'+p.id+'.webp'}" data-ath-cut="${p.photo?0:1}">${t('tl.work')} ${p.nom}</a>
       </div>
       <a class="tcard__lien" href="${href}">${t('cta.profile')} ${ARROW}</a>
     </div></div>`;
@@ -2319,7 +2326,7 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
         <span class="hbc__tag">${L(j.tag)}</span>
         <h3 class="hbc__nom">${j.nom}</h3>
         <div class="hbc__btns">
-          <button type="button" class="hbc__go" data-ath-nom="${j.nom}" data-ath-sous="Canadien de Montréal" data-ath-photo="${j.img}">${t('tl.work')} ${j.nom}</button>
+          <button type="button" class="hbc__go" data-ui-habs data-ui-joueur="${j.nom}">${t('tl.work')} ${j.nom}</button>
           <a class="hbc__pj" href="${j.u}">${t('cta.view')} ${FL}</a>
         </div>
       </div></article>`).join('');

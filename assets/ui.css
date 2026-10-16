@@ -244,3 +244,40 @@
 /* sous-titre du hero : 4 services, peut passer à la ligne sur mobile */
 @media (max-width:760px){.hero__k{white-space:normal!important;line-height:1.7;max-width:330px}}
 .hero__k a{white-space:nowrap}
+
+/* =====================================================================
+   Fenêtre de demande : courriel, joueur du Canadien
+   ===================================================================== */
+.dmd__mail{margin-top:auto}
+.dmd__mail + .dmd__tel{margin-top:10px}
+.dmd__mail b{font-size:12px!important;white-space:nowrap;letter-spacing:0!important}
+.dmd__mail{padding-right:12px!important}
+.dmd__mail span{min-width:0}
+.dmd__hb{display:none}
+.dmd--habs .dmd__hb{display:block}
+.dmd--habs .dmd__perso,.dmd--habs .dmd__ix{display:none!important}
+.dmd__ph img.est-logo{object-fit:contain!important;padding:14%;background:#fff;filter:none}
+.dmd--habs .dmd__a{background:radial-gradient(110% 70% at 100% 0%,rgba(175,30,45,.35),transparent 60%),linear-gradient(160deg,#1f2a7a 0%,#192168 55%,#0d1240 100%)}
+.dmd--habs .dmd__t em{color:#ff5a6a}
+
+/* =====================================================================
+   Cartes de personnalités : même rendu que les cartes du Canadien
+   (coins arrondis, ombre profonde, dégradé, initiales en contour)
+   ===================================================================== */
+.tcard__in{border-radius:24px!important;background:#0d1433!important;box-shadow:0 26px 50px rgba(13,20,51,.30)!important;overflow:hidden}
+.tcard:hover .tcard__in{box-shadow:0 34px 64px rgba(13,20,51,.38)!important}
+.tcard__ph::after{background:linear-gradient(180deg,rgba(13,20,51,0) 36%,rgba(13,20,51,.55) 60%,rgba(13,20,51,.96) 100%)!important}
+.tcard__ini{position:absolute;right:14px;top:6px;z-index:1;font-size:clamp(58px,5.4vw,104px);font-weight:900;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.6px rgba(255,255,255,.5);paint-order:stroke fill;pointer-events:none}
+.tcard__cat{display:none!important}
+.tcard__body{padding:20px!important}
+.tcard__body::before{content:"";display:block;width:40px;height:3px;border-radius:2px;background:var(--gold);margin-bottom:12px}
+.tcard__tags{display:block!important;margin:0 0 6px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tcard__tags span{display:inline!important;padding:0!important;border:0!important;background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;color:var(--gold)!important;font-size:10px!important;font-weight:700;letter-spacing:.16em!important;text-transform:uppercase}
+.tcard__tags span+span::before{content:" · "}
+.tcard__nom{font-weight:900!important;letter-spacing:-.03em!important;line-height:.95!important}
+.tcard__sub{display:none}
+.tcard__cta{padding-top:14px!important}
+.tcard__b1{display:block;width:100%;padding:12px 14px!important;border:0!important;border-radius:999px;background:#1E5299!important;color:#fff!important;font-size:10.5px!important;font-weight:800!important;letter-spacing:.08em!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .3s}
+.tcard__b1:hover{background:var(--gold)!important;color:#050505!important}
+.tcard__lien{justify-content:flex-start!important;margin-top:10px!important;padding:0!important;opacity:.85}
+.tcard__lien:hover{opacity:1}

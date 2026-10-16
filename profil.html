@@ -1328,7 +1328,7 @@ if(bl) bl.addEventListener('click',()=>{ $('#bio').classList.toggle('ouvert');
 /* --- « Travailler avec » : fenêtre de demande commune (assets/ui.js), propre à cet athlète --- */
 (function(){
   const sous=[CAT_FR[t.cat]||t.catNom].concat((t.roles||[]).slice(0,2).map(r=>roleFr(r,t))).join(' · ');
-  const ouvrir=()=>{ if(window.mvpDemande) mvpDemande({nom:t.nom, sous, photo:t.decoupe||t.photo, photo2:t.photo, cut:!!t.decoupe}); };
+  const ouvrir=()=>{ if(window.mvpDemande) mvpDemande({nom:t.nom, sous, photo:t.decoupe||t.photo, photo2:t.photo, cut:!!t.decoupe, roles:(t.roles||[]).join(' ')}); };
   $$('[data-travailler]').forEach(b=>b.addEventListener('click',ouvrir));
   /* lien « Travailler avec » venant d'une autre page : la fenêtre s'ouvre directement */
   if(new URLSearchParams(location.search).has('travailler')) setTimeout(ouvrir,400);
