@@ -1422,6 +1422,13 @@ ul{list-style:none}
 .hb__defile{padding:14px 0 6px}
 .hb__piste{padding:0 8px}
 .hba__ph img{left:0!important;bottom:auto!important;top:0;width:100%!important;height:100%!important;transform:none!important;object-fit:cover!important;object-position:50% 8%}
+
+/* Services : flèches sur les côtés des cartes */
+.sv__cadre{position:relative}
+.sv__cadre .sv__nav{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:space-between;padding:0 calc(var(--gutter) - 26px);z-index:5}
+.sv__cadre .sv__nav .slider__arrow{pointer-events:auto;width:56px;height:56px;background:rgba(14,42,79,.82);border-color:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.sv__cadre .sv__nav .slider__arrow:hover{background:var(--gold);border-color:var(--gold);color:#050505}
+@media (max-width:640px){.sv__cadre .sv__nav{padding:0 6px}.sv__cadre .sv__nav .slider__arrow{width:44px;height:44px}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1902,7 +1909,9 @@ renderServices();
   const vue=document.createElement('div'); vue.className='sv__vue'; track.parentNode.insertBefore(vue,track); vue.appendChild(track);
   const nav=document.createElement('div'); nav.className='sv__nav';
   nav.innerHTML='<button class="slider__arrow sv__prev" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button><button class="slider__arrow sv__next" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>';
-  const head=document.createElement('div'); head.className='sv__head'; const titre=$('#servicesBg'); titre.parentNode.insertBefore(head,titre); head.appendChild(titre); head.appendChild(nav);
+  const head=document.createElement('div'); head.className='sv__head'; const titre=$('#servicesBg'); titre.parentNode.insertBefore(head,titre); head.appendChild(titre);
+  /* flèches posées sur les côtés des cartes */
+  const cadre=document.createElement('div'); cadre.className='sv__cadre'; vue.parentNode.insertBefore(cadre,vue); cadre.appendChild(vue); cadre.appendChild(nav);
   let occupe=false;
   const pas=()=>{const c=track.firstElementChild; return c? c.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap||0):0;};
   const aller=dir=>{
