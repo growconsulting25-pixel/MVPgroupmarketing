@@ -330,3 +330,5 @@ img[src*="svc-speakers-bruny"]{object-position:38% 30%!important}
 @media (max-width:1300px){.header__nav{font-size:12px!important;letter-spacing:.08em!important}}
 /* Ambassadeurs : photo Goodfood, cadrée sur l'ambassadeur */
 img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
+/* Campagnes et influenceurs : Kim Clavel × Jean Bleu, logo visible */
+.panel__img[src*="kimclaveljeanbleu-2"]{object-position:22% 20%!important}
