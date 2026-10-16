@@ -1448,6 +1448,24 @@ ul{list-style:none}
 .sv__cadre .sv__nav .slider__arrow{background:rgba(255,255,255,.10)!important;border:1.5px solid rgba(255,255,255,.85)!important;color:#fff!important;box-shadow:none!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .sv__cadre .sv__nav .slider__arrow:hover{background:#fff!important;color:#0E2A4F!important;border-color:#fff!important}
 @media (max-width:640px){.sv__cadre .sv__nav{padding:0 calc(var(--gutter) + 8px)!important}}
+
+/* ombre des cartes jamais coupée par le bas de la rangée */
+.tlrow__rail{padding-bottom:84px!important;margin-bottom:-60px!important}
+.tlrow__rail .tcard__in{box-shadow:0 16px 30px rgba(13,20,51,.24)!important}
+.tlrow__rail .tcard:hover .tcard__in{box-shadow:0 20px 36px rgba(13,20,51,.30)!important}
+.tlpromo{box-shadow:0 16px 30px rgba(13,20,51,.22)!important}
+
+.tlrow__rail{margin-left:0!important;margin-right:0!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;scroll-padding-left:var(--gutter)!important}
+@media (min-width:1024px){.tlrow__rail{padding-right:0!important}}
+
+/* Canadien, mobile et tablette : titre et texte, puis les cartes, puis les points et les boutons */
+@media (max-width:1023px){
+  .hb__in{row-gap:0!important}
+  .hb__txt{display:contents}
+  .hb__k{order:1}.hb__t{order:2}.hb__p{order:3}
+  .hb__scene{order:4;margin:34px 0 8px!important}
+  .hb__liste{order:5}.hb__cta{order:6}
+}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
