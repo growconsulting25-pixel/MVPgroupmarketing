@@ -334,3 +334,5 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .panel__img[src*="kimclaveljeanbleu-2"]{object-position:22% 20%!important}
 /* Animateurs et invités d'honneur : panel de la Fondation Mathieu Froment-Savoie */
 .panel__img[src*="svc-hosts-panel"]{object-position:52% 30%!important}
+/* Drapeaux du pied de page : Québec, Canada, États-Unis */
+.footer__qc{gap:8px!important}.footer__qc .drapeau-qc + span{margin-left:4px}
