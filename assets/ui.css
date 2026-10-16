@@ -337,3 +337,6 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .tb-cache .tb{transform:translateY(-100%)}
 .header{transition:top .4s cubic-bezier(.2,.7,.2,1),background .45s,height .45s,box-shadow .45s,color .6s,transform .5s!important}
 .tb-cache .header{top:0!important}
+
+/* Initiales en contour sur les cartes : masquées pour l'instant (essai) */
+.tcard__ini,.hbc__ini{display:none!important}
