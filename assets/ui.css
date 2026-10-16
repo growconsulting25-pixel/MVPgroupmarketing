@@ -285,7 +285,8 @@
 .tcard__lien{display:flex!important;align-items:center;justify-content:center!important;gap:8px;width:100%;margin-top:8px!important;padding:11px 14px!important;border:1.5px solid rgba(255,255,255,.85);border-radius:999px;background:transparent;color:#fff!important;font-size:10.5px!important;font-weight:800!important;letter-spacing:.08em!important;opacity:1!important;transition:background .3s,color .3s}
 .tcard__lien:hover{background:#fff;color:#0d1433!important}
 .tcard__lien .arrow,.tcard__lien svg{color:currentColor!important}
-/* Boutons du bandeau et « Trouver un athlète » : or, texte blanc ; bleu au survol */
-.tb .tb__b--o,.tb .tb__b--w,.header .btn.ui-find,.mobile-menu > .btn.ui-find{background:var(--gold)!important;color:#fff!important;border:1px solid var(--gold)!important}
-.tb .tb__b--o:hover,.tb .tb__b--w:hover,.header .btn.ui-find:hover,.mobile-menu > .btn.ui-find:hover{background:#1E5299!important;border-color:#1E5299!important;color:#fff!important}
+/* « Trouver un athlète » : bleu, texte blanc ; or au survol. Bandeau : styles d'origine */
+.header .btn.ui-find,.mobile-menu > .btn.ui-find{background:#1E5299!important;color:#fff!important;border:0!important}
+.header .btn.ui-find:hover,.mobile-menu > .btn.ui-find:hover{background:var(--gold)!important;color:#050505!important}
+
 .navitem.est-ouvert .navdrop{opacity:1!important;visibility:visible!important;transform:translateX(-50%) translateY(0)!important}
