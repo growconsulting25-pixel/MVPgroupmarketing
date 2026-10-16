@@ -1429,6 +1429,12 @@ ul{list-style:none}
 .sv__cadre .sv__nav .slider__arrow{pointer-events:auto;width:56px;height:56px;background:rgba(14,42,79,.82);border-color:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 26px rgba(0,0,0,.35)}
 .sv__cadre .sv__nav .slider__arrow:hover{background:var(--gold);border-color:var(--gold);color:#050505}
 @media (max-width:640px){.sv__cadre .sv__nav{padding:0 6px}.sv__cadre .sv__nav .slider__arrow{width:44px;height:44px}}
+
+/* logo du Canadien */
+.hb__logo{width:auto;height:46px;flex:none;filter:drop-shadow(0 6px 14px rgba(25,33,104,.18))}
+.hb__filigrane{position:absolute;left:50%;top:44%;width:min(118%,640px);transform:translate(-58%,-50%) rotate(-8deg);opacity:.07;pointer-events:none;z-index:0}
+.hb__pile,.hb__ctrl{position:relative;z-index:1}
+@media (max-width:640px){.hb__logo{height:36px}.hb__filigrane{width:110%}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1606,7 +1612,7 @@ ul{list-style:none}
   <div class="hb__glace" aria-hidden="true"></div>
   <div class="hb__in">
     <div class="hb__txt" data-reveal>
-      <p class="hb__k"><span class="hb__bandes" aria-hidden="true"><i></i><i></i><i></i></span><span data-i18n="hb.k">Canadien de Montréal · Service vedette</span></p>
+      <p class="hb__k"><img class="hb__logo" src="assets/canadiens-logo.png" alt="Canadien de Montréal" width="239" height="163"><span class="hb__bandes" aria-hidden="true"><i></i><i></i><i></i></span><span data-i18n="hb.k">Canadien de Montréal · Service vedette</span></p>
       <h2 class="hb__t" data-i18n-html="hb.h">Travaillez avec <em>n'importe quel joueur</em> du Canadien.</h2>
       <p class="hb__p" data-i18n="hb.p">Grâce à nos relations privilégiées avec les joueurs, la majorité de l'alignement du Canadien de Montréal est accessible pour vos projets. Joueurs actuels, anciens et légendes : nous approchons la bonne personne, négocions l'entente et livrons l'activation.</p>
       <ul class="hb__liste">
@@ -1620,6 +1626,7 @@ ul{list-style:none}
       </div>
     </div>
     <div class="hb__scene" data-reveal>
+      <img class="hb__filigrane" src="assets/canadiens-logo.png" alt="" aria-hidden="true">
       <div class="hb__pile" id="hbPile"></div>
       <div class="hb__ctrl">
         <button type="button" class="hb__fl" id="hbPrev" aria-label="Joueur précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button>
