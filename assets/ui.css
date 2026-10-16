@@ -281,3 +281,7 @@
 .tcard__b1:hover{background:var(--gold)!important;color:#050505!important}
 .tcard__lien{justify-content:flex-start!important;margin-top:10px!important;padding:0!important;opacity:.85}
 .tcard__lien:hover{opacity:1}
+/* « Voir le profil » : bouton contour blanc, même taille que « Engagez » */
+.tcard__lien{display:flex!important;align-items:center;justify-content:center!important;gap:8px;width:100%;margin-top:8px!important;padding:11px 14px!important;border:1.5px solid rgba(255,255,255,.85);border-radius:999px;background:transparent;color:#fff!important;font-size:10.5px!important;font-weight:800!important;letter-spacing:.08em!important;opacity:1!important;transition:background .3s,color .3s}
+.tcard__lien:hover{background:#fff;color:#0d1433!important}
+.tcard__lien .arrow,.tcard__lien svg{color:currentColor!important}
