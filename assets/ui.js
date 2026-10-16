@@ -9,12 +9,12 @@
       start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
       k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin, nous trouvons la bonne personnalité.",
       avec:'Engagez',pt1:'Un conseiller du Groupe MVP vous répond très rapidement',pt2:'Un seul interlocuteur, du premier appel au résultat',pt3:"Un réseau bâti depuis 2005 dans le sport québécois",
-      parler:'Vous préférez parler à quelqu’un ?',ecrire:'Vous préférez nous écrire ?',hbK:'Canadien de Montréal',hbUn:'un joueur du Canadien',hbJoueur:'Le joueur',hbChoix:'Joueur souhaité',hbAucun:'Pas encore décidé — conseillez-moi',hbActuels:'Joueurs',hbAnciens:'Anciens et légendes',hbAutre:'Un autre joueur du Canadien',hbP:'La majorité de l’alignement est accessible : choisissez un joueur ou laissez-nous vous conseiller.',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
+      parler:'Vous préférez parler à quelqu’un ?',ecrire:'Vous préférez nous écrire ?',hbK:'Canadiens de Montréal',hbUn:'un joueur des Canadiens',hbJoueur:'Le joueur',hbChoix:'Joueur souhaité',hbAucun:'Pas encore décidé — conseillez-moi',hbActuels:'Joueurs',hbAnciens:'Anciens et légendes',hbAutre:'Un autre joueur des Canadiens',hbP:'La majorité de l’alignement est accessible : choisissez un joueur ou laissez-nous vous conseiller.',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
       note:'Vos informations restent confidentielles et servent uniquement à répondre à votre demande.',
       okPa:"L'équipe MVP communiquera avec vous sous peu au sujet de votre projet avec %.",
       nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Message',
       types:['Conférencier(ère)','Ambassadeur(drice)','Porte-parole','Animateur(trice)','Invité(e) d\'honneur','Influenceur(euse) / médias sociaux','Événement corporatif','Autre'],
-      persoPh:'Facultatif — ex. : un olympien, un joueur du Canadien',msgPh:'Objectif, public, budget, lieu…',
+      persoPh:'Facultatif — ex. : un olympien, un joueur des Canadiens',msgPh:'Objectif, public, budget, lieu…',
       envoyer:'Envoyer la demande',envoi:'Envoi…',req:'Merci de remplir les champs obligatoires (*).',
       err:"L'envoi n'a pas fonctionné. Écrivez-nous à <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> ou appelez le <a href=\""+TELH+"\">"+TEL+"</a>.",
       iK:'MVP International · Sur demande',iT:'Une icône, <em>partout en Amérique du Nord.</em>',iP:"Nommez la personnalité, peu importe la ville ou la ligue : nous approchons ses représentants pour vous.",
@@ -123,7 +123,7 @@
   body.appendChild(dmd);
   var form=dmd.querySelector('form'), err=dmd.querySelector('.dmd__err'), go=dmd.querySelector('.dmd__go'), dernier=null, ATH=null;
   var chips=dmd.querySelector('.dmd__chips');
-  /* Joueurs du Canadien proposés dans la liste (photo affichée dans la fenêtre) */
+  /* Joueurs des Canadiens proposés dans la liste (photo affichée dans la fenêtre) */
   var HABS_ACT=[['Nick Suzuki','assets/projets/nick-suzuki-5.jpg'],['Lane Hutson','assets/art-hush.jpg'],['Zachary Bolduc','assets/projets/zacharybolduc-2.jpg'],['Patrik Laine','assets/projets/patrick-laine-albilegeant-genesislaval-3.jpg']];
   var HABS_ANC=[['Guy Lafleur','guy-lafleur'],['Patrick Roy','patrick-roy'],['Yvan Cournoyer','yvan-cournoyer'],['Guy Carbonneau','guy-carbonneau'],['Chris Nilan','chris-nilan'],['Mario Tremblay','mario-tremblay'],['Réjean Houle','rejean-houle'],['Yvon Lambert','yvon-lambert'],['Steve Bégin','steve-begin'],['Paul Byron','paul-byron'],['Francis Bouillon','francis-bouillon'],['Patrice Brisebois','patrice-brisebois'],['Gilbert Delorme','gilbert-delorme'],['Mathieu Dandenault','mathieu-dandenault'],['Kirk Muller','kirk-muller'],['Alex Kovalev','alex-kovalev'],['Pierre Gervais','pierre-gervais']];
   var photoHabs=function(n){ var a=HABS_ACT.filter(function(x){return x[0]===n;})[0]; if(a) return {src:a[1],cut:false}; var b=HABS_ANC.filter(function(x){return x[0]===n;})[0]; if(b) return {src:'assets/cut/'+b[1]+'.webp',cut:true}; return null; };
