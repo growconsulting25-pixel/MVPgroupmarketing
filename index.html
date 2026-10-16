@@ -1620,8 +1620,9 @@ ul{list-style:none}
     <!-- REPLACE: final MVP montage. src left empty → poster shows. Poster = MVP's own 1920×1080 key visual. -->
     <!-- Hero film supplied by MVP, embedded (cropped to remove letterboxing, audio stripped, 2.6:1 → cover).
          For the live build, serve this as a separate .mp4 file instead of a data URI. -->
-    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/poster-v4.jpg">
-      <source src="assets/hero-v4.mp4" type="video/mp4">
+    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/poster-v5.jpg">
+      <source src="assets/hero-v5-mobile.mp4" type="video/mp4" media="(max-width:760px)">
+      <source src="assets/hero-v5.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero__overlay"></div>
