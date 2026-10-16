@@ -1329,6 +1329,94 @@ ul{list-style:none}
 .brands__line{flex:0 1 120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
 .brands__line:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
 @media (max-width:640px){.brands__t{font-size:12px;letter-spacing:.18em}.brands__line{flex-basis:40px}}
+
+/* =====================================================================
+   JOUEURS DU CANADIEN — section vedette (fond blanc, rouge et bleu du CH)
+   ===================================================================== */
+.hb{--ch-r:#AF1E2D;--ch-b:#192168;position:relative;overflow:hidden;isolation:isolate;background:#fff;color:#0b0b0b;padding:var(--g) 0 0;border-top:1px solid #eef0f4}
+.hb__glace{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(40% 55% at 82% 38%,rgba(25,33,104,.10),transparent 70%),radial-gradient(30% 40% at 70% 70%,rgba(175,30,45,.08),transparent 70%)}
+.hb__glace::before{content:"";position:absolute;right:-6%;top:50%;width:min(60vw,820px);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;border:2px solid rgba(175,30,45,.10);box-shadow:inset 0 0 0 46px rgba(255,255,255,0),0 0 0 46px rgba(25,33,104,.035)}
+.hb__glace::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,transparent,rgba(175,30,45,.14) 30%,rgba(175,30,45,.14) 70%,transparent)}
+.hb__in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(30px,5vw,90px);align-items:center;padding:0 var(--gutter)}
+.hb__k{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--ch-b)}
+.hb__bandes{display:inline-flex;flex-direction:column;gap:3px;width:34px}
+.hb__bandes i{height:3px;border-radius:2px;background:var(--ch-b)}.hb__bandes i:nth-child(2){background:#d9dce4}.hb__bandes i:nth-child(3){background:var(--ch-r)}
+.hb__t{margin-top:18px;font-size:clamp(34px,4vw,72px);font-weight:800;line-height:.95;letter-spacing:-.035em;text-transform:uppercase;color:#0b0b0b}
+.hb__t em{font-style:normal;color:var(--ch-r)}
+.hb__p{margin-top:20px;max-width:540px;font-size:clamp(15px,1.12vw,18px);line-height:1.6;color:#3a3f47}
+.hb__liste{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px;max-width:520px}
+.hb__liste li{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:14px;background:#f6f7fa;border:1px solid #eceef3;font-size:14.5px;font-weight:600;color:#1b1f26}
+.hb__liste b{display:grid;place-items:center;width:30px;height:30px;flex:none;border-radius:50%;background:var(--ch-b);color:#fff;font-size:11px;letter-spacing:.04em}
+.hb__liste li:nth-child(2) b{background:var(--ch-r)}
+.hb__cta{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:28px}
+.hb__go{display:inline-flex;align-items:center;gap:12px;height:58px;padding:0 28px;border-radius:999px;background:linear-gradient(135deg,#1E5299,#123B6D);color:#fff;font:inherit;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:0 16px 34px rgba(18,59,109,.25);transition:transform .3s,box-shadow .3s}
+.hb__go:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(18,59,109,.35)}
+.hb__go svg,.hb__lien svg{width:17px;height:17px;transition:transform .3s}
+.hb__go:hover svg,.hb__lien:hover svg{transform:translateX(4px)}
+.hb__lien{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);transition:color .25s}
+.hb__lien:hover{color:#1E5299}
+/* pile de cartes */
+.hb__scene{position:relative;display:flex;flex-direction:column;align-items:center}
+.hb__pile{position:relative;width:min(100%,400px);aspect-ratio:3/4.15;margin-right:90px;touch-action:pan-y;user-select:none}
+.hbc{position:absolute;inset:0;border-radius:24px;overflow:hidden;background:#0d1433;box-shadow:0 30px 60px rgba(25,33,104,.28);transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .5s;transform-origin:50% 100%;cursor:pointer}
+.hbc[data-pos="0"]{z-index:4;transform:none;cursor:default}
+.hbc[data-pos="1"]{z-index:3;transform:translateX(56px) rotate(5deg) scale(.93);filter:brightness(.82)}
+.hbc[data-pos="2"]{z-index:2;transform:translateX(104px) rotate(10deg) scale(.86);filter:brightness(.65)}
+.hbc[data-pos="3"]{z-index:1;transform:translateX(140px) rotate(14deg) scale(.8);opacity:0}
+.hbc--sort{animation:hbSort .52s cubic-bezier(.4,0,.2,1)}
+@keyframes hbSort{0%{transform:none}45%{transform:translateX(-120%) rotate(-12deg);opacity:0}46%{opacity:0}100%{opacity:.0}}
+.hbc__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hbc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,20,51,0) 38%,rgba(13,20,51,.55) 62%,rgba(13,20,51,.96) 100%)}
+.hbc__ini{position:absolute;right:16px;top:8px;z-index:1;font-size:clamp(70px,8vw,120px);font-weight:900;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.55);paint-order:stroke fill}
+.hbc__bas{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 22px 22px;color:#fff}
+.hbc__bandes{display:flex;flex-direction:column;gap:3px;width:56px;margin-bottom:14px}
+.hbc__bandes i{height:4px;border-radius:2px;background:#2b3a8f}.hbc__bandes i:nth-child(2){background:#fff}.hbc__bandes i:nth-child(3){background:var(--ch-r)}
+.hbc__tag{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.hbc__nom{margin:6px 0 0;font-size:clamp(26px,2.3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:.95;text-transform:uppercase}
+.hbc__btns{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+.hbc__go{padding:12px 18px;border-radius:999px;border:0;background:var(--ch-r);color:#fff;font:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.hbc__go:hover{background:#cf2638}
+.hbc__pj{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.85}
+.hbc__pj:hover{opacity:1;color:var(--gold)}
+.hbc__pj svg{width:14px;height:14px}
+.hb__ctrl{display:flex;align-items:center;gap:16px;margin-top:28px;margin-right:90px}
+.hb__fl{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;border:1px solid #d6d9e2;background:#fff;color:#0b0b0b;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.hb__fl:hover{background:var(--ch-b);border-color:var(--ch-b);color:#fff}
+.hb__pts{display:flex;gap:8px}
+.hb__pts button{width:9px;height:9px;padding:0;border:0;border-radius:999px;background:#d6d9e2;cursor:pointer;transition:width .35s,background .35s}
+.hb__pts button.est-actif{width:28px;background:var(--ch-r)}
+/* défilé des anciens */
+.hb__anciens{margin-top:clamp(50px,8vh,90px);padding:clamp(26px,4vh,40px) 0 clamp(36px,6vh,60px);background:linear-gradient(180deg,#f6f7fa,#fff);border-top:1px solid #eef0f4}
+.hb__sous{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 0 22px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--ch-b)}
+.hb__sous::before,.hb__sous::after{content:"";width:60px;height:2px;background:linear-gradient(90deg,var(--ch-b),var(--ch-r))}
+.hb__defile{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.hb__piste{display:flex;gap:clamp(18px,2vw,34px);width:max-content;animation:hbDefile 60s linear infinite}
+.hb__defile:hover .hb__piste{animation-play-state:paused}
+@keyframes hbDefile{to{transform:translateX(-50%)}}
+.hba{display:flex;flex-direction:column;align-items:center;gap:10px;width:118px;text-align:center}
+.hba__ph{position:relative;width:100px;height:100px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 30%,#2b3a8f,var(--ch-b));box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ch-r),0 10px 24px rgba(25,33,104,.2);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.hba__ph img{position:absolute;left:50%;bottom:-6%;width:118%;transform:translateX(-50%);object-fit:contain}
+.hba b{font-size:12.5px;font-weight:800;line-height:1.2;color:#0b0b0b;transition:color .25s}
+.hba:hover .hba__ph{transform:translateY(-4px) scale(1.05)}
+.hba:hover b{color:var(--ch-r)}
+@media (prefers-reduced-motion:reduce){.hb__piste{animation:none}}
+@media (max-width:1023px){
+  .hb__in{grid-template-columns:1fr}
+  .hb__scene{order:-1}
+  .hb__pile{width:min(78%,360px);margin-right:70px}
+  .hb__ctrl{margin-right:70px}
+}
+@media (max-width:640px){
+  .hb__pile{width:72%;margin-right:56px}
+  .hbc[data-pos="1"]{transform:translateX(34px) rotate(5deg) scale(.93)}
+  .hbc[data-pos="2"]{transform:translateX(62px) rotate(10deg) scale(.86)}
+  .hb__ctrl{margin-right:56px}
+  .hba{width:96px}.hba__ph{width:82px;height:82px}
+}
+
+.flux > .hb,.hb{background:#fff!important;z-index:5}
+@media (max-width:640px){.hbc__tag{letter-spacing:.1em;font-size:9.5px}.hb__t{font-size:clamp(30px,9vw,40px)}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1501,6 +1589,39 @@ ul{list-style:none}
      Carrousel horizontal de grandes cartes photo, bâti sur le même système que
      « Le service en action » : plusieurs projets visibles, la carte survolée
      s'agrandit, le détail complet vit sur la page projet. -->
+<!-- ================= SECTION — JOUEURS DU CANADIEN ================= -->
+<section class="hb" id="canadiens" data-nav="dark" aria-label="Joueurs du Canadien de Montréal">
+  <div class="hb__glace" aria-hidden="true"></div>
+  <div class="hb__in">
+    <div class="hb__txt" data-reveal>
+      <p class="hb__k"><span class="hb__bandes" aria-hidden="true"><i></i><i></i><i></i></span><span data-i18n="hb.k">Canadien de Montréal · Service vedette</span></p>
+      <h2 class="hb__t" data-i18n-html="hb.h">Travaillez avec <em>n'importe quel joueur</em> du Canadien.</h2>
+      <p class="hb__p" data-i18n="hb.p">Grâce à nos relations privilégiées avec les joueurs, la majorité de l'alignement du Canadien de Montréal est accessible pour vos projets. Joueurs actuels, anciens et légendes : nous approchons la bonne personne, négocions l'entente et livrons l'activation.</p>
+      <ul class="hb__liste">
+        <li><b>01</b><span data-i18n="hb.l1">Campagnes publicitaires et ambassadeurs de marque</span></li>
+        <li><b>02</b><span data-i18n="hb.l2">Apparitions, conférences et événements corporatifs</span></li>
+        <li><b>03</b><span data-i18n="hb.l3">Contenu pour vos réseaux sociaux</span></li>
+      </ul>
+      <div class="hb__cta">
+        <button type="button" class="hb__go" data-ath-nom="un joueur du Canadien" data-ath-sous="Canadien de Montréal" data-ath-photo="assets/projets/nick-suzuki-5.jpg"><span data-i18n="hb.cta">Engager un joueur du Canadien</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <a class="hb__lien" href="personnalites.html?sport=hockey"><span data-i18n="hb.cta2">Voir les anciens du Canadien</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="hb__scene" data-reveal>
+      <div class="hb__pile" id="hbPile"></div>
+      <div class="hb__ctrl">
+        <button type="button" class="hb__fl" id="hbPrev" aria-label="Joueur précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button>
+        <div class="hb__pts" id="hbPts"></div>
+        <button type="button" class="hb__fl" id="hbNext" aria-label="Joueur suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="hb__anciens">
+    <p class="hb__sous"><span data-i18n="hb.anc">Anciens et légendes du Canadien</span></p>
+    <div class="hb__defile"><div class="hb__piste" id="hbPiste"></div></div>
+  </div>
+</section>
+
 <section class="projets" id="projects" data-nav="light" aria-label="Projets" data-plus="t:16 b:84 l:12 t:58:lg">
   <div class="projets__head" data-reveal>
     <h2 class="projets__t display" data-i18n="pj.h">Nos projets</h2>
@@ -1593,7 +1714,7 @@ const I18N = {
   'cat.hockey':'Hockey','cat.boxing':'Boxe','cat.mma':'MMA','cat.olympics':'Olympisme','cat.media':'Médias','cat.soccer':'Soccer','cat.others':'Autres',
   'hero.label':'MVP Group — Marketing sportif','hero.h1':'Accédez aux <span class="gold">icônes</span> du sport.',
   "hero.lede":"Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.",
-  'hero.scroll':'Défiler','cta.work':'Travailler avec nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout','brands.trust':'Ils nous ont fait confiance','promo.cta1':'Faire une demande','promo.sub':'Nous représentons bien plus d’athlètes que ce catalogue : dites-nous qui vous intéresse.','promo.cta2':'Faire une demande',
+  'hero.scroll':'Défiler','cta.work':'Travailler avec nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout','hb.k':'Canadien de Montréal · Service vedette','hb.h':"Travaillez avec <em>n'importe quel joueur</em> du Canadien.",'hb.p':"Grâce à nos relations privilégiées avec les joueurs, la majorité de l'alignement du Canadien de Montréal est accessible pour vos projets. Joueurs actuels, anciens et légendes : nous approchons la bonne personne, négocions l'entente et livrons l'activation.",'hb.l1':'Campagnes publicitaires et ambassadeurs de marque','hb.l2':'Apparitions, conférences et événements corporatifs','hb.l3':'Contenu pour vos réseaux sociaux','hb.cta':'Engager un joueur du Canadien','hb.cta2':'Voir les anciens du Canadien','hb.anc':'Anciens et légendes du Canadien','brands.trust':'Ils nous ont fait confiance','promo.cta1':'Faire une demande','promo.sub':'Nous représentons bien plus d’athlètes que ce catalogue : dites-nous qui vous intéresse.','promo.cta2':'Faire une demande',
   'intro.label':'Notre expertise','intro.h2':'Associez une icône du sport <em>à votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône sportive.<br><span>Partout en Amérique du Nord.</span>",'mo.p':"Une vedette du basketball américain, une légende du hockey, un champion olympique ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, partout en Amérique du Nord.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un conseiller','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Conférenciers','hero.k2':'Ambassadeurs','hero.k3':'Porte-parole','hero.k4':"Invités d'honneur",'hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un conseiller :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
@@ -1608,7 +1729,7 @@ const I18N = {
   'cat.hockey':'Hockey','cat.boxing':'Boxing','cat.mma':'MMA','cat.olympics':'Olympics','cat.media':'Media','cat.soccer':'Soccer','cat.others':'Others',
   'hero.label':'MVP Group — Sports Marketing','hero.h1':'Access the <span class="gold">icons</span> of sport.',
   "hero.lede":"Brand ambassadors, keynote speakers and spokespersons: pair a sports personality with your business to raise awareness, establish credibility and increase sales.",
-  'hero.scroll':'Scroll','cta.work':'Work with us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all','brands.trust':'They trusted us','promo.cta1':'Send a request','promo.sub':'We reach far more athletes than this catalogue: tell us who you have in mind.','promo.cta2':'Send a request',
+  'hero.scroll':'Scroll','cta.work':'Work with us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all','hb.k':'Montréal Canadiens · Featured service','hb.h':'Work with <em>any player</em> on the Canadiens.','hb.p':'Thanks to our close relationships with the players, most of the Montréal Canadiens roster is available for your projects. Current players, alumni and legends: we approach the right person, negotiate the agreement and deliver the activation.','hb.l1':'Advertising campaigns and brand ambassadors','hb.l2':'Appearances, keynotes and corporate events','hb.l3':'Content for your social media','hb.cta':'Book a Canadiens player','hb.cta2':'See Canadiens alumni','hb.anc':'Canadiens alumni and legends','brands.trust':'They trusted us','promo.cta1':'Send a request','promo.sub':'We reach far more athletes than this catalogue: tell us who you have in mind.','promo.cta2':'Send a request',
   'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business</em>','mo.k':'MVP International · On request','mo.h':'Any sports icon.<br><span>Anywhere in North America.</span>','mo.p':"An American basketball star, a hockey legend, an Olympic champion? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, anywhere in North America.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an advisor','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Speakers','hero.k2':'Ambassadors','hero.k3':'Spokespersons','hero.k4':'Guests of honor','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an advisor:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
@@ -2051,6 +2172,7 @@ window.__rebuild=function(){
   renderProjects();
   if(window.__rafraichirFil) window.__rafraichirFil();
   renderTalents();
+  if(window.__rendreHabs) window.__rendreHabs();
   ScrollTrigger.refresh();
 };
 $('#lang').addEventListener('click',e=>{const b=e.target.closest('[data-lang]'); if(b) applyLang(b.dataset.lang);});
@@ -2153,6 +2275,53 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
 /* MVP International : les trajets s'animent quand la section est à l'écran */
 (function(){ var m=document.getElementById('international'); if(!m||!('IntersectionObserver' in window)){ if(m) m.classList.add('est-visible'); return; }
   new IntersectionObserver(function(es){ es.forEach(function(e){ m.classList.toggle('est-visible', e.isIntersecting); }); },{threshold:.15}).observe(m); })();
+
+/* Joueurs du Canadien : pile de cartes (flèches, points, glisser) + défilé des anciens */
+(function(){
+  const pile=document.getElementById('hbPile'); if(!pile) return;
+  const J=[
+    {nom:'Nick Suzuki',ini:'NS',img:'assets/projets/nick-suzuki-5.jpg',pos:'center 22%',tag:{fr:'Ambassadeur · Goodfood',en:'Ambassador · Goodfood'},u:'projet.html?id=nick-suzuki'},
+    {nom:'Lane Hutson',ini:'LH',img:'assets/art-hush.jpg',pos:'58% 30%',tag:{fr:'Défi hockey · HUSH',en:'Hockey challenge · HUSH'},u:'projet.html?id=hutson'},
+    {nom:'Zachary Bolduc',ini:'ZB',img:'assets/projets/zacharybolduc-2.jpg',pos:'center 20%',tag:{fr:'Ambassadeur · AU NOIR',en:'Ambassador · AU NOIR'},u:'projet.html?id=zacharybolduc'},
+    {nom:'Patrik Laine',ini:'PL',img:'assets/projets/patrick-laine-albilegeant-genesislaval-3.jpg',pos:'62% 18%',tag:{fr:'Ambassadeur · ALBI Le Géant',en:'Ambassador · ALBI Le Géant'},u:'projet.html?id=patrick-laine-albilegeant-genesislaval'}
+  ];
+  const ANC=['guy-lafleur','patrick-roy','yvan-cournoyer','guy-carbonneau','chris-nilan','mario-tremblay','rejean-houle','yvon-lambert','steve-begin','paul-byron','francis-bouillon','patrice-brisebois','gilbert-delorme','mathieu-dandenault','kirk-muller','alex-kovalev','pierre-gervais'];
+  const NOMS={'guy-lafleur':'Guy Lafleur','patrick-roy':'Patrick Roy','yvan-cournoyer':'Yvan Cournoyer','guy-carbonneau':'Guy Carbonneau','chris-nilan':'Chris Nilan','mario-tremblay':'Mario Tremblay','rejean-houle':'Réjean Houle','yvon-lambert':'Yvon Lambert','steve-begin':'Steve Bégin','paul-byron':'Paul Byron','francis-bouillon':'Francis Bouillon','patrice-brisebois':'Patrice Brisebois','gilbert-delorme':'Gilbert Delorme','mathieu-dandenault':'Mathieu Dandenault','kirk-muller':'Kirk Muller','alex-kovalev':'Alex Kovalev','pierre-gervais':'Pierre Gervais'};
+  const FL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  let ordre=J.map((_,i)=>i);
+  function rendre(){
+    pile.innerHTML=J.map((j,i)=>`<article class="hbc" data-i="${i}">
+      <img class="hbc__img" src="${j.img}" alt="${j.nom}" style="object-position:${j.pos}" loading="lazy">
+      <span class="hbc__ini" aria-hidden="true">${j.ini}</span>
+      <div class="hbc__bas">
+        <span class="hbc__bandes" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="hbc__tag">${L(j.tag)}</span>
+        <h3 class="hbc__nom">${j.nom}</h3>
+        <div class="hbc__btns">
+          <button type="button" class="hbc__go" data-ath-nom="${j.nom}" data-ath-sous="Canadien de Montréal" data-ath-photo="${j.img}">${t('tl.work')} ${j.nom}</button>
+          <a class="hbc__pj" href="${j.u}">${t('cta.view')} ${FL}</a>
+        </div>
+      </div></article>`).join('');
+    document.getElementById('hbPts').innerHTML=J.map((_,i)=>`<button type="button" aria-label="${J[i].nom}"></button>`).join('');
+    placer();
+  }
+  function placer(){
+    const cartes=[...pile.children], pts=[...document.getElementById('hbPts').children];
+    ordre.forEach((idx,pos)=>{ const c=cartes[idx]; c.dataset.pos=pos; c.setAttribute('aria-hidden',pos?'true':'false'); c.querySelectorAll('a,button').forEach(b=>b.tabIndex=pos?-1:0); });
+    pts.forEach((p,i)=>p.classList.toggle('est-actif',i===ordre[0]));
+  }
+  const suiv=()=>{ const c=pile.children[ordre[0]]; c.classList.add('hbc--sort'); setTimeout(()=>c.classList.remove('hbc--sort'),520); ordre.push(ordre.shift()); placer(); };
+  const prec=()=>{ ordre.unshift(ordre.pop()); placer(); };
+  document.getElementById('hbNext').onclick=suiv; document.getElementById('hbPrev').onclick=prec;
+  document.getElementById('hbPts').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const i=[...b.parentNode.children].indexOf(b); while(ordre[0]!==i) ordre.push(ordre.shift()); placer(); });
+  pile.addEventListener('click',e=>{ const c=e.target.closest('.hbc'); if(c && c.dataset.pos!=='0' && !e.target.closest('a,button')){ e.preventDefault(); while(String(ordre[0])!==c.dataset.i) ordre.push(ordre.shift()); placer(); } });
+  let x0=null; pile.addEventListener('pointerdown',e=>{x0=e.clientX;}); pile.addEventListener('pointerup',e=>{ if(x0===null) return; const dx=e.clientX-x0; if(Math.abs(dx)>50) (dx<0?suiv:prec)(); x0=null; });
+  rendre();
+  const piste=document.getElementById('hbPiste');
+  const un=ANC.map(id=>`<a class="hba" href="profil.html?id=${id}"><span class="hba__ph"><img src="assets/cut/${id}.webp" alt="" loading="lazy"></span><b>${NOMS[id]}</b></a>`).join('');
+  piste.innerHTML=un+un.replace(/<a /g,'<a tabindex="-1" aria-hidden="true" ');
+  window.__rendreHabs=rendre;
+})();
 </script>
 <script src="assets/ui.js"></script>
 </body>
