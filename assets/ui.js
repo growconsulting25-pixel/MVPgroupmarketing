@@ -286,3 +286,20 @@
   if(lang) lang.addEventListener('click',function(){ setTimeout(appliquer,0); });
   appliquer();
 })();
+
+/* Écrans tactiles (tablette, portable tactile) : 1er toucher sur « Services », « Personnalités »
+   ou « À propos » ouvre le sous-menu ; 2e toucher suit le lien. */
+(function(){
+  var items=document.querySelectorAll('.header__nav .navitem'); if(!items.length) return;
+  var tactile=false; addEventListener('touchstart',function(){ tactile=true; },{passive:true,capture:true});
+  [].forEach.call(items,function(it){
+    var a=it.querySelector(':scope > a'); if(!a||!it.querySelector('.navdrop')) return;
+    a.addEventListener('click',function(e){
+      if(!tactile&&!matchMedia('(hover:none)').matches) return;
+      if(it.classList.contains('est-ouvert')) return;
+      e.preventDefault();
+      [].forEach.call(items,function(x){ x.classList.toggle('est-ouvert',x===it); });
+    });
+  });
+  document.addEventListener('click',function(e){ if(!e.target.closest('.header__nav .navitem')) [].forEach.call(items,function(x){ x.classList.remove('est-ouvert'); }); });
+})();
