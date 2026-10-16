@@ -876,6 +876,7 @@ const ROLE_SVC_F={speakers:'Conférencière',ambassadors:'Ambassadrice de marque
 const MAIL=(sujet,corps)=>`mailto:info@mvpsportsmarketing.com?subject=${encodeURIComponent(sujet)}${corps?'&body='+encodeURIComponent(corps):''}`;
 const key=new URLSearchParams(location.search).get('s')||'speakers';
 const S=SERVICES[key]||SERVICES.speakers;
+const VOICI={speakers:'Voici vos conférenciers',ambassadors:'Voici vos ambassadeurs et porte-parole',hosts:"Voici vos animateurs et invités d'honneur",marketing:'Voici vos influenceurs'};
 document.title=`${S.nom} — Services | MVP Group`;
 const pers=TALENTS.filter(t=>t.services.includes(key));
 const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
@@ -907,7 +908,7 @@ $('#svc').innerHTML=`
 </div></section>
 
 <section class="pe" data-nav="dark">
-  <div class="pe__head"><h2 class="pe__t">Des personnalités pour ce service</h2>
+  <div class="pe__head"><h2 class="pe__t">${VOICI[key]||VOICI.speakers}</h2>
     <div class="pe__nav"><button id="peP" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><button id="peN" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
   <div class="pe__rail" id="peRail">${persVedette.map(t=>{
     const pleine=['katerine-savard','chantal-machabee'].includes(t.id), href='profil.html?id='+t.id;
