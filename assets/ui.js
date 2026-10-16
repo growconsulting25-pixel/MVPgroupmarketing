@@ -303,3 +303,11 @@
   });
   document.addEventListener('click',function(e){ if(!e.target.closest('.header__nav .navitem')) [].forEach.call(items,function(x){ x.classList.remove('est-ouvert'); }); });
 })();
+
+/* « Services » dans le menu : pas de clic, seulement le survol pour voir les services */
+(function(){
+  var neutre=function(a){ if(a.dataset.uiNeutre) return; a.dataset.uiNeutre='1'; a.removeAttribute('href'); a.setAttribute('role','button'); a.setAttribute('tabindex','0'); a.style.cursor='default';
+    a.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); }); };
+  var tout=function(){ document.querySelectorAll('.header__nav .navitem > a[href$="#services"], .rp__main[href$="#services"]').forEach(neutre); };
+  tout(); document.addEventListener('DOMContentLoaded',tout); addEventListener('load',tout);
+})();
