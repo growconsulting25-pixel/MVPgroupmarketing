@@ -328,3 +328,5 @@ img[src*="svc-speakers-bruny"]{object-position:38% 30%!important}
 /* Menu : un peu plus serré sur les écrans de 1200 à 1400 px pour ne pas toucher le logo */
 @media (max-width:1400px){.header__nav{font-size:12.5px!important;letter-spacing:.1em!important;gap:clamp(14px,1.5vw,24px)!important}}
 @media (max-width:1300px){.header__nav{font-size:12px!important;letter-spacing:.08em!important}}
+/* Ambassadeurs : photo Goodfood, cadrée sur l'ambassadeur */
+img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
