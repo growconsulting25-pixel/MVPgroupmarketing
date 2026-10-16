@@ -290,3 +290,27 @@
 .header .btn.ui-find:hover,.mobile-menu > .btn.ui-find:hover{background:var(--gold)!important;color:#050505!important}
 
 .navitem.est-ouvert .navdrop{opacity:1!important;visibility:visible!important;transform:translateX(-50%) translateY(0)!important}
+
+/* Formulaire : personnalité(s) souhaitée(s) — menu déroulant + ajout */
+.dmd__perso{display:none!important}
+.dmd--habs .dmd__pp,.dmd--intl .dmd__pp{display:none}
+.dmd__pl{display:flex;flex-direction:column;gap:10px}
+.dmd__prow{display:grid;grid-template-columns:1fr;gap:8px;position:relative}
+.a-plusieurs .dmd__prow{grid-template-columns:1fr 44px}
+.dmd__prow .dmd__pautre{grid-column:1;width:100%;padding:13px 15px;border:1.5px solid #e2e4e8;border-radius:12px;background:#f6f7f9;font:inherit;font-size:15px;color:#0b0b0b}
+.dmd__prow .dmd__pautre:focus{outline:none;border-color:#1E5299;background:#fff;box-shadow:0 0 0 4px rgba(30,82,153,.12)}
+.dmd__prm{display:none;grid-column:2;grid-row:1;width:44px;height:100%;min-height:46px;border:1.5px solid #e2e4e8;border-radius:12px;background:#fff;color:#123B6D;place-items:center;cursor:pointer;transition:border-color .25s,color .25s}
+.dmd__prm svg{width:14px;height:14px}
+.dmd__prm:hover{border-color:#AF1E2D;color:#AF1E2D}
+.a-plusieurs .dmd__prm{display:grid}
+.dmd__padd{display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:10px 16px 10px 12px;border:1.5px dashed #b9c4d6;border-radius:999px;background:transparent;color:#1E5299;font:inherit;font-size:13px;cursor:pointer;transition:border-color .25s,background .25s}
+.dmd__padd span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#1E5299;color:#fff;font-size:15px;line-height:1;font-weight:700}
+.dmd__padd b{font-weight:700}
+.dmd__padd:hover{border-color:#1E5299;background:rgba(30,82,153,.06)}
+
+/* Lettres en contour : plus de croisements ni de barres à l'intérieur des lettres */
+.tcard__ini{color:#fff!important;opacity:.55;-webkit-text-stroke:0!important;filter:url(#mvpContour)}
+.hbc__ini{color:#fff!important;opacity:.6;-webkit-text-stroke:0!important;filter:url(#mvpContour2)}
+.psl__n{color:#fff;-webkit-text-stroke:0!important;filter:url(#mvpContour)}
+.psl__t:hover .psl__n{color:#fff;filter:none}
+.eq-m__num{color:#123B6D!important;opacity:.28;-webkit-text-stroke:0!important;filter:url(#mvpContour)}

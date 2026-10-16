@@ -108,6 +108,8 @@
       '<fieldset class="dmd__hb"><legend><span class="dmd__n"></span><b data-ui="hbJoueur"></b></legend><div class="dmd__g">'+
         '<label class="dmd__c dmd__c--l"><span><b data-ui="hbChoix"></b></span><select name="joueur" class="dmd__sel"></select></label>'+
       '</div></fieldset>'+
+      '<fieldset class="dmd__pp"><legend><span class="dmd__n"></span><b data-ui="pTitre"></b></legend><div class="dmd__pl"></div>'+
+        '<button type="button" class="dmd__padd"><span aria-hidden="true">+</span><b data-ui="pAjout"></b></button></fieldset>'+
       '<fieldset class="dmd__bes"><legend><span class="dmd__n"></span><b data-ui="besoins"></b></legend><div class="dmd__chips"></div></fieldset>'+
       '<fieldset><legend><span class="dmd__n"></span><b data-ui="coord"></b></legend><div class="dmd__g">'+
         champ('nom','nom','text',1,0,'name')+champ('entreprise','ent','text',0,0,'organization')+champ('courriel','mail','email',1,0,'email')+champ('telephone','tel','tel',0,0,'tel')+
@@ -131,6 +133,38 @@
     sel.value=v;
   };
   form.joueur.addEventListener('change',function(){ if(ATH&&ATH.habs){ ATH.joueur=this.value; majTitres(); } });
+  /* Personnalités souhaitées : menu déroulant (pré-sélectionné) + possibilité d'en ajouter d'autres */
+  Object.assign(D.fr,{pTitre:'Personnalité(s) souhaitée(s)',pAucun:'Pas encore décidé — conseillez-moi',pAutre:'Une autre personnalité (préciser)',pAutrePh:'Nom de la personnalité',pAjout:'Ajouter une autre personnalité',pRetirer:'Retirer',
+    pCats:{hockey:'Hockey',boxing:'Boxe',mma:'MMA',olympics:'Olympisme',media:'Médias',soccer:'Soccer',other:'Autres sports'}});
+  Object.assign(D.en,{pTitre:'Desired personality(ies)',pAucun:'Not decided yet — advise me',pAutre:'Another personality (specify)',pAutrePh:'Personality name',pAjout:'Add another personality',pRetirer:'Remove',
+    pCats:{hockey:'Hockey',boxing:'Boxing',mma:'MMA',olympics:'Olympics',media:'Media',soccer:'Soccer',other:'Other sports'}});
+  var PERSOS=window.MVP_PERSOS||[], pl=dmd.querySelector('.dmd__pl');
+  var NOMS_P=PERSOS.map(function(x){ return x[0]; });
+  var optionsP=function(){ var d=D[L()], g={};
+    PERSOS.forEach(function(x){ (g[x[1]]=g[x[1]]||[]).push(x[0]); });
+    return '<option value="">'+d.pAucun+'</option>'+['hockey','boxing','mma','olympics','media','soccer','other'].filter(function(c){ return g[c]; }).map(function(c){
+      return '<optgroup label="'+d.pCats[c]+'">'+g[c].map(function(n){ return '<option>'+n+'</option>'; }).join('')+'</optgroup>'; }).join('')+
+      '<option value="autre">'+d.pAutre+'</option>'; };
+  var syncP=function(){
+    var v=[].map.call(pl.children,function(r){ var s=r.querySelector('select'); return s.value==='autre'?r.querySelector('input').value.trim():s.value; }).filter(Boolean);
+    form.personnalite.value=v.join(', ');
+    pl.classList.toggle('a-plusieurs',pl.children.length>1);
+  };
+  var ligneP=function(nom){
+    var d=D[L()], r=document.createElement('div'); r.className='dmd__prow';
+    r.innerHTML='<select class="dmd__sel" aria-label="'+d.pTitre+'">'+optionsP()+'</select><input type="text" class="dmd__pautre" hidden placeholder="'+d.pAutrePh+'">'+
+      '<button type="button" class="dmd__prm" aria-label="'+d.pRetirer+'">'+I.x+'</button>';
+    var sel=r.querySelector('select'), inp=r.querySelector('input');
+    if(nom){ if(NOMS_P.indexOf(nom)>-1) sel.value=nom; else { sel.value='autre'; inp.value=nom; inp.hidden=false; } }
+    sel.addEventListener('change',function(){ inp.hidden=sel.value!=='autre'; if(!inp.hidden) inp.focus(); syncP(); });
+    inp.addEventListener('input',syncP);
+    r.querySelector('.dmd__prm').addEventListener('click',function(){ r.remove(); if(!pl.children.length) pl.appendChild(ligneP('')); syncP(); });
+    return r; };
+  var setPersos=function(noms){ pl.innerHTML=''; (noms&&noms.length?noms:['']).forEach(function(n){ pl.appendChild(ligneP(n)); }); syncP(); };
+  var relabelP=function(){ var d=D[L()]; [].forEach.call(pl.children,function(r){ var s=r.querySelector('select'), v=s.value; s.innerHTML=optionsP(); s.value=v; s.setAttribute('aria-label',d.pTitre);
+    r.querySelector('input').placeholder=d.pAutrePh; r.querySelector('.dmd__prm').setAttribute('aria-label',d.pRetirer); }); };
+  dmd.querySelector('.dmd__padd').addEventListener('click',function(){ var r=ligneP(''); pl.appendChild(r); syncP(); r.querySelector('select').focus(); });
+  setPersos([]);
   /* Besoins devinés à partir du bouton cliqué, des rôles de l'athlète ou de la page */
   var CLES=['speaker','ambassador','spokes','host','guest','influencer','corporate','other'];
   var deviner=function(txt){ var k=[]; txt=String(txt||'');
@@ -173,7 +207,7 @@
     dmd.querySelector('.dmd__s').textContent=INTL? d.iP : (ATH? (ATH.sous||'') : d.p);
     dmd.querySelector('.dmd__okp').textContent=INTL? d.iOk : (ATH? d.okPa.replace('%',ATH.nom) : d.okP);
     if(ATH&&ATH.nom){ img.src=ATH.photo||''; img.className=ATH.cut?'est-detoure':''; img.onerror=function(){ if(ATH.photo2 && img.src.indexOf(ATH.photo2)<0){ img.className=''; img.src=ATH.photo2; } else dmd.querySelector('.dmd__ath').classList.add('sans-photo'); }; dmd.querySelector('.dmd__ath').classList.remove('sans-photo'); }
-    form.personnalite.value=(ATH&&ATH.nom)?ATH.nom:(form.personnalite.dataset.v||'');
+    if(INTL) form.personnalite.value=''; else if(typeof syncP==='function') syncP();
   };
   var dmdO=function(o,ath){
     if(o){
@@ -187,6 +221,10 @@
         if(!b.length) b=contextePage();
         if(b.length||change) choisirBesoins(b);
         if(!ath && window.mvpContexte && window.mvpContexte.perso && !form.personnalite.value){ form.personnalite.value=window.mvpContexte.perso; form.personnalite.dataset.v=window.mvpContexte.perso; }
+        if(!(ath&&(ath.habs||ath.intl))){
+          var pre=ath&&ath.nom?[ath.nom]:(window.mvpContexte&&window.mvpContexte.perso?String(window.mvpContexte.perso).split(/\s*,\s*/):[]);
+          if(change||pre.length) setPersos(pre);
+        }
       }
       carteO(false); fermerMenus(); dernier=document.activeElement;
       if(dmd.querySelector('.dmd__ok:not([hidden])')){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; }
@@ -235,7 +273,7 @@
     o.besoins=[].map.call(chips.querySelectorAll('[aria-pressed=true]'),function(c){ return c.textContent; }).join(', ');
     o.type=o.besoins;
     fetch('/api/demande',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})
-      .then(function(r){ if(!r.ok) throw 0; dmd.querySelector('.dmd__f').hidden=true; dmd.querySelector('.dmd__ok').hidden=false; form.reset(); chips.querySelectorAll('[aria-pressed]').forEach(function(c){ c.setAttribute('aria-pressed','false'); }); majTitres(); })
+      .then(function(r){ if(!r.ok) throw 0; dmd.querySelector('.dmd__f').hidden=true; dmd.querySelector('.dmd__ok').hidden=false; form.reset(); setPersos([]); chips.querySelectorAll('[aria-pressed]').forEach(function(c){ c.setAttribute('aria-pressed','false'); }); majTitres(); })
       .catch(function(){ err.hidden=false; err.innerHTML=D[L()].err; })
       .then(function(){ go.disabled=false; go.querySelector('span').textContent=D[L()].envoyer; });
   });
@@ -278,7 +316,7 @@
     document.querySelectorAll('[data-ui-aria]').forEach(function(el){ el.setAttribute('aria-label',d[el.dataset.uiAria]); });
     var on=[].map.call(chips.children,function(c){ return c.getAttribute('aria-pressed')==='true'; });
     chips.innerHTML=d.types.map(function(t,i){ return '<button type="button" class="dmd__chip" aria-pressed="'+(on[i]?'true':'false')+'">'+t+'</button>'; }).join('');
-    remplirJoueurs();
+    remplirJoueurs(); relabelP();
     var bs=form.budget, bv=bs.selectedIndex; bs.innerHTML=d.budgets.map(function(t,i){ return '<option value="'+(i?t:'')+'">'+t+'</option>'; }).join(''); bs.selectedIndex=Math.max(0,bv);
     majTitres();
   }
@@ -310,4 +348,14 @@
     a.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); }); };
   var tout=function(){ document.querySelectorAll('.header__nav .navitem > a[href$="#services"], .rp__main[href$="#services"]').forEach(neutre); };
   tout(); document.addEventListener('DOMContentLoaded',tout); addEventListener('load',tout);
+})();
+
+/* Lettres en contour sans croisements internes : filtre SVG (lettre pleine moins son intérieur) */
+(function(){
+  if(document.getElementById('mvpContour')) return;
+  var w=document.createElement('div'); w.setAttribute('aria-hidden','true'); w.style.cssText='position:absolute;width:0;height:0;overflow:hidden';
+  w.innerHTML='<svg width="0" height="0"><defs>'+
+    [['mvpContour',1.3],['mvpContour2',1.8]].map(function(f){ return '<filter id="'+f[0]+'" x="-5%" y="-5%" width="110%" height="110%"><feMorphology in="SourceAlpha" operator="erode" radius="'+f[1]+'" result="e"/><feComposite in="SourceGraphic" in2="e" operator="out"/></filter>'; }).join('')+
+    '</defs></svg>';
+  document.body.appendChild(w);
 })();
