@@ -287,7 +287,13 @@
     '<a class="bb__b bb__b--w" href="'+TELH+'">'+I.tel+'<span data-ui="appel2"></span></a>');
   body.appendChild(bb);
   var html=document.documentElement;
-  var defile=function(){ html.classList.toggle('tb-cache', scrollY>60); };
+  /* bande bleue : cachée en descendant, de retour en remontant ou en haut de page */
+  var yAvant=scrollY;
+  var defile=function(){ var y=scrollY;
+    if(y<=60) html.classList.remove('tb-cache');
+    else if(y>yAvant+6) html.classList.add('tb-cache');
+    else if(y<yAvant-6) html.classList.remove('tb-cache');
+    if(Math.abs(y-yAvant)>6||y<=60) yAvant=y; };
   addEventListener('scroll',defile,{passive:true}); defile();
 
   /* 6. Couleur des boutons selon leur fonction :
