@@ -115,7 +115,7 @@
         champ('nom','nom','text',1,0,'name')+champ('entreprise','ent','text',0,0,'organization')+champ('courriel','mail','email',1,0,'email')+champ('telephone','tel','tel',0,0,'tel')+
       '</div></fieldset>'+
       '<fieldset><legend><span class="dmd__n"></span><b data-ui="projet"></b></legend><div class="dmd__g">'+
-        champ('date','date','text')+'<label class="dmd__c dmd__c--budget"><span><b data-ui="budget"></b></span><select name="budget" class="dmd__sel"></select></label>'+'<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+
+        champ('date','date','date')+'<label class="dmd__c dmd__c--budget"><span><b data-ui="budget"></b></span><select name="budget" class="dmd__sel"></select></label>'+'<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+
       '</div></fieldset>'+
       '<div class="dmd__err" role="alert" hidden></div><button class="dmd__go" type="submit"><span data-ui="envoyer"></span>'+I.fl+'</button>'+
       '<p class="dmd__note" data-ui="note"></p></form></div>'+
@@ -165,6 +165,10 @@
     r.querySelector('input').placeholder=d.pAutrePh; r.querySelector('.dmd__prm').setAttribute('aria-label',d.pRetirer); }); };
   dmd.querySelector('.dmd__padd').addEventListener('click',function(){ var r=ligneP(''); pl.appendChild(r); syncP(); r.querySelector('select').focus(); });
   setPersos([]);
+  /* Date : calendrier natif ; à partir d'aujourd'hui ; tout le champ ouvre le calendrier */
+  (function(){ var dt=form.date, t=new Date(); dt.min=new Date(t.getTime()-t.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+    var vide=function(){ dt.classList.toggle('est-vide',!dt.value); }; dt.addEventListener('input',vide); dt.addEventListener('change',vide); vide();
+    dt.addEventListener('click',function(){ try{ dt.showPicker(); }catch(e){} }); })();
   /* Besoins devinés à partir du bouton cliqué, des rôles de l'athlète ou de la page */
   var CLES=['speaker','ambassador','spokes','host','guest','influencer','corporate','other'];
   var deviner=function(txt){ var k=[]; txt=String(txt||'');
@@ -273,7 +277,7 @@
     o.besoins=[].map.call(chips.querySelectorAll('[aria-pressed=true]'),function(c){ return c.textContent; }).join(', ');
     o.type=o.besoins;
     fetch('/api/demande',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})
-      .then(function(r){ if(!r.ok) throw 0; dmd.querySelector('.dmd__f').hidden=true; dmd.querySelector('.dmd__ok').hidden=false; form.reset(); setPersos([]); chips.querySelectorAll('[aria-pressed]').forEach(function(c){ c.setAttribute('aria-pressed','false'); }); majTitres(); })
+      .then(function(r){ if(!r.ok) throw 0; dmd.querySelector('.dmd__f').hidden=true; dmd.querySelector('.dmd__ok').hidden=false; form.reset(); setPersos([]); form.date.classList.add('est-vide'); chips.querySelectorAll('[aria-pressed]').forEach(function(c){ c.setAttribute('aria-pressed','false'); }); majTitres(); })
       .catch(function(){ err.hidden=false; err.innerHTML=D[L()].err; })
       .then(function(){ go.disabled=false; go.querySelector('span').textContent=D[L()].envoyer; });
   });
