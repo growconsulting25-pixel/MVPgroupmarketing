@@ -2391,7 +2391,8 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
     out.appendChild(g);
   });
   var grand=matchMedia('(min-width:1024px)');
-  var maj=function(){ html.classList.toggle('rail-on', grand.matches && scrollY>140); };
+  /* Menu vertical de droite désactivé (demande du client) : la barre du haut reste collante et semi-transparente */
+  var maj=function(){ html.classList.remove('rail-on'); };
   addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
   var ouvrir=function(){ panel.hidden=false; requestAnimationFrame(function(){ panel.classList.add('est-ouvert'); }); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
   var fermer=function(){ panel.classList.remove('est-ouvert'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; setTimeout(function(){ panel.hidden=true; },500); };
