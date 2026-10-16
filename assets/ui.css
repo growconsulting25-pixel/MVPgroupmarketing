@@ -321,3 +321,6 @@
   background-repeat:no-repeat;background-position:right 15px center;background-size:20px}
 .dmd__c input[type="date"]::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:auto;height:auto;opacity:0;cursor:pointer}
 .dmd__c input[type="date"].est-vide{color:#8a8f98}
+
+/* Conférenciers : photo de Bruny Surin sur scène, cadrée sur lui */
+img[src*="svc-speakers-bruny"]{object-position:38% 30%!important}
