@@ -1466,6 +1466,24 @@ ul{list-style:none}
   .hb__scene{order:4;margin:34px 0 8px!important}
   .hb__liste{order:5}.hb__cta{order:6}
 }
+
+/* Mobile : chaque catégorie devient une pile de cartes à feuilleter */
+.tlrow__deck{display:none}
+@media (max-width:640px){
+  .tlrow__rail{display:block!important;position:relative;overflow:visible!important;width:calc(100% - 2*var(--gutter) - 60px)!important;aspect-ratio:3/4.3;margin:6px 0 0 var(--gutter)!important;padding:0!important;touch-action:pan-y;scroll-snap-type:none!important}
+  .tlrow__rail>.tcard,.tlrow__rail>.tlpromo{position:absolute!important;inset:0;flex:none!important;width:auto!important;min-width:0!important;margin:0!important;transform-origin:50% 100%;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .45s,filter .45s}
+  .tlrow__rail .tcard__in{height:100%;aspect-ratio:auto!important}
+  .tlrow__rail>[data-pos="0"]{z-index:4;transform:none}
+  .tlcats{overflow-x:clip}
+  .tlrow__rail>[data-pos="1"]{z-index:3;transform:translateX(26px) rotate(4deg) scale(.93);filter:brightness(.8)}
+  .tlrow__rail>[data-pos="2"]{z-index:2;transform:translateX(48px) rotate(7deg) scale(.86);filter:brightness(.62)}
+  .tlrow__rail>[data-pos="3"]{z-index:1;transform:translateX(48px) rotate(7deg) scale(.86);opacity:0;pointer-events:none}
+  .tlrow__rail>[data-pos="1"] *, .tlrow__rail>[data-pos="2"] *{pointer-events:none}
+  .tlrow__deck{display:flex;align-items:center;justify-content:center;gap:16px;width:calc(100% - 2*var(--gutter) - 60px);margin:22px 0 0 var(--gutter)}
+  .tlrow__cpt{min-width:64px;text-align:center;font-size:12px;font-weight:800;letter-spacing:.14em;color:#123B6D}
+  .tlrow__deck .hb__fl{width:44px;height:44px}
+  .tlrow__deck .hb__fl:hover{background:#123B6D;border-color:#123B6D;color:#fff}
+}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2096,6 +2114,23 @@ function renderTalents(){
     const gauche=(nCourt++)%2===1; if(gauche){ pr.classList.add('tlpromo--gauche'); rail.insertBefore(pr,rail.firstChild); } else rail.appendChild(pr);
     }
     tlCats.appendChild(row);
+    /* mobile : les cartes de la rangée deviennent une pile qu'on feuillette (comme les cartes du Canadien) */
+    (function(){
+      const items=[...rail.children];
+      let ordre=items.map((_,i)=>i); const promo=items.findIndex(x=>x.classList.contains('tlpromo'));
+      if(promo>-1){ ordre.splice(ordre.indexOf(promo),1); ordre.push(promo); }
+      const ctl=document.createElement('div'); ctl.className='tlrow__deck';
+      ctl.innerHTML=`<button type="button" class="hb__fl tlrow__dp" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button><span class="tlrow__cpt"></span><button type="button" class="hb__fl tlrow__dn" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>`;
+      rail.after(ctl); const base=[...ordre];
+      const placer=()=>{ ordre.forEach((idx,pos)=>{ items[idx].dataset.pos=Math.min(pos,3); }); $('.tlrow__cpt',ctl).textContent=(base.indexOf(ordre[0])+1)+' / '+items.length; };
+      const suiv=()=>{ ordre.push(ordre.shift()); placer(); }, prec=()=>{ ordre.unshift(ordre.pop()); placer(); };
+      $('.tlrow__dn',ctl).onclick=suiv; $('.tlrow__dp',ctl).onclick=prec;
+      const mob=()=>matchMedia('(max-width:640px)').matches;
+      rail.addEventListener('click',e=>{ if(!mob()) return; const c=e.target.closest('.tcard,.tlpromo'); if(c&&c.dataset.pos!=='0'){ e.preventDefault(); e.stopPropagation(); while(items[ordre[0]]!==c) ordre.push(ordre.shift()); placer(); } },true);
+      let x0=null; rail.addEventListener('touchstart',e=>{ if(mob()) x0=e.touches[0].clientX; },{passive:true});
+      rail.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>45) (dx<0?suiv:prec)(); x0=null; });
+      placer();
+    })();
     const pas=()=>{const c=$('.tcard',rail);return c?(c.offsetWidth+parseFloat(getComputedStyle(rail).columnGap||0)):300;};
     const maj=()=>{ $('.tlrow__p',row).disabled=rail.scrollLeft<=4; $('.tlrow__n',row).disabled=rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-4; };
     $('.tlrow__p',row).onclick=()=>rail.scrollBy({left:-pas(),behavior:'smooth'});
