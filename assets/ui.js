@@ -200,7 +200,7 @@
       dmd.querySelector('.dmd__s').textContent=choisi?d.hbK:d.hbP;
       dmd.querySelector('.dmd__okp').textContent=d.okPa.replace('%',choisi||d.hbUn);
       var ph=choisi&&photoHabs(choisi), box=dmd.querySelector('.dmd__ath'); box.classList.remove('sans-photo');
-      img.onerror=null; if(ph){ img.src=ph.src; img.className=ph.cut?'est-detoure':''; } else { img.src='assets/canadiens-logo.png'; img.className='est-logo'; }
+      img.onerror=null; if(ph){ img.src=ph.src; img.className=ph.cut?'est-detoure':''; } else { img.removeAttribute('src'); img.className='est-sans'; }
       form.personnalite.value=choisi; form.cible.required=false; return;
     }
     dmd.classList.toggle('dmd--ath',!!(ATH&&ATH.nom)); dmd.classList.toggle('dmd--intl',INTL);
