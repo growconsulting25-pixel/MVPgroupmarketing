@@ -1605,6 +1605,11 @@ ul{list-style:none}
 }
 /* Projets : le défilement horizontal au trackpad / Maj + molette ne remonte pas dans l'historique du navigateur */
 .projets__rail{overscroll-behavior-x:contain}
+
+/* Bloc d'appel : titre sur 2 lignes, plus petit */
+.appel{max-width:none!important}
+.appel__t{font-size:clamp(20px,2.6vw,44px)!important;line-height:1.08!important}
+@media (min-width:900px){.appel__t{white-space:nowrap}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
