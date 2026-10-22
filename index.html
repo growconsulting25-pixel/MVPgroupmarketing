@@ -1557,6 +1557,25 @@ ul{list-style:none}
 
 /* Hero : titre sur deux lignes */
 .hero__content--c h1{max-width:none!important;font-size:clamp(36px,5.4vw,100px)!important;line-height:.98!important}
+
+/* Canadiens : titre bleu + rouge, bandes plus grosses, cartes cliquables, anciens plus gros */
+.hb__t{color:var(--ch-b)!important}
+.hb__t .hb__bleu{color:var(--ch-b)}
+.hb__t em{color:var(--ch-r)!important}
+.hb__k .hb__bandes{width:64px;gap:5px}.hb__k .hb__bandes i{height:6px;border-radius:3px}
+.hbc[data-pos="0"]{cursor:pointer}
+.hbc--cut{background:radial-gradient(120% 80% at 50% 20%,#2b3a8f,#192168 60%,#0d1236)!important}
+.hbc--cut .hbc__img{object-fit:contain!important;object-position:center bottom!important;height:88%!important;top:auto!important;bottom:0}
+.hbc__btns{flex-wrap:wrap;gap:10px!important}
+.hbc__go{font-size:11px!important;padding:13px 18px!important}
+.hbc__pj{display:inline-flex!important;align-items:center;gap:8px;padding:12px 18px!important;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;font-size:11px!important;letter-spacing:.14em!important;font-weight:800!important;text-transform:uppercase;color:#fff!important;transition:background .3s,color .3s}
+.hbc__pj:hover{background:#fff;color:var(--ch-b)!important}
+.hbc__pj svg{width:14px;height:14px}
+.hba{width:150px!important;gap:12px!important}
+.hba__ph{width:128px!important;height:128px!important}
+.hba b{font-size:15px!important}
+.hb__sous{font-size:13px!important}
+@media (max-width:760px){.hba{width:112px!important}.hba__ph{width:96px!important;height:96px!important}.hba b{font-size:13px!important}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1740,16 +1759,16 @@ ul{list-style:none}
   <div class="hb__glace" aria-hidden="true"></div>
   <div class="hb__in">
     <div class="hb__txt" data-reveal>
-      <p class="hb__k"><img class="hb__logo" src="assets/canadiens-logo.png" alt="Canadiens de Montréal" width="239" height="163"><span class="hb__bandes" aria-hidden="true"><i></i><i></i><i></i></span><span data-i18n="hb.k">Canadiens de Montréal · Service vedette</span></p>
-      <h2 class="hb__t" data-i18n-html="hb.h">Travaillez avec <em>un joueur</em> des Canadiens.</h2>
-      <p class="hb__p" data-i18n="hb.p">Grâce à nos relations privilégiées avec les joueurs, la majorité de l'alignement des Canadiens de Montréal est accessible pour vos projets. Joueurs actuels, anciens et légendes : nous approchons la bonne personne, négocions l'entente et livrons l'activation.</p>
+      <p class="hb__k"><span class="hb__bandes" aria-hidden="true"><i></i><i></i><i></i></span><span data-i18n="hb.k">Canadiens de Montréal · Service vedette</span></p>
+      <h2 class="hb__t" data-i18n-html="hb.h"><span class="hb__bleu">Collaborer avec un joueur</span> <em>des Canadiens</em></h2>
+      <p class="hb__p" data-i18n="hb.p">Grâce à nos relations privilégiées avec les agents et les joueurs, les membres des Canadiens de Montréal sont accessibles pour vos projets. Joueurs actuels, légendes, entraîneurs et dirigeants : nous avons accès à plusieurs d’entre eux pour vos conférences, vos événements ou votre prochaine campagne publicitaire.</p>
       <ul class="hb__liste">
-        <li><b>01</b><span data-i18n="hb.l1">Campagnes publicitaires et ambassadeurs de marque</span></li>
-        <li><b>02</b><span data-i18n="hb.l2">Apparitions, conférences et événements corporatifs</span></li>
-        <li><b>03</b><span data-i18n="hb.l3">Contenu pour vos réseaux sociaux</span></li>
+        <li><b>01</b><span data-i18n="hb.l1">Ambassadeurs de marque et porte-parole</span></li>
+        <li><b>02</b><span data-i18n="hb.l2">Campagnes marketing et relations publiques</span></li>
+        <li><b>03</b><span data-i18n="hb.l3">Conférences, animation et événements corporatifs</span></li>
       </ul>
       <div class="hb__cta">
-        <button type="button" class="hb__go" data-ui-habs><span data-i18n="hb.cta">Engager un joueur des Canadiens</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" class="hb__go" data-ui-habs><span data-i18n="hb.cta">Engager un membre des Canadiens</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <a class="hb__lien" href="personnalites.html?sport=hockey"><span data-i18n="hb.cta2">Voir les anciens des Canadiens</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -1764,7 +1783,7 @@ ul{list-style:none}
     </div>
   </div>
   <div class="hb__anciens">
-    <p class="hb__sous"><span data-i18n="hb.anc">Anciens et légendes des Canadiens</span></p>
+    <p class="hb__sous"><span data-i18n="hb.anc">Légendes des Canadiens à votre service</span></p>
     <div class="hb__defile"><div class="hb__piste" id="hbPiste"></div></div>
   </div>
 </section>
@@ -1887,7 +1906,7 @@ const I18N = {
   'cat.hockey':'Hockey','cat.boxing':'Boxe','cat.mma':'MMA','cat.olympics':'Olympisme','cat.media':'Médias','cat.soccer':'Soccer','cat.others':'Autres',
   'hero.label':'MVP Group — Marketing sportif','hero.h1':'Associez votre entreprise<br>aux <span class="gold">icônes</span> du sport',
   "hero.lede":"Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.",
-  'hero.scroll':'Défiler','cta.work':'Consultez-nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout','hb.k':'Canadiens de Montréal · Service vedette','hb.h':"Travaillez avec <em>un joueur</em> des Canadiens.",'hb.p':"Grâce à nos relations privilégiées avec les joueurs, la majorité de l'alignement des Canadiens de Montréal est accessible pour vos projets. Joueurs actuels, anciens et légendes : nous approchons la bonne personne, négocions l'entente et livrons l'activation.",'hb.l1':'Campagnes publicitaires et ambassadeurs de marque','hb.l2':'Apparitions, conférences et événements corporatifs','hb.l3':'Contenu pour vos réseaux sociaux','hb.cta':'Engager un joueur des Canadiens','hb.cta2':'Voir les anciens des Canadiens','hb.anc':'Anciens et légendes des Canadiens','brands.trust':'Ils nous ont fait confiance','promo.cta1':'Faire une demande','promo.sub':'Nous avons accès à bien plus d’athlètes que ceux-ci : dites-nous qui vous intéresse.','promo.cta2':'Faire une demande',
+  'hero.scroll':'Défiler','cta.work':'Consultez-nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout','hb.k':'Canadiens de Montréal · Service vedette','hb.h':'<span class="hb__bleu">Collaborer avec un joueur</span> <em>des Canadiens</em>','hb.p':'Grâce à nos relations privilégiées avec les agents et les joueurs, les membres des Canadiens de Montréal sont accessibles pour vos projets. Joueurs actuels, légendes, entraîneurs et dirigeants : nous avons accès à plusieurs d’entre eux pour vos conférences, vos événements ou votre prochaine campagne publicitaire.','hb.l1':'Ambassadeurs de marque et porte-parole','hb.l2':'Campagnes marketing et relations publiques','hb.l3':'Conférences, animation et événements corporatifs','hb.cta':'Engager un membre des Canadiens','hb.cta2':'Voir les anciens des Canadiens','hb.anc':'Légendes des Canadiens à votre service','brands.trust':'Ils nous ont fait confiance','promo.cta1':'Faire une demande','promo.sub':'Nous avons accès à bien plus d’athlètes que ceux-ci : dites-nous qui vous intéresse.','promo.cta2':'Faire une demande',
   'intro.label':'Notre expertise','intro.h2':'Les plus grandes célébrités sportives<br><em>sont disponibles pour votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône sportive.<br><span>Partout en Amérique du Nord.</span>",'mo.p':"Une vedette du basketball américain, une légende du hockey, un champion olympique ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, partout en Amérique du Nord.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un conseiller','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Ambassadeurs','hero.k2':'Animateurs','hero.k3':'Conférenciers','hero.k4':"Invités d'honneur",'hero.lede2':'Engagez les plus grands athlètes et légendes du sport pour propulser votre marque et augmenter le prestige de vos événements.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un conseiller :','intro.p1':"Depuis 2016, MVP Sports Marketing conseille les entreprises dans la création de partenariats stratégiques avec les athlètes professionnels, champion(ne)s olympiques et grandes figures du sport. Grâce à son vaste réseau, MVP vous offre un accès direct à toutes les célébrités sportives, partout au Québec, ailleurs au Canada et aux États-Unis.",'intro.p2':"Selon vos besoins et objectifs, MVP recommande les personnalités sportives les mieux adaptées et vous accompagne dans l’exécution de votre campagne ou de votre événement.",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
@@ -1903,7 +1922,7 @@ const I18N = {
   'cat.hockey':'Hockey','cat.boxing':'Boxing','cat.mma':'MMA','cat.olympics':'Olympics','cat.media':'Media','cat.soccer':'Soccer','cat.others':'Others',
   'hero.label':'MVP Group — Sports Marketing','hero.h1':'Pair your business<br>with the <span class="gold">icons</span> of sport',
   "hero.lede":"Brand ambassadors, keynote speakers and spokespersons: pair a sports personality with your business to raise awareness, establish credibility and increase sales.",
-  'hero.scroll':'Scroll','cta.work':'Contact us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all','hb.k':'Montréal Canadiens · Featured service','hb.h':'Work with <em>a Canadiens</em> player.','hb.p':'Thanks to our close relationships with the players, most of the Montréal Canadiens roster is available for your projects. Current players, alumni and legends: we approach the right person, negotiate the agreement and deliver the activation.','hb.l1':'Advertising campaigns and brand ambassadors','hb.l2':'Appearances, keynotes and corporate events','hb.l3':'Content for your social media','hb.cta':'Book a Canadiens player','hb.cta2':'See Canadiens alumni','hb.anc':'Canadiens alumni and legends','brands.trust':'They trusted us','promo.cta1':'Send a request','promo.sub':'We have access to far more athletes than these: tell us who you have in mind.','promo.cta2':'Send a request',
+  'hero.scroll':'Scroll','cta.work':'Contact us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all','hb.k':'Montréal Canadiens · Featured service','hb.h':'<span class="hb__bleu">Work with a player</span> <em>of the Canadiens</em>','hb.p':'Thanks to our close relationships with agents and players, members of the Montréal Canadiens are available for your projects. Current players, legends, coaches and executives: we have access to many of them for your keynotes, events or next advertising campaign.','hb.l1':'Brand ambassadors and spokespersons','hb.l2':'Marketing campaigns and public relations','hb.l3':'Keynotes, hosting and corporate events','hb.cta':'Book a member of the Canadiens','hb.cta2':'See Canadiens alumni','hb.anc':'Canadiens legends at your service','brands.trust':'They trusted us','promo.cta1':'Send a request','promo.sub':'We have access to far more athletes than these: tell us who you have in mind.','promo.cta2':'Send a request',
   'intro.label':'Our expertise','intro.h2':'The greatest sports celebrities<br><em>are available for your business</em>','mo.k':'MVP International · On request','mo.h':'Any sports icon.<br><span>Anywhere in North America.</span>','mo.p':"An American basketball star, a hockey legend, an Olympic champion? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, anywhere in North America.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an advisor','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Ambassadors','hero.k2':'Hosts','hero.k3':'Speakers','hero.k4':'Guests of honor','hero.lede2':'Hire the greatest athletes and sports legends to power your brand and raise the prestige of your events.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an advisor:','intro.p1':"Since 2016, MVP Sports Marketing has advised businesses on building strategic partnerships with professional athletes, Olympic champions and great figures of sport. Through its vast network, MVP gives you direct access to every sports celebrity, across Quebec, the rest of Canada and the United States.",'intro.p2':"Based on your needs and goals, MVP recommends the best-suited sports personalities and supports you in executing your campaign or event.",'intro.p3':"Finding the best sports star to represent you and contribute to your success is our expertise. <b>Quickly and efficiently!</b>",
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
@@ -2492,27 +2511,34 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
 /* Joueurs des Canadiens : pile de cartes (flèches, points, glisser) + défilé des anciens */
 (function(){
   const pile=document.getElementById('hbPile'); if(!pile) return;
+  /* Membres des Canadiens. prof = page profil MVP (bouton « Engager [nom] ») ; sinon on mène au projet */
   const J=[
-    {nom:'Nick Suzuki',ini:'NS',img:'assets/projets/nick-suzuki-5.jpg',pos:'center 22%',tag:{fr:'Ambassadeur · Goodfood',en:'Ambassador · Goodfood'},u:'projet.html?id=nick-suzuki'},
-    {nom:'Lane Hutson',ini:'LH',img:'assets/art-hush.jpg',pos:'58% 30%',tag:{fr:'Défi hockey · HUSH',en:'Hockey challenge · HUSH'},u:'projet.html?id=hutson'},
-    {nom:'Zachary Bolduc',ini:'ZB',img:'assets/projets/zacharybolduc-2.jpg',pos:'center 20%',tag:{fr:'Ambassadeur · AU NOIR',en:'Ambassador · AU NOIR'},u:'projet.html?id=zacharybolduc'},
-    {nom:'Patrik Laine',ini:'PL',img:'assets/projets/patrick-laine-albilegeant-genesislaval-3.jpg',pos:'62% 18%',tag:{fr:'Ambassadeur · ALBI Le Géant',en:'Ambassador · ALBI Le Géant'},u:'projet.html?id=patrick-laine-albilegeant-genesislaval'}
+    {nom:'Nick Suzuki',img:'assets/projets/nick-suzuki-5.jpg',pos:'center 22%',tag:{fr:'Capitaine · Ambassadeur Goodfood',en:'Captain · Goodfood ambassador'},u:'projet.html?id=nick-suzuki'},
+    {nom:'Lane Hutson',img:'assets/art-hush.jpg',pos:'58% 30%',tag:{fr:'Défi hockey · HUSH',en:'Hockey challenge · HUSH'},u:'projet.html?id=hutson'},
+    {nom:'Chantal Machabée',img:'assets/projets/chantalmachabee-timhortons-1.jpg',pos:'62% 30%',tag:{fr:'Vice-présidente communications · Tim Hortons',en:'VP Communications · Tim Hortons'},u:'projet.html?id=chantalmachabee-timhortons',prof:'chantal-machabee'},
+    {nom:'Zachary Bolduc',img:'assets/projets/zacharybolduc-2.jpg',pos:'center 20%',tag:{fr:'Ambassadeur · AU NOIR',en:'Ambassador · AU NOIR'},u:'projet.html?id=zacharybolduc'},
+    {nom:'Arber Xhekaj',img:'assets/projets/arberxhekaj-1.jpg',pos:'22% 30%',tag:{fr:'Lancement · La Chambre',en:'Launch · La Chambre'},u:'projet.html?id=arberxhekaj'},
+    {nom:'Michel Lacroix',img:'assets/cut/michel-lacroix.webp',cut:1,tag:{fr:'Annonceur maison · Gala',en:'PA announcer · Gala'},u:'projet.html?id=galamichelacroix',prof:'michel-lacroix'},
+    {nom:'Patrik Laine',img:'assets/projets/patrick-laine-albilegeant-genesislaval-3.jpg',pos:'62% 18%',tag:{fr:'Ambassadeur · ALBI Le Géant',en:'Ambassador · ALBI Le Géant'},u:'projet.html?id=patrick-laine-albilegeant-genesislaval'},
+    {nom:'Patrick Roy',img:'assets/cut/patrick-roy.webp',cut:1,tag:{fr:'Légende · Temple de la renommée',en:'Legend · Hall of Fame'},prof:'patrick-roy'},
+    {nom:'Guy Lafleur',img:'assets/cut/guy-lafleur.webp',cut:1,tag:{fr:'Légende · 5 Coupes Stanley',en:'Legend · 5 Stanley Cups'},prof:'guy-lafleur'},
+    {nom:'Yvan Cournoyer',img:'assets/cut/yvan-cournoyer.webp',cut:1,tag:{fr:'Légende · 10 Coupes Stanley',en:'Legend · 10 Stanley Cups'},prof:'yvan-cournoyer'}
   ];
   const ANC=['guy-lafleur','patrick-roy','yvan-cournoyer','guy-carbonneau','chris-nilan','mario-tremblay','rejean-houle','yvon-lambert','steve-begin','paul-byron','francis-bouillon','patrice-brisebois','gilbert-delorme','mathieu-dandenault','kirk-muller','alex-kovalev','pierre-gervais'];
   const NOMS={'guy-lafleur':'Guy Lafleur','patrick-roy':'Patrick Roy','yvan-cournoyer':'Yvan Cournoyer','guy-carbonneau':'Guy Carbonneau','chris-nilan':'Chris Nilan','mario-tremblay':'Mario Tremblay','rejean-houle':'Réjean Houle','yvon-lambert':'Yvon Lambert','steve-begin':'Steve Bégin','paul-byron':'Paul Byron','francis-bouillon':'Francis Bouillon','patrice-brisebois':'Patrice Brisebois','gilbert-delorme':'Gilbert Delorme','mathieu-dandenault':'Mathieu Dandenault','kirk-muller':'Kirk Muller','alex-kovalev':'Alex Kovalev','pierre-gervais':'Pierre Gervais'};
   const FL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   let ordre=J.map((_,i)=>i);
   function rendre(){
-    pile.innerHTML=J.map((j,i)=>`<article class="hbc" data-i="${i}">
-      <img class="hbc__img" src="${j.img}" alt="${j.nom}" style="object-position:${j.pos}" loading="lazy">
+    pile.innerHTML=J.map((j,i)=>`<article class="hbc${j.cut?' hbc--cut':''}" data-i="${i}" data-lien="${j.prof?'profil.html?id='+j.prof:j.u}">
+      <img class="hbc__img" src="${j.img}" alt="${j.nom}" style="object-position:${j.pos||'center bottom'}" loading="lazy">
       <span class="hbc__ini" aria-hidden="true">${j.ini}</span>
       <div class="hbc__bas">
         <span class="hbc__bandes" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="hbc__tag">${L(j.tag)}</span>
         <h3 class="hbc__nom">${j.nom}</h3>
         <div class="hbc__btns">
-          <button type="button" class="hbc__go" data-ui-habs data-ui-joueur="${j.nom}">${t('tl.work')} ${j.nom}</button>
-          <a class="hbc__pj" href="${j.u}">${t('cta.view')} ${FL}</a>
+          ${j.prof?`<button type="button" class="hbc__go" data-ui-habs data-ui-joueur="${j.nom}">${t('tl.work')} ${j.nom}</button>`:`<button type="button" class="hbc__go" data-ui-habs>${t('hb.cta')}</button>`}
+          ${j.prof?`<a class="hbc__pj" href="profil.html?id=${j.prof}">${t('cta.profile')} ${FL}</a>`:`<a class="hbc__pj" href="${j.u}">${t('cta.view')} ${FL}</a>`}
         </div>
       </div></article>`).join('');
     document.getElementById('hbPts').innerHTML=J.map((_,i)=>`<button type="button" aria-label="${J[i].nom}"></button>`).join('');
@@ -2527,8 +2553,17 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
   const prec=()=>{ ordre.unshift(ordre.pop()); placer(); };
   document.getElementById('hbNext').onclick=suiv; document.getElementById('hbPrev').onclick=prec;
   document.getElementById('hbPts').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const i=[...b.parentNode.children].indexOf(b); while(ordre[0]!==i) ordre.push(ordre.shift()); placer(); });
-  pile.addEventListener('click',e=>{ const c=e.target.closest('.hbc'); if(c && c.dataset.pos!=='0' && !e.target.closest('a,button')){ e.preventDefault(); while(String(ordre[0])!==c.dataset.i) ordre.push(ordre.shift()); placer(); } });
-  let x0=null; pile.addEventListener('pointerdown',e=>{x0=e.clientX;}); pile.addEventListener('pointerup',e=>{ if(x0===null) return; const dx=e.clientX-x0; if(Math.abs(dx)>50) (dx<0?suiv:prec)(); x0=null; });
+  pile.addEventListener('click',e=>{ const c=e.target.closest('.hbc'); if(!c||e.target.closest('a,button')) return;
+    if(c.dataset.pos!=='0'){ e.preventDefault(); while(String(ordre[0])!==c.dataset.i) ordre.push(ordre.shift()); placer(); }
+    else if(!glisse && c.dataset.lien) location.href=c.dataset.lien; });
+  /* défilement automatique, en pause au survol ou hors écran */
+  let auto=null, vu=false, glisse=false;
+  const lancer=()=>{ arreter(); if(!matchMedia('(prefers-reduced-motion: reduce)').matches) auto=setInterval(()=>{ if(vu&&!document.hidden) suiv(); },4500); };
+  const arreter=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  pile.parentElement.addEventListener('mouseenter',arreter); pile.parentElement.addEventListener('mouseleave',lancer);
+  if('IntersectionObserver' in window) new IntersectionObserver(es=>es.forEach(x=>vu=x.isIntersecting),{threshold:.3}).observe(pile); else vu=true;
+  lancer();
+  let x0=null; pile.addEventListener('pointerdown',e=>{x0=e.clientX; glisse=false;}); pile.addEventListener('pointerup',e=>{ if(x0===null) return; const dx=e.clientX-x0; if(Math.abs(dx)>50){ glisse=true; (dx<0?suiv:prec)(); } x0=null; });
   rendre();
   const piste=document.getElementById('hbPiste');
   const un=ANC.map(id=>`<a class="hba" href="profil.html?id=${id}"><span class="hba__ph"><img src="assets/cut/${id}.webp" alt="" loading="lazy"></span><b>${NOMS[id]}</b></a>`).join('');
