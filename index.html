@@ -737,7 +737,7 @@ ul{list-style:none}
    ===================================================================== */
 /* ---------- Intro : fond blanc, aréna de hockey très subtile, alignée à gauche ---------- */
 .intro{background:var(--white);color:var(--black);overflow:hidden;isolation:isolate;min-height:0;padding:calc(var(--nav-h) + 8vh) var(--gutter) clamp(80px,14vh,160px);justify-content:center}
-.intro__bg{position:absolute;inset:0;z-index:-1;background:url('assets/projets/desbiens-daoust-et-fecteau-pour-celebrer-le-hockey-feminin-a-1.jpg') center 18%/cover no-repeat;filter:grayscale(1) contrast(.9);opacity:.16}
+.intro__bg{position:absolute;inset:0;z-index:-1;background:url('assets/projets/nick-suzuki-1.jpg') 70% 30%/cover no-repeat;filter:grayscale(1) contrast(.9);opacity:.16}
 .intro__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,.2) 100%)}
 .intro__top{align-items:flex-start;text-align:left;max-width:1500px;width:100%;margin:0 auto}
 .intro__title{text-align:left;margin:0;max-width:17ch;color:var(--black)}
@@ -1525,6 +1525,11 @@ ul{list-style:none}
 @media (min-width:1024px){.rail-on .se{padding-right:calc(var(--gutter) + 64px)}}
 @media (max-width:1100px){.se__in{grid-template-columns:1fr 1fr}.se__f{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center}.se__ft{width:100%}.se__f input{flex:1 1 200px;width:auto}.se__f button{margin:0}.se__note,.se__msg{width:100%;text-align:left}}
 @media (max-width:700px){.se__in{grid-template-columns:1fr}.se__f{flex-direction:column;align-items:stretch}.se__f input{flex:none;width:100%}}
+
+/* Intro : titre plus long, 3 paragraphes */
+.intro__title{max-width:22ch!important;font-size:clamp(30px,4.4vw,74px)!important}
+.intro__p--2 p+p{margin-top:14px}
+.intro__p b{font-weight:800;color:#123B6D}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1542,11 +1547,12 @@ ul{list-style:none}
     <div class="navitem">
       <a href="#services" data-i18n="nav.services">Services</a>
       <div class="navdrop">
-        <a href="service.html?s=speakers" data-i18n="nav.s1">Keynote speakers</a>
-        <a href="service.html?s=ambassadors" data-i18n="nav.s2">Brand ambassadors &amp; spokespersons</a>
-        <a href="service.html?s=marketing" data-i18n="nav.s3">Social media strategies &amp; influencers</a>
-        <a href="service.html?s=hosts" data-i18n="nav.s4">Guests of honor</a>
-        <a href="personnalites.html?project=Corporate+Event" data-i18n="nav.s5">Corporate events &amp; teambuilding</a>
+        <a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a>
+        <a href="service.html?s=hosts" data-i18n="nav.d2">Animateurs</a>
+        <a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a>
+        <a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs</a>
+        <a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a>
+        <a href="personnalites.html?project=Corporate+Event" data-i18n="nav.d6">Organisation d'événements</a>
       </div>
     </div>
     <div class="navitem">
@@ -1574,7 +1580,7 @@ ul{list-style:none}
   <div class="header__right">
     
     <div class="lang" id="lang" aria-label="Langue / Language"><button data-lang="fr" class="is-active">FR</button><button data-lang="en">EN</button></div>
-    <a class="btn btn--gold" href="#demande" data-i18n="cta.work">Travailler avec nous</a>
+    <a class="btn btn--gold" href="#demande" data-i18n="cta.work">Consultez-nous</a>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
@@ -1587,7 +1593,7 @@ ul{list-style:none}
     <span class="rail__lines"><i></i><i></i><i></i></span><em data-i18n="rail.menu">Menu</em>
   </button>
   <div class="rail__bas">
-    <a class="rail__cta" href="#demande"><span data-i18n="cta.work">Travailler avec nous</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    <a class="rail__cta" href="#demande"><span data-i18n="cta.work">Consultez-nous</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
     <div class="rail__lang"><button data-lang="fr">FR</button><button data-lang="en">EN</button></div>
   </div>
 </aside>
@@ -1598,7 +1604,7 @@ ul{list-style:none}
     <img class="rp__logo" src="assets/mvp-logo-blanc.svg" alt="MVP Group">
     <div class="rp__liens" id="rpLiens"></div>
     <div class="rp__pied">
-      <a class="btn btn--gold" href="#demande" data-fermer-lien data-i18n="cta.work">Travailler avec nous</a>
+      <a class="btn btn--gold" href="#demande" data-fermer-lien data-i18n="cta.work">Consultez-nous</a>
       <p><a href="tel:+15145823306">514-582-3306</a><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></p>
     </div>
     <span class="rp__plus rp__plus--a" aria-hidden="true"></span><span class="rp__plus rp__plus--b" aria-hidden="true"></span>
@@ -1610,7 +1616,7 @@ ul{list-style:none}
 <div class="mobile-menu" id="mobileMenu" hidden>
   <img src="assets/mvp-logo-blanc.svg" alt="" style="height:52px;width:auto;margin-bottom:18px">
   <a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a><a href="#services" data-i18n="nav.services">Services</a><a href="projets.html" data-i18n="nav.projects">Nos projets</a><a href="agence.html" data-i18n="nav.agency">À propos</a><a href="contact.html" data-i18n="nav.contact">Contact</a>
-  <a class="btn btn--gold" href="#demande" style="font-size:12px;align-self:flex-start;margin-top:16px" data-i18n="cta.work">Travailler avec nous</a>
+  <a class="btn btn--gold" href="#demande" style="font-size:12px;align-self:flex-start;margin-top:16px" data-i18n="cta.work">Consultez-nous</a>
 </div>
 
 <main id="top">
@@ -1629,14 +1635,9 @@ ul{list-style:none}
   <div class="vfail" id="vfail"><b>The video files were not found.</b>You are most likely viewing index.html from inside the ZIP, or moved it away from the <code>assets</code> folder. Unzip the whole folder first, then open index.html from the unzipped folder.</div>
   <button class="vplay" id="vplay" aria-label="Play film"><svg width="26" height="30" viewBox="0 0 26 30" fill="currentColor"><path d="M0 0l26 15L0 30z"/></svg></button>
   <div class="hero__content hero__content--c" id="heroContent">
-    <p class="hero__k" data-hero-fade><a href="service.html?s=speakers" data-i18n="hero.k1">Conférenciers</a> · <a href="service.html?s=ambassadors" data-i18n="hero.k2">Ambassadeurs</a> · <a href="service.html?s=ambassadors" data-i18n="hero.k3">Porte-parole</a> · <a href="service.html?s=hosts" data-i18n="hero.k4">Invités d'honneur</a></p>
-    <h1 class="display" id="heroTitle" data-i18n-html="hero.h1">Accédez aux <span class="gold">icônes</span> du sport.</h1>
-    <p class="lede" data-hero-fade data-i18n="hero.lede2">Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.</p>
-    <form class="hero__q" action="personnalites.html" method="get" role="search" data-hero-fade>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input type="search" name="q" autocomplete="off" aria-label="Rechercher une personnalité" placeholder="Nom, sport, expertise…" data-i18n-ph="hero.ph">
-      <button type="submit" aria-label="Rechercher"><span data-i18n="hero.go">Rechercher</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-    </form>
+    <p class="hero__k" data-hero-fade><a href="service.html?s=ambassadors" data-i18n="hero.k1">Ambassadeurs</a> · <a href="service.html?s=hosts" data-i18n="hero.k2">Animateurs</a> · <a href="service.html?s=speakers" data-i18n="hero.k3">Conférenciers</a> · <a href="service.html?s=hosts" data-i18n="hero.k4">Invités d'honneur</a></p>
+    <h1 class="display" id="heroTitle" data-i18n-html="hero.h1">Associez votre entreprise<br>aux <span class="gold">icônes</span> du sport</h1>
+    <p class="lede" data-hero-fade data-i18n="hero.lede2">Engagez les plus grands athlètes et légendes du sport pour propulser votre marque et augmenter le prestige de vos événements.</p>
   </div>
   <div class="hero__scroll" data-hero-fade><span data-i18n="hero.scroll">Défiler</span><i></i></div>
 
@@ -1647,12 +1648,12 @@ ul{list-style:none}
   <span class="grille" aria-hidden="true" style="right:7%;top:16%;width:300px;height:220px"></span>
     <div class="intro__bg" aria-hidden="true"></div>
     <div class="intro__top" data-reveal>
-      <h2 class="intro__title" data-i18n-html="intro.h2">Associez une icône<br>du sport<br><em>à votre entreprise</em></h2>
+      <h2 class="intro__title" data-i18n-html="intro.h2">Les plus grandes célébrités sportives<br><em>sont disponibles pour votre entreprise</em></h2>
       <div class="intro__cols">
-        <p class="intro__p" data-i18n="intro.p1">Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.</p>
-        <p class="intro__p intro__p--2" data-i18n="intro.p2">Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.</p>
+        <p class="intro__p" data-i18n-html="intro.p1">Depuis 2016, MVP Sports Marketing conseille les entreprises dans la création de partenariats stratégiques avec les athlètes professionnels, champion(ne)s olympiques et grandes figures du sport. Grâce à son vaste réseau, MVP vous offre un accès direct à toutes les célébrités sportives, partout au Québec, ailleurs au Canada et aux États-Unis.</p>
+        <div class="intro__p intro__p--2"><p data-i18n-html="intro.p2">Selon vos besoins et objectifs, MVP recommande les personnalités sportives les mieux adaptées et vous accompagne dans l’exécution de votre campagne ou de votre événement.</p><p data-i18n-html="intro.p3">Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b></p></div>
       </div>
-      <a class="intro__cta" href="#demande"><span data-i18n="cta.work">Travailler avec nous</span></a>
+      <a class="intro__cta" href="#demande"><span data-i18n="cta.work">Consultez-nous</span></a>
     </div>
     
   </section>
@@ -1807,7 +1808,7 @@ ul{list-style:none}
         <source src="assets/lettrage-v4.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="footer__go"><a class="btn btn--gold" href="#demande" data-i18n="cta.work">Travailler avec nous</a></div>
+    <div class="footer__go"><a class="btn btn--gold" href="#demande" data-i18n="cta.work">Consultez-nous</a></div>
   </div>
   <div class="footer__grid" id="agency">
     <div>
@@ -1845,13 +1846,13 @@ const MVP = 'https://mvpsportsmarketing.com';
 const I18N = {
  fr:{
   'se.k':"Club privé d'affaires · DIX30, Brossard",'se.h':'Découvrez le Salon <span class="gold">Exécutif</span> MVP','se.p':"Le club privé d'affaires des dirigeants, professionnels, investisseurs et personnalités du sport et des arts. Un lieu au DIX30 pour réseauter, recevoir vos clients et vivre des soirées avec des vedettes du sport.",'se.l1':'Réseautage entre dirigeants','se.l2':'Salons pour recevoir vos clients','se.l3':'Soirées avec des vedettes du sport','se.plus':'En savoir plus','se.ft':'Visite privée du club','se.nom':'Votre nom','se.mail':'Votre courriel','se.go':'Réserver ma visite','se.note':'Sans engagement · places limitées','se.ok':'Merci ! Le Salon Exécutif vous contactera pour planifier votre visite.','se.err':"Envoi impossible pour l'instant. Écrivez-nous à info@mvpsportsmarketing.com",
-  'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
+  'nav.d1':"Ambassadeurs et porte-parole",'nav.d2':"Animateurs",'nav.d3':"Conférenciers",'nav.d4':"Influenceurs",'nav.d5':"Invités d'honneur",'nav.d6':"Organisation d'événements",'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
   'nav.celebs':'Personnalités sportives','nav.projects':'Nos projets','nav.agency':'À propos','nav.contact':'Contact','nav.a1':'Mission de MVP Group','nav.a2':'Équipe de direction',
   'cat.hockey':'Hockey','cat.boxing':'Boxe','cat.mma':'MMA','cat.olympics':'Olympisme','cat.media':'Médias','cat.soccer':'Soccer','cat.others':'Autres',
-  'hero.label':'MVP Group — Marketing sportif','hero.h1':'Accédez aux <span class="gold">icônes</span> du sport.',
+  'hero.label':'MVP Group — Marketing sportif','hero.h1':'Associez votre entreprise<br>aux <span class="gold">icônes</span> du sport',
   "hero.lede":"Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.",
-  'hero.scroll':'Défiler','cta.work':'Travailler avec nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout','hb.k':'Canadiens de Montréal · Service vedette','hb.h':"Travaillez avec <em>un joueur</em> des Canadiens.",'hb.p':"Grâce à nos relations privilégiées avec les joueurs, la majorité de l'alignement des Canadiens de Montréal est accessible pour vos projets. Joueurs actuels, anciens et légendes : nous approchons la bonne personne, négocions l'entente et livrons l'activation.",'hb.l1':'Campagnes publicitaires et ambassadeurs de marque','hb.l2':'Apparitions, conférences et événements corporatifs','hb.l3':'Contenu pour vos réseaux sociaux','hb.cta':'Engager un joueur des Canadiens','hb.cta2':'Voir les anciens des Canadiens','hb.anc':'Anciens et légendes des Canadiens','brands.trust':'Ils nous ont fait confiance','promo.cta1':'Faire une demande','promo.sub':'Nous représentons bien plus d’athlètes que ce catalogue : dites-nous qui vous intéresse.','promo.cta2':'Faire une demande',
-  'intro.label':'Notre expertise','intro.h2':'Associez une icône<br>du sport<br><em>à votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône sportive.<br><span>Partout en Amérique du Nord.</span>",'mo.p':"Une vedette du basketball américain, une légende du hockey, un champion olympique ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, partout en Amérique du Nord.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un conseiller','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Conférenciers','hero.k2':'Ambassadeurs','hero.k3':'Porte-parole','hero.k4':"Invités d'honneur",'hero.lede2':'Associez une personnalité sportive à votre entreprise pour accroître votre notoriété, votre crédibilité et vos ventes.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un conseiller :','intro.p1':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois. Nous ciblons la bonne personnalité pour votre objectif, puis négocions l'entente.",'intro.p2':"Tournage, gala, campagne sociale ou événement corporatif : nous encadrons l'exécution et livrons une activation clé en main, avec un seul interlocuteur.",
+  'hero.scroll':'Défiler','cta.work':'Consultez-nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout','hb.k':'Canadiens de Montréal · Service vedette','hb.h':"Travaillez avec <em>un joueur</em> des Canadiens.",'hb.p':"Grâce à nos relations privilégiées avec les joueurs, la majorité de l'alignement des Canadiens de Montréal est accessible pour vos projets. Joueurs actuels, anciens et légendes : nous approchons la bonne personne, négocions l'entente et livrons l'activation.",'hb.l1':'Campagnes publicitaires et ambassadeurs de marque','hb.l2':'Apparitions, conférences et événements corporatifs','hb.l3':'Contenu pour vos réseaux sociaux','hb.cta':'Engager un joueur des Canadiens','hb.cta2':'Voir les anciens des Canadiens','hb.anc':'Anciens et légendes des Canadiens','brands.trust':'Ils nous ont fait confiance','promo.cta1':'Faire une demande','promo.sub':'Nous représentons bien plus d’athlètes que ce catalogue : dites-nous qui vous intéresse.','promo.cta2':'Faire une demande',
+  'intro.label':'Notre expertise','intro.h2':'Les plus grandes célébrités sportives<br><em>sont disponibles pour votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':"N'importe quelle icône sportive.<br><span>Partout en Amérique du Nord.</span>",'mo.p':"Une vedette du basketball américain, une légende du hockey, un champion olympique ? Dites-nous qui. Nous approchons ses représentants, négocions l'entente et livrons l'activation, partout en Amérique du Nord.",'mo.s1':'Vous nommez la personnalité','mo.s2':'Nous contactons ses représentants','mo.s3':'Nous concluons et livrons','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un conseiller','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Basketball · Football américain · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Ambassadeurs','hero.k2':'Animateurs','hero.k3':'Conférenciers','hero.k4':"Invités d'honneur",'hero.lede2':'Engagez les plus grands athlètes et légendes du sport pour propulser votre marque et augmenter le prestige de vos événements.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un conseiller :','intro.p1':"Depuis 2016, MVP Sports Marketing conseille les entreprises dans la création de partenariats stratégiques avec les athlètes professionnels, champion(ne)s olympiques et grandes figures du sport. Grâce à son vaste réseau, MVP vous offre un accès direct à toutes les célébrités sportives, partout au Québec, ailleurs au Canada et aux États-Unis.",'intro.p2':"Selon vos besoins et objectifs, MVP recommande les personnalités sportives les mieux adaptées et vous accompagne dans l’exécution de votre campagne ou de votre événement.",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
   'orbit.h':'Personnalités sportives','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
@@ -1861,13 +1862,13 @@ const I18N = {
  },
  en:{
   'se.k':'Private business club · DIX30, Brossard','se.h':'Discover the Salon <span class="gold">Exécutif</span> MVP','se.p':"The private business club for executives, professionals, investors and sports and arts figures. A place at DIX30 to network, host your clients and enjoy evenings with sports stars.",'se.l1':'Executive networking','se.l2':'Lounges to host your clients','se.l3':'Evenings with sports stars','se.plus':'Learn more','se.ft':'Private club tour','se.nom':'Your name','se.mail':'Your email','se.go':'Book my visit','se.note':'No commitment · limited spots','se.ok':'Thank you! The Salon Exécutif will contact you to plan your visit.','se.err':'Unable to send right now. Email us at info@mvpsportsmarketing.com',
-  'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
+  'nav.d1':"Ambassadors & spokespersons",'nav.d2':"Hosts",'nav.d3':"Keynote speakers",'nav.d4':"Influencers",'nav.d5':"Guests of honour",'nav.d6':"Event organization",'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
   'nav.celebs':'Sports celebrities','nav.projects':'Our projects','nav.agency':'About','nav.contact':'Contact','nav.a1':'MVP Group mission','nav.a2':'Management team',
   'cat.hockey':'Hockey','cat.boxing':'Boxing','cat.mma':'MMA','cat.olympics':'Olympics','cat.media':'Media','cat.soccer':'Soccer','cat.others':'Others',
-  'hero.label':'MVP Group — Sports Marketing','hero.h1':'Access the <span class="gold">icons</span> of sport.',
+  'hero.label':'MVP Group — Sports Marketing','hero.h1':'Pair your business<br>with the <span class="gold">icons</span> of sport',
   "hero.lede":"Brand ambassadors, keynote speakers and spokespersons: pair a sports personality with your business to raise awareness, establish credibility and increase sales.",
-  'hero.scroll':'Scroll','cta.work':'Work with us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all','hb.k':'Montréal Canadiens · Featured service','hb.h':'Work with <em>a Canadiens</em> player.','hb.p':'Thanks to our close relationships with the players, most of the Montréal Canadiens roster is available for your projects. Current players, alumni and legends: we approach the right person, negotiate the agreement and deliver the activation.','hb.l1':'Advertising campaigns and brand ambassadors','hb.l2':'Appearances, keynotes and corporate events','hb.l3':'Content for your social media','hb.cta':'Book a Canadiens player','hb.cta2':'See Canadiens alumni','hb.anc':'Canadiens alumni and legends','brands.trust':'They trusted us','promo.cta1':'Send a request','promo.sub':'We reach far more athletes than this catalogue: tell us who you have in mind.','promo.cta2':'Send a request',
-  'intro.label':'Our expertise','intro.h2':'Pair a sports icon <em>with your business</em>','mo.k':'MVP International · On request','mo.h':'Any sports icon.<br><span>Anywhere in North America.</span>','mo.p':"An American basketball star, a hockey legend, an Olympic champion? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, anywhere in North America.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an advisor','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Speakers','hero.k2':'Ambassadors','hero.k3':'Spokespersons','hero.k4':'Guests of honor','hero.lede2':'Pair a sports personality with your business to boost awareness, credibility and sales.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an advisor:','intro.p1':'Since 2005, a network built from inside Quebec sport. We identify the right personality for your objective, then negotiate the agreement.','intro.p2':'Shoot, gala, social campaign or corporate event: we run the execution and deliver a turnkey activation, with a single point of contact.',
+  'hero.scroll':'Scroll','cta.work':'Contact us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all','hb.k':'Montréal Canadiens · Featured service','hb.h':'Work with <em>a Canadiens</em> player.','hb.p':'Thanks to our close relationships with the players, most of the Montréal Canadiens roster is available for your projects. Current players, alumni and legends: we approach the right person, negotiate the agreement and deliver the activation.','hb.l1':'Advertising campaigns and brand ambassadors','hb.l2':'Appearances, keynotes and corporate events','hb.l3':'Content for your social media','hb.cta':'Book a Canadiens player','hb.cta2':'See Canadiens alumni','hb.anc':'Canadiens alumni and legends','brands.trust':'They trusted us','promo.cta1':'Send a request','promo.sub':'We reach far more athletes than this catalogue: tell us who you have in mind.','promo.cta2':'Send a request',
+  'intro.label':'Our expertise','intro.h2':'The greatest sports celebrities<br><em>are available for your business</em>','mo.k':'MVP International · On request','mo.h':'Any sports icon.<br><span>Anywhere in North America.</span>','mo.p':"An American basketball star, a hockey legend, an Olympic champion? Tell us who. We approach their representatives, negotiate the agreement and deliver the activation, anywhere in North America.",'mo.s1':'You name the personality','mo.s2':'We contact their representatives','mo.s3':'We close and deliver','mo.cta':'Request a personality','mo.tel':'Or talk to an advisor','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Basketball · American football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Ambassadors','hero.k2':'Hosts','hero.k3':'Speakers','hero.k4':'Guests of honor','hero.lede2':'Hire the greatest athletes and sports legends to power your brand and raise the prestige of your events.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an advisor:','intro.p1':"Since 2016, MVP Sports Marketing has advised businesses on building strategic partnerships with professional athletes, Olympic champions and great figures of sport. Through its vast network, MVP gives you direct access to every sports celebrity, across Quebec, the rest of Canada and the United States.",'intro.p2':"Based on your needs and goals, MVP recommends the best-suited sports personalities and supports you in executing your campaign or event.",'intro.p3':"Finding the best sports star to represent you and contribute to your success is our expertise. <b>Quickly and efficiently!</b>",
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
   'orbit.h':'Sports personalities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',

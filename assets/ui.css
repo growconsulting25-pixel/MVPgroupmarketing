@@ -340,3 +340,8 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 
 /* Initiales en contour sur les cartes : masquées pour l'instant (essai) */
 .tcard__ini,.hbc__ini{display:none!important}
+
+/* Logo MVP un peu plus gros (demande du client) */
+.header__logo img{height:clamp(46px,4.4vw,64px)!important}
+.header--barre .header__logo img{height:clamp(42px,3.9vw,56px)!important}
+@media (max-width:760px){.header__logo img,.header--barre .header__logo img{height:46px!important}}

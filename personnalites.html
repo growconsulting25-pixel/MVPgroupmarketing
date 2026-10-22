@@ -859,6 +859,15 @@ body{background:var(--soft);color:var(--black)}
 /* cartes : mêmes dimensions et alignements */
 .tk{display:flex;flex-direction:column;height:100%}
 .tk__body{flex:1;display:flex;flex-direction:column}
+
+/* Groupes par sport + demande pour une personnalité absente */
+.tk-sport{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:clamp(18px,3vh,34px) 0 2px;font-size:clamp(22px,2.2vw,34px);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;color:#0b0b0b}
+.tk-sport::before{content:"";width:34px;height:2px;background:var(--gold)}
+.tk-sport:first-child{margin-top:0}
+.tk__cat{display:none!important}
+.vide--demande{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.vide--demande .btn{margin-top:10px}
+.tk-filt{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head>
@@ -872,11 +881,12 @@ body{background:var(--soft);color:var(--black)}
     <div class="navitem">
       <a href="index.html#services" data-i18n="nav.services">Services</a>
       <div class="navdrop">
-        <a href="service.html?s=speakers" data-i18n="nav.s1">Keynote speakers</a>
-        <a href="service.html?s=ambassadors" data-i18n="nav.s2">Brand ambassadors &amp; spokespersons</a>
-        <a href="service.html?s=marketing" data-i18n="nav.s3">Social media strategies &amp; influencers</a>
-        <a href="service.html?s=hosts" data-i18n="nav.s4">Guests of honor</a>
-        <a href="personnalites.html?project=Corporate+Event" data-i18n="nav.s5">Corporate events &amp; teambuilding</a>
+        <a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a>
+        <a href="service.html?s=hosts" data-i18n="nav.d2">Animateurs</a>
+        <a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a>
+        <a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs</a>
+        <a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a>
+        <a href="personnalites.html?project=Corporate+Event" data-i18n="nav.d6">Organisation d'événements</a>
       </div>
     </div>
     <div class="navitem">
@@ -904,7 +914,7 @@ body{background:var(--soft);color:var(--black)}
   <div class="header__right">
     
     <div class="lang" id="lang" aria-label="Langue / Language"><button data-lang="fr" class="is-active">FR</button><button data-lang="en">EN</button></div>
-    <a class="btn btn--gold" href="#contact" data-i18n="cta.work">Travailler avec nous</a>
+    <a class="btn btn--gold" href="#contact" data-i18n="cta.work">Consultez-nous</a>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
@@ -922,14 +932,11 @@ body{background:var(--soft);color:var(--black)}
   <div class="bp__wrap" data-plus="l:22:lg l:84 r:40 r:70">
     <div>
       <!-- Recherche et filtres : présents, mais discrets. Les personnalités passent en premier. -->
-      <div class="chips" id="resultats">
-        <h2>Qu'est-ce que votre personnalité doit apporter au projet ?</h2>
-        <div class="chips__row" id="chips"></div>
-      </div>
+      <div class="chips" id="resultats" hidden><div class="chips__row" id="chips"></div></div>
       <div class="tk-tools">
         <div class="srch">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Rechercher une personnalité, un sport, un thème…" aria-label="Rechercher une personnalité">
+          <input id="q" type="search" placeholder="Recherchez une personnalité sportive" aria-label="Rechercher une personnalité">
         </div>
         <div class="tk-filt" id="filtres"></div>
       </div>
@@ -1048,9 +1055,8 @@ function ecrireURL(){
 
 /* ---- filtres : quatre menus simples (une valeur chacun) ---- */
 const FILTRES=[
-  ['sport','Discipline',SPORTS],
-  ['role','Rôle',ROLES.map(r=>[r,ROLE_INC[r]||r])],
-  ['projet','Type de projet',PROJETS.map(p=>[p,PROJ_FR[p]||p])]
+  ['sport','Sports',[...SPORTS].sort((a,b)=>a[0]==='other'?1:b[0]==='other'?-1:a[1].localeCompare(b[1],'fr'))],
+  ['projet','Type de projet',[['amb','Ambassadeur(drice)'],['conf','Conférencier(ère)'],['anim','Animateur(trice)'],['inv',"Invité(e) d'honneur"]]]
 ];
 $('#filtres').innerHTML=FILTRES.map(([cle,lib,opts])=>`<label class="tk-sel"><span class="sr">${lib}</span>
   <select data-c="${cle}"><option value="">${lib}</option>${opts.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label>`).join('');
@@ -1063,13 +1069,20 @@ $('#chips').addEventListener('click',e=>{
   b.setAttribute('aria-pressed',E.qualite.has(q)); E.page=1; rendre();
 });
 
+/* ---- type de projet (menu simplifié) ---- */
+const TYPE_OK={
+  amb:t=>t.roles.includes('Brand Ambassador')||t.projets.includes('Brand Campaign'),
+  conf:t=>t.roles.includes('Speaker')||t.projets.includes('Conference / Keynote'),
+  anim:t=>t.roles.includes('Host')||t.roles.includes('Media Personality'),
+  inv:t=>t.projets.includes('Corporate Event')||t.projets.includes('Charity Event')||t.roles.includes('Sports Legend')
+};
 /* ---- filtrage ---- */
 function filtrer(){
   const q=E.q.trim().toLowerCase();
   let r=TALENTS.filter(t=>{
     if(E.sport.size && !E.sport.has(t.cat)) return false;
     if(E.role.size && ![...E.role].every(x=>t.roles.includes(x))) return false;
-    if(E.projet.size && ![...E.projet].every(x=>t.projets.includes(x))) return false;
+    if(E.projet.size && ![...E.projet].every(x=>TYPE_OK[x]?TYPE_OK[x](t):t.projets.includes(x))) return false;
     if(E.statut.size && !E.statut.has(t.statut)) return false;
     if(E.qualite.size && ![...E.qualite].every(x=>t.qualites.includes(x))) return false;
     if(q){
@@ -1080,6 +1093,9 @@ function filtrer(){
   });
   if(E.tri==='az') r.sort((a,b)=>a.famille.localeCompare(b.famille,'fr'));
   if(E.tri==='sport') r.sort((a,b)=>a.catNom.localeCompare(b.catNom)||a.famille.localeCompare(b.famille,'fr'));
+  /* par défaut : regroupées par sport, sports en ordre alphabétique */
+  if(!E.tri||E.tri==='recent'||E.tri==='sport'){ const rang=c=>c==='other'?'zzz':(SPORT_FR[c]||c);
+    r.sort((a,b)=>rang(a.cat).localeCompare(rang(b.cat),'fr')); }
   return r;
 }
 
@@ -1099,7 +1115,6 @@ function carte(t){
     <div class="tk__ph">
       <img class="tk__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
       <img class="tk__p${pleine?' tk__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tk__p--pleine')">
-      <span class="tk__cat">${SPORT_FR[t.cat]||t.catNom}</span>
       <div class="tk__id">
         <h3 class="tk__nom">${t.nom}</h3>
         <p class="tk__sub">${[SPORT_FR[t.cat]||t.catNom,role].filter(Boolean).join(' · ')}</p>
@@ -1122,11 +1137,18 @@ function rendre(){
   const g1=$('#grid');
   g1.innerHTML='';
   if(!r.length){
-    g1.innerHTML=`<div class="vide"><b>Aucune personnalité ne correspond à ces critères.</b>Essayez de retirer un filtre ou d'élargir votre recherche.</div>`;
+    const nom=E.q.trim();
+    g1.innerHTML = nom
+      ? `<div class="vide vide--demande"><b>« ${nom.replace(/</g,'&lt;')} » n'est pas encore dans notre catalogue.</b>Bonne nouvelle : nous avons accès à bien plus d'athlètes que ceux présentés ici. Dites-nous qui vous intéresse, nous l'approchons pour vous.<button type="button" class="btn btn--blue" id="demNom">Faire une demande pour ${nom.replace(/</g,'&lt;')}</button></div>`
+      : `<div class="vide"><b>Aucune personnalité ne correspond à ces critères.</b>Essayez de retirer un filtre ou d'élargir votre recherche.</div>`;
+    const b=$('#demNom'); if(b) b.addEventListener('click',()=>{ if(window.mvpDemande) mvpDemande({persos:[nom]}); });
   } else {
-    /* Tous les résultats visibles vont dans la grille principale. La vitrine
-       de projets et la rangée « en vedette » qui suivent sont permanentes. */
-    visibles.forEach(t=>g1.appendChild(carte(t)));
+    /* Regroupées par sport : un titre de sport au début de chaque groupe */
+    let dernier=null;
+    visibles.forEach(t=>{
+      if(t.cat!==dernier){ dernier=t.cat; const h=document.createElement('h2'); h.className='tk-sport'; h.textContent=SPORT_FR[t.cat]||t.catNom; g1.appendChild(h); }
+      g1.appendChild(carte(t));
+    });
   }
   $('#plus').parentElement.style.display = r.length>max ? '' : 'none';
   $('#plus').textContent='Voir plus de personnalités ('+(r.length-max)+')';
@@ -1148,11 +1170,14 @@ $('#vider').addEventListener('click',()=>{
   E.page=1; synchroniser(); rendre();
 });
 let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout(()=>{E.q=e.target.value;E.page=1;rendre();},160); });
+/* Entrée sur une personnalité absente du catalogue : le formulaire s'ouvre, déjà rempli */
+$('#q').addEventListener('keydown',e=>{ if(e.key!=='Enter') return; e.preventDefault(); E.q=e.target.value; E.page=1; rendre();
+  if(E.q.trim() && !filtrer().length && window.mvpDemande) mvpDemande({persos:[E.q.trim()]}); });
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
 function synchroniser(){
   $$('.chip').forEach(c=>c.setAttribute('aria-pressed',E.qualite.has(c.dataset.q)));
   $$('#filtres select[data-c]').forEach(sel=>{ const v=[...E[sel.dataset.c]][0]||'';
-    sel.value=[...sel.options].some(o=>o.value===v)?v:''; if(sel.value!==v){E[sel.dataset.c].clear(); if(sel.value)E[sel.dataset.c].add(sel.value);} });
+    sel.value=[...sel.options].some(o=>o.value===v)?v:''; if(sel.value!==v && !(sel.dataset.c==='projet'&&v)){E[sel.dataset.c].clear(); if(sel.value)E[sel.dataset.c].add(sel.value);} });
 }
 /* ---- carrousel de réalisations (projets réels de MVP) ---- */
 const ARROW='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';

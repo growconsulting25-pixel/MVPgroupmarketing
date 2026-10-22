@@ -3,7 +3,7 @@
 (function(){
   var TEL='514-582-3306', TELH='tel:+15145823306', MAIL='info@mvpsportsmarketing.com';
   var D={
-    fr:{msg:"L'Agence de Marketing Sportif <i>#1</i> au Québec",work:'Travailler avec nous',call:'Appelez-nous',find:'Trouver un athlète',
+    fr:{msg:"L'Agence de Marketing Sportif <i>#1</i> au Québec",work:'Consultez-nous',call:'Appelez-nous',find:'Trouver un athlète',
       bulle:'Une question ?',aideT:"Besoin d'aide ?",aideS:'Nous sommes là pour vous',
       aideP:"Dites-nous ce que vous cherchez : conférencier, ambassadeur, invité d'honneur… Un agent vous répond rapidement avec des propositions.",
       start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
@@ -23,7 +23,7 @@
       budget:'Budget approximatif',budgets:['À déterminer','Moins de 25 000 $','25 000 $ – 100 000 $','100 000 $ – 250 000 $','250 000 $ et plus'],
       iOk:"Un conseiller du Groupe MVP communiquera avec vous sous peu au sujet de votre demande internationale.",
       okT:'Merci, votre demande est envoyée.',okP:"L'équipe MVP communiquera avec vous sous peu."},
-    en:{msg:'The <i>#1</i> Sports Marketing Agency in Québec',work:'Work with us',call:'Call us',find:'Find an athlete',
+    en:{msg:'The <i>#1</i> Sports Marketing Agency in Québec',work:'Contact us',call:'Call us',find:'Find an athlete',
       bulle:'Questions?',aideT:'Need help?',aideS:"We're here for you",
       aideP:"Tell us what you're looking for: keynote speaker, ambassador, guest of honor… An agent will get back to you quickly with suggestions.",
       start:'Start inquiry',appel2:'Call us',appeler:'Call '+TEL,rapide:'Fast reply · Mon-Fri 9am-5pm',fermer:'Close',
@@ -84,7 +84,7 @@
   bulle.addEventListener('click',function(){ carteO(!carte.classList.contains('est-ouvert')); });
   carte.querySelector('.aide-c__x').addEventListener('click',function(){ carteO(false); });
 
-  /* 4. fenêtre de demande — générale (« Travailler avec nous ») ou propre à un athlète */
+  /* 4. fenêtre de demande — générale (« Consultez-nous ») ou propre à un athlète */
   var ck='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   var champ=function(n,k,type,req,large,auto){ return '<label class="dmd__c dmd__c--'+n+(large?' dmd__c--l':'')+'"><span><b data-ui="'+k+'"></b>'+(req?' *':'')+'</span>'+
     (type==='textarea'?'<textarea name="'+n+'" rows="4" data-ui-ph="msgPh"></textarea>':'<input name="'+n+'" type="'+type+'"'+(auto?' autocomplete="'+auto+'"':'')+(req?' required':'')+(n==='date'?' data-ui-ph="datePh"':'')+(n==='personnalite'?' data-ui-ph="persoPh"':'')+'>')+'</label>'; };
@@ -246,10 +246,13 @@
   /* window.mvpDemande()                       → demande générale
      window.mvpDemande({nom, sous, photo, cut}) → demande pour un athlète précis
      window.mvpDemande({intl:true})            → demande d'une personnalité internationale */
-  window.mvpDemande=function(ath){ if(ath&&ath.roles&&!ath.besoins) ath.besoins=deviner(ath.roles); dmdO(true, ath||null); };
+  window.mvpDemande=function(ath){
+    /* {persos:['Nom']} : demande générale avec une ou des personnalités déjà inscrites */
+    if(ath&&ath.persos&&!ath.nom){ var ps=ath.persos; dmdO(true,null); setPersos(ps); return; }
+    if(ath&&ath.roles&&!ath.besoins) ath.besoins=deviner(ath.roles); dmdO(true, ath||null); };
   form.personnalite.addEventListener('input',function(){ if(!ATH) this.dataset.v=this.value; });
   chips.addEventListener('click',function(e){ var c=e.target.closest('.dmd__chip'); if(!c) return; c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')!=='true'); });
-  /* tout lien « Travailler avec nous » ouvre la fenêtre au lieu de descendre au formulaire */
+  /* tout lien « Consultez-nous » ouvre la fenêtre au lieu de descendre au formulaire */
   document.addEventListener('click',function(e){
     var a=e.target.closest('[data-ui-ouvrir], [data-ui-intl], [data-ui-habs], a[href="#demande"], a[href="index.html#demande"], [data-ath-nom]');
     if(a && !e.defaultPrevented && !e.metaKey && !e.ctrlKey){
