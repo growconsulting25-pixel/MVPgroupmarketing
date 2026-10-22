@@ -1590,6 +1590,21 @@ ul{list-style:none}
 .se__ft{letter-spacing:.06em!important;line-height:1.3;font-size:14px!important}
 .se__plus{text-transform:none!important;letter-spacing:.02em!important;font-size:14px!important}
 .mo__t{font-size:clamp(26px,2.7vw,48px)!important;line-height:1.02!important}
+
+/* Intro : titre sur deux lignes (grand écran) */
+@media (min-width:1100px){.intro__title{max-width:none!important;white-space:nowrap;font-size:clamp(28px,3.3vw,58px)!important;line-height:1.04!important}}
+
+/* Personnalités (ordinateur) : 5 cartes fixes par rangée = 4 célébrités + le carré bleu, sans défilement */
+@media (min-width:1024px){
+  .tlrow__rail{overflow:hidden!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;scroll-snap-type:none!important;gap:22px!important;column-gap:22px!important}
+  .tlrow__rail>*:nth-child(n+6){display:none!important}
+  .tlrow__rail .tcard,.tlrow__rail .tlpromo{flex:0 0 calc((100% - 88px)/5)!important;min-width:0!important;width:calc((100% - 88px)/5)!important;margin:0!important}
+  .tlrow__nav{display:none!important}
+  .tlpromo__t{font-size:clamp(14px,1.15vw,19px)!important;max-width:none!important}
+  .tlpromo__sub{font-size:clamp(11.5px,.9vw,13.5px)!important}
+}
+/* Projets : le défilement horizontal au trackpad / Maj + molette ne remonte pas dans l'historique du navigateur */
+.projets__rail{overscroll-behavior-x:contain}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2139,6 +2154,11 @@ renderServices();
       track.style.transition='transform .45s cubic-bezier(.2,.7,.2,1)'; track.style.transform='translate3d(0,0,0)'; setTimeout(()=>{ occupe=false; },470); }
     else { track.style.transition='transform .35s cubic-bezier(.2,.7,.2,1)'; track.style.transform='translate3d(0,0,0)'; }
   });
+  /* défilement horizontal (trackpad, molette latérale) : une carte à la fois */
+  let acc=0, tAcc=null;
+  vue.addEventListener('wheel',e=>{ const h=Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.shiftKey; if(!h) return;
+    e.preventDefault(); acc+=(e.shiftKey&&!e.deltaX?e.deltaY:e.deltaX); clearTimeout(tAcc); tAcc=setTimeout(()=>{acc=0;},220);
+    if(Math.abs(acc)>70){ aller(acc>0?1:-1); acc=0; } },{passive:false});
   /* un glissement ne doit pas ouvrir la carte */
   vue.addEventListener('click',e=>{ if(glisse){ e.preventDefault(); e.stopPropagation(); glisse=false; } },true);
   vue.addEventListener('dragstart',e=>e.preventDefault());
