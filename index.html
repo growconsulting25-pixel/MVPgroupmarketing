@@ -1614,6 +1614,8 @@ ul{list-style:none}
 /* Texte sous « Nos célébrités sportives » : chaque phrase sur sa ligne, lignes équilibrées */
 .talents__p{max-width:min(1180px,100%)!important;font-size:clamp(15px,1.2vw,19px)!important;line-height:1.55!important;text-wrap:balance}
 @media (min-width:1100px){.talents__p{white-space:nowrap;text-wrap:initial}}
+
+.talents__p{text-align:left}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1778,7 +1780,7 @@ ul{list-style:none}
 <section class="talents" id="personalities" data-nav="dark" aria-label="Personnalités" data-plus="t:56:lg l:22 b:22 b:76">
   <div class="talents__head" data-reveal>
     <h2 class="talents__t display" data-i18n="orbit.h">Nos célébrités sportives</h2>
-    <p class="talents__p" data-i18n-html="orbit.p">MVP Sports Marketing vous donne accès à tous les athlètes et célébrités sportives du Québec, du Canada et des États-Unis.<br>Voici quelques-uns de nos ambassadeurs disponibles pour vos projets :</p>
+    <p class="talents__p" data-i18n-html="orbit.p">MVP Sports Marketing vous donne accès à tous les athlètes et célébrités sportives<br>du Québec, du Canada et des États-Unis. Voici quelques-uns de nos ambassadeurs disponibles pour vos projets :</p>
     <div class="talents__side">
       <a class="btn talents__all" href="personnalites.html" data-i18n="cta.allTalent">Voir toutes les personnalités</a>
     </div>
@@ -1940,7 +1942,7 @@ const MVP = 'https://mvpsportsmarketing.com';
 const I18N = {
  fr:{
   'se.k':"Club privé d'affaires · DIX30, Brossard",'se.h':'Découvrez le nouveau Salon <span class="gold">Exécutif</span> MVP','se.p':'MVP Sports Marketing a fondé en 2026, au cœur du DIX30 à Brossard, un lieu spectaculaire qui réunit les leaders du monde des affaires et les icônes du sport. Sur plus de 7 300 pi², le Salon Exécutif MVP accueille les entreprises et les exécutifs qui souhaitent organiser des événements corporatifs et s’inspirer des célébrités sportives disponibles sur place. Une destination d’exception sur la Rive-Sud de Montréal, signée MVP.','se.l1':'Club privé d’affaires','se.l2':'Salles de réception et de conférences','se.l3':'Événements spéciaux','se.l4':'Celliers personnels','se.plus':'Visitez le site web – www.salonexecutif.ca','se.ft':'Demandez une visite privée du Salon Exécutif MVP','se.nom':'Votre nom','se.mail':'Votre courriel','se.go':'Réserver ma visite','se.note':'Sans engagement · places limitées','se.ok':'Merci ! Le Salon Exécutif vous contactera pour planifier votre visite.','se.err':"Envoi impossible pour l'instant. Écrivez-nous à info@mvpsportsmarketing.com",
-  'appel.h':"Faire appel aux <span class=\"gold\">icônes du sport</span><br>n'a jamais été aussi simple et facile.",'appel.p':"Communiquez avec nous dès aujourd'hui pour démarrer votre projet !",'appel.tel':'Appelez-nous','orbit.p':'MVP Sports Marketing vous donne accès à tous les athlètes et célébrités sportives du Québec, du Canada et des États-Unis.<br>Voici quelques-uns de nos ambassadeurs disponibles pour vos projets :','nav.d1':"Ambassadeurs et porte-parole",'nav.d2':"Animateurs",'nav.d3':"Conférenciers",'nav.d4':"Influenceurs",'nav.d5':"Invités d'honneur",'nav.d6':"Organisation d'événements",'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
+  'appel.h':"Faire appel aux <span class=\"gold\">icônes du sport</span><br>n'a jamais été aussi simple et facile.",'appel.p':"Communiquez avec nous dès aujourd'hui pour démarrer votre projet !",'appel.tel':'Appelez-nous','orbit.p':'MVP Sports Marketing vous donne accès à tous les athlètes et célébrités sportives<br>du Québec, du Canada et des États-Unis. Voici quelques-uns de nos ambassadeurs disponibles pour vos projets :','nav.d1':"Ambassadeurs et porte-parole",'nav.d2':"Animateurs",'nav.d3':"Conférenciers",'nav.d4':"Influenceurs",'nav.d5':"Invités d'honneur",'nav.d6':"Organisation d'événements",'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
   'nav.celebs':'Personnalités sportives','nav.projects':'Nos projets','nav.agency':'À propos','nav.contact':'Contact','nav.a1':'Mission de MVP Group','nav.a2':'Équipe de direction',
   'cat.hockey':'Hockey','cat.boxing':'Boxe','cat.mma':'MMA','cat.olympics':'Olympisme','cat.media':'Médias','cat.soccer':'Soccer','cat.others':'Autres',
   'hero.label':'MVP Group — Marketing sportif','hero.h1':'Associez votre entreprise<br>aux <span class="gold">icônes</span> du sport',
@@ -1956,7 +1958,7 @@ const I18N = {
  },
  en:{
   'se.k':'Private business club · DIX30, Brossard','se.h':'Discover the new Salon <span class="gold">Exécutif</span> MVP','se.p':'In 2026, MVP Sports Marketing founded a spectacular venue at the heart of DIX30 in Brossard, bringing together business leaders and sports icons. Across more than 7,300 sq. ft., the Salon Exécutif MVP welcomes companies and executives who want to host corporate events and be inspired by the sports celebrities available on site. An exceptional destination on Montréal’s South Shore, by MVP.','se.l1':'Private business club','se.l2':'Reception and conference rooms','se.l3':'Special events','se.l4':'Personal wine cellars','se.plus':'Visit the website – www.salonexecutif.ca','se.ft':'Request a private tour of the Salon Exécutif MVP','se.nom':'Your name','se.mail':'Your email','se.go':'Book my visit','se.note':'No commitment · limited spots','se.ok':'Thank you! The Salon Exécutif will contact you to plan your visit.','se.err':'Unable to send right now. Email us at info@mvpsportsmarketing.com',
-  'appel.h':'Hiring the <span class="gold">icons of sport</span><br>has never been this simple and easy.','appel.p':'Get in touch today to start your project!','appel.tel':'Call us','orbit.p':'MVP Sports Marketing gives you access to every athlete and sports celebrity in Québec, Canada and the United States.<br>Here are some of our ambassadors available for your projects:','nav.d1':"Ambassadors & spokespersons",'nav.d2':"Hosts",'nav.d3':"Keynote speakers",'nav.d4':"Influencers",'nav.d5':"Guests of honour",'nav.d6':"Event organization",'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
+  'appel.h':'Hiring the <span class="gold">icons of sport</span><br>has never been this simple and easy.','appel.p':'Get in touch today to start your project!','appel.tel':'Call us','orbit.p':'MVP Sports Marketing gives you access to every athlete and sports celebrity<br>in Québec, Canada and the United States. Here are some of our ambassadors available for your projects:','nav.d1':"Ambassadors & spokespersons",'nav.d2':"Hosts",'nav.d3':"Keynote speakers",'nav.d4':"Influencers",'nav.d5':"Guests of honour",'nav.d6':"Event organization",'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
   'nav.celebs':'Sports celebrities','nav.projects':'Our projects','nav.agency':'About','nav.contact':'Contact','nav.a1':'MVP Group mission','nav.a2':'Management team',
   'cat.hockey':'Hockey','cat.boxing':'Boxing','cat.mma':'MMA','cat.olympics':'Olympics','cat.media':'Media','cat.soccer':'Soccer','cat.others':'Others',
   'hero.label':'MVP Group — Sports Marketing','hero.h1':'Pair your business<br>with the <span class="gold">icons</span> of sport',
@@ -2361,7 +2363,10 @@ const pjRail=$('#pjRail');
    (les images ne se chargent qu'en arrivant à l'écran, la page reste légère) */
 const PROJETS_TOUS=(()=>{ const vus=new Set(PROJECTS.map(p=>p.id));
   return PROJECTS.concat((window.MVP_PROJETS||[]).filter(p=>!vus.has(p.id))); })();
-function renderProjects(){ pjRail.innerHTML=''; PROJETS_TOUS.forEach((p,i)=>pjRail.appendChild(ProjectCard(p,i))); }
+/* Boucle infinie : trois copies de la liste ; on revient au milieu quand on s'approche d'un bord */
+const PJ_COPIES=3;
+function renderProjects(){ pjRail.innerHTML='';
+  for(let c=0;c<PJ_COPIES;c++) PROJETS_TOUS.forEach((p,i)=>{ const el=ProjectCard(p,i); if(c!==1){ el.setAttribute('aria-hidden','true'); el.tabIndex=-1; } pjRail.appendChild(el); }); }
 renderProjects();
 (function(){
   /* glisser à la souris ; un vrai glissement annule le clic sur la carte */
@@ -2373,10 +2378,15 @@ renderProjects();
   pjRail.addEventListener('click',e=>{if(Math.abs(pjRail.scrollLeft-s0)>6)e.preventDefault();},true);
   pjRail.addEventListener('dragstart',e=>e.preventDefault());
   const pas=()=>{const c=$('.pc',pjRail);return c?c.offsetWidth+parseFloat(getComputedStyle(pjRail).columnGap||0):400;};
-  const maj=()=>{$('#pjPrev').disabled=pjRail.scrollLeft<=4;$('#pjNext').disabled=pjRail.scrollLeft>=pjRail.scrollWidth-pjRail.clientWidth-4;};
+  const maj=()=>{};
   $('#pjPrev').onclick=()=>pjRail.scrollBy({left:-pas(),behavior:'smooth'});
   $('#pjNext').onclick=()=>pjRail.scrollBy({left:pas(),behavior:'smooth'});
-  pjRail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj();
+  /* position de départ : début de la copie du milieu ; saut invisible quand le défilement s'arrête près d'un bord */
+  const tiers=()=>{ const n=PROJETS_TOUS.length, k=pjRail.children; return k.length>n ? k[n].offsetLeft-k[0].offsetLeft : pjRail.scrollWidth/PJ_COPIES; };
+  const centrer=()=>{ pjRail.style.scrollBehavior='auto'; pjRail.scrollLeft=tiers(); pjRail.style.scrollBehavior=''; };
+  centrer(); addEventListener('load',centrer); addEventListener('resize',centrer);
+  let tJ=null; pjRail.addEventListener('scroll',()=>{ clearTimeout(tJ); tJ=setTimeout(()=>{ if(on) return; const t3=tiers(), x=pjRail.scrollLeft;
+    if(x<t3*0.5||x>t3*1.5){ pjRail.style.scrollBehavior='auto'; pjRail.scrollLeft = x<t3*0.5 ? x+t3 : x-t3; pjRail.style.scrollBehavior=''; } },140); },{passive:true});
 })();
 /* Defilement des bandes de marques, en sens opposes. La bande s'arrete
    doucement quand le curseur se pose sur un logo, et repart quand il le
