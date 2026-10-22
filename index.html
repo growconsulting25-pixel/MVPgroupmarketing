@@ -1576,9 +1576,12 @@ ul{list-style:none}
 .hba b{font-size:15px!important}
 .hb__sous{font-size:13px!important}
 @media (max-width:760px){.hba{width:112px!important}.hba__ph{width:96px!important;height:96px!important}.hba b{font-size:13px!important}}
+
+.pc--titre .pc__h{font-size:clamp(16px,1.35vw,22px)!important;line-height:1.12!important;display:-webkit-box!important;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="assets/projets-liste.js"></script>
 </head>
 <body>
 <a class="sr" href="#contact">Skip to contact</a>
@@ -2305,15 +2308,19 @@ renderBrands();
    horizontal, glisser à la souris, la carte survolée s'élargit.
    ===================================================================== */
 function ProjectCard(p,i){
-  const el=document.createElement('a'); el.className='pc'; el.href='projet.html?id='+p.id;
-  el.innerHTML=`<img src="${p.img}" alt="${p.person} × ${p.brand}" loading="lazy" style="object-position:${p.pos||'center'}">
+  const el=document.createElement('a'); el.className='pc'+(p.titre?' pc--titre':''); el.href='projet.html?id='+p.id;
+  el.innerHTML=`<img src="${p.img}" alt="${p.titre||p.person+' × '+p.brand}" loading="lazy" style="object-position:${p.pos||'center'}">
     <span class="pc__t"><span class="pc__k">${L(PJ_TYPE[p.type])} · ${p.year}</span>
-      <span class="pc__h">${p.person} <i>×</i> ${p.brand}</span>
+      <span class="pc__h">${p.titre?p.titre:`${p.person} <i>×</i> ${p.brand}`}</span>
       <span class="pc__v">${t('cta.view')} ${ARROW}</span></span>`;
   return el;
 }
 const pjRail=$('#pjRail');
-function renderProjects(){ pjRail.innerHTML=''; PROJECTS.forEach((p,i)=>pjRail.appendChild(ProjectCard(p,i))); }
+/* Le carrousel présente tous les projets du site : la sélection d'abord, puis tous les autres
+   (les images ne se chargent qu'en arrivant à l'écran, la page reste légère) */
+const PROJETS_TOUS=(()=>{ const vus=new Set(PROJECTS.map(p=>p.id));
+  return PROJECTS.concat((window.MVP_PROJETS||[]).filter(p=>!vus.has(p.id))); })();
+function renderProjects(){ pjRail.innerHTML=''; PROJETS_TOUS.forEach((p,i)=>pjRail.appendChild(ProjectCard(p,i))); }
 renderProjects();
 (function(){
   /* glisser à la souris ; un vrai glissement annule le clic sur la carte */
