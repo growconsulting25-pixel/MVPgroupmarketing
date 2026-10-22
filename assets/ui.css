@@ -345,3 +345,6 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .header__logo img{height:clamp(46px,4.4vw,64px)!important}
 .header--barre .header__logo img{height:clamp(42px,3.9vw,56px)!important}
 @media (max-width:760px){.header__logo img,.header--barre .header__logo img{height:46px!important}}
+
+/* Cartes d'athlètes : sans petits titres or ni bouton « Engagez » (demande du client) */
+.tcard__tags,.tcard__b1{display:none!important}
