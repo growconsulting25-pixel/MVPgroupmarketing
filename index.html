@@ -1623,6 +1623,11 @@ ul{list-style:none}
 .intro__title{max-width:none!important;font-size:clamp(28px,3.3vw,58px)!important;line-height:1.04!important}
 @media (min-width:900px){.intro__title{white-space:nowrap}}
 @media (max-width:899px){.intro__title{font-size:clamp(28px,8vw,44px)!important}}
+
+/* Intro : titre plus grand sur 2 lignes, sans changer la hauteur de la section blanche (le gain de hauteur est repris sur la marge sous le titre) */
+@media (min-width:1100px){
+  .intro__title{font-size:clamp(28px,3.6vw,64px)!important;margin-top:calc(-2.08 * (clamp(28px,3.6vw,64px) - clamp(28px,3.3vw,58px)))!important}
+}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
