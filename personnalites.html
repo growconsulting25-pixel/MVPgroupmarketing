@@ -868,6 +868,12 @@ body{background:var(--soft);color:var(--black)}
 .vide--demande{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .vide--demande .btn{margin-top:10px}
 .tk-filt{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+/* Barre de recherche longue ; les deux menus (Sports, Type de projet) plus compacts */
+@media (min-width:900px){
+  .tk-tools{grid-template-columns:minmax(0,1fr) auto!important;gap:14px!important}
+  .tk-filt{grid-template-columns:repeat(2,190px)!important;gap:10px!important}
+}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head>
