@@ -1645,15 +1645,15 @@ ul{list-style:none}
   .intro__title{font-size:clamp(28px,3.6vw,64px)!important;margin-top:calc(-2.08 * (clamp(28px,3.6vw,64px) - clamp(28px,3.3vw,58px)))!important}
 }
 
-/* Services : 6 cartes visibles d'un coup sur grand écran (la carte survolée s'agrandit) */
+/* Services : 5 cartes visibles d'un coup sur grand écran (la carte survolée s'agrandit) */
 @media (min-width:1100px){
-  .services .services__track .panel,.services .services__track:hover .panel,.services .services__track .panel:hover{flex:0 0 calc((100% - 120px)/6)!important}
+  .services .services__track .panel,.services .services__track:hover .panel,.services .services__track .panel:hover{flex:0 0 calc((100% - 96px)/5)!important}
   .services .services__track{gap:24px!important}
-  .services .services__track:hover .panel:not(:hover){flex-basis:calc((100% - 120px)/6 - 18px)!important}
-  .services .services__track .panel:hover{flex-basis:calc((100% - 120px)/6 + 90px)!important}
+  .services .services__track:hover .panel:not(:hover){flex-basis:calc((100% - 96px)/5 - 52px)!important}
+  .services .services__track .panel:hover{flex-basis:calc((100% - 96px)/5 + 208px)!important}
   .sv__nav{display:none!important}
   .sv__vue{cursor:default!important}
-  .services .panel__title{font-size:clamp(14px,1.12vw,19px)!important;letter-spacing:0!important;overflow-wrap:anywhere}
+  .services .panel__title{font-size:clamp(13px,1.02vw,18px)!important;letter-spacing:0!important;overflow-wrap:anywhere}
 }
 .panel__img[src*="sergesavard"]{object-position:42% 50%!important}
 
@@ -2072,8 +2072,7 @@ const SERVICES = [
  {num:'02',title:{fr:'Animateurs',en:'Hosts'},desc:{fr:"Confiez la scène de vos galas, congrès, lancements et soirées-bénéfice à une voix connue du sport.",en:'Hand the stage of your galas, conferences, launches and fundraisers to a well-known voice of sport.'},img:'assets/svc-hosts-panel.jpg',alt:{fr:"Table ronde animée lors d'un événement",en:'Hosted panel at an event'},url:'service.html?s=animateurs'},
  {num:'03',title:{fr:'Conférenciers',en:'Keynote speakers'},desc:{fr:"Offrez à votre auditoire des athlètes, champions, leaders et personnalités qui ont de véritables histoires à raconter.",en:'Connect audiences with respected athletes, champions, leaders and personalities who have powerful stories to share.'},img:'assets/svc-speakers-bruny.jpg',alt:{fr:'Conférencier devant une salle comble',en:'Keynote speaker in front of a full room'},url:'service.html?s=speakers'},
  {num:'04',title:{fr:'Influenceurs',en:'Influencers'},desc:{fr:'Bâtissez des campagnes authentiques, du contenu de marque et des activations sociales avec des personnalités influentes.',en:'Build authentic campaigns, branded content and social-media activations around influential personalities.'},img:'assets/projets/kimclaveljeanbleu-2.jpg',alt:{fr:'Athlète créant du contenu de marque',en:'Athlete creating branded content'},url:'service.html?s=marketing'},
- {num:'05',title:{fr:"Invités d'honneur",en:'Guests of honour'},desc:{fr:"Offrez à vos événements la présence d'une légende ou d'un champion que vos invités n'oublieront pas.",en:'Give your events the presence of a legend or champion your guests will never forget.'},img:'assets/projets/sergesavardgestofhonorcorporatebox-1.jpg',alt:{fr:"Invité d'honneur entouré de partisans",en:'Guest of honour surrounded by fans'},url:'service.html?s=hosts'},
- {num:'06',title:{fr:"Organisation d'événements",en:'Event planning'},desc:{fr:"Galas, tournois de golf, congrès et soirées-bénéfice : nous concevons et produisons des événements clé en main autour de personnalités.",en:'Galas, golf tournaments, conferences and fundraisers: we design and produce turnkey events built around personalities.'},img:'assets/projets/vincent-lecavalier-extends-a-warm-welcome-to-our-corporate-c-1.jpg',alt:{fr:"Vincent Lecavalier accueille les invités d'un événement corporatif",en:'Vincent Lecavalier welcoming guests at a corporate event'},url:'service.html?s=evenements'}
+ {num:'05',title:{fr:"Invités d'honneur",en:'Guests of honour'},desc:{fr:"Offrez à vos événements la présence d'une légende ou d'un champion que vos invités n'oublieront pas.",en:'Give your events the presence of a legend or champion your guests will never forget.'},img:'assets/projets/sergesavardgestofhonorcorporatebox-1.jpg',alt:{fr:"Invité d'honneur entouré de partisans",en:'Guest of honour surrounded by fans'},url:'service.html?s=hosts'}
 ];
 /* Section 7 — projets de l'accueil : l'essentiel seulement (type, année,
    personnalité × marque). Le récit complet vit sur projet.html?id=… */
