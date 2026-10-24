@@ -350,3 +350,9 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 
 /* Cartes d'athlètes : sans petits titres or ni bouton « Engagez » (demande du client) */
 .tcard__tags,.tcard__b1{display:none!important}
+
+/* Champs libres : personnalité souhaitée, membre des Canadiens */
+.dmd__pin,.dmd__c input[name="joueur"]{width:100%;padding:13px 15px;border:1.5px solid #e2e4e8;border-radius:12px;background:#f6f7f9;font:inherit;font-size:15px;color:#0b0b0b;transition:border-color .25s,background .25s,box-shadow .25s}
+.dmd__pin:focus{outline:none;border-color:#1E5299;background:#fff;box-shadow:0 0 0 4px rgba(30,82,153,.12)}
+.dmd__pin::placeholder,.dmd__c input[name="joueur"]::placeholder{color:#8a8f98}
+.dmd__hint{margin:10px 0 0;font-size:12.5px;color:#6b7280}

@@ -874,6 +874,7 @@ body{background:var(--soft);color:var(--black)}
   .tk-tools{grid-template-columns:minmax(0,1fr) auto!important;gap:14px!important}
   .tk-filt{grid-template-columns:repeat(2,190px)!important;gap:10px!important}
 }
+.tk-lien{display:block;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;color:#1E5299;text-decoration:underline;cursor:pointer}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head>
@@ -1082,20 +1083,29 @@ const TYPE_OK={
   inv:t=>t.projets.includes('Corporate Event')||t.projets.includes('Charity Event')||t.roles.includes('Sports Legend')
 };
 /* ---- filtrage ---- */
+const norm=t=>String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+function lev(a,b){ if(a===b) return 0; const m=a.length,n=b.length; if(!m||!n) return Math.max(m,n);
+  let prev=Array.from({length:n+1},(_,j)=>j);
+  for(let i=1;i<=m;i++){ const cur=[i]; for(let j=1;j<=n;j++){ cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1)); } prev=cur; }
+  return prev[n]; }
+/* mots de la requête proches des mots du nom (fautes de frappe tolérées : 1 lettre, 2 pour les mots longs) */
+function flou(t,mots){ const nm=norm(t.nom).split(/[\s\-'’]+/).filter(Boolean);
+  return mots.every(w=>nm.some(m=>m.includes(w)||(w.length>=3&&lev(m.slice(0,Math.max(w.length,m.length>w.length?w.length+1:m.length)),w)<=(w.length>=7?2:1)||(w.length>=3&&lev(m,w)<=(w.length>=7?2:1))))); }
+const ressembleNom=q=>{ const m=q.trim().split(/\s+/); return m.length>=2&&m.every(w=>/^[\p{L}'’.\-]{2,}$/u.test(w)); };
 function filtrer(){
-  const q=E.q.trim().toLowerCase();
-  let r=TALENTS.filter(t=>{
+  const q=norm(E.q.trim()), mots=q.split(/\s+/).filter(Boolean);
+  const base=t=>{
     if(E.sport.size && !E.sport.has(t.cat)) return false;
     if(E.role.size && ![...E.role].every(x=>t.roles.includes(x))) return false;
     if(E.projet.size && ![...E.projet].every(x=>TYPE_OK[x]?TYPE_OK[x](t):t.projets.includes(x))) return false;
     if(E.statut.size && !E.statut.has(t.statut)) return false;
     if(E.qualite.size && ![...E.qualite].every(x=>t.qualites.includes(x))) return false;
-    if(q){
-      const foin=[t.nom,t.titre,t.catNom,t.bio,...t.roles,...t.qualites,...t.projets].join(' ').toLowerCase();
-      if(!foin.includes(q)) return false;
-    }
-    return true;
-  });
+    return true; };
+  let r=TALENTS.filter(t=>{ if(!base(t)) return false;
+    if(q){ const foin=norm([t.nom,t.titre,t.catNom,t.bio,...t.roles,...t.qualites,...t.projets].join(' ')); if(!foin.includes(q)) return false; }
+    return true; });
+  /* aucun résultat exact : on tolère les fautes de frappe dans les noms */
+  if(!r.length && q) r=TALENTS.filter(t=>base(t)&&flou(t,mots));
   if(E.tri==='az') r.sort((a,b)=>a.famille.localeCompare(b.famille,'fr'));
   if(E.tri==='sport') r.sort((a,b)=>a.catNom.localeCompare(b.catNom)||a.famille.localeCompare(b.famille,'fr'));
   /* par défaut : regroupées par sport, sports en ordre alphabétique */
@@ -1143,9 +1153,10 @@ function rendre(){
   g1.innerHTML='';
   if(!r.length){
     const nom=E.q.trim();
-    g1.innerHTML = nom
-      ? `<div class="vide vide--demande"><b>« ${nom.replace(/</g,'&lt;')} » n'est pas encore dans notre catalogue.</b>Bonne nouvelle : nous avons accès à bien plus d'athlètes que ceux présentés ici. Dites-nous qui vous intéresse, nous l'approchons pour vous.<button type="button" class="btn btn--blue" id="demNom">Faire une demande pour ${nom.replace(/</g,'&lt;')}</button></div>`
-      : `<div class="vide"><b>Aucune personnalité ne correspond à ces critères.</b>Essayez de retirer un filtre ou d'élargir votre recherche.</div>`;
+    const sure=nom.replace(/</g,'&lt;');
+    g1.innerHTML = (nom && ressembleNom(nom))
+      ? `<div class="vide vide--demande"><b>« ${sure} » n'est pas encore dans notre catalogue.</b>Bonne nouvelle : nous avons accès à bien plus d'athlètes que ceux présentés ici, partout en Amérique du Nord. Dites-nous qui vous intéresse, nous l'approchons pour vous.<button type="button" class="btn btn--blue" id="demNom">Faire une demande pour ${sure}</button></div>`
+      : `<div class="vide"><b>Aucun résultat${nom?' pour « '+sure+' »':''}.</b>Essayez un autre nom, retirez un filtre ou élargissez votre recherche.${nom?`<button type="button" class="tk-lien" id="demNom">Ce n'est pas ce que vous cherchiez ? Faire une demande</button>`:''}</div>`;
     const b=$('#demNom'); if(b) b.addEventListener('click',()=>{ if(window.mvpDemande) mvpDemande({persos:[nom]}); });
   } else {
     /* Regroupées par sport : un titre de sport au début de chaque groupe */
@@ -1177,7 +1188,7 @@ $('#vider').addEventListener('click',()=>{
 let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout(()=>{E.q=e.target.value;E.page=1;rendre();},160); });
 /* Entrée sur une personnalité absente du catalogue : le formulaire s'ouvre, déjà rempli */
 $('#q').addEventListener('keydown',e=>{ if(e.key!=='Enter') return; e.preventDefault(); E.q=e.target.value; E.page=1; rendre();
-  if(E.q.trim() && !filtrer().length && window.mvpDemande) mvpDemande({persos:[E.q.trim()]}); });
+  if(E.q.trim() && !filtrer().length && ressembleNom(E.q) && window.mvpDemande) mvpDemande({persos:[E.q.trim()]}); });
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
 function synchroniser(){
   $$('.chip').forEach(c=>c.setAttribute('aria-pressed',E.qualite.has(c.dataset.q)));
@@ -1281,7 +1292,6 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
 </script>
-<script src="assets/personnalites-liste.js"></script>
 <script src="assets/ui.js"></script>
 <script src="assets/nav.js"></script>
 </body></html>

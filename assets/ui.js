@@ -12,9 +12,9 @@
       parler:'Vous préférez parler à quelqu’un ?',ecrire:'Vous préférez nous écrire ?',hbK:'Canadiens de Montréal',hbUn:'un membre des Canadiens',hbJoueur:'Le membre des Canadiens',hbChoix:'Membre souhaité',hbAucun:'Pas encore décidé — conseillez-moi',hbActuels:'Joueurs et dirigeants',hbAnciens:'Anciens et légendes',hbAutre:'Un autre membre des Canadiens',hbP:'Joueurs, légendes, entraîneurs et dirigeants : choisissez un membre ou laissez-nous vous conseiller.',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
       note:'Vos informations restent confidentielles et servent uniquement à répondre à votre demande.',
       okPa:"L'équipe MVP communiquera avec vous sous peu au sujet de votre projet avec %.",
-      nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Message',
+      nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Décrivez-nous votre projet',web:'Site web',
       types:['Conférencier(ère)','Ambassadeur(drice)','Porte-parole','Animateur(trice)','Invité(e) d\'honneur','Influenceur(euse) / médias sociaux','Événement corporatif','Autre'],
-      persoPh:'Facultatif — ex. : un olympien, un joueur des Canadiens',msgPh:'Objectif, public, budget, lieu…',
+      persoPh:'Facultatif — ex. : un olympien, un joueur des Canadiens',msgPh:'Vos objectifs, besoins ou détails sur votre événement',
       envoyer:'Envoyer la demande',envoi:'Envoi…',req:'Merci de remplir les champs obligatoires (*).',
       err:"L'envoi n'a pas fonctionné. Écrivez-nous à <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> ou appelez le <a href=\""+TELH+"\">"+TEL+"</a>.",
       iK:'MVP International · Sur demande',iT:'Une icône, <em>partout en Amérique du Nord.</em>',iP:"Nommez la personnalité, peu importe la ville ou la ligue : nous approchons ses représentants pour vous.",
@@ -32,9 +32,9 @@
       parler:'Rather talk to someone?',ecrire:'Rather write to us?',hbK:'Montréal Canadiens',hbUn:'a member of the Canadiens',hbJoueur:'The Canadiens member',hbChoix:'Preferred member',hbAucun:'Not decided yet — advise me',hbActuels:'Players and staff',hbAnciens:'Alumni and legends',hbAutre:'Another member of the Canadiens',hbP:'Players, legends, coaches and executives: pick a member or let us advise you.',besoins:'Your needs',coord:'Your details',projet:'Your project',datePh:'E.g. June 2027',
       note:'Your information stays confidential and is only used to answer your request.',
       okPa:'The MVP team will contact you shortly about your project with %.',
-      nom:'Name',ent:'Company',mail:'Email',tel:'Phone',type:'Project type',date:'Approximate date',perso:'Preferred personality',message:'Message',
+      nom:'Name',ent:'Company',mail:'Email',tel:'Phone',type:'Project type',date:'Approximate date',perso:'Preferred personality',message:'Tell us about your project',web:'Website',
       types:['Keynote speaker','Ambassador','Spokesperson','Host','Guest of honor','Influencer / social media','Corporate event','Other'],
-      persoPh:'Optional — e.g. an Olympian, a Canadiens player',msgPh:'Goal, audience, budget, location…',
+      persoPh:'Optional — e.g. an Olympian, a Canadiens player',msgPh:'Your goals, needs or details about your event',
       envoyer:'Send inquiry',envoi:'Sending…',req:'Please fill in the required fields (*).',
       err:"Sending failed. Email us at <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> or call <a href=\""+TELH+"\">"+TEL+"</a>.",
       iK:'MVP International · On request',iT:'Any icon, <em>anywhere in North America.</em>',iP:'Name the personality, whatever the city or league: we approach their representatives for you.',
@@ -106,13 +106,13 @@
         '<label class="dmd__c"><span><b data-ui="iLieu"></b></span><input name="lieu" type="text" data-ui-ph="iLieuPh"></label>'+
       '</div></fieldset>'+
       '<fieldset class="dmd__hb"><legend><span class="dmd__n"></span><b data-ui="hbJoueur"></b></legend><div class="dmd__g">'+
-        '<label class="dmd__c dmd__c--l"><span><b data-ui="hbChoix"></b></span><select name="joueur" class="dmd__sel"></select></label>'+
+        '<label class="dmd__c dmd__c--l"><span><b data-ui="hbChoix"></b></span><input name="joueur" type="text" autocomplete="off" data-ui-ph="hbPh"></label>'+
       '</div></fieldset>'+
       '<fieldset class="dmd__pp"><legend><span class="dmd__n"></span><b data-ui="pTitre"></b></legend><div class="dmd__pl"></div>'+
-        '<button type="button" class="dmd__padd"><span aria-hidden="true">+</span><b data-ui="pAjout"></b></button></fieldset>'+
+        '<button type="button" class="dmd__padd"><span aria-hidden="true">+</span><b data-ui="pAjout"></b></button><p class="dmd__hint" data-ui="pHint"></p></fieldset>'+
       '<fieldset class="dmd__bes"><legend><span class="dmd__n"></span><b data-ui="besoins"></b></legend><div class="dmd__chips"></div></fieldset>'+
       '<fieldset><legend><span class="dmd__n"></span><b data-ui="coord"></b></legend><div class="dmd__g">'+
-        champ('nom','nom','text',1,0,'name')+champ('entreprise','ent','text',0,0,'organization')+champ('courriel','mail','email',1,0,'email')+champ('telephone','tel','tel',0,0,'tel')+
+        champ('nom','nom','text',1,0,'name')+champ('entreprise','ent','text',0,0,'organization')+champ('courriel','mail','email',1,0,'email')+champ('telephone','tel','tel',0,0,'tel')+champ('site','web','text',0,1,'url')+
       '</div></fieldset>'+
       '<fieldset><legend><span class="dmd__n"></span><b data-ui="projet"></b></legend><div class="dmd__g">'+
         champ('date','date','date')+'<label class="dmd__c dmd__c--budget"><span><b data-ui="budget"></b></span><select name="budget" class="dmd__sel"></select></label>'+'<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+
@@ -127,43 +127,31 @@
   var HABS_ACT=[['Nick Suzuki','assets/projets/nick-suzuki-5.jpg'],['Lane Hutson','assets/art-hush.jpg'],['Ivan Demidov','assets/canadiens/ivan-demidov.jpg'],['Zachary Bolduc','assets/canadiens/zachary-bolduc.jpg'],['Arber Xhekaj','assets/projets/arberxhekaj-1.jpg'],['Patrik Laine','assets/projets/patrick-laine-albilegeant-genesislaval-3.jpg'],['Chantal Machabée','assets/canadiens/chantal-machabee.jpg'],['Michel Lacroix','assets/canadiens/michel-lacroix.jpg']];
   var HABS_ANC=[['Guy Lafleur','guy-lafleur'],['Patrick Roy','patrick-roy'],['Yvan Cournoyer','yvan-cournoyer'],['Guy Carbonneau','guy-carbonneau'],['Chris Nilan','chris-nilan'],['Mario Tremblay','mario-tremblay'],['Réjean Houle','rejean-houle'],['Yvon Lambert','yvon-lambert'],['Steve Bégin','steve-begin'],['Paul Byron','paul-byron'],['Francis Bouillon','francis-bouillon'],['Patrice Brisebois','patrice-brisebois'],['Gilbert Delorme','gilbert-delorme'],['Mathieu Dandenault','mathieu-dandenault'],['Kirk Muller','kirk-muller'],['Alex Kovalev','alex-kovalev'],['Pierre Gervais','pierre-gervais']];
   var photoHabs=function(n){ var a=HABS_ACT.filter(function(x){return x[0]===n;})[0]; if(a&&a[1]) return {src:a[1],cut:false}; var b=HABS_ANC.filter(function(x){return x[0]===n;})[0]; if(b) return {src:'assets/cut/'+b[1]+'.webp',cut:true}; return null; };
-  var remplirJoueurs=function(){
-    var d=D[L()], sel=form.joueur, v=sel.value;
-    sel.innerHTML='<option value="">'+d.hbAucun+'</option><optgroup label="'+d.hbActuels+'">'+HABS_ACT.map(function(x){return '<option>'+x[0]+'</option>';}).join('')+'</optgroup><optgroup label="'+d.hbAnciens+'">'+HABS_ANC.map(function(x){return '<option>'+x[0]+'</option>';}).join('')+'</optgroup><option value="autre">'+d.hbAutre+'</option>';
-    sel.value=v;
-  };
+  var norm=function(t){ return String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim(); };
+  var trouveHabs=function(t){ var n=norm(t); if(!n) return null; var all=HABS_ACT.concat(HABS_ANC); for(var i=0;i<all.length;i++){ if(norm(all[i][0])===n) return all[i][0]; } return null; };
+  var remplirJoueurs=function(){};
   form.joueur.addEventListener('change',function(){ if(ATH&&ATH.habs){ ATH.joueur=this.value; majTitres(); } });
+  form.joueur.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); this.blur(); } });
   /* Personnalités souhaitées : menu déroulant (pré-sélectionné) + possibilité d'en ajouter d'autres */
-  Object.assign(D.fr,{pTitre:'Personnalité(s) souhaitée(s)',pAucun:'Pas encore décidé — conseillez-moi',pAutre:'Une autre personnalité (préciser)',pAutrePh:'Nom de la personnalité',pAjout:'Ajouter une autre personnalité',pRetirer:'Retirer',
-    pCats:{hockey:'Hockey',boxing:'Boxe',mma:'MMA',olympics:'Olympisme',media:'Médias',soccer:'Soccer',other:'Autres sports'}});
-  Object.assign(D.en,{pTitre:'Desired personality(ies)',pAucun:'Not decided yet — advise me',pAutre:'Another personality (specify)',pAutrePh:'Personality name',pAjout:'Add another personality',pRetirer:'Remove',
-    pCats:{hockey:'Hockey',boxing:'Boxing',mma:'MMA',olympics:'Olympics',media:'Media',soccer:'Soccer',other:'Other sports'}});
-  var PERSOS=window.MVP_PERSOS||[], pl=dmd.querySelector('.dmd__pl');
-  var NOMS_P=PERSOS.map(function(x){ return x[0]; });
-  var optionsP=function(){ var d=D[L()], g={};
-    PERSOS.forEach(function(x){ (g[x[1]]=g[x[1]]||[]).push(x[0]); });
-    return '<option value="">'+d.pAucun+'</option>'+['hockey','boxing','mma','olympics','media','soccer','other'].filter(function(c){ return g[c]; }).map(function(c){
-      return '<optgroup label="'+d.pCats[c]+'">'+g[c].map(function(n){ return '<option>'+n+'</option>'; }).join('')+'</optgroup>'; }).join('')+
-      '<option value="autre">'+d.pAutre+'</option>'; };
+  Object.assign(D.fr,{pTitre:'Personnalité(s) souhaitée(s)',pPh:'Dites-nous qui vous voulez, ou ce que vous cherchez',pHint:'Pas encore décidé ? Laissez vide, nous vous conseillerons.',hbPh:'Inscrire le membre des Canadiens souhaité',pAjout:'Ajouter une autre personnalité',pRetirer:'Retirer',});
+  Object.assign(D.en,{pTitre:'Desired personality(ies)',pPh:'Tell us who you have in mind, or what you are looking for',pHint:'Not decided yet? Leave it empty, we will advise you.',hbPh:'Enter the Canadiens member you would like',pAjout:'Add another personality',pRetirer:'Remove',});
+  var pl=dmd.querySelector('.dmd__pl');
   var syncP=function(){
-    var v=[].map.call(pl.children,function(r){ var s=r.querySelector('select'); return s.value==='autre'?r.querySelector('input').value.trim():s.value; }).filter(Boolean);
+    var v=[].map.call(pl.children,function(r){ return r.querySelector('input').value.trim(); }).filter(Boolean);
     form.personnalite.value=v.join(', ');
     pl.classList.toggle('a-plusieurs',pl.children.length>1);
   };
   var ligneP=function(nom){
     var d=D[L()], r=document.createElement('div'); r.className='dmd__prow';
-    r.innerHTML='<select class="dmd__sel" aria-label="'+d.pTitre+'">'+optionsP()+'</select><input type="text" class="dmd__pautre" hidden placeholder="'+d.pAutrePh+'">'+
+    r.innerHTML='<input type="text" class="dmd__pin" autocomplete="off" placeholder="'+d.pPh+'" aria-label="'+d.pTitre+'">'+
       '<button type="button" class="dmd__prm" aria-label="'+d.pRetirer+'">'+I.x+'</button>';
-    var sel=r.querySelector('select'), inp=r.querySelector('input');
-    if(nom){ if(NOMS_P.indexOf(nom)>-1) sel.value=nom; else { sel.value='autre'; inp.value=nom; inp.hidden=false; } }
-    sel.addEventListener('change',function(){ inp.hidden=sel.value!=='autre'; if(!inp.hidden) inp.focus(); syncP(); });
+    var inp=r.querySelector('input'); if(nom) inp.value=nom;
     inp.addEventListener('input',syncP);
     r.querySelector('.dmd__prm').addEventListener('click',function(){ r.remove(); if(!pl.children.length) pl.appendChild(ligneP('')); syncP(); });
     return r; };
   var setPersos=function(noms){ pl.innerHTML=''; (noms&&noms.length?noms:['']).forEach(function(n){ pl.appendChild(ligneP(n)); }); syncP(); };
-  var relabelP=function(){ var d=D[L()]; [].forEach.call(pl.children,function(r){ var s=r.querySelector('select'), v=s.value; s.innerHTML=optionsP(); s.value=v; s.setAttribute('aria-label',d.pTitre);
-    r.querySelector('input').placeholder=d.pAutrePh; r.querySelector('.dmd__prm').setAttribute('aria-label',d.pRetirer); }); };
-  dmd.querySelector('.dmd__padd').addEventListener('click',function(){ var r=ligneP(''); pl.appendChild(r); syncP(); r.querySelector('select').focus(); });
+  var relabelP=function(){ var d=D[L()]; [].forEach.call(pl.children,function(r){ var i=r.querySelector('input'); i.placeholder=d.pPh; i.setAttribute('aria-label',d.pTitre); r.querySelector('.dmd__prm').setAttribute('aria-label',d.pRetirer); }); };
+  dmd.querySelector('.dmd__padd').addEventListener('click',function(){ var r=ligneP(''); pl.appendChild(r); syncP(); r.querySelector('input').focus(); });
   setPersos([]);
   /* Date : calendrier natif ; à partir d'aujourd'hui ; tout le champ ouvre le calendrier */
   (function(){ var dt=form.date, t=new Date(); dt.min=new Date(t.getTime()-t.getTimezoneOffset()*6e4).toISOString().slice(0,10);
@@ -192,14 +180,15 @@
     var INTL=!!(ATH&&ATH.intl), HABS=!!(ATH&&ATH.habs);
     dmd.classList.toggle('dmd--habs',HABS);
     if(HABS){
-      form.joueur.value=ATH.joueur||'';
-      var choisi=form.joueur.value&&form.joueur.value!=='autre'?form.joueur.value:'';
+      if(document.activeElement!==form.joueur && form.joueur.value!==(ATH.joueur||'')) form.joueur.value=ATH.joueur||'';
+      var tape=form.joueur.value.trim(), connu=trouveHabs(tape), choisi=connu||tape;
+      if(connu && document.activeElement!==form.joueur && form.joueur.value!==connu) form.joueur.value=connu;
       dmd.classList.add('dmd--ath'); dmd.classList.remove('dmd--intl');
       dmd.querySelector('.dmd__k').textContent=d.hbK;
       dmd.querySelector('.dmd__t').innerHTML=d.avec+' <em>'+(choisi||d.hbUn)+'</em>';
       dmd.querySelector('.dmd__s').textContent=choisi?d.hbK:d.hbP;
       dmd.querySelector('.dmd__okp').textContent=d.okPa.replace('%',choisi||d.hbUn);
-      var ph=choisi&&photoHabs(choisi), box=dmd.querySelector('.dmd__ath'); box.classList.remove('sans-photo');
+      var ph=connu&&photoHabs(connu), box=dmd.querySelector('.dmd__ath'); box.classList.remove('sans-photo');
       img.onerror=null; if(ph){ img.src=ph.src; img.className=ph.cut?'est-detoure':''; } else { img.removeAttribute('src'); img.className='est-sans'; }
       form.personnalite.value=choisi; form.cible.required=false; return;
     }
@@ -371,4 +360,17 @@
     [['mvpContour',1.3],['mvpContour2',1.8]].map(function(f){ return '<filter id="'+f[0]+'" x="-5%" y="-5%" width="110%" height="110%"><feMorphology in="SourceAlpha" operator="erode" radius="'+f[1]+'" result="e"/><feComposite in="SourceGraphic" in2="e" operator="out"/></filter>'; }).join('')+
     '</defs></svg>';
   document.body.appendChild(w);
+})();
+
+/* « Appelez-nous » : pas de numéro affiché. Sur ordinateur, le 1er clic révèle le numéro, le 2e lance l'appel ;
+   sur téléphone, un seul toucher appelle directement. */
+(function(){
+  var NUM='514-582-3306';
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('.tb__b--w, .appel__tel'); if(!a) return;
+    if(matchMedia('(hover:none)').matches) return;
+    if(a.dataset.vu) return;
+    e.preventDefault(); a.dataset.vu='1';
+    var sp=a.querySelector('span'); if(sp){ sp.removeAttribute('data-ui'); sp.removeAttribute('data-i18n'); sp.textContent=NUM; }
+  });
 })();

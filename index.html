@@ -1937,8 +1937,9 @@ h2.hero__k a{transition:color .3s}h2.hero__k a:hover{color:#fff}
     <form class="se__f" novalidate>
       <p class="se__ft" data-i18n="se.ft">Demandez une visite privée du Salon Exécutif MVP</p>
       <input name="nom" type="text" autocomplete="name" required data-i18n-ph="se.nom" placeholder="Votre nom" aria-label="Nom">
+      <input name="entreprise" type="text" autocomplete="organization" data-i18n-ph="se.ent" placeholder="Nom d'entreprise" aria-label="Nom d'entreprise">
       <input name="courriel" type="email" autocomplete="email" required data-i18n-ph="se.mail" placeholder="Votre courriel" aria-label="Courriel">
-      <button type="submit"><span data-i18n="se.go">Réserver ma visite</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button type="submit"><span data-i18n="se.go">Envoyer ma demande</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       <p class="se__note" data-i18n="se.note">Sans engagement · places limitées</p>
       <p class="se__msg" role="status" hidden></p>
     </form>
@@ -1991,7 +1992,7 @@ const MVP = 'https://mvpsportsmarketing.com';
    ===================================================================== */
 const I18N = {
  fr:{
-  'se.k':"Club privé d'affaires · DIX30, Brossard",'se.h':'Découvrez le nouveau Salon <span class="gold">Exécutif</span> MVP','se.p':'MVP Sports Marketing a fondé en 2026, au cœur du DIX30 à Brossard, un lieu spectaculaire qui réunit les leaders du monde des affaires et les icônes du sport. Sur plus de 7 300 pi², le Salon Exécutif MVP accueille les entreprises et les exécutifs qui souhaitent organiser des événements corporatifs et s’inspirer des célébrités sportives disponibles sur place. Une destination d’exception sur la Rive-Sud de Montréal, signée MVP.','se.l1':'Club privé d’affaires','se.l2':'Salles de réception et de conférences','se.l3':'Événements spéciaux','se.l4':'Celliers personnels','se.plus':'Visitez le site web – www.salonexecutif.ca','se.ft':'Demandez une visite privée du Salon Exécutif MVP','se.nom':'Votre nom','se.mail':'Votre courriel','se.go':'Réserver ma visite','se.note':'Sans engagement · places limitées','se.ok':'Merci ! Le Salon Exécutif vous contactera pour planifier votre visite.','se.err':"Envoi impossible pour l'instant. Écrivez-nous à info@mvpsportsmarketing.com",
+  'se.k':"Club privé d'affaires · DIX30, Brossard",'se.h':'Découvrez le nouveau Salon <span class="gold">Exécutif</span> MVP','se.p':'MVP Sports Marketing a fondé en 2026, au cœur du DIX30 à Brossard, un lieu spectaculaire qui réunit les leaders du monde des affaires et les icônes du sport. Sur plus de 7 300 pi², le Salon Exécutif MVP accueille les entreprises et les exécutifs qui souhaitent organiser des événements corporatifs et s’inspirer des célébrités sportives disponibles sur place. Une destination d’exception sur la Rive-Sud de Montréal, signée MVP.','se.l1':'Club privé d’affaires','se.l2':'Salles de réception et de conférences','se.l3':'Événements spéciaux','se.l4':'Celliers personnels','se.plus':'Visitez le site web – www.salonexecutif.ca','se.ft':'Demandez une visite privée du Salon Exécutif MVP','se.nom':'Votre nom','se.ent':"Nom d'entreprise",'se.mail':'Votre courriel','se.go':'Envoyer ma demande','se.note':'Sans engagement · places limitées','se.ok':'Merci ! Le Salon Exécutif vous contactera pour planifier votre visite.','se.err':"Envoi impossible pour l'instant. Écrivez-nous à info@mvpsportsmarketing.com",
   'appel.h':"Faire appel aux <span class=\"gold\">icônes du sport</span><br>n'a jamais été aussi simple et facile.",'appel.p':"Communiquez avec nous dès aujourd'hui pour démarrer votre projet !",'appel.tel':'Appelez-nous','orbit.p':'MVP Sports Marketing vous donne accès à tous les athlètes et célébrités sportives<br>du Québec, du Canada et des États-Unis. Voici quelques-uns de nos ambassadeurs disponibles pour vos projets :','nav.d1':"Ambassadeurs et porte-parole",'nav.d2':"Animateurs",'nav.d3':"Conférenciers",'nav.d4':"Influenceurs",'nav.d5':"Invités d'honneur",'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
   'nav.celebs':'Personnalités sportives','nav.projects':'Nos projets','nav.agency':'À propos','nav.contact':'Contact','nav.a1':'Mission de MVP Group','nav.a2':'Équipe de direction',
   'cat.hockey':'Hockey','cat.boxing':'Boxe','cat.mma':'MMA','cat.olympics':'Olympisme','cat.media':'Médias','cat.soccer':'Soccer','cat.others':'Autres',
@@ -2007,7 +2008,7 @@ const I18N = {
   'foot.h':'Créons le <span class="gold">bon partenariat</span> pour votre entreprise','foot.nav':'Navigation','foot.svc':'Services','foot.follow':'Suivez-nous','foot.agency':'MVP Group Agency','foot.hq':'Siège social : Montréal, Qc. Canada','foot.rights':'© 2026 MVP Group Agency Inc. Tous droits réservés.','foot.privacy':'Politique de confidentialité'
  },
  en:{
-  'se.k':'Private business club · DIX30, Brossard','se.h':'Discover the new Salon <span class="gold">Exécutif</span> MVP','se.p':'In 2026, MVP Sports Marketing founded a spectacular venue at the heart of DIX30 in Brossard, bringing together business leaders and sports icons. Across more than 7,300 sq. ft., the Salon Exécutif MVP welcomes companies and executives who want to host corporate events and be inspired by the sports celebrities available on site. An exceptional destination on Montréal’s South Shore, by MVP.','se.l1':'Private business club','se.l2':'Reception and conference rooms','se.l3':'Special events','se.l4':'Personal wine cellars','se.plus':'Visit the website – www.salonexecutif.ca','se.ft':'Request a private tour of the Salon Exécutif MVP','se.nom':'Your name','se.mail':'Your email','se.go':'Book my visit','se.note':'No commitment · limited spots','se.ok':'Thank you! The Salon Exécutif will contact you to plan your visit.','se.err':'Unable to send right now. Email us at info@mvpsportsmarketing.com',
+  'se.k':'Private business club · DIX30, Brossard','se.h':'Discover the new Salon <span class="gold">Exécutif</span> MVP','se.p':'In 2026, MVP Sports Marketing founded a spectacular venue at the heart of DIX30 in Brossard, bringing together business leaders and sports icons. Across more than 7,300 sq. ft., the Salon Exécutif MVP welcomes companies and executives who want to host corporate events and be inspired by the sports celebrities available on site. An exceptional destination on Montréal’s South Shore, by MVP.','se.l1':'Private business club','se.l2':'Reception and conference rooms','se.l3':'Special events','se.l4':'Personal wine cellars','se.plus':'Visit the website – www.salonexecutif.ca','se.ft':'Request a private tour of the Salon Exécutif MVP','se.nom':'Your name','se.ent':'Company name','se.mail':'Your email','se.go':'Send my request','se.note':'No commitment · limited spots','se.ok':'Thank you! The Salon Exécutif will contact you to plan your visit.','se.err':'Unable to send right now. Email us at info@mvpsportsmarketing.com',
   'appel.h':'Hiring the <span class="gold">icons of sport</span><br>has never been this simple and easy.','appel.p':'Get in touch today to start your project!','appel.tel':'Call us','orbit.p':'MVP Sports Marketing gives you access to every athlete and sports celebrity<br>in Québec, Canada and the United States. Here are some of our ambassadors available for your projects:','nav.d1':"Ambassadors & spokespersons",'nav.d2':"Hosts",'nav.d3':"Keynote speakers",'nav.d4':"Influencers",'nav.d5':"Guests of honour",'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
   'nav.celebs':'Sports celebrities','nav.projects':'Our projects','nav.agency':'About','nav.contact':'Contact','nav.a1':'MVP Group mission','nav.a2':'Management team',
   'cat.hockey':'Hockey','cat.boxing':'Boxing','cat.mma':'MMA','cat.olympics':'Olympics','cat.media':'Media','cat.soccer':'Soccer','cat.others':'Others',
@@ -2637,7 +2638,7 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
     {nom:'Nick Suzuki',img:'assets/projets/nick-suzuki-5.jpg',pos:'center 22%',tag:{fr:'Capitaine · Ambassadeur Goodfood',en:'Captain · Goodfood ambassador'},u:'projet.html?id=nick-suzuki'},
     {nom:'Lane Hutson',img:'assets/art-hush.jpg',pos:'58% 30%',tag:{fr:'Défi hockey · HUSH',en:'Hockey challenge · HUSH'},u:'projet.html?id=hutson'},
     {nom:'Chantal Machabée',img:'assets/canadiens/chantal-machabee.jpg',pos:'center 25%',tag:{fr:'VP communications · Canadiens',en:'VP Communications · Canadiens'},u:'projet.html?id=chantalmachabee-timhortons',prof:'chantal-machabee'},
-    {nom:'Ivan Demidov',img:'assets/canadiens/ivan-demidov.jpg',pos:'center 18%',tag:{fr:'Joueur · #93',en:'Player · #93'},u:'personnalites.html?sport=hockey'},
+    {nom:'Ivan Demidov',img:'assets/canadiens/ivan-demidov.jpg',pos:'center 18%',tag:{fr:'Joueur · #93',en:'Player · #93'}},
     {nom:'Zachary Bolduc',img:'assets/canadiens/zachary-bolduc.jpg',pos:'center 15%',tag:{fr:'Ambassadeur · AU NOIR',en:'Ambassador · AU NOIR'},u:'projet.html?id=zacharybolduc'},
     {nom:'Arber Xhekaj',img:'assets/projets/arberxhekaj-1.jpg',pos:'22% 30%',tag:{fr:'Lancement · La Chambre',en:'Launch · La Chambre'},u:'projet.html?id=arberxhekaj'},
     {nom:'Michel Lacroix',img:'assets/canadiens/michel-lacroix.jpg',pos:'38% 25%',tag:{fr:'Annonceur maison · Gala',en:'PA announcer · Gala'},u:'projet.html?id=galamichelacroix',prof:'michel-lacroix'},
@@ -2651,7 +2652,7 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
   const FL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   let ordre=J.map((_,i)=>i);
   function rendre(){
-    pile.innerHTML=J.map((j,i)=>`<article class="hbc${j.cut?' hbc--cut':''}" data-i="${i}" data-lien="${j.prof?'profil.html?id='+j.prof:j.u}">
+    pile.innerHTML=J.map((j,i)=>`<article class="hbc${j.cut?' hbc--cut':''}" data-i="${i}" data-lien="${j.prof?'profil.html?id='+j.prof:(j.u||'')}">
       <img class="hbc__img" src="${j.img}" alt="${j.nom}" style="object-position:${j.pos||'center bottom'}" loading="lazy">
       <span class="hbc__ini" aria-hidden="true">${j.ini}</span>
       <div class="hbc__bas">
@@ -2660,7 +2661,7 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
         <h3 class="hbc__nom">${j.nom}</h3>
         <div class="hbc__btns">
           ${j.prof?`<button type="button" class="hbc__go" data-ui-habs data-ui-joueur="${j.nom}">${t('tl.work')} ${j.nom}</button>`:`<button type="button" class="hbc__go" data-ui-habs>${t('hb.cta')}</button>`}
-          ${j.prof?`<a class="hbc__pj" href="profil.html?id=${j.prof}">${t('cta.profile')} ${FL}</a>`:`<a class="hbc__pj" href="${j.u}">${t('cta.view')} ${FL}</a>`}
+          ${j.prof?`<a class="hbc__pj" href="profil.html?id=${j.prof}">${t('cta.profile')} ${FL}</a>`:(j.u?`<a class="hbc__pj" href="${j.u}">${t('cta.view')} ${FL}</a>`:'')}
         </div>
       </div></article>`).join('');
     document.getElementById('hbPts').innerHTML=J.map((_,i)=>`<button type="button" aria-label="${J[i].nom}"></button>`).join('');
@@ -2703,14 +2704,13 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
     m.hidden=false; m.classList.remove('est-err');
     if(!ok){ m.textContent=T('req'); m.classList.add('est-err'); return; }
     var b=f.querySelector('button'); b.disabled=true;
-    fetch('/api/demande',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'salon-executif-visite',nom:nom.value.trim(),courriel:c.value.trim(),page:location.href})})
+    fetch('/api/demande',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'salon-executif-visite',nom:nom.value.trim(),entreprise:(f.entreprise?f.entreprise.value.trim():''),courriel:c.value.trim(),page:location.href})})
       .then(function(r){ if(!r.ok) throw 0; m.textContent=T('ok'); f.reset(); })
       .catch(function(){ m.textContent=T('err'); m.classList.add('est-err'); })
       .then(function(){ b.disabled=false; });
   });
 })();
 </script>
-<script src="assets/personnalites-liste.js"></script>
 <script src="assets/ui.js"></script>
 </body>
 </html>

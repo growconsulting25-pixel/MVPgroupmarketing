@@ -1082,6 +1082,7 @@ body{background:#050505}
         <label class="ct-c"><span data-c="ent">Entreprise</span><input name="entreprise" type="text" autocomplete="organization"></label>
         <label class="ct-c"><span data-c="mail">Courriel *</span><input name="courriel" type="email" autocomplete="email" required></label>
         <label class="ct-c"><span data-c="tel">Téléphone</span><input name="telephone" type="tel" autocomplete="tel"></label>
+        <label class="ct-c"><span data-c="web">Site web</span><input name="site" type="text" inputmode="url" autocomplete="url"></label>
         <label class="ct-c ct-c--l"><span data-c="sujet">Sujet</span><select name="sujet">
           <option value="Engager une personnalité" data-c="s1">Engager une personnalité sportive</option>
           <option value="Conférence" data-c="s2">Conférence ou atelier</option>
@@ -1091,7 +1092,7 @@ body{background:#050505}
           <option value="Salon Exécutif MVP" data-c="s6">Salon Exécutif MVP</option>
           <option value="Médias / autre" data-c="s7">Médias ou autre demande</option>
         </select></label>
-        <label class="ct-c ct-c--l"><span data-c="msg">Message</span><textarea name="message" rows="5" data-c-ph="msgPh" placeholder="Objectif, public, date, budget, personnalité souhaitée…"></textarea></label>
+        <label class="ct-c ct-c--l"><span data-c="msg">Décrivez-nous votre projet</span><textarea name="message" rows="5" data-c-ph="msgPh" placeholder="Vos objectifs, besoins ou détails sur votre événement"></textarea></label>
       </div>
       <button class="ct-go" type="submit"><span data-c="go">Envoyer ma demande</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       <p class="ct-msg" role="status" hidden></p>
@@ -1181,12 +1182,12 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
 (function(){
   var D={fr:{k:'Contact · MVP Group Agency',t:'Parlons de votre <span class="gold">prochain projet.</span>',p:"Conférencier, ambassadeur, porte-parole, invité d'honneur ou campagne : dites-nous ce que vous cherchez. Un membre de l'équipe vous répond rapidement avec des propositions.",
       appeler:'Appelez-nous',ecrire:'Écrivez-nous',coord:'Coordonnées',bureau:'Bureau',courriel:'Courriel',affaires:'Affaires',mylaa:'Gestionnaire des affaires',appMylaa:'Appeler Mylaa Desloges',siege:'Siège social',
-      fT:'Parlez-nous de votre projet',fP:'Réponse rapide, sans engagement.',nom:'Nom *',ent:'Entreprise',mail:'Courriel *',tel:'Téléphone',sujet:'Sujet',msg:'Message',msgPh:'Objectif, public, date, budget, personnalité souhaitée…',
+      fT:'Parlez-nous de votre projet',fP:'Réponse rapide, sans engagement.',nom:'Nom *',ent:'Entreprise',mail:'Courriel *',tel:'Téléphone',sujet:'Sujet',web:'Site web',msg:'Décrivez-nous votre projet',msgPh:'Vos objectifs, besoins ou détails sur votre événement',
       s1:'Engager une personnalité sportive',s2:'Conférence ou atelier',s3:'Ambassadeur ou porte-parole',s4:"Événement corporatif ou invité d'honneur",s5:'Campagne marketing ou influenceurs',s6:'Salon Exécutif MVP',s7:'Médias ou autre demande',
       go:'Envoyer ma demande',note:'Vos renseignements servent uniquement à répondre à votre demande.',req:'Votre nom et un courriel valide, svp.',ok:'Merci ! Votre demande est envoyée. Nous vous répondons rapidement.',err:'Envoi impossible pour l’instant. Écrivez-nous à <a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a> ou appelez le 514-582-3306.'},
     en:{k:'Contact · MVP Group Agency',t:'Let’s talk about your <span class="gold">next project.</span>',p:'Speaker, ambassador, spokesperson, guest of honour or campaign: tell us what you need. A team member will get back to you quickly with proposals.',
       appeler:'Call us',ecrire:'Write to us',coord:'Contact details',bureau:'Office',courriel:'Email',affaires:'Business',mylaa:'Business manager',appMylaa:'Call Mylaa Desloges',siege:'Head office',
-      fT:'Tell us about your project',fP:'Quick answer, no commitment.',nom:'Name *',ent:'Company',mail:'Email *',tel:'Phone',sujet:'Subject',msg:'Message',msgPh:'Goal, audience, date, budget, desired personality…',
+      fT:'Tell us about your project',fP:'Quick answer, no commitment.',nom:'Name *',ent:'Company',mail:'Email *',tel:'Phone',sujet:'Subject',web:'Website',msg:'Tell us about your project',msgPh:'Your goals, needs or details about your event',
       s1:'Book a sports personality',s2:'Keynote or workshop',s3:'Ambassador or spokesperson',s4:'Corporate event or guest of honour',s5:'Marketing campaign or influencers',s6:'Salon Exécutif MVP',s7:'Media or other request',
       go:'Send my request',note:'Your information is only used to answer your request.',req:'Please enter your name and a valid email.',ok:'Thank you! Your request has been sent. We will get back to you quickly.',err:'Unable to send right now. Email us at <a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a> or call 514-582-3306.'}};
   var L=function(){ var a=document.querySelector('#lang .is-active'); return a&&a.dataset.lang==='en'?'en':'fr'; };
@@ -1212,7 +1213,6 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   });
 })();
 </script>
-<script src="assets/personnalites-liste.js"></script>
 <script src="assets/ui.js"></script>
 <script src="assets/nav.js"></script>
 </body>
