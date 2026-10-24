@@ -183,7 +183,7 @@
   var contextePage=function(){
     var c=window.mvpContexte||{}, k=deviner(c.besoin);
     var sv=(location.pathname.indexOf('service')>-1)&&new URLSearchParams(location.search).get('s');
-    var M={speakers:['speaker'],ambassadors:['ambassador','spokes'],hosts:['host','guest'],marketing:['influencer']};
+    var M={speakers:['speaker'],ambassadors:['ambassador','spokes'],animateurs:['host'],hosts:['guest'],marketing:['influencer']};
     if(!k.length && sv && M[sv]) k=M[sv];
     return k; };
   var choisirBesoins=function(cles){ [].forEach.call(chips.children,function(c,i){ c.setAttribute('aria-pressed',cles.indexOf(CLES[i])>-1?'true':'false'); }); };

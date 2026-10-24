@@ -735,7 +735,7 @@ ul{list-style:none}
    ===================================================================== */
 /* ---------- Intro : fond blanc, aréna de hockey très subtile, alignée à gauche ---------- */
 .intro{background:var(--white);color:var(--black);overflow:hidden;isolation:isolate;min-height:0;padding:calc(var(--nav-h) + 8vh) var(--gutter) clamp(80px,14vh,160px);justify-content:center}
-.intro__bg{position:absolute;inset:0;z-index:-1;background:url('assets/projets/goodfood-suzuki-fond.jpg') 72% 35%/cover no-repeat;filter:grayscale(1) contrast(.9);opacity:.16}
+.intro__bg{position:absolute;inset:0;z-index:-1;background:url('assets/fond-arena.jpg') center 55%/cover no-repeat;filter:grayscale(1) contrast(.95);opacity:.2}
 .intro__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,.2) 100%)}
 .intro__top{align-items:flex-start;text-align:left;max-width:1500px;width:100%;margin:0 auto}
 .intro__title{text-align:left;margin:0;max-width:17ch;color:var(--black)}
@@ -1476,14 +1476,14 @@ ul{list-style:none}
 .tlrow__deck{display:none}
 @media (max-width:640px){
   .tlrow__rail{display:block!important;position:relative;overflow:visible!important;width:calc(100% - 2*var(--gutter) - 60px)!important;aspect-ratio:3/4.3;margin:6px 0 0 var(--gutter)!important;padding:0!important;touch-action:pan-y;scroll-snap-type:none!important}
-  .tlrow__rail>.tcard,.tlrow__rail>.tlpromo{position:absolute!important;inset:0;flex:none!important;width:auto!important;min-width:0!important;margin:0!important;transform-origin:50% 100%;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .45s,filter .45s}
+  .tlrow__rail .tcard,.tlrow__rail .tlpromo{position:absolute!important;inset:0;flex:none!important;width:auto!important;min-width:0!important;margin:0!important;transform-origin:50% 100%;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .45s,filter .45s}
   .tlrow__rail .tcard__in{height:100%;aspect-ratio:auto!important}
-  .tlrow__rail>[data-pos="0"]{z-index:4;transform:none}
+  .tlrow__rail [data-pos="0"]{z-index:4;transform:none}
   .tlcats{overflow-x:clip}
-  .tlrow__rail>[data-pos="1"]{z-index:3;transform:translateX(26px) rotate(4deg) scale(.93);filter:brightness(.8)}
-  .tlrow__rail>[data-pos="2"]{z-index:2;transform:translateX(48px) rotate(7deg) scale(.86);filter:brightness(.62)}
-  .tlrow__rail>[data-pos="3"]{z-index:1;transform:translateX(48px) rotate(7deg) scale(.86);opacity:0;pointer-events:none}
-  .tlrow__rail>[data-pos="1"] *, .tlrow__rail>[data-pos="2"] *{pointer-events:none}
+  .tlrow__rail [data-pos="1"]{z-index:3;transform:translateX(26px) rotate(4deg) scale(.93);filter:brightness(.8)}
+  .tlrow__rail [data-pos="2"]{z-index:2;transform:translateX(48px) rotate(7deg) scale(.86);filter:brightness(.62)}
+  .tlrow__rail [data-pos="3"]{z-index:1;transform:translateX(48px) rotate(7deg) scale(.86);opacity:0;pointer-events:none}
+  .tlrow__rail [data-pos="1"] *, .tlrow__rail [data-pos="2"] *{pointer-events:none}
   .tlrow__deck{display:flex;align-items:center;justify-content:center;gap:16px;width:calc(100% - 2*var(--gutter) - 60px);margin:22px 0 0 var(--gutter)}
   .tlrow__cpt{min-width:64px;text-align:center;font-size:12px;font-weight:800;letter-spacing:.14em;color:#123B6D}
   .tlrow__deck .hb__fl{width:44px;height:44px}
@@ -1592,15 +1592,31 @@ ul{list-style:none}
 /* Intro : titre sur deux lignes (grand écran) */
 @media (min-width:1100px){.intro__title{max-width:none!important;white-space:nowrap;font-size:clamp(28px,3.3vw,58px)!important;line-height:1.04!important}}
 
-/* Personnalités (ordinateur) : 5 cartes fixes par rangée = 4 célébrités + le carré bleu, sans défilement */
+/* Personnalités : le carré bleu reste fixe ; seules les célébrités défilent (4 visibles à la fois) */
 @media (min-width:1024px){
-  .tlrow__rail{overflow:hidden!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;scroll-snap-type:none!important;gap:22px!important;column-gap:22px!important}
-  .tlrow__rail>*:nth-child(n+6){display:none!important}
-  .tlrow__rail .tcard,.tlrow__rail .tlpromo{flex:0 0 calc((100% - 88px)/5)!important;min-width:0!important;width:calc((100% - 88px)/5)!important;margin:0!important}
-  .tlrow__nav{display:none!important}
-  .tlpromo__t{font-size:clamp(14px,1.15vw,19px)!important;max-width:none!important}
-  .tlpromo__sub{font-size:clamp(11.5px,.9vw,13.5px)!important}
+  .tlrow__rail{--cw:calc((100% - 88px)/5);display:grid!important;grid-template-columns:var(--cw) minmax(0,1fr);column-gap:22px!important;gap:0 22px!important;overflow:visible!important;align-items:start!important;padding:0 var(--gutter)!important;margin:0!important;margin-bottom:-60px!important;scroll-snap-type:none!important}
+  .tlrow__rail.tlrow__rail--droite{grid-template-columns:minmax(0,1fr) var(--cw)}
+  .tlrow__rail .tlrow__cards{grid-row:1;grid-column:2;display:flex;gap:22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -14px;padding:12px 14px 84px;scroll-padding-inline:14px;overscroll-behavior-x:contain;cursor:grab}
+  .tlrow__rail .tlrow__cards::-webkit-scrollbar{display:none}
+  .tlrow__rail .tlrow__cards.saisi{cursor:grabbing;scroll-snap-type:none}
+  .tlrow__rail .tlrow__cards.saisi *{pointer-events:none}
+  .tlrow__rail.tlrow__rail--droite .tlrow__cards{grid-column:1}
+  .tlrow__rail .tlrow__cards .tcard{flex:0 0 calc((100% - 66px)/4)!important;min-width:0!important;width:auto!important;margin:0!important;scroll-snap-align:start}
+  .tlrow__rail .tlpromo{grid-row:1;grid-column:1;flex:none!important;width:auto!important;min-width:0!important;margin:12px 0 0!important;height:calc(100% - 96px);align-self:start}
+  .tlrow__rail.tlrow__rail--droite .tlpromo{grid-column:2}
+  .tlrow__rail .tlpromo--gauche ~ .tcard{margin-right:0!important}
+  .tlpromo__t{font-size:clamp(13px,1.05vw,17px)!important;max-width:none!important}
+  .tlpromo__sub{font-size:clamp(11px,.85vw,13px)!important}
 }
+@media (max-width:1023px){.tlrow__cards{display:contents}}
+/* Carré bleu « Guess who » : silhouette et point d'interrogation */
+.tlpromo{background:radial-gradient(90% 55% at 50% 22%,rgba(76,134,214,.55),transparent 70%),radial-gradient(120% 70% at 100% 0%,rgba(197,162,83,.22),transparent 55%),linear-gradient(165deg,#1E5299 0%,#123B6D 55%,#0b2547 100%)!important}
+.tlpromo__sil{position:absolute;left:0;right:0;top:0;height:54%;display:flex;justify-content:center;align-items:flex-end;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
+.tlpromo__sil svg{height:100%;width:auto;filter:drop-shadow(0 0 18px rgba(120,170,240,.45))}
+.tlpromo__q{position:absolute;left:50%;top:32%;transform:translate(-50%,-50%);font-weight:900;font-size:clamp(34px,3.2vw,56px);line-height:1;color:var(--gold);text-shadow:0 0 18px rgba(197,162,83,.55),0 2px 0 rgba(0,0,0,.25);animation:tlQ 3.2s ease-in-out infinite}
+@keyframes tlQ{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-52%) scale(1.07)}}
+@media (prefers-reduced-motion:reduce){.tlpromo__q{animation:none}}
+.tlpromo__in{z-index:1}
 /* Projets : le défilement horizontal au trackpad / Maj + molette ne remonte pas dans l'historique du navigateur */
 .projets__rail{overscroll-behavior-x:contain}
 
@@ -1628,6 +1644,30 @@ ul{list-style:none}
 @media (min-width:1100px){
   .intro__title{font-size:clamp(28px,3.6vw,64px)!important;margin-top:calc(-2.08 * (clamp(28px,3.6vw,64px) - clamp(28px,3.3vw,58px)))!important}
 }
+
+/* Services : 5 cartes visibles d'un coup sur grand écran (la carte survolée s'agrandit) */
+@media (min-width:1100px){
+  .services .services__track .panel,.services .services__track:hover .panel,.services .services__track .panel:hover{flex:0 0 calc((100% - 96px)/5)!important}
+  .services .services__track{gap:24px!important}
+  .services .services__track:hover .panel:not(:hover){flex-basis:calc((100% - 96px)/5 - 22px)!important}
+  .services .services__track .panel:hover{flex-basis:calc((100% - 96px)/5 + 88px)!important}
+  .sv__nav{display:none!important}
+  .sv__vue{cursor:default!important}
+  .services .panel__title{font-size:clamp(18px,1.5vw,26px)!important}
+}
+.panel__img[src*="sergesavard"]{object-position:42% 50%!important}
+
+/* Silhouette plus compacte : le texte reste lisible dessous */
+.tlpromo__sil{height:39%!important;top:12px!important;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent)!important;mask-image:linear-gradient(180deg,#000 70%,transparent)!important}
+.tlpromo__sil::before{content:"";position:absolute;left:50%;top:6%;width:78%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(150,195,255,.55),rgba(150,195,255,0) 68%);filter:blur(4px)}
+.tlpromo__sil svg{position:relative;filter:drop-shadow(0 0 14px rgba(120,170,240,.5))!important}
+.tlpromo__q{top:24%!important;font-size:clamp(28px,2.5vw,44px)!important}
+.tlpromo__k{margin-top:auto}
+
+/* Hero : mots-clés des services un peu plus gros (titre h2 pour Google) */
+h2.hero__k{font-size:clamp(13px,1.15vw,18px);letter-spacing:.2em;font-weight:800;margin:0 0 22px}
+h2.hero__k a{transition:color .3s}h2.hero__k a:hover{color:#fff}
+@media (max-width:640px){h2.hero__k{font-size:10.5px;letter-spacing:.1em;white-space:normal;line-height:1.5}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1647,11 +1687,10 @@ ul{list-style:none}
       <a href="#services" data-i18n="nav.services">Services</a>
       <div class="navdrop">
         <a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a>
-        <a href="service.html?s=hosts" data-i18n="nav.d2">Animateurs</a>
+        <a href="service.html?s=animateurs" data-i18n="nav.d2">Animateurs</a>
         <a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a>
         <a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs</a>
         <a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a>
-        <a href="personnalites.html?project=Corporate+Event" data-i18n="nav.d6">Organisation d'événements</a>
       </div>
     </div>
     <div class="navitem">
@@ -1734,9 +1773,9 @@ ul{list-style:none}
   <div class="vfail" id="vfail"><b>The video files were not found.</b>You are most likely viewing index.html from inside the ZIP, or moved it away from the <code>assets</code> folder. Unzip the whole folder first, then open index.html from the unzipped folder.</div>
   <button class="vplay" id="vplay" aria-label="Play film"><svg width="26" height="30" viewBox="0 0 26 30" fill="currentColor"><path d="M0 0l26 15L0 30z"/></svg></button>
   <div class="hero__content hero__content--c" id="heroContent">
-    <p class="hero__k" data-hero-fade><a href="service.html?s=ambassadors" data-i18n="hero.k1">Ambassadeurs</a> · <a href="service.html?s=hosts" data-i18n="hero.k2">Animateurs</a> · <a href="service.html?s=speakers" data-i18n="hero.k3">Conférenciers</a> · <a href="service.html?s=hosts" data-i18n="hero.k4">Invités d'honneur</a></p>
+    <h2 class="hero__k" data-hero-fade><a href="service.html?s=ambassadors" data-i18n="hero.k1">Ambassadeurs</a> · <a href="service.html?s=animateurs" data-i18n="hero.k2">Animateurs</a> · <a href="service.html?s=speakers" data-i18n="hero.k3">Conférenciers</a> · <a href="service.html?s=hosts" data-i18n="hero.k4">Invités d'honneur</a></h2>
     <h1 class="display" id="heroTitle" data-i18n-html="hero.h1">Associez votre entreprise<br>aux <span class="gold">icônes</span> du sport</h1>
-    <p class="lede" data-hero-fade data-i18n="hero.lede2">Engagez les plus grands athlètes et légendes du sport pour propulser votre marque et augmenter le prestige de vos événements.</p>
+    <p class="lede" data-hero-fade data-i18n="hero.lede2">Engagez les plus grands athlètes et légendes du sport pour propulser votre marque et vos événements.</p>
   </div>
   <div class="hero__scroll" data-hero-fade><span data-i18n="hero.scroll">Défiler</span><i></i></div>
 
@@ -1923,7 +1962,7 @@ ul{list-style:none}
       <ul><li data-i18n="foot.hq">Siège social : Montréal, Qc. Canada</li><li>Toronto · New York · Las Vegas</li><li><a href="tel:+15145823306">514-582-3306</a></li><li><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
     </div>
     <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a></li><li><a href="#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Nos projets</a></li><li><a href="agence.html" data-i18n="nav.agency">À propos</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=speakers" data-i18n="nav.s1">Conférenciers</a></li><li><a href="service.html?s=ambassadors" data-i18n="nav.s2">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=hosts" data-i18n="nav.s4">Invités d'honneur</a></li><li><a href="service.html?s=marketing" data-i18n="nav.s3">Influenceurs et médias sociaux</a></li></ul></div>
+    <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=animateurs" data-i18n="nav.d2">Animateurs</a></li><li><a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a></li><li><a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs</a></li><li><a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a></li></ul></div>
     <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul><li><a href="https://www.instagram.com/mvpgroupagency/" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" rel="noopener">Facebook</a></li></ul></div>
   </div>
 
@@ -1953,13 +1992,13 @@ const MVP = 'https://mvpsportsmarketing.com';
 const I18N = {
  fr:{
   'se.k':"Club privé d'affaires · DIX30, Brossard",'se.h':'Découvrez le nouveau Salon <span class="gold">Exécutif</span> MVP','se.p':'MVP Sports Marketing a fondé en 2026, au cœur du DIX30 à Brossard, un lieu spectaculaire qui réunit les leaders du monde des affaires et les icônes du sport. Sur plus de 7 300 pi², le Salon Exécutif MVP accueille les entreprises et les exécutifs qui souhaitent organiser des événements corporatifs et s’inspirer des célébrités sportives disponibles sur place. Une destination d’exception sur la Rive-Sud de Montréal, signée MVP.','se.l1':'Club privé d’affaires','se.l2':'Salles de réception et de conférences','se.l3':'Événements spéciaux','se.l4':'Celliers personnels','se.plus':'Visitez le site web – www.salonexecutif.ca','se.ft':'Demandez une visite privée du Salon Exécutif MVP','se.nom':'Votre nom','se.mail':'Votre courriel','se.go':'Réserver ma visite','se.note':'Sans engagement · places limitées','se.ok':'Merci ! Le Salon Exécutif vous contactera pour planifier votre visite.','se.err':"Envoi impossible pour l'instant. Écrivez-nous à info@mvpsportsmarketing.com",
-  'appel.h':"Faire appel aux <span class=\"gold\">icônes du sport</span><br>n'a jamais été aussi simple et facile.",'appel.p':"Communiquez avec nous dès aujourd'hui pour démarrer votre projet !",'appel.tel':'Appelez-nous','orbit.p':'MVP Sports Marketing vous donne accès à tous les athlètes et célébrités sportives<br>du Québec, du Canada et des États-Unis. Voici quelques-uns de nos ambassadeurs disponibles pour vos projets :','nav.d1':"Ambassadeurs et porte-parole",'nav.d2':"Animateurs",'nav.d3':"Conférenciers",'nav.d4':"Influenceurs",'nav.d5':"Invités d'honneur",'nav.d6':"Organisation d'événements",'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
+  'appel.h':"Faire appel aux <span class=\"gold\">icônes du sport</span><br>n'a jamais été aussi simple et facile.",'appel.p':"Communiquez avec nous dès aujourd'hui pour démarrer votre projet !",'appel.tel':'Appelez-nous','orbit.p':'MVP Sports Marketing vous donne accès à tous les athlètes et célébrités sportives<br>du Québec, du Canada et des États-Unis. Voici quelques-uns de nos ambassadeurs disponibles pour vos projets :','nav.d1':"Ambassadeurs et porte-parole",'nav.d2':"Animateurs",'nav.d3':"Conférenciers",'nav.d4':"Influenceurs",'nav.d5':"Invités d'honneur",'nav.services':'Services','nav.s1':'Conférenciers','nav.s2':'Ambassadeurs et porte-parole','nav.s3':'Stratégies médias sociaux et influenceurs','nav.s4':'Invités d\'honneur','nav.s5':'Événements corporatifs et consolidation d\'équipe',
   'nav.celebs':'Personnalités sportives','nav.projects':'Nos projets','nav.agency':'À propos','nav.contact':'Contact','nav.a1':'Mission de MVP Group','nav.a2':'Équipe de direction',
   'cat.hockey':'Hockey','cat.boxing':'Boxe','cat.mma':'MMA','cat.olympics':'Olympisme','cat.media':'Médias','cat.soccer':'Soccer','cat.others':'Autres',
   'hero.label':'MVP Group — Marketing sportif','hero.h1':'Associez votre entreprise<br>aux <span class="gold">icônes</span> du sport',
   "hero.lede":"Ambassadeurs de marque, conférenciers et porte-parole : associez une personnalité sportive à votre entreprise pour accroître votre notoriété, asseoir votre crédibilité et augmenter vos ventes.",
   'hero.scroll':'Défiler','cta.work':'Consultez-nous','cta.start':'Démarrer un projet','cta.view':'Voir le projet','cta.profile':'Voir le profil','cta.all':'Voir tous les projets','cta.how':'En savoir plus','cta.explore':'Découvrir les personnalités','cta.allTalent':'Voir toutes les personnalités','cta.allCat':'Voir tout','hb.k':'Canadiens de Montréal · Service vedette','hb.h':'<span class="hb__bleu">Collaborer avec un joueur</span> <em>des Canadiens</em>','hb.p':'Grâce à nos relations privilégiées avec les agents et les joueurs, les membres des Canadiens de Montréal sont accessibles pour vos projets. Joueurs actuels, légendes, entraîneurs et dirigeants : nous avons accès à plusieurs d’entre eux pour vos conférences, vos événements ou votre prochaine campagne publicitaire.','hb.l1':'Ambassadeurs de marque et porte-parole','hb.l2':'Campagnes marketing et relations publiques','hb.l3':'Conférences, animation et événements corporatifs','hb.cta':'Engager un membre des Canadiens','hb.cta2':'Voir les anciens des Canadiens','hb.anc':'Légendes des Canadiens à votre service','brands.trust':'Ils nous ont fait confiance','promo.cta1':'Faire une demande','promo.sub':'Nous avons accès à bien plus d’athlètes que ceux-ci : dites-nous qui vous intéresse.','promo.cta2':'Faire une demande',
-  'intro.label':'Notre expertise','intro.h2':'Les plus grandes célébrités sportives<br><em>sont disponibles pour votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':'N’importe quel athlète ou légende du sport,<br><span>partout en Amérique du Nord.</span>','mo.p':'Une vedette des grands sports américains : NFL, NBA, MLB, NHL, boxe, MMA, une légende, un champion olympique ? Dites-nous qui vous voulez. Nous l’approchons, négocions et livrons, partout en Amérique du Nord.','mo.s1':'Vous nommez la vedette sportive désirée','mo.s2':'Nous la contactons','mo.s3':'Nous concluons et réalisons l’activation','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un conseiller','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Baseball · Basketball · Football · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Ambassadeurs','hero.k2':'Animateurs','hero.k3':'Conférenciers','hero.k4':"Invités d'honneur",'hero.lede2':'Engagez les plus grands athlètes et légendes du sport pour propulser votre marque et augmenter le prestige de vos événements.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un conseiller :','intro.p1':"Depuis 2016, MVP Sports Marketing conseille les entreprises dans la création de partenariats stratégiques avec les athlètes professionnels, champion(ne)s olympiques et grandes figures du sport. Grâce à son vaste réseau, MVP vous offre un accès direct à toutes les célébrités sportives, partout au Québec, ailleurs au Canada et aux États-Unis.",'intro.p2':"Selon vos besoins et objectifs, MVP recommande les personnalités sportives les mieux adaptées et vous accompagne dans l’exécution de votre campagne ou de votre événement.",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",
+  'intro.label':'Notre expertise','intro.h2':'Les plus grandes célébrités sportives<br><em>sont disponibles pour votre entreprise</em>','mo.k':'MVP International · Sur demande','mo.h':'N’importe quel athlète ou légende du sport,<br><span>partout en Amérique du Nord.</span>','mo.p':'Une vedette des grands sports américains : NFL, NBA, MLB, NHL, boxe, MMA, une légende, un champion olympique ? Dites-nous qui vous voulez. Nous l’approchons, négocions et livrons, partout en Amérique du Nord.','mo.s1':'Vous nommez la vedette sportive désirée','mo.s2':'Nous la contactons','mo.s3':'Nous concluons et réalisons l’activation','mo.cta':'Demander une personnalité','mo.tel':'Ou parlez à un conseiller','mo.note':'Sous réserve de la disponibilité et des conditions de chaque personnalité.','mo.rub':'Baseball · Basketball · Football · Soccer · Formule 1 · Tennis · Golf · Boxe · MMA · Olympisme · Hockey · ','hero.k1':'Ambassadeurs','hero.k2':'Animateurs','hero.k3':'Conférenciers','hero.k4':"Invités d'honneur",'hero.lede2':'Engagez les plus grands athlètes et légendes du sport pour propulser votre marque et vos événements.','hero.ph':'Nom, sport, expertise…','hero.go':'Rechercher','hero.call':'Parlez à un conseiller :','intro.p1':"Depuis 2016, MVP Sports Marketing conseille les entreprises dans la création de partenariats stratégiques avec les athlètes professionnels, champion(ne)s olympiques et grandes figures du sport. Grâce à son vaste réseau, MVP vous offre un accès direct à toutes les célébrités sportives, partout au Québec, ailleurs au Canada et aux États-Unis.",'intro.p2':"Selon vos besoins et objectifs, MVP recommande les personnalités sportives les mieux adaptées et vous accompagne dans l’exécution de votre campagne ou de votre événement.",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",'intro.p3':"Trouver la meilleure vedette sportive pour vous représenter et contribuer à votre succès, c’est notre expertise. <b>Efficacement et rapidement !</b>",
   'intro.lede':"Depuis 2005, un réseau bâti de l'intérieur du sport québécois, mis au service de votre marque. Nous ciblons la bonne personnalité pour votre objectif, négocions l'entente, encadrons le tournage ou l'événement et livrons une activation clé en main. Un seul interlocuteur, du premier appel jusqu'au résultat.",
   'meta.founded':'Fondée à <em>Montréal</em>','meta.events':'Événements <em>produits</em>','meta.talent':'Personnalités <em>représentées</em>','meta.since':"Dans l'industrie <em>depuis</em>",'meta.events':"Événements produits",'meta.talent':"Personnalités représentées",'meta.since':"Dans l'industrie depuis",'meta.hq':'Siège social','meta.net':'Réseau','meta.cats':'7 catégories · 60+ personnalités','meta.catlist':'Hockey, boxe, MMA, olympisme, médias, soccer et plus',
   'orbit.h':'Nos célébrités sportives','orbit.hint':'Glisser · Balayer · Flèches','svc.h':'Nos services','svc.tag':'Service','exp.label':'Explorer','exp.title':'Catégories',
@@ -1969,13 +2008,13 @@ const I18N = {
  },
  en:{
   'se.k':'Private business club · DIX30, Brossard','se.h':'Discover the new Salon <span class="gold">Exécutif</span> MVP','se.p':'In 2026, MVP Sports Marketing founded a spectacular venue at the heart of DIX30 in Brossard, bringing together business leaders and sports icons. Across more than 7,300 sq. ft., the Salon Exécutif MVP welcomes companies and executives who want to host corporate events and be inspired by the sports celebrities available on site. An exceptional destination on Montréal’s South Shore, by MVP.','se.l1':'Private business club','se.l2':'Reception and conference rooms','se.l3':'Special events','se.l4':'Personal wine cellars','se.plus':'Visit the website – www.salonexecutif.ca','se.ft':'Request a private tour of the Salon Exécutif MVP','se.nom':'Your name','se.mail':'Your email','se.go':'Book my visit','se.note':'No commitment · limited spots','se.ok':'Thank you! The Salon Exécutif will contact you to plan your visit.','se.err':'Unable to send right now. Email us at info@mvpsportsmarketing.com',
-  'appel.h':'Hiring the <span class="gold">icons of sport</span><br>has never been this simple and easy.','appel.p':'Get in touch today to start your project!','appel.tel':'Call us','orbit.p':'MVP Sports Marketing gives you access to every athlete and sports celebrity<br>in Québec, Canada and the United States. Here are some of our ambassadors available for your projects:','nav.d1':"Ambassadors & spokespersons",'nav.d2':"Hosts",'nav.d3':"Keynote speakers",'nav.d4':"Influencers",'nav.d5':"Guests of honour",'nav.d6':"Event organization",'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
+  'appel.h':'Hiring the <span class="gold">icons of sport</span><br>has never been this simple and easy.','appel.p':'Get in touch today to start your project!','appel.tel':'Call us','orbit.p':'MVP Sports Marketing gives you access to every athlete and sports celebrity<br>in Québec, Canada and the United States. Here are some of our ambassadors available for your projects:','nav.d1':"Ambassadors & spokespersons",'nav.d2':"Hosts",'nav.d3':"Keynote speakers",'nav.d4':"Influencers",'nav.d5':"Guests of honour",'nav.services':'Services','nav.s1':'Keynote speakers','nav.s2':'Brand ambassadors & spokespersons','nav.s3':'Social media strategies & influencers','nav.s4':'Guests of honor','nav.s5':'Corporate events & teambuilding',
   'nav.celebs':'Sports celebrities','nav.projects':'Our projects','nav.agency':'About','nav.contact':'Contact','nav.a1':'MVP Group mission','nav.a2':'Management team',
   'cat.hockey':'Hockey','cat.boxing':'Boxing','cat.mma':'MMA','cat.olympics':'Olympics','cat.media':'Media','cat.soccer':'Soccer','cat.others':'Others',
   'hero.label':'MVP Group — Sports Marketing','hero.h1':'Pair your business<br>with the <span class="gold">icons</span> of sport',
   "hero.lede":"Brand ambassadors, keynote speakers and spokespersons: pair a sports personality with your business to raise awareness, establish credibility and increase sales.",
   'hero.scroll':'Scroll','cta.work':'Contact us','cta.start':'Start a project','cta.view':'View project','cta.profile':'View profile','cta.all':'See all projects','cta.how':'Learn more','cta.explore':'Explore personalities','cta.allTalent':'See all personalities','cta.allCat':'See all','hb.k':'Montréal Canadiens · Featured service','hb.h':'<span class="hb__bleu">Work with a player</span> <em>of the Canadiens</em>','hb.p':'Thanks to our close relationships with agents and players, members of the Montréal Canadiens are available for your projects. Current players, legends, coaches and executives: we have access to many of them for your keynotes, events or next advertising campaign.','hb.l1':'Brand ambassadors and spokespersons','hb.l2':'Marketing campaigns and public relations','hb.l3':'Keynotes, hosting and corporate events','hb.cta':'Book a member of the Canadiens','hb.cta2':'See Canadiens alumni','hb.anc':'Canadiens legends at your service','brands.trust':'They trusted us','promo.cta1':'Send a request','promo.sub':'We have access to far more athletes than these: tell us who you have in mind.','promo.cta2':'Send a request',
-  'intro.label':'Our expertise','intro.h2':'The greatest sports celebrities<br><em>are available for your business</em>','mo.k':'MVP International · On request','mo.h':'Any athlete or sports legend,<br><span>anywhere in North America.</span>','mo.p':'A star from the major American leagues: NFL, NBA, MLB, NHL, boxing, MMA, a legend, an Olympic champion? Tell us who you want. We approach them, negotiate and deliver, anywhere in North America.','mo.s1':'You name the sports star you want','mo.s2':'We contact them','mo.s3':'We close the deal and deliver the activation','mo.cta':'Request a personality','mo.tel':'Or talk to an advisor','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Baseball · Basketball · Football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Ambassadors','hero.k2':'Hosts','hero.k3':'Speakers','hero.k4':'Guests of honor','hero.lede2':'Hire the greatest athletes and sports legends to power your brand and raise the prestige of your events.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an advisor:','intro.p1':"Since 2016, MVP Sports Marketing has advised businesses on building strategic partnerships with professional athletes, Olympic champions and great figures of sport. Through its vast network, MVP gives you direct access to every sports celebrity, across Quebec, the rest of Canada and the United States.",'intro.p2':"Based on your needs and goals, MVP recommends the best-suited sports personalities and supports you in executing your campaign or event.",'intro.p3':"Finding the best sports star to represent you and contribute to your success is our expertise. <b>Quickly and efficiently!</b>",
+  'intro.label':'Our expertise','intro.h2':'The greatest sports celebrities<br><em>are available for your business</em>','mo.k':'MVP International · On request','mo.h':'Any athlete or sports legend,<br><span>anywhere in North America.</span>','mo.p':'A star from the major American leagues: NFL, NBA, MLB, NHL, boxing, MMA, a legend, an Olympic champion? Tell us who you want. We approach them, negotiate and deliver, anywhere in North America.','mo.s1':'You name the sports star you want','mo.s2':'We contact them','mo.s3':'We close the deal and deliver the activation','mo.cta':'Request a personality','mo.tel':'Or talk to an advisor','mo.note':'Subject to each personality\'s availability and terms.','mo.rub':'Baseball · Basketball · Football · Soccer · Formula 1 · Tennis · Golf · Boxing · MMA · Olympics · Hockey · ','hero.k1':'Ambassadors','hero.k2':'Hosts','hero.k3':'Speakers','hero.k4':'Guests of honor','hero.lede2':'Hire the greatest athletes and sports legends to power your brand and your events.','hero.ph':'Name, sport, expertise…','hero.go':'Search','hero.call':'Talk to an advisor:','intro.p1':"Since 2016, MVP Sports Marketing has advised businesses on building strategic partnerships with professional athletes, Olympic champions and great figures of sport. Through its vast network, MVP gives you direct access to every sports celebrity, across Quebec, the rest of Canada and the United States.",'intro.p2':"Based on your needs and goals, MVP recommends the best-suited sports personalities and supports you in executing your campaign or event.",'intro.p3':"Finding the best sports star to represent you and contribute to your success is our expertise. <b>Quickly and efficiently!</b>",
   "intro.lede":"Since 2005, a network built from inside Quebec sport, put to work for your brand. We identify the right personality for your objective, negotiate the agreement, run the shoot or the event and deliver a turnkey activation. One point of contact, from the first call to the result.",
   'meta.founded':'Founded in <em>Montréal</em>','meta.events':'Events <em>produced</em>','meta.talent':'Personalities <em>represented</em>','meta.since':'In the industry <em>since</em>','meta.events':"Events produced",'meta.talent':"Personalities represented",'meta.since':"In the industry since",'meta.hq':'Head office','meta.net':'Network','meta.cats':'7 categories · 60+ personalities','meta.catlist':'Hockey, boxing, MMA, Olympics, media, soccer & more',
   'orbit.h':'Our sports celebrities','orbit.hint':'Drag · Swipe · Arrow keys','svc.h':'Our services','svc.tag':'Service','exp.label':'Explore','exp.title':'Categories',
@@ -2018,10 +2057,11 @@ const SHOTS = [
 ];
 /* Section 3 */
 const SERVICES = [
- {num:'01',title:{fr:'Conférenciers',en:'Speakers & Conferences'},desc:{fr:"Offrez à votre auditoire des athlètes, champions, leaders et personnalités qui ont de véritables histoires à raconter.",en:'Connect audiences with respected athletes, champions, leaders and personalities who have powerful stories to share.'},img:'assets/svc-speakers-bruny.jpg',alt:'Microphone devant une salle de conférence',url:'service.html?s=speakers'},
- {num:'02',title:{fr:'Ambassadeurs et porte-parole',en:'Ambassadors & Spokespeople'},desc:{fr:'Créez des partenariats crédibles et durables entre votre marque et des personnalités reconnues.',en:'Create credible long-term partnerships between brands and recognizable personalities.'},img:'assets/svc-ambassadors-goodfood.jpg',alt:'Campagne de marque',url:'service.html?s=ambassadors'},
- {num:'03',title:{fr:"Animateurs et invités d'honneur",en:'Hosts & Guests of Honor'},desc:{fr:"Apportez attention, crédibilité et énergie à vos événements corporatifs, galas, lancements et expériences spéciales.",en:'Bring attention, credibility and energy to corporate events, galas, launches and special experiences.'},img:'assets/svc-hosts-panel.jpg',alt:"Animateur en entrevue lors d'un événement",url:'service.html?s=hosts'},
- {num:'04',title:{fr:'Campagnes et influenceurs',en:'Campaigns & Influencers'},desc:{fr:'Bâtissez des campagnes authentiques, du contenu de marque et des activations sociales avec des personnalités influentes.',en:'Build authentic campaigns, branded content and social-media activations around influential personalities.'},img:'assets/projets/kimclaveljeanbleu-2.jpg',alt:'Athlète créant du contenu de marque',url:'service.html?s=marketing'}
+ {num:'01',title:{fr:'Ambassadeurs et porte-parole',en:'Ambassadors & Spokespeople'},desc:{fr:'Créez des partenariats crédibles et durables entre votre marque et des personnalités reconnues.',en:'Create credible long-term partnerships between brands and recognizable personalities.'},img:'assets/svc-ambassadors-goodfood.jpg',alt:{fr:'Ambassadeur de marque en cuisine',en:'Brand ambassador in the kitchen'},url:'service.html?s=ambassadors'},
+ {num:'02',title:{fr:'Animateurs',en:'Hosts'},desc:{fr:"Confiez la scène de vos galas, congrès, lancements et soirées-bénéfice à une voix connue du sport.",en:'Hand the stage of your galas, conferences, launches and fundraisers to a well-known voice of sport.'},img:'assets/svc-hosts-panel.jpg',alt:{fr:"Table ronde animée lors d'un événement",en:'Hosted panel at an event'},url:'service.html?s=animateurs'},
+ {num:'03',title:{fr:'Conférenciers',en:'Keynote speakers'},desc:{fr:"Offrez à votre auditoire des athlètes, champions, leaders et personnalités qui ont de véritables histoires à raconter.",en:'Connect audiences with respected athletes, champions, leaders and personalities who have powerful stories to share.'},img:'assets/svc-speakers-bruny.jpg',alt:{fr:'Conférencier devant une salle comble',en:'Keynote speaker in front of a full room'},url:'service.html?s=speakers'},
+ {num:'04',title:{fr:'Influenceurs',en:'Influencers'},desc:{fr:'Bâtissez des campagnes authentiques, du contenu de marque et des activations sociales avec des personnalités influentes.',en:'Build authentic campaigns, branded content and social-media activations around influential personalities.'},img:'assets/projets/kimclaveljeanbleu-2.jpg',alt:{fr:'Athlète créant du contenu de marque',en:'Athlete creating branded content'},url:'service.html?s=marketing'},
+ {num:'05',title:{fr:"Invités d'honneur",en:'Guests of honour'},desc:{fr:"Offrez à vos événements la présence d'une légende ou d'un champion que vos invités n'oublieront pas.",en:'Give your events the presence of a legend or champion your guests will never forget.'},img:'assets/projets/sergesavardgestofhonorcorporatebox-1.jpg',alt:{fr:"Invité d'honneur entouré de partisans",en:'Guest of honour surrounded by fans'},url:'service.html?s=hosts'}
 ];
 /* Section 7 — projets de l'accueil : l'essentiel seulement (type, année,
    personnalité × marque). Le récit complet vit sur projet.html?id=… */
@@ -2147,8 +2187,9 @@ renderServices();
   const cadre=document.createElement('div'); cadre.className='sv__cadre'; vue.parentNode.insertBefore(cadre,vue); cadre.appendChild(vue); cadre.appendChild(nav);
   let occupe=false;
   const pas=()=>{const c=track.firstElementChild; return c? c.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap||0):0;};
+  const fixe=()=>matchMedia('(min-width:1100px)').matches;
   const aller=dir=>{
-    if(occupe||track.children.length<2) return; occupe=true; const d=pas();
+    if(fixe()||occupe||track.children.length<2) return; occupe=true; const d=pas();
     if(dir>0){
       track.style.transition='transform .6s cubic-bezier(.2,.7,.2,1)'; track.style.transform=`translate3d(${-d}px,0,0)`;
       setTimeout(()=>{ track.style.transition='none'; track.appendChild(track.firstElementChild); track.style.transform='translate3d(0,0,0)'; void track.offsetWidth; occupe=false; },620);
@@ -2164,7 +2205,7 @@ renderServices();
   vue.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) aller(dx<0?1:-1); x0=null; });
   /* glisser à la souris : les cartes suivent le curseur, puis passent à la suivante ou reviennent */
   let mx=null, dx=0, glisse=false;
-  vue.addEventListener('pointerdown',e=>{ if(e.pointerType!=='mouse'||e.button!==0||occupe) return; mx=e.clientX; dx=0; glisse=false; track.style.transition='none'; });
+  vue.addEventListener('pointerdown',e=>{ if(fixe()||e.pointerType!=='mouse'||e.button!==0||occupe) return; mx=e.clientX; dx=0; glisse=false; track.style.transition='none'; });
   addEventListener('pointermove',e=>{ if(mx===null) return; dx=e.clientX-mx; if(Math.abs(dx)>6){ glisse=true; vue.classList.add('est-glisse'); }
     if(glisse){ e.preventDefault(); track.style.transform=`translate3d(${dx}px,0,0)`; } });
   addEventListener('pointerup',()=>{ if(mx===null) return; mx=null; vue.classList.remove('est-glisse');
@@ -2178,7 +2219,7 @@ renderServices();
   });
   /* défilement horizontal (trackpad, molette latérale) : une carte à la fois */
   let acc=0, tAcc=null;
-  vue.addEventListener('wheel',e=>{ const h=Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.shiftKey; if(!h) return;
+  vue.addEventListener('wheel',e=>{ if(fixe()) return; const h=Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.shiftKey; if(!h) return;
     e.preventDefault(); acc+=(e.shiftKey&&!e.deltaX?e.deltaY:e.deltaX); clearTimeout(tAcc); tAcc=setTimeout(()=>{acc=0;},220);
     if(Math.abs(acc)>70){ aller(acc>0?1:-1); acc=0; } },{passive:false});
   /* un glissement ne doit pas ouvrir la carte */
@@ -2303,21 +2344,22 @@ function renderTalents(){
       <div class="tlrow__nav"><button class="tl-arrow tlrow__p" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button><button class="tl-arrow tlrow__n" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button></div></div>
       <div class="talents__rail tlrow__rail"></div>`;
     const rail=$('.tlrow__rail',row);
-    liste.forEach(p=>rail.appendChild(TalentCard({id:p.id,nom:p.nom,cat:p.cat,photo:p.photo,tags:p.tags,sub:{fr:'',en:''}})));
+    const cs=document.createElement('div'); cs.className='tlrow__cards';
+    liste.forEach(p=>cs.appendChild(TalentCard({id:p.id,nom:p.nom,cat:p.cat,photo:p.photo,tags:p.tags,sub:{fr:'',en:''}})));
     /* bannière promo bleue : au bout des rangées courtes, au début des rangées complètes */
     const court=liste.length<6, P=PROMO[cat]||PROMO.def;
     /* carré « Un autre … en tête ? » dans chaque sport : 1er à gauche, puis 5e à droite, en alternance */
     {
     const pr=document.createElement('div'); pr.className='tlpromo';
-    pr.innerHTML=`<div class="tlpromo__in"><span class="tlpromo__k">${L(CAT_FR[cat])} · MVP</span><p class="tlpromo__t">${L(P.court)}</p><p class="tlpromo__sub">${t('promo.sub')}</p><button type="button" class="tlpromo__cta" data-ui-ouvrir>${t('promo.cta1')} ${ARROW}</button></div>`;
+    pr.innerHTML=`<div class="tlpromo__in"><div class="tlpromo__sil" aria-hidden="true"><svg viewBox="0 0 200 230" preserveAspectRatio="xMidYMax meet"><defs><linearGradient id="silG${nCourt}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1b38"/><stop offset="1" stop-color="#061125"/></linearGradient></defs><path d="M100 14c-28 0-48 21-48 49 0 19 9 35 22 44-36 9-60 32-60 66v57h172v-57c0-34-24-57-60-66 13-9 22-25 22-44 0-28-20-49-48-49z" fill="url(#silG${nCourt})" stroke="rgba(255,255,255,.16)" stroke-width="1.4"/></svg><span class="tlpromo__q">?</span></div><span class="tlpromo__k">${L(CAT_FR[cat])} · MVP</span><p class="tlpromo__t">${L(P.court)}</p><p class="tlpromo__sub">${t('promo.sub')}</p><button type="button" class="tlpromo__cta" data-ui-ouvrir>${t('promo.cta1')} ${ARROW}</button></div>`;
     const gauche=(nCourt++)%2===0;
-    if(gauche){ pr.classList.add('tlpromo--gauche'); rail.insertBefore(pr,rail.firstChild); }
-    else rail.insertBefore(pr,rail.children[4]||null);
+    if(gauche){ pr.classList.add('tlpromo--gauche'); rail.append(pr,cs); }
+    else { rail.classList.add('tlrow__rail--droite'); rail.append(cs,pr); }
     }
     tlCats.appendChild(row);
     /* mobile : les cartes de la rangée deviennent une pile qu'on feuillette (comme les cartes des Canadiens) */
     (function(){
-      const items=[...rail.children];
+      const items=[...rail.querySelectorAll('.tcard,.tlpromo')];
       let ordre=items.map((_,i)=>i); const promo=items.findIndex(x=>x.classList.contains('tlpromo'));
       if(promo>-1){ ordre.splice(ordre.indexOf(promo),1); ordre.push(promo); }
       const ctl=document.createElement('div'); ctl.className='tlrow__deck';
@@ -2332,11 +2374,21 @@ function renderTalents(){
       rail.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>45) (dx<0?suiv:prec)(); x0=null; });
       placer();
     })();
-    const pas=()=>{const c=$('.tcard',rail);return c?(c.offsetWidth+parseFloat(getComputedStyle(rail).columnGap||0)):300;};
-    const maj=()=>{ $('.tlrow__p',row).disabled=rail.scrollLeft<=4; $('.tlrow__n',row).disabled=rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-4; };
-    $('.tlrow__p',row).onclick=()=>rail.scrollBy({left:-pas(),behavior:'smooth'});
-    $('.tlrow__n',row).onclick=()=>rail.scrollBy({left:pas(),behavior:'smooth'});
-    rail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); setTimeout(()=>{rail.scrollLeft=0;maj();},60);
+    /* défilement des célébrités (le carré bleu reste fixe) : flèches, trackpad, glisser à la souris */
+    const grand=()=>matchMedia('(min-width:1024px)').matches, sc=()=>grand()?cs:rail;
+    const pas=()=>{const c=$('.tcard',cs);return c?(c.offsetWidth+22):300;};
+    const nav=$('.tlrow__nav',row), bp=$('.tlrow__p',row), bn=$('.tlrow__n',row);
+    const maj=()=>{ const e=sc(); bp.disabled=e.scrollLeft<=4; bn.disabled=e.scrollLeft>=e.scrollWidth-e.clientWidth-4;
+      nav.style.display=(grand()&&liste.length<=4)?'none':''; };
+    bp.onclick=()=>sc().scrollBy({left:-(grand()?4:1)*pas(),behavior:'smooth'});
+    bn.onclick=()=>sc().scrollBy({left:(grand()?4:1)*pas(),behavior:'smooth'});
+    cs.addEventListener('scroll',maj,{passive:true}); rail.addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); setTimeout(()=>{cs.scrollLeft=0;rail.scrollLeft=0;maj();},60);
+    let dx0=0,ds0=0,don=false,dmv=false;
+    cs.addEventListener('pointerdown',e=>{ if(!grand()||e.pointerType!=='mouse'||e.button) return; dx0=e.clientX; ds0=cs.scrollLeft; don=true; dmv=false; });
+    addEventListener('pointermove',e=>{ if(!don) return; const d=e.clientX-dx0; if(!dmv&&Math.abs(d)>6){ dmv=true; cs.classList.add('saisi'); } if(dmv) cs.scrollLeft=ds0-d; });
+    addEventListener('pointerup',()=>{ if(!don) return; don=false; cs.classList.remove('saisi'); if(dmv){ const w=pas(); cs.scrollTo({left:Math.round(cs.scrollLeft/w)*w,behavior:'smooth'}); } });
+    cs.addEventListener('click',e=>{ if(dmv){ e.preventDefault(); e.stopPropagation(); dmv=false; } },true);
+    cs.addEventListener('dragstart',e=>e.preventDefault());
   });
 }
 renderTalents();
