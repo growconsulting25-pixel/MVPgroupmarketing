@@ -1345,6 +1345,7 @@ ul{list-style:none}
 .hb__glace::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,transparent,rgba(175,30,45,.14) 30%,rgba(175,30,45,.14) 70%,transparent)}
 .hb__in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(30px,5vw,90px);align-items:center;padding:0 var(--gutter)}
 .hb__k{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--ch-b)}
+.hb__bandes,.hbc__bandes{display:none!important}
 .hb__bandes{display:inline-flex;flex-direction:column;gap:3px;width:34px}
 .hb__bandes i{height:3px;border-radius:2px;background:var(--ch-b)}.hb__bandes i:nth-child(2){background:#d9dce4}.hb__bandes i:nth-child(3){background:var(--ch-r)}
 .hb__t{margin-top:18px;font-size:clamp(34px,4vw,72px);font-weight:800;line-height:.95;letter-spacing:-.035em;text-transform:uppercase;color:#0b0b0b}
@@ -1655,12 +1656,12 @@ ul{list-style:none}
   .sv__vue{cursor:default!important}
   .services .panel__title{font-size:clamp(13px,1.02vw,18px)!important;letter-spacing:0!important;overflow-wrap:anywhere}
 }
-.panel__img[src*="sergesavard"]{object-position:42% 50%!important}
+.panel__img[src*="patrickroymariotremblay"]{object-position:62% 50%!important}
 
 /* Silhouette plus compacte : le texte reste lisible dessous */
-.tlpromo__sil{position:relative!important;left:auto!important;right:auto!important;top:0!important;flex:1 1 0!important;min-height:0!important;height:auto!important;margin:-4px 0 -6px!important;-webkit-mask-image:linear-gradient(180deg,#000 90%,transparent)!important;mask-image:linear-gradient(180deg,#000 90%,transparent)!important}
+.tlpromo__sil{position:relative!important;left:auto!important;right:auto!important;top:0!important;flex:1 1 0!important;min-height:0!important;height:auto!important;margin:0!important;align-items:center!important;-webkit-mask-image:linear-gradient(180deg,#000 90%,transparent)!important;mask-image:linear-gradient(180deg,#000 90%,transparent)!important}
 .tlpromo__sil::before{display:none}
-.tlpromo__sil svg{position:relative;filter:none!important;height:100%!important;max-width:100%}
+.tlpromo__sil svg{position:relative;filter:none!important;height:100%!important;max-height:clamp(110px,12vw,170px);max-width:100%}
 .tlpromo__q{top:24%!important;font-size:clamp(28px,2.5vw,44px)!important}
 .tlpromo__k{margin-top:auto}
 
@@ -2072,7 +2073,7 @@ const SERVICES = [
  {num:'02',title:{fr:'Animateurs',en:'Hosts'},desc:{fr:"Confiez la scène de vos galas, congrès, lancements et soirées-bénéfice à une voix connue du sport.",en:'Hand the stage of your galas, conferences, launches and fundraisers to a well-known voice of sport.'},img:'assets/svc-hosts-panel.jpg',alt:{fr:"Table ronde animée lors d'un événement",en:'Hosted panel at an event'},url:'service.html?s=animateurs'},
  {num:'03',title:{fr:'Conférenciers',en:'Keynote speakers'},desc:{fr:"Offrez à votre auditoire des athlètes, champions, leaders et personnalités qui ont de véritables histoires à raconter.",en:'Connect audiences with respected athletes, champions, leaders and personalities who have powerful stories to share.'},img:'assets/svc-speakers-bruny.jpg',alt:{fr:'Conférencier devant une salle comble',en:'Keynote speaker in front of a full room'},url:'service.html?s=speakers'},
  {num:'04',title:{fr:'Influenceurs',en:'Influencers'},desc:{fr:'Bâtissez des campagnes authentiques, du contenu de marque et des activations sociales avec des personnalités influentes.',en:'Build authentic campaigns, branded content and social-media activations around influential personalities.'},img:'assets/projets/kimclaveljeanbleu-2.jpg',alt:{fr:'Athlète créant du contenu de marque',en:'Athlete creating branded content'},url:'service.html?s=marketing'},
- {num:'05',title:{fr:"Invités d'honneur",en:'Guests of honour'},desc:{fr:"Offrez à vos événements la présence d'une légende ou d'un champion que vos invités n'oublieront pas.",en:'Give your events the presence of a legend or champion your guests will never forget.'},img:'assets/projets/sergesavardgestofhonorcorporatebox-1.jpg',alt:{fr:"Invité d'honneur entouré de partisans",en:'Guest of honour surrounded by fans'},url:'service.html?s=hosts'}
+ {num:'05',title:{fr:"Invités d'honneur",en:'Guests of honour'},desc:{fr:"Offrez à vos événements la présence d'une légende ou d'un champion que vos invités n'oublieront pas.",en:'Give your events the presence of a legend or champion your guests will never forget.'},img:'assets/projets/patrickroymariotremblayuber-1.jpg',alt:{fr:"Invité d'honneur entouré de partisans",en:'Guest of honour surrounded by fans'},url:'service.html?s=hosts'}
 ];
 /* Section 7 — projets de l'accueil : l'essentiel seulement (type, année,
    personnalité × marque). Le récit complet vit sur projet.html?id=… */
