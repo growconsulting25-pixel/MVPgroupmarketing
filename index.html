@@ -1641,9 +1641,10 @@ ul{list-style:none}
 @media (min-width:900px){.intro__title{white-space:nowrap}}
 @media (max-width:899px){.intro__title{font-size:clamp(28px,8vw,44px)!important}}
 
-/* Intro : titre encore plus grand sur 3 lignes ; la hauteur de la section blanche reste la même (l'écart est repris sur les marges haut et bas du titre) */
+/* Intro : titre plus grand sur 3 lignes ; la hauteur de la section blanche reste la même (l'écart est repris : un peu au-dessus du titre, le reste sous le bouton) */
 @media (min-width:1100px){
-  .intro__title{white-space:nowrap!important;font-size:clamp(30px,4.4vw,80px)!important;line-height:1.04!important;margin-top:calc(-1.04 * (3 * clamp(30px,4.4vw,80px) - 2 * clamp(28px,3.3vw,58px)))!important;margin-bottom:0!important}
+  .intro__title{white-space:nowrap!important;font-size:clamp(30px,4.1vw,74px)!important;line-height:1.04!important;margin-top:calc(-0.4 * (3 * clamp(30px,4.1vw,74px) - 2 * clamp(28px,3.3vw,58px)))!important;margin-bottom:0!important}
+  .intro{padding-bottom:calc(var(--g) - 0.64 * (3 * clamp(30px,4.1vw,74px) - 2 * clamp(28px,3.3vw,58px)))!important}
 }
 
 /* Services : 5 cartes visibles d'un coup sur grand écran (la carte survolée s'agrandit) */
