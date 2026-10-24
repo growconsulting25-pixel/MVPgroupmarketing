@@ -748,7 +748,7 @@ body{background:#FFFFFF;color:var(--black)}
 .ab h2.ab__ttl{font-size:clamp(34px,4.6vw,78px);font-weight:800;line-height:.84;letter-spacing:-.045em;text-transform:uppercase;color:var(--black);margin-bottom:0}
 .ab__ttl span{display:block}
 .ab__sub{margin-top:18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.ab__col{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(22px,3vw,52px);align-items:start}
+.ab__col{display:block;gap:clamp(22px,3vw,52px);align-items:start}
 @media (max-width:1100px){.ab__col{grid-template-columns:1fr}}
 .ab__fact{font-size:clamp(28px,3.6vw,60px);font-weight:800;line-height:.88;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:26px}
 .ab__fact em{font-style:normal;color:var(--acc-1)}
@@ -760,6 +760,8 @@ body{background:#FFFFFF;color:var(--black)}
 .ab__side{background:#FAFAF8;border:1px solid var(--grey);border-radius:16px;padding:24px 22px;position:sticky;top:calc(var(--nav-h) + 20px)}
 .blk{border-top:1px solid var(--grey);padding:18px 0 4px}
 .blk:first-child{border-top:0;padding-top:0}
+.ab__h{position:relative;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin:26px 0 14px;padding-bottom:11px}.ab__h::after{content:"";position:absolute;left:0;bottom:0;width:34px;height:2px;background:var(--gold)}
+.dc{margin-top:30px}
 .blk h3{position:relative;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:13px;padding-bottom:9px;font-weight:700}
 .blk h3::after{content:"";position:absolute;left:0;bottom:0;width:26px;height:2px;background:var(--gold)}
 .blk ul{display:flex;flex-wrap:wrap;gap:6px}
@@ -927,7 +929,7 @@ body{background:#FFFFFF;color:var(--black)}
 /* Drapeau du Québec, pied de page */
 .footer__qc{display:inline-flex;align-items:center;gap:10px}
 .drapeau-qc{width:24px;height:16px;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
-@media (min-width:1101px){.ab__col{grid-template-columns:1.15fr .85fr}}
+
 .blk li{font-size:13.5px;padding:8px 15px;white-space:nowrap}
 .footer__grid>div{min-width:0}.footer__grid a{overflow-wrap:anywhere}
 /* le décor du bandeau ne dépasse plus sur téléphone */
@@ -949,15 +951,15 @@ html{overflow-x:clip}
 @media (min-width:1024px){.mm{display:none}}
 
 /* Photo de profil sous le nom (colonne de gauche) */
-.ab__ph{position:relative;margin-top:clamp(22px,3vw,40px);width:min(100%,360px);aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#0E2A4F;box-shadow:0 24px 50px rgba(13,20,51,.22)}
+.ab__ph{position:relative;margin-top:clamp(22px,3vw,40px);width:min(100%,360px);aspect-ratio:1/1;border-radius:20px;overflow:hidden;background:#0E2A4F;box-shadow:0 24px 50px rgba(13,20,51,.22)}
 .ab__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,79,0) 55%,rgba(8,24,46,.6));pointer-events:none}
 .ab__ph::before{content:"";position:absolute;left:18px;bottom:18px;width:34px;height:2px;background:var(--gold);z-index:2}
 .ab__ph-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.7)}
-.ab__ph-p{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
-.ab__ph-p--pleine{object-fit:cover;object-position:center top}
+.ab__ph-p{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 @media (max-width:1023px){.ab__ph{width:min(70%,320px)}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
+<script src="assets/titres-courts.js"></script>
 </head><body>
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
@@ -973,6 +975,7 @@ html{overflow-x:clip}
         <a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a>
         <a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs</a>
         <a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a>
+        <a href="service.html?s=evenements" data-i18n="nav.d6">Organisation d'événements</a>
       </div>
     </div>
     <div class="navitem">
@@ -1020,7 +1023,7 @@ html{overflow-x:clip}
       <ul><li data-i18n="foot.hq">Siège social : Montréal, Qc. Canada</li><li>Toronto · New York · Las Vegas</li><li><a href="tel:+15145823306">514-582-3306</a></li><li><a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
     </div>
     <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="index.html#personalities" data-i18n="nav.celebs">Personnalités</a></li><li><a href="index.html#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Nos projets</a></li><li><a href="agence.html" data-i18n="nav.agency">À propos</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=animateurs" data-i18n="nav.d2">Animateurs</a></li><li><a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a></li><li><a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs</a></li><li><a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a></li></ul></div>
+    <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=animateurs" data-i18n="nav.d2">Animateurs</a></li><li><a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a></li><li><a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs</a></li><li><a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a></li><li><a href="service.html?s=evenements" data-i18n="nav.d6">Organisation d\'événements</a></li></ul></div>
     <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul><li><a href="https://www.instagram.com/mvpgroupagency/" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" rel="noopener">Facebook</a></li></ul></div>
   </div>
 
@@ -1173,6 +1176,9 @@ const soc=Object.entries(t.social||{});
    personne, pour ne pas voir toujours les mêmes. */
 const SIENS=PROJETS_MVP.filter(p=>p.pers.includes(t.id));
 const aSesProjets=SIENS.length>0;
+/* Photo de profil (colonne de gauche) : toujours différente de la bannière et de la carte, qui utilisent la découpe.
+   Photo officielle de la personne ; pour celles dont la carte utilise déjà cette photo, une photo de leur galerie ou de leurs projets. */
+const photoProfil=t.photo2||t.photo;
 /* Conférenciers : résumé de la dernière conférence documentée */
 const CONF=SIENS.filter(p=>p.type==='Conférence').sort((a,b)=>(b.annee||0)-(a.annee||0))[0]||null;
 const CONFERENCIER=!!CONF||(t.roles||[]).includes('Speaker')||(t.projets||[]).includes('Conference / Keynote');
@@ -1216,7 +1222,7 @@ $('#profil').innerHTML=`
     <div class="hz__txt">
       <p class="hz__eye"><i></i>${CAT_FR[t.cat]||t.catNom} · MVP Talent Network</p>
       <h1 class="hz__h1">${t.prenom}<span>${t.famille}</span></h1>
-      <p class="hz__role">${t.titre.toLowerCase()===t.nom.toLowerCase()?t.roles.map(r=>roleFr(r,t)).join(' · '):t.titre}</p>
+      <p class="hz__role">${(window.MVP_TITRES||{})[t.id]||(t.titre.toLowerCase()===t.nom.toLowerCase()?t.roles.map(r=>roleFr(r,t)).join(' · '):t.titre)}</p>
       <div class="hz__pills">${t.roles.map(r=>`<span>${roleFr(r,t)}</span>`).join('')}</div>
       ${soc.length?`<div class="hz__soc">${soc.map(([k,u])=>`<a href="${u}" target="_blank" rel="noopener" aria-label="${k} de ${t.nom}">${ICO[k]||''}</a>`).join('')}</div>`:''}
       <div class="hz__cta"><button type="button" class="btn btn--gold" data-travailler>Engagez ${t.nom}</button></div>
@@ -1230,12 +1236,14 @@ $('#profil').innerHTML=`
       <h2 class="ab__ttl"><span>${t.prenom}</span><span>${t.famille}</span></h2>
       <p class="ab__sub">${CAT_FR[t.cat]||t.catNom}</p>
       <div class="ab__ph">
-        <img class="ab__ph-bg" src="assets/lieux/${({hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer'})[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
-        <img class="ab__ph-p" src="${t.decoupe||t.photo}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('ab__ph-p--pleine')">
+        <img class="ab__ph-p" src="${photoProfil}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo2||t.photo}'">
       </div>
     </div>
     <div class="ab__col">
      <div>
+      <div class="blk"><h3>Disponible pour</h3><ul>${t.projets.map(p=>`<li>${PROJ_FR[p]||p}</li>`).join('')}</ul></div>
+      ${t.qualites.length?`<div class="blk"><h3>${CONFERENCIER?'Thème(s) de sa conférence':'Thèmes'}</h3><ul>${t.qualites.map(q=>`<li class="fort">${q}</li>`).join('')}</ul></div>`:''}
+      <h3 class="ab__h">Biographie</h3>
       <p class="ab__fact"><em>${fait()}</em></p>
       <div class="ab__bio" id="bio">
         ${bio?par(debut):'<p>La biographie de cette personnalité sera ajoutée prochainement.</p>'}
@@ -1259,10 +1267,6 @@ $('#profil').innerHTML=`
         </div>
       </article>`:'')}
      </div>
-     <aside class="ab__side">
-      <div class="blk"><h3>Thèmes</h3><ul>${t.qualites.map(q=>`<li class="fort">${q}</li>`).join('')}</ul></div>
-      <div class="blk"><h3>Disponible pour</h3><ul>${t.projets.map(p=>`<li>${PROJ_FR[p]||p}</li>`).join('')}</ul></div>
-     </aside>
     </div>
   </div>
 </section>
@@ -1306,12 +1310,6 @@ ${simil.length?`<section class="sm" data-nav="dark">
       <span class="mini__t">${x.titre.toLowerCase()===x.nom.toLowerCase()?x.catNom:x.titre}</span></span></a>`).join('')}</div>
   </div>
 </section>`:''}
-
-<section class="br" data-nav="dark">
-  <div class="br__in">
-    <div class="br__rail"><ul>${[...LOGOS,...LOGOS].map(l=>`<li><img src="${l.f}" alt="${l.n}" loading="lazy"></li>`).join('')}</ul></div>
-  </div>
-</section>
 
 <section class="cv" data-nav="light">
   <span class="cv__cut"><img src="${t.decoupe}" alt="" onerror="this.parentElement.style.display='none'"></span>
