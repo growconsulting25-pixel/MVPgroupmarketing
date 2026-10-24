@@ -947,6 +947,15 @@ html{overflow-x:clip}
 .burger[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
 @media (min-width:1024px){.mm{display:none}}
+
+/* Photo de profil sous le nom (colonne de gauche) */
+.ab__ph{position:relative;margin-top:clamp(22px,3vw,40px);width:min(100%,360px);aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#0E2A4F;box-shadow:0 24px 50px rgba(13,20,51,.22)}
+.ab__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,79,0) 55%,rgba(8,24,46,.6));pointer-events:none}
+.ab__ph::before{content:"";position:absolute;left:18px;bottom:18px;width:34px;height:2px;background:var(--gold);z-index:2}
+.ab__ph-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.7)}
+.ab__ph-p{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.ab__ph-p--pleine{object-fit:cover;object-position:center top}
+@media (max-width:1023px){.ab__ph{width:min(70%,320px)}}
 </style>
 <link rel="stylesheet" href="assets/ui.css">
 </head><body>
@@ -1170,7 +1179,7 @@ const CONFERENCIER=!!CONF||(t.roles||[]).includes('Speaker')||(t.projets||[]).in
 const idx=TALENTS.findIndex(x=>x.id===t.id);
 const rot=PROJETS_MVP.filter(p=>!p.pers.includes(t.id));
 const PROJETS_VUE = aSesProjets ? SIENS : [0,1,2,3].map(k=>rot[(idx*5+7+k)%rot.length]);
-const PROJETS_TITRE = aSesProjets ? 'Derniers projets' : 'Réalisations MVP';
+const PROJETS_TITRE = aSesProjets ? 'Projets récents' : 'Réalisations MVP';
 /* Galerie : les photos de la personne d'abord, complétées par les visuels
    des projets réellement présentés au-dessus. Toujours au moins quatre
    pièces, toutes au même format. */
@@ -1220,6 +1229,10 @@ $('#profil').innerHTML=`
     <div>
       <h2 class="ab__ttl"><span>${t.prenom}</span><span>${t.famille}</span></h2>
       <p class="ab__sub">${CAT_FR[t.cat]||t.catNom}</p>
+      <div class="ab__ph">
+        <img class="ab__ph-bg" src="assets/lieux/${({hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer'})[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
+        <img class="ab__ph-p" src="${t.decoupe||t.photo}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('ab__ph-p--pleine')">
+      </div>
     </div>
     <div class="ab__col">
      <div>
@@ -1249,8 +1262,6 @@ $('#profil').innerHTML=`
      <aside class="ab__side">
       <div class="blk"><h3>Thèmes</h3><ul>${t.qualites.map(q=>`<li class="fort">${q}</li>`).join('')}</ul></div>
       <div class="blk"><h3>Disponible pour</h3><ul>${t.projets.map(p=>`<li>${PROJ_FR[p]||p}</li>`).join('')}</ul></div>
-      <div class="blk"><h3>Rôles</h3><ul>${t.roles.map(r=>`<li>${roleFr(r,t)}</li>`).join('')}</ul></div>
-      <div class="blk"><h3>Discipline</h3><ul><li>${CAT_FR[t.cat]||t.catNom}</li></ul></div>
      </aside>
     </div>
   </div>
@@ -1278,7 +1289,7 @@ ${PROJETS_VUE.length?`
 ${gal.length>=2?`
 <section class="gl" data-nav="light">
   <div class="gl__in">
-    <div class="gl__head"><h2 class="gl__t">Galerie</h2><span class="gl__n">${String(gal.length).padStart(2,'0')} photos · cliquez pour agrandir</span></div>
+    <div class="gl__head"><h2 class="gl__t">Galerie photo de ${t.nom}</h2><span class="gl__n">${String(gal.length).padStart(2,'0')} photos · cliquez pour agrandir</span></div>
     <div class="gl__grid gl__grid--${Math.min(gal.length,5)}" id="glGrid"></div>
   </div>
 </section>`:''}
@@ -1287,8 +1298,8 @@ ${gal.length>=2?`
 
 ${simil.length?`<section class="sm" data-nav="dark">
   <div class="sm__in">
-    <h2>Autres personnalités · ${CAT_FR[t.cat]||t.catNom}</h2>
-    <p class="s">Des profils comparables dans le réseau MVP.</p>
+    <h2>Autres personnalités qui pourraient vous intéresser</h2>
+    <p class="s">${CAT_FR[t.cat]||t.catNom} · d'autres profils du réseau MVP.</p>
     <div class="sm__g">${simil.map(x=>`<a class="mini" href="profil.html?id=${x.id}">
       <span class="mini__p"><img src="${x.photo}" alt="${x.nom}" loading="lazy"></span>
       <span class="mini__b"><span class="mini__n">${x.nom}</span>
@@ -1298,7 +1309,6 @@ ${simil.length?`<section class="sm" data-nav="dark">
 
 <section class="br" data-nav="dark">
   <div class="br__in">
-    <h2>Marques accompagnées par MVP</h2>
     <div class="br__rail"><ul>${[...LOGOS,...LOGOS].map(l=>`<li><img src="${l.f}" alt="${l.n}" loading="lazy"></li>`).join('')}</ul></div>
   </div>
 </section>
@@ -1307,7 +1317,7 @@ ${simil.length?`<section class="sm" data-nav="dark">
   <span class="cv__cut"><img src="${t.decoupe}" alt="" onerror="this.parentElement.style.display='none'"></span>
   <div class="cv__in">
     <h2>Intéressé à engager ${t.nom} ?</h2>
-    <p>Parlez-nous de votre public, de votre objectif et de votre événement. MVP s'occupe de l'entente, de l'encadrement et de l'exécution.</p>
+    <p>Parlez-nous de vos besoins ou de votre événement. MVP s'occupe de l'entente, de l'encadrement et de l'exécution.</p>
     <div class="cv__b">
       <button type="button" class="btn btn--gold" data-travailler>Engagez ${t.nom}</button>
       <a class="btn btn--outline" href="mailto:info@mvpsportsmarketing.com?subject=Nouveau%20projet">Parlez-nous de votre projet</a>
