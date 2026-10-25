@@ -1,7 +1,24 @@
 {
-  // Site statique servi par le Worker « mvp-revision » (nouveau projet, distinct de mvpworker) (fichiers statiques seulement).
+  // Site statique servi par le Worker « mvp-revision » (nouveau projet, distinct de mvpworker).
+  // Le Worker (worker/index.js) injecte le contenu publié depuis le tableau de bord (Supabase)
+  // dans les pages listées dans run_worker_first ; tout le reste est servi directement.
   // Déploiement : npx wrangler deploy  (CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID requis)
+  // Secret : npx wrangler secret put SUPABASE_ANON_KEY  (clé publishable du projet mvp-platform)
   "name": "mvp-revision",
+  "main": "worker/index.js",
   "compatibility_date": "2026-09-21",
-  "assets": { "directory": "./" }
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/personnalites*",
+      "/profil*",
+      "/service*",
+      "/projet*",
+      "/assets/projets-liste.js"
+    ]
+  },
+  "vars": {
+    "SUPABASE_URL": "https://ummztdqfmtyxykxwnviu.supabase.co"
+  }
 }
