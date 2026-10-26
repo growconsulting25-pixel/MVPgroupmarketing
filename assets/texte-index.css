@@ -137,3 +137,17 @@ p.lede{font-size:22px!important}
   .hb__fl{transform:none}
   .hbc__tag{background:rgba(5,10,40,.55);padding:3px 8px;border-radius:6px;width:fit-content}
 }
+/* Mobile : International = sur-titre, titre, carte, puis texte ; Canadiens aligné sur le même gabarit */
+@media (max-width:1023px){
+  .mo__in{display:flex!important;flex-direction:column;align-items:center;padding:0 var(--gutter)!important}
+  .mo__txt{display:contents}
+  .mo__k{order:1}.mo__t{order:2;margin-top:12px}
+  .mo__carte{order:3!important;width:100%!important;margin:18px 0 22px!important}
+  .mo__p{order:4}.mo__steps{order:5}.mo__cta{order:6}.mo__note{order:7}
+  .mo__p,.mo__steps,.mo__note{max-width:100%!important;width:100%}
+  .hb__in{padding:0 var(--gutter)!important}
+  .hb__scene{transform:none!important;margin:20px auto 10px!important;width:100%;max-width:340px}
+  .hb__k,.hb__t,.hb__p{padding-left:0!important;padding-right:0!important;width:100%;text-align:center!important}
+  .hb__liste,.hb__cta{width:100%!important;padding:0!important}
+  .hb__ctrl{justify-content:center}
+}

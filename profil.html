@@ -958,9 +958,9 @@ html{overflow-x:clip}
 .ab__ph-p{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 @media (max-width:1023px){.ab__ph{width:min(70%,320px)}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2622">
-<script src="assets/titres-courts.js?v=b2622"></script>
-<link rel="stylesheet" href="assets/texte-profil.css?v=b2622">
+<link rel="stylesheet" href="assets/ui.css?v=b2624">
+<script src="assets/titres-courts.js?v=b2624"></script>
+<link rel="stylesheet" href="assets/texte-profil.css?v=b2624">
 </head><body>
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
@@ -1128,6 +1128,7 @@ const LOGOS=[
  {n:'RE/MAX Platine',f:'assets/re-max-platine.png'},{n:'Pratt & Whitney',f:'assets/pratt-whitney.png'},
  {n:'Holiday Inn Express',f:'assets/holiday-inn-express.png'},{n:'Jean Bleu',f:'assets/jean-bleu.png'}
 ];
+const BG_ID={'eric-gagne':'baseball','claude-raymond':'baseball','matthew-bergeron':'football','bruno-heppell':'football'};
 const LIEU_PHOTO={hockey:'assets/lieux/hockey.jpg',boxing:'assets/lieux/boxing.jpg',
   mma:'assets/lieux/mma.jpg',soccer:'assets/lieux/soccer.jpg',
   olympics:'assets/lieux/olympics.jpg',media:'assets/lieux/media.jpg'};
@@ -1204,8 +1205,8 @@ $('#profil').innerHTML=`
 <section class="hz" data-nav="light">
   <div class="hz__ph">
     <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${LIEUX[t.cat]||LIEUX.other}</svg>
-    ${LIEU_PHOTO[t.cat]
-      ? `<img class="hz__lieu" src="${LIEU_PHOTO[t.cat]}" alt="" loading="eager">`
+    ${(BG_ID[t.id]?'assets/lieux/'+BG_ID[t.id]+'.jpg':LIEU_PHOTO[t.cat])
+      ? `<img class="hz__lieu" src="${BG_ID[t.id]?'assets/lieux/'+BG_ID[t.id]+'.jpg':LIEU_PHOTO[t.cat]}" alt="" loading="eager">`
       : `<img class="hz__phi" src="${t.photo2||t.photo}" alt="" loading="eager">`}
   </div>
   <div class="hz__deco" id="deco">
@@ -1452,6 +1453,6 @@ if(bl) bl.addEventListener('click',()=>{ $('#bio').classList.toggle('ouvert');
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
-<script src="assets/ui.js?v=b2622"></script>
-<script src="assets/nav.js?v=b2622"></script>
+<script src="assets/ui.js?v=b2624"></script>
+<script src="assets/nav.js?v=b2624"></script>
 </body></html>

@@ -797,9 +797,9 @@ img[src*="svc-speakers-rochette"]{object-position:30% 40%!important}
 @media (max-width:700px){.pe__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:440px){.pe__grid{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2622">
-<script src="assets/titres-courts.js?v=b2622"></script>
-<link rel="stylesheet" href="assets/texte-service.css?v=b2622">
+<link rel="stylesheet" href="assets/ui.css?v=b2624">
+<script src="assets/titres-courts.js?v=b2624"></script>
+<link rel="stylesheet" href="assets/texte-service.css?v=b2624">
 </head><body>
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
@@ -896,6 +896,7 @@ const estAnim=t=>t.roles.includes('Host')||t.cat==='media';
 let pers=TALENTS.filter(t=>t.services.includes(SK));
 if(key==='evenements') pers=TALENTS.filter(t=>t.projets.includes('Corporate Event')||t.projets.includes('Charity Event'));
 if(key==='animateurs'){ const a=pers.filter(estAnim); pers=a.length>=4?a:pers; }
+const BG_ID={'eric-gagne':'baseball','claude-raymond':'baseball','matthew-bergeron':'football','bruno-heppell':'football'};
 const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
 const SPORT_FR={hockey:'Hockey',boxing:'Boxe',mma:'MMA',olympics:'Olympique',media:'Médias',soccer:'Soccer',other:'Autres'};
 const PREMIERS=10;
@@ -932,7 +933,7 @@ $('#svc').innerHTML=`
     const sous=(window.MVP_TITRES||{})[t.id]||(t.titre.toLowerCase()===t.nom.toLowerCase()?(SPORT_FR[t.cat]||t.catNom):t.titre);
     return `<article class="tcard"${k>=PREMIERS?' hidden':''}><div class="tcard__in">
     <a class="tcard__ph" href="${href}" aria-label="${t.nom} — Voir le profil"><span class="tcard__ini" aria-hidden="true">${t.nom.split(/[\s-]+/).map(w=>w[0]).join('').slice(0,2)}</span>
-      <img class="tcard__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
+      <img class="tcard__bg" src="assets/lieux/${BG_ID[t.id]||LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
       <img class="tcard__p${pleine?' tcard__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tcard__p--pleine')">
     </a>
     <span class="tcard__cat">${SPORT_FR[t.cat]||t.catNom}</span>
@@ -1007,6 +1008,6 @@ glisser($('#acRail'));
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
-<script src="assets/ui.js?v=b2622"></script>
-<script src="assets/nav.js?v=b2622"></script>
+<script src="assets/ui.js?v=b2624"></script>
+<script src="assets/nav.js?v=b2624"></script>
 </body></html>

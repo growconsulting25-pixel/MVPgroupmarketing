@@ -877,9 +877,9 @@ body{background:var(--soft);color:var(--black)}
 .tk-lien{display:block;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;color:#1E5299;text-decoration:underline;cursor:pointer}
 .tk__th,.tk__reach{display:none!important}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2622">
-<script src="assets/titres-courts.js?v=b2622"></script>
-<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2622">
+<link rel="stylesheet" href="assets/ui.css?v=b2624">
+<script src="assets/titres-courts.js?v=b2624"></script>
+<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2624">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -1119,6 +1119,7 @@ function filtrer(){
 
 /* ---- carte : grande photo, nom, discipline / rôle, rayonnement, thèmes ---- */
 /* Chaque personnalité est détourée et posée sur un lieu de sa discipline. */
+const BG_ID={'eric-gagne':'baseball','claude-raymond':'baseball','matthew-bergeron':'football','bruno-heppell':'football'};
 const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
 /* détourages trop petits ou trop larges : on garde la photo d'origine */
 const PHOTO_PLEINE=new Set(['katerine-savard','chantal-machabee']);
@@ -1131,7 +1132,7 @@ function carte(t){
   const themes=(t.qualites.length?t.qualites:t.projets.map(p=>PROJ_FR[p]||p)).slice(0,3);
   el.innerHTML=`
     <div class="tk__ph">
-      <img class="tk__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
+      <img class="tk__bg" src="assets/lieux/${BG_ID[t.id]||LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
       <img class="tk__p${pleine?' tk__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tk__p--pleine')">
       <div class="tk__id">
         <h3 class="tk__nom">${t.nom}</h3>
@@ -1295,6 +1296,6 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
 </script>
-<script src="assets/ui.js?v=b2622"></script>
-<script src="assets/nav.js?v=b2622"></script>
+<script src="assets/ui.js?v=b2624"></script>
+<script src="assets/nav.js?v=b2624"></script>
 </body></html>
