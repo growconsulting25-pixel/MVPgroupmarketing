@@ -648,6 +648,17 @@ body{background:var(--soft);color:var(--black)}
 .bar__n b{color:var(--black);font-weight:700}
 
 /* ---------- GRILLE ---------- */
+.tk-promo{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;gap:10px;padding:22px 18px;border-radius:18px;color:#fff;overflow:hidden;min-height:100%;background:radial-gradient(90% 55% at 50% 22%,rgba(76,134,214,.55),transparent 70%),linear-gradient(165deg,#1E5299 0%,#123B6D 55%,#0b2547 100%);box-shadow:0 16px 30px rgba(13,20,51,.22)}
+.tk-promo--g{grid-column:1}.tk-promo--d{grid-column:-2}
+.tk-promo__sil{flex:1 1 0;min-height:0;width:100%;display:flex;justify-content:center;align-items:flex-end;max-height:210px}
+.tk-promo__sil svg{height:100%;width:auto;max-width:100%}
+.tk-promo__k{font-size:11px;letter-spacing:.2em;font-weight:800;color:var(--gold)}
+.tk-promo__t{font-size:clamp(18px,1.5vw,24px);line-height:1.1;font-weight:800;text-transform:uppercase}
+.tk-promo__s{font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)}
+.tk-promo__b{margin-top:6px;padding:13px 22px;border:1px solid rgba(255,255,255,.6);border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.tk-promo__b:hover{background:#fff;color:#123B6D}
+@media (max-width:760px){.tk-promo--g,.tk-promo--d{grid-column:auto}}
+.grid{grid-auto-flow:row dense}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.2vw,20px)}
 @media (max-width:1560px){.grid{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:1180px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -877,9 +888,9 @@ body{background:var(--soft);color:var(--black)}
 .tk-lien{display:block;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;color:#1E5299;text-decoration:underline;cursor:pointer}
 .tk__th,.tk__reach{display:none!important}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2619">
-<script src="assets/titres-courts.js?v=b2619"></script>
-<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2619">
+<link rel="stylesheet" href="assets/ui.css?v=b2633">
+<script src="assets/titres-courts.js?v=b2633"></script>
+<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2633">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -934,7 +945,7 @@ body{background:var(--soft);color:var(--black)}
     <img class="bp__bg" src="assets/banniere-talents-v2.jpg" alt="" width="1800" height="600">
     <div class="bp__hin">
       <p class="label">MVP Talent Network</p>
-      <h1>Des personnalités <span class="gold">qui font la différence.</span></h1>
+      <h1>Des célébrités sportives <span class="gold">qui font la différence.</span></h1>
       <p class="bp__lede">Athlètes, olympiens, légendes du sport et personnalités médiatiques pour vos conférences, campagnes et événements.</p>
     </div>
   </section>
@@ -1119,11 +1130,19 @@ function filtrer(){
 
 /* ---- carte : grande photo, nom, discipline / rôle, rayonnement, thèmes ---- */
 /* Chaque personnalité est détourée et posée sur un lieu de sa discipline. */
+const BG_ID={'eric-gagne':'baseball','claude-raymond':'baseball','matthew-bergeron':'football','bruno-heppell':'football'};
 const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
 /* détourages trop petits ou trop larges : on garde la photo d'origine */
 const PHOTO_PLEINE=new Set(['katerine-savard','chantal-machabee']);
 const SPORT_FR=Object.fromEntries(SPORTS);
 const FLECHE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const SIL=`<svg viewBox="0 0 200 234" preserveAspectRatio="xMidYMax meet"><path d="M187.0 233.5 L6.0 233.8 L3.2 233.5 L1.4 232.0 L0.9 229.6 L0.9 217.5 L0.0 212.9 L0.0 204.5 L0.9 198.0 L1.0 186.0 L1.8 181.3 L1.9 174.8 L4.1 160.0 L6.5 150.7 L9.7 142.8 L16.2 133.6 L24.6 127.0 L33.9 121.7 L50.6 115.2 L64.9 108.0 L68.2 105.6 L70.1 102.4 L70.3 94.1 L64.4 82.0 L62.5 75.5 L62.0 70.9 L59.7 66.3 L56.7 57.0 L55.8 51.4 L57.5 47.7 L53.1 37.5 L53.8 31.0 L53.2 26.4 L53.9 24.5 L56.0 22.6 L58.0 17.9 L63.6 13.2 L68.2 10.5 L71.9 5.5 L75.6 2.5 L79.3 1.5 L89.6 0.0 L96.0 1.2 L100.7 3.2 L110.0 5.8 L113.7 7.6 L125.7 16.1 L127.0 18.9 L127.6 24.4 L130.5 29.1 L130.8 32.8 L128.3 43.1 L128.7 46.8 L127.0 61.6 L123.6 70.0 L123.3 79.2 L122.1 84.8 L119.9 90.4 L120.1 94.1 L121.8 99.7 L123.1 101.5 L126.7 104.0 L161.9 118.5 L172.1 123.7 L180.0 129.4 L183.9 134.9 L191.8 160.0 L200.0 191.5 L199.1 194.0 L194.4 197.1 L193.2 199.0 L191.9 213.8 L189.1 231.4 L187.9 233.1 L187.0 233.5Z" fill="#fff" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/><text x="100" y="182" text-anchor="middle" font-size="64" font-weight="900" font-family="Arial,Helvetica,sans-serif" fill="#123B6D">?</text></svg>`;
+/* carte bleue « Un autre ambassadeur en tête ? » : 8e, 17e, 32e… en alternance à gauche / à droite */
+function promoBleue(droite){
+  const el=document.createElement('article'); el.className='tk-promo '+(droite?'tk-promo--d':'tk-promo--g');
+  el.innerHTML=`<div class="tk-promo__sil" aria-hidden="true">${SIL}</div><p class="tk-promo__k">MVP</p><h3 class="tk-promo__t">Un autre ambassadeur<br>en tête ?</h3><p class="tk-promo__s">Nous l’approchons pour vous !<br>Dites-nous qui vous intéresse.</p><button type="button" class="tk-promo__b" data-ui-ouvrir>Faire une demande</button>`;
+  return el;
+}
 function carte(t){
   const el=document.createElement('a'); el.className='tk'; el.href='profil.html?id='+t.id;
   const pleine=PHOTO_PLEINE.has(t.id);
@@ -1131,7 +1150,7 @@ function carte(t){
   const themes=(t.qualites.length?t.qualites:t.projets.map(p=>PROJ_FR[p]||p)).slice(0,3);
   el.innerHTML=`
     <div class="tk__ph">
-      <img class="tk__bg" src="assets/lieux/${LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
+      <img class="tk__bg" src="assets/lieux/${BG_ID[t.id]||LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
       <img class="tk__p${pleine?' tk__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tk__p--pleine')">
       <div class="tk__id">
         <h3 class="tk__nom">${t.nom}</h3>
@@ -1163,10 +1182,13 @@ function rendre(){
     const b=$('#demNom'); if(b) b.addEventListener('click',()=>{ if(window.mvpDemande) mvpDemande({persos:[nom]}); });
   } else {
     /* Regroupées par sport : un titre de sport au début de chaque groupe */
-    let dernier=null;
+    let dernier=null, nC=0, promoN=0;
     visibles.forEach(t=>{
       if(t.cat!==dernier){ dernier=t.cat; const h=document.createElement('h2'); h.className='tk-sport'; h.textContent=SPORT_FR[t.cat]||t.catNom; g1.appendChild(h); }
-      g1.appendChild(carte(t));
+      /* carte bleue : 8e, 17e, 24e, 33e… (position dans la grille) : fin de ligne à droite, puis début de ligne à gauche */
+      const estPromo=p=>p===8||(p>16&&(p%16===1||p%16===8));
+      if(estPromo(nC+1)){ nC++; g1.appendChild(promoBleue(nC%16===8)); }
+      g1.appendChild(carte(t)); nC++;
     });
   }
   $('#plus').parentElement.style.display = r.length>max ? '' : 'none';
@@ -1295,6 +1317,6 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
 </script>
-<script src="assets/ui.js?v=b2619"></script>
-<script src="assets/nav.js?v=b2619"></script>
+<script src="assets/ui.js?v=b2633"></script>
+<script src="assets/nav.js?v=b2633"></script>
 </body></html>
