@@ -77,3 +77,29 @@ p.lede{font-size:22px!important}
   .footer h2{font-size:34px!important}
   .tcard__nom,.hbc__nom{font-size:26px!important}
 }
+/* Mobile : titres, paragraphes et boutons centrés ; Canadiens = titre, carte, puis texte */
+@media (max-width:1023px){
+  .hb__k{order:1}.hb__t{order:2}
+  .hb__scene{order:3!important;margin:22px 0 14px!important}
+  .hb__p{order:4}.hb__liste{order:5}.hb__cta{order:6}
+}
+@media (max-width:640px){
+  .intro__title,.intro__p,.intro__p p,.intro__cols,.talents__t,.talents__p,.talents__head,.services__bg,.sv__head,.appel__t,.appel__p,.hb__k,.hb__t,.hb__p,.hb__sous,.mo__k,.mo__t,.mo__p,.mo__note,.se__k,.se__t,.se__p,.se__ft,.se__note,.projets__t,.projets__head,.footer h2,.footer__phrase{text-align:center!important}
+  .intro__top{align-items:center!important}
+  .intro__cta,.talents__side,.projets__side,.sv__head,.hb__cta,.hb__cta-bas,.mo__cta,.appel__cta,.appel__btns,.se__plus,.projets__foot{justify-content:center!important;margin-left:auto!important;margin-right:auto!important}
+  .talents__head,.projets__head,.sv__head{flex-direction:column!important;align-items:center!important}
+  .talents__side{margin-left:0!important;order:2!important}
+  .tlrow__head{justify-content:center!important;flex-wrap:wrap}
+  .tlrow__all{margin-left:0!important}
+  .tlrow__t::before,.hb__k::before,.mo__k::before,.se__k::before{display:none}
+  .hb__k,.mo__k,.se__k{justify-content:center!important}
+  .hb__liste{margin-left:auto!important;margin-right:auto!important}
+  .appel{text-align:center!important}
+  .appel__tel,.appel__go{margin-left:auto;margin-right:auto}
+  .tlpromo__in{text-align:center!important;align-items:center!important}
+  .tcard__body{text-align:center!important}
+  .tcard__body .tcard__nom,.tcard__body .tcard__sub{text-align:center!important}
+  .tcard__cta,.tcard__lien{justify-content:center!important;margin-left:auto;margin-right:auto}
+  .tcard__body::before{margin-left:auto;margin-right:auto}
+}
+@media (max-width:640px){.mo__k i{display:none}.mo__k{display:flex!important}}
