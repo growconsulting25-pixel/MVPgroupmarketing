@@ -1702,11 +1702,11 @@ h2.hero__k a{transition:color .3s}h2.hero__k a:hover{color:#fff}
 .hb__cta-bas .hb__go{margin:0}
 .hb__cta{gap:0}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2617">
+<link rel="stylesheet" href="assets/ui.css?v=b2619">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="assets/projets-liste.js?v=b2617"></script>
-<script src="assets/titres-courts.js?v=b2617"></script>
-<link rel="stylesheet" href="assets/texte-index.css?v=b2617">
+<script src="assets/projets-liste.js?v=b2619"></script>
+<script src="assets/titres-courts.js?v=b2619"></script>
+<link rel="stylesheet" href="assets/texte-index.css?v=b2619">
 </head>
 <body>
 <a class="sr" href="#contact">Skip to contact</a>
@@ -2404,11 +2404,12 @@ function renderTalents(){
     (function(){
       const items=[...rail.querySelectorAll('.tcard,.tlpromo')];
       let ordre=items.map((_,i)=>i); const promo=items.findIndex(x=>x.classList.contains('tlpromo'));
-      if(promo>-1){ ordre.splice(ordre.indexOf(promo),1); ordre.push(promo); }
+      /* mobile : le carré bleu n'entre jamais dans la pile (la carte principale est toujours une célébrité) */
+      if(promo>-1){ ordre.splice(ordre.indexOf(promo),1); items[promo].dataset.pos=3; items[promo].setAttribute('aria-hidden','true'); }
       const ctl=document.createElement('div'); ctl.className='tlrow__deck';
       ctl.innerHTML=`<button type="button" class="hb__fl tlrow__dp" aria-label="Précédent"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button><span class="tlrow__cpt"></span><button type="button" class="hb__fl tlrow__dn" aria-label="Suivant"><svg width="20" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button>`;
       rail.after(ctl); const base=[...ordre];
-      const placer=()=>{ ordre.forEach((idx,pos)=>{ items[idx].dataset.pos=Math.min(pos,3); }); $('.tlrow__cpt',ctl).textContent=(base.indexOf(ordre[0])+1)+' / '+items.length; };
+      const placer=()=>{ ordre.forEach((idx,pos)=>{ items[idx].dataset.pos=Math.min(pos,3); }); $('.tlrow__cpt',ctl).textContent=(base.indexOf(ordre[0])+1)+' / '+base.length; };
       const suiv=()=>{ ordre.push(ordre.shift()); placer(); }, prec=()=>{ ordre.unshift(ordre.pop()); placer(); };
       $('.tlrow__dn',ctl).onclick=suiv; $('.tlrow__dp',ctl).onclick=prec;
       const mob=()=>matchMedia('(max-width:640px)').matches;
@@ -2753,7 +2754,7 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
   });
 })();
 </script>
-<script src="assets/ui.js?v=b2617"></script>
+<script src="assets/ui.js?v=b2619"></script>
 <script>
 (function(){
   const d=document.getElementById('seDeck'); if(!d) return;
