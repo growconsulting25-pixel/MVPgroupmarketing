@@ -1,33 +1,30 @@
 /* Textes courants : plus gros (généré) */
 @media (min-width:1100px){
+  p.label{font-size:16.2px!important}
+  span.sr{font-size:20.2px!important}
+  p.tk__sub{font-size:17.2px!important}
+  span.pfc__n{font-size:20.8px!important}
+  p.suite__p{font-size:18.7px!important}
+  .aide > p{font-size:20.2px!important}
+  .footer__qc > span{font-size:17.2px!important}
+}
+@media (min-width:641px) and (max-width:1099px){
+  p.label{font-size:15.6px!important}
+  span.sr{font-size:19.6px!important}
+  p.tk__sub{font-size:16.6px!important}
+  span.pfc__n{font-size:18.6px!important}
+  p.suite__p{font-size:18.1px!important}
+  .aide > p{font-size:19.6px!important}
+  .footer__qc > span{font-size:16.6px!important}
+}
+@media (max-width:640px){
   p.label{font-size:14.6px!important}
-  p.bp__lede{font-size:18.3px!important}
-  span.sr{font-size:18.8px!important}
+  span.sr{font-size:19px!important}
   p.tk__sub{font-size:15.6px!important}
-  span.pfc__n{font-size:19.4px!important}
+  span.pfc__n{font-size:17.6px!important}
   p.suite__p{font-size:17.1px!important}
   .aide > p{font-size:18.6px!important}
   .footer__qc > span{font-size:15.6px!important}
 }
-@media (min-width:641px) and (max-width:1099px){
-  p.label{font-size:14.2px!important}
-  p.bp__lede{font-size:17.2px!important}
-  span.sr{font-size:18.4px!important}
-  p.tk__sub{font-size:15.2px!important}
-  span.pfc__n{font-size:17.2px!important}
-  p.suite__p{font-size:16.7px!important}
-  .aide > p{font-size:18.2px!important}
-  .footer__qc > span{font-size:15.2px!important}
-}
-@media (max-width:640px){
-  p.label{font-size:13.6px!important}
-  p.bp__lede{font-size:16.6px!important}
-  span.sr{font-size:18px!important}
-  p.tk__sub{font-size:14.6px!important}
-  span.pfc__n{font-size:16.6px!important}
-  p.suite__p{font-size:16.1px!important}
-  .aide > p{font-size:17.6px!important}
-  .footer__qc > span{font-size:14.6px!important}
-}
-.footer ul li,.footer ul li a{font-size:18px!important}
-@media (max-width:640px){.footer ul li,.footer ul li a{font-size:16.5px!important}}
+.footer ul li,.footer ul li a{font-size:19px!important}
+@media (max-width:640px){.footer ul li,.footer ul li a{font-size:17px!important}}
