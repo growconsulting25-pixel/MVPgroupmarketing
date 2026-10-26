@@ -1671,6 +1671,10 @@ ul{list-style:none}
   .services .services__track{gap:24px!important}
   .services .services__track:hover .panel:not(:hover){flex-basis:calc((100% - 96px)/5 - 52px)!important}
   .services .services__track .panel:hover{flex-basis:calc((100% - 96px)/5 + 208px)!important}
+  .services .services__track .panel:hover,.services .services__track:not(:hover) .panel:nth-child(3){flex-basis:calc((100% - 96px)/5 + 208px)!important}
+  .services .services__track:not(:hover) .panel:nth-child(3) .panel__desc{opacity:1;max-height:140px;transform:none}
+  .services .services__track:not(:hover) .panel:not(:nth-child(3)){flex-basis:calc((100% - 96px)/5 - 52px)!important}
+  .services .services__track:not(:hover) .panel:not(:nth-child(3)) .panel__img{filter:brightness(.62) saturate(.9)}
   .sv__nav{display:none!important}
   .sv__vue{cursor:default!important}
   .services .panel__title{font-size:clamp(14px,1.13vw,22px)!important;letter-spacing:-.015em!important;line-height:1.02!important}
