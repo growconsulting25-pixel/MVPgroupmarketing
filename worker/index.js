@@ -11,6 +11,8 @@
  * lecture seule des lignes « published », imposée par RLS).
  */
 
+import { buildHomepage, rewriteHomepage } from './homepage.js';
+
 const CACHE_SECONDS = 60;
 const CAT_NOM = { boxing: 'Boxing', hockey: 'Hockey', mma: 'MMA', olympics: 'Olympics', media: 'Media', soccer: 'Soccer', other: 'Others' };
 const TYPE_CODE = { 'Ambassadeur': 'amb', 'Conférence': 'conf', 'Événement corporatif': 'evt' };
@@ -38,10 +40,12 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === '/api/demande') return handleDemande(request, env);
+    if (url.pathname === '/__apercu') return handlePreview(request, env, ctx);
     const res = await env.ASSETS.fetch(request);
     if (!res.ok) return res;
 
     const page = pageName(url.pathname);
+    if (page === 'index.html') return serveHomepage(res, env, ctx, null);
     const isList = url.pathname === '/assets/projets-liste.js';
     if (!PAGES[page] && !isList) return res;
 
@@ -105,6 +109,78 @@ async function handleDemande(request, env) {
   return json(502, { ok: false });
 }
 
+// ---------- Accueil (contenu publié, ou brouillon pour l'aperçu) ----------
+
+let homeMemo = { at: 0, value: null };
+
+async function loadHome(env, token) {
+  const headers = { apikey: env.SUPABASE_ANON_KEY, Authorization: `Bearer ${token || env.SUPABASE_ANON_KEY}` };
+  const status = token ? 'draft' : 'published';
+  const [content, brands] = await Promise.all([
+    fetch(`${env.SUPABASE_URL}/rest/v1/website_content?select=content&page_slug=eq.homepage&status=eq.${status}`, { headers })
+      .then(r => (r.ok ? r.json() : Promise.reject(new Error(`website_content ${r.status}`)))),
+    fetch(`${env.SUPABASE_URL}/rest/v1/rpc/website_brands`, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' }, body: '{}' })
+      .then(r => (r.ok ? r.json() : [])).catch(() => []),
+  ]);
+  return { content: content[0] ? content[0].content : null, brands };
+}
+
+async function serveHomepage(res, env, ctx, token) {
+  let data, home;
+  try {
+    data = await loadData(env, ctx);
+    if (token) {
+      home = await loadHome(env, token);
+      if (!home.content) return previewError(403);
+    } else if (homeMemo.value && Date.now() - homeMemo.at < CACHE_SECONDS * 1000) {
+      home = homeMemo.value;
+    } else {
+      home = await loadHome(env, null);
+      homeMemo = { at: Date.now(), value: home };
+    }
+  } catch (err) {
+    console.error('homepage', err && err.message);
+    return token ? previewError(502) : res; // fallback: built-in homepage
+  }
+  const built = buildHomepage(home.content, data, home.brands);
+  let body = await res.text();
+  for (const [name, value] of Object.entries(built.literals)) body = replaceLiteral(body, `const ${name}`, value);
+  const headers = new Headers(res.headers);
+  headers.delete('Content-Length');
+  headers.delete('ETag');
+  if (token) {
+    headers.set('Cache-Control', 'no-store');
+    headers.set('X-Robots-Tag', 'noindex');
+  } else {
+    headers.set('Cache-Control', `public, max-age=0, s-maxage=${CACHE_SECONDS}`);
+    headers.set('X-MVP-Content', 'live');
+  }
+  return rewriteHomepage(new Response(body, { status: 200, headers }), built);
+}
+
+/**
+ * Aperçu du brouillon depuis le tableau de bord : formulaire POST (jeton de session
+ * dans le corps, jamais dans l'URL). La base ne renvoie le brouillon qu'à l'équipe (RLS).
+ */
+async function handlePreview(request, env, ctx) {
+  if (request.method !== 'POST') return previewError(405);
+  let token = '';
+  try { token = String((await request.formData()).get('token') || ''); } catch { /* invalid body */ }
+  if (!/^[\w-]+\.[\w-]+\.[\w-]+$/.test(token)) return previewError(401);
+  const res = await env.ASSETS.fetch(new Request(new URL('/', request.url)));
+  if (!res.ok) return res;
+  return serveHomepage(res, env, ctx, token);
+}
+
+function previewError(status) {
+  const msg = status === 403 || status === 401
+    ? 'Aperçu non autorisé : reconnectez-vous au tableau de bord et enregistrez le brouillon.'
+    : 'Aperçu indisponible pour le moment.';
+  return new Response(`<!doctype html><meta charset="utf-8"><title>Aperçu</title><p style="font:16px system-ui;padding:40px">${msg}</p>`, {
+    status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' },
+  });
+}
+
 function pageName(pathname) {
   const last = pathname.split('/').pop() || 'index.html';
   return last.endsWith('.html') ? last : `${last}.html`;
@@ -125,7 +201,7 @@ export async function loadData(env, ctx) {
 
   const [services, people, projects] = await Promise.all([
     get('services?select=id,slug,title,title_en,hero_image,cta_label,content&status=eq.published&order=sort_order'),
-    get('personalities?select=id,slug,first_name,last_name,display_name,title,bio,bio_long,sport,career_status,roles,qualities,project_types,photo,photo_alt,cutout,gallery,legacy_url,personality_services(services(slug))&status=eq.published&order=sort_order'),
+    get('personalities?select=id,slug,first_name,last_name,display_name,title,bio,bio_long,sport,career_status,roles,qualities,project_types,photo,photo_alt,cutout,gallery,legacy_url,is_female,personality_services(services(slug))&status=eq.published&order=sort_order'),
     get('projects?select=id,slug,title,tagline,brand_label,project_type,summary,sections,cover,images,video,videos,date_label,year,legacy_url,project_personalities(sort_order,personalities(slug,display_name)),project_services(services(slug))&status=eq.published&order=sort_order'),
   ]);
   const data = build(services, people, projects);
@@ -166,6 +242,7 @@ export function build(services, people, projects) {
     projets_reels: [],
     marques: [...new Set((projetsByPerson[t.slug] || []).map(p => p.brand_label).filter(b => b && b !== 'MVP Group'))],
     galerie: Array.isArray(t.gallery) ? t.gallery : [],
+    is_female: !!t.is_female,
     services: (t.personality_services || []).map(x => x.services && x.services.slug).filter(Boolean),
   }));
 
