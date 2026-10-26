@@ -1,21 +1,21 @@
-/* Textes courants : une à deux tailles de plus (généré) */
+/* Textes courants : plus gros (généré) */
 @media (min-width:1100px){
-  p.ag-lede{font-size:19.5px!important}
-  .ag-bio__corps > p{font-size:17.8px!important}
-  .ag-bio__suite > p{font-size:17.8px!important}
-  .footer__qc > span{font-size:14px!important}
+  p.ag-lede{font-size:20.8px!important}
+  .ag-bio__corps > p{font-size:19.4px!important}
+  .ag-bio__suite > p{font-size:19.4px!important}
+  .footer__qc > span{font-size:15.6px!important}
 }
 @media (min-width:641px) and (max-width:1099px){
-  p.ag-lede{font-size:17.5px!important}
-  .ag-bio__corps > p{font-size:17.5px!important}
-  .ag-bio__suite > p{font-size:17.5px!important}
-  .footer__qc > span{font-size:14px!important}
+  p.ag-lede{font-size:18.4px!important}
+  .ag-bio__corps > p{font-size:18.7px!important}
+  .ag-bio__suite > p{font-size:18.7px!important}
+  .footer__qc > span{font-size:15.2px!important}
 }
 @media (max-width:640px){
-  p.ag-lede{font-size:17px!important}
-  .ag-bio__corps > p{font-size:17.0px!important}
-  .ag-bio__suite > p{font-size:17.0px!important}
-  .footer__qc > span{font-size:13.5px!important}
+  p.ag-lede{font-size:18px!important}
+  .ag-bio__corps > p{font-size:18.1px!important}
+  .ag-bio__suite > p{font-size:18.1px!important}
+  .footer__qc > span{font-size:14.6px!important}
 }
-.footer ul li,.footer ul li a{font-size:16.5px!important}
-@media (max-width:640px){.footer ul li,.footer ul li a{font-size:15.5px!important}}
+.footer ul li,.footer ul li a{font-size:18px!important}
+@media (max-width:640px){.footer ul li,.footer ul li a{font-size:16.5px!important}}
