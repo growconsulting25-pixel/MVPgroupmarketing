@@ -41,6 +41,7 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === '/api/demande') return handleDemande(request, env);
     if (url.pathname === '/__apercu') return handlePreview(request, env, ctx);
+    if (url.pathname === '/api/sante') return handleHealth(request, env, ctx);
     const res = await env.ASSETS.fetch(request);
     if (!res.ok) return res;
 
@@ -171,6 +172,26 @@ async function handlePreview(request, env, ctx) {
   const res = await env.ASSETS.fetch(new Request(new URL('/', request.url)));
   if (!res.ok) return res;
   return serveHomepage(res, env, ctx, token);
+}
+
+/** État de la connexion site ↔ tableau de bord (lu par Paramètres > État du système). */
+const DASHBOARD_ORIGINS = ['https://mvp-dashboard.growconsulting25.workers.dev', 'http://localhost:5173', 'http://localhost:4173'];
+
+async function handleHealth(request, env, ctx) {
+  const origin = request.headers.get('Origin') || '';
+  const headers = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
+  if (DASHBOARD_ORIGINS.includes(origin)) headers['Access-Control-Allow-Origin'] = origin;
+  const out = { site: true, cle_supabase: !!env.SUPABASE_ANON_KEY, contenu: false, accueil: 'intégré', logos: 0, formulaires: !!env.SUPABASE_ANON_KEY };
+  try {
+    const data = await loadData(env, ctx);
+    out.contenu = data.talents.length > 0;
+    const home = await loadHome(env, null);
+    out.accueil = home.content ? 'publié' : 'intégré';
+    out.logos = Array.isArray(home.brands) ? home.brands.length : 0;
+  } catch (err) {
+    out.erreur = String((err && err.message) || err).slice(0, 120);
+  }
+  return new Response(JSON.stringify(out), { status: 200, headers });
 }
 
 function previewError(status) {
