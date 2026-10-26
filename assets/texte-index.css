@@ -57,7 +57,7 @@
 @media (max-width:640px){.footer ul li,.footer ul li a{font-size:17px!important}}
 p.tlpromo__sub{font-size:12.5px!important;line-height:1.45}
 p.tcard__sub{font-size:14px!important}
-p.lede{font-size:22px!important}
+p.lede{font-size:19px!important;line-height:1.5!important}
 @media (min-width:700px){p.lede{max-width:none!important;white-space:nowrap}}
 .mo__t span{display:inline!important}
 .services .panel__title{font-size:clamp(15px,1.27vw,24px)!important}
