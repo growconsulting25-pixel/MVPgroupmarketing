@@ -13,8 +13,8 @@
  */
 
 export const RICH_KEYS = {
-  'hero.h1': 'gold', 'intro.h2': 'em', 'intro.p1': 'b', 'intro.p2': 'b', 'intro.p3': 'b',
-  'appel.h': 'gold', 'orbit.p': 'b', 'hb.h': 'hb', 'mo.h': 'span',
+  'hero.h1': 'gold', 'hero.lede2': 'gold', 'intro.h2': 'em', 'intro.p1': 'b', 'intro.p1b': 'b', 'intro.p2': 'b', 'intro.p3': 'b',
+  'appel.h': 'gold', 'orbit.p': 'b', 'hb.h': 'hb', 'mo.h': 'span', 'mo.p': 'b',
 };
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -46,16 +46,22 @@ export const project = (lat, lon) => ({
 });
 const MTL = { x: 813.8, y: 347.4 }; // Montréal, as drawn on the original map
 
+const LABEL = {
+  right: [12, 5, 'start'], left: [-12, 5, 'end'], 'right-up': [12, -8, 'start'], 'left-up': [-12, -8, 'end'],
+  'right-down': [12, 12, 'start'], 'left-down': [-12, 14, 'end'],
+};
+
 export function mapSvg(cities) {
   const list = cities.filter(c => c && c.name && Number.isFinite(+c.lat) && Number.isFinite(+c.lon)).slice(0, 40);
-  const pts = list.map(c => ({ ...project(+c.lat, +c.lon), name: String(c.name).slice(0, 40), side: c.side === 'left' ? 'left' : 'right' }));
+  const pts = list.map(c => ({ ...project(+c.lat, +c.lon), name: String(c.name).slice(0, 40), side: LABEL[c.side] ? c.side : 'right' }));
   const arcs = pts.map((p, i) => {
     const mx = (MTL.x + p.x) / 2, my = (MTL.y + p.y) / 2;
     const d = Math.hypot(p.x - MTL.x, p.y - MTL.y);
     return `<path class="mo__arc" style="--i:${i}" d="M${MTL.x} ${MTL.y}Q${mx.toFixed(1)} ${(my - 0.28 * d).toFixed(1)} ${p.x} ${p.y}" pathLength="1"/>`;
   }).join('');
   const towns = pts.map((p, i) => {
-    const label = p.side === 'left' ? `<text x="-12" y="-8" text-anchor="end">${esc(p.name)}</text>` : `<text x="12" y="5" text-anchor="start">${esc(p.name)}</text>`;
+    const [lx, ly, anchor] = LABEL[p.side];
+    const label = `<text x="${lx}" y="${ly}" text-anchor="${anchor}">${esc(p.name)}</text>`;
     return `<g class="mo__ville" style="--i:${i}" transform="translate(${p.x} ${p.y})"><circle r="16" class="mo__onde"/><circle r="6.5"/>${label}</g>`;
   }).join('');
   return `${arcs}${towns}<g class="mo__mtl" transform="translate(${MTL.x} ${MTL.y})"><circle r="26" class="mo__onde"/><circle r="10"/><text x="16" y="-16">Montréal</text></g>`;

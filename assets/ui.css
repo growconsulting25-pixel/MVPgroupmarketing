@@ -254,7 +254,6 @@
 .dmd--habs .dmd__perso,.dmd--habs .dmd__ix{display:none!important}
 .dmd__ph img.est-sans{opacity:0}
 .dmd--habs .dmd__ph:has(img.est-sans){background:linear-gradient(160deg,#23307e,#192168 60%,#0d1236);position:relative}
-.dmd--habs .dmd__ph:has(img.est-sans)::after{content:"";position:absolute;left:18%;right:18%;top:50%;height:44px;transform:translateY(-50%);background:linear-gradient(#192168 0 33%,#fff 33% 66%,#AF1E2D 66% 100%);border-radius:6px;box-shadow:0 0 0 3px rgba(255,255,255,.12)}
 .dmd--habs .dmd__a{background:radial-gradient(110% 70% at 100% 0%,rgba(175,30,45,.35),transparent 60%),linear-gradient(160deg,#1f2a7a 0%,#192168 55%,#0d1240 100%)}
 .dmd--habs .dmd__t em{color:#ff5a6a}
 
@@ -356,3 +355,6 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .dmd__pin:focus{outline:none;border-color:#1E5299;background:#fff;box-shadow:0 0 0 4px rgba(30,82,153,.12)}
 .dmd__pin::placeholder,.dmd__c input[name="joueur"]::placeholder{color:#8a8f98}
 .dmd__hint{margin:10px 0 0;font-size:12.5px;color:#6b7280}
+
+/* Logo : aucun cadre de focus autour du logo MVP */
+.header__logo,.header__logo:focus,.header__logo:focus-visible,.header__logo:active{outline:none!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent}

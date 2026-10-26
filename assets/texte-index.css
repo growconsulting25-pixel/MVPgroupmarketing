@@ -1,0 +1,64 @@
+/* Textes courants : plus gros (généré) */
+@media (min-width:1100px){
+  a.sr{font-size:20.2px!important}
+  .rp__subs > a{font-size:18.2px!important}
+  .vfail > b{font-size:19.2px!important}
+  .intro__p > p{font-size:20.8px!important}
+  p.panel__desc{font-size:17.7px!important}
+  p.appel__p{font-size:20.8px!important}
+  p.talents__p{font-size:21.5px!important}
+  span.tlrow__cpt{font-size:20.2px!important}
+  p.hb__p{font-size:20.3px!important}
+  p.mo__p{font-size:20.8px!important}
+  p.mo__note{font-size:16.7px!important}
+  p.se__p{font-size:20.2px!important}
+  .se__l > li{font-size:17.2px!important}
+  .se__plus > span{font-size:19.2px!important}
+  p.se__note{font-size:16.7px!important}
+  .footer__qc > span{font-size:17.2px!important}
+}
+@media (min-width:641px) and (max-width:1099px){
+  a.sr{font-size:19.6px!important}
+  .rp__subs > a{font-size:19.6px!important}
+  .vfail > b{font-size:18.6px!important}
+  .intro__p > p{font-size:17.1px!important}
+  p.panel__desc{font-size:17.1px!important}
+  p.appel__p{font-size:19.6px!important}
+  p.talents__p{font-size:19.6px!important}
+  span.tlrow__cpt{font-size:19.6px!important}
+  p.hb__p{font-size:19.6px!important}
+  p.mo__p{font-size:19.6px!important}
+  p.mo__note{font-size:16.1px!important}
+  p.se__p{font-size:19.6px!important}
+  .se__l > li{font-size:16.6px!important}
+  .se__plus > span{font-size:18.6px!important}
+  p.se__note{font-size:16.1px!important}
+  .footer__qc > span{font-size:16.6px!important}
+}
+@media (max-width:640px){
+  a.sr{font-size:19px!important}
+  .rp__subs > a{font-size:19px!important}
+  .vfail > b{font-size:17.6px!important}
+  .intro__p > p{font-size:18.6px!important}
+  p.panel__desc{font-size:16.1px!important}
+  p.appel__p{font-size:18.6px!important}
+  p.talents__p{font-size:18.6px!important}
+  span.tlrow__cpt{font-size:15.6px!important}
+  p.hb__p{font-size:18.6px!important}
+  p.mo__p{font-size:18.6px!important}
+  p.mo__note{font-size:15.1px!important}
+  p.se__p{font-size:18.6px!important}
+  .se__l > li{font-size:15.6px!important}
+  .se__plus > span{font-size:17.6px!important}
+  p.se__note{font-size:15.1px!important}
+  .footer__qc > span{font-size:15.6px!important}
+}
+.footer ul li,.footer ul li a{font-size:19px!important}
+@media (max-width:640px){.footer ul li,.footer ul li a{font-size:17px!important}}
+p.tlpromo__sub{font-size:12.5px!important;line-height:1.45}
+p.tcard__sub{font-size:14px!important}
+p.lede{font-size:22px!important}
+@media (min-width:700px){p.lede{max-width:none!important;white-space:nowrap}}
+.mo__t span{display:inline!important}
+.services .panel__title{font-size:clamp(15px,1.27vw,24px)!important}
+.services .panel__desc{font-size:16px!important}
