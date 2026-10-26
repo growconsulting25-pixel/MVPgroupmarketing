@@ -1,6 +1,8 @@
-.git
-.gitignore
-.assetsignore
+worker
 wrangler.jsonc
-node_modules
+.dev.vars
+.assetsignore
+.gitignore
 .wrangler
+.git
+node_modules
