@@ -2452,7 +2452,8 @@ function BrandsSlide(){
 }
 const brandsPin=$('#brandsPin');
 function renderBrands(){ brandsPin.innerHTML=''; brandsPin.appendChild(BrandsSlide());
-  Marquee($('#marqueeA'),PARTNERS.slice(0,8)); Marquee($('#marqueeB'),PARTNERS.slice(8)); }
+  const moitie=Math.ceil(PARTNERS.length/2); /* deux rangées équilibrées, quel que soit le nombre de logos */
+  Marquee($('#marqueeA'),PARTNERS.slice(0,moitie)); Marquee($('#marqueeB'),PARTNERS.slice(moitie)); }
 renderBrands();
 
 /* =====================================================================
