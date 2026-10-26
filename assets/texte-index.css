@@ -62,3 +62,66 @@ p.lede{font-size:22px!important}
 .mo__t span{display:inline!important}
 .services .panel__title{font-size:clamp(15px,1.27vw,24px)!important}
 .services .panel__desc{font-size:16px!important}
+/* Mobile : titres plus gros */
+@media (max-width:640px){
+  #heroTitle{font-size:clamp(38px,11.4vw,50px)!important}
+  h2.hero__k{font-size:12.5px!important}
+  .intro__title{font-size:clamp(34px,9.6vw,42px)!important;line-height:1.04!important}
+  .services__bg,.talents__t,.projets__t{font-size:clamp(40px,11.4vw,50px)!important}
+  .services .panel__title{font-size:23px!important;line-height:1.05!important}
+  .appel__t{font-size:clamp(28px,8vw,34px)!important;line-height:1.1!important}
+  .hb__t{font-size:clamp(34px,9.8vw,42px)!important}
+  .mo__t{font-size:clamp(32px,9.2vw,40px)!important;line-height:1.05!important}
+  .se__t{font-size:clamp(32px,9.2vw,40px)!important}
+  .tlrow__t{font-size:24px!important}
+  .footer h2{font-size:34px!important}
+  .tcard__nom,.hbc__nom{font-size:26px!important}
+}
+/* Mobile : titres, paragraphes et boutons centrés ; Canadiens = titre, carte, puis texte */
+@media (max-width:1023px){
+  .hb__k{order:1}.hb__t{order:2}
+  .hb__scene{order:3!important;margin:22px 0 14px!important}
+  .hb__p{order:4}.hb__liste{order:5}.hb__cta{order:6}
+}
+@media (max-width:640px){
+  .intro__title,.intro__p,.intro__p p,.intro__cols,.talents__t,.talents__p,.talents__head,.services__bg,.sv__head,.appel__t,.appel__p,.hb__k,.hb__t,.hb__p,.hb__sous,.mo__k,.mo__t,.mo__p,.mo__note,.se__k,.se__t,.se__p,.se__ft,.se__note,.projets__t,.projets__head,.footer h2,.footer__phrase{text-align:center!important}
+  .intro__top{align-items:center!important}
+  .intro__cta,.talents__side,.projets__side,.sv__head,.hb__cta,.hb__cta-bas,.mo__cta,.appel__cta,.appel__btns,.se__plus,.projets__foot{justify-content:center!important;margin-left:auto!important;margin-right:auto!important}
+  .talents__head,.projets__head,.sv__head{flex-direction:column!important;align-items:center!important}
+  .talents__side{margin-left:0!important;order:2!important}
+  .tlrow__head{justify-content:center!important;flex-wrap:wrap}
+  .tlrow__all{margin-left:0!important}
+  .tlrow__t::before,.hb__k::before,.mo__k::before,.se__k::before{display:none}
+  .hb__k,.mo__k,.se__k{justify-content:center!important}
+  .hb__liste{margin-left:auto!important;margin-right:auto!important}
+  .appel{text-align:center!important}
+  .appel__tel,.appel__go{margin-left:auto;margin-right:auto}
+  .tlpromo__in{text-align:center!important;align-items:center!important}
+  .tcard__body{text-align:center!important}
+  .tcard__body .tcard__nom,.tcard__body .tcard__sub{text-align:center!important}
+  .tcard__cta,.tcard__lien{justify-content:center!important;margin-left:auto;margin-right:auto}
+  .tcard__body::before{margin-left:auto;margin-right:auto}
+}
+@media (max-width:640px){.mo__k i{display:none}.mo__k{display:flex!important}}
+/* Célébrités : bouton sur la ligne du titre, à droite ; paragraphe sur 2 lignes propres */
+@media (min-width:1100px){
+  .talents__head{display:grid!important;grid-template-columns:1fr auto;align-items:center;column-gap:24px;row-gap:14px}
+  .talents__t{grid-column:1;grid-row:1}
+  .talents__side{grid-column:2;grid-row:1;margin:0!important;order:0!important}
+  .talents__p{grid-column:1/-1;grid-row:2;max-width:none!important;white-space:normal!important;margin:0!important}
+  .talents__p br{display:block}
+}
+/* Mobile : le texte du bloc Canadiens ne touche plus les bords */
+@media (max-width:1023px){
+  .hb__k,.hb__t,.hb__p{padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;box-sizing:border-box;max-width:100%!important}
+  .hb__p{margin-top:24px!important}
+  .hb__t{margin-top:10px!important;margin-bottom:6px!important}
+  .hb__liste{width:calc(100% - 2*var(--gutter))!important;box-sizing:border-box}
+  .hb__cta{padding:0 var(--gutter)}
+  .hbc__tag{text-shadow:0 1px 6px rgba(0,0,0,.7)}
+}
+@media (min-width:1100px){
+  .talents__t{font-size:clamp(34px,4.5vw,76px)!important;white-space:nowrap}
+  .talents__all{white-space:nowrap!important;margin:0!important;padding:16px 26px!important}
+}
+@media (min-width:1100px){p.talents__p{font-size:clamp(16px,1.42vw,21px)!important}}
