@@ -2,7 +2,6 @@
 @media (min-width:1100px){
   p.label{font-size:16.2px!important}
   span.sr{font-size:20.2px!important}
-  p.tk__sub{font-size:17.2px!important}
   span.pfc__n{font-size:20.8px!important}
   p.suite__p{font-size:18.7px!important}
   .aide > p{font-size:20.2px!important}
@@ -11,7 +10,6 @@
 @media (min-width:641px) and (max-width:1099px){
   p.label{font-size:15.6px!important}
   span.sr{font-size:19.6px!important}
-  p.tk__sub{font-size:16.6px!important}
   span.pfc__n{font-size:18.6px!important}
   p.suite__p{font-size:18.1px!important}
   .aide > p{font-size:19.6px!important}
@@ -20,7 +18,6 @@
 @media (max-width:640px){
   p.label{font-size:14.6px!important}
   span.sr{font-size:19px!important}
-  p.tk__sub{font-size:15.6px!important}
   span.pfc__n{font-size:17.6px!important}
   p.suite__p{font-size:17.1px!important}
   .aide > p{font-size:18.6px!important}

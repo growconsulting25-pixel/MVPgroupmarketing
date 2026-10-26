@@ -1,6 +1,5 @@
 /* Textes courants : plus gros (généré) */
 @media (min-width:1100px){
-  p.hz__role{font-size:19.9px!important}
   .ab__bio > p{font-size:20.3px!important}
   .cache > p{font-size:20.3px!important}
   p.dc__d{font-size:19.2px!important}
@@ -11,7 +10,6 @@
   .footer__qc > span{font-size:17.2px!important}
 }
 @media (min-width:641px) and (max-width:1099px){
-  p.hz__role{font-size:18.1px!important}
   .ab__bio > p{font-size:19.6px!important}
   .cache > p{font-size:19.6px!important}
   p.dc__d{font-size:18.6px!important}
@@ -22,7 +20,6 @@
   .footer__qc > span{font-size:16.6px!important}
 }
 @media (max-width:640px){
-  p.hz__role{font-size:17.1px!important}
   .ab__bio > p{font-size:18.6px!important}
   .cache > p{font-size:18.6px!important}
   p.dc__d{font-size:17.6px!important}
