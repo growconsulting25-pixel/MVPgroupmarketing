@@ -356,3 +356,6 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .dmd__pin:focus{outline:none;border-color:#1E5299;background:#fff;box-shadow:0 0 0 4px rgba(30,82,153,.12)}
 .dmd__pin::placeholder,.dmd__c input[name="joueur"]::placeholder{color:#8a8f98}
 .dmd__hint{margin:10px 0 0;font-size:12.5px;color:#6b7280}
+
+/* Logo : aucun cadre de focus autour du logo MVP */
+.header__logo,.header__logo:focus,.header__logo:focus-visible,.header__logo:active{outline:none!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent}
