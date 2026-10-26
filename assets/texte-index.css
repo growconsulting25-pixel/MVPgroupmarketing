@@ -103,3 +103,25 @@ p.lede{font-size:22px!important}
   .tcard__body::before{margin-left:auto;margin-right:auto}
 }
 @media (max-width:640px){.mo__k i{display:none}.mo__k{display:flex!important}}
+/* Célébrités : bouton sur la ligne du titre, à droite ; paragraphe sur 2 lignes propres */
+@media (min-width:1100px){
+  .talents__head{display:grid!important;grid-template-columns:1fr auto;align-items:center;column-gap:24px;row-gap:14px}
+  .talents__t{grid-column:1;grid-row:1}
+  .talents__side{grid-column:2;grid-row:1;margin:0!important;order:0!important}
+  .talents__p{grid-column:1/-1;grid-row:2;max-width:none!important;white-space:normal!important;margin:0!important}
+  .talents__p br{display:block}
+}
+/* Mobile : le texte du bloc Canadiens ne touche plus les bords */
+@media (max-width:1023px){
+  .hb__k,.hb__t,.hb__p{padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;box-sizing:border-box;max-width:100%!important}
+  .hb__p{margin-top:24px!important}
+  .hb__t{margin-top:10px!important;margin-bottom:6px!important}
+  .hb__liste{width:calc(100% - 2*var(--gutter))!important;box-sizing:border-box}
+  .hb__cta{padding:0 var(--gutter)}
+  .hbc__tag{text-shadow:0 1px 6px rgba(0,0,0,.7)}
+}
+@media (min-width:1100px){
+  .talents__t{font-size:clamp(34px,4.5vw,76px)!important;white-space:nowrap}
+  .talents__all{white-space:nowrap!important;margin:0!important;padding:16px 26px!important}
+}
+@media (min-width:1100px){p.talents__p{font-size:clamp(16px,1.42vw,21px)!important}}
