@@ -37,6 +37,7 @@ let memo = { at: 0, data: null };
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname === '/api/demande') return handleDemande(request, env);
     const res = await env.ASSETS.fetch(request);
     if (!res.ok) return res;
 
@@ -64,6 +65,45 @@ export default {
     return new Response(body, { status: res.status, headers });
   },
 };
+
+// ---------- Formulaires du site -> leads du CRM ----------
+
+const json = (status, body) => new Response(JSON.stringify(body), {
+  status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+});
+
+/**
+ * Reçoit les demandes des formulaires (contact, demande d'athlète, Salon Exécutif)
+ * et les enregistre comme leads via la fonction Supabase submit_website_lead
+ * (validation, limites de taille et anti-abus côté base de données).
+ */
+async function handleDemande(request, env) {
+  if (request.method !== 'POST') return json(405, { ok: false });
+  const origin = request.headers.get('Origin');
+  if (origin && new URL(origin).host !== new URL(request.url).host) return json(403, { ok: false });
+  if (!env.SUPABASE_URL || !env.SUPABASE_ANON_KEY) return json(503, { ok: false });
+  const raw = await request.text();
+  if (raw.length > 20000) return json(413, { ok: false });
+  let payload;
+  try { payload = JSON.parse(raw); } catch { return json(400, { ok: false }); }
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return json(400, { ok: false });
+  // Piège à robots : champ caché que les humains ne remplissent pas.
+  if (payload.site_web_hp) return json(200, { ok: true });
+  // Personnalités choisies dans le formulaire (champ « personnalite » : "Kim Clavel, Chantal Machabée").
+  const persos = payload.persos ?? payload.personnalite;
+  if (typeof persos === 'string') payload.persos = persos.split(',').map(s => s.trim()).filter(Boolean);
+  const r = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/submit_website_lead`, {
+    method: 'POST',
+    headers: { apikey: env.SUPABASE_ANON_KEY, Authorization: `Bearer ${env.SUPABASE_ANON_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ payload }),
+  });
+  if (r.ok) return json(200, { ok: true });
+  const err = await r.json().catch(() => ({}));
+  if (err.message === 'rate_limited') return json(429, { ok: false });
+  if (err.message === 'invalid') return json(400, { ok: false });
+  console.error('submit_website_lead', r.status, err.message);
+  return json(502, { ok: false });
+}
 
 function pageName(pathname) {
   const last = pathname.split('/').pop() || 'index.html';
