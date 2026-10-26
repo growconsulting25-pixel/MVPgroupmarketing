@@ -118,7 +118,7 @@ async function loadHome(env, token) {
   const status = token ? 'draft' : 'published';
   const [content, brands] = await Promise.all([
     fetch(`${env.SUPABASE_URL}/rest/v1/website_content?select=content&page_slug=eq.homepage&status=eq.${status}`, { headers })
-      .then(r => (r.ok ? r.json() : Promise.reject(new Error(`website_content ${r.status}`)))),
+      .then(r => (r.ok ? r.json() : Promise.reject(Object.assign(new Error(`website_content ${r.status}`), { status: r.status })))),
     fetch(`${env.SUPABASE_URL}/rest/v1/rpc/website_brands`, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' }, body: '{}' })
       .then(r => (r.ok ? r.json() : [])).catch(() => []),
   ]);
@@ -140,7 +140,8 @@ async function serveHomepage(res, env, ctx, token) {
     }
   } catch (err) {
     console.error('homepage', err && err.message);
-    return token ? previewError(502) : res; // fallback: built-in homepage
+    if (token) return previewError(err && (err.status === 401 || err.status === 403) ? 403 : 502);
+    return res; // fallback: built-in homepage
   }
   const built = buildHomepage(home.content, data, home.brands);
   let body = await res.text();
