@@ -1,27 +1,27 @@
-/* Textes courants : plus gros (généré) */
+/* Textes courants : taille mesurée (généré) */
 @media (min-width:1100px){
-  p.label{font-size:16.2px!important}
-  span.sr{font-size:20.2px!important}
-  span.pfc__n{font-size:20.8px!important}
-  p.suite__p{font-size:18.7px!important}
-  .aide > p{font-size:20.2px!important}
-  .footer__qc > span{font-size:17.2px!important}
+  p.label{font-size:13.6px!important}
+  span.sr{font-size:18.0px!important}
+  span.pfc__n{font-size:18.6px!important}
+  p.suite__p{font-size:16.1px!important}
+  .aide > p{font-size:17.6px!important}
+  .footer__qc > span{font-size:14.6px!important}
 }
 @media (min-width:641px) and (max-width:1099px){
-  p.label{font-size:15.6px!important}
-  span.sr{font-size:19.6px!important}
-  span.pfc__n{font-size:18.6px!important}
-  p.suite__p{font-size:18.1px!important}
-  .aide > p{font-size:19.6px!important}
-  .footer__qc > span{font-size:16.6px!important}
+  p.label{font-size:13.3px!important}
+  span.sr{font-size:17.8px!important}
+  span.pfc__n{font-size:16.3px!important}
+  p.suite__p{font-size:15.8px!important}
+  .aide > p{font-size:17.3px!important}
+  .footer__qc > span{font-size:14.3px!important}
 }
 @media (max-width:640px){
-  p.label{font-size:14.6px!important}
-  span.sr{font-size:19px!important}
-  span.pfc__n{font-size:17.6px!important}
-  p.suite__p{font-size:17.1px!important}
-  .aide > p{font-size:18.6px!important}
-  .footer__qc > span{font-size:15.6px!important}
+  p.label{font-size:13.2px!important}
+  span.sr{font-size:17.6px!important}
+  span.pfc__n{font-size:16.2px!important}
+  p.suite__p{font-size:15.7px!important}
+  .aide > p{font-size:17.2px!important}
+  .footer__qc > span{font-size:14.2px!important}
 }
-.footer ul li,.footer ul li a{font-size:19px!important}
-@media (max-width:640px){.footer ul li,.footer ul li a{font-size:17px!important}}
+.footer ul li,.footer ul li a{font-size:17px!important}
+@media (max-width:640px){.footer ul li,.footer ul li a{font-size:16px!important}}
