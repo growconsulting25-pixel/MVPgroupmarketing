@@ -59,14 +59,14 @@
   /* 1. bande bleue */
   var tb=mk('div','tb','<span class="tb__vide" aria-hidden="true"></span>'+
     '<span class="tb__msg" data-ui-html="msg"></span>'+
-    '<div class="tb__btns"><a class="tb__b tb__b--o" href="#" data-ui-ouvrir data-ui="work"></a><a class="tb__b tb__b--w" href="'+TELH+'">'+I.tel+'<span data-ui="call"></span></a></div>');
+    '<div class="tb__btns"><a class="tb__b tb__b--o" href="personnalites.html">'+I.cherche+'<span data-ui="find"></span></a><a class="tb__b tb__b--w" href="'+TELH+'">'+I.tel+'<span data-ui="call"></span></a></div>');
   tb.setAttribute('role','region'); tb.setAttribute('aria-label','MVP Group');
   body.insertBefore(tb,body.firstChild);
 
   /* 2. bouton du menu : « Trouver un athlète » vers toutes les personnalités */
   document.querySelectorAll('.header__right .btn, .mobile-menu > .btn').forEach(function(b){
-    b.removeAttribute('data-i18n'); b.setAttribute('href','personnalites.html'); b.classList.add('ui-find');
-    b.innerHTML=(b.closest('.header')?I.cherche:'')+'<span data-ui="find"></span>';
+    b.removeAttribute('data-i18n'); b.setAttribute('href','#'); b.setAttribute('data-ui-ouvrir',''); b.classList.add('ui-find');
+    b.innerHTML='<span data-ui="work"></span>';
   });
 
   /* 3. bulle d'aide + carte */

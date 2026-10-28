@@ -360,3 +360,8 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .header__logo,.header__logo:focus,.header__logo:focus-visible,.header__logo:active{outline:none!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent}
 
 .dmd__fin{margin:18px 0 12px;font-size:15px;font-weight:700;color:#123B6D;text-align:center;line-height:1.4}
+
+/* Barre bleue : « Trouver un athlète » (contour) + Appelez-nous ; menu : « Consultez-nous » en bouton principal */
+.tb__b--o svg{width:14px;height:14px;flex:none}
+.header .btn.ui-find{padding:0 28px!important;height:46px!important;font-size:12px!important;letter-spacing:.14em;white-space:nowrap}
+.tb__btns{gap:10px}
