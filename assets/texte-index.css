@@ -186,3 +186,9 @@ html{overflow-x:clip}
 
 .se__t{font-size:clamp(24px,2.6vw,40px)!important;line-height:1.05!important}
 @media (max-width:640px){.se__t{font-size:clamp(26px,7.4vw,32px)!important}}
+/* Deuxième section de l'accueil : titre, paragraphes et CTA centrés */
+.intro__top{align-items:center!important;text-align:center!important}
+.intro__title{text-align:center!important;margin-left:auto!important;margin-right:auto!important}
+.intro__cols{margin-left:auto!important;margin-right:auto!important;text-align:center!important}
+.intro__cols .intro__p{text-align:center!important;padding-left:0!important;border-left:0!important}
+.intro__cols>.intro__cta--c{justify-self:center!important}

@@ -419,7 +419,31 @@
       s.style.setProperty('padding-right',(s._pr+extra)+'px','important');
     });
   }
+  /* Décor : grandes ellipses fines derrière le contenu, comme sur la page Équipe */
+  function lum(c){var m=(c||'').match(/[\d.]+/g); if(!m||m.length<3||(m.length>3&&+m[3]===0)) return null; return (0.299*m[0]+0.587*m[1]+0.114*m[2])/255;}
+  function decor(){
+    var liste=cibles().slice();
+    document.querySelectorAll('.bp__wrap,.talents').forEach(function(e){ if(liste.indexOf(e)<0) liste.push(e); });
+    liste.forEach(function(s,n){
+      if(s.querySelector(':scope > .ell')||s.offsetHeight<460) return;
+      var cs=getComputedStyle(s); if(cs.position==='static') s.style.position='relative';
+      s.style.isolation='isolate';
+      var L=lum(cs.backgroundColor); if(L===null) L=lum(getComputedStyle(document.body).backgroundColor); if(L===null) L=1;
+      var ton=L>.55?'0,0,0':'255,255,255', op=L>.55?.28:.32;
+      var plus="url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 8.5v9M8.5 13h9' stroke='"+(L>.55?'%23000':'%23fff')+"' stroke-width='1'/%3E%3C/svg%3E\")";
+      var d=document.createElement('div'); d.className='ell'; d.setAttribute('aria-hidden','true');
+      d.style.cssText='position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1';
+      var h=s.offsetHeight, k=Math.max(1,Math.min(4,Math.round(h/850))), html='';
+      for(var i=0;i<k;i++){
+        var g=(n+i)%2===0, y=k===1?6:Math.round(4+i*(88/k));
+        html+='<svg viewBox="0 0 800 520" style="position:absolute;width:'+(g?'64vw':'56vw')+';max-width:1100px;'+(g?'left:-6vw':'right:-6vw')+';top:'+y+'%;transform:rotate('+(g?-14:12)+'deg)" fill="none" stroke="rgba('+ton+','+op+')" stroke-width="1.7"><ellipse cx="400" cy="260" rx="392" ry="250"/><ellipse cx="400" cy="260" rx="300" ry="185" stroke-dasharray="2 7"/></svg>';
+        html+='<span style="position:absolute;width:260px;height:150px;'+(g?'right:2%':'left:2%')+';top:'+Math.min(90,y+14)+'%;opacity:.8;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent 100%);mask-image:radial-gradient(closest-side,#000 25%,transparent 100%)"></span>';
+      }
+      d.innerHTML=html;
+      s.insertBefore(d,s.firstChild);
+    });
+  }
   var t; addEventListener('resize',function(){clearTimeout(t);t=setTimeout(appliquer,120);});
-  addEventListener('load',function(){setTimeout(appliquer,300);setTimeout(appliquer,1500);});
+  addEventListener('load',function(){setTimeout(function(){appliquer();decor();},300);setTimeout(function(){appliquer();decor();},1800);});
   if(document.readyState!=='loading') setTimeout(appliquer,200); else document.addEventListener('DOMContentLoaded',function(){setTimeout(appliquer,200);});
 })();
