@@ -439,9 +439,9 @@
         html+='<svg viewBox="0 0 800 520" style="position:absolute;width:'+(g?'64vw':'56vw')+';max-width:1100px;'+(g?'left:-6vw':'right:-6vw')+';top:'+y+'%;transform:rotate('+(g?-14:12)+'deg)" fill="none" stroke="rgba('+ton+','+op+')" stroke-width="1.7"><ellipse cx="400" cy="260" rx="392" ry="250"/><ellipse cx="400" cy="260" rx="300" ry="185" stroke-dasharray="2 7"/></svg>';
       }
       if(ACCUEIL&&s.matches('.talents')){
-        html+='<div style="position:absolute;inset:0;background:radial-gradient(55% 30% at 12% 18%,rgba(30,82,153,.2),transparent 70%),radial-gradient(50% 30% at 92% 52%,rgba(197,162,83,.22),transparent 70%),radial-gradient(60% 30% at 20% 90%,rgba(30,82,153,.16),transparent 70%)"></div>';
-        [[3,6,'l'],[96,24,'r'],[2,48,'l'],[97,70,'r'],[4,90,'l']].forEach(function(q){
-          html+='<span style="position:absolute;width:300px;height:190px;'+(q[2]==='l'?'left:'+(q[0]-3)+'%':'right:'+(100-q[0]-3)+'%')+';top:'+q[1]+'%;opacity:.95;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 20%,transparent 100%);mask-image:radial-gradient(closest-side,#000 20%,transparent 100%)"></span>';
+        html+='<div style="position:absolute;inset:0;background:radial-gradient(55% 30% at 12% 18%,rgba(30,82,153,.3),transparent 72%),radial-gradient(50% 30% at 92% 52%,rgba(197,162,83,.3),transparent 72%),radial-gradient(60% 30% at 20% 90%,rgba(30,82,153,.24),transparent 72%)"></div>';
+        [[3,5,'l'],[96,16,'r'],[2,30,'l'],[97,42,'r'],[3,55,'l'],[96,68,'r'],[2,80,'l'],[97,92,'r']].forEach(function(q){
+          html+='<span style="position:absolute;width:340px;height:230px;'+(q[2]==='l'?'left:'+(q[0]-3)+'%':'right:'+(100-q[0]-3)+'%')+';top:'+q[1]+'%;opacity:.95;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 20%,transparent 100%);mask-image:radial-gradient(closest-side,#000 20%,transparent 100%)"></span>';
         });
       }
       d.innerHTML=html;
