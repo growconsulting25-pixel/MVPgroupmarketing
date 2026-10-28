@@ -393,3 +393,7 @@ html:not(:has(#heroTitle)) .grille,html:not(:has(#heroTitle)) .psl .plus,html:no
 .hl-b{color:transparent!important;-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#123B6D,#2f6fc4 50%,#123B6D);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;animation:hlb 6s linear infinite}
 @keyframes hlb{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){.hl-b{animation:none}}
+
+/* titre long : toujours sur une seule ligne sur ordinateur */
+.titre-u.t-ligne,h2.t-ligne{font-size:clamp(20px,2.7vw,46px)!important;white-space:nowrap}
+@media (max-width:900px){.titre-u.t-ligne,h2.t-ligne{white-space:normal;font-size:clamp(24px,6vw,34px)!important}}
