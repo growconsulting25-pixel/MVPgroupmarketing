@@ -351,7 +351,7 @@ ul{list-style:none}
 /* =====================================================================
    SECTION 5 — CATEGORY EXPLORER (white, YMU-style)
    ===================================================================== */
-/* Catégories : même mécanique que Personnalités — une réserve de défilement,
+/* Catégories : même mécanique que Célébrités sportives — une réserve de défilement,
    un bloc collant qui tient l'écran, puis Services monte par-dessus. */
 /* Catégories : le seul temps d'arrêt du parcours. Court, juste avant Services. */
 .explore{position:relative;z-index:2;height:200svh;background:transparent}
@@ -710,7 +710,7 @@ body{background:var(--soft);color:var(--black)}
 }
 
 /* =====================================================================
-   RÉVISION — page Personnalités : moins d'interface, plus de talent.
+   RÉVISION — page Célébrités sportives : moins d'interface, plus de talent.
    ===================================================================== */
 .bp__hero{height:min(66svh,620px);align-items:flex-end}
 .bp__hero h1{font-size:clamp(40px,6.4vw,112px);line-height:.9;letter-spacing:-.035em;text-transform:uppercase;max-width:14ch}
@@ -874,7 +874,7 @@ body{background:var(--soft);color:var(--black)}
 .tk{display:flex;flex-direction:column;height:100%}
 .tk__body{flex:1;display:flex;flex-direction:column}
 
-/* Groupes par sport + demande pour une personnalité absente */
+/* Groupes par sport + demande pour une célébrité sportive absente */
 .tk-sport{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:clamp(18px,3vh,34px) 0 2px;font-size:clamp(22px,2.2vw,34px);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;color:#0b0b0b}
 .tk-sport::before{content:"";width:34px;height:2px;background:var(--gold)}
 .tk-sport:first-child{margin-top:0}
@@ -891,9 +891,9 @@ body{background:var(--soft);color:var(--black)}
 .tk-lien{display:block;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;color:#1E5299;text-decoration:underline;cursor:pointer}
 .tk__th,.tk__reach{display:none!important}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2666">
-<script src="assets/titres-courts.js?v=b2666"></script>
-<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2666">
+<link rel="stylesheet" href="assets/ui.css?v=b2667">
+<script src="assets/titres-courts.js?v=b2667"></script>
+<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2667">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -949,25 +949,25 @@ body{background:var(--soft);color:var(--black)}
     <div class="bp__hin">
       <p class="label">MVP Talent Network</p>
       <h1>Des célébrités sportives <span class="gold">qui font la différence.</span></h1>
-      <p class="bp__lede">Athlètes, olympiens, légendes du sport et personnalités médiatiques pour vos conférences, campagnes et événements.</p>
+      <p class="bp__lede">Athlètes, olympiens, légendes du sport et célébrités médiatiques pour vos conférences, campagnes et événements.</p>
     </div>
   </section>
 
   <div class="bp__wrap" data-plus="l:22:lg l:84 r:40 r:70">
     <div>
-      <!-- Recherche et filtres : présents, mais discrets. Les personnalités passent en premier. -->
+      <!-- Recherche et filtres : présents, mais discrets. Les célébrités sportives passent en premier. -->
       <div class="chips" id="resultats" hidden><div class="chips__row" id="chips"></div></div>
       <div class="tk-tools">
         <div class="srch">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Recherchez une célébrité sportive" aria-label="Rechercher une personnalité">
+          <input id="q" type="search" placeholder="Recherchez une célébrité sportive" aria-label="Rechercher une célébrité sportive">
         </div>
         <div class="tk-filt" id="filtres"></div>
       </div>
-      <p class="tk-n"><span><b id="nb">0</b> personnalités</span><button class="tk-reset" id="vider" hidden>Effacer les filtres</button></p>
+      <p class="tk-n"><span><b id="nb">0</b> célébrités sportives</span><button class="tk-reset" id="vider" hidden>Effacer les filtres</button></p>
 
       <div class="grid" id="grid"></div>
-      <div class="voirplus"><button class="btn btn--blue" id="plus">Voir plus de personnalités</button></div>
+      <div class="voirplus"><button class="btn btn--blue" id="plus">Voir plus de célébrités sportives</button></div>
 
       <section class="pf" id="showcase" data-nav="light" aria-label="Projets MVP" data-plus="t:88:lg b:36">
         <span class="grille grille--clair" aria-hidden="true" style="left:46%;top:18px;width:300px;height:120px"></span>
@@ -992,8 +992,8 @@ body{background:var(--soft);color:var(--black)}
       <div class="grid" id="grid2"></div>
 
       <section class="aide">
-        <h2>Vous ne trouvez pas la bonne personnalité ?</h2>
-        <p>Le réseau de MVP dépasse les personnalités affichées en ligne. Parlez-nous de votre projet et nous identifierons les personnalités qui correspondent à votre public, à vos objectifs et à votre campagne.</p>
+        <h2>Vous ne trouvez pas la bonne célébrité sportive ?</h2>
+        <p>Le réseau de MVP dépasse les célébrités sportives affichées en ligne. Parlez-nous de votre projet et nous identifierons les célébrités sportives qui correspondent à votre public, à vos objectifs et à votre campagne.</p>
         <a class="btn btn--gold" href="mailto:info@mvpsportsmarketing.com?subject=Recherche%20de%20personnalit%C3%A9">Parlez-nous de votre projet</a>
       </section>
     </div>
@@ -1010,7 +1010,7 @@ body{background:var(--soft);color:var(--black)}
       <h4 data-i18n="foot.agency">MVP Sports Marketing</h4>
       <ul><li data-i18n="foot.hq">Siège social : Montréal, Qc. Canada</li><li>Toronto · New York · Las Vegas</li><li><span data-i18n="foot.tel">Tél. :</span> <a href="tel:+15145823306">514-582-3306</a></li><li><span data-i18n="foot.mail">Courriel :</span> <a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a></li></ul>
     </div>
-    <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a></li><li><a href="index.html#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Nos projets</a></li><li><a href="agence.html" data-i18n="nav.agency">À propos</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="personnalites.html" data-i18n="nav.celebs">Célébrités sportives</a></li><li><a href="index.html#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Nos projets</a></li><li><a href="agence.html" data-i18n="nav.agency">À propos</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=animateurs" data-i18n="nav.d2">Animateurs</a></li><li><a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a></li><li><a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs sportifs</a></li><li><a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a></li><li><a href="service.html?s=evenements" data-i18n="nav.d6">Organisation d\'événements</a></li></ul></div>
     <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul class="footer__rs"><li><a href="https://www.instagram.com/mvpgroupagency/" target="_blank" rel="noopener" aria-label="Instagram du Groupe MVP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" target="_blank" rel="noopener" aria-label="LinkedIn du Groupe MVP"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8H4v12h2.9V8zM5.4 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20 13.4c0-3.2-1.7-4.7-4-4.7-1.8 0-2.7 1-3.1 1.7V8H10v12h2.9v-6.7c0-1.4.9-2.1 1.9-2.1s1.8.7 1.8 2.1V20H20v-6.6z"/></svg></a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" target="_blank" rel="noopener" aria-label="Facebook du Groupe MVP"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a></li></ul></div>
   </div>
@@ -1132,7 +1132,7 @@ function filtrer(){
 }
 
 /* ---- carte : grande photo, nom, discipline / rôle, rayonnement, thèmes ---- */
-/* Chaque personnalité est détourée et posée sur un lieu de sa discipline. */
+/* Chaque célébrité sportive est détourée et posée sur un lieu de sa discipline. */
 const BG_ID={'eric-gagne':'baseball','claude-raymond':'baseball','matthew-bergeron':'football','bruno-heppell':'football'};
 const LIEU={hockey:'hockey',boxing:'boxing',mma:'mma',olympics:'olympics',media:'media',soccer:'soccer',other:'olympics'};
 /* détourages trop petits ou trop larges : on garde la photo d'origine */
@@ -1226,7 +1226,7 @@ $('#vider').addEventListener('click',()=>{
   E.page=1; synchroniser(); rendre();
 });
 let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout(()=>{E.q=e.target.value;E.page=1;rendre();},160); });
-/* Entrée sur une personnalité absente du catalogue : le formulaire s'ouvre, déjà rempli */
+/* Entrée sur une célébrité sportive absente du catalogue : le formulaire s'ouvre, déjà rempli */
 $('#q').addEventListener('keydown',e=>{ if(e.key!=='Enter') return; e.preventDefault(); E.q=e.target.value; E.page=1; rendre();
   if(E.q.trim() && !filtrer().length && ressembleNom(E.q) && window.mvpDemande) mvpDemande({persos:[E.q.trim()]}); });
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
@@ -1262,7 +1262,7 @@ const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":
 })();
 
 
-/* Rangée « en vedette » : cinq personnalités de disciplines différentes,
+/* Rangée « en vedette » : cinq célébrités sportives de disciplines différentes,
    choisies parmi celles dont la biographie est la plus complète. Elles ne
    dépendent pas des filtres — c'est une vitrine, pas un résultat de recherche. */
 (function vedettes(){
@@ -1334,7 +1334,7 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
 </script>
-<script src="assets/plus.js?v=b2666"></script>
-<script src="assets/ui.js?v=b2666"></script>
-<script src="assets/nav.js?v=b2666"></script>
+<script src="assets/plus.js?v=b2667"></script>
+<script src="assets/ui.js?v=b2667"></script>
+<script src="assets/nav.js?v=b2667"></script>
 </body></html>

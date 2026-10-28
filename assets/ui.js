@@ -7,7 +7,7 @@
       bulle:'Une question ?',aideT:"Besoin d'aide ?",aideS:'Nous sommes là pour vous',
       aideP:"Dites-nous ce que vous cherchez : conférencier, ambassadeur, invité d'honneur… Un agent vous répond rapidement avec des propositions.",
       start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
-      k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Parlez-nous de votre projet : conférence, campagne, gala, événement",fin:"Décrivez-nous vos besoins et nous vous trouverons la bonne personnalité",
+      k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Parlez-nous de votre projet : conférence, campagne, gala, événement",fin:"Décrivez-nous vos besoins et nous vous trouverons la bonne célébrité sportive",
       avec:'Engagez',pt1:'Un conseiller du Groupe MVP vous répond très rapidement',pt2:'Un seul interlocuteur, du premier appel au résultat',pt3:"Un réseau bâti depuis 2005 dans le sport québécois",
       parler:'Vous préférez parler à quelqu’un ?',ecrire:'Vous préférez nous écrire ?',hbK:'Canadiens de Montréal',hbUn:'un membre des Canadiens',hbJoueur:'Le membre des Canadiens',hbChoix:'Membre souhaité',hbAucun:'Pas encore décidé — conseillez-moi',hbActuels:'Joueurs et dirigeants',hbAnciens:'Anciens et légendes',hbAutre:'Un autre membre des Canadiens',hbP:'Joueurs, légendes, entraîneurs et dirigeants : choisissez un membre ou laissez-nous vous conseiller.',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
       note:'Vos informations restent confidentielles et servent uniquement à répondre à votre demande.',
@@ -17,9 +17,9 @@
       persoPh:'Nom de la célébrité sportive souhaitée',msgPh:'Ex. : conférence, campagne, gala, événement corporatif',
       envoyer:'Envoyer la demande',envoi:'Envoi…',req:'Merci de remplir les champs obligatoires (*).',
       err:"L'envoi n'a pas fonctionné. Écrivez-nous à <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> ou appelez le <a href=\""+TELH+"\">"+TEL+"</a>.",
-      iK:'MVP International · Sur demande',iT:'Une icône, <em>partout en Amérique du Nord.</em>',iP:"Nommez la personnalité, peu importe la ville ou la ligue : nous approchons ses représentants pour vous.",
+      iK:'MVP International · Sur demande',iT:'Une icône, <em>partout en Amérique du Nord.</em>',iP:"Nommez la célébrité sportive, peu importe la ville ou la ligue : nous approchons ses représentants pour vous.",
       i1:'Toutes les disciplines, partout en Amérique du Nord',i2:'Nous contactons ses représentants et négocions pour vous',i3:'Un conseiller du Groupe MVP vous répond très rapidement',
-      iCible:'La personnalité',iNom:'Personnalité souhaitée *',iNomPh:'Ex. : une vedette du basketball américain',iPays:'Pays ou ligue',iPaysPh:'Ex. : États-Unis, Mexique…',iLieu:"Lieu de l'événement",iLieuPh:'Ex. : Montréal, Toronto…',
+      iCible:'La célébrité sportive',iNom:'Célébrité sportive souhaitée *',iNomPh:'Ex. : une vedette du basketball américain',iPays:'Pays ou ligue',iPaysPh:'Ex. : États-Unis, Mexique…',iLieu:"Lieu de l'événement",iLieuPh:'Ex. : Montréal, Toronto…',
       budget:'Budget approximatif',budgets:['À déterminer','Moins de 25 000 $','25 000 $ – 100 000 $','100 000 $ – 250 000 $','250 000 $ et plus'],
       iOk:"Un conseiller du groupe MVP vous répondra très rapidement",
       okT:'Merci, votre demande est envoyée.',okP:"Un conseiller du groupe MVP vous répondra très rapidement"},
@@ -63,7 +63,7 @@
   tb.setAttribute('role','region'); tb.setAttribute('aria-label','MVP Group');
   body.insertBefore(tb,body.firstChild);
 
-  /* 2. bouton du menu : « Trouver un athlète » vers toutes les personnalités */
+  /* 2. bouton du menu : « Trouver un athlète » vers toutes les célébrités sportives */
   document.querySelectorAll('.header__right .btn, .mobile-menu > .btn').forEach(function(b){
     b.removeAttribute('data-i18n'); b.setAttribute('href','#'); b.setAttribute('data-ui-ouvrir',''); b.classList.add('ui-find');
     b.innerHTML='<span data-ui="work"></span>';
@@ -132,7 +132,7 @@
   var remplirJoueurs=function(){};
   form.joueur.addEventListener('change',function(){ if(ATH&&ATH.habs){ ATH.joueur=this.value; majTitres(); } });
   form.joueur.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); this.blur(); } });
-  /* Personnalités souhaitées : menu déroulant (pré-sélectionné) + possibilité d'en ajouter d'autres */
+  /* Célébrités sportives souhaitées : menu déroulant (pré-sélectionné) + possibilité d'en ajouter d'autres */
   Object.assign(D.fr,{pTitre:'Célébrité sportive',pPh:'Nom de la célébrité sportive souhaitée',pHint:'Pas encore décidé ? Laissez vide, nous vous conseillerons.',hbPh:'Inscrire le membre des Canadiens souhaité',pAjout:'Ajouter une autre célébrité',pRetirer:'Retirer',});
   Object.assign(D.en,{pTitre:'Sports celebrity',pPh:'Name of the sports celebrity you would like',pHint:'Not decided yet? Leave it empty, we will advise you.',hbPh:'Enter the Canadiens member you would like',pAjout:'Add another celebrity',pRetirer:'Remove',});
   var pl=dmd.querySelector('.dmd__pl');
@@ -209,7 +209,7 @@
         var change=cle(ath)!==cle(ATH);
         if(change){ dmd.querySelector('.dmd__f').hidden=false; dmd.querySelector('.dmd__ok').hidden=true; err.hidden=true; }
         ATH=ath; majTitres();
-        /* la prochaine étape est déjà choisie : besoins devinés, personnalité pré-remplie */
+        /* la prochaine étape est déjà choisie : besoins devinés, célébrité sportive pré-remplie */
         var b=[].concat((ath&&ath.besoins)||[]);
         if(!b.length) b=contextePage();
         if(b.length||change) choisirBesoins(b);
@@ -234,9 +234,9 @@
   };
   /* window.mvpDemande()                       → demande générale
      window.mvpDemande({nom, sous, photo, cut}) → demande pour un athlète précis
-     window.mvpDemande({intl:true})            → demande d'une personnalité internationale */
+     window.mvpDemande({intl:true})            → demande d'une célébrité sportive internationale */
   window.mvpDemande=function(ath){
-    /* {persos:['Nom']} : demande générale avec une ou des personnalités déjà inscrites */
+    /* {persos:['Nom']} : demande générale avec une ou des célébrités sportives déjà inscrites */
     if(ath&&ath.persos&&!ath.nom){ var ps=ath.persos; dmdO(true,null); setPersos(ps); return; }
     if(ath&&ath.roles&&!ath.besoins) ath.besoins=deviner(ath.roles); dmdO(true, ath||null); };
   form.personnalite.addEventListener('input',function(){ if(!ATH) this.dataset.v=this.value; });
@@ -290,7 +290,7 @@
 
   /* 6. Couleur des boutons selon leur fonction :
         BLEU   = action qui ouvre un formulaire (demande, collaboration, contact)
-        BRONZE = navigation vers une page de contenu (projets, personnalités, profils…) */
+        BRONZE = navigation vers une page de contenu (projets, célébrités sportives, profils…) */
   var SEL='.btn, .intro__cta, .mo__go, .eq-btn, .ag-cta, .cat__cta, .nw__more, .talents__all';
   var EXCLU='.tb, .bb, .dmd, .aide-c, .hero__q, .footer__go';
   var FORM=/#demande$|travailler=1/;
@@ -327,7 +327,7 @@
   appliquer();
 })();
 
-/* Écrans tactiles (tablette, portable tactile) : 1er toucher sur « Services », « Personnalités »
+/* Écrans tactiles (tablette, portable tactile) : 1er toucher sur « Services », « Célébrités sportives »
    ou « À propos » ouvre le sous-menu ; 2e toucher suit le lien. */
 (function(){
   var items=document.querySelectorAll('.header__nav .navitem'); if(!items.length) return;
