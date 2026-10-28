@@ -1710,12 +1710,27 @@ h2.hero__k a{transition:color .3s}h2.hero__k a:hover{color:#fff}
 .brands__pin{position:relative}
 .brands__pin::before{content:"";position:absolute;inset:-30px 0;background:radial-gradient(60% 90% at 50% 50%,rgba(47,111,196,.22),transparent 70%),url(assets/lieux/hockey.jpg) center/cover;opacity:.3;filter:grayscale(1);-webkit-mask-image:radial-gradient(70% 100% at 50% 50%,#000 30%,transparent 100%);mask-image:radial-gradient(70% 100% at 50% 50%,#000 30%,transparent 100%);pointer-events:none}
 .brands__pin>*{position:relative}
+
+/* Fond 3D (Services + Marques) : sol en perspective qui file vers le visiteur, horizon lumineux, profondeur à la souris */
+.brands,.services{overflow:hidden;perspective:1000px}
+.brands::before,.services::before{content:"";position:absolute;left:-30%;right:-30%;bottom:-8%;height:78%;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(120,170,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(120,170,255,.28) 1px,transparent 1px);
+  background-size:64px 64px;transform-origin:50% 100%;transform:rotateX(68deg) translateY(var(--py,0px));animation:solFile 7s linear infinite;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%)}
+.brands::after,.services::after{content:"";position:absolute;left:0;right:0;bottom:30%;height:38%;pointer-events:none;z-index:0;
+  background:radial-gradient(60% 100% at 50% 100%,rgba(47,111,196,.35),transparent 70%)}
+@keyframes solFile{to{background-position:0 64px}}
+.brands>*,.services>*{position:relative;z-index:1}
+.appel__t,.appel__b,.brands__head,.services__bg{transform:translate3d(calc(var(--mx,0)*14px),calc(var(--my,0)*8px),0);transition:transform .25s ease-out}
+.appel__go,.appel__tel{box-shadow:0 18px 30px -12px rgba(0,0,0,.55),0 2px 0 rgba(255,255,255,.12) inset;transform:translateZ(0)}
+@media (prefers-reduced-motion:reduce){.brands::before,.services::before{animation:none}}
+@media (max-width:700px){.brands::before,.services::before{background-size:44px 44px}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2706">
+<link rel="stylesheet" href="assets/ui.css?v=b2707">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="assets/projets-liste.js?v=b2706"></script>
-<script src="assets/titres-courts.js?v=b2706"></script>
-<link rel="stylesheet" href="assets/texte-index.css?v=b2706">
+<script src="assets/projets-liste.js?v=b2707"></script>
+<script src="assets/titres-courts.js?v=b2707"></script>
+<link rel="stylesheet" href="assets/texte-index.css?v=b2707">
 </head>
 <body>
 <a class="sr" href="#contact">Skip to contact</a>
@@ -2763,7 +2778,7 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
   });
 })();
 </script>
-<script src="assets/ui.js?v=b2706"></script>
+<script src="assets/ui.js?v=b2707"></script>
 <script>
 (function(){
   const d=document.getElementById('seDeck'); if(!d) return;
@@ -2799,6 +2814,13 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
+})();
+</script>
+
+<script>
+(function(){
+  var r=document.documentElement;
+  addEventListener('pointermove',function(e){r.style.setProperty('--mx',((e.clientX/innerWidth)-.5).toFixed(3));r.style.setProperty('--my',((e.clientY/innerHeight)-.5).toFixed(3));},{passive:true});
 })();
 </script>
 </body>
