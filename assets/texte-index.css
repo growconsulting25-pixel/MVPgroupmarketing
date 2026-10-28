@@ -74,7 +74,7 @@ p.lede{font-size:19px!important}
   .appel__t{font-size:clamp(28px,8vw,34px)!important;line-height:1.1!important}
   .hb__t{font-size:clamp(34px,9.8vw,42px)!important}
   .mo__t{font-size:clamp(40px,11.4vw,50px)!important;line-height:.98!important}
-  .se__t{font-size:clamp(40px,11.4vw,50px)!important;line-height:.98!important}
+  .se__t{font-size:clamp(26px,7.4vw,32px)!important;line-height:1.05!important}
   .tlrow__t{font-size:24px!important}
   .footer h2{font-size:34px!important}
   .tcard__nom,.hbc__nom{font-size:26px!important}
@@ -156,11 +156,11 @@ p.lede{font-size:19px!important}
 
 /* Tous les titres de section : même taille que « Nos célébrités sportives » (sauf la 2e section) */
 @media (min-width:1100px){
-  .services__bg,.talents__t,.projets__t,.mo__t,.se__t{font-size:clamp(34px,4.5vw,76px)!important;line-height:.96!important;letter-spacing:-.035em!important}
+  .services__bg,.talents__t,.projets__t,.mo__t{font-size:clamp(34px,4.5vw,76px)!important;line-height:.96!important;letter-spacing:-.035em!important}
   .talents__head{row-gap:30px!important}
 }
 @media (max-width:1099px) and (min-width:641px){
-  .services__bg,.talents__t,.projets__t,.mo__t,.se__t{font-size:clamp(34px,6vw,56px)!important;line-height:.98!important}
+  .services__bg,.talents__t,.projets__t,.mo__t{font-size:clamp(34px,6vw,56px)!important;line-height:.98!important}
 }
 @media (max-width:640px){.talents__p{margin-top:18px!important}}
 .tlrow .tcard__ph{overflow:hidden}
@@ -182,3 +182,6 @@ html{overflow-x:clip}
   .se__logo{width:min(54%,210px)!important}
   .se__p{order:4}.se__l{order:5}.se__plus{order:6}.se__f{order:7;margin-top:22px}
 }
+
+.se__t{font-size:clamp(24px,2.6vw,40px)!important;line-height:1.05!important}
+@media (max-width:640px){.se__t{font-size:clamp(26px,7.4vw,32px)!important}}

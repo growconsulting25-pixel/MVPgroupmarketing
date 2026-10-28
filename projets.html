@@ -846,8 +846,8 @@ body{background:var(--soft)}
 @media (max-width:1100px){.fl{flex-wrap:wrap}.fl .fl__q{flex-basis:100%}}
 @media (max-width:760px){.fl{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fl .fl__q{grid-column:1/-1}.fl__d select{width:100%;max-width:none;height:46px;font-size:13px;padding:0 34px 0 14px}.fl__d::after{right:14px}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2641">
-<link rel="stylesheet" href="assets/texte-projets.css?v=b2641">
+<link rel="stylesheet" href="assets/ui.css?v=b2642">
+<link rel="stylesheet" href="assets/texte-projets.css?v=b2642">
 </head><body>
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
@@ -1040,7 +1040,7 @@ rendre();
     {id:'hutson',person:'Lane Hutson',brand:'HUSH Hockey Challenge',cat:'Campagne et contenu',date:'Août 2025',img:'assets/slide-hush.jpg',sombre:true},
     {id:'gsp',person:'Georges St-Pierre',brand:'Hôtel Vogue Montréal',cat:'Événement',date:'Mai 2025',img:'assets/slide-gsp.jpg'}
   ];
-  const stage=$('#pslStage'), dots=$('#pslDots'), reduit=matchMedia('(prefers-reduced-motion: reduce)').matches, DUREE=7000;
+  const stage=$('#pslStage'), dots=$('#pslDots'), reduit=matchMedia('(prefers-reduced-motion: reduce)').matches, DUREE=3000;
   stage.innerHTML=SL.map((p,i)=>`<article class="psl__s${i?'':' est-actif'}${p.sombre?' psl__s--sombre':''}">
     <div class="psl__media">${p.video?`<video class="psl__img" muted loop playsinline preload="${i?'none':'auto'}" poster="${p.img}"><source src="${p.video}" type="video/mp4"></video>`:`<img class="psl__img" src="${p.img}" alt="">`}<span class="psl__shade"></span></div>
     <a class="psl__t" href="projet.html?id=${p.id}"><span class="psl__k">${p.cat} · ${p.date}</span><span class="psl__n">${p.person}</span><b>× ${p.brand}</b></a>
@@ -1084,6 +1084,6 @@ rendre();
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
-<script src="assets/ui.js?v=b2641"></script>
-<script src="assets/nav.js?v=b2641"></script>
+<script src="assets/ui.js?v=b2642"></script>
+<script src="assets/nav.js?v=b2642"></script>
 </body></html>
