@@ -365,3 +365,20 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .tb__b--o svg{width:14px;height:14px;flex:none}
 .header .btn.ui-find{padding:0 28px!important;height:46px!important;font-size:12px!important;letter-spacing:.14em;white-space:nowrap}
 .tb__btns{gap:10px}
+
+/* Repères « + » (pages de service, projets) */
+.plus{position:absolute;width:18px;height:18px;pointer-events:none;z-index:3;opacity:.5;transform:translate(-50%,-50%)}
+.plus::before,.plus::after{content:"";position:absolute;background:currentColor}
+.plus::before{left:0;right:0;top:50%;height:1px;transform:translateY(-50%)}
+.plus::after{top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%)}
+.plus--lg{width:34px;height:34px;opacity:.72}.plus--lg::before{height:1.5px}.plus--lg::after{width:1.5px}
+.plus--t{top:38px}.plus--b{top:auto;bottom:30px;transform:translate(-50%,50%)}
+.plus--l{left:calc(var(--gutter,40px) / 2)}.plus--r{left:auto;right:calc(var(--gutter,40px) / 2);transform:translate(50%,-50%)}
+@media (max-width:900px){.grille{display:none}.plus--l,.plus--r{display:none}.plus{opacity:.38}}
+
+/* Pied de page : logos des réseaux sociaux du Groupe MVP */
+.footer__rs{display:flex!important;gap:12px;flex-wrap:wrap}
+.footer__rs li{margin:0!important}
+.footer__rs a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.28);color:#fff;transition:background .3s,color .3s,border-color .3s}
+.footer__rs a:hover{background:var(--gold);border-color:var(--gold);color:#050505}
+.footer__rs svg{width:20px;height:20px}

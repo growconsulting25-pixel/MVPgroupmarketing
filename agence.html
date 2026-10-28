@@ -614,6 +614,28 @@ ul{list-style:none}
 .ag{overflow-x:clip}
 .ag-hero{overflow-x:clip;overflow-y:visible}
 .ag-lire--eq{display:inline-block;margin-right:28px}
+
+/* Projets accomplis (haut de page) et diaporama noir et blanc (biographie) */
+.ag-pj{justify-self:center;width:min(100%,560px)}
+.ag-pj__k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:0 0 20px}
+.dk{position:relative;width:100%;aspect-ratio:4/3.4;margin:0 auto;touch-action:pan-y}
+.dk__f{position:absolute;inset:0;margin:0;border-radius:18px;overflow:hidden;box-shadow:0 22px 46px rgba(5,5,5,.35);transform-origin:50% 100%;transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .5s;background:#111;display:block}
+.dk__f img{width:100%;height:100%;object-fit:cover;display:block}
+.dk__f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,5,5,.88))}
+.dk__c{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;color:#fff}
+.dk__c b{display:block;font-size:clamp(18px,1.6vw,26px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05}
+.dk__c i{display:block;font-style:normal;font-size:13px;margin-top:6px;color:rgba(255,255,255,.82)}
+.dk__f[data-pos="0"]{z-index:4}
+.dk__f[data-pos="1"]{z-index:3;transform:translate(18px,-14px) rotate(3deg) scale(.96);filter:brightness(.7)}
+.dk__f[data-pos="2"]{z-index:2;transform:translate(-18px,-26px) rotate(-3.5deg) scale(.92);filter:brightness(.5)}
+.dk__f[data-pos="3"]{z-index:1;opacity:0}
+.dk__b{position:absolute;z-index:6;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.94);color:#0b0b0b;font-size:24px;line-height:1;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.dk__b:hover{background:var(--gold)}.dk__b--p{left:-14px}.dk__b--n{right:-14px}
+.ag-bio__sl{position:sticky;top:calc(var(--nav-h) + 24px)}
+.ag-bio__sl .ag-sl{width:100%;margin:0}
+.ag-bio__sl .ag-sl__cadre img{filter:grayscale(1) contrast(1.05)!important}
+.ag-bio__sl .ag-sl:hover .ag-sl__cadre img{filter:grayscale(1)!important}
+@media (max-width:1023px){.ag-bio__sl{position:relative;top:0;max-width:480px}.dk__b--p{left:6px}.dk__b--n{right:6px}}
 </style>
 
 <style>
@@ -928,8 +950,8 @@ body{background:var(--soft);color:var(--black)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
 @media (min-width:1024px){.mm{display:none}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2648">
-<link rel="stylesheet" href="assets/texte-agence.css?v=b2648">
+<link rel="stylesheet" href="assets/ui.css?v=b2649">
+<link rel="stylesheet" href="assets/texte-agence.css?v=b2649">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -992,28 +1014,39 @@ body{background:var(--soft);color:var(--black)}
       <div><dt>7 catégories · 60+ personnalités</dt><dd>Hockey, boxe, MMA, olympisme, médias, soccer et plus</dd></div>
     </dl>
   </div>
-  <div class="ag-sl" id="agSl" aria-roledescription="carrousel" aria-label="Simon Arsenault et les vedettes du sport">
-    <svg class="ag-sl__orbe" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="30" rx="49.5" ry="29.5"/></svg>
-    <span class="grille" aria-hidden="true" style="left:-34px;bottom:-30px;width:190px;height:170px;opacity:.55;-webkit-mask-image:none;mask-image:none"></span>
-    <span class="ag-sl__coin ag-sl__coin--a" aria-hidden="true"></span><span class="ag-sl__coin ag-sl__coin--b" aria-hidden="true"></span>
-    <div class="ag-sl__cadre" id="agFrame"></div>
-    <p class="ag-sl__num" aria-hidden="true"><b id="agNum">1</b><i>/<span id="agTot"></span></i></p>
-    <div class="ag-sl__nav"><div class="ag-sl__traits" id="agDots"></div>
-      <div class="ag-sl__fl"><button id="agPrev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><button id="agNext" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+  <div class="ag-pj" id="agPj" aria-roledescription="carrousel" aria-label="Quelques projets accomplis">
+    <p class="ag-pj__k">Quelques projets accomplis</p>
+    <div class="dk">
+      <a class="dk__f" href="projet.html?id=hutson"><img src="assets/projets/hutson-1.jpg" alt="Défi de hockey HUSH avec Lane Hutson"><span class="dk__c"><b>Lane Hutson × Hush</b><i>Défi de hockey au profit de la Maison Ronald McDonald</i></span></a>
+      <a class="dk__f" href="projet.html?id=nick-suzuki"><img src="assets/projets/nick-suzuki-5.jpg" alt="Nick Suzuki, ambassadeur de Goodfood"><span class="dk__c"><b>Nick Suzuki × Goodfood</b><i>Nouvel ambassadeur de la marque au Canada</i></span></a>
+      <a class="dk__f" href="projet.html?id=gsp"><img src="assets/projets/gsp-1.jpg" alt="Georges St-Pierre et les légendes du MMA"><span class="dk__c"><b>GSP et les légendes du MMA</b><i>Soirée exclusive à l’Hôtel Vogue</i></span></a>
+      <a class="dk__f" href="projet.html?id=golf-phoenix"><img src="assets/projets/golf-phoenix-1.jpg" alt="Tournoi de golf du Phoenix de Sherbrooke"><span class="dk__c"><b>Tournoi de golf du Phoenix</b><i>Plusieurs personnalités sportives invitées</i></span></a>
+      <button type="button" class="dk__b dk__b--p" aria-label="Précédent">‹</button><button type="button" class="dk__b dk__b--n" aria-label="Suivant">›</button>
+    </div>
   </div>
 </section>
 
 <!-- ============ 02 — NOTRE MISSION ============ -->
 <section class="ag-mi" id="mission" data-nav="light" data-plus="t:84:lg b:30 l:40">
   <span class="grille grille--clair" aria-hidden="true" style="right:6%;top:70px;width:320px;height:150px"></span>
-  <div class="ag-mi__head" data-reveal><p class="ag-k ag-k--or">Notre mission</p><h2 class="ag-h2">Cinq engagements, <span class="gold">un seul interlocuteur.</span></h2></div>
+  <div class="ag-mi__head" data-reveal><h2 class="ag-h2">Notre <span class="gold">mission</span></h2></div>
   <ol class="ag-mi__liste"><li data-reveal style="transition-delay:0.00s"><span class="ag-mi__n">01</span><p>Assurer l’accessibilité des athlètes et célébrités sportives</p></li><li data-reveal style="transition-delay:0.07s"><span class="ag-mi__n">02</span><p>Développer des partenariats bénéfiques entre les athlètes et les entreprises</p></li><li data-reveal style="transition-delay:0.14s"><span class="ag-mi__n">03</span><p>Créer des événements et expériences uniques</p></li><li data-reveal style="transition-delay:0.21s"><span class="ag-mi__n">04</span><p>Promouvoir les valeurs positives du sport</p></li><li data-reveal style="transition-delay:0.28s"><span class="ag-mi__n">05</span><p>Encourager l’éducation et la pratique des sports</p></li></ol>
 </section>
 
 <!-- ============ 03 — SIMON ARSENAULT ============ -->
 <section class="ag-bio" id="equipe" data-nav="dark" data-plus="t:40 b:70:lg r:30">
   <div class="ag-bio__in">
-    <figure class="ag-bio__ph" data-reveal><img src="assets/simon/simon.webp" alt="Simon Arsenault, président-fondateur du Groupe MVP"><figcaption><b>Simon Arsenault</b><span>Président-fondateur</span></figcaption></figure>
+    <div class="ag-bio__sl">
+  <div class="ag-sl" id="agSl" aria-roledescription="carrousel" aria-label="Simon Arsenault et les vedettes du sport">
+        <svg class="ag-sl__orbe" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="30" rx="49.5" ry="29.5"/></svg>
+        <span class="grille" aria-hidden="true" style="left:-34px;bottom:-30px;width:190px;height:170px;opacity:.55;-webkit-mask-image:none;mask-image:none"></span>
+        <span class="ag-sl__coin ag-sl__coin--a" aria-hidden="true"></span><span class="ag-sl__coin ag-sl__coin--b" aria-hidden="true"></span>
+        <div class="ag-sl__cadre" id="agFrame"></div>
+        <p class="ag-sl__num" aria-hidden="true"><b id="agNum">1</b><i>/<span id="agTot"></span></i></p>
+        <div class="ag-sl__nav"><div class="ag-sl__traits" id="agDots"></div>
+          <div class="ag-sl__fl"><button id="agPrev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><button id="agNext" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+      </div>
+    </div>
     <div class="ag-bio__txt">
       <p class="ag-k" data-reveal>Équipe de direction</p>
       <h2 class="ag-h2" data-reveal>Simon Arsenault</h2>
@@ -1052,7 +1085,7 @@ body{background:var(--soft);color:var(--black)}
     </div>
     <div><h4 data-i18n="foot.nav">Navigation</h4><ul><li><a href="personnalites.html" data-i18n="nav.celebs">Personnalités</a></li><li><a href="index.html#services">Services</a></li><li><a href="projets.html" data-i18n="nav.projects">Nos projets</a></li><li><a href="agence.html" data-i18n="nav.agency">À propos</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h4 data-i18n="foot.svc">Services</h4><ul><li><a href="service.html?s=ambassadors" data-i18n="nav.d1">Ambassadeurs et porte-parole</a></li><li><a href="service.html?s=animateurs" data-i18n="nav.d2">Animateurs</a></li><li><a href="service.html?s=speakers" data-i18n="nav.d3">Conférenciers</a></li><li><a href="service.html?s=marketing" data-i18n="nav.d4">Influenceurs sportifs</a></li><li><a href="service.html?s=hosts" data-i18n="nav.d5">Invités d'honneur</a></li><li><a href="service.html?s=evenements" data-i18n="nav.d6">Organisation d\'événements</a></li></ul></div>
-    <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul><li><a href="https://www.instagram.com/mvpgroupagency/" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" rel="noopener">Facebook</a></li></ul></div>
+    <div><h4 data-i18n="foot.follow">Suivez-nous</h4><ul class="footer__rs"><li><a href="https://www.instagram.com/mvpgroupagency/" target="_blank" rel="noopener" aria-label="Instagram du Groupe MVP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></li><li><a href="https://www.linkedin.com/company/groupe-mvp-international" target="_blank" rel="noopener" aria-label="LinkedIn du Groupe MVP"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8H4v12h2.9V8zM5.4 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20 13.4c0-3.2-1.7-4.7-4-4.7-1.8 0-2.7 1-3.1 1.7V8H10v12h2.9v-6.7c0-1.4.9-2.1 1.9-2.1s1.8.7 1.8 2.1V20H20v-6.6z"/></svg></a></li><li><a href="https://www.facebook.com/MVPGROUPAGENCY/" target="_blank" rel="noopener" aria-label="Facebook du Groupe MVP"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a></li></ul></div>
   </div>
 
   <div class="footer__bottom">
@@ -1106,6 +1139,14 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
 </script>
 <script>
 document.documentElement.classList.add('js-reveal');
+/* Projets accomplis : paquet de photos */
+(function(){ var el=document.querySelector('#agPj .dk'); if(!el) return;
+  var f=[].slice.call(el.querySelectorAll('.dk__f')), o=f.map(function(_,i){return i;}), t=null;
+  var pos=function(){ o.forEach(function(fi,p){ f[fi].dataset.pos=Math.min(p,3); }); };
+  var sv=function(){ o.push(o.shift()); pos(); }, pr=function(){ o.unshift(o.pop()); pos(); }, go=function(){ clearInterval(t); t=setInterval(sv,4600); };
+  el.querySelector('.dk__b--n').onclick=function(e){e.preventDefault();sv();go();}; el.querySelector('.dk__b--p').onclick=function(e){e.preventDefault();pr();go();};
+  pos(); go(); })();
+
 /* Carrousel : Simon Arsenault et les vedettes du sport */
 (function(){
   var S=[{"img": "assets/simon/bfi-7121-mr-7-x-10-guy-et-simon-arsenault-copy.webp", "n": "Simon Arsenault & Guy Lafleur", "r": "Premier client du Groupe MVP · 5 Coupes Stanley", "pos": "50% 30%"}, {"img": "assets/simon/simon-gretzky-copie.webp", "n": "Simon Arsenault & Wayne Gretzky", "r": "Meilleur pointeur de l’histoire de la LNH", "pos": "50% 30%"}, {"img": "assets/simon/bfi-4481-mr-7-x-10-simon-et-george-st-pierre-copie-1.webp", "n": "Simon Arsenault & Georges St-Pierre", "r": "Champion du UFC", "pos": "50% 25%"}, {"img": "assets/simon/photokovalev-copie.webp", "n": "Simon Arsenault & Alex Kovalev", "r": "Canadiens de Montréal", "pos": "50% 30%"}, {"img": "assets/simon/guerrero-copie-1.webp", "n": "Simon Arsenault & Vladimir Guerrero", "r": "Temple de la renommée du baseball", "pos": "55% 35%"}, {"img": "assets/simon/photodelahoya2-copie.webp", "n": "Simon Arsenault & Oscar De La Hoya", "r": "Champion du monde de boxe", "pos": "50% 25%"}, {"img": "assets/simon/bfi-5539-web-use-jacques-demers-et-simon-arsenault-copy.webp", "n": "Simon Arsenault & Jacques Demers", "r": "Anciens des Nordiques de Québec", "pos": "45% 40%"}, {"img": "assets/simon/wozniaki-sharapova-copie.webp", "n": "Caroline Wozniacki & Maria Sharapova", "r": "Soirée tennis · Montréal", "pos": "50% 30%"}, {"img": "assets/simon/expos2016-copie.webp", "n": "Les anciens des Expos", "r": "Le baseball majeur de retour au Stade olympique", "pos": "50% 40%"}, {"img": "assets/simon/ve160402-0352-copie.webp", "n": "Les Blue Jays au Stade olympique", "r": "Matchs préparatoires produits avec evenko", "pos": "55% 30%"}, {"img": "assets/simon/f1renault-copie.webp", "n": "Paddock Renault Sport", "r": "Formule 1", "pos": "50% 30%"}, {"img": "assets/simon/habsalumni-bypatbeaudry-1951-copie.webp", "n": "Match des anciens Canadiens", "r": "Centre Bell · Montréal", "pos": "45% 25%"}], cadre=document.getElementById('agFrame'), dots=document.getElementById('agDots'), num=document.getElementById('agNum');
@@ -1140,6 +1181,6 @@ document.documentElement.classList.add('js-reveal');
   var maj=function(){ var y=h.getBoundingClientRect().bottom, c='dark'; R.forEach(function(r){var b=r.getBoundingClientRect(); if(b.top<=y&&b.bottom>=y) c=r.dataset.nav;}); h.dataset.theme=c==='light'?'light':'dark'; };
   addEventListener('scroll',maj,{passive:true}); addEventListener('resize',maj); maj(); })();
 </script>
-<script src="assets/ui.js?v=b2648"></script>
-<script src="assets/nav.js?v=b2648"></script>
+<script src="assets/ui.js?v=b2649"></script>
+<script src="assets/nav.js?v=b2649"></script>
 </body></html>
