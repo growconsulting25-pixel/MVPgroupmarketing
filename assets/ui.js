@@ -396,3 +396,29 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){setTimeout(passe,200);}); else setTimeout(passe,200);
   addEventListener('load',function(){ setTimeout(passe,700); setTimeout(passe,2000); });
 })();
+/* Mise en boîte du contenu (hors accueil) : sur grand écran, les fonds restent pleine largeur
+   mais le contenu est centré dans une boîte, avec de l'espace de chaque côté. */
+(function(){
+  if(document.getElementById('heroTitle')) return;
+  var BOITE=1560, SKIP='.footer,.header,.tb,.dmd,.aide-c,.ac,.psl,.hz,.ag-hero,.mobile-menu,script,style';
+  function cibles(){
+    var out=[];
+    document.querySelectorAll('body > section, body > main > section, body > div > section, #svc > section, #profil > section, #projet > section, #app > section, main > div > section').forEach(function(s){
+      if(s.matches(SKIP)||s.closest('.footer,.header,.dmd')) return; out.push(s);
+    });
+    return out;
+  }
+  function appliquer(){
+    var extra=Math.max(0,(innerWidth-BOITE)/2);
+    cibles().forEach(function(s){
+      if(s.dataset.boite===undefined){
+        var cs=getComputedStyle(s); s.dataset.boite=''; s._pl=parseFloat(cs.paddingLeft)||0; s._pr=parseFloat(cs.paddingRight)||0;
+      }
+      s.style.setProperty('padding-left',(s._pl+extra)+'px','important');
+      s.style.setProperty('padding-right',(s._pr+extra)+'px','important');
+    });
+  }
+  var t; addEventListener('resize',function(){clearTimeout(t);t=setTimeout(appliquer,120);});
+  addEventListener('load',function(){setTimeout(appliquer,300);setTimeout(appliquer,1500);});
+  if(document.readyState!=='loading') setTimeout(appliquer,200); else document.addEventListener('DOMContentLoaded',function(){setTimeout(appliquer,200);});
+})();
