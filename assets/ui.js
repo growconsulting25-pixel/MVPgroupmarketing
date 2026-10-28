@@ -423,8 +423,7 @@
   /* Décor : grandes ellipses fines derrière le contenu, comme sur la page Équipe */
   function lum(c){var m=(c||'').match(/[\d.]+/g); if(!m||m.length<3||(m.length>3&&+m[3]===0)) return null; return (0.299*m[0]+0.587*m[1]+0.114*m[2])/255;}
   function decor(){
-    var liste=cibles().slice();
-    document.querySelectorAll('.bp__wrap,.talents').forEach(function(e){ if(liste.indexOf(e)<0) liste.push(e); });
+    var liste=[].slice.call(document.querySelectorAll('.bp__wrap,.talents'));
     liste.forEach(function(s,n){
       if(s.querySelector(':scope > .ell')||s.offsetHeight<460) return;
       var cs=getComputedStyle(s); if(cs.position==='static') s.style.position='relative';
