@@ -18,7 +18,7 @@
 .tb__b--o{border:1px solid rgba(255,255,255,.45)}
 .tb__b--o:hover{background:rgba(255,255,255,.14)}
 .tb__b--w{background:#fff;color:#123B6D!important}
-.tb__b--w:hover{background:var(--gold);color:#050505!important}
+.tb__b--w:hover{background:var(--gold);color:#fff!important}
 @media (max-width:1023px){.tb{gap:12px}.tb__b--o{display:none}}
 /* mobile : la mention au centre-gauche, seulement l'icône de téléphone à droite */
 @media (max-width:760px){
@@ -35,7 +35,7 @@
 
 /* bouton « Trouver un athlète » dans le menu */
 .header__right .btn.ui-find{background:#fff;color:#123B6D;border:0}
-.header__right .btn.ui-find:hover{background:var(--gold);color:#050505}
+.header__right .btn.ui-find:hover{background:var(--gold);color:#fff}
 .header[data-theme="dark"]:not(.header--barre) .btn.ui-find{background:#123B6D;color:#fff}
 .header .btn.ui-find svg{width:15px;height:15px}
 
@@ -56,7 +56,7 @@
 .aide-c p{margin:14px 0 16px;font-size:14px;line-height:1.55;color:#333}
 .aide-c__go,.aide-c__tel{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px;border-radius:12px;font-weight:700;font-size:14px;transition:background .3s,color .3s,border-color .3s}
 .aide-c__go{background:linear-gradient(135deg,#1E5299,#123B6D);color:#fff}
-.aide-c__go:hover{background:var(--gold);color:#050505}
+.aide-c__go:hover{background:var(--gold);color:#fff}
 .aide-c__tel{margin-top:8px;border:1.5px solid rgba(30,82,153,.25);color:#123B6D}
 .aide-c__tel:hover{border-color:#123B6D}
 .aide-c__go svg,.aide-c__tel svg{width:17px;height:17px}
@@ -140,7 +140,7 @@
 .dmd__err{margin:-4px 0 12px;font-size:13.5px;color:#B3261E}
 .dmd__err a{text-decoration:underline}
 .dmd__go{width:100%;height:58px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;background:linear-gradient(135deg,#1E5299,#123B6D);color:#fff;font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 14px 30px rgba(18,59,109,.28);transition:background .3s,color .3s,transform .3s}
-.dmd__go:hover{background:var(--gold);color:#050505;transform:translateY(-1px)}
+.dmd__go:hover{background:var(--gold);color:#fff;transform:translateY(-1px)}
 .dmd__go:disabled{opacity:.6}
 .dmd__go svg{width:18px;height:18px;flex:none;transition:transform .3s}
 .dmd__go:hover svg{transform:translateX(4px)}
@@ -275,7 +275,7 @@
 .tcard__sub{display:none}
 .tcard__cta{padding-top:14px!important}
 .tcard__b1{display:block;width:100%;padding:12px 14px!important;border:0!important;border-radius:999px;background:#1E5299!important;color:#fff!important;font-size:10.5px!important;font-weight:800!important;letter-spacing:.08em!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .3s}
-.tcard__b1:hover{background:var(--gold)!important;color:#050505!important}
+.tcard__b1:hover{background:var(--gold)!important;color:#fff!important}
 .tcard__lien{justify-content:flex-start!important;margin-top:10px!important;padding:0!important;opacity:.85}
 .tcard__lien:hover{opacity:1}
 /* « Voir le profil » : bouton contour blanc, même taille que « Engagez » */
@@ -284,7 +284,7 @@
 .tcard__lien .arrow,.tcard__lien svg{color:currentColor!important}
 /* « Trouver un athlète » : bleu, texte blanc ; or au survol. Bandeau : styles d'origine */
 .header .btn.ui-find,.mobile-menu > .btn.ui-find{background:#1E5299!important;color:#fff!important;border:0!important}
-.header .btn.ui-find:hover,.mobile-menu > .btn.ui-find:hover{background:var(--gold)!important;color:#050505!important}
+.header .btn.ui-find:hover,.mobile-menu > .btn.ui-find:hover{background:var(--gold)!important;color:#fff!important}
 
 .navitem.est-ouvert .navdrop{opacity:1!important;visibility:visible!important;transform:translateX(-50%) translateY(0)!important}
 
@@ -380,7 +380,7 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 .footer__rs{display:flex!important;gap:12px;flex-wrap:wrap}
 .footer__rs li{margin:0!important}
 .footer__rs a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.28);color:#fff;transition:background .3s,color .3s,border-color .3s}
-.footer__rs a:hover{background:var(--gold);border-color:var(--gold);color:#050505}
+.footer__rs a:hover{background:var(--gold);border-color:var(--gold);color:#fff}
 .footer__rs svg{width:20px;height:20px}
 
 /* Taille universelle des titres de section (même taille que l'accueil) — toutes les pages sauf l'accueil */

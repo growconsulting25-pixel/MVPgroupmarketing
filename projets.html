@@ -44,7 +44,7 @@ ul{list-style:none}
 
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;gap:14px;padding:18px 28px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease),transform .35s var(--ease)}
-.btn--gold{background:var(--gold);color:var(--black)}
+.btn--gold{background:var(--gold);color:#fff}
 .btn--blue{background:var(--blue);color:var(--white)}
 .btn--blue:hover{background:var(--black);color:var(--white)}
 .btn .arrow{width:17px;height:17px;flex:none;transition:transform .35s var(--ease)}
@@ -88,7 +88,7 @@ ul{list-style:none}
 .header[data-theme="light"] .lang b{color:var(--gold)}
 /* En-tete : bleu au repos, or au survol — l'inverse des autres boutons. */
 .header .btn{background:#1E5299;color:var(--white);padding:12px 20px;font-size:10.5px;letter-spacing:.12em;white-space:nowrap}
-.header .btn:hover{background:var(--gold);color:var(--black)}
+.header .btn:hover{background:var(--gold);color:#fff}
 .burger{display:none;width:44px;height:44px;flex-direction:column;justify-content:center;gap:6px;align-items:center}
 .burger span{width:22px;height:2px;background:currentColor;transition:transform .35s}
 .mobile-menu{position:fixed;inset:0;background:var(--black);color:var(--white);z-index:99;display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);gap:22px;transform:translateY(-100%);transition:transform .6s var(--ease)}
@@ -222,7 +222,7 @@ ul{list-style:none}
 .orbit__ui{position:absolute;left:clamp(20px,14vw,300px);bottom:5%;z-index:60;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .orbit__person{font-size:clamp(20px,2vw,32px);line-height:1;transition:opacity .3s}
 .orbit__role{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:6px}
-.scene__btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:13px 22px;border-radius:999px;background:var(--gold);color:var(--black);transition:background .35s,color .35s}
+.scene__btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:13px 22px;border-radius:999px;background:var(--gold);color:#fff;transition:background .35s,color .35s}
 .scene__btn:hover{background:var(--blue);color:var(--white)}
 .orbit__index{position:absolute;left:clamp(20px,8vw,160px);top:34%;padding:10px 12px 10px 0;background:rgba(255,255,255,.82);display:flex;flex-direction:column;gap:12px;font-size:13px;letter-spacing:.08em;font-weight:500;color:var(--muted);z-index:60}
 .orbit__index button{display:flex;align-items:center;gap:8px;transition:color .3s,font-weight .3s}
@@ -260,7 +260,7 @@ ul{list-style:none}
 .panel:hover .panel__line{width:64px}
 .panel__desc{color:var(--grey);font-size:12.5px;line-height:1.5;max-width:40ch;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 /* le CTA de service reste visible en permanence, en pastille dorée */
-.panel__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:11px 18px;border-radius:999px;background:var(--gold);color:var(--black);font-size:10px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;opacity:1;transform:none;transition:background .35s var(--ease),color .35s var(--ease)}
+.panel__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:11px 18px;border-radius:999px;background:var(--gold);color:#fff;font-size:10px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;opacity:1;transform:none;transition:background .35s var(--ease),color .35s var(--ease)}
 .panel:hover .panel__cta{background:var(--blue);color:var(--white)}
 .panel__cta::after{display:none}
 .panel:hover .panel__desc,.panel:focus-within .panel__desc{opacity:1;transform:none}
@@ -807,7 +807,7 @@ body{background:var(--soft)}
 .pc__play{right:14px;top:14px}
 @media (max-width:1100px){.pg__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.pg__grid{grid-template-columns:1fr}}
-#plus.btn--blue:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+#plus.btn--blue:hover{background:var(--gold);border-color:var(--gold);color:#fff}
 .ex__f,.ex__grp{min-width:0;max-width:100%}
 .ex__row{flex-wrap:wrap;overflow:visible}
 
@@ -846,8 +846,8 @@ body{background:var(--soft)}
 @media (max-width:1100px){.fl{flex-wrap:wrap}.fl .fl__q{flex-basis:100%}}
 @media (max-width:760px){.fl{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fl .fl__q{grid-column:1/-1}.fl__d select{width:100%;max-width:none;height:46px;font-size:13px;padding:0 34px 0 14px}.fl__d::after{right:14px}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2665">
-<link rel="stylesheet" href="assets/texte-projets.css?v=b2665">
+<link rel="stylesheet" href="assets/ui.css?v=b2666">
+<link rel="stylesheet" href="assets/texte-projets.css?v=b2666">
 </head><body>
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
@@ -1083,7 +1083,7 @@ rendre();
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
-<script src="assets/plus.js?v=b2665"></script>
-<script src="assets/ui.js?v=b2665"></script>
-<script src="assets/nav.js?v=b2665"></script>
+<script src="assets/plus.js?v=b2666"></script>
+<script src="assets/ui.js?v=b2666"></script>
+<script src="assets/nav.js?v=b2666"></script>
 </body></html>
