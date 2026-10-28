@@ -423,7 +423,7 @@
   /* Décor : grandes ellipses fines derrière le contenu, comme sur la page Équipe */
   function lum(c){var m=(c||'').match(/[\d.]+/g); if(!m||m.length<3||(m.length>3&&+m[3]===0)) return null; return (0.299*m[0]+0.587*m[1]+0.114*m[2])/255;}
   function decor(){
-    var liste=[].slice.call(document.querySelectorAll('.bp__wrap,.talents'));
+    var liste=[].slice.call(document.querySelectorAll('.bp__wrap,.talents,.pe'));
     liste.forEach(function(s,n){
       if(s.querySelector(':scope > .ell')||s.offsetHeight<460) return;
       var cs=getComputedStyle(s); if(cs.position==='static') s.style.position='relative';
@@ -444,6 +444,13 @@
           html+='<span style="position:absolute;width:340px;height:230px;'+(q[2]==='l'?'left:'+(q[0]-3)+'%':'right:'+(100-q[0]-3)+'%')+';top:'+q[1]+'%;opacity:.95;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 20%,transparent 100%);mask-image:radial-gradient(closest-side,#000 20%,transparent 100%)"></span>';
         });
       }
+      if(s.matches('.bp__wrap,.pe')){
+        var pos=s.matches('.bp__wrap')?[[1,4,'l'],[98,10,'r'],[0,24,'l'],[99,34,'r'],[1,46,'l'],[98,57,'r'],[0,69,'l'],[99,80,'r'],[1,92,'l']]:[[1,10,'l'],[98,40,'r'],[1,72,'l']];
+        pos.forEach(function(q){
+          html+='<span style="position:absolute;width:320px;height:210px;'+(q[2]==='l'?'left:'+(q[0]-3)+'%':'right:'+(100-q[0]-3)+'%')+';top:'+q[1]+'%;opacity:.9;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 20%,transparent 100%);mask-image:radial-gradient(closest-side,#000 20%,transparent 100%)"></span>';
+        });
+      }
+      if(ACCUEIL&&s.matches('.talents')){ var m='linear-gradient(180deg,transparent 0,#000 160px,#000 calc(100% - 220px),transparent 100%)'; d.style.webkitMaskImage=m; d.style.maskImage=m; }
       d.innerHTML=html;
       s.insertBefore(d,s.firstChild);
     });
