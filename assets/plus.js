@@ -16,9 +16,9 @@
         if(t[0]==='t'||t[0]==='b') el.style.left=t[1]+'%'; else el.style.top=t[1]+'%';
         sec.appendChild(el);
       });
-      if(n%2===0&&sec.offsetHeight>300){
+      if(sec.offsetHeight>300){
         var g=document.createElement('span'); g.className='grille'; g.setAttribute('aria-hidden','true');
-        g.style.cssText='position:absolute;pointer-events:none;z-index:1;opacity:.45;background-size:26px 26px;background-repeat:repeat;width:300px;height:170px;'+(n%4===0?'right:4%;top:70px;':'left:3%;bottom:50px;')+'background-image:'+(fond?motifs.sombre:motifs.clair)+';-webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent 100%);mask-image:radial-gradient(closest-side,#000 25%,transparent 100%)';
+        g.style.cssText='position:absolute;pointer-events:none;z-index:1;opacity:.6;background-size:26px 26px;background-repeat:repeat;width:300px;height:170px;'+(n%2===0?'right:3%;top:60px;':'left:2%;bottom:40px;')+'background-image:'+(fond?motifs.sombre:motifs.clair)+';-webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent 100%);mask-image:radial-gradient(closest-side,#000 25%,transparent 100%)';
         sec.appendChild(g);
       }
     });
