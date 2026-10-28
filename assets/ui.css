@@ -387,3 +387,5 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 :root{--titre-u:clamp(34px,4.5vw,76px)}
 .titre-u{font-size:var(--titre-u)!important;line-height:.96!important;letter-spacing:-.035em!important}
 @media (max-width:640px){.titre-u{font-size:clamp(34px,10.4vw,46px)!important}}
+/* hors accueil : plus de grilles de « + » derrière les textes ni sur les bannières */
+html:not(:has(#heroTitle)) .grille,html:not(:has(#heroTitle)) .psl .plus,html:not(:has(#heroTitle)) .pcta .plus,html:not(:has(#heroTitle)) .fc .plus,html:not(:has(#heroTitle)) .sv .plus{display:none!important}

@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Personnalités sportives — MVP Group | MVP Group — Agence de marketing sportif | Ambassadeurs, conférenciers et porte-parole</title>
+<title>Célébrités sportives — MVP Group | MVP Group — Agence de marketing sportif | Ambassadeurs, conférenciers et porte-parole</title>
 <meta name="description" content="MVP Group — agence de marketing sportif à Montréal. Ambassadeurs de marque, conférenciers, porte-parole et influenceurs pour vos campagnes et événements corporatifs au Québec, au Canada et aux États-Unis.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -818,7 +818,7 @@ body{background:var(--soft);color:var(--black)}
 .header.header--barre .lang button.is-active{color:var(--gold)}
 .header.header--barre .header__logo img{transition:height .45s}
 /* « En vedette » : toujours une rangée complète, jamais une carte seule */
-@media (min-width:1001px) and (max-width:1280px){#grid2>:nth-child(n+4){display:none}}
+@media (max-width:1180px){#grid2>:nth-child(n+5){display:none}}@media (max-width:960px){#grid2>:nth-child(n+4){display:none}}@media (max-width:700px){#grid2>:nth-child(n+3){display:none}}@media (max-width:600px){#grid2>:nth-child(n+2){display:none}}
 .voirplus .btn{min-width:min(340px,100%);justify-content:center}
 .btn--blue:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
 
@@ -889,9 +889,9 @@ body{background:var(--soft);color:var(--black)}
 .tk-lien{display:block;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;color:#1E5299;text-decoration:underline;cursor:pointer}
 .tk__th,.tk__reach{display:none!important}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2654">
-<script src="assets/titres-courts.js?v=b2654"></script>
-<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2654">
+<link rel="stylesheet" href="assets/ui.css?v=b2656">
+<script src="assets/titres-courts.js?v=b2656"></script>
+<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2656">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -958,7 +958,7 @@ body{background:var(--soft);color:var(--black)}
       <div class="tk-tools">
         <div class="srch">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Recherchez une personnalité sportive" aria-label="Rechercher une personnalité">
+          <input id="q" type="search" placeholder="Recherchez une célébrité sportive" aria-label="Rechercher une personnalité">
         </div>
         <div class="tk-filt" id="filtres"></div>
       </div>
@@ -984,7 +984,7 @@ body{background:var(--soft);color:var(--black)}
       </section>
 
       <div class="suite" id="apres">
-        <h2 class="suite__t">Personnalités en vedette</h2>
+        <h2 class="suite__t">Célébrités en vedette</h2>
         <p class="suite__p">Quelques figures marquantes du réseau MVP.</p>
       </div>
       <div class="grid" id="grid2"></div>
@@ -1170,9 +1170,10 @@ function carte(t){
 function rendre(){
   const r=filtrer();
   $('#nb').textContent=r.length;
-  const max=E.page*PAR_PAGE;
-  const visibles=r.slice(0,max);
+  let max=E.page*PAR_PAGE;
   const g1=$('#grid');
+  for(let essai=0; essai<8; essai++){
+  const visibles=r.slice(0,max);
   g1.innerHTML='';
   if(!r.length){
     const nom=E.q.trim();
@@ -1193,8 +1194,17 @@ function rendre(){
       g1.appendChild(carte(t)); nC++;
     });
   }
+  /* la dernière ligne avant « Voir plus » doit être pleine : on ajoute une carte tant qu'elle ne l'est pas */
+  if(!r.length||max>=r.length) break;
+  const cs=[...g1.children].filter(x=>!x.classList.contains('tk-sport')); const bas=Math.max(...cs.map(x=>x.offsetTop));
+  const cols=getComputedStyle(g1).gridTemplateColumns.split(' ').length||1;
+  const surLigne=cs.filter(x=>Math.abs(x.offsetTop-bas)<4).length;
+  const orphelin=[...g1.querySelectorAll('.tk-sport')].some(h=>h.offsetTop>bas);
+  if(surLigne>=cols&&!orphelin) break;
+  max++;
+  }
   $('#plus').parentElement.style.display = r.length>max ? '' : 'none';
-  $('#plus').textContent='Voir plus de personnalités ('+(r.length-max)+')';
+  $('#plus').textContent='Voir plus de célébrités ('+(r.length-max)+')';
   rendreActifs(r.length);
   ecrireURL();
 }
@@ -1256,7 +1266,7 @@ const PROJETS_MVP=[{"img":"assets/projets/chantalmachabee-timhortons-1.jpg","k":
   const g2=$('#grid2'); if(!g2) return;
   const vus=new Set(); const choix=[];
   ['boxing','hockey','mma','media','olympics','soccer','other'].forEach(cat=>{
-    if(choix.length>=4) return;   /* une rangée complète de 4 */
+    if(choix.length>=5) return;   /* une rangée complète de 5 */
     const c=TALENTS.filter(t=>t.cat===cat&&t.bio).sort((a,b)=>b.bio.length-a.bio.length)[0];
     if(c&&!vus.has(c.id)){ vus.add(c.id); choix.push(c); }
   });
@@ -1321,7 +1331,7 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
 </script>
-<script src="assets/plus.js?v=b2654"></script>
-<script src="assets/ui.js?v=b2654"></script>
-<script src="assets/nav.js?v=b2654"></script>
+<script src="assets/plus.js?v=b2656"></script>
+<script src="assets/ui.js?v=b2656"></script>
+<script src="assets/nav.js?v=b2656"></script>
 </body></html>
