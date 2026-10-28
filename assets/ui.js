@@ -373,4 +373,13 @@
     e.preventDefault(); a.dataset.vu='1';
     var sp=a.querySelector('span'); if(sp){ sp.removeAttribute('data-ui'); sp.removeAttribute('data-i18n'); sp.textContent=NUM; }
   });
+
+  /* titres de section : taille universelle (toutes les pages, sauf l'accueil dont les titres servent de référence) */
+  (function(){
+    if(document.getElementById('heroTitle')) return;
+    var marque=function(){ document.querySelectorAll('h2').forEach(function(h){
+      if(h.closest('.footer,.dmd,.header,.mobile-menu,.aide-c,.tb,.sv__h')||h.classList.contains('tk-sport')||h.classList.contains('titre-u')) return;
+      h.classList.add('titre-u'); }); };
+    marque(); setTimeout(marque,400); addEventListener('load',function(){ setTimeout(marque,600); });
+  })();
 })();
