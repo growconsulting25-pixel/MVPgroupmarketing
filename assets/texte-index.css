@@ -157,11 +157,11 @@ p.lede{font-size:19px!important}
 
 /* Tous les titres de section : même taille que « Nos célébrités sportives » (sauf la 2e section) */
 @media (min-width:1100px){
-  .services__bg,.talents__t,.projets__t,.mo__t{font-size:clamp(34px,4.5vw,76px)!important;line-height:.96!important;letter-spacing:-.035em!important}
+  .services__bg,.talents__t,.projets__t{font-size:clamp(34px,4.5vw,76px)!important;line-height:.96!important;letter-spacing:-.035em!important}
   .talents__head{row-gap:30px!important}
 }
 @media (max-width:1099px) and (min-width:641px){
-  .services__bg,.talents__t,.projets__t,.mo__t{font-size:clamp(34px,6vw,56px)!important;line-height:.98!important}
+  .services__bg,.talents__t,.projets__t{font-size:clamp(34px,6vw,56px)!important;line-height:.98!important}
 }
 @media (max-width:640px){.talents__p{margin-top:18px!important}}
 .tlrow .tcard__ph{overflow:hidden}

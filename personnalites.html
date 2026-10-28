@@ -738,6 +738,8 @@ body{background:var(--soft);color:var(--black)}
 .tk__ph{position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:var(--carbon);isolation:isolate}
 .tk__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.5) contrast(1.05);transform:scale(1.05);transition:transform 1.4s var(--ease),filter .8s var(--ease)}
 .tk__p{position:absolute;left:50%;bottom:0;height:90%;width:auto;max-width:112%;object-fit:contain;object-position:bottom center;transform:translateX(-50%);transform-origin:50% 100%;filter:drop-shadow(0 20px 34px rgba(0,0,0,.5));transition:transform 1s var(--ease)}
+.tk__p--n{bottom:auto!important;width:auto!important;max-width:none!important;max-height:none!important;transform:none!important;object-fit:fill!important;transform-origin:50% 30%}
+.tk:hover .tk__p--n{transform:scale(1.04)!important}
 .tk__p--pleine{left:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:top center;transform:none;filter:none}
 .tk__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,0) 52%,rgba(5,5,5,.88) 100%);pointer-events:none}
 .tk__cat{position:absolute;left:16px;top:16px;z-index:2;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.94);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
@@ -889,9 +891,9 @@ body{background:var(--soft);color:var(--black)}
 .tk-lien{display:block;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;color:#1E5299;text-decoration:underline;cursor:pointer}
 .tk__th,.tk__reach{display:none!important}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2658">
-<script src="assets/titres-courts.js?v=b2658"></script>
-<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2658">
+<link rel="stylesheet" href="assets/ui.css?v=b2661">
+<script src="assets/titres-courts.js?v=b2661"></script>
+<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2661">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -1147,12 +1149,13 @@ function promoBleue(droite){
 function carte(t){
   const el=document.createElement('a'); el.className='tk'; el.href='profil.html?id='+t.id;
   const pleine=PHOTO_PLEINE.has(t.id);
+  const CUT_P=(window.MVP_CUTS_P||{})[t.id];
   const role=t.roles[0]?roleFr(t.roles[0],t):'';
   const themes=(t.qualites.length?t.qualites:t.projets.map(p=>PROJ_FR[p]||p)).slice(0,3);
   el.innerHTML=`
     <div class="tk__ph">
       <img class="tk__bg" src="assets/lieux/${BG_ID[t.id]||LIEU[t.cat]||'olympics'}.jpg" alt="" loading="lazy">
-      <img class="tk__p${pleine?' tk__p--pleine':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="${t.nom}" loading="lazy" onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tk__p--pleine')">
+      <img class="tk__p${pleine?' tk__p--pleine':''}${!pleine&&CUT_P?' tk__p--n':''}" src="${pleine?t.photo:'assets/cut/'+t.id+'.webp'}" alt="${t.nom}" loading="lazy"${!pleine&&CUT_P?` style="height:${CUT_P[0]}%;top:${CUT_P[1]}%;left:${CUT_P[2]}%"`:''} onerror="this.onerror=null;this.src='${t.photo}';this.classList.add('tk__p--pleine')">
       <div class="tk__id">
         <h3 class="tk__nom">${t.nom}</h3>
         <p class="tk__sub">${(window.MVP_TITRES||{})[t.id]||[SPORT_FR[t.cat]||t.catNom,role].filter(Boolean).join(' · ')}</p>
@@ -1331,7 +1334,7 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
 </script>
-<script src="assets/plus.js?v=b2658"></script>
-<script src="assets/ui.js?v=b2658"></script>
-<script src="assets/nav.js?v=b2658"></script>
+<script src="assets/plus.js?v=b2661"></script>
+<script src="assets/ui.js?v=b2661"></script>
+<script src="assets/nav.js?v=b2661"></script>
 </body></html>
