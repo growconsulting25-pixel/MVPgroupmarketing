@@ -194,3 +194,4 @@ html{overflow-x:clip}
 .intro__cols>.intro__cta--c{justify-self:center!important}
 /* Défilements « Nos services » et « Nos projets » : toujours pleine largeur, le contenu reste aligné sur la boîte */
 .projets__rail{margin-left:calc(-1*var(--bx,0px))!important;margin-right:calc(-1*var(--bx,0px))!important;padding-left:calc(var(--gutter) + var(--bx,0px))!important;scroll-padding-left:calc(var(--gutter) + var(--bx,0px))!important}
+.mo__ruban{display:none!important}
