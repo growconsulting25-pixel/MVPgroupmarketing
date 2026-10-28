@@ -749,8 +749,14 @@ main{overflow-x:clip}
 .dk__b:hover{background:var(--gold)}.dk__b--p{left:-14px}.dk__b--n{right:-14px}
 .pe.sv--a,.pe.sv--b{border-top:0;color:#111}
 .pe.sv--a .pe__t,.pe.sv--b .pe__t{color:#0b0b0b}
-.ac{background:#fff;color:#111}
-.ac .ac__t{color:#0b0b0b}.ac .ac__hint{color:rgba(0,0,0,.45)}
+.ac{background:#0D0E10;color:#fff}
+.ac .ac__t{color:#fff}.ac .ac__t em{color:#4A8BE0}.ac .ac__hint{color:rgba(255,255,255,.5)}
+/* noir + bleu seulement : pas d'or, pas de croix derrière les textes */
+.btn--gold{background:#1E5299;color:#fff}.btn--gold:hover{background:#2F6BC4;color:#fff}
+.fc .btn--gold{background:#2F6BC4}.fc .btn--gold:hover{background:#fff;color:#0E2A4F}
+.sh__eye,.bn__k,.pr__k{color:#7FB0F0}.sh__eye i{background:#7FB0F0}
+.dk__b:hover{background:#1E5299}
+.grille,.sv .plus,.fc .plus{display:none!important}
 @media (max-width:1000px){.sv__in{grid-template-columns:1fr}.dk__b--p{left:6px}.dk__b--n{right:6px}}
 /* ===== révélations ===== */
 .rev{opacity:0;transform:translateY(50px);transition:opacity 1.1s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1)}
@@ -830,9 +836,9 @@ img[src*="svc-speakers-rochette"]{object-position:30% 40%!important}
 @media (max-width:700px){.pe__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:440px){.pe__grid{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2652">
-<script src="assets/titres-courts.js?v=b2652"></script>
-<link rel="stylesheet" href="assets/texte-service.css?v=b2652">
+<link rel="stylesheet" href="assets/ui.css?v=b2653">
+<script src="assets/titres-courts.js?v=b2653"></script>
+<link rel="stylesheet" href="assets/texte-service.css?v=b2653">
 </head><body>
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
@@ -1047,7 +1053,7 @@ glisser($('#acRail'));
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
-<script src="assets/plus.js?v=b2652"></script>
-<script src="assets/ui.js?v=b2652"></script>
-<script src="assets/nav.js?v=b2652"></script>
+<script src="assets/plus.js?v=b2653"></script>
+<script src="assets/ui.js?v=b2653"></script>
+<script src="assets/nav.js?v=b2653"></script>
 </body></html>
