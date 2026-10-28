@@ -358,3 +358,5 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 
 /* Logo : aucun cadre de focus autour du logo MVP */
 .header__logo,.header__logo:focus,.header__logo:focus-visible,.header__logo:active{outline:none!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent}
+
+.dmd__fin{margin:18px 0 12px;font-size:15px;font-weight:700;color:#123B6D;text-align:center;line-height:1.4}

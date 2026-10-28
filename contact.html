@@ -926,7 +926,7 @@ body{background:var(--soft);color:var(--black)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
 @media (min-width:1024px){.mm{display:none}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2642">
+<link rel="stylesheet" href="assets/ui.css?v=b2643">
 <style>
 /* ===================== PAGE CONTACT — prolongement du pied de page ===================== */
 body{background:#050505}
@@ -985,6 +985,7 @@ body{background:#050505}
 .ct-msg{margin:16px 0 0;font-size:14px;color:var(--gold)}
 .ct-msg.est-err{color:#e0675f}
 .ct-msg a{text-decoration:underline}
+.ct-fin{margin:6px 0 14px;font-size:15px;font-weight:700;color:#fff}
 .ct-note{margin:14px 0 0;font-size:12px;color:rgba(255,255,255,.4)}
 /* le pied de page complet suit, même fond */
 .footer{background:#050505!important;border-top:1px solid rgba(255,255,255,.08)}
@@ -995,7 +996,7 @@ body{background:#050505}
 @media (max-width:1023px){.ct-corps{grid-template-columns:1fr}}
 @media (max-width:640px){.ct-hero{padding-top:calc(var(--nav-h) + 30px)}.ct-g{grid-template-columns:1fr}.ct-liste li{grid-template-columns:1fr;gap:6px}.ct-rapide a{width:100%}.ct-go{width:100%;justify-content:center}.footer .footer__phrase{white-space:normal}}
 </style>
-<link rel="stylesheet" href="assets/texte-contact.css?v=b2642">
+<link rel="stylesheet" href="assets/texte-contact.css?v=b2643">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -1078,7 +1079,7 @@ body{background:#050505}
 
     <form class="ct-form" id="ctForm" novalidate>
       <h2 data-c="fT">Parlez-nous de votre projet</h2>
-      <p data-c="fP">Réponse rapide, sans engagement.</p>
+      <p data-c="fP">Parlez-nous de votre projet : conférence, campagne, gala, événement</p>
       <div class="ct-g">
         <label class="ct-c"><span data-c="nom">Nom *</span><input name="nom" type="text" autocomplete="name" required></label>
         <label class="ct-c"><span data-c="ent">Entreprise</span><input name="entreprise" type="text" autocomplete="organization"></label>
@@ -1094,8 +1095,11 @@ body{background:#050505}
           <option value="Salon Exécutif MVP" data-c="s6">Salon Exécutif MVP</option>
           <option value="Médias / autre" data-c="s7">Médias ou autre demande</option>
         </select></label>
-        <label class="ct-c ct-c--l"><span data-c="msg">Décrivez-nous votre projet</span><textarea name="message" rows="5" data-c-ph="msgPh" placeholder="Vos objectifs, besoins ou détails sur votre événement"></textarea></label>
+        <label class="ct-c ct-c--l"><span data-c="celeb">Célébrité sportive</span><input name="personnalite" type="text" data-c-ph="celebPh" placeholder="Nom de la célébrité sportive souhaitée"></label>
+        <label class="ct-c ct-c--l"><span data-c="msg">Décrivez-nous vos besoins</span><textarea name="message" rows="5" data-c-ph="msgPh" placeholder="Ex. : conférence, campagne, gala, événement corporatif"></textarea></label>
+        <label class="ct-c ct-c--l"><span data-c="date">Date de votre événement</span><input name="date" type="date"></label>
       </div>
+      <p class="ct-fin" data-c="fin">Décrivez-nous vos besoins et nous vous trouverons la bonne personnalité</p>
       <button class="ct-go" type="submit"><span data-c="go">Envoyer ma demande</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       <p class="ct-msg" role="status" hidden></p>
       <p class="ct-note" data-c="note">Vos renseignements servent uniquement à répondre à votre demande.</p>
@@ -1184,14 +1188,14 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
 (function(){
   var D={fr:{k:'Contact · MVP Group Agency',t:'Parlons de votre <span class="gold">prochain projet.</span>',p:"Conférencier, ambassadeur, porte-parole, invité d'honneur ou campagne : dites-nous ce que vous cherchez. Un membre de l'équipe vous répond rapidement avec des propositions.",
       appeler:'Appelez-nous',ecrire:'Écrivez-nous',coord:'Coordonnées',bureau:'Bureau',courriel:'Courriel',affaires:'Affaires',mylaa:'Gestionnaire des affaires',appMylaa:'Appeler Mylaa Desloges',siege:'Siège social',
-      fT:'Parlez-nous de votre projet',fP:'Réponse rapide, sans engagement.',nom:'Nom *',ent:'Entreprise',mail:'Courriel *',tel:'Téléphone',sujet:'Sujet',web:'Site web',msg:'Décrivez-nous votre projet',msgPh:'Vos objectifs, besoins ou détails sur votre événement',
+      fT:'Parlez-nous de votre projet',fP:'Parlez-nous de votre projet : conférence, campagne, gala, événement',nom:'Nom *',ent:'Entreprise',mail:'Courriel *',tel:'Téléphone',sujet:'Sujet',web:'Site web',msg:'Décrivez-nous vos besoins',msgPh:'Ex. : conférence, campagne, gala, événement corporatif',celeb:'Célébrité sportive',celebPh:'Nom de la célébrité sportive souhaitée',date:'Date de votre événement',fin:'Décrivez-nous vos besoins et nous vous trouverons la bonne personnalité',
       s1:'Engager une personnalité sportive',s2:'Conférence ou atelier',s3:'Ambassadeur ou porte-parole',s4:"Événement corporatif ou invité d'honneur",s5:'Campagne marketing ou influenceurs',s6:'Salon Exécutif MVP',s7:'Médias ou autre demande',
-      go:'Envoyer ma demande',note:'Vos renseignements servent uniquement à répondre à votre demande.',req:'Votre nom et un courriel valide, svp.',ok:'Merci ! Votre demande est envoyée. Nous vous répondons rapidement.',err:'Envoi impossible pour l’instant. Écrivez-nous à <a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a> ou appelez le 514-582-3306.'},
+      go:'Envoyer ma demande',note:'Vos renseignements servent uniquement à répondre à votre demande.',req:'Votre nom et un courriel valide, svp.',ok:'Merci ! Votre demande est envoyée. Un conseiller du groupe MVP vous répondra très rapidement',err:'Envoi impossible pour l’instant. Écrivez-nous à <a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a> ou appelez le 514-582-3306.'},
     en:{k:'Contact · MVP Group Agency',t:'Let’s talk about your <span class="gold">next project.</span>',p:'Speaker, ambassador, spokesperson, guest of honour or campaign: tell us what you need. A team member will get back to you quickly with proposals.',
       appeler:'Call us',ecrire:'Write to us',coord:'Contact details',bureau:'Office',courriel:'Email',affaires:'Business',mylaa:'Business manager',appMylaa:'Call Mylaa Desloges',siege:'Head office',
-      fT:'Tell us about your project',fP:'Quick answer, no commitment.',nom:'Name *',ent:'Company',mail:'Email *',tel:'Phone',sujet:'Subject',web:'Website',msg:'Tell us about your project',msgPh:'Your goals, needs or details about your event',
+      fT:'Tell us about your project',fP:'Tell us about your project: keynote, campaign, gala, event',nom:'Name *',ent:'Company',mail:'Email *',tel:'Phone',sujet:'Subject',web:'Website',msg:'Describe your needs',msgPh:'E.g. keynote, campaign, gala, corporate event',celeb:'Sports celebrity',celebPh:'Name of the sports celebrity you would like',date:'Date of your event',fin:'Describe your needs and we will find you the right personality',
       s1:'Book a sports personality',s2:'Keynote or workshop',s3:'Ambassador or spokesperson',s4:'Corporate event or guest of honour',s5:'Marketing campaign or influencers',s6:'Salon Exécutif MVP',s7:'Media or other request',
-      go:'Send my request',note:'Your information is only used to answer your request.',req:'Please enter your name and a valid email.',ok:'Thank you! Your request has been sent. We will get back to you quickly.',err:'Unable to send right now. Email us at <a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a> or call 514-582-3306.'}};
+      go:'Send my request',note:'Your information is only used to answer your request.',req:'Please enter your name and a valid email.',ok:'Thank you! Your request has been sent. An MVP Group advisor will get back to you very quickly',err:'Unable to send right now. Email us at <a href="mailto:info@mvpsportsmarketing.com">info@mvpsportsmarketing.com</a> or call 514-582-3306.'}};
   var L=function(){ var a=document.querySelector('#lang .is-active'); return a&&a.dataset.lang==='en'?'en':'fr'; };
   var app=function(){ var d=D[L()];
     document.querySelectorAll('[data-c]').forEach(function(e){ if(d[e.dataset.c]) e.textContent=d[e.dataset.c]; });
@@ -1215,7 +1219,7 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   });
 })();
 </script>
-<script src="assets/ui.js?v=b2642"></script>
-<script src="assets/nav.js?v=b2642"></script>
+<script src="assets/ui.js?v=b2643"></script>
+<script src="assets/nav.js?v=b2643"></script>
 </body>
 </html>

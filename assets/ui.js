@@ -7,42 +7,42 @@
       bulle:'Une question ?',aideT:"Besoin d'aide ?",aideS:'Nous sommes là pour vous',
       aideP:"Dites-nous ce que vous cherchez : conférencier, ambassadeur, invité d'honneur… Un agent vous répond rapidement avec des propositions.",
       start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
-      k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Conférence, campagne, gala ou événement corporatif : décrivez votre besoin, nous trouvons la bonne personnalité.",
+      k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Parlez-nous de votre projet : conférence, campagne, gala, événement",fin:"Décrivez-nous vos besoins et nous vous trouverons la bonne personnalité",
       avec:'Engagez',pt1:'Un conseiller du Groupe MVP vous répond très rapidement',pt2:'Un seul interlocuteur, du premier appel au résultat',pt3:"Un réseau bâti depuis 2005 dans le sport québécois",
       parler:'Vous préférez parler à quelqu’un ?',ecrire:'Vous préférez nous écrire ?',hbK:'Canadiens de Montréal',hbUn:'un membre des Canadiens',hbJoueur:'Le membre des Canadiens',hbChoix:'Membre souhaité',hbAucun:'Pas encore décidé — conseillez-moi',hbActuels:'Joueurs et dirigeants',hbAnciens:'Anciens et légendes',hbAutre:'Un autre membre des Canadiens',hbP:'Joueurs, légendes, entraîneurs et dirigeants : choisissez un membre ou laissez-nous vous conseiller.',besoins:'Vos besoins',coord:'Vos coordonnées',projet:'Votre projet',datePh:'Ex. : juin 2027',
       note:'Vos informations restent confidentielles et servent uniquement à répondre à votre demande.',
-      okPa:"L'équipe MVP communiquera avec vous sous peu au sujet de votre projet avec %.",
-      nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date approximative',perso:'Personnalité souhaitée',message:'Décrivez-nous votre projet',web:'Site web',
+      okPa:"Un conseiller du groupe MVP vous répondra très rapidement",
+      nom:'Nom',ent:'Entreprise',mail:'Courriel',tel:'Téléphone',type:'Type de projet',date:'Date de votre événement',perso:'Célébrité sportive',message:'Décrivez-nous vos besoins',web:'Site web',
       types:['Conférencier(ère)','Ambassadeur(drice)','Porte-parole','Animateur(trice)','Invité(e) d\'honneur','Influenceur(euse) / médias sociaux','Événement corporatif','Autre'],
-      persoPh:'Facultatif — ex. : un olympien, un joueur des Canadiens',msgPh:'Vos objectifs, besoins ou détails sur votre événement',
+      persoPh:'Nom de la célébrité sportive souhaitée',msgPh:'Ex. : conférence, campagne, gala, événement corporatif',
       envoyer:'Envoyer la demande',envoi:'Envoi…',req:'Merci de remplir les champs obligatoires (*).',
       err:"L'envoi n'a pas fonctionné. Écrivez-nous à <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> ou appelez le <a href=\""+TELH+"\">"+TEL+"</a>.",
       iK:'MVP International · Sur demande',iT:'Une icône, <em>partout en Amérique du Nord.</em>',iP:"Nommez la personnalité, peu importe la ville ou la ligue : nous approchons ses représentants pour vous.",
       i1:'Toutes les disciplines, partout en Amérique du Nord',i2:'Nous contactons ses représentants et négocions pour vous',i3:'Un conseiller du Groupe MVP vous répond très rapidement',
       iCible:'La personnalité',iNom:'Personnalité souhaitée *',iNomPh:'Ex. : une vedette du basketball américain',iPays:'Pays ou ligue',iPaysPh:'Ex. : États-Unis, Mexique…',iLieu:"Lieu de l'événement",iLieuPh:'Ex. : Montréal, Toronto…',
       budget:'Budget approximatif',budgets:['À déterminer','Moins de 25 000 $','25 000 $ – 100 000 $','100 000 $ – 250 000 $','250 000 $ et plus'],
-      iOk:"Un conseiller du Groupe MVP communiquera avec vous sous peu au sujet de votre demande internationale.",
-      okT:'Merci, votre demande est envoyée.',okP:"L'équipe MVP communiquera avec vous sous peu."},
+      iOk:"Un conseiller du groupe MVP vous répondra très rapidement",
+      okT:'Merci, votre demande est envoyée.',okP:"Un conseiller du groupe MVP vous répondra très rapidement"},
     en:{msg:'The <i>#1</i> Sports Marketing Agency in Québec',work:'Contact us',call:'Call us',find:'Find an athlete',
       bulle:'Questions?',aideT:'Need help?',aideS:"We're here for you",
       aideP:"Tell us what you're looking for: keynote speaker, ambassador, guest of honor… An agent will get back to you quickly with suggestions.",
       start:'Start inquiry',appel2:'Call us',appeler:'Call '+TEL,rapide:'Fast reply · Mon-Fri 9am-5pm',fermer:'Close',
-      k:'Start a project',t:'Tell us about <em>your project.</em>',p:'Keynote, campaign, gala or corporate event: describe your need and we find the right personality.',
+      k:'Start a project',t:'Tell us about <em>your project.</em>',p:'Tell us about your project: keynote, campaign, gala, event',fin:'Describe your needs and we will find you the right personality',
       avec:'Book',pt1:'An MVP Group advisor gets back to you very quickly',pt2:'One point of contact, from the first call to the result',pt3:'A network built inside Quebec sport since 2005',
       parler:'Rather talk to someone?',ecrire:'Rather write to us?',hbK:'Montréal Canadiens',hbUn:'a member of the Canadiens',hbJoueur:'The Canadiens member',hbChoix:'Preferred member',hbAucun:'Not decided yet — advise me',hbActuels:'Players and staff',hbAnciens:'Alumni and legends',hbAutre:'Another member of the Canadiens',hbP:'Players, legends, coaches and executives: pick a member or let us advise you.',besoins:'Your needs',coord:'Your details',projet:'Your project',datePh:'E.g. June 2027',
       note:'Your information stays confidential and is only used to answer your request.',
-      okPa:'The MVP team will contact you shortly about your project with %.',
-      nom:'Name',ent:'Company',mail:'Email',tel:'Phone',type:'Project type',date:'Approximate date',perso:'Preferred personality',message:'Tell us about your project',web:'Website',
+      okPa:'An MVP Group advisor will get back to you very quickly',
+      nom:'Name',ent:'Company',mail:'Email',tel:'Phone',type:'Project type',date:'Date of your event',perso:'Sports celebrity',message:'Describe your needs',web:'Website',
       types:['Keynote speaker','Ambassador','Spokesperson','Host','Guest of honor','Influencer / social media','Corporate event','Other'],
-      persoPh:'Optional — e.g. an Olympian, a Canadiens player',msgPh:'Your goals, needs or details about your event',
+      persoPh:'Name of the sports celebrity you would like',msgPh:'E.g. keynote, campaign, gala, corporate event',
       envoyer:'Send inquiry',envoi:'Sending…',req:'Please fill in the required fields (*).',
       err:"Sending failed. Email us at <a href=\"mailto:info@mvpsportsmarketing.com\">info@mvpsportsmarketing.com</a> or call <a href=\""+TELH+"\">"+TEL+"</a>.",
       iK:'MVP International · On request',iT:'Any icon, <em>anywhere in North America.</em>',iP:'Name the personality, whatever the city or league: we approach their representatives for you.',
       i1:'Every sport, anywhere in North America',i2:'We contact their representatives and negotiate for you',i3:'An MVP Group advisor gets back to you very quickly',
       iCible:'The personality',iNom:'Desired personality *',iNomPh:'E.g. an American basketball star',iPays:'Country or league',iPaysPh:'E.g. United States, Mexico…',iLieu:'Event location',iLieuPh:'E.g. Montréal, Toronto…',
       budget:'Approximate budget',budgets:['To be determined','Under $25,000','$25,000 – $100,000','$100,000 – $250,000','$250,000 and up'],
-      iOk:'An MVP Group advisor will contact you shortly about your international request.',
-      okT:'Thank you, your request has been sent.',okP:'The MVP team will contact you shortly.'}
+      iOk:'An MVP Group advisor will get back to you very quickly',
+      okT:'Thank you, your request has been sent.',okP:'An MVP Group advisor will get back to you very quickly'}
   };
   var L=function(){ try{ return localStorage.getItem('mvp-lang')==='en'?'en':'fr'; }catch(e){ return 'fr'; } };
   var I={
@@ -115,9 +115,9 @@
         champ('nom','nom','text',1,0,'name')+champ('entreprise','ent','text',0,0,'organization')+champ('courriel','mail','email',1,0,'email')+champ('telephone','tel','tel',0,0,'tel')+champ('site','web','text',0,1,'url')+
       '</div></fieldset>'+
       '<fieldset><legend><span class="dmd__n"></span><b data-ui="projet"></b></legend><div class="dmd__g">'+
-        champ('date','date','date')+'<label class="dmd__c dmd__c--budget"><span><b data-ui="budget"></b></span><select name="budget" class="dmd__sel"></select></label>'+'<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+
+        '<div class="dmd__perso">'+champ('personnalite','perso','text')+'</div>'+champ('message','message','textarea',0,1)+champ('date','date','date')+'<label class="dmd__c dmd__c--budget"><span><b data-ui="budget"></b></span><select name="budget" class="dmd__sel"></select></label>'+
       '</div></fieldset>'+
-      '<div class="dmd__err" role="alert" hidden></div><button class="dmd__go" type="submit"><span data-ui="envoyer"></span>'+I.fl+'</button>'+
+      '<p class="dmd__fin" data-ui="fin"></p><div class="dmd__err" role="alert" hidden></div><button class="dmd__go" type="submit"><span data-ui="envoyer"></span>'+I.fl+'</button>'+
       '<p class="dmd__note" data-ui="note"></p></form></div>'+
     '<div class="dmd__ok" hidden><span class="dmd__okic">'+ck+'</span><h3 data-ui="okT"></h3><p class="dmd__okp"></p><button type="button" class="dmd__okb" data-ui="fermer"></button></div></div></div>');
   body.appendChild(dmd);
@@ -133,8 +133,8 @@
   form.joueur.addEventListener('change',function(){ if(ATH&&ATH.habs){ ATH.joueur=this.value; majTitres(); } });
   form.joueur.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); this.blur(); } });
   /* Personnalités souhaitées : menu déroulant (pré-sélectionné) + possibilité d'en ajouter d'autres */
-  Object.assign(D.fr,{pTitre:'Personnalité(s) souhaitée(s)',pPh:'Dites-nous qui vous voulez, ou ce que vous cherchez',pHint:'Pas encore décidé ? Laissez vide, nous vous conseillerons.',hbPh:'Inscrire le membre des Canadiens souhaité',pAjout:'Ajouter une autre personnalité',pRetirer:'Retirer',});
-  Object.assign(D.en,{pTitre:'Desired personality(ies)',pPh:'Tell us who you have in mind, or what you are looking for',pHint:'Not decided yet? Leave it empty, we will advise you.',hbPh:'Enter the Canadiens member you would like',pAjout:'Add another personality',pRetirer:'Remove',});
+  Object.assign(D.fr,{pTitre:'Célébrité sportive',pPh:'Nom de la célébrité sportive souhaitée',pHint:'Pas encore décidé ? Laissez vide, nous vous conseillerons.',hbPh:'Inscrire le membre des Canadiens souhaité',pAjout:'Ajouter une autre célébrité',pRetirer:'Retirer',});
+  Object.assign(D.en,{pTitre:'Sports celebrity',pPh:'Name of the sports celebrity you would like',pHint:'Not decided yet? Leave it empty, we will advise you.',hbPh:'Enter the Canadiens member you would like',pAjout:'Add another celebrity',pRetirer:'Remove',});
   var pl=dmd.querySelector('.dmd__pl');
   var syncP=function(){
     var v=[].map.call(pl.children,function(r){ return r.querySelector('input').value.trim(); }).filter(Boolean);
