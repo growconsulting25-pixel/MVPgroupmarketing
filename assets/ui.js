@@ -5,7 +5,7 @@
   var D={
     fr:{msg:"L'Agence de Marketing Sportif <i>#1</i> au Québec",work:'Consultez-nous',call:'Appelez-nous',find:'Trouver un athlète',
       bulle:'Une question ?',aideT:"Besoin d'aide ?",aideS:'Nous sommes là pour vous',
-      aideP:"Dites-nous ce que vous cherchez : conférencier, ambassadeur, invité d'honneur… Un agent vous répond rapidement avec des propositions.",
+      aideP:"Dites-nous ce que vous cherchez : conférencier, ambassadeur, invité d'honneur… Un agent vous répond rapidement.",
       start:'Démarrer une demande',appel2:'Nous appeler',appeler:'Appeler '+TEL,rapide:'Réponse rapide · Lun-Ven 9 h-17 h',fermer:'Fermer',
       k:'Démarrer un projet',t:'Parlez-nous de <em>votre projet.</em>',p:"Parlez-nous de votre projet : conférence, campagne, gala, événement",fin:"Décrivez-nous vos besoins et nous vous trouverons la bonne célébrité sportive",
       avec:'Engagez',pt1:'Un conseiller du Groupe MVP vous répond très rapidement',pt2:'Un seul interlocuteur, du premier appel au résultat',pt3:"Un réseau bâti depuis 2005 dans le sport québécois",

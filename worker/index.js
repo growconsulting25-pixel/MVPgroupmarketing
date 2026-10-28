@@ -12,6 +12,7 @@
  */
 
 import { buildHomepage, rewriteHomepage } from './homepage.js';
+import FR from './fr.json';
 
 const CACHE_SECONDS = 60;
 const CAT_NOM = { boxing: 'Boxing', hockey: 'Hockey', mma: 'MMA', olympics: 'Olympics', media: 'Media', soccer: 'Soccer', other: 'Others' };
@@ -211,6 +212,12 @@ export async function loadData(env, ctx) {
 }
 
 export function build(services, people, projects) {
+  // Textes français validés (site MVP d'origine) : priment sur les textes anglais encore présents dans la base.
+  people = people.map(t => FR.talents[t.slug] ? { ...t, bio: FR.talents[t.slug].bio, bio_long: FR.talents[t.slug].bioLongue } : t);
+  projects = projects.map(p => {
+    const o = FR.projets[p.slug];
+    return o ? { ...p, title: o.titre, summary: o.resume, sections: o.sections, date_label: o.date, tagline: o.accroche || p.tagline } : p;
+  });
   const projs = projects.map(p => {
     const persons = (p.project_personalities || [])
       .filter(x => x.personalities)
@@ -290,6 +297,7 @@ export function build(services, people, projects) {
     servicesDict[s.slug] = { ...(s.content || {}), nom: s.title, nomEN: s.title_en, hero: s.hero_image || '', cta1: s.cta_label || '' };
   }
 
+  for (const [slug, o] of Object.entries(FR.services)) servicesDict[slug] = { ...(servicesDict[slug] || {}), ...o };
   return { talents, projets, svcP, projetsMvp, homeList, services: servicesDict };
 }
 
