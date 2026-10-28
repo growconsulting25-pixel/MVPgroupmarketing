@@ -399,10 +399,11 @@
 /* Mise en boîte du contenu (hors accueil) : sur grand écran, les fonds restent pleine largeur
    mais le contenu est centré dans une boîte, avec de l'espace de chaque côté. */
 (function(){
-  if(document.getElementById('heroTitle')) return;
+  var ACCUEIL=!!document.getElementById('heroTitle');
   var BOITE=1560, SKIP='.footer,.header,.tb,.dmd,.aide-c,.ac,.psl,.hz,.ag-hero,.mobile-menu,script,style';
   function cibles(){
     var out=[];
+    if(ACCUEIL){ document.querySelectorAll('main > section.intro, main .talents, main > section.hb, main > section.mo, main > section.se, main > section.services, main > section.projets').forEach(function(s){out.push(s);}); return out; }
     document.querySelectorAll('body > section, body > main > section, body > div > section, #svc > section, #profil > section, #projet > section, #app > section, main > div > section').forEach(function(s){
       if(s.matches(SKIP)||s.closest('.footer,.header,.dmd')) return; out.push(s);
     });
