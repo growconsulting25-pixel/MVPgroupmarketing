@@ -419,6 +419,7 @@
       s.style.setProperty('padding-left',(s._pl+extra)+'px','important');
       s.style.setProperty('padding-right',(s._pr+extra)+'px','important');
     });
+    bleed();
   }
   /* Décor : grandes ellipses fines derrière le contenu, comme sur la page Équipe */
   function lum(c){var m=(c||'').match(/[\d.]+/g); if(!m||m.length<3||(m.length>3&&+m[3]===0)) return null; return (0.299*m[0]+0.587*m[1]+0.114*m[2])/255;}
@@ -449,6 +450,27 @@
       if(ACCUEIL&&s.matches('.talents')){ var m='linear-gradient(180deg,transparent 0,#000 160px,#000 calc(100% - 220px),transparent 100%)'; d.style.webkitMaskImage=m; d.style.maskImage=m; }
       d.innerHTML=html;
       s.insertBefore(d,s.firstChild);
+    });
+  }
+  /* Sliders : toujours pleine largeur, même quand le reste du contenu est dans la boîte */
+  function bleed(){
+    if(innerWidth<900) return;
+    var set=function(e,k,v){e.style.setProperty(k,v,'important');};
+    var clr=function(e,ks){ks.forEach(function(k){e.style.removeProperty(k);});};
+    document.querySelectorAll('.pf').forEach(function(card){
+      var els=[card].concat([].slice.call(card.querySelectorAll('.pf__head,.pf__rail')));
+      els.forEach(function(e){clr(e,['margin-left','margin-right','padding-left','padding-right','border-radius']);});
+      var r=card.getBoundingClientRect(), L=r.left, R=innerWidth-r.right; if(L<2&&R<2) return;
+      var base=els.map(function(e){var cs=getComputedStyle(e);return [parseFloat(cs.paddingLeft)||0,parseFloat(cs.paddingRight)||0];});
+      set(card,'margin-left',-L+'px'); set(card,'margin-right',-R+'px'); set(card,'border-radius','0');
+      els.slice(1).forEach(function(e,i){if(e.classList.contains('pf__rail')) set(e,'scroll-padding-left',(base[i+1][0]+L)+'px'); set(e,'padding-left',(base[i+1][0]+L)+'px'); set(e,'padding-right',(base[i+1][1]+R)+'px');});
+      var rl=card.querySelector('.pf__rail'); if(rl){ if(!rl._init){rl._init=1; ['pointerdown','wheel','touchstart'].forEach(function(ev){rl.addEventListener(ev,function(){rl._user=1;},{passive:true});}); card.querySelectorAll('.pf__arr').forEach(function(a){a.addEventListener('click',function(){rl._user=1;});});} if(!rl._user) rl.scrollLeft=0; }
+    });
+    document.querySelectorAll('.rl__rail').forEach(function(e){
+      clr(e,['margin-left','margin-right','padding-left','padding-right']);
+      var r=e.getBoundingClientRect(), L=r.left, R=innerWidth-r.right; if(L<2&&R<2) return;
+      var cs=getComputedStyle(e), pl=parseFloat(cs.paddingLeft)||0, pr=parseFloat(cs.paddingRight)||0;
+      set(e,'margin-left',-L+'px'); set(e,'margin-right',-R+'px'); set(e,'padding-left',(pl+L)+'px'); set(e,'padding-right',(pr+R)+'px'); set(e,'scroll-padding-left',(pl+L)+'px');
     });
   }
   var t; addEventListener('resize',function(){clearTimeout(t);t=setTimeout(appliquer,120);});
