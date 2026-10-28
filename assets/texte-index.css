@@ -193,5 +193,4 @@ html{overflow-x:clip}
 .intro__cols .intro__p{text-align:center!important;padding-left:0!important;border-left:0!important}
 .intro__cols>.intro__cta--c{justify-self:center!important}
 /* Défilements « Nos services » et « Nos projets » : toujours pleine largeur, le contenu reste aligné sur la boîte */
-.services__stage{margin-left:calc(-1*var(--bx,0px))!important;margin-right:calc(-1*var(--bx,0px))!important;padding-left:var(--bx,0px)!important;padding-right:var(--bx,0px)!important}
 .projets__rail{margin-left:calc(-1*var(--bx,0px))!important;margin-right:calc(-1*var(--bx,0px))!important;padding-left:calc(var(--gutter) + var(--bx,0px))!important;scroll-padding-left:calc(var(--gutter) + var(--bx,0px))!important}
