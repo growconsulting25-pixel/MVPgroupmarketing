@@ -383,3 +383,16 @@
     marque(); setTimeout(marque,400); addEventListener('load',function(){ setTimeout(marque,600); });
   })();
 })();
+/* Accents bleus des titres : reflet animé uniforme */
+(function(){
+  var passe=function(){
+    document.querySelectorAll('h1 em,h1 span,h1 i,h2 em,h2 span,h2 i,h3 em').forEach(function(e){
+      if(e.classList.contains('hl-b')||e.closest('.footer,.dmd,.header,.tb')) return;
+      var c=(getComputedStyle(e).color||'').match(/[\d.]+/g); if(!c||c.length<3) return;
+      var r=+c[0],g=+c[1],b=+c[2];
+      if(b>r+50&&b>g+15&&r<80) e.classList.add('hl-b');
+    });
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){setTimeout(passe,200);}); else setTimeout(passe,200);
+  addEventListener('load',function(){ setTimeout(passe,700); setTimeout(passe,2000); });
+})();

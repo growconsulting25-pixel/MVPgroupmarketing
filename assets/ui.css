@@ -389,3 +389,7 @@ img[src*="svc-ambassadors-goodfood"]{object-position:60% 20%!important}
 @media (max-width:640px){.titre-u{font-size:clamp(34px,10.4vw,46px)!important}}
 /* hors accueil : plus de grilles de « + » derrière les textes ni sur les bannières */
 html:not(:has(#heroTitle)) .grille,html:not(:has(#heroTitle)) .psl .plus,html:not(:has(#heroTitle)) .pcta .plus,html:not(:has(#heroTitle)) .fc .plus,html:not(:has(#heroTitle)) .sv .plus{display:none!important}
+/* mots en accent bleu : même reflet animé que la section « partout en Amérique du Nord » */
+.hl-b{color:transparent!important;-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#123B6D,#2f6fc4 50%,#123B6D);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;animation:hlb 6s linear infinite}
+@keyframes hlb{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.hl-b{animation:none}}

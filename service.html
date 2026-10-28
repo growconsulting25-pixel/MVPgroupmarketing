@@ -838,9 +838,9 @@ img[src*="svc-speakers-rochette"]{object-position:30% 40%!important}
 @media (max-width:700px){.pe__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:440px){.pe__grid{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2661">
-<script src="assets/titres-courts.js?v=b2661"></script>
-<link rel="stylesheet" href="assets/texte-service.css?v=b2661">
+<link rel="stylesheet" href="assets/ui.css?v=b2665">
+<script src="assets/titres-courts.js?v=b2665"></script>
+<link rel="stylesheet" href="assets/texte-service.css?v=b2665">
 </head><body>
 <header class="header" id="header" data-theme="light">
   <a class="header__logo" href="index.html" aria-label="MVP Group Agency — home">
@@ -967,7 +967,7 @@ const bloc=(titre,sous,texte,deck,cls)=>`<section class="sv ${cls||fond()}" data
 const persHTML=()=>`<section class="pe ${fond()}" data-nav="light">
   <div class="pe__head"><h2 class="pe__t">${accent(VOICI[key]||VOICI.speakers)}</h2></div>
   <div class="pe__grid" id="peGrid">${persTri.map((t,k)=>{
-    const pleine=['katerine-savard','chantal-machabee','guy-lafleur'].includes(t.id), href='profil.html?id='+t.id;
+    const pleine=['katerine-savard','chantal-machabee'].includes(t.id), href='profil.html?id='+t.id;
     const sous=(window.MVP_TITRES||{})[t.id]||(t.titre.toLowerCase()===t.nom.toLowerCase()?(SPORT_FR[t.cat]||t.catNom):t.titre);
     return `<article class="tcard"${k>=PREMIERS?' hidden':''}><div class="tcard__in">
     <a class="tcard__ph" href="${href}" aria-label="${t.nom} — Voir le profil"><span class="tcard__ini" aria-hidden="true">${t.nom.split(/[\s-]+/).map(w=>w[0]).join('').slice(0,2)}</span>
@@ -1055,7 +1055,7 @@ glisser($('#acRail'));
   var maj=function(){ h.classList.toggle('header--barre', scrollY>40); };
   addEventListener('scroll',maj,{passive:true}); maj(); })();
 </script>
-<script src="assets/plus.js?v=b2661"></script>
-<script src="assets/ui.js?v=b2661"></script>
-<script src="assets/nav.js?v=b2661"></script>
+<script src="assets/plus.js?v=b2665"></script>
+<script src="assets/ui.js?v=b2665"></script>
+<script src="assets/nav.js?v=b2665"></script>
 </body></html>
