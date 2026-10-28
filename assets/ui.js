@@ -411,6 +411,7 @@
   }
   function appliquer(){
     var extra=Math.max(0,(innerWidth-BOITE)/2);
+    document.documentElement.style.setProperty('--bx',extra+'px');
     cibles().forEach(function(s){
       if(s.dataset.boite===undefined){
         var cs=getComputedStyle(s); s.dataset.boite=''; s._pl=parseFloat(cs.paddingLeft)||0; s._pr=parseFloat(cs.paddingRight)||0;
