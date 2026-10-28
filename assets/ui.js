@@ -437,8 +437,7 @@
       d.style.cssText='position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1';
       var h=s.offsetHeight, k=1, html='';
       if(ACCUEIL&&s.matches('.talents')){
-        html+='<div style="position:absolute;inset:0;background:radial-gradient(55% 30% at 12% 18%,rgba(30,82,153,.3),transparent 72%),radial-gradient(60% 30% at 20% 90%,rgba(30,82,153,.24),transparent 72%)"></div>';
-        [{l:1,y:23,w:210,h:130},{r:-1,y:40,w:330,h:210},{l:5,y:61,w:150,h:170},{r:4,y:78,w:240,h:120},{l:-1,y:91,w:300,h:160}].forEach(function(q){
+                [{l:1,y:23,w:210,h:130},{r:-1,y:40,w:330,h:210},{l:5,y:61,w:150,h:170},{r:4,y:78,w:240,h:120},{l:-1,y:91,w:300,h:160}].forEach(function(q){
           html+='<span style="position:absolute;width:'+q.w+'px;height:'+q.h+'px;'+(q.l!==undefined?'left:'+q.l+'%':'right:'+q.r+'%')+';top:'+q.y+'%;opacity:.9;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 20%,transparent 100%);mask-image:radial-gradient(closest-side,#000 20%,transparent 100%)"></span>';
         });
       }
@@ -448,7 +447,7 @@
           html+='<span style="position:absolute;width:320px;height:210px;'+(q[2]==='l'?'left:'+(q[0]-3)+'%':'right:'+(100-q[0]-3)+'%')+';top:'+q[1]+'%;opacity:.9;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 20%,transparent 100%);mask-image:radial-gradient(closest-side,#000 20%,transparent 100%)"></span>';
         });
       }
-      if(ACCUEIL&&s.matches('.talents')){ var m='linear-gradient(180deg,transparent 0,#000 160px,#000 calc(100% - 220px),transparent 100%)'; d.style.webkitMaskImage=m; d.style.maskImage=m; }
+      if(ACCUEIL&&s.matches('.talents')){  }
       d.innerHTML=html;
       s.insertBefore(d,s.firstChild);
     });
