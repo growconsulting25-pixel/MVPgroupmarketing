@@ -71,12 +71,12 @@ p.lede{font-size:20px!important}
   .intro__title{font-size:clamp(34px,9.6vw,42px)!important;line-height:1.04!important}
   .services__bg,.talents__t,.projets__t{font-size:clamp(40px,11.4vw,50px)!important}
   .services .panel__title{font-size:23px!important;line-height:1.05!important}
-  .appel__t{font-size:clamp(40px,11.4vw,50px)!important;line-height:.98!important}
-  .hb__t{font-size:clamp(40px,11.4vw,50px)!important;line-height:.98!important}
+  .appel__t{font-size:clamp(28px,8vw,34px)!important;line-height:1.1!important}
+  .hb__t{font-size:clamp(34px,9.8vw,42px)!important}
   .mo__t{font-size:clamp(40px,11.4vw,50px)!important;line-height:.98!important}
   .se__t{font-size:clamp(40px,11.4vw,50px)!important;line-height:.98!important}
   .tlrow__t{font-size:24px!important}
-  .footer h2{font-size:clamp(40px,11.4vw,50px)!important}
+  .footer h2{font-size:34px!important}
   .tcard__nom,.hbc__nom{font-size:26px!important}
 }
 /* Mobile : titres, paragraphes et boutons centrés ; Canadiens = titre, carte, puis texte */
@@ -156,12 +156,18 @@ p.lede{font-size:20px!important}
 
 /* Tous les titres de section : même taille que « Nos célébrités sportives » (sauf la 2e section) */
 @media (min-width:1100px){
-  .services__bg,.talents__t,.projets__t,.hb__t,.mo__t,.se__t,.appel__t,.footer h2{font-size:clamp(34px,4.5vw,76px)!important;line-height:.96!important;letter-spacing:-.035em!important}
+  .services__bg,.talents__t,.projets__t,.mo__t,.se__t{font-size:clamp(34px,4.5vw,76px)!important;line-height:.96!important;letter-spacing:-.035em!important}
   .talents__head{row-gap:30px!important}
 }
 @media (max-width:1099px) and (min-width:641px){
-  .services__bg,.talents__t,.projets__t,.hb__t,.mo__t,.se__t,.appel__t,.footer h2{font-size:clamp(34px,6vw,56px)!important;line-height:.98!important}
+  .services__bg,.talents__t,.projets__t,.mo__t,.se__t{font-size:clamp(34px,6vw,56px)!important;line-height:.98!important}
 }
 @media (max-width:640px){.talents__p{margin-top:18px!important}}
 .tlrow .tcard__ph{overflow:hidden}
 html{overflow-x:clip}
+
+/* Canadiens : un seul bouton rouge sous le défilé de légendes ; le lien doré et les boutons des cartes sont retirés */
+.hbc__btns .hbc__go,.hb__cta .hb__lien{display:none!important}
+.hb__cta .hb__go{background:var(--ch-r,#AF1E2D)!important;box-shadow:0 14px 34px rgba(175,30,45,.32)}
+.hb__cta .hb__go:hover{background:#cf2638!important;box-shadow:0 20px 44px rgba(175,30,45,.4)}
+.hb__p+.hb__p{margin-top:14px}
