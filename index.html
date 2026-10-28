@@ -1702,32 +1702,12 @@ h2.hero__k a{transition:color .3s}h2.hero__k a:hover{color:#fff}
 .hb__cta-bas{display:flex;justify-content:center;padding:6px var(--gutter) clamp(40px,7vh,80px)}
 .hb__cta-bas .hb__go{margin:0}
 .hb__cta{gap:0}
-
-/* Marques : courbe 3D, les logos s'éloignent et se courbent vers les extrémités */
-.brands .marquee{perspective:900px;perspective-origin:50% 50%;overflow:hidden;padding-top:26px!important;padding-bottom:46px!important}
-.brands .marquee__row{transform-style:preserve-3d}
-.brands .marquee__item{transform-style:preserve-3d;will-change:transform,opacity;backface-visibility:hidden}
-.brands__pin{position:relative}
-.brands__pin::before{content:"";position:absolute;inset:-30px 0;background:radial-gradient(60% 90% at 50% 50%,rgba(47,111,196,.22),transparent 70%),url(assets/lieux/hockey.jpg) center/cover;opacity:.3;filter:grayscale(1);-webkit-mask-image:radial-gradient(70% 100% at 50% 50%,#000 30%,transparent 100%);mask-image:radial-gradient(70% 100% at 50% 50%,#000 30%,transparent 100%);pointer-events:none}
-.brands__pin>*{position:relative}
-
-/* Fond 3D (Services + Marques) : image de tunnel courbé générée, profondeur à la souris */
-.brands,.services{overflow:hidden}
-.brands::before,.services::before{content:"";position:absolute;left:-3%;right:-3%;top:-3%;bottom:-3%;pointer-events:none;z-index:0;
-  background:linear-gradient(180deg,#0E2A4F 0,rgba(14,42,79,.45) 22%,rgba(14,42,79,.42) 70%,#0E2A4F 100%),url(assets/lieux/tunnel3d.jpg) center/cover no-repeat;
-  transform:translate3d(calc(var(--mx,0)*-22px),calc(var(--my,0)*-12px),0) scale(1.04);transition:transform .35s ease-out}
-.brands::after,.services::after{content:none}
-.brands>*,.services>*{position:relative;z-index:1}
-.appel__t,.appel__b,.brands__head,.services__bg{transform:translate3d(calc(var(--mx,0)*14px),calc(var(--my,0)*8px),0);transition:transform .25s ease-out}
-.appel__go,.appel__tel{box-shadow:0 18px 30px -12px rgba(0,0,0,.55),0 2px 0 rgba(255,255,255,.12) inset;transform:translateZ(0)}
-.brands__pin,.brands .slide--brands,.brands .marquee,.brands .appel{background:transparent!important}
-.brands__pin::before{content:none!important}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2710">
+<link rel="stylesheet" href="assets/ui.css?v=b2704">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="assets/projets-liste.js?v=b2710"></script>
-<script src="assets/titres-courts.js?v=b2710"></script>
-<link rel="stylesheet" href="assets/texte-index.css?v=b2710">
+<script src="assets/projets-liste.js?v=b2704"></script>
+<script src="assets/titres-courts.js?v=b2704"></script>
+<link rel="stylesheet" href="assets/texte-index.css?v=b2704">
 </head>
 <body>
 <a class="sr" href="#contact">Skip to contact</a>
@@ -2775,7 +2755,7 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
   });
 })();
 </script>
-<script src="assets/ui.js?v=b2710"></script>
+<script src="assets/ui.js?v=b2704"></script>
 <script>
 (function(){
   const d=document.getElementById('seDeck'); if(!d) return;
@@ -2787,37 +2767,6 @@ addEventListener('load',()=>{ScrollTrigger.refresh();});
   d.addEventListener('click',e=>{ if(e.target.closest('.se__fl--p')){prev();} else {next();} go(); });
   let x0=null; d.addEventListener('pointerdown',e=>{x0=e.clientX}); d.addEventListener('pointerup',e=>{ if(x0!==null&&Math.abs(e.clientX-x0)>40){ (e.clientX<x0?next:prev)(); go(); x0=null; e.stopPropagation(); }});
   d.addEventListener('mouseenter',()=>clearInterval(t)); d.addEventListener('mouseleave',go); go();
-})();
-</script>
-
-<script>
-/* Courbe 3D des marques : appliquée à chaque image selon sa position horizontale */
-(function(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  function tick(){
-    var pin=document.getElementById('brandsPin');
-    if(pin){
-      var r=pin.getBoundingClientRect();
-      if(r.bottom>-100&&r.top<innerHeight+100){
-        var W=innerWidth, c=W/2, narrow=W<700;
-        pin.querySelectorAll('.marquee__item').forEach(function(it){
-          var b=it.getBoundingClientRect(), u=((b.left+b.width/2)-c)/c; if(u>1.3||u<-1.3){it.style.transform='';return;}
-          var a=Math.min(1,Math.abs(u)), s=u<0?-1:1, k=narrow?.8:1;
-          it.style.transform='translateZ('+(-Math.pow(a,2)*260*k)+'px) rotateY('+(s*Math.pow(a,1.5)*58*k)+'deg) scale('+(1-a*.18)+')';
-          it.style.opacity=String(Math.max(.15,1-Math.pow(a,2.2)*.8));
-        });
-      }
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-})();
-</script>
-
-<script>
-(function(){
-  var r=document.documentElement;
-  addEventListener('pointermove',function(e){r.style.setProperty('--mx',((e.clientX/innerWidth)-.5).toFixed(3));r.style.setProperty('--my',((e.clientY/innerHeight)-.5).toFixed(3));},{passive:true});
 })();
 </script>
 </body>
