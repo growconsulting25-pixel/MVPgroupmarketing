@@ -423,7 +423,7 @@
   /* Décor : grandes ellipses fines derrière le contenu, comme sur la page Équipe */
   function lum(c){var m=(c||'').match(/[\d.]+/g); if(!m||m.length<3||(m.length>3&&+m[3]===0)) return null; return (0.299*m[0]+0.587*m[1]+0.114*m[2])/255;}
   function decor(){
-    var liste=[].slice.call(document.querySelectorAll('.bp__wrap,.talents,.pe'));
+    var liste=[].slice.call(document.querySelectorAll('.talents'));
     liste.forEach(function(s,n){
       if(s.querySelector(':scope > .ell')||s.offsetHeight<460) return;
       var cs=getComputedStyle(s); if(cs.position==='static') s.style.position='relative';
@@ -434,13 +434,9 @@
       var d=document.createElement('div'); d.className='ell'; d.setAttribute('aria-hidden','true');
       d.style.cssText='position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1';
       var h=s.offsetHeight, k=1, html='';
-      for(var i=0;i<k;i++){
-        var g=(n+i)%2===0, y=Math.round(Math.max(4,Math.min(30,(h-700)/2/h*100)));
-        html+='<svg viewBox="0 0 800 520" style="position:absolute;width:'+(g?'64vw':'56vw')+';max-width:1100px;'+(g?'left:-6vw':'right:-6vw')+';top:'+y+'%;transform:rotate('+(g?-14:12)+'deg)" fill="none" stroke="rgba('+ton+','+op+')" stroke-width="1.7"><ellipse cx="400" cy="260" rx="392" ry="250"/><ellipse cx="400" cy="260" rx="300" ry="185" stroke-dasharray="2 7"/></svg>';
-      }
       if(ACCUEIL&&s.matches('.talents')){
         html+='<div style="position:absolute;inset:0;background:radial-gradient(55% 30% at 12% 18%,rgba(30,82,153,.3),transparent 72%),radial-gradient(50% 30% at 92% 52%,rgba(197,162,83,.3),transparent 72%),radial-gradient(60% 30% at 20% 90%,rgba(30,82,153,.24),transparent 72%)"></div>';
-        [[3,5,'l'],[96,16,'r'],[2,30,'l'],[97,42,'r'],[3,55,'l'],[96,68,'r'],[2,80,'l'],[97,92,'r']].forEach(function(q){
+        [[3,22,'l'],[96,28,'r'],[1,38,'l'],[98,46,'r'],[3,55,'l'],[96,64,'r'],[1,72,'l'],[98,80,'r'],[3,88,'l'],[96,95,'r']].forEach(function(q){
           html+='<span style="position:absolute;width:340px;height:230px;'+(q[2]==='l'?'left:'+(q[0]-3)+'%':'right:'+(100-q[0]-3)+'%')+';top:'+q[1]+'%;opacity:.95;background:'+plus+';background-size:26px 26px;-webkit-mask-image:radial-gradient(closest-side,#000 20%,transparent 100%);mask-image:radial-gradient(closest-side,#000 20%,transparent 100%)"></span>';
         });
       }
