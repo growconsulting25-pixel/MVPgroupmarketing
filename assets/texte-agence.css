@@ -1,17 +1,17 @@
 /* Textes courants : taille mesurée (généré) */
 @media (min-width:1100px){
-  .ag-bio__corps > p{font-size:18.4px!important}
-  .ag-bio__suite > p{font-size:18.4px!important}
+  .ag-bio__corps > p{font-size:17.4px!important}
+  .ag-bio__suite > p{font-size:17.4px!important}
   .footer__qc > span{font-size:14.6px!important}
 }
 @media (min-width:641px) and (max-width:1099px){
-  .ag-bio__corps > p{font-size:17.8px!important}
-  .ag-bio__suite > p{font-size:17.8px!important}
+  .ag-bio__corps > p{font-size:16.8px!important}
+  .ag-bio__suite > p{font-size:16.8px!important}
   .footer__qc > span{font-size:14.3px!important}
 }
 @media (max-width:640px){
-  .ag-bio__corps > p{font-size:17.7px!important}
-  .ag-bio__suite > p{font-size:17.7px!important}
+  .ag-bio__corps > p{font-size:16.7px!important}
+  .ag-bio__suite > p{font-size:16.7px!important}
   .footer__qc > span{font-size:14.2px!important}
 }
 .footer ul li,.footer ul li a{font-size:17px!important}

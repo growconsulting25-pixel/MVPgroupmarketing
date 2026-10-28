@@ -1,20 +1,20 @@
 /* Textes courants : taille mesurée (généré) */
 @media (min-width:1100px){
-  p.ct-hero__p{font-size:17.7px!important}
-  .ct-form > p{font-size:17.1px!important}
-  p.ct-note{font-size:17.1px!important}
+  p.ct-hero__p{font-size:16.7px!important}
+  .ct-form > p{font-size:16.1px!important}
+  p.ct-note{font-size:16.1px!important}
   .footer__qc > span{font-size:14.6px!important}
 }
 @media (min-width:641px) and (max-width:1099px){
-  p.ct-hero__p{font-size:16.3px!important}
-  .ct-form > p{font-size:16.8px!important}
-  p.ct-note{font-size:16.8px!important}
+  p.ct-hero__p{font-size:15.3px!important}
+  .ct-form > p{font-size:15.8px!important}
+  p.ct-note{font-size:15.8px!important}
   .footer__qc > span{font-size:14.3px!important}
 }
 @media (max-width:640px){
-  p.ct-hero__p{font-size:16.2px!important}
-  .ct-form > p{font-size:16.7px!important}
-  p.ct-note{font-size:16.7px!important}
+  p.ct-hero__p{font-size:15.2px!important}
+  .ct-form > p{font-size:15.7px!important}
+  p.ct-note{font-size:15.7px!important}
   .footer__qc > span{font-size:14.2px!important}
 }
 .footer ul li,.footer ul li a{font-size:17px!important}
