@@ -660,8 +660,8 @@ body{background:var(--soft);color:var(--black)}
 @media (max-width:760px){.tk-promo--g,.tk-promo--d{grid-column:auto}}
 .grid{grid-auto-flow:row dense}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.2vw,20px)}
-@media (max-width:1560px){.grid{grid-template-columns:repeat(4,1fr)}}
-@media (max-width:1180px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:430px){.grid{grid-template-columns:1fr}}
 
@@ -777,9 +777,10 @@ body{background:var(--soft);color:var(--black)}
 .chip:hover{background:#1E5299;border-color:#1E5299;color:#fff}
 .chip[aria-pressed="true"]{background:#123B6D;border-color:#123B6D;color:#fff;box-shadow:0 6px 18px rgba(30,82,153,.28)}
 .tk-filt{grid-template-columns:repeat(3,minmax(0,1fr))}
-.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,26px)}
-@media (max-width:1280px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.2vw,20px)}
+@media (max-width:1180px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:960px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.grid{grid-template-columns:1fr}}
 .tk__nom{font-size:clamp(22px,1.8vw,32px)}
 .tk__th{font-size:13px}
@@ -888,9 +889,9 @@ body{background:var(--soft);color:var(--black)}
 .tk-lien{display:block;margin-top:14px;padding:0;border:0;background:none;font:inherit;font-size:14px;color:#1E5299;text-decoration:underline;cursor:pointer}
 .tk__th,.tk__reach{display:none!important}
 </style>
-<link rel="stylesheet" href="assets/ui.css?v=b2644">
-<script src="assets/titres-courts.js?v=b2644"></script>
-<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2644">
+<link rel="stylesheet" href="assets/ui.css?v=b2646">
+<script src="assets/titres-courts.js?v=b2646"></script>
+<link rel="stylesheet" href="assets/texte-personnalites.css?v=b2646">
 </head>
 <body>
 <header data-theme="dark" class="header" id="header" data-theme="light">
@@ -1186,8 +1187,9 @@ function rendre(){
     visibles.forEach(t=>{
       if(t.cat!==dernier){ dernier=t.cat; const h=document.createElement('h2'); h.className='tk-sport'; h.textContent=SPORT_FR[t.cat]||t.catNom; g1.appendChild(h); }
       /* carte bleue : 8e, 17e, 24e, 33e… (position dans la grille) : fin de ligne à droite, puis début de ligne à gauche */
-      const estPromo=p=>p===8||(p>16&&(p%16===1||p%16===8));
-      if(estPromo(nC+1)){ nC++; g1.appendChild(promoBleue(nC%16===8)); }
+      const cols=getComputedStyle(g1).gridTemplateColumns.split(' ').length||4, per=2*cols;
+      const estPromo=p=>p===per||(p>2*per&&(p%(2*per)===1||p%(2*per)===per));
+      if(estPromo(nC+1)){ nC++; g1.appendChild(promoBleue(nC%per===0)); }
       g1.appendChild(carte(t)); nC++;
     });
   }
@@ -1215,6 +1217,7 @@ let tmr; $('#q').addEventListener('input',e=>{ clearTimeout(tmr); tmr=setTimeout
 $('#q').addEventListener('keydown',e=>{ if(e.key!=='Enter') return; e.preventDefault(); E.q=e.target.value; E.page=1; rendre();
   if(E.q.trim() && !filtrer().length && ressembleNom(E.q) && window.mvpDemande) mvpDemande({persos:[E.q.trim()]}); });
 $('#plus').addEventListener('click',()=>{E.page++;rendre();});
+let _c=0,_t; addEventListener('resize',()=>{ clearTimeout(_t); _t=setTimeout(()=>{ const n=getComputedStyle($('#grid')).gridTemplateColumns.split(' ').length; if(_c&&n!==_c) rendre(); _c=n; },200); }); _c=getComputedStyle($('#grid')).gridTemplateColumns.split(' ').length;
 function synchroniser(){
   $$('.chip').forEach(c=>c.setAttribute('aria-pressed',E.qualite.has(c.dataset.q)));
   $$('#filtres select[data-c]').forEach(sel=>{ const v=[...E[sel.dataset.c]][0]||'';
@@ -1312,11 +1315,12 @@ document.querySelectorAll('[data-plus]').forEach(function(sec){
   if(!(['sport','role','topic','project','q'].some(function(k){return u.get(k);})||location.hash==='#resultats')) return;
   if('scrollRestoration' in history) history.scrollRestoration='manual';
   /* sur téléphone, les pastilles prennent tout l'écran : on arrive directement sur les cartes */
-  var cible=matchMedia('(max-width:760px)').matches?document.querySelector('.tk-n'):document.getElementById('resultats'); if(!cible) return;
-  var aller=function(){ scrollTo(0, cible.getBoundingClientRect().top+scrollY-92); };
+  /* on atterrit sur la 1re rangée de cartes (titre du sport compris), jamais sur la bannière */
+  var cible=document.getElementById('grid'); if(!cible) return;
+  var aller=function(){ var m=matchMedia('(max-width:760px)').matches; scrollTo(0, Math.max(0,cible.getBoundingClientRect().top+scrollY-(m?96:128))); };
   aller(); addEventListener('load',function(){ setTimeout(aller,60); });
 })();
 </script>
-<script src="assets/ui.js?v=b2644"></script>
-<script src="assets/nav.js?v=b2644"></script>
+<script src="assets/ui.js?v=b2646"></script>
+<script src="assets/nav.js?v=b2646"></script>
 </body></html>
