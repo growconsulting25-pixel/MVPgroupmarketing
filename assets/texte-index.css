@@ -198,7 +198,7 @@ html{overflow-x:clip}
 
 /* Mobile : cartes Canadiens = mêmes dimensions que les autres cartes, textes d'une coche plus gros, Salon Exécutif */
 @media (max-width:640px){
-  .hb__pile{width:calc(100vw - 2*var(--gutter) - 96px)!important;aspect-ratio:3/4.3!important;margin:0 auto!important;position:relative;left:-44px}
+  .hb__pile{width:calc(100vw - 2*var(--gutter) - 60px)!important;aspect-ratio:3/4.3!important;margin:34px 0 14px!important;position:relative;left:-30px}
   .intro__p p,.hb__p,.hb__sous,.mo__p,.appel__p,.talents__p,.se__p,.projets__p{font-size:18px!important;line-height:1.55!important}
   .se__l > li{font-size:15px!important}
   .se__plus > span,.se__plus{font-size:17.5px!important}
@@ -214,3 +214,4 @@ html{overflow-x:clip}
 .se__f input[type=date]:not(:focus):invalid{color:rgba(255,255,255,.45)}
 .se__dl{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.65);margin:4px 0 -2px}
 @media (max-width:640px){.hb__ctrl{margin-right:0!important;margin-left:0!important;justify-content:center!important;width:100%}.hb__scene{display:flex;flex-direction:column;align-items:center}}
+@media (max-width:640px){.hb__ctrl{margin-top:44px!important;margin-bottom:12px!important}.hb__scene{padding-top:8px;padding-bottom:12px}}
